@@ -1,0 +1,30 @@
+name: Refresh CDSCO dataset
+
+on:
+  schedule:
+    - cron: "30 3 25 * *" # 25th of every month, 09:00 IST (CDSCO publishes around the 20th)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-dataset:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pdfplumber==0.11.4
+      - name: Build dataset from official CDSCO sources
+        run: python -I data/build_dataset.py
+      - name: Commit if changed
+        run: |
+          git config user.name "dawashield-bot"
+          git config user.email "dawashield-bot@users.noreply.github.com"
+          git add public/data/nsq.json public/data/meta.json
+          if git diff --cached --quiet; then echo "No change"; exit 0; fi
+          git commit -m "data: monthly CDSCO refresh $(date -u +%Y-%m-%d)"
+          git push

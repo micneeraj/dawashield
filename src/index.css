@@ -1,0 +1,86 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+@import "@fontsource/mukta/devanagari-400.css";
+@import "@fontsource/mukta/devanagari-500.css";
+@import "@fontsource/mukta/devanagari-600.css";
+@import "@fontsource/mukta/devanagari-700.css";
+@import "@fontsource/mukta/latin-400.css";
+@import "@fontsource/mukta/latin-600.css";
+
+@theme {
+  --font-sans: "Inter Variable", "Mukta", system-ui, sans-serif;
+  --font-hi: "Mukta", "Inter Variable", system-ui, sans-serif;
+
+  --color-brand-50: #eef7f5;
+  --color-brand-100: #d5ece7;
+  --color-brand-200: #a9d8cf;
+  --color-brand-300: #74bdb0;
+  --color-brand-400: #3f9c8e;
+  --color-brand-500: #1f7f72;
+  --color-brand-600: #12695e;
+  --color-brand-700: #0f5e57;
+  --color-brand-800: #0c4743;
+  --color-brand-900: #0a3532;
+
+  --color-paper: #f7f5f0;
+  --color-ink: #1d2a28;
+  --color-muted: #5b6866;
+  --color-line: #e6e2d9;
+
+  --color-red-soft: #fbefec;
+  --color-red-line: #f0cfc8;
+  --color-red-ink: #9b3a2f;
+  --color-amber-soft: #fdf4e3;
+  --color-amber-line: #f1dcae;
+  --color-amber-ink: #8a5800;
+  --color-grey-soft: #f1f3f3;
+  --color-grey-line: #dde2e1;
+  --color-grey-ink: #46514f;
+
+  --shadow-soft: 0 1px 2px rgb(16 40 36 / 0.04), 0 4px 16px rgb(16 40 36 / 0.06);
+  --shadow-lift: 0 2px 4px rgb(16 40 36 / 0.05), 0 12px 32px rgb(16 40 36 / 0.10);
+}
+
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--color-ink);
+  background: #e9efe9;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+html[lang="hi"] body { font-family: var(--font-hi); font-size: 19px; }
+
+@media (min-width: 640px) {
+  body {
+    background:
+      radial-gradient(1200px 600px at 10% -10%, #cfe6df 0%, transparent 60%),
+      radial-gradient(900px 500px at 110% 110%, #f3e3c8 0%, transparent 55%),
+      #e6ede8;
+  }
+}
+
+:focus-visible { outline: 3px solid var(--color-brand-400); outline-offset: 2px; border-radius: 12px; }
+button { cursor: pointer; }
+input, textarea, select { font: inherit; }
+
+.tap { min-height: 56px; }
+.num { font-variant-numeric: tabular-nums; letter-spacing: 0.02em; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.9); opacity: 0.55; }
+  100% { transform: scale(1.65); opacity: 0; }
+}
+.ring-pulse { animation: pulse-ring 1.8s cubic-bezier(0.2, 0.6, 0.3, 1) infinite; }
+.ring-pulse.delay { animation-delay: 0.9s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ring-pulse { animation: none; opacity: 0; }
+}
+
+/* Letter-spacing breaks Devanagari conjuncts: never track Hindi labels. */
+html[lang="hi"] [class*="tracking-"] { letter-spacing: 0 !important; }

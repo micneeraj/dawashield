@@ -1,0 +1,38 @@
+{
+  "version": "9428447d758f173e",
+  "records": 4158,
+  "nsq": 4109,
+  "spurious": 49,
+  "verified": 55,
+  "pdfCrossChecked": 815,
+  "earliestMonth": "2024-10",
+  "latestMonth": "2026-09",
+  "lastSynced": "2026-11-15",
+  "missingMonths": [],
+  "statesPendingLatestMonth": [
+    "Andaman And Nicobar",
+    "Arunachal Pradesh",
+    "Bihar",
+    "Chandigarh",
+    "Chhattishgarh",
+    "Dadra And Nagar Haveli",
+    "Daman And Diu",
+    "Goa",
+    "Jharkhand",
+    "Ladakh",
+    "Lakshadweep",
+    "Manipur",
+    "Meghalaya",
+    "Mizoram",
+    "Nagaland",
+    "Orissa",
+    "Sikkim",
+    "Tamil Nadu",
+    "West Bengal"
+  ],
+  "failed": [],
+  "sources": [
+    "https://cdscoonline.gov.in/CDSCO/viewPublicNSQDrug",
+    "https://cdsco.gov.in/opencms/opencms/en/Notifications/Alerts/"
+  ]
+}
