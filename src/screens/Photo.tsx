@@ -3,32 +3,23 @@ import { motion } from "framer-motion";
 import { AlertTriangle, Camera, CheckCircle2, ImagePlus, ImageUp, Lightbulb, RotateCcw, ScanLine } from "lucide-react";
 import { useApp } from "../state";
 import { Button, Card, Page, SourceChip, Spinner, inputCls, cx } from "../components/ui";
-import { readStrip } from "../lib/ai";
-import { mergeLabels, needsCheck, type LabelKey, type LabelReading } from "../lib/label";
+import { CloserPhotoNeeded, readStrip } from "../lib/ai";
+import { expiryForCheck, expiryNeedsConfirm, mergeLabels, needsCheck, type LabelKey, type LabelReading } from "../lib/label";
 import { ERRORS } from "../content/messages";
 import { useRunCheck } from "../useCheck";
 import type { Source } from "../lib/types";
 
-/** Shrink big camera photos before sending them to a model. */
-async function shrink(file: File, max = 1600): Promise<Blob> {
-  try {
-    const bmp = await createImageBitmap(file);
-    const scale = Math.min(1, max / Math.max(bmp.width, bmp.height));
-    if (scale === 1 && file.size < 1_500_000) return file;
-    const c = document.createElement("canvas");
-    c.width = Math.round(bmp.width * scale);
-    c.height = Math.round(bmp.height * scale);
-    c.getContext("2d")!.drawImage(bmp, 0, 0, c.width, c.height);
-    return await new Promise<Blob>((res) => c.toBlob((b) => res(b ?? file), "image/jpeg", 0.9));
-  } catch {
-    return file;
-  }
-}
-
-const TIP = {
-  hi: "Batch aur Expiry wali side ki photo lijiye। ज़रूरत हो तो दूसरी तरफ़ की एक और फ़ोटो जोड़िए।",
-  en: "Take a photo of the side that shows the Batch and Expiry. You can add a second photo of the other side.",
+export const TIP = {
+  hi: "Batch aur EXP wale hisse ki paas se saaf photo lijiye। ज़रूरत हो तो दूसरी तरफ़ की एक और फ़ोटो जोड़िए।",
+  en: "Take a close, sharp photo of the part with the Batch and EXP. You can add a second photo of the other side.",
 };
+const TIP_EXAMPLE = { hi: "उदाहरण: फ़ोटो में यह साफ़ पढ़ा जाना चाहिए", en: "Example: this should be easy to read in the photo" };
+export const CLOSER = {
+  hi: "Batch / EXP साफ़ नहीं दिखा। अंदाज़ा नहीं लगाऊँगा — कृपया उस हिस्से की पास से, रोशनी में साफ़ फ़ोटो लीजिए।",
+  en: "The Batch / EXP text is too small or blurry. I won't guess — please take a closer, sharper photo of that part in good light.",
+};
+export const EXPIRY_CHECK = { hi: "क्या समाप्ति तिथि सही है? कृपया पत्ते पर देखिए", en: "Is the expiry date correct? Please check the strip" };
+const EXPIRY_YES = { hi: "हाँ, पत्ते पर यही तारीख़ है", en: "Yes, this date is on the strip" };
 const CHECK_ON_STRIP = { hi: "कृपया इसे पत्ते पर देखकर मिलाइए", en: "Please check this on the strip" };
 const CONFIRM_TITLE = { hi: "पत्ते से मिलाकर पक्का कीजिए", en: "Check these against the strip" };
 const CONFIRM_BTN = { hi: "सही है, जाँचिए", en: "Confirm and check" };
@@ -53,6 +44,8 @@ export default function Photo() {
   const [previews, setPreviews] = useState<string[]>([]);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(false);
+  const [closer, setCloser] = useState(false);
+  const [expiryOk, setExpiryOk] = useState(false);
   const [sources, setSources] = useState<Source[]>([]);
   const [reading, setReading] = useState<LabelReading | null>(null);
   const [form, setForm] = useState<Record<LabelKey, string>>({ name: prefill?.name ?? "", manufacturer: "", batch: "", expiry: "" });
@@ -63,9 +56,11 @@ export default function Photo() {
     setPreviews((p) => [...p, URL.createObjectURL(f)].slice(-2));
     setBusy(true);
     setError(false);
+    setCloser(false);
+    setExpiryOk(false);
     try {
       const r = await Promise.race([
-        readStrip(await shrink(f)),
+        readStrip(f),
         new Promise<never>((_, rej) => setTimeout(() => rej(new Error("timeout")), 90000)),
       ]);
       const merged = mergeLabels(reading, r.value)!;
@@ -78,8 +73,11 @@ export default function Photo() {
         expiry: merged.expiry.value ?? "",
       }));
       setEdited({});
-    } catch {
-      setError(true);
+    } catch (e) {
+      if (e instanceof CloserPhotoNeeded) {
+        setCloser(true);
+        setPreviews((p) => p.slice(0, -1));
+      } else setError(true);
       say("error");
     } finally {
       setBusy(false);
@@ -87,12 +85,13 @@ export default function Photo() {
   }
 
   function retake() {
-    setPreviews([]); setReading(null); setSources([]); setError(false); setEdited({});
+    setPreviews([]); setReading(null); setSources([]); setError(false); setCloser(false); setExpiryOk(false); setEdited({});
     setForm({ name: prefill?.name ?? "", manufacturer: "", batch: "", expiry: "" });
   }
 
   const showConfirm = (reading || error) && !busy;
   const lastSource = sources[sources.length - 1];
+  const expiryConfirm = expiryNeedsConfirm(reading);
 
   return (
     <Page title={lang === "hi" ? "फ़ोटो से जाँच" : "Photo check"}>
@@ -101,7 +100,11 @@ export default function Photo() {
 
       <div className="mb-3 flex items-start gap-2.5 rounded-2xl bg-amber-soft px-4 py-3 text-[16px] font-medium leading-snug text-amber-ink" data-testid="photo-tip">
         <Lightbulb size={20} className="mt-0.5 shrink-0" aria-hidden />
-        {TIP[lang]}
+        <div>
+          {TIP[lang]}
+          <p className="mt-1.5 text-[14px] font-normal">{TIP_EXAMPLE[lang]}:</p>
+          <p className="num mt-1 inline-block rounded-lg bg-white px-2.5 py-1 text-[15px] font-bold tracking-wide text-ink" data-testid="photo-tip-example">B.No. E166L26 · EXP. JUN 2028</p>
+        </div>
       </div>
 
       <Card className="overflow-hidden">
@@ -122,7 +125,7 @@ export default function Photo() {
         </div>
       </Card>
 
-      {!busy && !reading && (
+      {!busy && !reading && !closer && (
         <div className="mt-4 grid grid-cols-2 gap-3">
           <Button icon={<Camera size={22} />} onClick={() => camRef.current?.click()}>{t("takePhoto")}</Button>
           <Button variant="secondary" icon={<ImageUp size={22} />} onClick={() => galRef.current?.click()}>{t("upload")}</Button>
@@ -133,6 +136,13 @@ export default function Photo() {
         <div>
           <Spinner label={t("readingPhoto")} />
           {!online && <p className="-mt-6 text-center text-[15px] text-muted">{t("readingPhotoSlow")}</p>}
+        </div>
+      )}
+
+      {closer && !busy && (
+        <div className="mt-4 rounded-2xl bg-amber-soft px-4 py-3 text-[17px] font-medium text-amber-ink" role="alert" data-testid="closer-photo">
+          <p>{CLOSER[lang]}</p>
+          <div className="mt-3"><Button icon={<Camera size={22} />} onClick={() => camRef.current?.click()}>{t("takePhoto")}</Button></div>
         </div>
       )}
 
@@ -147,7 +157,7 @@ export default function Photo() {
           data-testid="confirm-screen"
           onSubmit={(e) => {
             e.preventDefault();
-            runCheck({ name: form.name, manufacturer: form.manufacturer, batch: form.batch, expiry: form.expiry, readSource: lastSource });
+            runCheck({ name: form.name, manufacturer: form.manufacturer, batch: form.batch, expiry: expiryForCheck(form.expiry, { needsConfirm: expiryConfirm, confirmed: expiryOk, edited: !!edited.expiry }), readSource: lastSource });
           }}
         >
           <div className="flex items-center justify-between gap-2">
@@ -157,7 +167,8 @@ export default function Photo() {
 
           {(["name", "manufacturer", "batch", "expiry"] as LabelKey[]).map((k) => {
             const f = reading?.[k] ?? {};
-            const warn = !edited[k] && (needsCheck(f) || !form[k]);
+            const expAsk = k === "expiry" && expiryConfirm && !expiryOk && !edited.expiry && !!form.expiry;
+            const warn = expAsk || (!edited[k] && !(k === "expiry" && expiryOk) && (needsCheck(f) || !form[k]));
             const big = k === "batch" || k === "expiry";
             return (
               <div key={k} className={cx("rounded-3xl border-2 p-4 transition", warn ? "border-amber-line bg-amber-soft" : "border-line bg-white")} data-testid={`field-${k}`} data-uncertain={warn ? "1" : "0"}>
@@ -178,7 +189,10 @@ export default function Photo() {
                 <p className="mt-1.5 text-[14px] leading-snug text-muted">
                   {SOURCE[lang]}: <span className="font-medium text-ink/80">{f.source ? `“${f.source}”` : NOT_FOUND[lang]}</span>
                 </p>
-                {warn && <p className="mt-1 text-[15px] font-semibold text-amber-ink">{CHECK_ON_STRIP[lang]}</p>}
+                {warn && <p className="mt-1 text-[15px] font-semibold text-amber-ink" data-testid={k === "expiry" && expAsk ? "expiry-check" : undefined}>{expAsk ? EXPIRY_CHECK[lang] : CHECK_ON_STRIP[lang]}</p>}
+                {expAsk && (
+                  <button type="button" className="mt-2 rounded-2xl border-2 border-amber-line bg-white px-4 py-2 text-[16px] font-semibold text-amber-ink" onClick={() => setExpiryOk(true)} data-testid="expiry-yes">{EXPIRY_YES[lang]}</button>
+                )}
               </div>
             );
           })}

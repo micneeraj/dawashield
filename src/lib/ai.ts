@@ -6,7 +6,8 @@
 import { getGenerativeModel, InferenceMode, type ChatSession } from "firebase/ai";
 import { ai, CLOUD_MODEL } from "./firebase";
 import { parseCandidates } from "./json";
-import { parseLabel, validateLabel, type LabelReading } from "./label";
+import { compareReads, needsCloserPhoto, parseStripRead, preferCrop, type LabelReading, type StripRead } from "./label";
+import { isSmallBox, preparePhoto } from "./image";
 import { toSource } from "./source";
 import { transliterate } from "./normalize";
 import type { AlertRecord, Source } from "./types";
@@ -81,27 +82,64 @@ export const LABEL_PROMPT =
   '- mfd: the date after "MFD" / "Mfg. Date" (only used to cross-check; never put it in expiry).\n' +
   '- manufacturer: company after "Mfd. by" / "Manufactured by" / "Mkd. by".\n' +
   "For every field return the exact source text it came from (label + value as printed) and your confidence 0 to 1. " +
-  "If a field is not clearly visible return null for it.\n" +
-  'Reply ONLY with JSON: {"name":{"value":"","source":"","confidence":0},"manufacturer":{...},"batch":{...},"expiry":{...},"mfd":{...}}';
+  "If a field is not clearly visible return null for it. If the B.No / EXP text is blurred or too small to read with certainty, " +
+  "do NOT guess digits: return null for that field and set image_quality.\n" +
+  'image_quality: "ok", "blurry" or "too_small" (the batch/expiry text is too small or out of focus to read reliably).\n' +
+  "batch_expiry_box: the box around the B.No / EXP / MFD text as [ymin, xmin, ymax, xmax] scaled 0-1000, or null.\n" +
+  'Reply ONLY with JSON: {"name":{"value":"","source":"","confidence":0},"manufacturer":{...},"batch":{...},"expiry":{...},"mfd":{...},' +
+  '"image_quality":"ok","batch_expiry_box":[0,0,0,0]}';
+
+export const CROP_NOTE =
+  "This image is a zoomed crop of the batch / expiry area of the same strip. Read B.No, EXP and MFD from it character by character.\n";
+
+export class CloserPhotoNeeded extends Error {
+  constructor() { super("closer-photo-needed"); }
+}
+
+/** Two independent reads of one image (two separate calls), compared field by field. */
+async function readTwice(mode: Mode, image: Blob, prompt: string): Promise<{ s: StripRead; source: Source; ms: number }> {
+  const part = await filePart(image);
+  const m = model(mode, { image: true, json: true });
+  const one = () => run(mode, m, [prompt, part], parseStripRead);
+  const reads = mode === InferenceMode.ONLY_ON_DEVICE
+    ? [await one().catch(() => null), await one().catch(() => null)] // Nano: one session at a time
+    : await Promise.all([one().catch(() => null), one().catch(() => null)]);
+  const ok = reads.filter((r): r is AiText<StripRead> => !!r);
+  if (!ok.length) throw new Error("unreadable-model-output");
+  const reading = compareReads(reads[0]?.value.reading ?? null, reads[1]?.value.reading ?? null);
+  const quality = ok.some((r) => r.value.quality === "blurry") ? "blurry" : ok.some((r) => r.value.quality === "too_small") ? "too_small" : "ok";
+  return { s: { reading, quality, box: ok.find((r) => r.value.box)?.value.box }, source: ok[0].source, ms: Math.max(...ok.map((r) => r.ms)) };
+}
+
+async function readWith(mode: Mode, file: Blob): Promise<AiText<LabelReading>> {
+  const t0 = performance.now();
+  const photo = await preparePhoto(file);
+  const full = await readTwice(mode, photo.full, LABEL_PROMPT);
+  let s = full.s;
+  // Small label text: zoom into the B.No / EXP area and use that read for those fields.
+  if (s.box && (isSmallBox(s.box) || s.quality !== "ok")) {
+    try {
+      const crop = await readTwice(mode, await photo.crop(s.box), CROP_NOTE + LABEL_PROMPT);
+      if (crop.s.reading) s = { reading: preferCrop(s.reading, crop.s.reading), quality: crop.s.quality, box: s.box };
+    } catch { /* keep the full-image read */ }
+  }
+  if (needsCloserPhoto(s)) throw new CloserPhotoNeeded();
+  return { value: s.reading!, source: full.source, ms: Math.round(performance.now() - t0) };
+}
 
 /** Cloud Gemini Flash first when online; on-device Nano when offline or if the cloud call fails.
- *  The returned reading has already passed the plain-code checks in validateLabel. */
+ *  Full-resolution photo, two independent reads, zoomed crop when the text is small.
+ *  Throws CloserPhotoNeeded instead of guessing when the text is blurry or too small. */
 export async function readStrip(file: Blob): Promise<AiText<LabelReading>> {
-  const part = await filePart(file);
-  const parse = (s: string) => {
-    const r = parseLabel(s);
-    return r ? validateLabel(r) : null;
-  };
   if (navigator.onLine) {
     try {
-      const mode = InferenceMode.ONLY_IN_CLOUD;
-      return await run(mode, model(mode, { image: true, json: true }), [LABEL_PROMPT, part], parse);
-    } catch {
+      return await readWith(InferenceMode.ONLY_IN_CLOUD, file);
+    } catch (e) {
+      if (e instanceof CloserPhotoNeeded) throw e;
       /* fall back to the on-device model below */
     }
   }
-  const mode = InferenceMode.ONLY_ON_DEVICE;
-  return run(mode, model(mode, { image: true, json: true }), [LABEL_PROMPT, part], parse);
+  return readWith(InferenceMode.ONLY_ON_DEVICE, file);
 }
 
 const EXPLAIN_RULES =

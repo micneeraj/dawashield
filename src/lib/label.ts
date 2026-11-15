@@ -133,3 +133,98 @@ export function mergeLabels(a: LabelReading | null, b: LabelReading | null): Lab
 export function needsCheck(f: LabelField): boolean {
   return !f.value || !!f.uncertain;
 }
+
+// ---------- Image quality, double read, expiry safety ----------
+
+export type ImageQuality = "ok" | "blurry" | "too_small";
+/** Box around the B.No / EXP text, Gemini convention [ymin, xmin, ymax, xmax] in 0..1000. */
+export type Box = [number, number, number, number];
+
+export interface StripRead {
+  reading: LabelReading | null;
+  quality: ImageQuality;
+  box?: Box;
+}
+
+/** Parse the full model reply: the label fields plus image_quality and batch_expiry_box. */
+export function parseStripRead(raw: string): StripRead | null {
+  const o = parseModelJson(raw);
+  if (!o || typeof o !== "object" || Array.isArray(o)) return null;
+  const r = o as Record<string, unknown>;
+  const q = String(r.image_quality ?? "ok").toLowerCase().replace(/[\s-]+/g, "_");
+  const quality: ImageQuality = q === "blurry" ? "blurry" : q === "too_small" || q === "small" ? "too_small" : "ok";
+  const b = r.batch_expiry_box;
+  const box =
+    Array.isArray(b) && b.length === 4 && b.every((n) => Number.isFinite(Number(n)))
+      ? (b.map((n) => Math.max(0, Math.min(1000, Number(n)))) as Box)
+      : undefined;
+  const reading = parseLabel(raw);
+  if (!reading && quality === "ok") return null;
+  return { reading: reading ? validateLabel(reading) : null, quality, box: box && box[2] > box[0] && box[3] > box[1] ? box : undefined };
+}
+
+/** Normalise a batch or expiry for comparing two reads (case, spaces, punctuation; dates by month). */
+export function sameValue(k: "batch" | "expiry" | "mfd", a?: string, b?: string): boolean {
+  if (!a && !b) return true;
+  if (!a || !b) return false;
+  if (k !== "batch") {
+    const da = parseExpiry(a), db = parseExpiry(b);
+    if (da && db) return da.getTime() === db.getTime();
+  }
+  const n = (s: string) => s.toUpperCase().replace(/[^A-Z0-9]/g, "");
+  return n(a) === n(b);
+}
+
+/** Combine two independent reads of the same image. Batch / expiry / mfd that
+ *  differ between the reads are marked uncertain (amber on the confirm screen). */
+export function compareReads(a: LabelReading | null, b: LabelReading | null): LabelReading | null {
+  if (!a || !b) {
+    const one = a ?? b;
+    if (!one) return null;
+    const r: LabelReading = JSON.parse(JSON.stringify(one));
+    for (const k of ["batch", "expiry"] as const)
+      if (r[k].value) { r[k].uncertain = true; r[k].note = "only one read succeeded"; }
+    return r;
+  }
+  const out = mergeLabels(a, b)!;
+  for (const k of ["batch", "expiry", "mfd"] as const) {
+    if (!sameValue(k, a[k].value, b[k].value)) {
+      out[k] = { ...out[k], uncertain: true, note: "two reads differ" };
+    }
+  }
+  return out;
+}
+
+/** Use the zoomed crop's read for batch / expiry / mfd where it found them. */
+export function preferCrop(full: LabelReading | null, crop: LabelReading | null): LabelReading | null {
+  if (!crop) return full;
+  if (!full) return crop;
+  const out: LabelReading = JSON.parse(JSON.stringify(full));
+  for (const k of ["batch", "expiry", "mfd"] as const) if (crop[k].value || crop[k].uncertain) out[k] = crop[k];
+  return out;
+}
+
+/** True when the photo should be retaken closer instead of guessing. */
+export function needsCloserPhoto(s: { reading: LabelReading | null; quality: ImageQuality }): boolean {
+  if (!s.reading) return true;
+  return s.quality !== "ok" && (!s.reading.batch.value || !s.reading.expiry.value);
+}
+
+/** Expiry safety: a read expiry in the past, or no MFD to cross-check it against,
+ *  is never trusted straight away. The user must confirm the date on the strip. */
+export function expiryNeedsConfirm(r: LabelReading | null, now = new Date()): boolean {
+  if (!r?.expiry.value) return false;
+  const d = parseExpiry(r.expiry.value);
+  if (!d) return true;
+  return d.getTime() < now.getTime() || !r.mfd.value;
+}
+
+/** What expiry is passed to the check. A past date only counts once the user has
+ *  confirmed it (or typed it themselves); otherwise no "expired" warning is shown. */
+export function expiryForCheck(value: string, opts: { needsConfirm: boolean; confirmed: boolean; edited: boolean }, now = new Date()): string | undefined {
+  const v = value.trim();
+  if (!v) return undefined;
+  if (opts.edited || opts.confirmed || !opts.needsConfirm) return v;
+  const d = parseExpiry(v);
+  return d && d.getTime() < now.getTime() ? undefined : v;
+}
