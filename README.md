@@ -107,7 +107,7 @@ npm run audio          # regenerate voice clips with Sarvam AI Bulbul (needs SAR
 node scripts/shots.mjs "<medicine>" "<batch>"   # Playwright screenshots + offline test
 ```
 
-**App Check:** on localhost the debug provider is used (put a registered token in `.env.local` as `VITE_APPCHECK_DEBUG_TOKEN`, or register the one Chrome prints). For a hosted build set `VITE_RECAPTCHA_V3_SITE_KEY` (or `VITE_RECAPTCHA_ENTERPRISE_SITE_KEY`) in `.env.production.local`.
+**App Check:** on localhost the debug provider is used (put a registered token in `.env.local` as `VITE_APPCHECK_DEBUG_TOKEN`, or register the one Chrome prints). For a hosted build set the reCAPTCHA Enterprise (Fraud Defense) site key as `VITE_RECAPTCHA_SITE_KEY` in `.env.production.local`.
 
 ### Browser requirements for on-device AI
 
