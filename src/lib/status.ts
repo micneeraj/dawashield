@@ -34,3 +34,28 @@ export function nanoText(text: string, image: string, lang: "hi" | "en"): string
     : "On-device AI needs desktop Chrome with Gemini Nano. Using cloud AI for now.";
 }
 
+
+export interface OfflineFact { key: "data" | "nano" | "voice"; ok: boolean | null; text: string }
+
+/** Precise offline status, item by item. Never implies everything works offline. */
+export function offlineFacts(nano: string, lang: "hi" | "en"): OfflineFact[] {
+  const nanoOk = nano === "available";
+  const hi = lang === "hi";
+  return [
+    { key: "data", ok: true, text: hi ? "CDSCO डेटा: बिना इंटरनेट उपलब्ध" : "CDSCO data: available offline" },
+    {
+      key: "nano",
+      ok: nano === "…" ? null : nanoOk,
+      text: hi
+        ? `फ़ोन पर AI (Gemini Nano): ${nano === "…" ? "…" : nanoOk ? "तैयार" : "इस डिवाइस पर उपलब्ध नहीं"}`
+        : `On-device AI (Gemini Nano): ${nano === "…" ? "…" : nanoOk ? "ready" : "not available on this device"}`,
+    },
+    {
+      key: "voice",
+      ok: null,
+      text: hi
+        ? "हिन्दी में बोलकर जाँच: बिना इंटरनेट तभी चलती है जब Chrome में हिन्दी स्पीच पैक इंस्टॉल हो"
+        : "Hindi voice input: works offline only if the Hindi speech pack is installed in Chrome",
+    },
+  ];
+}

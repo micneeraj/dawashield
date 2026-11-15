@@ -1,14 +1,13 @@
 import { useState } from "react";
-import { Check, ChevronDown, Cloud, ExternalLink, FileText, HelpCircle, History, Minus, Smartphone, X } from "lucide-react";
+import { ArrowRight, Check, ChevronDown, Cloud, Code2, Copy, Cpu, ExternalLink, FileText, HelpCircle, History, Keyboard, Minus, Smartphone, X } from "lucide-react";
 import { useApp, type CheckState } from "../state";
 import { Card, cx } from "./ui";
 import { monthLabel } from "../lib/format";
 import { isPastOrToday, formatExpiry } from "../lib/expiry";
-import { explainResult, type RowStatus } from "../lib/why";
+import { explainResult, whySummary, type RowStatus } from "../lib/why";
 import type { AlertRecord } from "../lib/types";
 
 const L = {
-  exact: { hi: "यही बैच CDSCO चेतावनी में है", en: "This exact batch is in a CDSCO alert" },
   reason: { hi: "जाँच में कमी", en: "Failure reason" },
   lab: { hi: "जाँच करने वाली लैब", en: "Testing lab" },
   month: { hi: "चेतावनी का महीना", en: "Alert month" },
@@ -38,27 +37,123 @@ const L = {
   plain: { hi: "यह सीधा कोड-मिलान है, इसमें AI नहीं है।", en: "Plain code matching, no AI involved." },
   amberMatched: { hi: "मिला", en: "Matched" },
   amberUnsure: { hi: "पक्का नहीं / अलग", en: "Uncertain or different" },
-  deviceAns: { hi: "इसी फ़ोन पर जवाब · Gemini Nano", en: "Answered on this device · Gemini Nano" },
-  cloudAns: { hi: "क्लाउड से जवाब", en: "Answered via cloud" },
-  localMatch: { hi: "मिलान इसी फ़ोन पर हुआ · AI की ज़रूरत नहीं", en: "Matched on this device · no AI needed" },
+  stepNano: { hi: "Gemini Nano ने समझा · इसी फ़ोन पर", en: "Understood by Gemini Nano · On this device" },
+  stepFlash: { hi: "Gemini Flash ने समझा · क्लाउड", en: "Understood by Gemini Flash · Cloud" },
+  stepLocal: { hi: "इसी फ़ोन पर नाम-खोज से समझा · AI उपलब्ध नहीं था", en: "Understood by name search on this device · AI was not available" },
+  stepTyped: { hi: "आपने लिखा", en: "Typed by you" },
+  stepCode: { hi: (n: string) => `${n} CDSCO रिकॉर्ड से सादे कोड ने जाँचा`, en: (n: string) => `Checked by plain code against ${n} CDSCO records` },
+  noAiSafety: { hi: "सुरक्षा का फ़ैसला AI नहीं करता", en: "No AI decides safety" },
+  heard: { hi: "सुना", en: "Heard" },
+  how: { hi: "यह जवाब कैसे बना", en: "How this answer was made" },
+  device: { hi: "इसी फ़ोन पर", en: "On this device" },
+  cloud: { hi: "क्लाउड", en: "Cloud" },
+  code: { hi: "सादा कोड · इसी फ़ोन पर", en: "Plain code · On this device" },
+  noAiCalls: { hi: "कोई AI कॉल नहीं हुई, सब कुछ आपने लिखा।", en: "No AI calls were made, you typed everything." },
+  listed: { hi: (n: number) => `स्रोत PDF में ${n} बार दर्ज`, en: (n: number) => `Listed ${n} times in the source PDF` },
+  entries: { hi: "प्रविष्टि", en: "entries" },
+  task: {
+    speech: { hi: "आवाज़ से दवा का नाम समझा", en: "Understood the spoken medicine name" },
+    "photo-full": { hi: "पूरी फ़ोटो पढ़ी", en: "Read the full photo" },
+    "photo-crop": { hi: "B.No / EXP वाला हिस्सा ज़ूम करके पढ़ा", en: "Read the zoomed B.No / EXP area" },
+    explain: { hi: "रिकॉर्ड आसान शब्दों में समझाया", en: "Explained the record" },
+    chat: { hi: "आपके सवाल का जवाब", en: "Answered your question" },
+    match: { hi: "सरकारी सूची से मिलान", en: "Matched against the official list" },
+  },
 };
 
-/** Badge on every result: where the AI answer came from (SDK inferenceSource), or that no AI was used. */
-export function AnswerBadge({ check }: { check: CheckState }) {
-  const { lang, lastAi } = useApp();
-  const src = check.input.readSource ?? null;
-  const shown = src ?? null;
-  const Icon = shown === "cloud" ? Cloud : Smartphone;
-  const label = shown === "device" ? L.deviceAns[lang] : shown === "cloud" ? L.cloudAns[lang] : L.localMatch[lang];
+/** Two-step pipeline on every result: what the AI understood (real inferenceSource), then plain-code matching. */
+export function PipelineStrip({ check }: { check: CheckState }) {
+  const { lang } = useApp();
+  const { input } = check;
+  const n = (check.searched ?? 0).toLocaleString("en-IN");
+  const u = input.understood;
+  const src = input.readSource;
+  const step1 = !u ? L.stepTyped[lang] : src === "device" ? L.stepNano[lang] : src === "cloud" ? L.stepFlash[lang] : L.stepLocal[lang];
+  const Icon1 = !u ? Keyboard : src === "cloud" ? Cloud : Smartphone;
   return (
-    <span
-      className={cx("inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[13.5px] font-semibold ring-1", shown === "cloud" ? "bg-sky-50 text-sky-800 ring-sky-200" : "bg-white/80 text-brand-800 ring-brand-200")}
-      data-testid="answer-badge"
-      data-source={shown ?? "none"}
-      data-last-ai={lastAi ?? "none"}
-    >
-      <Icon size={14} aria-hidden /> {label}
-    </span>
+    <ol className="mt-4 rounded-2xl bg-white/80 p-3 ring-1 ring-black/5" data-testid="pipeline" data-source={u ? src ?? "local" : "typed"}>
+      <li className="flex gap-3">
+        <span className="flex flex-col items-center">
+          <span className={cx("grid h-8 w-8 shrink-0 place-items-center rounded-full text-white", src === "cloud" && u ? "bg-sky-600" : "bg-brand-700")}><Icon1 size={16} /></span>
+          <span className="my-1 w-0.5 flex-1 bg-line" />
+        </span>
+        <div className="pb-3">
+          <p className="text-[14.5px] font-bold leading-tight text-ink" data-testid="pipeline-step1">{step1}</p>
+          {u?.heard && <p className="mt-1 text-[14px] text-muted">{L.heard[lang]}: “{u.heard}”</p>}
+          {u && u.items.length > 0 && (
+            <p className="mt-1 flex flex-wrap items-center gap-1.5 text-[14px] text-ink">
+              {u.heard && <ArrowRight size={14} className="text-muted" aria-hidden />}
+              {u.items.map((it) => (
+                <span key={it.label.en} className="rounded-lg bg-brand-50 px-2 py-0.5 font-semibold text-brand-900">{it.label[lang]}: <span className="num">{it.value}</span></span>
+              ))}
+            </p>
+          )}
+          {!u && (input.name || input.batch) && (
+            <p className="mt-1 text-[14px] text-muted"><span className="num">{[input.name, input.batch].filter(Boolean).join(" · ")}</span></p>
+          )}
+        </div>
+      </li>
+      <li className="flex gap-3">
+        <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-ink text-white"><Code2 size={16} /></span>
+        <div>
+          <p className="text-[14.5px] font-bold leading-tight text-ink" data-testid="pipeline-step2">{L.stepCode[lang](n)}</p>
+          <p className="mt-0.5 text-[13.5px] text-muted">{L.noAiSafety[lang]}</p>
+        </div>
+      </li>
+    </ol>
+  );
+}
+
+/** Every AI call behind this answer: task, real source and time. Shows the hybrid routing. */
+export function HowMade({ check }: { check: CheckState }) {
+  const { lang } = useApp();
+  const [open, setOpen] = useState(false);
+  const steps = check.input.aiSteps ?? [];
+  return (
+    <Card className="mt-4 overflow-hidden">
+      <button onClick={() => setOpen(!open)} aria-expanded={open} className="tap flex w-full items-center gap-2.5 px-5 text-left" data-testid="how-toggle">
+        <Cpu size={20} className="text-brand-600" aria-hidden />
+        <span className="flex-1 text-[17px] font-bold">{L.how[lang]}</span>
+        <ChevronDown size={20} className={cx("text-muted transition", open && "rotate-180")} />
+      </button>
+      {open && (
+        <ul className="divide-y divide-line/70 border-t border-line/70 px-5" data-testid="how-list">
+          {steps.length === 0 && <li className="py-3 text-[15px] text-muted">{L.noAiCalls[lang]}</li>}
+          {steps.map((st, i) => (
+            <li key={i} className="flex items-center gap-3 py-3" data-testid="how-step" data-source={st.source}>
+              <span className={cx("grid h-8 w-8 shrink-0 place-items-center rounded-full", st.source === "cloud" ? "bg-sky-50 text-sky-700" : "bg-brand-50 text-brand-700")}>
+                {st.source === "cloud" ? <Cloud size={16} /> : <Smartphone size={16} />}
+              </span>
+              <span className="flex-1">
+                <span className="block text-[15px] font-semibold text-ink">{L.task[st.task][lang]}</span>
+                <span className="text-[13.5px] text-muted">{st.source === "cloud" ? `Gemini Flash · ${L.cloud[lang]}` : `Gemini Nano · ${L.device[lang]}`}</span>
+              </span>
+              <span className="num text-[15px] font-bold text-ink">{st.ms < 1000 ? `${st.ms} ms` : `${(st.ms / 1000).toFixed(1)} s`}</span>
+            </li>
+          ))}
+          <li className="flex items-center gap-3 py-3" data-testid="how-step" data-source="code">
+            <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-ink text-white"><Code2 size={16} /></span>
+            <span className="flex-1">
+              <span className="block text-[15px] font-semibold text-ink">{L.task.match[lang]}</span>
+              <span className="text-[13.5px] text-muted">{L.code[lang]} · {(check.searched ?? 0).toLocaleString("en-IN")}</span>
+            </span>
+            <span className="num text-[15px] font-bold text-ink">{check.matchMs ?? 1} ms</span>
+          </li>
+        </ul>
+      )}
+    </Card>
+  );
+}
+
+/** "Listed 2 times in the source PDF (entries 88 and 89)". */
+export function ListedNote({ r }: { r: AlertRecord }) {
+  const { lang } = useApp();
+  if (!r.listedTimes || r.listedTimes < 2) return null;
+  return (
+    <p className="flex items-start gap-2 rounded-2xl bg-grey-soft px-3.5 py-2.5 text-[15px] font-medium text-grey-ink" data-testid="listed-note">
+      <Copy size={16} className="mt-0.5 shrink-0" aria-hidden />
+      {L.listed[lang](r.listedTimes)}{r.pdfEntries?.length ? ` (${L.entries[lang]} ${r.pdfEntries.join(lang === "hi" ? " और " : " and ")})` : ""}
+    </p>
   );
 }
 
@@ -89,6 +184,7 @@ export function RedFacts({ r }: { r: AlertRecord }) {
             <History size={17} className="mt-0.5 shrink-0" aria-hidden /> {L.historical[lang]} {formatExpiry(r.expDate, lang)}
           </p>
         )}
+        <ListedNote r={r} />
         <div className="grid grid-cols-2 gap-4 border-t border-line/70 pt-4 text-[16px]">
           <div>
             <dt className="text-[13px] font-semibold uppercase tracking-wide text-muted">{L.maker[lang]}</dt>
@@ -132,6 +228,9 @@ export function WhyPanel({ check }: { check: CheckState }) {
       </button>
       {open && (
         <div className="border-t border-line/70 px-5 pb-5 pt-4" data-testid="why-panel" data-level={w.level}>
+          {w.level !== "GREY" && (
+            <p className="mb-3 rounded-2xl bg-paper px-4 py-3 text-[16px] font-semibold text-ink" data-testid="why-summary">{whySummary(w.rows, lang)}</p>
+          )}
           {w.level !== "GREY" && (
             <table className="w-full table-fixed border-separate border-spacing-y-1.5 text-left">
               <thead>

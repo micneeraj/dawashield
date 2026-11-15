@@ -26,12 +26,12 @@ export const RESULT = {
     clip: "red",
     word: { hi: "सरकारी चेतावनी मिली", en: "Official alert found" },
     title: {
-      hi: "इस बैच पर सरकारी चेतावनी है",
-      en: "This batch is on an official alert",
+      hi: "यह बैच CDSCO की सरकारी गुणवत्ता चेतावनी में दर्ज है",
+      en: "This batch appears in an official CDSCO quality alert",
     },
     body: {
-      hi: "अगली खुराक लेने से पहले अपने फार्मासिस्ट या डॉक्टर से बात कर लीजिए। अपने आप कोई ज़रूरी दवा अचानक बंद मत कीजिए। वे बताएँगे कि आगे क्या करना है।",
-      en: "Please speak to your pharmacist or doctor before taking the next dose. Do not suddenly stop an important medicine on your own. They will tell you what to do next.",
+      hi: "सलाह के लिए जल्द से जल्द अपने फार्मासिस्ट या दवा लिखने वाले डॉक्टर से संपर्क कीजिए। सिर्फ़ इस चेतावनी के आधार पर अपना इलाज न बदलें और न बंद करें।",
+      en: "Contact your pharmacist or prescribing doctor promptly for advice. Do not change or stop your treatment based only on this alert.",
     },
   },
   AMBER: {
@@ -240,7 +240,7 @@ export function familyMessage(lang: Lang, o: { level: "RED" | "AMBER"; who?: str
       `बैच: ${o.batch}`,
       `CDSCO चेतावनी: ${o.month}`,
       o.level === "RED"
-        ? "अगली खुराक से पहले फार्मासिस्ट या डॉक्टर से बात करें। ज़रूरी दवा अचानक बंद न करें।"
+        ? "सलाह के लिए जल्द से जल्द फार्मासिस्ट या दवा लिखने वाले डॉक्टर से संपर्क करें। सिर्फ़ इस चेतावनी के आधार पर इलाज न बदलें और न बंद करें।"
         : "कृपया बैच नंबर मिलाएँ और फार्मासिस्ट से पूछें।",
       `स्रोत: ${o.link}`,
     ].filter(Boolean).join("\n");
@@ -252,7 +252,7 @@ export function familyMessage(lang: Lang, o: { level: "RED" | "AMBER"; who?: str
     `Batch: ${o.batch}`,
     `CDSCO alert: ${o.month}`,
     o.level === "RED"
-      ? "Please speak to a pharmacist or doctor before the next dose. Do not stop an important medicine suddenly."
+      ? "Contact your pharmacist or prescribing doctor promptly for advice. Do not change or stop your treatment based only on this alert."
       : "Please check the batch number and ask a pharmacist.",
     `Source: ${o.link}`,
   ].filter(Boolean).join("\n");

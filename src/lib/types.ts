@@ -23,11 +23,14 @@ export interface AlertRecord {
   remarks?: string;
   firmReply?: string;
   status: "verified" | "pending" | "revised";
+  listedTimes?: number; // same listing repeated in the source, merged into this record
+  pdfEntries?: number[]; // serial numbers of those listings in the source PDF
 }
 
 export interface DatasetMeta {
   version: string;
   records: number;
+  duplicatesMerged?: number;
   nsq: number;
   spurious: number;
   verified: number;

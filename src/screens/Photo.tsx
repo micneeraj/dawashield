@@ -1,9 +1,9 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { AlertTriangle, Camera, CheckCircle2, ImagePlus, ImageUp, Lightbulb, RotateCcw, ScanLine } from "lucide-react";
 import { useApp } from "../state";
 import { Button, Card, ErrorCard, Page, SourceChip, Spinner, inputCls, cx } from "../components/ui";
-import { CloserPhotoNeeded, readStrip } from "../lib/ai";
+import { CloserPhotoNeeded, readStrip, traceStart, traceTake, type AiStep } from "../lib/ai";
 import { expiryAsk, expiryForCheck, mergeLabels, needsCheck, type LabelKey, type LabelReading } from "../lib/label";
 import { photoErrorKey, type ErrorKey } from "../lib/errors";
 import { useRunCheck } from "../useCheck";
@@ -48,6 +48,15 @@ export default function Photo() {
   const [closer, setCloser] = useState(false);
   const [expiryOk, setExpiryOk] = useState(false);
   const [sources, setSources] = useState<Source[]>([]);
+  const [steps, setSteps] = useState<AiStep[]>([]);
+  const [secs, setSecs] = useState(0);
+  useEffect(() => {
+    if (!busy) return;
+    setSecs(0);
+    const t0 = Date.now();
+    const id = setInterval(() => setSecs(Math.floor((Date.now() - t0) / 1000)), 250);
+    return () => clearInterval(id);
+  }, [busy]);
   const [reading, setReading] = useState<LabelReading | null>(null);
   const [form, setForm] = useState<Record<LabelKey, string>>({ name: prefill?.name ?? "", manufacturer: "", batch: "", expiry: "" });
   const [edited, setEdited] = useState<Partial<Record<LabelKey, boolean>>>({});
@@ -59,6 +68,7 @@ export default function Photo() {
     setError(false);
     setCloser(false);
     setExpiryOk(false);
+    traceStart();
     try {
       const r = await Promise.race([
         readStrip(f),
@@ -67,6 +77,8 @@ export default function Photo() {
       const merged = mergeLabels(reading, r.value)!;
       setReading(merged);
       setSources((s) => [...s, r.source]);
+      const took = traceTake();
+      setSteps((x) => [...x, ...took]);
       noteAi(r.source);
       setForm((old) => ({
         name: merged.name.value || old.name,
@@ -87,7 +99,7 @@ export default function Photo() {
   }
 
   function retake() {
-    setPreviews([]); setReading(null); setSources([]); setError(false); setCloser(false); setExpiryOk(false); setEdited({});
+    setPreviews([]); setReading(null); setSources([]); setSteps([]); setError(false); setCloser(false); setExpiryOk(false); setEdited({});
     setForm({ name: prefill?.name ?? "", manufacturer: "", batch: "", expiry: "" });
   }
 
@@ -137,7 +149,13 @@ export default function Photo() {
       {busy && (
         <div>
           <Spinner label={t("readingPhoto")} />
-          {!online && <p className="-mt-6 text-center text-[15px] text-muted">{t("readingPhotoSlow")}</p>}
+          {!online ? (
+            <p className="-mt-6 text-center text-[16px] font-semibold text-brand-800" data-testid="device-progress">
+              {lang === "hi" ? "इसी फ़ोन पर पढ़ रहा हूँ…" : "Reading on this device…"} <span className="num">{secs}s</span>
+            </p>
+          ) : (
+            <p className="-mt-6 text-center text-[15px] text-muted"><span className="num">{secs}s</span></p>
+          )}
         </div>
       )}
 
@@ -158,7 +176,11 @@ export default function Photo() {
           data-testid="confirm-screen"
           onSubmit={(e) => {
             e.preventDefault();
-            runCheck({ name: form.name, manufacturer: form.manufacturer, batch: form.batch, expiry: expiryForCheck(form.expiry, { confirmed: expiryOk }), readSource: lastSource });
+            runCheck({ name: form.name, manufacturer: form.manufacturer, batch: form.batch, expiry: expiryForCheck(form.expiry, { confirmed: expiryOk }), readSource: lastSource, aiSteps: steps, understood: { via: "photo", items: [
+              ...(reading?.batch.value ? [{ label: { hi: "बैच", en: "Batch" }, value: reading.batch.value }] : []),
+              ...(reading?.expiry.value ? [{ label: { hi: "EXP", en: "EXP" }, value: reading.expiry.value }] : []),
+              ...(!reading?.batch.value && reading?.name.value ? [{ label: { hi: "दवा", en: "Medicine" }, value: reading.name.value }] : []),
+            ] } });
           }}
         >
           <div className="flex items-center justify-between gap-2">

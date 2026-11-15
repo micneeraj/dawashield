@@ -5,7 +5,7 @@ import type { ChatSession } from "firebase/ai";
 import { useApp } from "../state";
 import { Button, Card, Disclaimer, ErrorCard, LEVEL_STYLE, Page, SourceChip, Spinner, cx, inputCls } from "../components/ui";
 import { RecordCard } from "../components/RecordCard";
-import { AnswerBadge, RedFacts, WhyPanel } from "../components/ResultParts";
+import { HowMade, PipelineStrip, RedFacts, WhyPanel } from "../components/ResultParts";
 import { Sheet } from "../components/Sheet";
 import { AMBER_REASON, DISPOSAL, ERRORS, EXPIRY, OFFICIAL, RESULT, VOICE, familyMessage } from "../content/messages";
 import { askChat, explainRecord, startRecordChat } from "../lib/ai";
@@ -52,17 +52,18 @@ export default function Result() {
           <span className={cx("text-[15px] font-bold uppercase tracking-[0.08em]", s.ink)}>{msg.word[lang]}</span>
         </div>
         <h2 className="mt-4 text-[25px] font-bold leading-tight text-ink" data-testid={level === "RED" ? "red-exact" : undefined}>
-          {level === "RED" ? (lang === "hi" ? "यही बैच CDSCO चेतावनी में है" : "This exact batch is in a CDSCO alert") : msg.title[lang]}
+          {msg.title[lang]}
         </h2>
         <p className={cx("mt-2 leading-relaxed text-ink/90", level === "RED" ? "text-[17px]" : "text-[19px]")}>{msg.body[lang]}</p>
         {level === "AMBER" && AMBER_REASON[result.reason] && (
           <p className="mt-3 rounded-2xl bg-white/70 px-4 py-3 text-[17px] leading-snug text-ink">{AMBER_REASON[result.reason][lang]}</p>
         )}
-        <div className="mt-4"><AnswerBadge check={check} /></div>
+        <PipelineStrip check={check} />
       </motion.section>
 
       {level === "RED" && result.records[0] && <RedFacts r={result.records[0]} />}
       <WhyPanel check={check} />
+      <HowMade check={check} />
 
       {/* What was checked: big text, never spoken. */}
       <Card className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3 p-5">

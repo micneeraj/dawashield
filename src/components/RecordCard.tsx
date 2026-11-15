@@ -4,6 +4,7 @@ import { Card, cx } from "./ui";
 import { monthLabel } from "../lib/format";
 import { NSQ_NOTE, SPURIOUS_NOTE } from "../content/messages";
 import type { AlertRecord } from "../lib/types";
+import { ListedNote } from "./ResultParts";
 
 function Row({ label, value, big, mono }: { label: string; value?: string; big?: boolean; mono?: boolean }) {
   if (!value) return null;
@@ -43,6 +44,7 @@ export function RecordCard({ r }: { r: AlertRecord }) {
         <Row label={t("testedBy")} value={[r.lab, r.reportingSource].filter(Boolean).join(" · ")} />
         <Row label={t("alertMonth")} value={monthLabel(r.month, lang)} />
       </dl>
+      <div className="mt-2"><ListedNote r={r} /></div>
       <div className="mt-3 flex flex-wrap gap-2">
         <a href={r.sourceUrl} target="_blank" rel="noreferrer" className="tap inline-flex items-center gap-2 rounded-2xl bg-brand-50 px-4 text-[16px] font-semibold text-brand-800 hover:bg-brand-100">
           <ExternalLink size={18} /> {t("openSource")}

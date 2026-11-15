@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { Bell, ChevronRight, Cpu, Database, Info, Languages, Lock, RefreshCw, CheckCircle2, Volume2 } from "lucide-react";
+import { Bell, ChevronRight, Cpu, Database, Info, Languages, Lock, RefreshCw, CheckCircle2, Volume2, WifiOff } from "lucide-react";
 import { useApp } from "../state";
 import { Button, Card, Page, cx } from "../components/ui";
+import { Facts } from "../components/ui";
 import { monthLabel } from "../lib/format";
 import { nanoAvailability } from "../lib/ai";
 import { nanoText } from "../lib/status";
@@ -42,7 +43,7 @@ export default function Settings() {
         {m && (
           <dl className="grid grid-cols-2 gap-px bg-line" data-testid="dataset-box">
             {[
-              [t("records"), m.records.toLocaleString("en-IN")],
+              [t("records"), m.records.toLocaleString("en-IN") + (m.duplicatesMerged ? (lang === "hi" ? ` (${m.duplicatesMerged} दोहराव मिलाए)` : ` (${m.duplicatesMerged} repeats merged)`) : "")],
               [t("lastSynced"), m.lastSynced],
               [t("coverage"), `${monthLabel(m.earliestMonth, lang)} – ${monthLabel(m.latestMonth, lang)}`],
               ["NSQ / Spurious", `${m.nsq.toLocaleString("en-IN")} / ${m.spurious}`],
@@ -60,7 +61,7 @@ export default function Settings() {
               <b className="text-ink">{t("missingStates")} ({monthLabel(m.latestMonth, lang)}):</b> {m.statesPendingLatestMonth.join(", ")}
             </p>
           )}
-          <p className="text-[13px] text-muted">Source: CDSCO, Government of India · v{m?.version.slice(0, 8)}</p>
+          <p className="text-[13px] text-muted">{lang === "hi" ? "स्रोत: CDSCO, भारत सरकार" : "Source: CDSCO, Government of India"} · v{m?.version.slice(0, 8)}</p>
           <Button variant="secondary" full disabled={!online || syncing} icon={<RefreshCw size={20} className={cx(syncing && "animate-spin")} />}
             onClick={async () => { const changed = await sync(); setSyncMsg(changed ? "✓" : t("upToDate")); }}>
             {syncMsg || t("syncNow")}
@@ -90,6 +91,13 @@ export default function Settings() {
             <span className="block text-[17px] font-semibold">{t("onDeviceAi")}</span>
             <span className="block text-[15px] leading-snug text-muted" data-testid="nano-status">{nanoText(nano, nanoImg, lang)}</span>
             <span className="mt-1 block text-[14px] text-brand-700">{lang === "hi" ? "दवा का मिलान हमेशा पूरी तरह बिना इंटरनेट इसी फ़ोन पर होता है।" : "Medicine matching always works fully offline on this phone."}</span>
+          </span>
+        </div>
+        <div className="flex items-start gap-3 p-4">
+          <WifiOff size={20} className="mt-0.5 text-brand-600" />
+          <span className="flex-1">
+            <span className="mb-2 block text-[17px] font-semibold">{lang === "hi" ? "बिना इंटरनेट क्या चलता है" : "What works offline"}</span>
+            <Facts nano={nano} />
           </span>
         </div>
       </Card>

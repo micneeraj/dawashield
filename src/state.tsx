@@ -5,6 +5,7 @@ import { loadDataset, syncIfNewer, recheckCabinet, expiryReminders, flushQueue, 
 import { playClip } from "./lib/audio";
 import type { DatasetMeta, MatchResult, Source } from "./lib/types";
 import type { StripReading } from "./lib/json";
+import type { AiStep } from "./lib/ai";
 
 export type Screen =
   | { name: "home" }
@@ -21,13 +22,19 @@ export type Screen =
 
 export interface CheckInput extends StripReading {
   who?: string;
-  readSource?: Source; // who read the photo / understood speech
+  readSource?: Source; // who read the photo / understood speech (SDK inferenceSource)
+  /** What the AI understood, shown in the result's pipeline strip. */
+  understood?: { via: "speech" | "photo"; heard?: string; items: { label: { hi: string; en: string }; value: string }[] };
+  /** Every AI call behind this answer, with its real source and time. */
+  aiSteps?: AiStep[];
 }
 
 export interface CheckState {
   input: CheckInput;
   result: MatchResult;
   at: string;
+  matchMs?: number; // plain-code matching time
+  searched?: number; // records searched
   cabinetId?: number;
 }
 

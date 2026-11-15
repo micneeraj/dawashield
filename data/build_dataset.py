@@ -238,6 +238,22 @@ def pdf_text(path: Path) -> str:
     return "\n".join(parts)
 
 
+def pdf_entries(text: str) -> dict[str, list[int]]:
+    """Map normalised batch -> serial numbers of the PDF rows that list it."""
+    out: dict[str, list[int]] = {}
+    for ln in text.splitlines():
+        m = re.match(r"\s*(\d{1,4})[.)]\s+(.*)", ln)
+        if not m:
+            continue
+        for tok in re.split(r"\s+", m.group(2)):
+            b = norm_batch(tok)
+            if len(b) >= 4 and re.search(r"\d", b):
+                out.setdefault(b, [])
+                if int(m.group(1)) not in out[b]:
+                    out[b].append(int(m.group(1)))
+    return out
+
+
 def squash(s: str) -> str:
     return re.sub(r"[^A-Z0-9]", "", s.upper())
 
@@ -257,45 +273,55 @@ def main() -> int:
 
     print("PDFs...")
     texts: dict[str, list[tuple[str, str]]] = {}
-    pdfs = [p for p in list_pdfs() if p["month"] >= month_key(window[0])]
-    if False:  # (PDF listing is quick; files already on disk are not re-downloaded); source URL recorded in pdf_urls.json
+    entries: dict[str, list[tuple[str, dict[str, list[int]]]]] = {}
+    pdf_urls: dict[str, str] = {}
+
+    def add_pdf(month: str, url: str, raw: str) -> None:
+        texts.setdefault(month, []).append((url, squash(raw)))
+        entries.setdefault(month, []).append((url, pdf_entries(raw)))
+
+    if OFFLINE:  # rebuild from the PDFs already on disk (URLs recorded in pdf_urls.json)
         urls = json.loads((RAW / "pdf_urls.json").read_text(encoding="utf-8")) if (RAW / "pdf_urls.json").exists() else {}
         for f in sorted((RAW / "pdf").glob("*.pdf")):
-            if f.name in urls:
+            if f.name in urls and f.name[:7] >= month_key(window[0]):
                 txt = pdf_text(f)
                 if len(txt.strip()) >= 200:
-                    texts.setdefault(f.name[:7], []).append((urls[f.name], squash(txt)))
-    pdf_urls: dict[str, str] = {}
-    for p in pdfs:
-        try:
-            path = download_pdf(p)
-            if not path:
-                failed.append({"month": p["month"], "type": "PDF", "error": "no PDF link: " + p["title"][:80]})
-                continue
-            txt = pdf_text(path)
-            if len(txt.strip()) < 200:
-                failed.append({"month": p["month"], "type": "PDF", "error": "no text layer (scanned): " + p["title"][:80]})
-                continue
-            texts.setdefault(p["month"], []).append((p["pdfUrl"], squash(txt)))
-            pdf_urls[path.name] = p["pdfUrl"]
-            print(f"  pdf {p['month']} ok  {path.name[:60]}")
-        except Exception as e:
-            failed.append({"month": p["month"], "type": "PDF", "error": str(e)[:200]})
+                    add_pdf(f.name[:7], urls[f.name], txt)
+    else:
+        for p in [p for p in list_pdfs() if p["month"] >= month_key(window[0])]:
+            try:
+                path = download_pdf(p)
+                if not path:
+                    failed.append({"month": p["month"], "type": "PDF", "error": "no PDF link: " + p["title"][:80]})
+                    continue
+                txt = pdf_text(path)
+                if len(txt.strip()) < 200:
+                    failed.append({"month": p["month"], "type": "PDF", "error": "no text layer (scanned): " + p["title"][:80]})
+                    continue
+                add_pdf(p["month"], p["pdfUrl"], txt)
+                pdf_urls[path.name] = p["pdfUrl"]
+                print(f"  pdf {p['month']} ok  {path.name[:60]}")
+            except Exception as e:
+                failed.append({"month": p["month"], "type": "PDF", "error": str(e)[:200]})
 
     if pdf_urls:
         (RAW / "pdf_urls.json").write_text(json.dumps(pdf_urls, indent=1), encoding="utf-8")
 
     # Clean + dedupe + cross-check against PDF text
-    seen, out = set(), []
+    seen: dict[tuple, dict] = {}
+    out = []
     for r in records:
         if not r["batch"] or not r["name"]:
             continue
         r["batchNorm"] = norm_batch(r["batch"])
         r["manufacturerEntity"] = manufacturer_entity(r["manufacturer"])
-        key = (r["type"], r["batchNorm"], squash(r["name"])[:20], r["month"], r["lab"])
-        if key in seen or not r["batchNorm"]:
+        if not r["batchNorm"]:
             continue
-        seen.add(key)
+        key = (r["type"], r["batchNorm"], squash(re.sub(r"\(N/?A\)", "", r["name"]))[:20], r["month"], r["lab"])  # address text varies per listing
+        if key in seen:
+            seen[key]["listedTimes"] = seen[key].get("listedTimes", 1) + 1
+            continue
+        seen[key] = r
         r["status"] = "pending"
         for url, t in texts.get(r["month"], []):
             if r["batchNorm"] and r["batchNorm"] in t and squash(r["name"])[:12] in t:
@@ -303,6 +329,19 @@ def main() -> int:
                 r["pdfMatch"] = True
                 break
         out.append(r)
+
+    # Repeated listings: keep one record, note how often and which PDF entry numbers.
+    for r in out:
+        n = r.pop("listedTimes", 1)
+        nums: list[int] = []
+        for url, emap in entries.get(r["month"], []):
+            if r.get("pdfUrl") in (None, url) and r["batchNorm"] in emap:
+                nums = sorted(emap[r["batchNorm"]])
+                break
+        if n > 1:
+            r["listedTimes"] = n
+            if len(nums) >= 2:
+                r["pdfEntries"] = nums[:n] if len(nums) >= n else nums
 
     # Hand-verified records (see verified_records.csv) are marked "verified".
     verified = {}
@@ -327,21 +366,25 @@ def main() -> int:
     version = hashlib.sha256(body.encode()).hexdigest()[:16]
     months_present = sorted({r["month"] for r in out})
     expected = sorted({month_key(m) for m in window})
+    prev = json.loads((OUT / "meta.json").read_text(encoding="utf-8")) if (OUT / "meta.json").exists() else {}
     try:
+        if OFFLINE:
+            raise RuntimeError("offline")
         pending = portal_json("statesPendingSubmission", {"month": window[-1]})
         pending_states = [clean(x.get("initcap")).title() for x in pending.get("aaData", [])]
     except Exception:
-        pending_states = []
+        pending_states = prev.get("statesPendingLatestMonth", [])
     meta = {
         "version": version,
         "records": len(out),
+        "duplicatesMerged": sum(r.get("listedTimes", 1) - 1 for r in out),
         "nsq": sum(r["type"] == "NSQ" for r in out),
         "spurious": sum(r["type"] == "SPURIOUS" for r in out),
         "verified": sum(r["status"] == "verified" for r in out),
         "pdfCrossChecked": sum(bool(r.get("pdfMatch")) for r in out),
         "earliestMonth": months_present[0] if months_present else None,
         "latestMonth": months_present[-1] if months_present else None,
-        "lastSynced": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+        "lastSynced": prev.get("lastSynced") if OFFLINE and prev.get("lastSynced") else datetime.now(timezone.utc).strftime("%Y-%m-%d"),
         "missingMonths": [m for m in expected if m not in months_present],
         "statesPendingLatestMonth": pending_states,
         "failed": failed,

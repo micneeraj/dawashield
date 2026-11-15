@@ -43,3 +43,28 @@ export function explainResult(input: MatchInput, result: MatchResult, meta?: Dat
   const r = result.records[0];
   return { level: result.level, rows: r && result.level !== "GREY" ? compareFields(input, r) : [], search: whySearch(meta) };
 }
+
+const FIELD_WORD = {
+  en: { name: "medicine", batch: "batch", manufacturer: "manufacturer" },
+  hi: { name: "दवा", batch: "बैच", manufacturer: "कंपनी" },
+} as const;
+
+/** One honest sentence, e.g. "Medicine and batch match; manufacturer not provided".
+ *  A field the user did not give is never described as verified. */
+export function whySummary(rows: WhyRow[], lang: "hi" | "en"): string {
+  const w = (s: RowStatus) => rows.filter((r) => r.status === s).map((r) => FIELD_WORD[lang][r.field]);
+  const join = (a: string[]) => (a.length <= 1 ? a.join("") : `${a.slice(0, -1).join(", ")} ${lang === "hi" ? "और" : "and"} ${a[a.length - 1]}`);
+  const m = w("match"), d = w("different"), x = w("missing");
+  const parts: string[] = [];
+  if (lang === "hi") {
+    if (m.length) parts.push(`${join(m)} ${m.length > 1 ? "मिलते हैं" : "मिलता है"}`);
+    if (d.length) parts.push(`${join(d)} अलग ${d.length > 1 ? "हैं" : "है"}`);
+    if (x.length) parts.push(`${join(x)} नहीं डाला गया`);
+  } else {
+    if (m.length) parts.push(`${join(m)} ${m.length > 1 ? "match" : "matches"}`);
+    if (d.length) parts.push(`${join(d)} ${d.length > 1 ? "differ" : "differs"}`);
+    if (x.length) parts.push(`${join(x)} not provided`);
+  }
+  const s = parts.join("; ");
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}

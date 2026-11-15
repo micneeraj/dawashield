@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
-import type { ButtonHTMLAttributes, ReactNode } from "react";
+import { useEffect, useState, type ButtonHTMLAttributes, type ReactNode } from "react";
 import { AlertOctagon, AlertTriangle, ArrowLeft, Camera, Cloud, ImageUp, Info, Keyboard, RotateCcw, ShieldCheck, Smartphone } from "lucide-react";
 import { useApp } from "../state";
 import { DISCLAIMER, ERRORS, RECOVERY_LABEL } from "../content/messages";
-import { STATUS_LABEL, statusKind } from "../lib/status";
+import { STATUS_LABEL, offlineFacts, statusKind } from "../lib/status";
+import { nanoAvailability } from "../lib/ai";
 import { RECOVERY, type ErrorKey, type Recovery } from "../lib/errors";
 import { sourceLabel } from "../lib/source";
 import type { Level, Source } from "../lib/types";
@@ -140,13 +141,36 @@ export function Spinner({ label }: { label: string }) {
   );
 }
 
+export function Facts({ nano }: { nano: string }) {
+  const { lang } = useApp();
+  return (
+    <ul className="space-y-2" data-testid="offline-facts">
+      {offlineFacts(nano, lang).map((f) => (
+        <li key={f.key} className="flex items-start gap-2 text-[14.5px] leading-snug text-ink" data-key={f.key} data-ok={String(f.ok)}>
+          <span className={cx("mt-1 h-2.5 w-2.5 shrink-0 rounded-full", f.ok === true ? "bg-[#1f9d55]" : f.ok === false ? "bg-grey-ink" : "bg-amber-ink")} aria-hidden />
+          {f.text}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 /** Permanent header pill: real network state + the SDK's inferenceSource of the last AI answer. */
 export function StatusPill() {
   const { lang, online, lastAi } = useApp();
   const kind = statusKind(online, lastAi);
+  const [nano, setNano] = useState("…");
+  const [open, setOpen] = useState(false);
+  useEffect(() => { nanoAvailability().then(setNano).catch(() => setNano("unavailable")); }, []);
+  const tip = offlineFacts(nano, lang).map((f) => f.text).join("\n");
   const Icon = kind === "cloud" ? Cloud : kind === "device" ? Smartphone : ShieldCheck;
   return (
-    <span
+    <span className="relative">
+    <button
+      type="button"
+      onClick={() => setOpen(!open)}
+      title={tip}
+      aria-expanded={open}
       className={cx(
         "inline-flex items-center gap-1.5 rounded-full py-1 pl-2 pr-3 text-[13px] font-semibold ring-1",
         kind === "cloud" ? "bg-sky-50 text-sky-800 ring-sky-200" : "bg-brand-50 text-brand-800 ring-brand-200",
@@ -160,6 +184,13 @@ export function StatusPill() {
       <span className={cx("h-2 w-2 rounded-full", online ? "bg-[#1f9d55] shadow-[0_0_0_3px_rgba(31,157,85,0.18)]" : "bg-grey-ink")} aria-label={online ? "online" : "offline"} />
       <Icon size={14} aria-hidden />
       {STATUS_LABEL[kind][lang]}
+      <Info size={13} className="opacity-60" aria-hidden />
+    </button>
+    {open && (
+      <span className="absolute left-0 top-full z-30 mt-2 block w-[300px] rounded-2xl bg-white p-4 shadow-[0_18px_40px_-12px_rgba(12,40,36,0.35)] ring-1 ring-line" data-testid="status-popover">
+        <Facts nano={nano} />
+      </span>
+    )}
     </span>
   );
 }

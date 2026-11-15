@@ -27,13 +27,13 @@ async function fakeAi(ctx) {
   await ctx.route(/exchangeDebugToken|exchangeRecaptcha/, (r) => r.fulfill({ json: { token: "fake", ttl: "3600s" } }));
   await ctx.route(/generateContent/, async (r) => {
     const body = r.request().postData() || "";
-    const text = body.includes("candidate") ? '{"candidates":["Dolo 650"]}' : body.includes("B.No") ? STRIP_REPLY : "This alert means the sample failed a lab test.";
+    const text = body.includes("candidate") ? '{"candidates":["Zinc Sulphate Dispersible Tablets IP"]}' : body.includes("B.No") ? STRIP_REPLY : "This alert means the sample failed a lab test.";
     await r.fulfill({ json: { candidates: [{ content: { role: "model", parts: [{ text }] }, finishReason: "STOP" }] } });
   });
   await ctx.addInitScript(() => {
     // Fake Web Speech: hears "Dolo 650 hai" once.
     class FakeRec {
-      start() { setTimeout(() => { this.onresult?.({ results: [Object.assign([{ transcript: "Dolo 650 hai" }], { isFinal: true })] }); this.onend?.(); }, 500); }
+      start() { setTimeout(() => { this.onresult?.({ results: [Object.assign([{ transcript: "zinc sulphate wali goli hai" }], { isFinal: true })] }); this.onend?.(); }, 500); }
       stop() { this.onend?.(); }
     }
     window.SpeechRecognition = FakeRec; window.webkitSpeechRecognition = FakeRec;
@@ -98,6 +98,9 @@ for (const v of VIEWS) {
     await page.getByTestId("result").waitFor();
     ok((await page.getByTestId("result").getAttribute("data-level")) === "RED", `${v.tag}/${lang}: demo chip gives RED`);
     await shot("red");
+    ok((await page.getByTestId("pipeline").getAttribute("data-source")) === "typed", `${v.tag}/${lang}: typed demo shows "Typed by you"`);
+    ok((await page.getByTestId("result").textContent()).includes(lang === "hi" ? "गुणवत्ता चेतावनी" : "This batch appears in an official CDSCO quality alert"), `${v.tag}/${lang}: safer RED wording`);
+    ok(await page.getByTestId("listed-note").first().isVisible(), `${v.tag}/${lang}: listed 2 times note`);
     await page.getByTestId("why-panel").scrollIntoViewIfNeeded();
     await shot("red-why");
     await shot("red-full", true);
@@ -147,6 +150,13 @@ for (const v of VIEWS) {
     await shot("voice-pick");
     await page.getByTestId("option").first().click();
     await page.getByTestId("batch-input").waitFor(); await shot("voice-batch");
+    await page.getByTestId("batch-input").fill("MT14501"); await page.getByTestId("batch-input").press("Enter");
+    await page.getByTestId("result").waitFor();
+    ok((await page.getByTestId("pipeline").getAttribute("data-source")) === "cloud", `${v.tag}/${lang}: voice result pipeline from SDK source`);
+    await page.getByTestId("pipeline").scrollIntoViewIfNeeded(); await shot("voice-result-pipeline");
+    await page.getByTestId("how-toggle").click();
+    ok((await page.getByTestId("how-step").count()) >= 2, `${v.tag}/${lang}: how-made lists AI call + plain code`);
+    await page.getByTestId("how-list").scrollIntoViewIfNeeded(); await shot("how-made");
 
     // Photo confirm (faked cloud read)
     await home();
@@ -157,11 +167,16 @@ for (const v of VIEWS) {
     await shot("photo-confirm");
     ok((await page.getByTestId("status-pill").getAttribute("data-kind")) === "cloud", `${v.tag}/${lang}: status pill shows Cloud AI after a cloud answer`);
     await page.getByTestId("confirm-btn").scrollIntoViewIfNeeded(); await shot("photo-confirm-fields");
+    await page.getByTestId("confirm-btn").click(); await page.getByTestId("result").waitFor();
+    await page.getByTestId("pipeline").scrollIntoViewIfNeeded(); await shot("photo-result-pipeline");
+    await page.getByTestId("status-pill").click(); await page.getByTestId("status-popover").waitFor(); await shot("status-popover");
+    await page.getByTestId("status-pill").click();
 
     // Settings (Nano status)
     await home();
     await page.locator("nav").getByRole("button").nth(3).click();
-    await page.getByTestId("nano-status").scrollIntoViewIfNeeded();
+    await page.getByTestId("offline-facts").last().scrollIntoViewIfNeeded();
+    ok((await page.getByTestId("offline-facts").last().textContent()).includes(lang === "hi" ? "स्पीच पैक" : "Hindi speech pack"), `${v.tag}/${lang}: precise offline list`);
     ok(!/^unavailable/i.test((await page.getByTestId("nano-status").textContent()) || ""), `${v.tag}/${lang}: no bare 'unavailable'`);
     await shot("settings");
 

@@ -19,11 +19,15 @@ const VOICES = [
   { dir: "en", lang: "en-IN", speaker: "neha_en_customer", text: "en" },
 ];
 
+// Optional: CLIP=red,amber regenerates only those clips.
+const ONLY = process.env.CLIP ? new Set(process.env.CLIP.split(",")) : null;
+
 const client = new SarvamAIClient({ apiSubscriptionKey: key });
 
 for (const v of VOICES) {
   await mkdir(`public/audio/${v.dir}`, { recursive: true });
   for (const c of CLIPS) {
+    if (ONLY && !ONLY.has(c.clip)) continue;
     let res;
     try {
       res = await client.textToSpeech.convert({

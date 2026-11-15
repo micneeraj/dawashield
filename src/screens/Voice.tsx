@@ -5,7 +5,7 @@ import { useApp } from "../state";
 import { Button, Card, ErrorCard, Field, Page, SourceChip, Spinner, inputCls, cx } from "../components/ui";
 import { MicButton } from "../components/MicButton";
 import { listen, speechSupported, type Listener } from "../lib/speech";
-import { candidatesFromSpeech } from "../lib/ai";
+import { candidatesFromSpeech, traceStart, traceTake, type AiStep } from "../lib/ai";
 import { searchNames } from "../lib/match";
 import { transliterate } from "../lib/normalize";
 import { COMMON_MEDICINES } from "../content/common-medicines";
@@ -31,6 +31,7 @@ export default function Voice() {
   const [transcript, setTranscript] = useState("");
   const [options, setOptions] = useState<string[]>([]);
   const [aiSource, setAiSource] = useState<Source | null>(null);
+  const [steps, setSteps] = useState<AiStep[]>([]);
   const [notUnderstood, setNotUnderstood] = useState(false);
   const [errKey, setErrKey] = useState<ErrorKey | null>(null);
   const [name, setName] = useState("");
@@ -63,6 +64,7 @@ export default function Voice() {
     const latin = /[ऀ-ॿ]/.test(text) ? transliterate(text) : text;
     const records = dataset?.records ?? [];
     let aiNames: string[] = [];
+    traceStart();
     try {
       const r = await withTimeout(candidatesFromSpeech(text), 12000);
       aiNames = r.value;
@@ -71,6 +73,7 @@ export default function Voice() {
     } catch {
       setAiSource(null);
     }
+    setSteps(traceTake());
     // Local fuzzy search on every word, plus each AI candidate.
     const local = [
       ...aiNames.flatMap((n) => searchNames(n, records, COMMON_MEDICINES, 2)),
@@ -93,6 +96,13 @@ export default function Voice() {
     setStep("pick");
     say(VOICE.pickOption.clip);
   }
+
+  /** What was heard and understood, for the result's pipeline strip. */
+  const spoken = () => ({
+    readSource: aiSource ?? undefined,
+    understood: { via: "speech" as const, heard: transcript, items: [{ label: { hi: "दवा", en: "Medicine" }, value: name }] },
+    aiSteps: steps,
+  });
 
   function pick(n: string) {
     setName(n);
@@ -185,7 +195,7 @@ export default function Voice() {
               <button className="tap rounded-2xl px-3 text-[15px] font-semibold text-brand-700 hover:bg-brand-50" onClick={() => setStep("pick")}>{lang === "hi" ? "बदलें" : "Change"}</button>
             </Card>
             <p className="mt-5 text-[19px] font-medium leading-snug text-ink">{VOICE.askBatch.text[lang]}</p>
-            <form className="mt-4" onSubmit={(e) => { e.preventDefault(); runCheck({ name, batch, readSource: aiSource ?? undefined }); }}>
+            <form className="mt-4" onSubmit={(e) => { e.preventDefault(); runCheck({ name, batch, ...spoken() }); }}>
               <Field label={t("batchNo")} hint={t("batchHint")}>
                 <div className="flex gap-2">
                   <input value={batch} onChange={(e) => setBatch(e.target.value.toUpperCase())} className={cx(inputCls, "num text-[26px] font-bold tracking-wider")} placeholder="B.No." autoCapitalize="characters" autoComplete="off" data-testid="batch-input" />
@@ -197,7 +207,7 @@ export default function Voice() {
               <Button type="submit" full className="mt-4" icon={<Search size={22} />} disabled={!batch.trim()}>{t("check")}</Button>
               <div className="mt-3 grid grid-cols-2 gap-3">
                 <Button type="button" variant="secondary" icon={<Camera size={22} />} onClick={() => go({ name: "photo", prefill: { name } })}>{t("photo")}</Button>
-                <Button type="button" variant="ghost" onClick={() => runCheck({ name })}>{lang === "hi" ? "बैच नहीं मिल रहा" : "Can't find batch"}</Button>
+                <Button type="button" variant="ghost" onClick={() => runCheck({ name, ...spoken() })}>{lang === "hi" ? "बैच नहीं मिल रहा" : "Can't find batch"}</Button>
               </div>
             </form>
           </motion.div>

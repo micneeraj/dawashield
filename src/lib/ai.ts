@@ -34,19 +34,34 @@ function model(mode: Mode, opts: { image?: boolean; system?: string; json?: bool
 const fallbackFor = (mode: Mode): Source =>
   mode === InferenceMode.ONLY_IN_CLOUD || mode === InferenceMode.PREFER_IN_CLOUD ? "cloud" : "device";
 
+/** One AI call as it actually ran: what it did, where (SDK inferenceSource) and how long. */
+export interface AiStep {
+  task: "speech" | "photo-full" | "photo-crop" | "explain" | "chat";
+  source: Source;
+  ms: number;
+}
+let trace: AiStep[] = [];
+/** Start collecting AI calls for one user action. */
+export function traceStart(): void { trace = []; }
+/** The AI calls made since traceStart(). */
+export function traceTake(): AiStep[] { const t = trace; trace = []; return t; }
+
 export interface AiText<T> {
   value: T;
   source: Source;
   ms: number;
 }
 
-async function run<T>(mode: Mode, m: ReturnType<typeof model>, parts: Parameters<ReturnType<typeof model>["generateContent"]>[0], parse: (s: string) => T | null): Promise<AiText<T>> {
+async function run<T>(mode: Mode, m: ReturnType<typeof model>, parts: Parameters<ReturnType<typeof model>["generateContent"]>[0], parse: (s: string) => T | null, task: AiStep["task"] = "speech"): Promise<AiText<T>> {
   const t0 = performance.now();
   const res = await m.generateContent(parts);
+  const source = toSource(res.response.inferenceSource, fallbackFor(mode));
+  const ms = Math.round(performance.now() - t0);
+  trace.push({ task, source, ms });
   const text = res.response.text();
   const value = parse(text);
   if (value === null) throw new Error("unreadable-model-output");
-  return { value, source: toSource(res.response.inferenceSource, fallbackFor(mode)), ms: Math.round(performance.now() - t0) };
+  return { value, source, ms };
 }
 
 /** On-device first: transcript -> up to 4 candidate medicine names (English spelling). */
@@ -97,30 +112,33 @@ export class CloserPhotoNeeded extends Error {
   constructor() { super("closer-photo-needed"); }
 }
 
-/** Two independent reads of one image (two separate calls), compared field by field. */
-async function readTwice(mode: Mode, image: Blob, prompt: string): Promise<{ s: StripRead; source: Source; ms: number }> {
+/** Reads of one image. Cloud: two independent reads compared field by field.
+ *  On device (slow): one read only; the zoomed read below covers small text. */
+async function readImage(mode: Mode, image: Blob, prompt: string, task: AiStep["task"]): Promise<{ s: StripRead; source: Source }> {
   const part = await filePart(image);
   const m = model(mode, { image: true, json: true });
-  const one = () => run(mode, m, [prompt, part], parseStripRead);
-  const reads = mode === InferenceMode.ONLY_ON_DEVICE
-    ? [await one().catch(() => null), await one().catch(() => null)] // Nano: one session at a time
-    : await Promise.all([one().catch(() => null), one().catch(() => null)]);
+  const one = () => run(mode, m, [prompt, part], parseStripRead, task);
+  if (mode === InferenceMode.ONLY_ON_DEVICE) {
+    const r = await one();
+    return { s: r.value, source: r.source };
+  }
+  const reads = await Promise.all([one().catch(() => null), one().catch(() => null)]);
   const ok = reads.filter((r): r is AiText<StripRead> => !!r);
   if (!ok.length) throw new Error("unreadable-model-output");
   const reading = compareReads(reads[0]?.value.reading ?? null, reads[1]?.value.reading ?? null);
   const quality = ok.some((r) => r.value.quality === "blurry") ? "blurry" : ok.some((r) => r.value.quality === "too_small") ? "too_small" : "ok";
-  return { s: { reading, quality, box: ok.find((r) => r.value.box)?.value.box }, source: ok[0].source, ms: Math.max(...ok.map((r) => r.ms)) };
+  return { s: { reading, quality, box: ok.find((r) => r.value.box)?.value.box }, source: ok[0].source };
 }
 
 async function readWith(mode: Mode, file: Blob): Promise<AiText<LabelReading>> {
   const t0 = performance.now();
   const photo = await preparePhoto(file);
-  const full = await readTwice(mode, photo.full, LABEL_PROMPT);
+  const full = await readImage(mode, photo.full, LABEL_PROMPT, "photo-full");
   let s = full.s;
-  // Small label text: zoom into the B.No / EXP area and use that read for those fields.
+  // Small label text: zoom into the B.No / EXP area and use that read for those fields (only if needed).
   if (s.box && (isSmallBox(s.box) || s.quality !== "ok")) {
     try {
-      const crop = await readTwice(mode, await photo.crop(s.box), CROP_NOTE + LABEL_PROMPT);
+      const crop = await readImage(mode, await photo.crop(s.box), CROP_NOTE + LABEL_PROMPT, "photo-crop");
       if (crop.s.reading) s = { reading: preferCrop(s.reading, crop.s.reading), quality: crop.s.quality, box: s.box };
     } catch { /* keep the full-image read */ }
   }
@@ -169,7 +187,7 @@ export async function explainRecord(r: AlertRecord, lang: "hi" | "en"): Promise<
   const mode = online ? InferenceMode.PREFER_IN_CLOUD : InferenceMode.ONLY_ON_DEVICE;
   const outLang = lang === "hi" && online ? "simple Hindi (Devanagari)" : "simple English";
   const prompt = `${online ? "" : EXPLAIN_RULES + "\n\n"}Explain this record in ${outLang}:\n${recordText(r)}`;
-  return run(mode, model(mode, { system: EXPLAIN_RULES }), prompt, (s) => s.trim() || null);
+  return run(mode, model(mode, { system: EXPLAIN_RULES }), prompt, (s) => s.trim() || null, "explain");
 }
 
 /** Follow-up questions about the record (cloud only, multi-turn). */
@@ -183,7 +201,10 @@ export function startRecordChat(r: AlertRecord, lang: "hi" | "en"): ChatSession 
 export async function askChat(chat: ChatSession, q: string): Promise<AiText<string>> {
   const t0 = performance.now();
   const res = await chat.sendMessage(q);
-  return { value: res.response.text().trim(), source: toSource(res.response.inferenceSource, "cloud"), ms: Math.round(performance.now() - t0) };
+  const source = toSource(res.response.inferenceSource, "cloud");
+  const ms = Math.round(performance.now() - t0);
+  trace.push({ task: "chat", source, ms });
+  return { value: res.response.text().trim(), source, ms };
 }
 
 /** On-device model availability, for the Settings screen. */
