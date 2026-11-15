@@ -3,8 +3,9 @@ import { motion } from "framer-motion";
 import { BellRing, ChevronDown, Flag, MessageCircle, PackagePlus, RotateCcw, Send, Sparkles, Check } from "lucide-react";
 import type { ChatSession } from "firebase/ai";
 import { useApp } from "../state";
-import { Button, Card, Disclaimer, LEVEL_STYLE, Page, SourceChip, Spinner, cx, inputCls } from "../components/ui";
+import { Button, Card, Disclaimer, ErrorCard, LEVEL_STYLE, Page, SourceChip, Spinner, cx, inputCls } from "../components/ui";
 import { RecordCard } from "../components/RecordCard";
+import { AnswerBadge, RedFacts, WhyPanel } from "../components/ResultParts";
 import { Sheet } from "../components/Sheet";
 import { AMBER_REASON, DISPOSAL, ERRORS, EXPIRY, OFFICIAL, RESULT, VOICE, familyMessage } from "../content/messages";
 import { askChat, explainRecord, startRecordChat } from "../lib/ai";
@@ -50,12 +51,18 @@ export default function Result() {
           </span>
           <span className={cx("text-[15px] font-bold uppercase tracking-[0.08em]", s.ink)}>{msg.word[lang]}</span>
         </div>
-        <h2 className="mt-4 text-[25px] font-bold leading-tight text-ink">{msg.title[lang]}</h2>
-        <p className="mt-2 text-[19px] leading-relaxed text-ink/90">{msg.body[lang]}</p>
+        <h2 className="mt-4 text-[25px] font-bold leading-tight text-ink" data-testid={level === "RED" ? "red-exact" : undefined}>
+          {level === "RED" ? (lang === "hi" ? "यही बैच CDSCO चेतावनी में है" : "This exact batch is in a CDSCO alert") : msg.title[lang]}
+        </h2>
+        <p className={cx("mt-2 leading-relaxed text-ink/90", level === "RED" ? "text-[17px]" : "text-[19px]")}>{msg.body[lang]}</p>
         {level === "AMBER" && AMBER_REASON[result.reason] && (
           <p className="mt-3 rounded-2xl bg-white/70 px-4 py-3 text-[17px] leading-snug text-ink">{AMBER_REASON[result.reason][lang]}</p>
         )}
+        <div className="mt-4"><AnswerBadge check={check} /></div>
       </motion.section>
+
+      {level === "RED" && result.records[0] && <RedFacts r={result.records[0]} />}
+      <WhyPanel check={check} />
 
       {/* What was checked: big text, never spoken. */}
       <Card className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3 p-5">
@@ -72,11 +79,6 @@ export default function Result() {
             <p className="text-[14px] font-semibold uppercase tracking-wide text-muted">{t("expiry")}</p>
             <p className="text-[18px] font-semibold">{formatExpiry(input.expiry, lang)}</p>
             <ExpiryBadge status={exp} />
-          </div>
-        )}
-        {input.readSource && (
-          <div className="col-span-2 flex items-center gap-2 text-[14px] text-muted">
-            {lang === "hi" ? "नाम/बैच पढ़ा गया:" : "Name/batch read by AI:"} <SourceChip source={input.readSource} />
           </div>
         )}
       </Card>
@@ -144,7 +146,7 @@ function ExpiryBadge({ status }: { status: "valid" | "soon" | "expired" | "unkno
 
 /** "Read simple explanation" + follow-up chat. AI output, always labelled. */
 function Explain({ recordIndex }: { recordIndex: number }) {
-  const { t, lang, check, online } = useApp();
+  const { t, lang, check, online, noteAi } = useApp();
   const r = check!.result.records[recordIndex];
   const [state, setState] = useState<"idle" | "busy" | "done" | "error">("idle");
   const [text, setText] = useState("");
@@ -162,6 +164,7 @@ function Explain({ recordIndex }: { recordIndex: number }) {
       const res = await explainRecord(r, lang);
       setText(res.value);
       setSource(res.source);
+      noteAi(res.source);
       setState("done");
     } catch {
       setState("error");
@@ -175,6 +178,7 @@ function Explain({ recordIndex }: { recordIndex: number }) {
     try {
       session.current ??= startRecordChat(r, lang);
       const res = await askChat(session.current, q.trim());
+      noteAi(res.source);
       setChat((c) => [...c, { q: q.trim(), a: res.value, source: res.source }]);
       setQ("");
     } catch {
@@ -194,7 +198,7 @@ function Explain({ recordIndex }: { recordIndex: number }) {
   return (
     <Card className="p-5">
       {state === "busy" && <Spinner label={t("thinking")} />}
-      {state === "error" && <p className="text-[17px] text-amber-ink">{ERRORS.aiUnavailable[lang]}</p>}
+      {state === "error" && <ErrorCard k={online ? "aiUnavailable" : "network"} on={{ retry: go }} />}
       {state === "done" && (
         <>
           <div className="mb-2 flex items-center justify-between gap-2">
@@ -293,7 +297,10 @@ function FamilySheet({ open, onClose, onSent }: { open: boolean; onClose: () => 
 
   return (
     <Sheet open={open} onClose={onClose} title={t("alertFamily")}>
-      <pre className="mb-4 whitespace-pre-wrap rounded-2xl bg-white p-4 font-sans text-[15px] leading-snug text-ink shadow-soft" data-testid="family-msg">{text}</pre>
+      <p className="mb-2 flex items-center gap-1.5 text-[14px] font-bold uppercase tracking-wide text-muted" data-testid="family-preview-label">
+        {lang === "hi" ? "बिल्कुल यही संदेश भेजा जाएगा" : "Exactly this message will be shared"}
+      </p>
+      <pre className="mb-4 whitespace-pre-wrap [overflow-wrap:anywhere] rounded-2xl bg-white p-4 font-sans text-[15px] leading-snug text-ink shadow-soft" data-testid="family-msg">{text}</pre>
       {queued && <p className="mb-3 flex items-center gap-2 rounded-2xl bg-brand-50 px-4 py-3 text-[16px] font-semibold text-brand-800"><BellRing size={20} /> {queued}: {t("queued")}</p>}
       <p className="mb-2 text-[16px] font-semibold">{t("sendTo")}</p>
       <div className="space-y-2">

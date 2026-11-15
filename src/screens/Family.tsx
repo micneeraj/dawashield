@@ -6,7 +6,7 @@ import { Sheet } from "../components/Sheet";
 import { db, type FamilyMember } from "../lib/db";
 
 export default function Family() {
-  const { t, go } = useApp();
+  const { t, go, lang } = useApp();
   const [list, setList] = useState<FamilyMember[]>([]);
   const [open, setOpen] = useState(false);
   const load = () => db.family.toArray().then(setList);
@@ -25,7 +25,7 @@ export default function Family() {
             <span className="flex-1">
               <span className="block text-[19px] font-bold">{m.name}{m.relation ? <span className="font-medium text-muted"> · {m.relation}</span> : null}</span>
               <span className="num block text-[15px] text-muted">+{m.phone}</span>
-              <span className="mt-0.5 inline-flex items-center gap-1 text-[13px] font-semibold text-brand-700"><ShieldCheck size={14} /> consent</span>
+              <span className="mt-0.5 inline-flex items-center gap-1 text-[13px] font-semibold text-brand-700"><ShieldCheck size={14} /> {lang === "hi" ? "मंज़ूरी दी" : "Consent given"}</span>
             </span>
             <button onClick={async () => { await db.family.delete(m.id!); load(); }} className="grid h-12 w-12 place-items-center rounded-2xl text-muted hover:bg-red-soft hover:text-red-ink" aria-label={t("remove")}>
               <Trash2 size={20} />
@@ -33,13 +33,19 @@ export default function Family() {
           </Card>
         ))}
         {!list.length && (
-          <Card className="flex flex-col items-center gap-2 px-6 py-8 text-center">
-            <UserRound size={34} className="text-brand-300" />
-            <p className="text-[17px] text-muted">{t("noFamily")}</p>
+          <Card className="flex flex-col items-center gap-3 overflow-hidden px-6 py-9 text-center" >
+            <span className="relative grid h-20 w-20 place-items-center rounded-[28px] bg-gradient-to-br from-brand-50 to-[#e6f4ef] text-brand-700 shadow-soft">
+              <UserRound size={38} />
+              <span className="absolute -right-1.5 -top-1.5 grid h-8 w-8 place-items-center rounded-full bg-[#1f9d55] text-white shadow-soft"><MessageCircle size={17} /></span>
+            </span>
+            <p className="max-w-[26ch] text-[20px] font-bold leading-snug text-ink" data-testid="family-empty">
+              {lang === "hi" ? "किसी दवा पर चेतावनी आए, तो आपके बेटे या बेटी को तुरंत पता चल सकता है" : "Your son or daughter can get an alert if a saved medicine is flagged"}
+            </p>
+            <p className="text-[15px] text-muted">{lang === "hi" ? "WhatsApp पर, सिर्फ़ आपकी मंज़ूरी से।" : "On WhatsApp, only with your consent."}</p>
           </Card>
         )}
       </div>
-      <Button full className="mt-4" icon={<Plus size={22} />} onClick={() => setOpen(true)}>{t("addFamily")}</Button>
+      <Button full className="mt-4" icon={<Plus size={22} />} onClick={() => setOpen(true)} data-testid="add-family">{t("addFamily")}</Button>
       <AddMember open={open} onClose={() => setOpen(false)} onSaved={load} />
     </Page>
   );

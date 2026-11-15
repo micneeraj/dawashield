@@ -177,10 +177,45 @@ export const ERRORS = {
     hi: "बिना इंटरनेट के आसान व्याख्या सिर्फ़ अंग्रेज़ी में मिलती है।",
     en: "",
   },
+  micDenied: {
+    hi: "माइक की इजाज़त नहीं मिली। ब्राउज़र में माइक चालू कीजिए, या लिखकर जाँचिए।",
+    en: "Microphone permission was blocked. Allow the mic in your browser, or type instead.",
+  },
+  micNoSpeech: {
+    hi: "आवाज़ सुनाई नहीं दी। फ़ोन पास रखकर दवा का नाम फिर से बोलिए।",
+    en: "I didn't hear anything. Hold the phone closer and say the medicine name again.",
+  },
+  micNetwork: {
+    hi: "आवाज़ पहचानने के लिए इंटरनेट चाहिए था। आप लिखकर जाँच सकते हैं, यह बिना इंटरनेट चलता है।",
+    en: "Voice recognition needed the internet. You can type instead — that works offline.",
+  },
+  cameraDenied: {
+    hi: "कैमरा की इजाज़त नहीं मिली। गैलरी से फ़ोटो चुनिए, या बैच नंबर लिखिए।",
+    en: "Camera permission was blocked. Choose a photo from the gallery, or type the batch number.",
+  },
+  network: {
+    hi: "इंटरनेट नहीं मिला, इसलिए फ़ोटो नहीं पढ़ी जा सकी। फिर कोशिश कीजिए या बैच नंबर लिखिए — जाँच बिना इंटरनेट चलती है।",
+    en: "No internet, so the photo couldn't be read. Try again, or type the batch number — the check itself works offline.",
+  },
+  closerPhoto: {
+    hi: "Batch / EXP साफ़ नहीं दिखा। अंदाज़ा नहीं लगाऊँगा — उस हिस्से की पास से, रोशनी में साफ़ फ़ोटो लीजिए।",
+    en: "The Batch / EXP text is too small or blurry. I won't guess — take a closer, sharper photo of that part in good light.",
+  },
+  timeout: {
+    hi: "जवाब आने में बहुत देर हुई। फिर कोशिश कीजिए, या लिखकर जाँचिए।",
+    en: "That took too long. Please try again, or type instead.",
+  },
   noData: {
     hi: "सरकारी सूची अभी लोड नहीं हुई। एक बार इंटरनेट से जुड़िए।",
     en: "The official list has not loaded yet. Please connect to the internet once.",
   },
+} as const;
+
+export const RECOVERY_LABEL = {
+  retry: { hi: "फिर कोशिश करें", en: "Try again" },
+  type: { hi: "लिखकर जाँचें", en: "Type instead" },
+  closer: { hi: "पास से फ़ोटो लें", en: "Take closer photo" },
+  gallery: { hi: "गैलरी से चुनें", en: "Choose from gallery" },
 } as const;
 
 export const EXPIRY: Record<"valid" | "soon" | "expired" | "unknown", T> = {

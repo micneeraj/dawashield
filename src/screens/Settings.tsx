@@ -4,6 +4,7 @@ import { useApp } from "../state";
 import { Button, Card, Page, cx } from "../components/ui";
 import { monthLabel } from "../lib/format";
 import { nanoAvailability } from "../lib/ai";
+import { nanoText } from "../lib/status";
 
 function Seg<T extends string>({ value, options, onChange }: { value: T; options: { v: T; l: string }[]; onChange: (v: T) => void }) {
   return (
@@ -87,7 +88,8 @@ export default function Settings() {
           <Cpu size={20} className="mt-0.5 text-brand-600" />
           <span className="flex-1">
             <span className="block text-[17px] font-semibold">{t("onDeviceAi")}</span>
-            <span className="block text-[15px] text-muted">Text: <b className="text-ink">{nano}</b> · Image: <b className="text-ink">{nanoImg}</b></span>
+            <span className="block text-[15px] leading-snug text-muted" data-testid="nano-status">{nanoText(nano, nanoImg, lang)}</span>
+            <span className="mt-1 block text-[14px] text-brand-700">{lang === "hi" ? "दवा का मिलान हमेशा पूरी तरह बिना इंटरनेट इसी फ़ोन पर होता है।" : "Medicine matching always works fully offline on this phone."}</span>
           </span>
         </div>
       </Card>

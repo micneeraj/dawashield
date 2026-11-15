@@ -3,7 +3,7 @@ import type { Lang } from "./content/messages";
 import { UI, type UIKey } from "./content/ui";
 import { loadDataset, syncIfNewer, recheckCabinet, expiryReminders, flushQueue, type Dataset } from "./lib/sync";
 import { playClip } from "./lib/audio";
-import type { MatchResult, Source } from "./lib/types";
+import type { DatasetMeta, MatchResult, Source } from "./lib/types";
 import type { StripReading } from "./lib/json";
 
 export type Screen =
@@ -57,6 +57,8 @@ interface Ctx {
   say(clip: string): void;
   online: boolean;
   dataset: Dataset | null;
+  /** Dataset meta, available before the full record list (small file, loaded first). */
+  dataMeta: DatasetMeta | null;
   syncing: boolean;
   sync(): Promise<boolean>;
   screen: Screen;
@@ -66,6 +68,9 @@ interface Ctx {
   setCheck(c: CheckState | null): void;
   cabinetVersion: number;
   bumpCabinet(): void;
+  /** Where the last AI answer came from, as reported by the SDK's inferenceSource. */
+  lastAi: Source | null;
+  noteAi(s: Source): void;
 }
 
 const C = createContext<Ctx>(null as unknown as Ctx);
@@ -77,10 +82,12 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [muted, setMutedS] = useState(() => read("ds-muted", "0") === "1");
   const [online, setOnline] = useState(navigator.onLine);
   const [dataset, setDataset] = useState<Dataset | null>(null);
+  const [metaFirst, setMetaFirst] = useState<DatasetMeta | null>(null);
   const [syncing, setSyncing] = useState(false);
   const [stack, setStack] = useState<Screen[]>([{ name: "home" }]);
   const [check, setCheck] = useState<CheckState | null>(null);
   const [cabinetVersion, setCV] = useState(0);
+  const [lastAi, setLastAi] = useState<Source | null>(null);
 
   const setLang = (l: Lang) => { setLangS(l); write("ds-lang", l); document.documentElement.lang = l; };
   const setVoice = (v: "female" | "male") => { setVoiceS(v); write("ds-voice", v); };
@@ -111,6 +118,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   // Start-up: local dataset, then sync if online, monthly re-check, reminders.
   useEffect(() => {
+    fetch("/data/meta.json").then((r) => r.json()).then((m: DatasetMeta) => setMetaFirst((x) => x ?? m)).catch(() => {});
     (async () => {
       const ds = await loadDataset();
       setDataset(ds);
@@ -124,7 +132,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const value = useMemo<Ctx>(() => ({
-    lang, setLang, t, voice, setVoice, muted, setMuted, say, online, dataset, syncing, sync,
+    lang, setLang, t, voice, setVoice, muted, setMuted, say, online, dataset, dataMeta: dataset?.meta ?? metaFirst, syncing, sync,
     screen: stack[stack.length - 1],
     go: (s) => {
       setStack((st) => (s.name === "home" ? [s] : [...st, s]));
@@ -134,8 +142,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
     back: () => setStack((st) => (st.length > 1 ? st.slice(0, -1) : st)),
     check, setCheck,
     cabinetVersion, bumpCabinet: () => setCV((v) => v + 1),
+    lastAi, noteAi: setLastAi,
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }), [lang, t, voice, muted, say, online, dataset, syncing, sync, stack, check, cabinetVersion]);
+  }), [lang, t, voice, muted, say, online, dataset, metaFirst, syncing, sync, stack, check, cabinetVersion, lastAi]);
 
   return <C.Provider value={value}>{children}</C.Provider>;
 }

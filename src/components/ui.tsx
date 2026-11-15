@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import type { ButtonHTMLAttributes, ReactNode } from "react";
-import { AlertOctagon, AlertTriangle, ArrowLeft, Cloud, Info, Smartphone } from "lucide-react";
+import { AlertOctagon, AlertTriangle, ArrowLeft, Camera, Cloud, ImageUp, Info, Keyboard, RotateCcw, ShieldCheck, Smartphone } from "lucide-react";
 import { useApp } from "../state";
-import { DISCLAIMER } from "../content/messages";
+import { DISCLAIMER, ERRORS, RECOVERY_LABEL } from "../content/messages";
+import { STATUS_LABEL, statusKind } from "../lib/status";
+import { RECOVERY, type ErrorKey, type Recovery } from "../lib/errors";
 import { sourceLabel } from "../lib/source";
 import type { Level, Source } from "../lib/types";
 
@@ -134,6 +136,54 @@ export function Spinner({ label }: { label: string }) {
         <div className="absolute inset-0 animate-spin rounded-full border-4 border-transparent border-t-brand-600" />
       </div>
       <p className="text-[18px] font-medium text-brand-800">{label}</p>
+    </div>
+  );
+}
+
+/** Permanent header pill: real network state + the SDK's inferenceSource of the last AI answer. */
+export function StatusPill() {
+  const { lang, online, lastAi } = useApp();
+  const kind = statusKind(online, lastAi);
+  const Icon = kind === "cloud" ? Cloud : kind === "device" ? Smartphone : ShieldCheck;
+  return (
+    <span
+      className={cx(
+        "inline-flex items-center gap-1.5 rounded-full py-1 pl-2 pr-3 text-[13px] font-semibold ring-1",
+        kind === "cloud" ? "bg-sky-50 text-sky-800 ring-sky-200" : "bg-brand-50 text-brand-800 ring-brand-200",
+      )}
+      role="status"
+      aria-live="polite"
+      data-testid="status-pill"
+      data-kind={kind}
+      data-online={online ? "1" : "0"}
+    >
+      <span className={cx("h-2 w-2 rounded-full", online ? "bg-[#1f9d55] shadow-[0_0_0_3px_rgba(31,157,85,0.18)]" : "bg-grey-ink")} aria-label={online ? "online" : "offline"} />
+      <Icon size={14} aria-hidden />
+      {STATUS_LABEL[kind][lang]}
+    </span>
+  );
+}
+
+/** Human error message with recovery buttons. */
+export function ErrorCard({ k, on, testId }: { k: ErrorKey; on: Partial<Record<Recovery, () => void>>; testId?: string }) {
+  const { lang } = useApp();
+  const actions = RECOVERY[k].filter((a) => on[a]);
+  const ICON: Record<Recovery, ReactNode> = { retry: <RotateCcw size={20} />, type: <Keyboard size={20} />, closer: <Camera size={20} />, gallery: <ImageUp size={20} /> };
+  return (
+    <div className="rounded-3xl border-2 border-amber-line bg-amber-soft p-4" role="alert" data-testid={testId ?? "error-card"} data-error={k}>
+      <p className="flex items-start gap-2 text-[17px] font-medium leading-snug text-amber-ink">
+        <AlertTriangle size={20} className="mt-0.5 shrink-0" aria-hidden />
+        {ERRORS[k][lang]}
+      </p>
+      {actions.length > 0 && (
+        <div className={cx("mt-3 grid gap-2", actions.length > 1 && "grid-cols-2")}>
+          {actions.map((a, i) => (
+            <Button key={a} variant={i === 0 ? "primary" : "secondary"} icon={ICON[a]} onClick={on[a]} data-testid={`recover-${a}`}>
+              {RECOVERY_LABEL[a][lang]}
+            </Button>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

@@ -2,10 +2,10 @@ import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { AlertTriangle, Camera, CheckCircle2, ImagePlus, ImageUp, Lightbulb, RotateCcw, ScanLine } from "lucide-react";
 import { useApp } from "../state";
-import { Button, Card, Page, SourceChip, Spinner, inputCls, cx } from "../components/ui";
+import { Button, Card, ErrorCard, Page, SourceChip, Spinner, inputCls, cx } from "../components/ui";
 import { CloserPhotoNeeded, readStrip } from "../lib/ai";
 import { expiryAsk, expiryForCheck, mergeLabels, needsCheck, type LabelKey, type LabelReading } from "../lib/label";
-import { ERRORS } from "../content/messages";
+import { photoErrorKey, type ErrorKey } from "../lib/errors";
 import { useRunCheck } from "../useCheck";
 import type { Source } from "../lib/types";
 
@@ -36,7 +36,7 @@ const LABELS: Record<LabelKey, { hi: string; en: string }> = {
 };
 
 export default function Photo() {
-  const { t, lang, online, screen, say } = useApp();
+  const { t, lang, online, screen, say, go, noteAi } = useApp();
   const prefill = screen.name === "photo" ? screen.prefill : undefined;
   const runCheck = useRunCheck();
   const camRef = useRef<HTMLInputElement>(null);
@@ -44,6 +44,7 @@ export default function Photo() {
   const [previews, setPreviews] = useState<string[]>([]);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(false);
+  const [errKey, setErrKey] = useState<ErrorKey>("photoUnreadable");
   const [closer, setCloser] = useState(false);
   const [expiryOk, setExpiryOk] = useState(false);
   const [sources, setSources] = useState<Source[]>([]);
@@ -66,6 +67,7 @@ export default function Photo() {
       const merged = mergeLabels(reading, r.value)!;
       setReading(merged);
       setSources((s) => [...s, r.source]);
+      noteAi(r.source);
       setForm((old) => ({
         name: merged.name.value || old.name,
         manufacturer: merged.manufacturer.value || old.manufacturer,
@@ -77,7 +79,7 @@ export default function Photo() {
       if (e instanceof CloserPhotoNeeded) {
         setCloser(true);
         setPreviews((p) => p.slice(0, -1));
-      } else setError(true);
+      } else { setErrKey(photoErrorKey(e)); setError(true); }
       say("error");
     } finally {
       setBusy(false);
@@ -140,13 +142,12 @@ export default function Photo() {
       )}
 
       {closer && !busy && (
-        <div className="mt-4 rounded-2xl bg-amber-soft px-4 py-3 text-[17px] font-medium text-amber-ink" role="alert" data-testid="closer-photo">
-          <p>{CLOSER[lang]}</p>
-          <div className="mt-3"><Button icon={<Camera size={22} />} onClick={() => camRef.current?.click()}>{t("takePhoto")}</Button></div>
-        </div>
+        <div className="mt-4" data-testid="closer-photo"><ErrorCard k="closerPhoto" on={{ closer: () => camRef.current?.click(), type: () => go({ name: "type", prefill: { name: form.name } }) }} /></div>
       )}
 
-      {error && !busy && <p className="mt-4 rounded-2xl bg-amber-soft px-4 py-3 text-[17px] font-medium text-amber-ink" role="alert">{ERRORS.photoUnreadable[lang]}</p>}
+      {error && !busy && (
+        <div className="mt-4"><ErrorCard k={errKey} on={{ retry: () => galRef.current?.click(), closer: () => camRef.current?.click(), type: () => go({ name: "type", prefill: { name: form.name } }) }} /></div>
+      )}
 
       {/* Confirm screen: nothing is checked until the user taps Confirm. */}
       {showConfirm && (

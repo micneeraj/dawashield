@@ -1,46 +1,64 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Camera, ChevronRight, Keyboard, Package, ShieldCheck } from "lucide-react";
+import { Camera, ChevronRight, Database, Keyboard, Mic, Package, ShieldCheck, WifiOff } from "lucide-react";
 import { useApp } from "../state";
-import { Card, Disclaimer, LevelPill, cx } from "../components/ui";
-import { MicButton } from "../components/MicButton";
+import { Card, Disclaimer, LevelPill } from "../components/ui";
+import { LogoMark } from "../components/Logo";
 import { db, type CabinetItem } from "../lib/db";
 import { expiryStatus } from "../lib/expiry";
 import { monthLabel } from "../lib/format";
 
 export default function Home() {
-  const { t, lang, go, dataset, cabinetVersion, say } = useApp();
+  const { t, lang, go, dataMeta, cabinetVersion, say } = useApp();
   const [items, setItems] = useState<CabinetItem[]>([]);
   useEffect(() => { db.cabinet.toArray().then(setItems); }, [cabinetVersion]);
 
   const alerts = items.filter((i) => i.lastCheck && i.lastCheck.level !== "GREY").length;
   const expiring = items.filter((i) => ["soon", "expired"].includes(expiryStatus(i.expiry))).length;
+  const startVoice = () => { say("welcome"); go({ name: "voice" }); };
+
+  const OPTIONS = [
+    { key: "speak" as const, icon: Mic, onClick: startVoice, testId: "speak-btn" },
+    { key: "type" as const, icon: Keyboard, onClick: () => go({ name: "type" }), testId: "type-btn" },
+    { key: "photo" as const, icon: Camera, onClick: () => go({ name: "photo" }), testId: "photo-btn" },
+  ];
 
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex flex-col px-4 pb-6">
-      <section className="pt-2 text-center">
-        <p className="text-[17px] font-medium text-brand-600">{t("greeting")} 🙏</p>
-        <h1 className="mx-auto mt-1 max-w-[18ch] text-[30px] font-bold leading-[1.15] tracking-tight text-ink">{t("homeQ")}</h1>
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.18 }} className="flex flex-col px-4 pb-6">
+      {/* Hero: the 5-second test. What it is, and the one thing to do. */}
+      <section className="relative mt-1 overflow-hidden rounded-[32px] bg-gradient-to-br from-brand-800 via-brand-700 to-brand-600 px-5 pb-5 pt-6 text-white shadow-[0_24px_48px_-24px_rgba(15,94,87,0.7)]">
+        <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/10 blur-2xl" aria-hidden />
+        <div className="pointer-events-none absolute -bottom-16 -left-10 h-44 w-44 rounded-full bg-brand-300/20 blur-3xl" aria-hidden />
+        <div className="relative flex items-center gap-2 text-[14px] font-semibold text-brand-100">
+          <span className="rounded-xl bg-white/95 p-1"><LogoMark size={22} /></span>
+          {t("greeting")} 🙏
+        </div>
+        <h1 className="relative mt-3 text-[28px] font-bold leading-[1.15] tracking-tight" data-testid="hero">{t("hero")}</h1>
+        <button
+          onClick={startVoice}
+          className="tap relative mt-5 flex w-full items-center justify-center gap-3 rounded-2xl bg-white px-5 py-4 text-[21px] font-bold text-brand-800 shadow-soft transition hover:bg-brand-50 active:scale-[0.98]"
+          data-testid="check-btn-home"
+        >
+          <ShieldCheck size={26} /> {t("checkMedicine")}
+        </button>
+        <div className="relative mt-3 grid grid-cols-3 gap-2">
+          {OPTIONS.map(({ key, icon: Icon, onClick, testId }) => (
+            <button key={key} onClick={onClick} data-testid={testId} className="tap flex flex-col items-center justify-center gap-1 rounded-2xl bg-white/10 py-2.5 text-[15px] font-semibold text-white ring-1 ring-white/25 transition hover:bg-white/20">
+              <Icon size={22} aria-hidden />
+              {t(key)}
+            </button>
+          ))}
+        </div>
       </section>
 
-      <div className="my-3 flex flex-col items-center">
-        <MicButton listening={false} label={t("tapToSpeak")} onClick={() => { say("welcome"); go({ name: "voice" }); }} />
-        <p className="-mt-2 text-[19px] font-semibold text-brand-800">{t("tapToSpeak")}</p>
-        <p className="mt-0.5 text-[15px] text-muted">{lang === "hi" ? "जैसे: “सर दर्द की दवा है, डोलो”" : "e.g. “It's my headache medicine, Dolo”"}</p>
+      {/* Trust strip */}
+      <div className="mt-3 flex flex-wrap items-center justify-center gap-1.5 text-[13px] font-semibold text-brand-900" data-testid="trust-strip">
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 ring-1 ring-line"><ShieldCheck size={14} className="text-brand-600" aria-hidden />{t("officialUpTo")} {dataMeta ? monthLabel(dataMeta.latestMonth, lang) : "…"}{lang === "hi" ? " तक" : ""}</span>
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 ring-1 ring-line"><Database size={13} className="text-brand-600" aria-hidden />{dataMeta ? dataMeta.records.toLocaleString("en-IN") : "…"} {t("recordsLower")}</span>
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 ring-1 ring-line"><WifiOff size={13} className="text-brand-600" aria-hidden />{t("worksOffline")}</span>
       </div>
 
-      <div className="mt-4 grid grid-cols-2 gap-3">
-        <button onClick={() => go({ name: "photo" })} className="tap group flex flex-col items-start gap-3 rounded-3xl border border-line/70 bg-white p-4 text-left shadow-soft transition hover:border-brand-300">
-          <span className="grid h-12 w-12 place-items-center rounded-2xl bg-brand-50 text-brand-700"><Camera size={26} /></span>
-          <span className="text-[18px] font-semibold leading-tight text-ink">{t("photo")}</span>
-        </button>
-        <button onClick={() => go({ name: "type" })} className="tap group flex flex-col items-start gap-3 rounded-3xl border border-line/70 bg-white p-4 text-left shadow-soft transition hover:border-brand-300" data-testid="type-btn">
-          <span className="grid h-12 w-12 place-items-center rounded-2xl bg-brand-50 text-brand-700"><Keyboard size={26} /></span>
-          <span className="text-[18px] font-semibold leading-tight text-ink">{t("type")}</span>
-        </button>
-      </div>
-
-      <button onClick={() => go({ name: "cabinet" })} className="mt-3 text-left">
+      <button onClick={() => go({ name: "cabinet" })} className="mt-5 text-left">
         <Card className="flex items-center gap-4 p-4 transition hover:border-brand-300">
           <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[#fbf3e4] text-[#9a6a12]"><Package size={26} /></span>
           <span className="flex-1">
@@ -54,17 +72,6 @@ export default function Home() {
           <ChevronRight className="text-muted" />
         </Card>
       </button>
-
-      {dataset && (
-        <div className={cx("mt-3 flex items-center gap-3 rounded-2xl bg-brand-50/80 px-4 py-3 text-[15px] text-brand-900")}>
-          <ShieldCheck size={22} className="shrink-0 text-brand-600" aria-hidden />
-          <span>
-            {lang === "hi"
-              ? <>CDSCO की {dataset.meta.records.toLocaleString("en-IN")} चेतावनियाँ फ़ोन में · {monthLabel(dataset.meta.latestMonth, lang)} तक</>
-              : <>{dataset.meta.records.toLocaleString("en-IN")} CDSCO alerts on this phone · up to {monthLabel(dataset.meta.latestMonth, lang)}</>}
-          </span>
-        </div>
-      )}
 
       <Disclaimer className="mt-5 px-1" />
     </motion.div>

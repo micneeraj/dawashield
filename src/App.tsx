@@ -1,7 +1,7 @@
 import { AnimatePresence } from "framer-motion";
-import { Home as HomeIcon, Package, Settings as SettingsIcon, Users, WifiOff, Volume2, VolumeX } from "lucide-react";
+import { Home as HomeIcon, Package, Settings as SettingsIcon, Users, Volume2, VolumeX } from "lucide-react";
 import { useApp, type Screen } from "./state";
-import { cx } from "./components/ui";
+import { StatusPill, cx } from "./components/ui";
 import { LogoMark } from "./components/Logo";
 import Home from "./screens/Home";
 import Voice from "./screens/Voice";
@@ -15,23 +15,18 @@ import { About, Privacy } from "./screens/Info";
 import Report from "./screens/Report";
 
 function Header() {
-  const { t, lang, setLang, online, muted, setMuted, go } = useApp();
+  const { t, lang, setLang, muted, setMuted, go } = useApp();
   return (
-    <header className="sticky top-0 z-20 flex items-center gap-2 bg-paper/90 px-4 pb-3 pt-[max(14px,env(safe-area-inset-top))] backdrop-blur-md">
+    <header className="sticky top-0 z-20 bg-paper/90 px-4 pb-2.5 pt-[max(14px,env(safe-area-inset-top))] backdrop-blur-md">
+     <div className="flex items-center gap-2">
       <button onClick={() => go({ name: "home" })} className="flex min-h-14 items-center gap-2.5 rounded-2xl pr-2" aria-label={t("home")}>
         <LogoMark size={38} />
         <span className="flex flex-col items-start leading-none">
           <span className="text-[19px] font-bold tracking-tight text-brand-900">{lang === "hi" ? "दवा कवच" : "DawaShield"}</span>
-          <span className={cx("mt-1 text-[12px] font-medium text-brand-600", lang === "hi" && "uppercase tracking-[0.12em]")}>{lang === "hi" ? "DawaShield" : "दवा कवच"}</span>
+          <span className="mt-1 text-[12px] font-medium text-brand-600">{lang === "hi" ? "सरकारी चेतावनी जाँच" : "CDSCO alert check"}</span>
         </span>
       </button>
       <div className="ml-auto flex items-center gap-1.5">
-        {!online && (
-          <span className="flex items-center gap-1.5 rounded-full bg-ink px-3 py-1.5 text-[13px] font-semibold text-white" role="status" data-testid="offline-badge">
-            <WifiOff size={15} aria-hidden />
-            {t("offline")}
-          </span>
-        )}
         <button
           onClick={() => setMuted(!muted)}
           className="grid h-12 w-12 place-items-center rounded-2xl text-brand-800 hover:bg-brand-50"
@@ -48,6 +43,8 @@ function Header() {
           {lang === "hi" ? "EN" : "हिं"}
         </button>
       </div>
+     </div>
+     <div className="mt-1.5 flex"><StatusPill /></div>
     </header>
   );
 }
@@ -89,6 +86,38 @@ function BottomNav() {
   );
 }
 
+/** Wide screens only: what DawaShield is, beside the phone frame. */
+function DesktopAside() {
+  const { lang, dataMeta } = useApp();
+  const hi = lang === "hi";
+  const points = hi
+    ? ["बोलकर, लिखकर या पत्ते की फ़ोटो से जाँच", "हिन्दी और अंग्रेज़ी, बोलकर जवाब", "सरकारी सूची फ़ोन में, बिना इंटरनेट भी", "रंग सादे कोड से तय होता है, AI से नहीं"]
+    : ["Speak, type or photograph the strip", "Hindi and English, with spoken replies", "The official list lives on the phone, works offline", "The colour is decided by plain code, never by AI"];
+  return (
+    <aside className="hidden w-[400px] shrink-0 lg:block" aria-label="About DawaShield">
+      <div className="flex items-center gap-3">
+        <LogoMark size={52} />
+        <span className="text-[30px] font-bold tracking-tight text-brand-900">{hi ? "दवा कवच" : "DawaShield"}</span>
+      </div>
+      <h2 className="mt-6 text-[36px] font-bold leading-[1.12] tracking-tight text-ink">
+        {hi ? "अपने परिवार की दवाएँ सरकारी CDSCO चेतावनियों से जाँचिए" : "Check your family's medicines against official CDSCO alerts"}
+      </h2>
+      <ul className="mt-6 space-y-3">
+        {points.map((p) => (
+          <li key={p} className="flex items-start gap-3 text-[17px] text-ink/85">
+            <span className="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-brand-600" aria-hidden />{p}
+          </li>
+        ))}
+      </ul>
+      {dataMeta && (
+        <p className="mt-8 inline-flex rounded-2xl bg-white px-4 py-3 text-[15px] font-semibold text-brand-900 shadow-soft ring-1 ring-line">
+          {dataMeta.records.toLocaleString("en-IN")} {hi ? "सरकारी रिकॉर्ड" : "official records"} · {dataMeta.earliestMonth} → {dataMeta.latestMonth}
+        </p>
+      )}
+    </aside>
+  );
+}
+
 function CurrentScreen() {
   const { screen } = useApp();
   switch (screen.name) {
@@ -108,9 +137,10 @@ function CurrentScreen() {
 
 export default function App() {
   return (
-    <div className="min-h-dvh sm:flex sm:items-center sm:justify-center sm:py-8">
+    <div className="min-h-dvh sm:flex sm:items-center sm:justify-center sm:gap-16 sm:py-8">
+      <DesktopAside />
       {/* On wide screens the app sits in a phone-width frame. */}
-      <div className="relative mx-auto flex min-h-dvh w-full max-w-[440px] flex-col bg-paper sm:h-[min(900px,calc(100dvh-64px))] sm:min-h-0 sm:overflow-hidden sm:rounded-[44px] sm:border-[10px] sm:border-[#13201e] sm:shadow-[0_40px_80px_-20px_rgba(12,40,36,0.45)]">
+      <div className="relative mx-auto flex min-h-dvh w-full max-w-[440px] flex-col sm:mx-0 sm:w-[440px] sm:shrink-0 bg-paper sm:h-[min(900px,calc(100dvh-64px))] sm:min-h-0 sm:overflow-hidden sm:rounded-[44px] sm:border-[10px] sm:border-[#13201e] sm:shadow-[0_40px_80px_-20px_rgba(12,40,36,0.45)]">
         <div id="scroller" className="no-scrollbar flex flex-1 flex-col sm:overflow-y-auto">
           <Header />
           <main className="flex-1">

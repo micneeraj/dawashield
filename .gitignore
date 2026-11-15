@@ -10,3 +10,4 @@ shots/
 test-results/
 __pycache__/
 *.tsbuildinfo
+screenshots/

@@ -2,14 +2,15 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Camera, Check, Keyboard, Mic, Pill, RotateCcw, Search } from "lucide-react";
 import { useApp } from "../state";
-import { Button, Card, Field, Page, SourceChip, Spinner, inputCls, cx } from "../components/ui";
+import { Button, Card, ErrorCard, Field, Page, SourceChip, Spinner, inputCls, cx } from "../components/ui";
 import { MicButton } from "../components/MicButton";
 import { listen, speechSupported, type Listener } from "../lib/speech";
 import { candidatesFromSpeech } from "../lib/ai";
 import { searchNames } from "../lib/match";
 import { transliterate } from "../lib/normalize";
 import { COMMON_MEDICINES } from "../content/common-medicines";
-import { ERRORS, VOICE } from "../content/messages";
+import { VOICE } from "../content/messages";
+import { speechErrorKey, type ErrorKey } from "../lib/errors";
 import { useRunCheck } from "../useCheck";
 import type { Source } from "../lib/types";
 
@@ -23,7 +24,7 @@ function withTimeout<T>(p: Promise<T>, ms: number): Promise<T> {
 }
 
 export default function Voice() {
-  const { t, lang, go, dataset, say } = useApp();
+  const { t, lang, go, dataset, say, noteAi } = useApp();
   const runCheck = useRunCheck();
   const [step, setStep] = useState<Step>("listen");
   const [listening, setListening] = useState(false);
@@ -31,6 +32,7 @@ export default function Voice() {
   const [options, setOptions] = useState<string[]>([]);
   const [aiSource, setAiSource] = useState<Source | null>(null);
   const [notUnderstood, setNotUnderstood] = useState(false);
+  const [errKey, setErrKey] = useState<ErrorKey | null>(null);
   const [name, setName] = useState("");
   const [batch, setBatch] = useState("");
   const [batchListening, setBatchListening] = useState(false);
@@ -38,12 +40,13 @@ export default function Voice() {
 
   const startListening = async () => {
     setNotUnderstood(false);
+    setErrKey(null);
     setTranscript("");
     setListening(true);
     rec.current = await listen(lang, (txt) => setTranscript(txt), (final, err) => {
       setListening(false);
       if (final) void understand(final);
-      else if (err) { setNotUnderstood(true); say(VOICE.fallback.clip); }
+      else if (err) { setErrKey(speechErrorKey(err)); say(VOICE.fallback.clip); }
     });
     if (!rec.current) setListening(false);
   };
@@ -64,6 +67,7 @@ export default function Voice() {
       const r = await withTimeout(candidatesFromSpeech(text), 12000);
       aiNames = r.value;
       setAiSource(r.source);
+      noteAi(r.source);
     } catch {
       setAiSource(null);
     }
@@ -120,10 +124,13 @@ export default function Voice() {
                   <p className="mt-1 text-[22px] font-medium text-ink" data-testid="transcript">“{transcript}”</p>
                 </Card>
               )}
-              {notUnderstood && !listening && (
-                <p className="rounded-2xl bg-amber-soft px-4 py-3 text-center text-[18px] font-medium text-amber-ink" role="alert">{VOICE.fallback.text[lang]}</p>
+              {notUnderstood && !listening && !errKey && (
+                <ErrorCard k="micNoSpeech" on={{ retry: () => void startListening(), type: () => go({ name: "type" }) }} />
               )}
-              {!speechSupported && <p className="rounded-2xl bg-grey-soft px-4 py-3 text-center text-[17px] text-grey-ink">{ERRORS.micUnavailable[lang]}</p>}
+              {errKey && !listening && speechSupported && (
+                <ErrorCard k={errKey} on={{ retry: () => void startListening(), type: () => go({ name: "type" }) }} />
+              )}
+              {!speechSupported && <ErrorCard k="micUnavailable" on={{ type: () => go({ name: "type" }) }} />}
             </div>
             <div className="mt-4 grid w-full grid-cols-2 gap-3">
               <Button variant="secondary" icon={<Keyboard size={22} />} onClick={() => go({ name: "type" })}>{t("type")}</Button>
