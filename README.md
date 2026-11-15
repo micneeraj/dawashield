@@ -48,7 +48,7 @@ flowchart LR
     MATCH[match.ts<br/>plain code]
     IDB[(IndexedDB<br/>dataset · cabinet · family)]
     SW[Service worker<br/>app · data · clips]
-    CLIPS[Pre-recorded<br/>Azure neural voice clips]
+    CLIPS[Pre-recorded<br/>Sarvam Bulbul voice clips]
   end
   subgraph Cloud
     FAL[Firebase AI Logic<br/>App Check]
@@ -103,7 +103,7 @@ npm test               # Vitest: matching engine, JSON parsing, source labels, e
 npm run build
 npm run preview        # http://localhost:4173
 npm run data           # rebuild public/data from CDSCO (Python 3.12 + pdfplumber)
-npm run audio          # regenerate voice clips (needs AZURE_SPEECH_KEY / AZURE_SPEECH_REGION)
+npm run audio          # regenerate voice clips with Sarvam AI Bulbul (needs SARVAM_API_KEY in .env)
 node scripts/shots.mjs "<medicine>" "<batch>"   # Playwright screenshots + offline test
 ```
 
@@ -119,6 +119,6 @@ node scripts/shots.mjs "<medicine>" "<batch>"   # Playwright screenshots + offli
 
 ## Credits
 
-Built with Cursor and Claude Code. Data: Central Drugs Standard Control Organisation (CDSCO), Government of India. Voices: Azure neural TTS (hi-IN-SwaraNeural, hi-IN-MadhurNeural, en-IN-NeerjaNeural). MIT licence.
+Built with Cursor and Claude Code. Data: Central Drugs Standard Control Organisation (CDSCO), Government of India. Voices: Sarvam AI Bulbul v4 Flash (ritu_hi_customer_warm for Hindi, neha_en_customer for English). MIT licence.
 
 *DawaShield does not replace a pharmacist, doctor or official advice.*

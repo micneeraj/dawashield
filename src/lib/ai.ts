@@ -5,7 +5,8 @@
 // AI never decides a result colour and never writes a safety message.
 import { getGenerativeModel, InferenceMode, type ChatSession } from "firebase/ai";
 import { ai, CLOUD_MODEL } from "./firebase";
-import { parseCandidates, parseStripReading, type StripReading } from "./json";
+import { parseCandidates } from "./json";
+import { parseLabel, validateLabel, type LabelReading } from "./label";
 import { toSource } from "./source";
 import { transliterate } from "./normalize";
 import type { AlertRecord, Source } from "./types";
@@ -70,14 +71,37 @@ async function filePart(file: Blob) {
   return { type: "inlineData" as const, inlineData: { data, mimeType: file.type || "image/jpeg" } };
 }
 
-/** Cloud first when online (more reliable), on-device when offline. */
-export async function readStrip(file: Blob): Promise<AiText<StripReading>> {
-  const mode = navigator.onLine ? InferenceMode.PREFER_IN_CLOUD : InferenceMode.ONLY_ON_DEVICE;
-  const prompt =
-    "This is a photo of an Indian medicine strip, bottle or box. Copy the printed text exactly; do not guess. " +
-    'Reply ONLY with JSON: {"name": brand or medicine name, "manufacturer": "Mfd. by" company name, ' +
-    '"batch": batch / B.No. / Lot exactly as printed, "expiry": EXP date as printed}. Use null for anything not clearly visible.';
-  return run(mode, model(mode, { image: true, json: true }), [prompt, await filePart(file)], parseStripReading);
+export const LABEL_PROMPT =
+  "This is a photo of an Indian medicine strip, bottle or box. Some text may be printed sideways (rotated 90 degrees) " +
+  "along an edge; read it too. Copy printed text exactly. Never guess.\n" +
+  "Rules:\n" +
+  '- batch: ONLY the text right after "B.No", "B. No.", "Batch No", "Batch" or "Lot". ' +
+  "NEVER use the Mfg. Lic. No. / licence number (e.g. JK/01/08-09/156), MRP, barcode, QR or any date.\n" +
+  '- expiry: ONLY the date right after "EXP", "Exp. Date", "Expiry" or "Use before". NEVER the MFD / Mfg. date.\n' +
+  '- mfd: the date after "MFD" / "Mfg. Date" (only used to cross-check; never put it in expiry).\n' +
+  '- manufacturer: company after "Mfd. by" / "Manufactured by" / "Mkd. by".\n' +
+  "For every field return the exact source text it came from (label + value as printed) and your confidence 0 to 1. " +
+  "If a field is not clearly visible return null for it.\n" +
+  'Reply ONLY with JSON: {"name":{"value":"","source":"","confidence":0},"manufacturer":{...},"batch":{...},"expiry":{...},"mfd":{...}}';
+
+/** Cloud Gemini Flash first when online; on-device Nano when offline or if the cloud call fails.
+ *  The returned reading has already passed the plain-code checks in validateLabel. */
+export async function readStrip(file: Blob): Promise<AiText<LabelReading>> {
+  const part = await filePart(file);
+  const parse = (s: string) => {
+    const r = parseLabel(s);
+    return r ? validateLabel(r) : null;
+  };
+  if (navigator.onLine) {
+    try {
+      const mode = InferenceMode.ONLY_IN_CLOUD;
+      return await run(mode, model(mode, { image: true, json: true }), [LABEL_PROMPT, part], parse);
+    } catch {
+      /* fall back to the on-device model below */
+    }
+  }
+  const mode = InferenceMode.ONLY_ON_DEVICE;
+  return run(mode, model(mode, { image: true, json: true }), [LABEL_PROMPT, part], parse);
 }
 
 const EXPLAIN_RULES =

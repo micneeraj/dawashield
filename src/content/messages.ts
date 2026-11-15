@@ -3,6 +3,7 @@
 // Wording rules: short, kind, calm; never "safe"; never "stop your medicine";
 // never suggest another medicine, dose or treatment.
 //
+// Clips are generated with Sarvam AI Bulbul (scripts/make-audio.mjs).
 // `clip` names the pre-recorded MP3 in public/audio/<lang>/<clip>.mp3.
 
 export type Lang = "hi" | "en";

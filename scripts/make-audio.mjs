@@ -1,48 +1,49 @@
-// Generate the pre-recorded voice clips with Azure TTS.
-// Reads AZURE_SPEECH_KEY / AZURE_SPEECH_REGION from the environment (never stored).
-//   public/audio/hi/*.mp3    hi-IN-SwaraNeural  (female, default)
-//   public/audio/hi-m/*.mp3  hi-IN-MadhurNeural (male)
-//   public/audio/en/*.mp3    en-IN-NeerjaNeural
+// Generate the pre-recorded voice clips with Sarvam AI (Bulbul TTS).
+// The key is read from .env (SARVAM_API_KEY) and never printed or stored elsewhere.
+//   public/audio/hi/*.mp3  Hindi  (hi-IN)
+//   public/audio/en/*.mp3  English (en-IN)
 // Run: npm run audio
 import { mkdir, writeFile } from "node:fs/promises";
+import { SarvamAIClient } from "sarvamai";
 import { CLIPS } from "../src/content/messages.ts";
 
-const key = process.env.AZURE_SPEECH_KEY;
-const region = process.env.AZURE_SPEECH_REGION;
-if (!key || !region) {
-  console.error("Set AZURE_SPEECH_KEY and AZURE_SPEECH_REGION");
+const key = process.env.SARVAM_API_KEY;
+if (!key) {
+  console.error("Set SARVAM_API_KEY in .env");
   process.exit(1);
 }
 
+const MODEL = "bulbul:v4-flash"; // latest Bulbul model per docs.sarvam.ai
 const VOICES = [
-  { dir: "hi", lang: "hi-IN", voice: "hi-IN-SwaraNeural", text: "hi" },
-  { dir: "hi-m", lang: "hi-IN", voice: "hi-IN-MadhurNeural", text: "hi" },
-  { dir: "en", lang: "en-IN", voice: "en-IN-NeerjaNeural", text: "en" },
+  { dir: "hi", lang: "hi-IN", speaker: "ritu_hi_customer_warm", text: "hi" },
+  { dir: "en", lang: "en-IN", speaker: "neha_en_customer", text: "en" },
 ];
 
-const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+const client = new SarvamAIClient({ apiSubscriptionKey: key });
 
 for (const v of VOICES) {
   await mkdir(`public/audio/${v.dir}`, { recursive: true });
   for (const c of CLIPS) {
-    const ssml =
-      `<speak version="1.0" xml:lang="${v.lang}"><voice name="${v.voice}">` +
-      `<prosody rate="-8%">${esc(c.text[v.text])}</prosody></voice></speak>`;
-    const res = await fetch(`https://${region}.tts.speech.microsoft.com/cognitiveservices/v1`, {
-      method: "POST",
-      headers: {
-        "Ocp-Apim-Subscription-Key": key,
-        "Content-Type": "application/ssml+xml",
-        "X-Microsoft-OutputFormat": "audio-24khz-48kbitrate-mono-mp3",
-        "User-Agent": "dawashield-audio",
-      },
-      body: ssml,
-    });
-    if (!res.ok) {
-      console.error(v.voice, c.clip, res.status, await res.text());
+    let res;
+    try {
+      res = await client.textToSpeech.convert({
+        text: c.text[v.text],
+        language_code: v.lang,
+        model: MODEL,
+        speaker: v.speaker,
+        pace: 0.9,
+        output_audio_codec: "mp3",
+      });
+    } catch (e) {
+      // Report the API error without echoing request headers (which carry the key).
+      console.error(`${v.dir}/${c.clip}: ${e?.statusCode ?? ""} ${JSON.stringify(e?.body ?? e?.message ?? e).slice(0, 300)}`);
       process.exit(1);
     }
-    const buf = Buffer.from(await res.arrayBuffer());
+    const buf = Buffer.from(res.audios.join(""), "base64");
+    if (buf.length < 1000) {
+      console.error(`${v.dir}/${c.clip}: audio too small (${buf.length} bytes)`);
+      process.exit(1);
+    }
     await writeFile(`public/audio/${v.dir}/${c.clip}.mp3`, buf);
     console.log(`${v.dir}/${c.clip}.mp3 ${buf.length} bytes`);
   }

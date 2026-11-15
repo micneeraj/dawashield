@@ -75,7 +75,7 @@ export default function Settings() {
         <div className="flex flex-col gap-2 p-4">
           <span className="flex items-center gap-2 text-[17px] font-semibold"><Volume2 size={20} className="text-brand-600" /> {t("voice")}</span>
           <Seg value={muted ? "off" : voice} onChange={(v) => { if (v === "off") setMuted(true); else { setMuted(false); setVoice(v); } }}
-            options={[{ v: "female", l: t("female") }, { v: "male", l: t("male") }, { v: "off", l: lang === "hi" ? "बंद" : "Off" }]} />
+            options={[{ v: "female", l: lang === "hi" ? "चालू" : "On" }, { v: "off", l: lang === "hi" ? "बंद" : "Off" }]} />
         </div>
         <div className="flex items-center gap-3 p-4">
           <Bell size={20} className="text-brand-600" />

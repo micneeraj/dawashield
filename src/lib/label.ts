@@ -1,0 +1,135 @@
+// Reading a medicine strip photo: strict parsing of the model's JSON, then
+// plain-code checks that catch the classic mistakes (licence number taken as
+// batch, manufacturing date taken as expiry). The user always confirms the
+// fields on screen before any check runs.
+import { parseModelJson } from "./json";
+import { parseExpiry } from "./expiry";
+
+export type LabelKey = "name" | "manufacturer" | "batch" | "expiry";
+export const LABEL_KEYS: LabelKey[] = ["name", "manufacturer", "batch", "expiry"];
+
+export interface LabelField {
+  value?: string;
+  source?: string; // exact text on the strip the value came from
+  confidence?: number; // 0..1 as reported by the model
+  uncertain?: boolean; // set by code checks or low confidence
+  note?: string; // why it is uncertain (for debugging / tests)
+}
+
+export interface LabelReading {
+  name: LabelField;
+  manufacturer: LabelField;
+  batch: LabelField;
+  expiry: LabelField;
+  mfd: LabelField; // read only to cross-check expiry; never shown as expiry
+}
+
+const LOW_CONFIDENCE = 0.6;
+
+const clean = (v: unknown, max = 120): string | undefined => {
+  if (typeof v !== "string" && typeof v !== "number") return undefined;
+  const s = String(v).replace(/\s+/g, " ").trim();
+  if (!s || /^(null|none|n\/a|na|unknown|not visible|not found|-)$/i.test(s)) return undefined;
+  return s.slice(0, max);
+};
+
+function field(raw: unknown, max?: number): LabelField {
+  if (raw && typeof raw === "object" && !Array.isArray(raw)) {
+    const o = raw as Record<string, unknown>;
+    const value = clean(o.value ?? o.text, max);
+    const c = Number(o.confidence);
+    return { value, source: clean(o.source ?? o.source_text ?? o.evidence, 160), confidence: Number.isFinite(c) ? Math.max(0, Math.min(1, c)) : undefined };
+  }
+  return { value: clean(raw, max) };
+}
+
+/** Parse model JSON. Accepts {field:{value,source,confidence}} or flat strings. */
+export function parseLabel(raw: string): LabelReading | null {
+  const o = parseModelJson(raw);
+  if (!o || typeof o !== "object" || Array.isArray(o)) return null;
+  const r = o as Record<string, unknown>;
+  const reading: LabelReading = {
+    name: field(r.name ?? r.medicine ?? r.product),
+    manufacturer: field(r.manufacturer ?? r.company),
+    batch: field(r.batch ?? r.batch_no, 40),
+    expiry: field(r.expiry ?? r.exp, 30),
+    mfd: field(r.mfd ?? r.mfg_date ?? r.manufacturing_date, 30),
+  };
+  return LABEL_KEYS.some((k) => reading[k].value) ? reading : null;
+}
+
+// "JK/01/08-09/156", "MNB/05/123", "G/28/1234" style drug manufacturing licence numbers.
+const LICENCE_PATTERN = /^[A-Z]{1,4}\s*\/\s*\d{1,3}\s*\/\s*\d{2,4}(\s*-\s*\d{2,4})?\s*\/\s*\d{2,5}$/i;
+const LICENCE_DIGITS = /^\d{1,3}\s*\/\s*\d{2,4}(\s*-\s*\d{2,4})?\s*\/\s*\d{2,5}$/; // prefix lost: "01/08/09/156"
+const SLASH_GROUPS = /^\d+(\s*[/-]\s*\d+){3,}$/; // 4+ number groups joined by / or -
+const BATCH_LABEL = /\b(B\.?\s*NO|BATCH(\s*NO)?|LOT(\s*NO)?)\b/i;
+const NOT_BATCH_LABEL = /\b(LIC|LICEN[CS]E|M\.?\s*L\.?|MFD|MFG|MRP|EXP|BARCODE|QR|GTIN|REG)\b/i;
+
+export function looksLikeLicence(value?: string, source?: string): boolean {
+  const v = (value ?? "").trim();
+  if (!v) return false;
+  if (/lic/i.test(v) || /lic/i.test(source ?? "")) return true;
+  return LICENCE_PATTERN.test(v) || LICENCE_DIGITS.test(v) || SLASH_GROUPS.test(v);
+}
+
+/** Plain-code checks on a model reading. Never invents values; only clears or flags. */
+export function validateLabel(input: LabelReading): LabelReading {
+  const r: LabelReading = JSON.parse(JSON.stringify(input));
+  for (const k of [...LABEL_KEYS, "mfd"] as const) {
+    if (r[k].value && r[k].confidence !== undefined && r[k].confidence! < LOW_CONFIDENCE) {
+      r[k].uncertain = true;
+      r[k].note = "low confidence";
+    }
+  }
+
+  // Batch: never a licence number; source must carry a batch label, not another label.
+  const b = r.batch;
+  if (b.value) {
+    if (looksLikeLicence(b.value, b.source)) {
+      r.batch = { source: b.source, uncertain: true, note: "rejected: looks like a manufacturing licence number" };
+    } else if (b.source && NOT_BATCH_LABEL.test(b.source) && !BATCH_LABEL.test(b.source)) {
+      r.batch = { source: b.source, uncertain: true, note: "rejected: source text is not a batch label" };
+    } else if (b.source && !BATCH_LABEL.test(b.source)) {
+      b.uncertain = true;
+      b.note = "no B.No / Batch / Lot label in source text";
+    }
+  }
+
+  // Expiry: never the MFD. If both are found, expiry must be the later date.
+  const e = r.expiry;
+  const exp = parseExpiry(e.value);
+  const mfd = parseExpiry(r.mfd.value);
+  if (e.value && e.source && /\b(MFD|MFG|MANUFACTUR)/i.test(e.source) && !/\bEXP|USE\s*BEFORE|BEST\s*BEFORE/i.test(e.source)) {
+    r.expiry = { source: e.source, uncertain: true, note: "rejected: source text is a manufacturing date" };
+  } else if (exp && mfd) {
+    if (exp.getTime() <= mfd.getTime()) {
+      // Swapped or misread. Only swap when the later date is clearly labelled EXP in its source.
+      if (r.mfd.source && /\bEXP|USE\s*BEFORE/i.test(r.mfd.source)) {
+        r.expiry = { value: r.mfd.value, source: r.mfd.source, confidence: r.mfd.confidence, uncertain: true, note: "swapped: later date was labelled EXP" };
+      } else {
+        e.uncertain = true;
+        e.note = "expiry is not later than MFD";
+      }
+    }
+  } else if (e.value && !exp) {
+    e.uncertain = true;
+    e.note = "unreadable date";
+  }
+  return r;
+}
+
+/** Merge two photos (e.g. front and the batch/expiry side). For each field keep
+ *  the value that is present, not uncertain, then higher confidence. */
+export function mergeLabels(a: LabelReading | null, b: LabelReading | null): LabelReading | null {
+  if (!a) return b;
+  if (!b) return a;
+  const score = (f: LabelField) => (f.value ? 2 : 0) + (f.uncertain ? 0 : 1) + (f.confidence ?? 0.5);
+  const out = {} as LabelReading;
+  for (const k of [...LABEL_KEYS, "mfd"] as const) out[k] = score(b[k]) > score(a[k]) ? b[k] : a[k];
+  return validateLabel(out);
+}
+
+/** Fields the user must look at: missing or uncertain. */
+export function needsCheck(f: LabelField): boolean {
+  return !f.value || !!f.uncertain;
+}

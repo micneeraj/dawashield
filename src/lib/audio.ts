@@ -4,9 +4,8 @@ import type { Lang } from "../content/messages";
 
 let current: HTMLAudioElement | null = null;
 
-export function clipDir(lang: Lang, voice: "female" | "male"): string {
-  if (lang === "en") return "en";
-  return voice === "male" ? "hi-m" : "hi";
+export function clipDir(lang: Lang, _voice?: "female" | "male"): string {
+  return lang === "en" ? "en" : "hi";
 }
 
 export async function playClip(clip: string, lang: Lang, voice: "female" | "male", muted: boolean): Promise<void> {
