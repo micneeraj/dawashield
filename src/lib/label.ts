@@ -3,7 +3,7 @@
 // batch, manufacturing date taken as expiry). The user always confirms the
 // fields on screen before any check runs.
 import { parseModelJson } from "./json";
-import { parseExpiry } from "./expiry";
+import { isPastOrToday, parseExpiry } from "./expiry";
 
 export type LabelKey = "name" | "manufacturer" | "batch" | "expiry";
 export const LABEL_KEYS: LabelKey[] = ["name", "manufacturer", "batch", "expiry"];
@@ -210,21 +210,35 @@ export function needsCloserPhoto(s: { reading: LabelReading | null; quality: Ima
   return s.quality !== "ok" && (!s.reading.batch.value || !s.reading.expiry.value);
 }
 
-/** Expiry safety: a read expiry in the past, or no MFD to cross-check it against,
- *  is never trusted straight away. The user must confirm the date on the strip. */
-export function expiryNeedsConfirm(r: LabelReading | null, now = new Date()): boolean {
-  if (!r?.expiry.value) return false;
-  const d = parseExpiry(r.expiry.value);
-  if (!d) return true;
-  return d.getTime() < now.getTime() || !r.mfd.value;
+/** EXP on or before MFD (both readable) means one of them is misread. */
+export function expiryNotAfterMfd(expiry?: string, mfd?: string): boolean {
+  const e = parseExpiry(expiry), m = parseExpiry(mfd);
+  return !!e && !!m && e.getTime() <= m.getTime();
 }
 
-/** What expiry is passed to the check. A past date only counts once the user has
- *  confirmed it (or typed it themselves); otherwise no "expired" warning is shown. */
-export function expiryForCheck(value: string, opts: { needsConfirm: boolean; confirmed: boolean; edited: boolean }, now = new Date()): string | undefined {
+/** Expiry safety: a read expiry in the past, on/before MFD, or with no MFD to
+ *  cross-check against, is never trusted straight away. */
+export function expiryNeedsConfirm(r: LabelReading | null, now = new Date()): boolean {
+  if (!r?.expiry.value) return false;
+  return isPastOrToday(r.expiry.value, now) || !r.mfd.value || expiryNotAfterMfd(r.expiry.value, r.mfd.value);
+}
+
+/** Confirm-screen rule, decided from the date currently in the field: show AMBER
+ *  with "Is the expiry date correct?" and the Yes button until the user taps Yes.
+ *  A date that is today or in the past ALWAYS asks, whatever the model said or the user typed. */
+export function expiryAsk(formExpiry: string, r: LabelReading | null, opts: { confirmed: boolean; edited: boolean }, now = new Date()): boolean {
+  const v = formExpiry.trim();
+  if (!v || opts.confirmed) return false;
+  if (isPastOrToday(v, now)) return true;
+  if (opts.edited) return false; // user typed a future date themselves
+  return expiryNeedsConfirm(r, now) || expiryNotAfterMfd(v, r?.mfd.value);
+}
+
+/** What expiry is passed to the check. A past/today date only counts once the user
+ *  tapped "Yes, this date is on the strip"; otherwise no "expired" warning is shown. */
+export function expiryForCheck(value: string, opts: { confirmed: boolean }, now = new Date()): string | undefined {
   const v = value.trim();
   if (!v) return undefined;
-  if (opts.edited || opts.confirmed || !opts.needsConfirm) return v;
-  const d = parseExpiry(v);
-  return d && d.getTime() < now.getTime() ? undefined : v;
+  if (opts.confirmed) return v;
+  return isPastOrToday(v, now) ? undefined : v;
 }

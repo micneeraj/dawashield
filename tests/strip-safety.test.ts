@@ -66,14 +66,13 @@ describe("3. expiry safety", () => {
   it("past expiry needs confirmation and is not passed to the check until confirmed", () => {
     const r = read(bad);
     expect(expiryNeedsConfirm(r, NOW)).toBe(true);
-    expect(expiryForCheck("JUN 2025", { needsConfirm: true, confirmed: false, edited: false }, NOW)).toBeUndefined();
-    expect(expiryForCheck("JUN 2025", { needsConfirm: true, confirmed: true, edited: false }, NOW)).toBe("JUN 2025");
-    expect(expiryForCheck("JUN 2025", { needsConfirm: true, confirmed: false, edited: true }, NOW)).toBe("JUN 2025");
+    expect(expiryForCheck("JUN 2025", { confirmed: false }, NOW)).toBeUndefined();
+    expect(expiryForCheck("JUN 2025", { confirmed: true }, NOW)).toBe("JUN 2025");
   });
   it("missing MFD needs confirmation even for a future date (but future date still counts)", () => {
     const r = read({ ...good, mfd: {} });
     expect(expiryNeedsConfirm(r, NOW)).toBe(true);
-    expect(expiryForCheck("JUN 2028", { needsConfirm: true, confirmed: false, edited: false }, NOW)).toBe("JUN 2028");
+    expect(expiryForCheck("JUN 2028", { confirmed: false }, NOW)).toBe("JUN 2028");
   });
   it("future expiry with MFD needs no extra confirmation", () => {
     expect(expiryNeedsConfirm(read(good), NOW)).toBe(false);

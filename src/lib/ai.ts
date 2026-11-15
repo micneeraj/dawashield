@@ -79,7 +79,8 @@ export const LABEL_PROMPT =
   '- batch: ONLY the text right after "B.No", "B. No.", "Batch No", "Batch" or "Lot". ' +
   "NEVER use the Mfg. Lic. No. / licence number (e.g. JK/01/08-09/156), MRP, barcode, QR or any date.\n" +
   '- expiry: ONLY the date right after "EXP", "Exp. Date", "Expiry" or "Use before". NEVER the MFD / Mfg. date.\n' +
-  '- mfd: the date after "MFD" / "Mfg. Date" (only used to cross-check; never put it in expiry).\n' +
+  '- mfd: ALWAYS look for the date after "MFD" / "Mfg. Date" / "Mfg." (often printed right above or below EXP, e.g. "MFD.JUL.2026") ' +
+  "and return it whenever visible; it is used to cross-check expiry. Never put it in expiry. Expiry is normally years AFTER mfd.\n" +
   '- manufacturer: company after "Mfd. by" / "Manufactured by" / "Mkd. by".\n' +
   "For every field return the exact source text it came from (label + value as printed) and your confidence 0 to 1. " +
   "If a field is not clearly visible return null for it. If the B.No / EXP text is blurred or too small to read with certainty, " +

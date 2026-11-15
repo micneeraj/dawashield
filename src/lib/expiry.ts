@@ -5,7 +5,7 @@ const MON = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT
 
 /** Returns the last day the medicine is valid, or null if unreadable. */
 export function parseExpiry(raw: string | null | undefined): Date | null {
-  const s = String(raw ?? "").toUpperCase().replace(/EXP(IRY)?\.?\s*(DATE)?\s*[:.]?/g, "").trim();
+  const s = String(raw ?? "").toUpperCase().replace(/EXP(IRY)?\.?\s*(DATE)?\s*[:.]?/g, "").replace(/^[\s.:,;'-]+|[\s.:,;'-]+$/g, "").trim();
   if (!s) return null;
   let y: number | undefined, m: number | undefined;
   let mm = s.match(/^(\d{4})-(\d{1,2})(?:-\d{1,2})?$/);
@@ -45,4 +45,12 @@ export function formatExpiry(raw: string | null | undefined, lang: "hi" | "en"):
   const d = parseExpiry(raw);
   if (!d) return raw || "—";
   return d.toLocaleDateString(lang === "hi" ? "hi-IN" : "en-IN", { month: "short", year: "numeric" });
+}
+
+/** True when the expiry is today or already past (or cannot be read). */
+export function isPastOrToday(raw: string | null | undefined, now = new Date()): boolean {
+  const d = parseExpiry(raw);
+  if (!d) return true;
+  const endOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
+  return d.getTime() <= endOfToday.getTime();
 }

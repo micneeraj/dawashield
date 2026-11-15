@@ -4,7 +4,7 @@ import { AlertTriangle, Camera, CheckCircle2, ImagePlus, ImageUp, Lightbulb, Rot
 import { useApp } from "../state";
 import { Button, Card, Page, SourceChip, Spinner, inputCls, cx } from "../components/ui";
 import { CloserPhotoNeeded, readStrip } from "../lib/ai";
-import { expiryForCheck, expiryNeedsConfirm, mergeLabels, needsCheck, type LabelKey, type LabelReading } from "../lib/label";
+import { expiryAsk, expiryForCheck, mergeLabels, needsCheck, type LabelKey, type LabelReading } from "../lib/label";
 import { ERRORS } from "../content/messages";
 import { useRunCheck } from "../useCheck";
 import type { Source } from "../lib/types";
@@ -91,7 +91,7 @@ export default function Photo() {
 
   const showConfirm = (reading || error) && !busy;
   const lastSource = sources[sources.length - 1];
-  const expiryConfirm = expiryNeedsConfirm(reading);
+  const expAsk = expiryAsk(form.expiry, reading, { confirmed: expiryOk, edited: !!edited.expiry });
 
   return (
     <Page title={lang === "hi" ? "फ़ोटो से जाँच" : "Photo check"}>
@@ -157,7 +157,7 @@ export default function Photo() {
           data-testid="confirm-screen"
           onSubmit={(e) => {
             e.preventDefault();
-            runCheck({ name: form.name, manufacturer: form.manufacturer, batch: form.batch, expiry: expiryForCheck(form.expiry, { needsConfirm: expiryConfirm, confirmed: expiryOk, edited: !!edited.expiry }), readSource: lastSource });
+            runCheck({ name: form.name, manufacturer: form.manufacturer, batch: form.batch, expiry: expiryForCheck(form.expiry, { confirmed: expiryOk }), readSource: lastSource });
           }}
         >
           <div className="flex items-center justify-between gap-2">
@@ -167,8 +167,8 @@ export default function Photo() {
 
           {(["name", "manufacturer", "batch", "expiry"] as LabelKey[]).map((k) => {
             const f = reading?.[k] ?? {};
-            const expAsk = k === "expiry" && expiryConfirm && !expiryOk && !edited.expiry && !!form.expiry;
-            const warn = expAsk || (!edited[k] && !(k === "expiry" && expiryOk) && (needsCheck(f) || !form[k]));
+            const ask = k === "expiry" && expAsk;
+            const warn = ask || (!edited[k] && !(k === "expiry" && expiryOk) && (needsCheck(f) || !form[k]));
             const big = k === "batch" || k === "expiry";
             return (
               <div key={k} className={cx("rounded-3xl border-2 p-4 transition", warn ? "border-amber-line bg-amber-soft" : "border-line bg-white")} data-testid={`field-${k}`} data-uncertain={warn ? "1" : "0"}>
@@ -180,7 +180,7 @@ export default function Photo() {
                   <input
                     className={cx(inputCls, big && "num text-[26px] font-bold tracking-wider", k === "name" && "font-semibold")}
                     value={form[k]}
-                    onChange={(e) => { setForm({ ...form, [k]: k === "batch" ? e.target.value.toUpperCase() : e.target.value }); setEdited({ ...edited, [k]: true }); }}
+                    onChange={(e) => { setForm({ ...form, [k]: k === "batch" ? e.target.value.toUpperCase() : e.target.value }); setEdited({ ...edited, [k]: true }); if (k === "expiry") setExpiryOk(false); }}
                     placeholder={k === "expiry" ? "MM/YYYY" : ""}
                     autoCapitalize={k === "batch" ? "characters" : undefined}
                     data-testid={`input-${k}`}
@@ -189,8 +189,8 @@ export default function Photo() {
                 <p className="mt-1.5 text-[14px] leading-snug text-muted">
                   {SOURCE[lang]}: <span className="font-medium text-ink/80">{f.source ? `“${f.source}”` : NOT_FOUND[lang]}</span>
                 </p>
-                {warn && <p className="mt-1 text-[15px] font-semibold text-amber-ink" data-testid={k === "expiry" && expAsk ? "expiry-check" : undefined}>{expAsk ? EXPIRY_CHECK[lang] : CHECK_ON_STRIP[lang]}</p>}
-                {expAsk && (
+                {warn && <p className="mt-1 text-[15px] font-semibold text-amber-ink" data-testid={ask ? "expiry-check" : undefined}>{ask ? EXPIRY_CHECK[lang] : CHECK_ON_STRIP[lang]}</p>}
+                {ask && (
                   <button type="button" className="mt-2 rounded-2xl border-2 border-amber-line bg-white px-4 py-2 text-[16px] font-semibold text-amber-ink" onClick={() => setExpiryOk(true)} data-testid="expiry-yes">{EXPIRY_YES[lang]}</button>
                 )}
               </div>
