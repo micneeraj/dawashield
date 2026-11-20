@@ -6,6 +6,8 @@ import { useApp } from "../state";
 import { Button, Card, Disclaimer, ErrorCard, LEVEL_STYLE, Page, SourceChip, Spinner, cx, inputCls } from "../components/ui";
 import { RecordCard } from "../components/RecordCard";
 import { HowMade, PipelineStrip, RedFacts, WhyPanel } from "../components/ResultParts";
+import { CalendarButton, DemoBadge, GreyNextSteps, SourceBlock, WhatItMeans, WrongResultSheet } from "../components/ResultExtras";
+import { PushOffer } from "../components/PushOffer";
 import { Sheet } from "../components/Sheet";
 import { AMBER_REASON, DISPOSAL, ERRORS, EXPIRY, OFFICIAL, RESULT, VOICE, familyMessage } from "../content/messages";
 import { askChat, explainRecord, startRecordChat } from "../lib/ai";
@@ -13,6 +15,7 @@ import { db, type FamilyMember } from "../lib/db";
 import { expiryStatus, formatExpiry } from "../lib/expiry";
 import { monthLabel } from "../lib/format";
 import { notify } from "../lib/sync";
+import { syncMeds } from "../lib/cloud";
 import type { Source } from "../lib/types";
 
 const WHO = { hi: ["माँ", "पापा", "मैं", "दादी", "दादा"], en: ["Maa", "Papa", "Me", "Dadi", "Dada"] };
@@ -23,6 +26,9 @@ export default function Result() {
   const [saveOpen, setSaveOpen] = useState(false);
   const [familyOpen, setFamilyOpen] = useState(false);
   const [saved, setSaved] = useState(!!check?.cabinetId);
+  const [wrongOpen, setWrongOpen] = useState(false);
+  const [justSaved, setJustSaved] = useState(false);
+  const onSaved = () => { setSaved(true); setJustSaved(true); bumpCabinet(); void syncMeds(lang); };
 
   if (!check) return <Page title="—"><p>{ERRORS.noData[lang]}</p></Page>;
   const { input, result } = check;
@@ -35,6 +41,7 @@ export default function Result() {
 
   return (
     <Page title={lang === "hi" ? "नतीजा" : "Result"} onBack={() => go({ name: "home" })}>
+      {input.demo && <DemoBadge />}
       {/* Fixed, pre-written result. Colour is always paired with an icon and a word. */}
       <motion.section
         initial={{ opacity: 0, y: 14, scale: 0.98 }}
@@ -62,6 +69,9 @@ export default function Result() {
       </motion.section>
 
       {level === "RED" && result.records[0] && <RedFacts r={result.records[0]} />}
+      <WhatItMeans check={check} />
+      {level === "GREY" && <GreyNextSteps saved={saved} onSave={() => void quickSave(check, dataset?.meta.version ?? "").then(onSaved)} onReport={() => go({ name: "report" })} />}
+      {justSaved && <PushOffer className="mt-4" />}
       <WhyPanel check={check} />
       <HowMade check={check} />
 
@@ -104,6 +114,10 @@ export default function Result() {
           {saved ? t("savedToCabinet") : t("saveToCabinet")}
         </Button>
         <Button variant="ghost" icon={<RotateCcw size={21} />} onClick={() => go({ name: "home" })}>{t("checkAnother")}</Button>
+        {input.expiry && <CalendarButton className="col-span-2" name={input.name || input.batch || ""} expiry={input.expiry} who={input.who} />}
+        <Button variant="ghost" className="col-span-2 text-[16px]" icon={<Flag size={19} />} onClick={() => setWrongOpen(true)} data-testid="wrong-result">
+          {lang === "hi" ? "गलत नतीजा? बताइए" : "Report a wrong result"}
+        </Button>
       </div>
 
       {/* The official records */}
@@ -114,7 +128,7 @@ export default function Result() {
             {records.map((r, i) => (
               <div key={r.id} className="space-y-3">
                 <RecordCard r={r} />
-                {i === 0 && <Explain key={r.id} recordIndex={0} />}
+                {i === 0 && online && <Explain key={r.id} recordIndex={0} />}
               </div>
             ))}
           </div>
@@ -126,17 +140,25 @@ export default function Result() {
         </section>
       )}
 
-      <p className="mt-5 text-center text-[15px] text-muted" data-testid="data-upto">
-        {t("dataUpTo")}: <b className="text-ink">{monthLabel(dataset?.meta.latestMonth, lang)}</b>
-        {dataset && <> · {lang === "hi" ? "अपडेट" : "synced"} {dataset.meta.lastSynced}</>}
-        {!online && <> · {t("offline")}</>}
-      </p>
+      <SourceBlock check={check} />
+      {!online && <p className="mt-3 text-center text-[15px] font-semibold text-brand-800">{t("offline")}</p>}
       <Disclaimer className="mt-3" />
 
-      <SaveSheet open={saveOpen} onClose={() => setSaveOpen(false)} onSaved={() => { setSaved(true); bumpCabinet(); }} />
+      <SaveSheet open={saveOpen} onClose={() => setSaveOpen(false)} onSaved={onSaved} />
+      <WrongResultSheet open={wrongOpen} onClose={() => setWrongOpen(false)} check={check} />
       <FamilySheet open={familyOpen} onClose={() => setFamilyOpen(false)} onSent={() => say(VOICE.familySent.clip)} />
     </Page>
   );
+}
+
+/** One-tap save from a result (used under GREY): no questions asked. */
+async function quickSave(check: NonNullable<ReturnType<typeof useApp>["check"]>, version: string): Promise<void> {
+  const { input, result } = check;
+  await db.cabinet.add({
+    name: input.name || input.batch || "", batch: input.batch ?? "", manufacturer: input.manufacturer, expiry: input.expiry, who: input.who,
+    addedAt: new Date().toISOString(),
+    lastCheck: { level: result.level, reason: result.reason, recordIds: result.records.map((r) => r.id), version, at: new Date().toISOString() },
+  });
 }
 
 function ExpiryBadge({ status }: { status: "valid" | "soon" | "expired" | "unknown" }) {

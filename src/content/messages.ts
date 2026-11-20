@@ -30,8 +30,8 @@ export const RESULT = {
       en: "This batch appears in an official CDSCO quality alert",
     },
     body: {
-      hi: "सलाह के लिए जल्द से जल्द अपने फार्मासिस्ट या दवा लिखने वाले डॉक्टर से संपर्क कीजिए। सिर्फ़ इस चेतावनी के आधार पर अपना इलाज न बदलें और न बंद करें।",
-      en: "Contact your pharmacist or prescribing doctor promptly for advice. Do not change or stop your treatment based only on this alert.",
+      hi: "अपने डॉक्टर या केमिस्ट से बात किए बिना अगली खुराक न लें। ज़रूरी दवा कभी भी अचानक बंद न करें।",
+      en: "Don't take the next dose until you speak to your doctor or chemist. Never stop an essential medicine suddenly.",
     },
   },
   AMBER: {
@@ -42,26 +42,34 @@ export const RESULT = {
       en: "A possible match was found",
     },
     body: {
-      hi: "कृपया पत्ते पर बैच नंबर या कंपनी का नाम दोबारा मिला लीजिए, और फार्मासिस्ट से पूछ लीजिए।",
-      en: "Please check the batch number or company name on the strip again, and ask your pharmacist.",
+      hi: "यह पक्का मेल नहीं है। कृपया पत्ते पर बैच नंबर और कंपनी का नाम दोबारा मिलाइए, और अपने केमिस्ट से जाँच करवाइए।",
+      en: "This is not a confirmed match. Please check the batch number and company name on the strip again, and check with your chemist.",
     },
   },
   GREY: {
     clip: "grey",
-    word: { hi: "कोई चेतावनी नहीं मिली", en: "No alert found" },
+    word: { hi: "कोई सरकारी चेतावनी नहीं मिली", en: "No official alert found" },
     title: {
-      hi: "डाउनलोड की गई सूची में इस बैच पर कोई चेतावनी नहीं मिली",
-      en: "No alert was found for this batch in the downloaded list",
+      hi: "इस बैच पर कोई सरकारी चेतावनी नहीं मिली।",
+      en: "No official alert found for this batch.",
     },
     body: {
-      hi: "यह सुरक्षा की गारंटी नहीं है। हर राज्य हर महीने जाँच की जानकारी नहीं भेजता। कोई शक हो तो फार्मासिस्ट से पूछिए।",
-      en: "This is not a safety guarantee. Not every state sends test results every month. If you have any doubt, ask your pharmacist.",
+      hi: "इसका मतलब यह नहीं कि दवा जाँच में सुरक्षित पाई गई है। CDSCO की सूचियाँ देर से आती हैं।",
+      en: "This does not mean the medicine is tested safe. CDSCO lists come out late.",
     },
   },
 } as const;
 
 /** Extra line explaining why an AMBER result is amber. */
 export const AMBER_REASON: Record<string, T> = {
+  "possible-company": {
+    hi: "बैच नंबर सूची से पूरा मिलता है, पर कंपनी का नाम पूरी तरह नहीं मिलता। यह वही कंपनी हो सकती है। कृपया केमिस्ट से जाँच करवाइए।",
+    en: "The batch number matches the list exactly, but the company name only partly matches. It may be the same company. Please check with your chemist.",
+  },
+  "batch-other-company": {
+    hi: "यही बैच नंबर सूची में है, पर दूसरी कंपनी के नाम से। अलग कंपनियों के बैच नंबर एक जैसे हो सकते हैं। कृपया पत्ते पर कंपनी का नाम मिलाइए।",
+    en: "This batch number is on the list, but under a different company. Different companies can use the same batch number. Please check the company name on the strip.",
+  },
   "near-batch": {
     hi: "आपका बैच नंबर एक चेतावनी वाले बैच से सिर्फ़ एक अक्षर अलग है। हो सकता है पढ़ने या लिखने में गलती हुई हो।",
     en: "Your batch number is one character away from a batch on the alert list. It may be a reading or typing mistake.",
@@ -71,13 +79,49 @@ export const AMBER_REASON: Record<string, T> = {
     en: "This batch number is on the alert list, but under a different medicine name. Please check the medicine name.",
   },
   company: {
-    hi: "इस कंपनी पर सरकारी कार्रवाई दर्ज है, पर आपका बैच सूची में नहीं है। इसका मतलब यह नहीं कि सभी बैच खराब हैं। दायरा फार्मासिस्ट से पूछिए।",
-    en: "This company has official action on record, but your batch is not on the list. This does not mean all batches are affected. Check the scope with your pharmacist.",
+    hi: "इस कंपनी के कुछ खास बैच सरकारी सूची में हैं, पर आपका बैच उनमें नहीं है। चेतावनी सिर्फ़ सूची में लिखे बैचों पर है, कंपनी के सभी बैचों पर नहीं। शक हो तो केमिस्ट से पूछिए।",
+    en: "Some specific batches from this company are on the official list, but your batch is not one of them. The alert covers only the listed batches, not all of this company's batches. Ask your chemist if unsure.",
   },
   "name-no-batch": {
     hi: "इस दवा के कुछ बैच चेतावनी सूची में हैं। सही जानकारी के लिए पत्ते पर लिखा बैच नंबर डालिए।",
     en: "Some batches of this medicine are on the alert list. Please enter the batch number printed on the strip to check properly.",
   },
+};
+
+/** Useful next steps under every GREY result. */
+export const GREY_STEPS: { key: "expiry" | "chemist" | "save" | "report"; title: T; body: T }[] = [
+  {
+    key: "expiry",
+    title: { hi: "समाप्ति तिथि देखिए", en: "Check the expiry date" },
+    body: { hi: "पत्ते पर EXP के आगे लिखी तारीख़ देखिए। तारीख़ निकल गई हो तो दवा न लें, केमिस्ट को दिखाइए।", en: "Look for the date after EXP on the strip. If it has passed, don't take it; show it to your chemist." },
+  },
+  {
+    key: "chemist",
+    title: { hi: "लाइसेंस वाले केमिस्ट से, बिल के साथ", en: "Buy from a licensed chemist, with a bill" },
+    body: { hi: "दवा सिर्फ़ लाइसेंस वाली दुकान से खरीदिए और हमेशा पक्का बिल लीजिए।", en: "Buy medicines only from a licensed shop and always take a proper bill." },
+  },
+  {
+    key: "save",
+    title: { hi: "बाद में चेतावनी आए तो ख़बर पाइए", en: "Get alerted if it is flagged later" },
+    body: { hi: "एक बार दबाकर दवा पेटी में सहेजिए। नई सरकारी सूची में यह बैच आया तो हम अपने-आप बताएँगे।", en: "Save it to your cabinet with one tap. If a new official list includes this batch, we tell you automatically." },
+  },
+  {
+    key: "report",
+    title: { hi: "शक हो तो CDSCO को बताइए", en: "Suspicious? Report it to CDSCO" },
+    body: { hi: "रंग, गंध, पैकिंग या असर अजीब लगे तो CDSCO को शिकायत भेजिए। हम संदेश लिखने में मदद करते हैं।", en: "If the colour, smell, packing or effect seems wrong, report it to CDSCO. We help you write the message." },
+  },
+];
+
+/** Shown once, before the first check. */
+export const FIRST_RUN: { title: T; points: T[]; ok: T } = {
+  title: { hi: "शुरू करने से पहले", en: "Before you start" },
+  points: [
+    { hi: "दवा कवच आपकी दवा का बैच CDSCO (भारत के दवा नियामक) की गुणवत्ता चेतावनियों से मिलाता है।", en: "DawaShield matches your medicine's batch against official quality alerts from CDSCO, India's drug regulator." },
+    { hi: "यह दवा की जाँच नहीं करता। 'कोई चेतावनी नहीं' का मतलब 'सुरक्षित' नहीं है, क्योंकि सरकारी सूचियाँ देर से आती हैं।", en: "It does not test the medicine. 'No alert' does not mean 'safe', because official lists come out late." },
+    { hi: "यह कभी कोई दवा नहीं सुझाता। इलाज के हर फ़ैसले के लिए अपने डॉक्टर या केमिस्ट से बात कीजिए।", en: "It never suggests any medicine. Talk to your doctor or chemist about every treatment decision." },
+    { hi: "आपकी दवाएँ इसी फ़ोन में रहती हैं। कोई खाता, नाम या फ़ोन नंबर नहीं माँगा जाता।", en: "Your medicines stay on this phone. No account, name or phone number is asked for." },
+  ],
+  ok: { hi: "समझ गया, आगे बढ़ें", en: "I understand, continue" },
 };
 
 export const DISCLAIMER: T = {
@@ -240,7 +284,7 @@ export function familyMessage(lang: Lang, o: { level: "RED" | "AMBER"; who?: str
       `बैच: ${o.batch}`,
       `CDSCO चेतावनी: ${o.month}`,
       o.level === "RED"
-        ? "सलाह के लिए जल्द से जल्द फार्मासिस्ट या दवा लिखने वाले डॉक्टर से संपर्क करें। सिर्फ़ इस चेतावनी के आधार पर इलाज न बदलें और न बंद करें।"
+        ? "डॉक्टर या केमिस्ट से बात किए बिना अगली खुराक न लें। ज़रूरी दवा कभी भी अचानक बंद न करें।"
         : "कृपया बैच नंबर मिलाएँ और फार्मासिस्ट से पूछें।",
       `स्रोत: ${o.link}`,
     ].filter(Boolean).join("\n");
@@ -252,7 +296,7 @@ export function familyMessage(lang: Lang, o: { level: "RED" | "AMBER"; who?: str
     `Batch: ${o.batch}`,
     `CDSCO alert: ${o.month}`,
     o.level === "RED"
-      ? "Contact your pharmacist or prescribing doctor promptly for advice. Do not change or stop your treatment based only on this alert."
+      ? "Don't take the next dose until you speak to your doctor or chemist. Never stop an essential medicine suddenly."
       : "Please check the batch number and ask a pharmacist.",
     `Source: ${o.link}`,
   ].filter(Boolean).join("\n");
@@ -287,6 +331,9 @@ export function complaintMessage(lang: Lang, o: { name: string; batch: string; m
 /** All clips the app needs, with their exact spoken text. Used by scripts/make-audio.mjs. */
 export const CLIPS: { clip: string; text: T }[] = [
   ...Object.values(VOICE),
+  ...Object.entries(AMBER_REASON).map(([k, text]) => ({ clip: `amber_${k.replace(/-/g, "_")}`, text })),
+  { clip: "grey_steps", text: { hi: GREY_STEPS.map((x) => x.title.hi).join("। ") + "।", en: GREY_STEPS.map((x) => x.title.en).join(". ") + "." } },
+  { clip: "first_run", text: { hi: FIRST_RUN.points.map((x) => x.hi).join(" "), en: FIRST_RUN.points.map((x) => x.en).join(" ") } },
   ...(["RED", "AMBER", "GREY"] as const).map((k) => ({
     clip: RESULT[k].clip,
     text: { hi: `${RESULT[k].title.hi}। ${RESULT[k].body.hi}`, en: `${RESULT[k].title.en}. ${RESULT[k].body.en}` },

@@ -1,0 +1,67 @@
+{
+  "generatedAt": "2026-11-20",
+  "datasetVersion": "033e977bb56d2587",
+  "records": 4158,
+  "matching": {
+    "cases": 428,
+    "verifiedRecords": 55,
+    "precision": 1,
+    "recall": 1,
+    "falseGreyRate": 0,
+    "redWhenExact": 0.974169741697417,
+    "msPerCheck": 2.81,
+    "groups": [
+      {
+        "group": "exact name + batch",
+        "cases": 55,
+        "accuracy": 1
+      },
+      {
+        "group": "format variant (B.No., spaces, hyphens, lowercase)",
+        "cases": 55,
+        "accuracy": 0.9454545454545454
+      },
+      {
+        "group": "misspelt medicine name",
+        "cases": 55,
+        "accuracy": 0.9272727272727272
+      },
+      {
+        "group": "batch + exact company",
+        "cases": 53,
+        "accuracy": 1
+      },
+      {
+        "group": "batch + company spelling variant",
+        "cases": 53,
+        "accuracy": 1
+      },
+      {
+        "group": "OCR swap (0/O, 1/I, 5/S)",
+        "cases": 47,
+        "accuracy": 1
+      },
+      {
+        "group": "negative: unlisted batch",
+        "cases": 55,
+        "accuracy": 1
+      },
+      {
+        "group": "negative: unlisted batch + unrelated company",
+        "cases": 55,
+        "accuracy": 1
+      }
+    ]
+  },
+  "speech": {
+    "cases": 60,
+    "top1": 0.9833333333333333,
+    "top3": 1,
+    "dictionary": 2616
+  },
+  "photo": {
+    "images": 0,
+    "fields": null,
+    "note": "No strip images in data/eval_images yet (see its README)."
+  }
+}

@@ -18,10 +18,17 @@ export type Screen =
   | { name: "settings" }
   | { name: "privacy" }
   | { name: "about" }
-  | { name: "report" };
+  | { name: "report" }
+  | { name: "how" }
+  | { name: "why" }
+  | { name: "invite"; code: string };
 
 export interface CheckInput extends StripReading {
   who?: string;
+  /** Started from the labelled "Try a demo" button. */
+  demo?: boolean;
+  /** Photo fields that were low-confidence and not confirmed by the user. */
+  uncertain?: boolean;
   readSource?: Source; // who read the photo / understood speech (SDK inferenceSource)
   /** What the AI understood, shown in the result's pipeline strip. */
   understood?: { via: "speech" | "photo"; heard?: string; items: { label: { hi: string; en: string }; value: string }[] };
@@ -68,6 +75,8 @@ interface Ctx {
   dataMeta: DatasetMeta | null;
   syncing: boolean;
   sync(): Promise<boolean>;
+  /** Dataset download progress (bytes), while downloading. */
+  download: { loaded: number; total: number } | null;
   screen: Screen;
   go(s: Screen): void;
   back(): void;
@@ -91,7 +100,15 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [dataset, setDataset] = useState<Dataset | null>(null);
   const [metaFirst, setMetaFirst] = useState<DatasetMeta | null>(null);
   const [syncing, setSyncing] = useState(false);
-  const [stack, setStack] = useState<Screen[]>([{ name: "home" }]);
+  const [download, setDownload] = useState<{ loaded: number; total: number } | null>(null);
+  const onProgress = useCallback((loaded: number, total: number) => setDownload(loaded >= total ? null : { loaded, total }), []);
+  const [stack, setStack] = useState<Screen[]>(() => {
+    try {
+      const code = new URLSearchParams(location.search).get("invite");
+      if (code) return [{ name: "home" }, { name: "invite", code }];
+    } catch { /* ignore */ }
+    return [{ name: "home" }];
+  });
   const [check, setCheck] = useState<CheckState | null>(null);
   const [cabinetVersion, setCV] = useState(0);
   const [lastAi, setLastAi] = useState<Source | null>(null);
@@ -115,7 +132,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const sync = useCallback(async () => {
     setSyncing(true);
     try {
-      const fresh = await syncIfNewer(dataset);
+      const fresh = await syncIfNewer(dataset, onProgress);
       if (fresh) { setDataset(fresh); setCV((v) => v + 1); return true; }
       return false;
     } finally {
@@ -127,10 +144,12 @@ export function AppProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     fetch("/data/meta.json").then((r) => r.json()).then((m: DatasetMeta) => setMetaFirst((x) => x ?? m)).catch(() => {});
     (async () => {
-      const ds = await loadDataset();
+      const ds = await loadDataset(onProgress);
+      setDownload(null);
       setDataset(ds);
       if (ds) { await recheckCabinet(ds); setCV((v) => v + 1); }
-      const fresh = await syncIfNewer(ds);
+      const fresh = await syncIfNewer(ds, onProgress);
+      setDownload(null);
       if (fresh) { setDataset(fresh); setCV((v) => v + 1); }
       await expiryReminders(lang);
       await flushQueue();
@@ -139,7 +158,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const value = useMemo<Ctx>(() => ({
-    lang, setLang, t, voice, setVoice, muted, setMuted, say, online, dataset, dataMeta: dataset?.meta ?? metaFirst, syncing, sync,
+    lang, setLang, t, voice, setVoice, muted, setMuted, say, online, dataset, dataMeta: dataset?.meta ?? metaFirst, syncing, sync, download,
     screen: stack[stack.length - 1],
     go: (s) => {
       setStack((st) => (s.name === "home" ? [s] : [...st, s]));
@@ -151,7 +170,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     cabinetVersion, bumpCabinet: () => setCV((v) => v + 1),
     lastAi, noteAi: setLastAi,
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }), [lang, t, voice, muted, say, online, dataset, metaFirst, syncing, sync, stack, check, cabinetVersion, lastAi]);
+  }), [lang, t, voice, muted, say, online, dataset, metaFirst, syncing, sync, download, stack, check, cabinetVersion, lastAi]);
 
   return <C.Provider value={value}>{children}</C.Provider>;
 }

@@ -12,17 +12,16 @@ const meta = metaJson as unknown as DatasetMeta;
 
 describe("safer RED wording", () => {
   const en = `${RESULT.RED.title.en}. ${RESULT.RED.body.en}`;
-  it("uses the exact mentor wording", () => {
-    expect(en).toBe("This batch appears in an official CDSCO quality alert. Contact your pharmacist or prescribing doctor promptly for advice. Do not change or stop your treatment based only on this alert.");
+  it("uses the exact required wording", () => {
+    expect(en).toBe("This batch appears in an official CDSCO quality alert. Don't take the next dose until you speak to your doctor or chemist. Never stop an essential medicine suddenly.");
   });
   it("voice clip text and family message use it too, in both languages", () => {
     const clip = CLIPS.find((c) => c.clip === "red")!;
-    expect(clip.text.en).toContain("Do not change or stop your treatment based only on this alert");
+    expect(clip.text.en).toContain("Never stop an essential medicine suddenly");
     expect(clip.text.hi).toContain(RESULT.RED.body.hi);
     const fam = familyMessage("en", { level: "RED", name: "X", batch: "B", month: "June 2025", link: "u" });
-    expect(fam).toContain("Contact your pharmacist or prescribing doctor promptly");
-    expect(fam).not.toMatch(/suddenly|next dose/);
-    expect(familyMessage("hi", { level: "RED", name: "X", batch: "B", month: "m", link: "u" })).not.toContain("अचानक");
+    expect(fam).toContain("Don't take the next dose until you speak to your doctor or chemist");
+    expect(familyMessage("hi", { level: "RED", name: "X", batch: "B", month: "m", link: "u" })).toContain("अचानक बंद न करें");
   });
 });
 

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Bell, ChevronRight, Cpu, Database, Info, Languages, Lock, RefreshCw, CheckCircle2, Volume2, WifiOff } from "lucide-react";
+import { ChevronRight, Cpu, Database, Info, Languages, Lock, RefreshCw, CheckCircle2, Sparkles, Volume2, WifiOff, HardDriveDownload } from "lucide-react";
+import { PushOffer } from "../components/PushOffer";
 import { useApp } from "../state";
 import { Button, Card, Page, cx } from "../components/ui";
 import { Facts } from "../components/ui";
@@ -24,7 +25,6 @@ export default function Settings() {
   const { t, lang, setLang, voice, setVoice, muted, setMuted, dataset, sync, syncing, online, go } = useApp();
   const [nano, setNano] = useState("…");
   const [nanoImg, setNanoImg] = useState("…");
-  const [perm, setPerm] = useState(("Notification" in self ? Notification.permission : "denied") as NotificationPermission);
   const [syncMsg, setSyncMsg] = useState("");
   useEffect(() => { nanoAvailability().then(setNano); nanoAvailability(true).then(setNanoImg); }, []);
   const m = dataset?.meta;
@@ -47,6 +47,8 @@ export default function Settings() {
               [t("lastSynced"), m.lastSynced],
               [t("coverage"), `${monthLabel(m.earliestMonth, lang)} – ${monthLabel(m.latestMonth, lang)}`],
               ["NSQ / Spurious", `${m.nsq.toLocaleString("en-IN")} / ${m.spurious}`],
+              ...(m.gzipBytes ? [[lang === "hi" ? "डाउनलोड का आकार" : "Download size", `${(m.gzipBytes / 1e6).toFixed(1)} MB${m.bytes ? (lang === "hi" ? ` (खुलकर ${(m.bytes / 1e6).toFixed(1)} MB)` : ` (${(m.bytes / 1e6).toFixed(1)} MB unpacked)`) : ""}`]] : []),
+              ...(m.lastChecked ? [[lang === "hi" ? "आख़िरी जाँच" : "Last checked", m.lastChecked]] : []),
             ].map(([k, v]) => (
               <div key={k} className="bg-white px-4 py-3">
                 <dt className="text-[13px] font-semibold uppercase tracking-wide text-muted">{k}</dt>
@@ -79,12 +81,6 @@ export default function Settings() {
           <Seg value={muted ? "off" : voice} onChange={(v) => { if (v === "off") setMuted(true); else { setMuted(false); setVoice(v); } }}
             options={[{ v: "female", l: lang === "hi" ? "चालू" : "On" }, { v: "off", l: lang === "hi" ? "बंद" : "Off" }]} />
         </div>
-        <div className="flex items-center gap-3 p-4">
-          <Bell size={20} className="text-brand-600" />
-          <span className="flex-1 text-[17px] font-semibold">{t("notifications")}</span>
-          {perm === "granted" ? <span className="font-semibold text-brand-700">{t("enabled")}</span> :
-            <Button variant="soft" onClick={async () => setPerm(await Notification.requestPermission())} disabled={perm === "denied"}>{t("enable")}</Button>}
-        </div>
         <div className="flex items-start gap-3 p-4">
           <Cpu size={20} className="mt-0.5 text-brand-600" />
           <span className="flex-1">
@@ -102,7 +98,17 @@ export default function Settings() {
         </div>
       </Card>
 
+      <PushOffer settings className="mt-4" />
+      <p className="mt-2 flex items-center gap-1.5 px-1 text-[14px] text-muted"><HardDriveDownload size={15} aria-hidden /> {lang === "hi" ? "सूचना नहीं चाहिए? हर दवा पर 'कैलेंडर में जोड़ें' भी है।" : "Prefer no notifications? Every medicine also has 'Add expiry to my calendar'."}</p>
+
       <Card className="mt-4 divide-y divide-line/70">
+        {([["how", Cpu, lang === "hi" ? "यह कैसे काम करता है" : "How it works"], ["why", Sparkles, lang === "hi" ? "दवा कवच क्यों" : "Why DawaShield"]] as const).map(([k, Icon, label]) => (
+          <button key={k} onClick={() => go({ name: k })} className="flex min-h-[60px] w-full items-center gap-3 px-4 text-left">
+            <Icon size={20} className="text-brand-600" />
+            <span className="flex-1 text-[17px] font-semibold">{label}</span>
+            <ChevronRight className="text-muted" />
+          </button>
+        ))}
         {([["privacy", Lock], ["about", Info]] as const).map(([k, Icon]) => (
           <button key={k} onClick={() => go({ name: k })} className="flex min-h-[60px] w-full items-center gap-3 px-4 text-left">
             <Icon size={20} className="text-brand-600" />

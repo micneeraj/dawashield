@@ -1,6 +1,6 @@
 # DawaShield · दवा कवच
 
-**A medicine companion for every Indian home.** Speak in Hindi or English, or show a photo of a medicine strip, and DawaShield checks your family's medicines against official **CDSCO** drug-quality alerts (NSQ = Not of Standard Quality, and spurious). It works **even without internet**.
+**A medicine companion for every Indian home.** Speak in Hindi or English, type, or show a photo of a medicine strip, and DawaShield checks your family's medicines against official **CDSCO** drug-quality alerts (NSQ = Not of Standard Quality, and spurious). The check **works without internet, on cheap Android phones**.
 
 > Your mother's medicine cabinet shouldn't need an internet connection, English literacy or a technical understanding of batch numbers to stay informed about medicine safety.
 
@@ -10,115 +10,102 @@ Entry for Google's **#BuildHybridAI 2026** hackathon. Live: **https://dawashield
 
 ## The problem
 
-Every month CDSCO, India's drug regulator, and the state drug labs publish lists of medicine batches that failed quality tests or were found to be fake. They come out as PDFs and tables on a government website, in English, organised by batch number. The people most at risk (elderly parents managing five strips a day, families in small towns, anyone who reads Hindi more easily than English) are the least likely to ever see them.
+CDSCO, India's drug regulator, and the state drug labs publish lists of medicine batches that failed quality tests or were found to be fake. They come out about a month late, as PDFs and tables on a government website, in English, organised by batch number. The people most at risk (elderly parents managing five strips a day, families in small towns, anyone who reads Hindi more easily than English) are the least likely to ever see them.
 
-## What DawaShield does
+## Features
 
-| # | Feature | How |
+| | Feature | How |
 |---|---|---|
-| 1 | **Voice check** (Hindi / English) | Guided flow: say the medicine → pick from 2–4 big cards → give the batch → result |
-| 2 | **Photo check** | Snap the strip; AI reads name, batch, manufacturer, expiry; you confirm |
-| 3 | **Offline mode** | PWA caches the app, the full dataset and voice clips; on-device Gemini Nano |
-| 4 | **Sourced result** | Red / amber / grey card with the full government record and a link to the CDSCO source |
-| 5 | **Home medicine cabinet** | Save medicines per person (Maa, Papa…); auto re-check on every new dataset and monthly |
-| 6 | **Expiry reminder** | Valid / Expires soon / Expired badges, local notification ~5 days before, official disposal tip |
-| 7 | **Family alert** | One tap opens WhatsApp (`wa.me`) with a pre-filled message; queued if offline |
-| 8 | **Report it** | Pre-filled complaint + verified official channels (CDSCO, PvPI) |
+| 1 | **Voice check (Hindi / English)** | Say the medicine name. Garbled speech-to-text is matched **offline** with Hindi-aware phonetic + fuzzy matching against a 2,600+ name dictionary; pick from 2–4 big buttons |
+| 2 | **Photo check** | Auto-crop, grayscale, glare reduction, CLAHE contrast boost, sharpen → two AI reads → per-field confidence; low confidence = amber "please confirm". Second photo merges fields. Big-button batch keypad always one tap away |
+| 3 | **Works offline on any phone** | Installable PWA; full dataset in IndexedDB (~0.5 MB download); matching is pure rule-based code. Gemini Nano / Flash are extras, with capability detection and fallback |
+| 4 | **Honest, sourced results** | RED / AMBER / GREY with CDSCO alert month, official link and record ID on every answer; "Verified" badge on hand-checked records; "Official data checked up to" + "Last updated" |
+| 5 | **Company entity resolution** | Normalised names, alias table, token-set similarity with a confidence score |
+| 6 | **Home medicine cabinet** | Saved medicines are re-checked **daily**; opt-in **web push** even when the app is closed (flagged batches + expiry ~5 days before); calendar (.ics) fallback |
+| 7 | **Family alerts** | WhatsApp message, or optional push to a family member's phone after they accept an invite link |
+| 8 | **Report it** | Pre-filled CDSCO complaint (email, toll-free) and PvPI; "Report a wrong result" (no personal data) |
+| 9 | **Try a demo** | Real RED batches 251TTF014, P03524, 054A003 from the official list |
+| 10 | **Hindi + English everywhere** | Pre-written templates for every result type, pre-recorded Sarvam AI voice clips; works offline |
 
 ## Safety rules (non-negotiable)
 
-- The app **never says a medicine is safe**. There are only three results:
-  - 🟥 **RED, official alert found.** The batch and medicine match a CDSCO alert. *"Please speak to your pharmacist or doctor before taking the next dose. Do not suddenly stop an important medicine on your own."*
-  - 🟧 **AMBER, please confirm.** The batch is one character off for the same medicine, *or* the same batch is listed under a different name, *or* the exact company entity has official action but this batch is not listed (*"this does not mean all batches are affected"*).
-  - ⬜ **GREY, no alert found** in the downloaded data. *"This is not a safety guarantee."*
-- No alternative medicines, doses, or medical or first-aid advice. Ever.
-- **Matching is plain, tested code** (`src/lib/match.ts`). AI never decides the colour and never writes a safety message.
-- Every safety and error message is pre-written in Hindi and English in one file: [`src/content/messages.ts`](src/content/messages.ts).
-- Colour is always paired with an icon and a word.
-- A disclaimer sits on the home screen and every result.
+- **The colour is decided by plain, tested code** ([`src/lib/match.ts`](src/lib/match.ts)), never by AI.
+  - 🟥 **RED, official alert found:** exact batch + exact/high-confidence company (or matching medicine name). *"Don't take the next dose until you speak to your doctor or chemist. Never stop an essential medicine suddenly."*
+  - 🟧 **AMBER, possible match:** exact batch + medium-confidence or different company, batch one character / OCR look-alike off, or the company has official action but this batch is not listed (*"the alert covers only the listed batches, not all of this company's batches"*).
+  - ⬜ **GREY:** *"No official alert found for this batch. This does not mean the medicine is tested safe. CDSCO lists come out late."* Followed by next steps: check expiry, buy from a licensed chemist with a bill, save for automatic alerts, report a suspicious medicine.
+- **Never recommends any medicine**, dose or treatment.
+- Every safety message is pre-written in Hindi and English ([`src/content/messages.ts`](src/content/messages.ts), [`src/content/templates.ts`](src/content/templates.ts)).
+- First-run disclaimer (Hindi + English), privacy page, disclaimer on every result.
 
-## Architecture
+## How it works
+
+Full details and diagrams: **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)**: data pipeline, hybrid AI router, offline matching engine, entity resolution, push re-check loop, privacy design.
 
 ```mermaid
 flowchart LR
-  subgraph Phone["On the phone (works offline)"]
-    UI[React PWA<br/>Hindi / English UI]
-    STT[Web Speech API<br/>hi-IN / en-IN]
-    NANO[Gemini Nano<br/>on-device]
-    MATCH[match.ts<br/>plain code]
-    IDB[(IndexedDB<br/>dataset · cabinet · family)]
-    SW[Service worker<br/>app · data · clips]
-    CLIPS[Pre-recorded<br/>Sarvam Bulbul voice clips]
-  end
-  subgraph Cloud
-    FAL[Firebase AI Logic<br/>App Check]
-    FLASH[Gemini Flash]
-    HOST[Firebase Hosting<br/>nsq.json · meta.json]
-    GHA[GitHub Actions<br/>monthly build_dataset.py]
-    CDSCO[(CDSCO official<br/>portal + PDFs)]
-  end
-  STT --> UI
-  UI -- "speech → candidate names" --> NANO
-  UI -- "strip photo (online)" --> FAL --> FLASH
-  UI -- "strip photo (offline)" --> NANO
-  UI --> MATCH --> IDB
-  UI -- "explain record" --> FAL
-  UI --> CLIPS
-  SW --> UI
-  CDSCO --> GHA --> HOST -- "version changed → download, re-check cabinet" --> IDB
+  CDSCO[(CDSCO portal + PDFs)] --> GHA[GitHub Actions daily<br/>fetch · validate · keep last good]
+  GHA --> HOST[Firebase Hosting<br/>nsq.json · meta.json]
+  GHA -- FCM push --> PHONE
+  HOST --> PHONE[Phone PWA<br/>IndexedDB · rules engine]
+  PHONE -- photo/explain, online --> FLASH[Gemini Flash · cloud]
+  PHONE -- offline --> NANO[Gemini Nano · device]
+  PHONE -- opt-in: token, batch, company, expiry month --> FS[(Firestore)] --> GHA
 ```
 
-## Hybrid AI (Firebase AI Logic)
+| Task | Where |
+|---|---|
+| Speech → medicine name | Web Speech API + **offline phonetic matcher**; Nano/Flash add candidates when available |
+| Strip photo → fields | Preprocessing on device → **Gemini Flash** (cloud) online, **Gemini Nano** offline |
+| Match batch / company | **Plain code on device** |
+| Explanation | **Pre-written Hindi/English templates (offline)**; Flash for more detail online |
+| New data, re-check, push | GitHub Actions (free), Firebase Admin SDK, FCM |
 
-| Task | Where | Mode |
-|---|---|---|
-| Hindi/English speech to text | Browser Web Speech API, on-device with the language pack | — |
-| Understand spoken/typed medicine name → candidate names (strict JSON) | **Gemini Nano on device** first, Flash fallback | `PREFER_ON_DEVICE` |
-| Read photo of strip → `{name, manufacturer, batch, expiry}` (strict JSON) | **Gemini Flash** in cloud when online; **Nano** when offline | `PREFER_IN_CLOUD` / `ONLY_ON_DEVICE` |
-| Match batch to CDSCO list | Plain code on device | — |
-| Safety message | Fixed pre-written text + recorded clip, **never generated** | — |
-| Simple explanation of the record | Flash in cloud; Nano single-turn when offline | `PREFER_IN_CLOUD` / `ONLY_ON_DEVICE` |
-| Follow-up questions about the record | Flash in cloud (multi-turn chat) | `ONLY_IN_CLOUD` |
-| Download new list / cabinet re-check / expiry | Cloud fetch / plain code on device | — |
+Every AI answer shows **"On this device"** or **"Cloud"**, taken from the SDK's `inferenceSource`.
 
-Every AI output carries a visible chip, **"On this device" / "Cloud"** (Hindi: **"इसी फ़ोन पर" / "क्लाउड"**), mapped from `response.inferenceSource` (`"on_device"` / `"in_cloud"`) in [`src/lib/source.ts`](src/lib/source.ts). Model JSON is never trusted: code fences are stripped and the JSON is schema-checked ([`src/lib/json.ts`](src/lib/json.ts)).
+## Data source
 
-## Data: official CDSCO only
+- **Official CDSCO only:** the public NSQ/spurious alert portal ([cdscoonline.gov.in/CDSCO/viewPublicNSQDrug](https://cdscoonline.gov.in/CDSCO/viewPublicNSQDrug)) and monthly alert PDFs on [cdsco.gov.in](https://cdsco.gov.in/opencms/opencms/en/Notifications/Alerts/).
+- **Coverage:** **4,158 records** (4,109 NSQ, 49 spurious), alert months **October 2024 to September 2026**; 815 cross-checked word-for-word against an official PDF; **55 checked by hand** ([`data/verified_records.csv`](data/verified_records.csv)).
+- **Daily pipeline** ([`.github/workflows/dataset.yml`](.github/workflows/dataset.yml)): fetch → parse → normalise → dedupe → **validate** ([`data/validate.py`](data/validate.py)). If the source is down or the parse looks wrong (sharp record drop, missing fields, month going backwards), the last good data is kept and the failure is logged in [`data/pipeline_log.json`](data/pipeline_log.json). Added records are listed in [`data/CHANGELOG.md`](data/CHANGELOG.md).
 
-- **Sources:** the CDSCO public NSQ/spurious alert portal ([cdscoonline.gov.in/CDSCO/viewPublicNSQDrug](https://cdscoonline.gov.in/CDSCO/viewPublicNSQDrug)), which is the "new link" announced in the DCGI notice of 28 Aug 2025, and the monthly alert PDFs on [cdsco.gov.in](https://cdsco.gov.in/opencms/opencms/en/Notifications/Alerts/).
-- **Builder:** [`data/build_dataset.py`](data/build_dataset.py) downloads both, keeps NSQ and spurious separate, cleans fields, adds a normalised batch and an **exact** manufacturer entity key (only legal suffixes are dropped, so "Sresan Pharmaceuticals" ≠ "Sresan Pharma"), and cross-checks each portal row against the text of the official PDF for that month where one exists.
-- **Coverage (this build):** **4,158 records** (4,109 NSQ, 49 spurious), alert months **October 2024 to September 2026**. 815 records were also found word-for-word in an official monthly PDF. 55 records were checked by hand and are listed in [`data/verified_records.csv`](data/verified_records.csv).
-- **Limits:** some states do not send monthly data (the portal lists states pending for each month; these are shown in Settings). A GREY result only means "not in the downloaded list".
-- **Freshness:** a GitHub Actions workflow ([`.github/workflows/dataset.yml`](.github/workflows/dataset.yml)) rebuilds the dataset monthly. The app fetches `meta.json` on start; if the version changed it downloads `nsq.json` into IndexedDB and re-checks the cabinet.
+## Evaluation
+
+`npm run eval` → **[docs/EVAL.md](docs/EVAL.md)** (also shown in the app under "How it works").
+
+| | Result |
+|---|---|
+| Matching, 428 labelled cases from the 55 verified records + hard cases (spelling, spacing, company variants, OCR 0/O 1/I 5/S) + negatives | **Precision 100% · Recall 100% · False-GREY 0%** (RED on 97.4% of exact cases; the rest AMBER) |
+| Hindi/English speech, 60 garbled transcripts | **Top-1 98.3% · Top-3 100%** |
+| Photo | Ready: drop strip photos + labels in [`data/eval_images`](data/eval_images/README.md); no images evaluated yet |
+
+## Limits (honest)
+
+- **Grey is not safe.** CDSCO lists come out about a month late, not every state reports every month, and most batches are never tested.
+- Matching test cases are derived from real records plus synthetic variants; speech transcripts imitate real STT output but are not recordings from users. Photo accuracy is not measured until real photos are added.
+- Gemini Nano only runs on supported desktop Chrome; on phones, photo reading needs the internet. Offline voice input needs the browser's Hindi speech pack. **The match itself always works offline.**
+- Push needs a browser that supports web push (not iOS Safari outside an installed PWA); the calendar file is the fallback.
+- New data reaches the live site daily only when the `FIREBASE_SERVICE_ACCOUNT` secret is set in GitHub (see below).
 
 ## Privacy
 
-Voice is never recorded or uploaded. Photos are never stored; when online only the single photo being read is sent to Gemini via Firebase AI Logic. The cabinet and family numbers live only in the phone's IndexedDB. No accounts, no analytics.
+Voice is never recorded. Photos are never stored. The cabinet and family numbers stay in the phone's IndexedDB. **Only if you opt in to push**, Firestore keeps a push token, language, and per saved medicine the batch number, company and expiry month: no medicine names, person names, phone numbers or health information. Firestore rules ([`firestore.rules`](firestore.rules)) let each anonymous device read/write only its own documents. No ads, no analytics.
 
 ## Run it
 
 ```bash
 npm install
-npm test               # Vitest: matching engine, JSON parsing, source labels, expiry
-npm run build
-npm run preview        # http://localhost:4173
+npm test               # Vitest unit tests
+npm run test:data      # pipeline validation tests (Python)
+npm run eval           # evaluation harness -> docs/EVAL.md
+npm run build && npm run preview
 npm run data           # rebuild public/data from CDSCO (Python 3.12 + pdfplumber)
-npm run audio          # regenerate voice clips with Sarvam AI Bulbul (needs SARVAM_API_KEY in .env)
-node scripts/shots.mjs "<medicine>" "<batch>"   # Playwright screenshots + offline test
+npm run audio          # regenerate Sarvam AI voice clips (SARVAM_API_KEY in .env)
 ```
 
-**App Check:** on localhost the debug provider is used (put a registered token in `.env.local` as `VITE_APPCHECK_DEBUG_TOKEN`, or register the one Chrome prints). For a hosted build set the reCAPTCHA Enterprise (Fraud Defense) site key as `VITE_RECAPTCHA_SITE_KEY` in `.env.production.local`.
-
-### Browser requirements for on-device AI
-
-- Desktop **Chrome** with the built-in Prompt API (Gemini Nano), with about 22 GB free disk and a GPU with more than 4 GB VRAM (or 16 GB RAM).
-- Gemini Nano downloaded (`chrome://on-device-internals`).
-- Image input flag: `chrome://flags/#prompt-api-for-gemini-nano-multimodal-input` → Enabled.
-- Hindi on-device speech: the Hindi offline speech pack installed.
-- Without Nano, everything still works online through Gemini Flash, and matching always works offline.
+Firebase project `dawashield-hybrid-3023` (free Spark plan): Hosting, Firestore, anonymous Auth, Cloud Messaging, Firebase AI Logic with App Check (reCAPTCHA Enterprise key in `VITE_RECAPTCHA_SITE_KEY`). For the daily deploy + push, add a service-account key as the GitHub secret `FIREBASE_SERVICE_ACCOUNT`.
 
 ## Credits
 
-Built with Cursor and Claude Code. Data: Central Drugs Standard Control Organisation (CDSCO), Government of India. Voices: Sarvam AI Bulbul v4 Flash (ritu_hi_customer_warm for Hindi, neha_en_customer for English). MIT licence.
+Built by Neeraj Kumar. Data: Central Drugs Standard Control Organisation (CDSCO), Government of India. Voices: Sarvam AI Bulbul. MIT licence.
 
 *DawaShield does not replace a pharmacist, doctor or official advice.*

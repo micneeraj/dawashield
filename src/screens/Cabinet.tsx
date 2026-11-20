@@ -10,6 +10,8 @@ import { dateLabel, monthLabel } from "../lib/format";
 import { cabinetSummary } from "../lib/cabinet";
 import { DISPOSAL, EXPIRY, OFFICIAL, RESULT } from "../content/messages";
 import { useRunCheck } from "../useCheck";
+import { syncMeds } from "../lib/cloud";
+import { PushOffer } from "../components/PushOffer";
 
 const TXT = {
   allClear: { hi: (m: string) => `${m} तक के CDSCO डेटा से जाँचा: सब ठीक, कोई चेतावनी नहीं`, en: (m: string) => `Last checked against CDSCO data up to ${m}: all clear` },
@@ -44,6 +46,7 @@ export default function Cabinet() {
   async function remove(id?: number) {
     if (id == null) return;
     await db.cabinet.delete(id);
+    void syncMeds(lang);
     bumpCabinet();
   }
 
@@ -177,6 +180,7 @@ export default function Cabinet() {
           </div>
         )}
       </section>
+      {items.length > 0 && <PushOffer className="mb-4" />}
       <Disclaimer />
     </Page>
   );

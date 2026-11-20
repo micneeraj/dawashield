@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Camera, ChevronRight, Database, Keyboard, Mic, Package, ShieldCheck, WifiOff } from "lucide-react";
+import { Camera, ChevronRight, Cpu, Database, Download, Keyboard, Mic, Package, ShieldCheck, Sparkles, WifiOff } from "lucide-react";
+import { DemoButtons } from "../components/Demo";
 import { useApp } from "../state";
 import { Card, Disclaimer, LevelPill } from "../components/ui";
 import { LogoMark } from "../components/Logo";
@@ -9,7 +10,7 @@ import { expiryStatus } from "../lib/expiry";
 import { monthLabel } from "../lib/format";
 
 export default function Home() {
-  const { t, lang, go, dataMeta, cabinetVersion, say } = useApp();
+  const { t, lang, go, dataMeta, cabinetVersion, say, download } = useApp();
   const [items, setItems] = useState<CabinetItem[]>([]);
   useEffect(() => { db.cabinet.toArray().then(setItems); }, [cabinetVersion]);
 
@@ -58,7 +59,19 @@ export default function Home() {
         <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 ring-1 ring-line"><WifiOff size={13} className="text-brand-600" aria-hidden />{t("worksOffline")}</span>
       </div>
 
-      <button onClick={() => go({ name: "cabinet" })} className="mt-5 text-left">
+      {download && (
+        <div className="mt-3 rounded-2xl bg-white p-3.5 ring-1 ring-line" role="progressbar" aria-valuenow={Math.round((download.loaded / download.total) * 100)} aria-valuemin={0} aria-valuemax={100} data-testid="download-progress">
+          <p className="flex items-center gap-2 text-[15px] font-semibold text-brand-900">
+            <Download size={17} aria-hidden /> {lang === "hi" ? "सरकारी सूची फ़ोन में सहेज रहे हैं (एक बार)" : "Saving the official list to this phone (once)"}
+            <span className="num ml-auto">{(download.loaded / 1e6).toFixed(1)} / {(download.total / 1e6).toFixed(1)} MB</span>
+          </p>
+          <div className="mt-2 h-2.5 overflow-hidden rounded-full bg-brand-50"><div className="h-full rounded-full bg-brand-600 transition-all" style={{ width: `${Math.min(100, (download.loaded / download.total) * 100)}%` }} /></div>
+        </div>
+      )}
+
+      <DemoButtons className="mt-5" />
+
+      <button onClick={() => go({ name: "cabinet" })} className="mt-4 text-left">
         <Card className="flex items-center gap-4 p-4 transition hover:border-brand-300">
           <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[#fbf3e4] text-[#9a6a12]"><Package size={26} /></span>
           <span className="flex-1">
@@ -72,6 +85,15 @@ export default function Home() {
           <ChevronRight className="text-muted" />
         </Card>
       </button>
+
+      <div className="mt-4 grid grid-cols-2 gap-3">
+        <button onClick={() => go({ name: "how" })} className="tap flex items-center gap-2.5 rounded-3xl border border-line/70 bg-white px-4 py-3 text-left shadow-soft" data-testid="how-link">
+          <Cpu size={22} className="shrink-0 text-brand-600" /><span className="text-[16px] font-semibold leading-tight">{lang === "hi" ? "यह कैसे काम करता है" : "How it works"}</span>
+        </button>
+        <button onClick={() => go({ name: "why" })} className="tap flex items-center gap-2.5 rounded-3xl border border-line/70 bg-white px-4 py-3 text-left shadow-soft" data-testid="why-link">
+          <Sparkles size={22} className="shrink-0 text-brand-600" /><span className="text-[16px] font-semibold leading-tight">{lang === "hi" ? "दवा कवच क्यों" : "Why DawaShield"}</span>
+        </button>
+      </div>
 
       <Disclaimer className="mt-5 px-1" />
     </motion.div>

@@ -1,6 +1,6 @@
 import { useApp, type CheckInput } from "./state";
 import { matchMedicine } from "./lib/match";
-import { RESULT } from "./content/messages";
+import { AMBER_REASON, RESULT } from "./content/messages";
 
 /** Runs the plain-code match and opens the result screen with its fixed clip. */
 export function useRunCheck() {
@@ -12,6 +12,7 @@ export function useRunCheck() {
     const matchMs = Math.max(1, Math.round(performance.now() - t0));
     setCheck({ input, result, at: new Date().toISOString(), cabinetId, matchMs, searched: records.length });
     go({ name: "result" });
-    say(RESULT[result.level].clip);
+    // AMBER: the clip that says why (possible company, near batch, company scope...).
+    say(result.level === "AMBER" && AMBER_REASON[result.reason] ? `amber_${result.reason.replace(/-/g, "_")}` : RESULT[result.level].clip);
   };
 }

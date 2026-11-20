@@ -3,7 +3,8 @@
 //   public/audio/hi/*.mp3  Hindi  (hi-IN)
 //   public/audio/en/*.mp3  English (en-IN)
 // Run: npm run audio
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, writeFile, rename } from "node:fs/promises";
+import { spawnSync } from "node:child_process";
 import { SarvamAIClient } from "sarvamai";
 import { CLIPS } from "../src/content/messages.ts";
 
@@ -48,7 +49,11 @@ for (const v of VOICES) {
       console.error(`${v.dir}/${c.clip}: audio too small (${buf.length} bytes)`);
       process.exit(1);
     }
-    await writeFile(`public/audio/${v.dir}/${c.clip}.mp3`, buf);
+    const out = `public/audio/${v.dir}/${c.clip}.mp3`;
+    await writeFile(out, buf);
+    // Keep the offline download small: speech at 32 kbps mono (needs ffmpeg on PATH; skipped otherwise).
+    const r = spawnSync("ffmpeg", ["-loglevel", "error", "-y", "-i", out, "-ac", "1", "-ar", "22050", "-b:a", "32k", out + ".tmp.mp3"]);
+    if (r.status === 0) await rename(out + ".tmp.mp3", out);
     console.log(`${v.dir}/${c.clip}.mp3 ${buf.length} bytes`);
   }
 }

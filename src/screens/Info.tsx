@@ -1,4 +1,4 @@
-import { Camera, Cloud, Database, Lock, Mic, ShieldCheck, Smartphone } from "lucide-react";
+import { Bell, Camera, Cloud, Database, Flag, Lock, Mic, ShieldCheck, Smartphone } from "lucide-react";
 import type { ReactNode } from "react";
 import { useApp } from "../state";
 import { Card, Disclaimer, Page } from "../components/ui";
@@ -32,8 +32,16 @@ export function Privacy() {
               : "Photos are never stored. When online, only that single photo is sent to Google Gemini (Firebase AI Logic) to read the label. Offline, it is read on the phone."}
         </Item>
         <Item icon={<Database size={22} />} title={hi ? "दवा पेटी और परिवार" : "Cabinet and family"}>
-          {hi ? "आपकी दवाएँ और परिवार के नंबर सिर्फ़ इसी फ़ोन में रहते हैं। हमारे पास कोई सर्वर या खाता नहीं है।"
-              : "Your medicines and family numbers stay only on this phone. There is no DawaShield server or account."}
+          {hi ? "आपकी दवाएँ और परिवार के नंबर इसी फ़ोन में रहते हैं। कोई खाता, नाम या फ़ोन नंबर नहीं माँगा जाता।"
+              : "Your medicines and family numbers stay on this phone. No account, name or phone number is asked for."}
+        </Item>
+        <Item icon={<Bell size={22} />} title={hi ? "सूचनाएँ (सिर्फ़ आपकी मर्ज़ी से)" : "Notifications (only if you opt in)"}>
+          {hi ? "सूचनाएँ चालू करने पर ही हमारे Firebase सर्वर पर रखा जाता है: सूचना भेजने का कोड, भाषा, और हर सहेजी दवा का बैच नंबर, कंपनी और समाप्ति महीना। दवा का नाम, आपका नाम, फ़ोन, बीमारी या दवा किसके लिए है, कभी नहीं। हर फ़ोन सिर्फ़ अपना डेटा देख सकता है। बंद करते ही सब मिट जाता है।"
+              : "Only if you turn on notifications, our Firebase server keeps: a notification code, your language, and for each saved medicine its batch number, company and expiry month. Never the medicine name, your name, phone, illness or who it is for. Each phone can only see its own data. Turning it off deletes it all."}
+        </Item>
+        <Item icon={<Flag size={22} />} title={hi ? "गलत नतीजे की रिपोर्ट" : "Wrong-result reports"}>
+          {hi ? "रिपोर्ट में सिर्फ़ नतीजे का रंग, बैच, कंपनी, रिकॉर्ड ID और आपकी छोटी टिप्पणी जाती है। कोई निजी जानकारी नहीं।"
+              : "A report contains only the result colour, batch, company, record IDs and your short note. No personal details."}
         </Item>
         <Item icon={<Cloud size={22} />} title={hi ? "क्लाउड AI" : "Cloud AI"}>
           {hi ? "‘आसान व्याख्या’ और सवालों के लिए सिर्फ़ सरकारी रिकॉर्ड और आपका सवाल भेजा जाता है। हर AI जवाब पर लिखा होता है कि वह फ़ोन पर बना या क्लाउड में।"
@@ -76,7 +84,7 @@ export function About() {
                     : `${m.records.toLocaleString("en-IN")} CDSCO records, ${monthLabel(m.earliestMonth, lang)} to ${monthLabel(m.latestMonth, lang)}. Some states do not report every month.`) : "CDSCO"}
         </Item>
       </Card>
-      <p className="mt-5 text-center text-[14px] text-muted">Built with Cursor and Claude Code · MIT licence · #BuildHybridAI 2026</p>
+      <p className="mt-5 text-center text-[14px] text-muted">Built by Neeraj Kumar · MIT licence · #BuildHybridAI 2026</p>
       <Disclaimer className="mt-3" />
     </Page>
   );

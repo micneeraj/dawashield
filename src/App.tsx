@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { Home as HomeIcon, Package, Settings as SettingsIcon, Users, Volume2, VolumeX } from "lucide-react";
 import { useApp, type Screen } from "./state";
@@ -13,6 +14,7 @@ import Family from "./screens/Family";
 import Settings from "./screens/Settings";
 import { About, Privacy } from "./screens/Info";
 import Report from "./screens/Report";
+import { FirstRun, How, Invite, Why } from "./screens/Pages";
 
 function Header() {
   const { t, lang, setLang, muted, setMuted, go } = useApp();
@@ -110,7 +112,10 @@ function DesktopAside() {
         ))}
       </ul>
       {dataMeta && (
-        <p className="mt-8 inline-flex rounded-2xl bg-white px-4 py-3 text-[15px] font-semibold text-brand-900 shadow-soft ring-1 ring-line">
+        <p className="mt-6 text-[15px] font-semibold text-muted">Built by Neeraj Kumar</p>
+      )}
+      {dataMeta && (
+        <p className="mt-3 inline-flex rounded-2xl bg-white px-4 py-3 text-[15px] font-semibold text-brand-900 shadow-soft ring-1 ring-line">
           {dataMeta.records.toLocaleString("en-IN")} {hi ? "सरकारी रिकॉर्ड" : "official records"} · {dataMeta.earliestMonth} → {dataMeta.latestMonth}
         </p>
       )}
@@ -131,11 +136,21 @@ function CurrentScreen() {
     case "privacy": return <Privacy key="privacy" />;
     case "about": return <About key="about" />;
     case "report": return <Report key="report" />;
+    case "how": return <How key="how" />;
+    case "why": return <Why key="why" />;
+    case "invite": return <Invite key="invite" />;
     default: return <Home key="home" />;
   }
 }
 
+const FR_KEY = "ds-first-run-v2";
+function useFirstRun(): [boolean, () => void] {
+  const [show, setShow] = useState(() => { try { return localStorage.getItem(FR_KEY) !== "1"; } catch { return true; } });
+  return [show, () => { try { localStorage.setItem(FR_KEY, "1"); } catch { /* ignore */ } setShow(false); }];
+}
+
 export default function App() {
+  const [firstRun, doneFirstRun] = useFirstRun();
   return (
     <div className="min-h-dvh sm:flex sm:items-center sm:justify-center sm:gap-16 sm:py-8">
       <DesktopAside />
@@ -151,6 +166,7 @@ export default function App() {
           <BottomNav />
         </div>
       </div>
+      {firstRun && <FirstRun onDone={doneFirstRun} />}
     </div>
   );
 }

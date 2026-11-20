@@ -18,6 +18,10 @@ export default defineConfig({
         background_color: "#f7f5f0",
         display: "standalone",
         start_url: "/",
+        scope: "/",
+        lang: "hi",
+        orientation: "portrait",
+        categories: ["health", "medical", "utilities"],
         icons: [
           { src: "icon-192.png", sizes: "192x192", type: "image/png" },
           { src: "icon-512.png", sizes: "512x512", type: "image/png" },
@@ -27,6 +31,9 @@ export default defineConfig({
       workbox: {
         // App shell, dataset and every recorded voice clip are cached for offline use.
         globPatterns: ["**/*.{js,css,html,svg,png,woff2,mp3,json}"],
+        // Web push from Firebase Cloud Messaging is shown by this small handler.
+        importScripts: ["/push-sw.js"],
+        globIgnores: ["og.png", "**/screenshots/**"],
         maximumFileSizeToCacheInBytes: 8 * 1024 * 1024,
         navigateFallback: "/index.html",
         runtimeCaching: [

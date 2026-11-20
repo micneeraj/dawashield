@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { MessageCircle, Plus, ShieldCheck, Trash2, UserRound } from "lucide-react";
 import { useApp } from "../state";
+import { FamilyPush } from "../components/FamilyPush";
 import { Button, Card, Field, Page, inputCls, cx } from "../components/ui";
 import { Sheet } from "../components/Sheet";
 import { db, type FamilyMember } from "../lib/db";
@@ -46,6 +47,7 @@ export default function Family() {
         )}
       </div>
       <Button full className="mt-4" icon={<Plus size={22} />} onClick={() => setOpen(true)} data-testid="add-family">{t("addFamily")}</Button>
+      <FamilyPush />
       <AddMember open={open} onClose={() => setOpen(false)} onSaved={load} />
     </Page>
   );
