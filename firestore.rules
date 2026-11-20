@@ -1,0 +1,58 @@
+rules_version = '2';
+// DawaShield: each device (anonymous Firebase Auth uid) can only touch its own docs.
+// Stored per opted-in device: push token, language, and per medicine only
+// batch number, company name and expiry month. No names, phone or health info.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function isMe(uid) { return signedIn() && request.auth.uid == uid; }
+    function shortStr(v, n) { return v is string && v.size() <= n; }
+
+    match /devices/{uid} {
+      allow read, delete: if isMe(uid);
+      allow create, update: if isMe(uid)
+        && request.resource.data.keys().hasOnly(['token', 'lang', 'updatedAt'])
+        && shortStr(request.resource.data.token, 4096)
+        && request.resource.data.lang in ['hi', 'en'];
+
+      match /meds/{medId} {
+        allow read, delete: if isMe(uid);
+        allow create, update: if isMe(uid)
+          && request.resource.data.keys().hasOnly(['batch', 'company', 'expiryMonth', 'lang', 'updatedAt'])
+          && shortStr(request.resource.data.batch, 40)
+          && shortStr(request.resource.data.company, 120)
+          && shortStr(request.resource.data.expiryMonth, 7)
+          && request.resource.data.lang in ['hi', 'en'];
+      }
+    }
+
+    // Family invite: the owner creates it; a family member who opens the link
+    // adds only their own push token under it.
+    match /invites/{code} {
+      allow get: if signedIn();
+      allow create: if signedIn() && code.size() >= 16
+        && request.resource.data.keys().hasOnly(['owner', 'createdAt'])
+        && request.resource.data.owner == request.auth.uid;
+      allow delete: if signedIn() && resource.data.owner == request.auth.uid;
+
+      match /members/{memberUid} {
+        allow get, delete: if isMe(memberUid);
+        allow create, update: if isMe(memberUid)
+          && request.resource.data.keys().hasOnly(['token', 'lang', 'updatedAt'])
+          && shortStr(request.resource.data.token, 4096)
+          && request.resource.data.lang in ['hi', 'en'];
+      }
+    }
+
+    // "Report a wrong result": write-only, no personal data.
+    match /reports/{id} {
+      allow create: if signedIn()
+        && request.resource.data.keys().hasOnly(['level', 'reason', 'batch', 'company', 'recordIds', 'kind', 'note', 'datasetVersion', 'createdAt'])
+        && request.resource.data.level in ['RED', 'AMBER', 'GREY']
+        && shortStr(request.resource.data.batch, 40)
+        && shortStr(request.resource.data.company, 120)
+        && shortStr(request.resource.data.note, 300)
+        && request.resource.data.recordIds is list && request.resource.data.recordIds.size() <= 10;
+    }
+  }
+}
