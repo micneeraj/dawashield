@@ -1,21 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Camera, Check, Keyboard, Mic, Pill, RotateCcw, Search } from "lucide-react";
+import { Camera, Check, Grid3x3, Keyboard, Mic, Pill, RotateCcw, Search } from "lucide-react";
 import { useApp } from "../state";
 import { Button, Card, ErrorCard, Field, Page, SourceChip, Spinner, inputCls, cx } from "../components/ui";
 import { MicButton } from "../components/MicButton";
+import { BatchKeypad } from "../components/Keypad";
 import { listen, speechSupported, type Listener } from "../lib/speech";
 import { candidatesFromSpeech, traceStart, traceTake, type AiStep } from "../lib/ai";
-import { searchNames } from "../lib/match";
 import { transliterate } from "../lib/normalize";
-import { COMMON_MEDICINES } from "../content/common-medicines";
+import { matchSpoken, toDevanagari } from "../lib/phonetic";
+import { getDictionary } from "../lib/dictionary";
 import { VOICE } from "../content/messages";
 import { speechErrorKey, type ErrorKey } from "../lib/errors";
 import { useRunCheck } from "../useCheck";
 import type { Source } from "../lib/types";
-
-// Everyday words people say around a medicine name; never searched as names.
-const STOP = new Set(["sar","dard","dawa","dawai","davai","davaa","hai","hain","ki","ka","ke","ko","mera","meri","mere","yeh","ye","wali","vali","waali","goli","tablet","medicine","the","for","my","this","is","it","its","headache","fever","bukhar","bukhaar","pet","khansi","ilaj","maa","papa","liye","lie","chahiye","naam","name"]);
 
 type Step = "listen" | "think" | "pick" | "batch";
 
@@ -24,7 +22,7 @@ function withTimeout<T>(p: Promise<T>, ms: number): Promise<T> {
 }
 
 export default function Voice() {
-  const { t, lang, go, dataset, say, noteAi } = useApp();
+  const { t, lang, go, dataset, say, noteAi, online } = useApp();
   const runCheck = useRunCheck();
   const [step, setStep] = useState<Step>("listen");
   const [listening, setListening] = useState(false);
@@ -37,6 +35,7 @@ export default function Voice() {
   const [name, setName] = useState("");
   const [batch, setBatch] = useState("");
   const [batchListening, setBatchListening] = useState(false);
+  const [keypad, setKeypad] = useState(false);
   const rec = useRef<Listener | null>(null);
 
   const startListening = async () => {
@@ -61,26 +60,28 @@ export default function Voice() {
 
   async function understand(text: string) {
     setStep("think");
-    const latin = /[ऀ-ॿ]/.test(text) ? transliterate(text) : text;
     const records = dataset?.records ?? [];
+    // 1. Rule-based, offline: fuzzy + phonetic match against the medicine dictionary.
+    const dict = getDictionary(records);
+    const local = matchSpoken(text, dict, 4).map((m) => m.entry.name);
+    // 2. Extra, only when available: AI candidates (Nano on device, else Flash in cloud).
     let aiNames: string[] = [];
     traceStart();
-    try {
-      const r = await withTimeout(candidatesFromSpeech(text), 12000);
-      aiNames = r.value;
-      setAiSource(r.source);
-      noteAi(r.source);
-    } catch {
-      setAiSource(null);
+    if (online) {
+      try {
+        const r = await withTimeout(candidatesFromSpeech(text), local.length ? 6000 : 12000);
+        aiNames = r.value.flatMap((n) => matchSpoken(n, dict, 1).map((m) => m.entry.name));
+        setAiSource(r.source);
+        noteAi(r.source);
+      } catch {
+        setAiSource(null);
+      }
     }
     setSteps(traceTake());
-    // Local fuzzy search on every word, plus each AI candidate.
-    const local = [
-      ...aiNames.flatMap((n) => searchNames(n, records, COMMON_MEDICINES, 2)),
-      ...latin.toLowerCase().split(/[\s,.!?]+/).flatMap((w) => (w.length >= 3 && !STOP.has(w) ? searchNames(w, records, COMMON_MEDICINES, 2) : [])),
-    ];
     const seen = new Set<string>();
-    const merged = [...aiNames, ...local].filter((n) => {
+    // Names both methods agree on first, then the rule-based list, then AI-only names.
+    const agreed = local.filter((n) => aiNames.includes(n));
+    const merged = [...agreed, ...local, ...aiNames].filter((n) => {
       const k = n.toLowerCase();
       if (seen.has(k)) return false;
       seen.add(k);
@@ -164,14 +165,17 @@ export default function Voice() {
             <p className="text-[15px] text-muted">{t("youSaid")}: “{transcript}”</p>
             <div className="mt-1 flex items-center justify-between gap-2">
               <h2 className="text-[22px] font-bold text-ink">{VOICE.pickOption.text[lang]}</h2>
-              {aiSource && <SourceChip source={aiSource} />}
+              {aiSource ? <SourceChip source={aiSource} /> : <SourceChip source="device" />}
             </div>
             <ul className="mt-3 space-y-3">
               {options.map((o, i) => (
                 <motion.li key={o} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.06 }}>
                   <button onClick={() => pick(o)} className="flex min-h-[76px] w-full items-center gap-4 rounded-3xl border-2 border-line bg-white px-5 text-left shadow-soft transition hover:border-brand-400 focus-visible:border-brand-500" data-testid="option">
                     <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-brand-50 text-brand-700"><Pill size={24} /></span>
-                    <span className="flex-1 text-[24px] font-bold tracking-tight text-ink">{o}</span>
+                    <span className="flex-1">
+                      <span className="block text-[24px] font-bold leading-tight tracking-tight text-ink">{o}</span>
+                      {lang === "hi" && <span className="block text-[18px] font-medium text-brand-800" lang="hi">{toDevanagari(o)}</span>}
+                    </span>
                     <Check className="text-brand-300" />
                   </button>
                 </motion.li>
@@ -202,6 +206,9 @@ export default function Voice() {
                   <button type="button" onClick={listenBatch} aria-label={t("tapToSpeak")} className={cx("tap grid w-16 shrink-0 place-items-center rounded-2xl text-white", batchListening ? "bg-brand-900" : "bg-brand-700")}>
                     <Mic size={26} />
                   </button>
+                  <button type="button" onClick={() => setKeypad(true)} aria-label={lang === "hi" ? "बड़े बटन वाला कीपैड" : "Big-button keypad"} className="tap grid w-16 shrink-0 place-items-center rounded-2xl border border-line bg-white text-brand-800 shadow-soft" data-testid="keypad-open">
+                    <Grid3x3 size={26} />
+                  </button>
                 </div>
               </Field>
               <Button type="submit" full className="mt-4" icon={<Search size={22} />} disabled={!batch.trim()}>{t("check")}</Button>
@@ -213,6 +220,7 @@ export default function Voice() {
           </motion.div>
         )}
       </AnimatePresence>
+      <BatchKeypad open={keypad} value={batch} onClose={() => setKeypad(false)} onDone={setBatch} />
     </Page>
   );
 }
