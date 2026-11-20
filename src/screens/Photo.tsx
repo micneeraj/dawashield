@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { AlertTriangle, Camera, CheckCircle2, ImagePlus, ImageUp, Lightbulb, RotateCcw, ScanLine } from "lucide-react";
+import { AlertTriangle, Camera, CheckCircle2, Grid3x3, ImagePlus, ImageUp, Lightbulb, RotateCcw, ScanLine } from "lucide-react";
 import { useApp } from "../state";
 import { Button, Card, ErrorCard, Page, SourceChip, Spinner, inputCls, cx } from "../components/ui";
 import { CloserPhotoNeeded, readStrip, traceStart, traceTake, type AiStep } from "../lib/ai";
-import { expiryAsk, expiryForCheck, mergeLabels, needsCheck, type LabelKey, type LabelReading } from "../lib/label";
+import { expiryAsk, expiryForCheck, fieldConfidence, mergeLabels, needsCheck, type LabelKey, type LabelReading } from "../lib/label";
+import { BatchKeypad } from "../components/Keypad";
 import { photoErrorKey, type ErrorKey } from "../lib/errors";
 import { useRunCheck } from "../useCheck";
 import type { Source } from "../lib/types";
@@ -27,6 +28,9 @@ const ADD_SIDE = { hi: "दूसरी तरफ़ की फ़ोटो ज�
 const RETAKE = { hi: "फिर से फ़ोटो", en: "Retake" };
 const SOURCE = { hi: "पत्ते पर लिखा", en: "On strip" };
 const NOT_FOUND = { hi: "नहीं मिला", en: "Not found" };
+const CONF = { hi: "भरोसा", en: "Confidence" };
+const PLEASE_CONFIRM = { hi: "कृपया पक्का कीजिए: पत्ते से मिलाकर ठीक कीजिए", en: "Please confirm: check it against the strip and correct it" };
+const KEYPAD = { hi: "बड़े बटन से बैच डालें", en: "Enter batch with big buttons" };
 
 const LABELS: Record<LabelKey, { hi: string; en: string }> = {
   name: { hi: "दवा का नाम", en: "Medicine" },
@@ -60,6 +64,7 @@ export default function Photo() {
   const [reading, setReading] = useState<LabelReading | null>(null);
   const [form, setForm] = useState<Record<LabelKey, string>>({ name: prefill?.name ?? "", manufacturer: "", batch: "", expiry: "" });
   const [edited, setEdited] = useState<Partial<Record<LabelKey, boolean>>>({});
+  const [keypad, setKeypad] = useState(false);
 
   async function onFile(f?: File) {
     if (!f) return;
@@ -140,10 +145,13 @@ export default function Photo() {
       </Card>
 
       {!busy && !reading && !closer && (
-        <div className="mt-4 grid grid-cols-2 gap-3">
-          <Button icon={<Camera size={22} />} onClick={() => camRef.current?.click()}>{t("takePhoto")}</Button>
-          <Button variant="secondary" icon={<ImageUp size={22} />} onClick={() => galRef.current?.click()}>{t("upload")}</Button>
-        </div>
+        <>
+          <div className="mt-4 grid grid-cols-2 gap-3">
+            <Button icon={<Camera size={22} />} onClick={() => camRef.current?.click()}>{t("takePhoto")}</Button>
+            <Button variant="secondary" icon={<ImageUp size={22} />} onClick={() => galRef.current?.click()}>{t("upload")}</Button>
+          </div>
+          <Button variant="ghost" full className="mt-2" icon={<Grid3x3 size={22} />} onClick={() => setKeypad(true)} data-testid="photo-keypad">{KEYPAD[lang]}</Button>
+        </>
       )}
 
       {busy && (
@@ -199,6 +207,11 @@ export default function Photo() {
                   <span className="mb-1.5 flex items-center gap-1.5 text-[16px] font-semibold">
                     {warn ? <AlertTriangle size={17} className="text-amber-ink" aria-hidden /> : <CheckCircle2 size={17} className="text-brand-600" aria-hidden />}
                     {LABELS[k][lang]}
+                    {reading && f.value && (
+                      <span className={cx("ml-auto rounded-full px-2.5 py-0.5 text-[13px] font-bold", fieldConfidence(f) >= 0.75 ? "bg-brand-50 text-brand-800" : "bg-white text-amber-ink ring-1 ring-amber-line")} data-testid={`conf-${k}`}>
+                        {CONF[lang]} {Math.round(fieldConfidence(f) * 100)}%
+                      </span>
+                    )}
                   </span>
                   <input
                     className={cx(inputCls, big && "num text-[26px] font-bold tracking-wider", k === "name" && "font-semibold")}
@@ -212,7 +225,10 @@ export default function Photo() {
                 <p className="mt-1.5 text-[14px] leading-snug text-muted">
                   {SOURCE[lang]}: <span className="font-medium text-ink/80">{f.source ? `“${f.source}”` : NOT_FOUND[lang]}</span>
                 </p>
-                {warn && <p className="mt-1 text-[15px] font-semibold text-amber-ink" data-testid={ask ? "expiry-check" : undefined}>{ask ? EXPIRY_CHECK[lang] : CHECK_ON_STRIP[lang]}</p>}
+                {warn && <p className="mt-1 text-[15px] font-semibold text-amber-ink" data-testid={ask ? "expiry-check" : undefined}>{ask ? EXPIRY_CHECK[lang] : big && f.value ? PLEASE_CONFIRM[lang] : CHECK_ON_STRIP[lang]}</p>}
+                {k === "batch" && (
+                  <button type="button" onClick={() => setKeypad(true)} className="mt-2 inline-flex min-h-12 items-center gap-2 rounded-2xl border border-line bg-white px-4 text-[16px] font-semibold text-brand-800"><Grid3x3 size={20} /> {KEYPAD[lang]}</button>
+                )}
                 {ask && (
                   <button type="button" className="mt-2 rounded-2xl border-2 border-amber-line bg-white px-4 py-2 text-[16px] font-semibold text-amber-ink" onClick={() => setExpiryOk(true)} data-testid="expiry-yes">{EXPIRY_YES[lang]}</button>
                 )}
@@ -229,6 +245,10 @@ export default function Photo() {
           </div>
         </motion.form>
       )}
+      <BatchKeypad open={keypad} value={form.batch} onClose={() => setKeypad(false)} onDone={(v) => {
+        if (!reading) { go({ name: "type", prefill: { name: form.name, batch: v } }); return; }
+        setForm({ ...form, batch: v }); setEdited({ ...edited, batch: true });
+      }} />
     </Page>
   );
 }

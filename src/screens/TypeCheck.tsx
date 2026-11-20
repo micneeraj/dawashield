@@ -1,10 +1,11 @@
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, Search, Sparkles } from "lucide-react";
+import { ChevronDown, Grid3x3, Search } from "lucide-react";
 import { useApp } from "../state";
 import { Button, Disclaimer, Field, Page, inputCls, cx } from "../components/ui";
 import { searchNames } from "../lib/match";
-import { demoRecord } from "../lib/demo";
+import { DemoButtons } from "../components/Demo";
+import { BatchKeypad } from "../components/Keypad";
 import { COMMON_MEDICINES } from "../content/common-medicines";
 import { useRunCheck } from "../useCheck";
 
@@ -27,27 +28,16 @@ export default function TypeCheck() {
   const [expiry, setExpiry] = useState(prefill?.expiry ?? "");
   const [more, setMore] = useState(!!(prefill?.manufacturer || prefill?.expiry));
   const [picked, setPicked] = useState(false);
+  const [keypad, setKeypad] = useState(false);
 
   const suggestions = useMemo(
     () => (name.trim().length >= 3 && !picked ? searchNames(name, dataset?.records ?? [], COMMON_MEDICINES, 4) : []),
     [name, picked, dataset],
   );
-  const demo = useMemo(() => demoRecord(dataset?.records ?? []), [dataset]);
-
-  function tryDemo() {
-    if (!demo) return;
-    setName(demo.name); setBatch(demo.batch); setPicked(true);
-    runCheck({ name: demo.name, batch: demo.batch });
-  }
 
   return (
     <Page title={TXT.title[lang]}>
-      {demo && (
-        <button type="button" onClick={tryDemo} data-testid="demo-chip" className="tap mb-4 inline-flex items-center gap-2 rounded-full border border-red-line bg-red-soft px-4 text-[15px] font-semibold text-red-ink transition hover:brightness-95">
-          <Sparkles size={17} aria-hidden /> {TXT.demo[lang]}
-          <span className="num rounded-full bg-white/80 px-2 py-0.5 text-[13px]">{demo.batch}</span>
-        </button>
-      )}
+      <DemoButtons compact className="mb-4" />
       <form className="space-y-5" onSubmit={(e) => { e.preventDefault(); runCheck({ name, batch, manufacturer, expiry }); }}>
         <Field label={t("medicineName")}>
           <input className={cx(inputCls, "min-h-16 text-[22px] font-semibold")} value={name} onChange={(e) => { setName(e.target.value); setPicked(false); }} placeholder={TXT.namePh[lang]} autoComplete="off" enterKeyHint="search" data-testid="name-input" />
@@ -60,7 +50,12 @@ export default function TypeCheck() {
           </div>
         )}
         <Field label={t("batchNo")} hint={t("batchHint")}>
-          <input className={cx(inputCls, "num min-h-16 text-[26px] font-bold tracking-wider")} value={batch} onChange={(e) => setBatch(e.target.value.toUpperCase())} placeholder={TXT.batchPh[lang]} autoCapitalize="characters" autoComplete="off" enterKeyHint="search" data-testid="type-batch" />
+          <div className="flex gap-2">
+            <input className={cx(inputCls, "num min-h-16 text-[26px] font-bold tracking-wider")} value={batch} onChange={(e) => setBatch(e.target.value.toUpperCase())} placeholder={TXT.batchPh[lang]} autoCapitalize="characters" autoComplete="off" enterKeyHint="search" data-testid="type-batch" />
+            <button type="button" onClick={() => setKeypad(true)} aria-label={lang === "hi" ? "बड़े बटन वाला कीपैड" : "Big-button keypad"} className="tap grid w-16 shrink-0 place-items-center rounded-2xl border border-line bg-white text-brand-800 shadow-soft" data-testid="keypad-open">
+                    <Grid3x3 size={26} />
+                  </button>
+          </div>
         </Field>
 
         <div className="rounded-3xl border border-line bg-white/60">
@@ -88,6 +83,7 @@ export default function TypeCheck() {
         <p className="-mt-2 text-center text-[14px] text-muted">{TXT.enter[lang]}</p>
       </form>
       <Disclaimer className="mt-6" />
+      <BatchKeypad open={keypad} value={batch} onClose={() => setKeypad(false)} onDone={setBatch} />
     </Page>
   );
 }

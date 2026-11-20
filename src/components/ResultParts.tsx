@@ -55,6 +55,7 @@ const L = {
     speech: { hi: "आवाज़ से दवा का नाम समझा", en: "Understood the spoken medicine name" },
     "photo-full": { hi: "पूरी फ़ोटो पढ़ी", en: "Read the full photo" },
     "photo-crop": { hi: "B.No / EXP वाला हिस्सा ज़ूम करके पढ़ा", en: "Read the zoomed B.No / EXP area" },
+    "photo-enhanced": { hi: "चमक घटाकर, कंट्रास्ट बढ़ाकर दोबारा पढ़ा", en: "Re-read with glare reduced and contrast boosted" },
     explain: { hi: "रिकॉर्ड आसान शब्दों में समझाया", en: "Explained the record" },
     chat: { hi: "आपके सवाल का जवाब", en: "Answered your question" },
     match: { hi: "सरकारी सूची से मिलान", en: "Matched against the official list" },

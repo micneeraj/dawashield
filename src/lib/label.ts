@@ -129,9 +129,21 @@ export function mergeLabels(a: LabelReading | null, b: LabelReading | null): Lab
   return validateLabel(out);
 }
 
-/** Fields the user must look at: missing or uncertain. */
+/** Below this, a batch or expiry is shown in amber with "please confirm". */
+export const CONFIRM_BELOW = 0.75;
+
+/** Confidence 0..1 for one extracted field: the model's own score, lowered by
+ *  any plain-code check that flagged it (two reads differ, no label in the
+ *  source text, licence-number pattern, expiry not after MFD...). */
+export function fieldConfidence(f: LabelField): number {
+  if (!f.value) return 0;
+  const base = f.confidence ?? 0.7;
+  return Math.round((f.uncertain ? Math.min(base, 0.5) : base) * 100) / 100;
+}
+
+/** Fields the user must look at: missing, uncertain or low confidence. */
 export function needsCheck(f: LabelField): boolean {
-  return !f.value || !!f.uncertain;
+  return !f.value || !!f.uncertain || fieldConfidence(f) < CONFIRM_BELOW;
 }
 
 // ---------- Image quality, double read, expiry safety ----------

@@ -1,6 +1,7 @@
 // Photo preparation for the label-reading model. Keep resolution high (small
 // sideways text must stay legible) and crop/zoom the B.No / EXP area when it is small.
 import type { Box } from "./label";
+import { autoCropBox, enhanceGray, toGray } from "./enhance";
 
 export const MIN_LONG_SIDE = 2000; // never downscale below this
 export const MAX_LONG_SIDE = 3072; // only very large photos are reduced, to this
@@ -47,8 +48,43 @@ async function toJpeg(bmp: ImageBitmap, sx: number, sy: number, sw: number, sh: 
 }
 
 export interface PreparedPhoto {
+  /** Colour photo, background auto-cropped. Used for the full read. */
   full: Blob;
+  /** Zoomed crop of the B.No / EXP area, enhanced (grayscale, glare reduction, CLAHE, sharpen). */
   crop(box: Box): Promise<Blob>;
+  /** The whole label area enhanced, for a second-opinion read of small or shiny text. */
+  enhanced(): Promise<Blob>;
+}
+
+/** Draw a region, run the enhancement chain on its pixels, encode as JPEG. */
+async function enhancedJpeg(bmp: ImageBitmap, sx: number, sy: number, sw: number, sh: number, scale: number): Promise<Blob> {
+  const c = document.createElement("canvas");
+  c.width = Math.round(sw * scale);
+  c.height = Math.round(sh * scale);
+  const g = c.getContext("2d", { willReadFrequently: true })!;
+  g.imageSmoothingQuality = "high";
+  g.drawImage(bmp, sx, sy, sw, sh, 0, 0, c.width, c.height);
+  const img = g.getImageData(0, 0, c.width, c.height);
+  const out = enhanceGray(toGray(img.data, c.width, c.height));
+  for (let i = 0, j = 0; i < out.d.length; i++, j += 4) { img.data[j] = img.data[j + 1] = img.data[j + 2] = out.d[i]; img.data[j + 3] = 255; }
+  g.putImageData(img, 0, 0);
+  return new Promise<Blob>((res, rej) => c.toBlob((b) => (b ? res(b) : rej(new Error("encode"))), "image/jpeg", JPEG_QUALITY));
+}
+
+/** Auto-crop box measured on a small preview (fast on cheap phones). */
+function labelArea(bmp: ImageBitmap): { x: number; y: number; w: number; h: number } {
+  try {
+    const k = Math.min(1, 480 / Math.max(bmp.width, bmp.height));
+    const c = document.createElement("canvas");
+    c.width = Math.max(8, Math.round(bmp.width * k));
+    c.height = Math.max(8, Math.round(bmp.height * k));
+    const g = c.getContext("2d", { willReadFrequently: true })!;
+    g.drawImage(bmp, 0, 0, c.width, c.height);
+    const b = autoCropBox(toGray(g.getImageData(0, 0, c.width, c.height).data, c.width, c.height));
+    return { x: Math.round(b.x / k), y: Math.round(b.y / k), w: Math.min(bmp.width, Math.round(b.w / k)), h: Math.min(bmp.height, Math.round(b.h / k)) };
+  } catch {
+    return { x: 0, y: 0, w: bmp.width, h: bmp.height };
+  }
 }
 
 export async function preparePhoto(file: Blob): Promise<PreparedPhoto> {
@@ -56,15 +92,19 @@ export async function preparePhoto(file: Blob): Promise<PreparedPhoto> {
   try {
     bmp = await createImageBitmap(file, { imageOrientation: "from-image" });
   } catch {
-    return { full: file, crop: async () => file };
+    return { full: file, crop: async () => file, enhanced: async () => file };
   }
-  const s = fullScale(bmp.width, bmp.height);
-  const full = s === 1 && file.type === "image/jpeg" ? file : await toJpeg(bmp, 0, 0, bmp.width, bmp.height, s);
+  const area = labelArea(bmp);
+  const cropped = area.w < bmp.width * 0.95 || area.h < bmp.height * 0.95;
+  const s = fullScale(area.w, area.h);
+  const full = !cropped && s === 1 && file.type === "image/jpeg" ? file : await toJpeg(bmp, area.x, area.y, area.w, area.h, s);
   return {
     full,
     crop: (box) => {
-      const r = cropRect(box, bmp.width, bmp.height);
-      return toJpeg(bmp, r.x, r.y, r.w, r.h, cropZoom(r.w, r.h));
+      // Box coordinates refer to the (auto-cropped) full image.
+      const r = cropRect(box, area.w, area.h);
+      return enhancedJpeg(bmp, area.x + r.x, area.y + r.y, r.w, r.h, cropZoom(r.w, r.h));
     },
+    enhanced: () => enhancedJpeg(bmp, area.x, area.y, area.w, area.h, Math.min(1, s)),
   };
 }

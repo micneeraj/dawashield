@@ -6,7 +6,7 @@
 import { getGenerativeModel, InferenceMode, type ChatSession } from "firebase/ai";
 import { ai, CLOUD_MODEL } from "./firebase";
 import { parseCandidates } from "./json";
-import { compareReads, needsCloserPhoto, parseStripRead, preferCrop, type LabelReading, type StripRead } from "./label";
+import { compareReads, mergeLabels, needsCheck, needsCloserPhoto, parseStripRead, preferCrop, type LabelReading, type StripRead } from "./label";
 import { isSmallBox, preparePhoto } from "./image";
 import { toSource } from "./source";
 import { transliterate } from "./normalize";
@@ -36,7 +36,7 @@ const fallbackFor = (mode: Mode): Source =>
 
 /** One AI call as it actually ran: what it did, where (SDK inferenceSource) and how long. */
 export interface AiStep {
-  task: "speech" | "photo-full" | "photo-crop" | "explain" | "chat";
+  task: "speech" | "photo-full" | "photo-crop" | "photo-enhanced" | "explain" | "chat";
   source: Source;
   ms: number;
 }
@@ -108,6 +108,9 @@ export const LABEL_PROMPT =
 export const CROP_NOTE =
   "This image is a zoomed crop of the batch / expiry area of the same strip. Read B.No, EXP and MFD from it character by character.\n";
 
+export const ENHANCED_NOTE =
+  "This is the same strip, contrast-enhanced in grayscale to reduce glare. Read B.No, EXP and MFD character by character.\n";
+
 export class CloserPhotoNeeded extends Error {
   constructor() { super("closer-photo-needed"); }
 }
@@ -136,11 +139,21 @@ async function readWith(mode: Mode, file: Blob): Promise<AiText<LabelReading>> {
   const full = await readImage(mode, photo.full, LABEL_PROMPT, "photo-full");
   let s = full.s;
   // Small label text: zoom into the B.No / EXP area and use that read for those fields (only if needed).
+  let zoomed = false;
   if (s.box && (isSmallBox(s.box) || s.quality !== "ok")) {
     try {
       const crop = await readImage(mode, await photo.crop(s.box), CROP_NOTE + LABEL_PROMPT, "photo-crop");
-      if (crop.s.reading) s = { reading: preferCrop(s.reading, crop.s.reading), quality: crop.s.quality, box: s.box };
+      if (crop.s.reading) { s = { reading: preferCrop(s.reading, crop.s.reading), quality: crop.s.quality, box: s.box }; zoomed = true; }
     } catch { /* keep the full-image read */ }
+  }
+  // Batch / expiry still unsure: one more read of the enhanced image (glare reduced,
+  // contrast boosted, sharpened), merged field by field. Cloud only (Nano is slow).
+  const unsure = !s.reading || needsCheck(s.reading.batch) || needsCheck(s.reading.expiry);
+  if (unsure && !zoomed && mode !== InferenceMode.ONLY_ON_DEVICE) {
+    try {
+      const enh = await readImage(mode, await photo.enhanced(), ENHANCED_NOTE + LABEL_PROMPT, "photo-enhanced");
+      if (enh.s.reading) s = { reading: mergeLabels(s.reading, enh.s.reading), quality: enh.s.quality === "ok" ? "ok" : s.quality, box: s.box };
+    } catch { /* keep what we have */ }
   }
   if (needsCloserPhoto(s)) throw new CloserPhotoNeeded();
   return { value: s.reading!, source: full.source, ms: Math.round(performance.now() - t0) };
