@@ -15,6 +15,7 @@ under "failed". Run:  python -I data/build_dataset.py   (from the app folder)
 from __future__ import annotations
 
 import csv
+import gzip
 import hashlib
 import html
 import json
@@ -30,6 +31,11 @@ ROOT = Path(__file__).resolve().parent.parent
 RAW = ROOT / "data" / "raw"
 OUT = ROOT / "public" / "data"
 VERIFIED_CSV = ROOT / "data" / "verified_records.csv"
+CHANGELOG = ROOT / "data" / "CHANGELOG.md"
+RUN_LOG = ROOT / "data" / "pipeline_log.json"
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from validate import added_records, changelog_entry, log_run, prepend_changelog, removed_ids, validate  # noqa: E402
 
 PORTAL = "https://cdscoonline.gov.in/CDSCO"
 PORTAL_PAGE = PORTAL + "/viewPublicNSQDrug"
@@ -259,8 +265,22 @@ def squash(s: str) -> str:
 
 
 # ---------- main ----------
+def keep_last_good(reason: str, detail: dict | None = None) -> int:
+    """Source down or parse looks wrong: never overwrite the published data."""
+    print("NOT PUBLISHED, keeping last good dataset:", reason)
+    log_run(RUN_LOG, "kept-last-good", {"reason": reason[:500], **(detail or {})})
+    return 0  # the workflow still commits the log; the app keeps working on the last good data
+
+
 def main() -> int:
     sys.stdout.reconfigure(encoding="utf-8")
+    try:
+        return build()
+    except Exception as e:  # source down, network error, format change
+        return keep_last_good(f"pipeline error: {type(e).__name__}: {e}")
+
+
+def build() -> int:
     failed: list = []
     RAW.mkdir(parents=True, exist_ok=True)
     OUT.mkdir(parents=True, exist_ok=True)
@@ -362,8 +382,14 @@ def main() -> int:
     for i, r in enumerate(out):
         r["id"] = hashlib.sha1(f"{r['type']}|{r['batchNorm']}|{r['name']}|{r['month']}|{r['lab']}".encode()).hexdigest()[:12]
 
+    prev_records = json.loads((OUT / "nsq.json").read_text(encoding="utf-8")) if (OUT / "nsq.json").exists() else None
+    problems = validate(out, prev_records)
+    if problems:
+        return keep_last_good("; ".join(problems), {"parsed": len(out), "previous": len(prev_records or [])})
+
     body = json.dumps(out, ensure_ascii=False, separators=(",", ":"))
     version = hashlib.sha256(body.encode()).hexdigest()[:16]
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     months_present = sorted({r["month"] for r in out})
     expected = sorted({month_key(m) for m in window})
     prev = json.loads((OUT / "meta.json").read_text(encoding="utf-8")) if (OUT / "meta.json").exists() else {}
@@ -389,7 +415,18 @@ def main() -> int:
         "statesPendingLatestMonth": pending_states,
         "failed": failed,
         "sources": [PORTAL_PAGE, ALERT_PAGES[0]],
+        "lastChecked": prev.get("lastChecked", today) if OFFLINE else today,
+        "bytes": len(body.encode("utf-8")),
+        "gzipBytes": len(gzip.compress(body.encode("utf-8"), 9)),
     }
+    if prev.get("version") == version and not OFFLINE:
+        meta["lastSynced"] = prev.get("lastSynced", meta["lastSynced"])  # data unchanged: only lastChecked moves
+    added = added_records(prev_records, out)
+    removed = removed_ids(prev_records, out)
+    if (added or removed) and not OFFLINE:
+        prepend_changelog(CHANGELOG, changelog_entry(today, added, removed, meta["latestMonth"]))
+    log_run(RUN_LOG, "published" if prev.get("version") != version else "unchanged",
+            {"records": len(out), "added": len(added), "removed": len(removed), "latestMonth": meta["latestMonth"], "failedFetches": len(failed)})
     (OUT / "nsq.json").write_text(body, encoding="utf-8")
     (OUT / "meta.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
     print(json.dumps({k: v for k, v in meta.items() if k not in ("failed", "statesPendingLatestMonth")}, indent=2))

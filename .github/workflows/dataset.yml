@@ -1,30 +1,72 @@
-name: Refresh CDSCO dataset
+name: Daily CDSCO data refresh + push re-check
+
+# Free GitHub Actions cron. CDSCO publishes alerts about a month late, at no fixed
+# date, so we check every day:
+#   1. fetch the latest CDSCO NSQ/spurious alerts (portal) and new monthly PDFs
+#   2. parse, normalise, dedupe, validate; if the source is down or the parse looks
+#      wrong (sharp record drop, missing fields), keep the last good data and log it
+#   3. commit public/data/*.json + data/CHANGELOG.md + data/pipeline_log.json
+#   4. rebuild and deploy to Firebase Hosting (Spark plan, free)
+#   5. re-check every opted-in saved medicine and send push (FCM) if flagged,
+#      plus expiry reminders ~5 days before expiry
+# Steps 4-5 need the repository secret FIREBASE_SERVICE_ACCOUNT (service account JSON).
 
 on:
   schedule:
-    - cron: "30 3 25 * *" # 25th of every month, 09:00 IST (CDSCO publishes around the 20th)
+    - cron: "30 1 * * *" # every day 07:00 IST
   workflow_dispatch:
 
 permissions:
   contents: write
 
+concurrency:
+  group: daily-data
+  cancel-in-progress: false
+
 jobs:
-  build-dataset:
+  refresh:
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    env:
+      HAS_SA: ${{ secrets.FIREBASE_SERVICE_ACCOUNT != '' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       - run: pip install pdfplumber==0.11.4
-      - name: Build dataset from official CDSCO sources
+      - name: Pipeline unit tests
+        run: python -I -m unittest discover -s data -p "test_*.py"
+      - name: Build dataset from official CDSCO sources (keeps last good on failure)
         run: python -I data/build_dataset.py
       - name: Commit if changed
         run: |
           git config user.name "dawashield-bot"
           git config user.email "dawashield-bot@users.noreply.github.com"
-          git add public/data/nsq.json public/data/meta.json
+          git add public/data/nsq.json public/data/meta.json data/CHANGELOG.md data/pipeline_log.json data/raw/pdf_urls.json 2>/dev/null || true
           if git diff --cached --quiet; then echo "No change"; exit 0; fi
-          git commit -m "data: monthly CDSCO refresh $(date -u +%Y-%m-%d)"
+          git commit -m "data: daily CDSCO refresh $(date -u +%Y-%m-%d)"
           git push
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - name: Unit tests
+        run: npm test
+      - name: Build and deploy to Firebase Hosting
+        if: env.HAS_SA == 'true'
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          VITE_RECAPTCHA_SITE_KEY: ${{ vars.VITE_RECAPTCHA_SITE_KEY }}
+        run: |
+          echo "$FIREBASE_SERVICE_ACCOUNT" > "$RUNNER_TEMP/sa.json"
+          export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json"
+          npm run build
+          npx --yes firebase-tools@15 deploy --only hosting --project dawashield-hybrid-3023 --non-interactive
+          rm -f "$RUNNER_TEMP/sa.json"
+      - name: Re-check saved medicines and send push
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: npx tsx scripts/daily-push.ts

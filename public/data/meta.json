@@ -1,5 +1,5 @@
 {
-  "version": "46846f20d4acbd6d",
+  "version": "033e977bb56d2587",
   "records": 4158,
   "duplicatesMerged": 20,
   "nsq": 4109,
@@ -8,7 +8,7 @@
   "pdfCrossChecked": 815,
   "earliestMonth": "2024-10",
   "latestMonth": "2026-09",
-  "lastSynced": "2026-11-15",
+  "lastSynced": "2026-11-20",
   "missingMonths": [],
   "statesPendingLatestMonth": [
     "Andaman And Nicobar",
@@ -35,5 +35,8 @@
   "sources": [
     "https://cdscoonline.gov.in/CDSCO/viewPublicNSQDrug",
     "https://cdsco.gov.in/opencms/opencms/en/Notifications/Alerts/"
-  ]
+  ],
+  "lastChecked": "2026-11-20",
+  "bytes": 2943686,
+  "gzipBytes": 489608
 }
