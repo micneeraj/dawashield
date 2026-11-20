@@ -38,6 +38,11 @@ export interface DatasetMeta {
   earliestMonth: string | null;
   latestMonth: string | null;
   lastSynced: string;
+  /** Date the daily pipeline last checked CDSCO successfully (even with no new records). */
+  lastChecked?: string;
+  /** Size of nsq.json, raw and gzip-compressed (what is actually downloaded). */
+  bytes?: number;
+  gzipBytes?: number;
   missingMonths: string[];
   statesPendingLatestMonth: string[];
   failed: { month: string; type: string; error: string }[];
@@ -48,7 +53,9 @@ export type Level = "RED" | "AMBER" | "GREY";
 
 /** Why a result got its colour. Each maps to one pre-written message. */
 export type MatchReason =
-  | "exact" // batch + medicine match an alert
+  | "exact" // batch + (medicine or confident company) match an alert
+  | "possible-company" // exact batch, company only a medium-confidence match
+  | "batch-other-company" // exact batch, but a clearly different company
   | "batch-other-name" // batch matches, medicine name differs
   | "near-batch" // batch one character off, same medicine
   | "company" // exact company entity has an alert, batch not listed
@@ -65,6 +72,8 @@ export interface MatchResult {
   level: Level;
   reason: MatchReason;
   records: AlertRecord[];
+  /** Company entity resolution against the top record, when a company was given. */
+  company?: { score: number; band: "exact" | "high" | "medium" | "low" };
 }
 
 export type Source = "device" | "cloud";

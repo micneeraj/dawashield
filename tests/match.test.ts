@@ -112,8 +112,14 @@ describe("matchMedicine", () => {
     expect(r.reason).toBe("company");
   });
 
-  it("similarly named company is NOT the same entity", () => {
+  it("spelling variant of the same company resolves to the same entity", () => {
     const r = matchMedicine({ name: "Some tablet", batch: "ZZ9999", manufacturer: "Laborate Pharma" }, RECORDS);
+    expect(r.level).toBe("AMBER");
+    expect(r.reason).toBe("company");
+  });
+
+  it("a different kind of company with one shared word is NOT a company match", () => {
+    const r = matchMedicine({ name: "Some tablet", batch: "ZZ9999", manufacturer: "Laborate Healthcare" }, RECORDS);
     expect(r.level).toBe("GREY");
   });
 
