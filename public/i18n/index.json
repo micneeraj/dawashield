@@ -1,29 +1,34 @@
 {
  "langs": {
   "pa": {
-   "available": false,
-   "coverage": 0.798,
-   "clips": 0
+   "available": true,
+   "coverage": 1,
+   "clips": 0,
+   "voice": "browser"
   },
   "gu": {
-   "available": false,
-   "coverage": 0,
-   "clips": 0
+   "available": true,
+   "coverage": 1,
+   "clips": 0,
+   "voice": "browser"
   },
   "mr": {
-   "available": false,
-   "coverage": 0,
-   "clips": 0
+   "available": true,
+   "coverage": 1,
+   "clips": 0,
+   "voice": "browser"
   },
   "kn": {
-   "available": false,
-   "coverage": 0,
-   "clips": 0
+   "available": true,
+   "coverage": 1,
+   "clips": 0,
+   "voice": "browser"
   },
   "ta": {
-   "available": false,
-   "coverage": 0,
-   "clips": 0
+   "available": true,
+   "coverage": 1,
+   "clips": 0,
+   "voice": "browser"
   }
  }
 }

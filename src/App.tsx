@@ -15,7 +15,7 @@ import Settings from "./screens/Settings";
 import { About, Privacy } from "./screens/Info";
 import Report from "./screens/Report";
 import { FirstRun, How, Invite, Transparency, Why } from "./screens/Pages";
-import { LanguageButton, RegionalFallbackBanner, TranslationLayer } from "./components/Language";
+import { LanguageButton, RegionalFallbackBanner, RegionalNoVoiceNote, TranslationLayer } from "./components/Language";
 
 function Header() {
   const { t, lang, muted, setMuted, go } = useApp();
@@ -155,6 +155,7 @@ export default function App() {
         <div id="scroller" className="no-scrollbar flex flex-1 flex-col sm:overflow-y-auto">
           <Header />
           <RegionalFallbackBanner />
+          <RegionalNoVoiceNote />
           <main className="flex-1">
             <AnimatePresence mode="wait">
               <CurrentScreen />

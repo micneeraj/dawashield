@@ -98,12 +98,12 @@ Every AI answer carries the SDK's real `inferenceSource`, shown as **"On this de
 
 ## Regional languages (online only)
 
-- **Build time only.** `npm run i18n` (`scripts/i18n-build.ts`) collects every UI string and result template (`scripts/i18n-strings.ts`, ~580 strings, 139 safety strings), translates them with Sarvam AI (`sarvam-translate:v1`), back-translates to English and compares meaning in plain code (word overlap + negation check). Safety strings whose meaning drifts are retranslated with `mayura:v1`; if they still drift they are **flagged and shown in English**. Review sheets: `i18n/review/<lang>.csv`, summary `i18n/review/SUMMARY.json`.
+- **Build time only.** `npm run i18n` (`scripts/i18n-build.ts`) collects every UI string and result template (`scripts/i18n-strings.ts`, 579 strings, 139 safety strings). Translations come from the Sarvam cache (Punjabi, partial) and from `i18n/manual/<lang>.tsv`, which holds a translation and an English back-translation for each string, both written by Claude. Plain code compares meaning (word overlap + negation check, placeholders kept). A safety string that drifts uses its retranslation (`index!` line); if that still drifts it is **flagged and shown in English**. Current result: all 5 languages 579/579, 0 flagged. Native-speaker review recommended. Sarvam (`sarvam-translate:v1` / `mayura:v1`) stays as an optional upgrade path when `SARVAM_API_KEY` is set.
 - The Sarvam key lives only in `.env` on the build machine. The browser never calls Sarvam or any translation service; it fetches static `public/i18n/<lang>.json`.
 - A language is offered in the picker only when `public/i18n/index.json` marks it available (≥90% of strings and ≥90% of safety strings verified). Others show "Translation in review".
 - Medicine names, batch numbers, companies and dates are never translated (`translate="no"`); names get a transliteration in the chosen script (`src/lib/indic.ts`).
 - Speech uses the Web Speech API in `pa-IN`, `gu-IN`, `mr-IN`, `kn-IN`, `ta-IN`; transcripts are mapped to Devanagari by Unicode block offset and matched by the same offline phonetic matcher.
-- Voice: Sarvam Bulbul clips at 24 kbps mono in `public/audio/<lang>/`, fetched on demand. `i18n/**` and regional audio are excluded from the precache, so **the offline download does not grow**.
+- Voice: the browser's `speechSynthesis` reads the reviewed translated text, only with a voice whose language matches (`pickVoice` in `src/lib/audio.ts`); no match = text only with a small note. Optional upgrade: if Sarvam clips are built (`index.json` `voice: "sarvam"`), mp3s in `public/audio/<lang>/` are played instead. `i18n/**` and regional audio are excluded from the precache, so **the offline download does not grow**.
 
 ## 7. Push re-check loop (`scripts/daily-push.ts`, `src/lib/pushplan.ts`)
 

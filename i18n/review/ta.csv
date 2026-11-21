@@ -1,580 +1,606 @@
 english,translation,back_translation,meaning_score,negation_ok,safety,status,model
-({0} repeats merged),,,0,false,false,missing,
-"{0} cases: {1} real (official records, the real Dolo strip), {2} generated from real records. Full method: docs/EVAL.md",,,0,false,false,missing,
-"{0} CDSCO records, {1} to {2}. Some states do not report every month.",,,0,false,false,missing,
-{0} medicine{1} flagged by a CDSCO alert,,,0,false,false,missing,
-{0} medicine{1} flagged since your last check,,,0,false,false,missing,
-{0} not provided,,,0,false,true,missing,
-"{0} official records on the phone. The plain rules in the table above, in a few milliseconds, in any phone's browser.",,,0,false,false,missing,
-{0} real · {1} generated,,,0,false,false,missing,
-{0} saved medicine(s) now match an official alert. Open to see.,,,0,false,false,missing,
-{0}medicine (batch {1}) {2} CDSCO's {3} list. Open DawaShield to see. Don't take the next dose until you speak to your doctor or chemist; never stop an essential medicine suddenly.,,,0,false,false,missing,
-{medicine},,,0,false,true,missing,
-{month},,,0,false,true,missing,
-"1. You speak, type or take a photo",,,0,false,false,missing,
-"2. Photo: clean up, then read",,,0,false,false,missing,
-3. Company and medicine resolution,,,0,false,false,missing,
-4. Offline matching engine,,,0,false,false,missing,
-"5 languages, voice top-3",,,0,false,false,missing,
-5. Where AI helps,,,0,false,false,missing,
-6. Daily re-check loop,,,0,false,false,missing,
-"A counterfeit can copy a real batch number, so GREY cannot rule it out.",,,0,false,false,missing,
-A family member invited you,,,0,false,false,missing,
-A family member's saved,,,0,false,false,missing,
-A medicine is expiring soon,,,0,false,false,missing,
-"A ready-to-send message for CDSCO, with the email and toll-free number.",,,0,false,false,missing,
-"A report contains only the result colour, batch, company, record IDs and your short note. No personal details.",,,0,false,false,missing,
-"A WhatsApp message, or a push alert straight to a son's or daughter's phone.",,,0,false,false,missing,
-About DawaShield,,,0,false,false,missing,
-absolute right-3 top-3,,,0,false,false,missing,
-Accept,,,0,false,false,missing,
-Accuracy on real strip photos.,,,0,false,false,missing,
-Accuracy on real users' voices (all voice cases are written or generated).,,,0,false,false,missing,
-"Accuracy with real Punjabi, Gujarati, Marathi, Kannada and Tamil speakers.",,,0,false,false,missing,
-Add a family member first,,,0,false,false,missing,
-Add expiry to my calendar,,,0,false,false,missing,
-Add family member,,,0,false,false,missing,
-Add medicine,,,0,false,false,missing,
-Add photo of other side,,,0,false,false,missing,
-Add your first medicine,,,0,false,false,missing,
-AI is not available right now. You can still type the name and batch number to check.,,,0,false,true,missing,
-AI never decides the colour,,,0,false,false,missing,
-AI only explains the record; the result above is decided by fixed rules.,,,0,false,false,missing,
-AIzaSyC6hXAUAauCyxZElbJLvFp_RKMyK0uqXUk,,,0,false,false,missing,
-Alert month,,,0,false,false,missing,
-"Alert month, official link and record ID on every result.",,,0,false,false,missing,
-Alerts are on,,,0,false,false,missing,
-Alerts on a family member's phone,,,0,false,false,missing,
-All checked,,,0,false,false,missing,
-Amber,,,0,false,true,missing,
-An official alert matches this exact batch.,,,0,false,true,missing,
-Answered your question,,,0,false,false,missing,
-App Check not started,,,0,false,false,missing,
-Ask about this record,,,0,false,false,missing,
-"Auto-crop, glare reduction, contrast, sharpen; Gemini reads twice and scores every field. Very low confidence = ""Can't read clearly"", never a guess. On phones, photo reading needs internet; offline photo reading works only on desktop Chrome with Gemini Nano.",,,0,false,false,missing,
-Automatic later alerts for saved medicines,,,0,false,false,missing,
-Available offline,,,0,false,false,missing,
-B.No.,,,0,false,false,missing,
-Back,,,0,false,false,missing,
-Backspace,,,0,false,false,missing,
-Batch,,,0,false,false,missing,
-Batch {0} was not found in our official list.,,,0,false,true,missing,
-Batch number,,,0,false,false,missing,
-Batch number (B.No.),,,0,false,false,missing,
-Batch number: {0},,,0,false,true,missing,
-Batch: {0},,,0,false,true,missing,
-Before you start,,,0,false,true,missing,
-Big-button keypad,,,0,false,false,missing,
-"Buy from a licensed chemist, with a bill",,,0,false,true,missing,
-Buy medicines only from a licensed shop and always take a proper bill.,,,0,false,true,missing,
-Cabinet,,,0,false,false,missing,
-Cabinet and family,,,0,false,false,missing,
-Cabinet and family stay on the phone.,,,0,false,false,missing,
-Calendar file downloaded,,,0,false,false,missing,
-"Camera permission was blocked. Choose a photo from the gallery, or type the batch number.",,,0,false,true,missing,
-Can't find batch,,,0,false,false,missing,
-CAN'T READ,,,0,false,false,missing,
-Can't read clearly,,,0,false,true,missing,
-Cancel,,,0,false,false,missing,
-Careful about false alarms,,,0,false,false,missing,
-Cases,,,0,false,false,missing,
-CDSCO alert check,,,0,false,false,missing,
-CDSCO alert month,,,0,false,false,missing,
-CDSCO alert: {0},,,0,false,true,missing,
-CDSCO alerts page,,,0,false,false,missing,
-CDSCO data: available offline,,,0,false,false,missing,
-CDSCO lists arrive late; alerts in between are not visible to us.,,,0,false,false,missing,
-CDSCO NSQ portal,,,0,false,false,missing,
-CDSCO PDF,,,0,false,false,missing,
-CDSCO record,,,0,false,false,missing,
-CDSCO toll-free,,,0,false,false,missing,
-CDSCO's list for {0} names batch {1} as {2}.,,,0,false,true,missing,
-Change,,,0,false,false,missing,
-Check,,,0,false,false,missing,
-Check a medicine,,,0,false,false,missing,
-Check another,,,0,false,false,missing,
-"Check the batch number and company name on the strip carefully, and ask your chemist. Until then treat it as neither 'safe' nor 'bad'.",,,0,false,true,missing,
-"Check the batch number on the strip carefully, and ask your chemist.",,,0,false,true,missing,
-Check the expiry date,,,0,false,true,missing,
-"Check the expiry date, and buy medicines only from a licensed chemist, with a bill.",,,0,false,true,missing,
-Check these against the strip,,,0,false,false,missing,
-Check your family's medicines against official CDSCO alerts,,,0,false,false,missing,
-Checked by plain code against {0} CDSCO records,,,0,false,false,missing,
-Checking the official list…,,,0,false,false,missing,
-Choose from gallery,,,0,false,true,missing,
-Choose language,,,0,false,false,missing,
-Clear,,,0,false,false,missing,
-Close,,,0,false,false,missing,
-Cloud,,,0,false,false,missing,
-Cloud AI,,,0,false,false,missing,
-Company,,,0,false,false,missing,
-Company (manufacturer),,,0,false,false,missing,
-Company named in the list: {0}.,,,0,false,true,missing,
-Company on label,,,0,false,false,missing,
-"Competitor cells state only what their own public listings (app stores, NITI Aayog Frontier Tech stories) say, as of Nov 2026. 'Not verified' means we did not confirm it either way. FactsScan and TruthIn are food-label apps; Tata 1mg is an online pharmacy. They do different jobs, so this shows where DawaShield is different, not who is better.",,,0,false,false,missing,
-Complaint-message helper,,,0,false,false,missing,
-Confidence,,,0,false,false,missing,
-Confirm and check,,,0,false,false,missing,
-Consent given,,,0,false,false,missing,
-Copied,,,0,false,false,missing,
-Copy,,,0,false,false,missing,
-Copy the message below and send it through an official channel. Keep the medicine and strip.,,,0,false,false,missing,
-Correctly refused to read,,,0,false,false,missing,
-Could not open the camera. Please choose a photo from the gallery.,,,0,false,true,missing,
-Could not send. Connect to the internet and try again.,,,0,false,false,missing,
-Couldn't create the link. Try again.,,,0,false,false,missing,
-Couldn't do it right now. Connect to the internet and try again.,,,0,false,false,missing,
-Couldn't turn on right now. Connect to the internet and try again.,,,0,false,false,missing,
-Coverage,,,0,false,false,missing,
-Create invite link,,,0,false,false,missing,
-Dada,,,0,false,false,missing,
-Dadi,,,0,false,false,missing,
-Data available up to,,,0,false,false,missing,
-"DawaShield does not replace a pharmacist, doctor or official advice.",,,0,false,true,missing,
-"DawaShield is an information tool based on public CDSCO alerts, not a quality certificate or medical advice. Counterfeits can copy real batch numbers, so a GREY result can't rule them out.",,,0,false,true,missing,
-"DawaShield matches your medicine's batch against official quality alerts from CDSCO, India's drug regulator.",,,0,false,true,missing,
-DawaShield: official alert found,,,0,false,true,missing,
-"DawaShield: open this link and tap ""Accept"" to get a notification on your phone if any of my saved medicines gets an official alert: {0}",,,0,false,false,missing,
-DawaShield: possible match with an official alert,,,0,false,true,missing,
-dci@nic.in,,,0,false,true,missing,
-Demo: a real official record,,,0,false,false,missing,
-Different,,,0,false,false,missing,
-"Do not burn old medicines in the open. Where available, drop them at a 'drug take-back' site run by the State Drugs Control Department and chemists' association. A few medicines have special rules, so ask your pharmacist. (Source: CDSCO guidance, May 2025)",,,0,false,true,missing,
-"Dolo-650 (Micro Labs, batch DOBS4518) is not listed. A different Micro Labs medicine, Amlodipine (batch AMAS0249), is. This used to show AMBER; now it is GREY with a small note that your medicine is not affected.",,,0,false,false,missing,
-"Don't use it. Keep the strip and bill, and show them to your chemist.",,,0,false,true,missing,
-Done,,,0,false,false,missing,
-"Done. If any of their saved medicines is flagged, this phone gets a notification.",,,0,false,false,missing,
-Download size,,,0,false,false,missing,
-e.g. 251TTF014,,,0,false,false,missing,
-e.g. Dolo 650,,,0,false,false,missing,
-e.g. What does 'dissolution' mean?,,,0,false,false,missing,
-Email CDSCO,,,0,false,false,missing,
-en-IN,,,0,false,false,missing,
-Enable,,,0,false,false,missing,
-Enter batch number,,,0,false,false,missing,
-Enter batch with big buttons,,,0,false,false,missing,
-Escape,,,0,false,false,missing,
-Eval run,,,0,false,false,missing,
-Every AI answer is labelled On this device or Cloud. Translations are made in advance; the browser never calls a translation service.,,,0,false,false,missing,
-"Every day your saved medicines are re-checked against the new official list. If a batch is flagged, or a medicine expires in 5 days, you get a notification on this phone.",,,0,false,false,missing,
-"Every medicine at home, checked against official alerts",,,0,false,false,missing,
-"Exact batch AND company matched with high confidence (or the medicine name, when the record names no company, as with spurious drugs).",,,0,false,false,missing,
-Exactly this message will be shared,,,0,false,false,missing,
-Example: this should be easy to read in the photo,,,0,false,false,missing,
-Expired,,,0,false,true,missing,
-Expired or expiring soon,,,0,false,false,missing,
-Expires soon,,,0,false,true,missing,
-Expiry,,,0,false,false,missing,
-Expiry (EXP),,,0,false,false,missing,
-Expiry reminders,,,0,false,false,missing,
-Expiry: {0},,,0,false,true,missing,
-Explained the record,,,0,false,false,missing,
-FactsScan,,,0,false,false,missing,
-failed to,,,0,false,false,missing,
-Failure reason,,,0,false,false,missing,
-False-GREY rate,,,0,false,false,missing,
-False-RED rate,,,0,false,false,missing,
-Family,,,0,false,false,missing,
-Family alert ready to send to {0},,,0,false,false,missing,
-Family alerts,,,0,false,false,missing,
-Family invite,,,0,false,false,missing,
-Female,,,0,false,false,missing,
-"Firebase AI Logic: Gemini Nano on the device and Gemini Flash in the cloud. Matching is always plain code, on the device.",,,0,false,false,missing,
-Firestore rules: each device can only read and write its own documents.,,,0,false,false,missing,
-First turn on alerts in Settings,,,0,false,false,missing,
-"Flagged batches caught, no correction",,,0,false,false,missing,
-For explanations and questions only the official record and your question are sent. Every AI answer is labelled On this device or Cloud.,,,0,false,false,missing,
-"For this, our server keeps only: a notification code, your language, and for each medicine its batch number, company and expiry month. Never your name, phone number, illness or who the medicine is for. Turn it off any time and all of it is deleted.",,,0,false,false,missing,
-For whom,,,0,false,false,missing,
-For: {0},,,0,false,true,missing,
-Full matching offline,,,0,false,false,missing,
-G-QKCDPFSW2N,,,0,false,false,missing,
-Gemini Flash · {0},,,0,false,false,missing,
-Gemini Nano · {0},,,0,false,false,missing,
-Gemini Nano is downloading. Using cloud AI for now.,,,0,false,false,missing,
-Gemini Nano is ready on this device{0}. AI works even offline.,,,0,false,false,missing,
-generated transcripts,,,0,false,false,missing,
-Get alerted if it is flagged later,,,0,false,true,missing,
-Get alerts even when the app is closed?,,,0,false,false,missing,
-"GitHub Actions fetches CDSCO daily, validates it, re-checks opted-in saved medicines and sends a push if one is flagged. On iPhone, push works only when the app is added to the home screen.",,,0,false,false,missing,
-Grey,,,0,false,true,missing,
-GREY,,,0,false,true,missing,
-Hand-verified,,,0,false,false,missing,
-Hand-verified records,,,0,false,false,missing,
-Heard,,,0,false,false,missing,
-"Hello, I am DawaShield. Say the medicine name, or show a photo of the strip.",,,0,false,true,missing,
-hi-IN,,,0,false,false,missing,
-Hide details,,,0,false,true,missing,
-"Hindi and English offline, 5 more Indian languages online",,,0,false,false,missing,
-"Hindi and English offline; Punjabi, Gujarati, Marathi, Kannada and Tamil online. Even a garbled transcript is matched and shown as big buttons.",,,0,false,false,missing,
-Hindi and English work offline. The other languages need internet.,,,0,false,false,missing,
-Hindi voice check,,,0,false,false,missing,
-Hindi voice input: works offline only if the Hindi speech pack is installed in Chrome,,,0,false,false,missing,
-Hindi/English voice top-3,,,0,false,false,missing,
-"Historical alert, this batch's expiry was",,,0,false,false,missing,
-Home,,,0,false,false,missing,
-Home medicine cabinet with automatic later alerts,,,0,false,false,missing,
-How it compares,,,0,false,false,missing,
-How it works,,,0,false,false,missing,
-How the result colour is decided,,,0,false,false,missing,
-How this answer was made,,,0,false,false,missing,
-Hybrid AI,,,0,false,false,missing,
-I could not understand. Please say it again or show a photo.,,,0,false,true,missing,
-I didn't hear anything. Hold the phone closer and say the medicine name again.,,,0,false,true,missing,
-"I understand, continue",,,0,false,true,missing,
-"If the colour, smell, packing or effect seems wrong, report it to CDSCO. We help you write the message.",,,0,false,true,missing,
-"If you accept, this phone gets a notification when one of their saved medicines appears in an official alert. We keep no name or number, only a notification code.",,,0,false,false,missing,
-Is the expiry date correct? Please check the strip,,,0,false,false,missing,
-"It does not test the medicine. 'No alert' does not mean 'safe', because official lists come out late.",,,0,false,true,missing,
-It never suggests any medicine. Talk to your doctor or chemist about every treatment decision.,,,0,false,true,missing,
-It was tested by {0}. Problem found: {1}.,,,0,false,true,missing,
-Keep the strip and the bill. Don't use it. Report it to the chemist and CDSCO.,,,0,false,true,missing,
-Language,,,0,false,false,missing,
-Last checked,,,0,false,false,missing,
-Last checked against CDSCO data up to {0}: all clear,,,0,false,false,missing,
-Last successful refresh,,,0,false,false,missing,
-Last synced,,,0,false,false,missing,
-Last updated,,,0,false,false,missing,
-Latest alert month,,,0,false,false,missing,
-Listed {0} times in the source PDF,,,0,false,false,missing,
-Listening…,,,0,false,false,missing,
-"Look for the date after EXP on the strip. If it has passed, don't take it; show it to your chemist.",,,0,false,true,missing,
-Maa,,,0,false,false,missing,
-Main,,,0,false,false,missing,
-Main job: match a medicine batch to CDSCO alerts,,,0,false,false,missing,
-Male,,,0,false,false,missing,
-Manufacturer,,,0,false,false,missing,
-Manufacturer (as stated),,,0,false,false,missing,
-Matched,,,0,false,false,missing,
-Matched against the official list,,,0,false,false,missing,
-Matches,,,0,false,false,missing,
-Matching (plain code),,,0,false,false,missing,
-Matching cases,,,0,false,false,missing,
-Matching CDSCO alert: {0},,,0,false,true,missing,
-Me,,,0,false,false,missing,
-Measured results,,,0,false,false,missing,
-Medicine,,,0,false,false,missing,
-Medicine cabinet,,,0,false,false,missing,
-Medicine expiring soon: {0},,,0,false,false,missing,
-Medicine matching always works fully offline on this phone.,,,0,false,false,missing,
-Medicine name,,,0,false,false,missing,
-Medicine name: {0},,,0,false,true,missing,
-Medicine: {0},,,0,false,true,missing,
-Mfg / Expiry,,,0,false,false,missing,
-"Microphone permission was blocked. Allow the mic in your browser, or type instead.",,,0,false,true,missing,
-Monthly CDSCO PDF for this alert,,,0,false,false,missing,
-Monthly PDF,,,0,false,false,missing,
-Months covered,,,0,false,false,missing,
-More details (optional),,,0,false,false,missing,
-more matching records,,,0,false,false,missing,
-My medicine is not the one in this alert,,,0,false,false,missing,
-My name and phone:,,,0,false,true,missing,
-Namaste,,,0,false,false,missing,
-Name,,,0,false,false,missing,
-need attention,,,0,false,false,missing,
-Needs internet,,,0,false,false,missing,
-Never recommends medicines,,,0,false,false,missing,
-New alert,,,0,false,false,missing,
-Next update expected,,,0,false,true,missing,
-"No ads, never recommends medicines",,,0,false,false,missing,
-"No AI calls were made, you typed everything.",,,0,false,false,missing,
-No AI decides safety,,,0,false,false,missing,
-No expiry date,,,0,false,true,missing,
-"No internet, so the photo couldn't be read. Try again, or type the batch number — the check itself works offline.",,,0,false,true,missing,
-"No labelled real strip photos yet, so photo accuracy has not been measured.",,,0,false,false,missing,
-No match is not a safety guarantee.,,,0,false,false,missing,
-"No medicines yet. After a check, tap ‘Save to cabinet’.",,,0,false,false,missing,
-No official alert,,,0,false,true,missing,
-No official alert for this exact batch,,,0,false,true,missing,
-No official record matched this batch. We checked this list:,,,0,false,false,missing,
-No record.,,,0,false,false,missing,
-None,,,0,false,false,missing,
-"None of these, I'll type",,,0,false,false,missing,
-Not downloaded yet,,,0,false,false,missing,
-Not found,,,0,false,false,missing,
-Not given,,,0,false,false,missing,
-Not now,,,0,false,false,missing,
-not of standard quality (NSQ),,,0,false,true,missing,
-Not of Standard Quality (NSQ),,,0,false,true,missing,
-Not of Standard Quality (NSQ): this batch failed a test at a government lab.,,,0,false,true,missing,
-Not verified,,,0,false,false,missing,
-Nothing expiring soon,,,0,false,false,missing,
-Notification,,,0,false,false,missing,
-Notifications,,,0,false,false,missing,
-Notifications (only if you opt in),,,0,false,false,missing,
-Notifications were blocked.,,,0,false,false,missing,
-Notifications were blocked. You can still use 'Add expiry to my calendar'.,,,0,false,false,missing,
-"Now the batch number. It is printed after B.No. or Batch on the strip. Say it, type it, or show a photo.",,,0,false,true,missing,
-NSQ / Spurious,,,0,false,false,missing,
-num p-2,,,0,false,false,missing,
-Off,,,0,false,false,missing,
-Official alert found,,,0,false,true,missing,
-Official CDSCO data up to,,,0,false,false,missing,
-"Official CDSCO data, source on every answer",,,0,false,false,missing,
-Official data,,,0,false,false,missing,
-Official data + plain code. AI only helps.,,,0,false,false,missing,
-Official data checked up to,,,0,false,true,missing,
-Official dataset,,,0,false,false,missing,
-Official link,,,0,false,false,missing,
-Official record,,,0,false,false,missing,
-Official record of the other medicine (not yours),,,0,false,true,missing,
-official records,,,0,false,false,missing,
-official records searched on this phone,,,0,false,false,missing,
-Official source + record ID on every answer,,,0,false,false,missing,
-Offline ready,,,0,false,false,missing,
-Offline ready · On this device,,,0,false,false,missing,
-Offline this can take about half a minute,,,0,false,false,missing,
-"Offline, still working",,,0,false,false,missing,
-On,,,0,false,false,missing,
-"On a red or amber result, send a WhatsApp message in one tap. Numbers stay only on this phone.",,,0,false,false,missing,
-On strip,,,0,false,false,missing,
-On this device,,,0,false,false,missing,
-"On WhatsApp, only with your consent.",,,0,false,false,missing,
-On-device AI (Gemini Nano),,,0,false,false,missing,
-On-device AI needs desktop Chrome with Gemini Nano. Using cloud AI for now.,,,0,false,false,missing,
-"One check, step by step",,,0,false,false,missing,
-Online,,,0,false,false,missing,
-Online: Gemini Flash in the cloud (Firebase AI Logic). Gemini Nano only on supported desktop Chrome. AI only reads and explains; it never picks the colour.,,,0,false,false,missing,
-"Only if you turn on notifications, our Firebase server keeps: a notification code, your language, and for each saved medicine its batch number, company and expiry month. Never the medicine name, your name, phone, illness or who it is for. Each phone can only see its own data. Turning it off deletes it all.",,,0,false,false,missing,
-"Only the result colour, batch, company and record IDs are sent. No name, phone or personal details.",,,0,false,false,missing,
-Only three results,,,0,false,false,missing,
-"Only with push opt-in: token, language, batch, company, expiry month. Never name, phone or illness.",,,0,false,false,missing,
-Open CDSCO alerts page,,,0,false,false,missing,
-Open CDSCO source,,,0,false,false,missing,
-Open official PDF,,,0,false,false,missing,
-"Optional. Once they open the link and accept, they get a notification too when one of your saved medicines is flagged. No names or numbers are stored.",,,0,false,false,missing,
-"Other batches flagged: same company AND same medicine, different batch.",,,0,false,false,missing,
-Other batches of this medicine are flagged: check your batch number with your chemist.,,,0,false,true,missing,
-overflow-x-auto p-0,,,0,false,false,missing,
-p-2 text-center,,,0,false,false,missing,
-p-6 text-center,,,0,false,false,missing,
-Papa,,,0,false,false,missing,
-Photo check,,,0,false,false,missing,
-Photo or voice too unclear to match: keypad or retake. Never shown as GREY.,,,0,false,false,missing,
-Photo reading,,,0,false,false,missing,
-Photos,,,0,false,false,missing,
-"Photos are never stored. When online, only that single photo is sent to Google Gemini (Firebase AI Logic) to read the label. Offline, it is read on the phone.",,,0,false,false,missing,
-Plain code · On this device,,,0,false,false,missing,
-"Plain code matching, no AI involved.",,,0,false,false,missing,
-Please check,,,0,false,true,missing,
-Please check the batch number and ask a pharmacist.,,,0,false,true,missing,
-Please check this on the strip,,,0,false,false,missing,
-Please confirm: check it against the strip and correct it,,,0,false,false,missing,
-Please say the name of the medicine.,,,0,false,true,missing,
-Possible match: exact batch but the company is uncertain; or a batch one character off / incomplete.,,,0,false,false,missing,
-Possible match: show the strip to your chemist before the next dose.,,,0,false,true,missing,
-Possible official alert,,,0,false,false,missing,
-"Pre-written message filled from the official record · on this device, works offline",,,0,false,false,missing,
-Prefer no notifications? Every medicine also has 'Add expiry to my calendar'.,,,0,false,false,missing,
-Press Enter to check,,,0,false,false,missing,
-Printed after B.No. or Batch,,,0,false,false,missing,
-Privacy,,,0,false,false,missing,
-Privacy design,,,0,false,false,missing,
-"Punjabi, Gujarati, Marathi, Kannada, Tamil (online)",,,0,false,false,missing,
-PvPI helpline,,,0,false,false,missing,
-Quality alerts,,,0,false,false,missing,
-Re-check all,,,0,false,false,missing,
-Re-checked on every new CDSCO list,,,0,false,false,missing,
-Re-read with glare reduced and contrast boosted,,,0,false,false,missing,
-Read from photo — correct anything if needed,,,0,false,false,missing,
-Read simple explanation,,,0,false,false,missing,
-Read the full photo,,,0,false,false,missing,
-Read the zoomed B.No / EXP area,,,0,false,false,missing,
-Reading the photo…,,,0,false,false,missing,
-Real batches from official CDSCO alerts,,,0,false,false,missing,
-Real example:,,,0,false,false,missing,
-Record ID,,,0,false,false,missing,
-Records,,,0,false,false,missing,
-Records indexed,,,0,false,false,missing,
-Red,,,0,false,true,missing,
-"RED only when batch and company both match with confidence. If only a different medicine from the same company is listed, it is GREY with ""Your medicine is not affected.""",,,0,false,false,missing,
-"Red: matches an official alert. Amber: possible match, please confirm. Grey: not found in the list — not a safety guarantee. The app never says a medicine is safe.",,,0,false,false,missing,
-Relation,,,0,false,false,missing,
-Remarks,,,0,false,false,missing,
-Remove,,,0,false,false,missing,
-Report a side effect (PvPI),,,0,false,false,missing,
-Report a wrong result,,,0,false,false,missing,
-Report it,,,0,false,false,missing,
-Report to the authorities,,,0,false,false,missing,
-Reporting a suspected medicine,,,0,false,false,missing,
-Result,,,0,false,false,missing,
-Retake,,,0,false,false,missing,
-Retake photo,,,0,false,true,missing,
-"Rows = expected, columns = what the app showed",,,0,false,false,missing,
-Safe disposal,,,0,false,false,missing,
-"Same company, different medicine: small note, ""Your medicine is not affected.""",,,0,false,false,missing,
-Save,,,0,false,false,missing,
-"Save it to your cabinet with one tap. If a new official list includes this batch, we tell you automatically.",,,0,false,true,missing,
-"Save it to your cabinet. If a new list includes this batch, we will tell you automatically.",,,0,false,true,missing,
-Save medicines once. We re-check them every time CDSCO publishes a new list.,,,0,false,false,missing,
-Save to cabinet,,,0,false,false,missing,
-Save with one tap,,,0,false,false,missing,
-Saved,,,0,false,false,missing,
-saved medicines,,,0,false,false,missing,
-"Saved medicines are re-checked daily against new lists, with a notification even when the app is closed.",,,0,false,false,missing,
-Saved to cabinet,,,0,false,false,missing,
-Saving the official list to this phone (once),,,0,false,false,missing,
-Scans packaged-food labels,,,0,false,false,missing,
-See all numbers and limits,,,0,false,false,missing,
-See details,,,0,false,true,missing,
-Sells medicines online,,,0,false,false,missing,
-Send,,,0,false,false,missing,
-Send alert to family,,,0,false,false,missing,
-Send to whom?,,,0,false,false,missing,
-Settings,,,0,false,false,missing,
-Share with anyone,,,0,false,false,missing,
-"Short note (optional, no personal details)",,,0,false,false,missing,
-Show the part of the strip with B.No. and EXP,,,0,false,false,missing,
-Show this strip to your chemist before your next dose.,,,0,false,true,missing,
-shrink-0 text-brand-600,,,0,false,false,missing,
-Some specific batches of this medicine from {0} are on CDSCO's list (for example batch {1} in {2}).,,,0,false,true,missing,
-Something else,,,0,false,false,missing,
-"Sorry, something went wrong. Please try again.",,,0,false,true,missing,
-Source,,,0,false,false,missing,
-Source: {0},,,0,false,true,missing,
-"Source: CDSCO, Government of India",,,0,false,false,missing,
-Speak,,,0,false,false,missing,
-Speak again,,,0,false,false,missing,
-"Speak, type or photograph the strip",,,0,false,false,missing,
-"Speech is transliterated, reduced to phonetic keys and matched by edit distance against the medicine-name dictionary. Hindi/English offline (with Chrome's language pack); Punjabi, Gujarati, Marathi, Kannada and Tamil online.",,,0,false,false,missing,
-Spoken replies,,,0,false,false,missing,
-Spurious,,,0,false,false,missing,
-Spurious (suspected fake),,,0,false,true,missing,
-Spurious: testing suggests this batch may not have been made by the company on the label.,,,0,false,true,missing,
-States not yet reported for the latest month,,,0,false,false,missing,
-States yet to report for the latest month,,,0,false,false,missing,
-Strip photo,,,0,false,false,missing,
-"Strip Pvt/Ltd, standardise spelling, alias table, token-set ratio confidence. Medicine: generic or brand name, e.g. Dolo = Paracetamol.",,,0,false,false,missing,
-Subject: Reporting a suspected / alert-listed medicine,,,0,false,true,missing,
-suspected spurious (fake),,,0,false,true,missing,
-Suspicious? Report it to CDSCO,,,0,false,true,missing,
-Sync now,,,0,false,false,missing,
-"Take a close, sharp photo of the part with the Batch and EXP. You can add a second photo of the other side.",,,0,false,false,missing,
-Take closer photo,,,0,false,true,missing,
-Take photo,,,0,false,false,missing,
-Talk to your doctor or chemist before your next dose.,,,0,false,true,missing,
-Talk to your doctor or chemist before your next dose. Don't stop an essential medicine on your own.,,,0,false,true,missing,
-Talk to your doctor or chemist before your next dose. Don't stop an essential medicine on your own. Keep the strip and the bill.,,,0,false,true,missing,
-Tap and speak,,,0,false,false,missing,
-Tap what is printed after B.No. or Batch on the strip,,,0,false,false,missing,
-Tata 1mg,,,0,false,false,missing,
-Tested by (lab / state),,,0,false,false,missing,
-Testing lab,,,0,false,false,missing,
-Testing suggests this batch may not have been made by the company on the label.,,,0,false,true,missing,
-Tests passed,,,0,false,false,missing,
-text-muted transition,,,0,false,false,missing,
-Thank you. We will look into it.,,,0,false,false,missing,
-"That took too long. Please try again, or type instead.",,,0,false,true,missing,
-"The alert covers only the listed batches, not every batch from this company. Check the batch number on the strip and ask your chemist to be sure.",,,0,false,true,missing,
-"The Batch / EXP text is too small or blurry. I won't guess — please take a closer, sharper photo of that part in good light.",,,0,false,false,missing,
-"The Batch / EXP text is too small or blurry. I won't guess — take a closer, sharper photo of that part in good light.",,,0,false,true,missing,
-"The batch number may differ by one character from a reading or typing slip, or the company name may be written differently.",,,0,false,true,missing,
-"The batch number or date read from the photo was not certain. Check the fields marked in amber against the strip, correct them, and check again.",,,0,false,true,missing,
-"The colour is decided by plain code, never by AI",,,0,false,false,missing,
-The expiry date on the strip ({0}) has passed. Don't take it; show it to your chemist.,,,0,false,true,missing,
-The full official list lives on the phone. Matching is plain code; no AI needed.,,,0,false,false,missing,
-The medicine with batch {0} expires {1}. Ask your chemist about a fresh pack.,,,0,false,false,missing,
-The message to your family is ready to send.,,,0,false,true,missing,
-The microphone is not working. You can type instead.,,,0,false,true,missing,
-The official list has not loaded yet. Please connect to the internet once.,,,0,false,true,missing,
-"The official list lives on the phone, works offline",,,0,false,false,missing,
-"The photo could not be read clearly. Try again closer, in good light, or type the batch number.",,,0,false,true,missing,
-The photo was read wrongly,,,0,false,false,missing,
-The record shown is wrong,,,0,false,false,missing,
-This batch failed a test at a government lab.,,,0,false,true,missing,
-"This batch is on an alert, but the app missed it",,,0,false,false,missing,
-This browser can't receive notifications. Use 'Add expiry to my calendar' instead.,,,0,false,false,missing,
-This browser can't receive notifications. WhatsApp messages still work.,,,0,false,false,missing,
-This company has a different medicine on the list. Your medicine is not affected,,,0,false,true,missing,
-"This company has a different medicine on the official list ({medicine}, {month}). Your medicine is not affected.",,,0,false,true,missing,
-"This company has other batches on the official list ({medicine}, {month}). Your batch is not one of them.",,,0,false,true,missing,
-"This company's listed alert is for a different medicine ({0}), and only for that specific batch.",,,0,false,true,missing,
-"This does not prove the medicine is safe. Official alerts can be delayed, and not every medicine is tested. Counterfeits can copy real batch numbers.",,,0,false,true,missing,
-This does not prove the medicine is safe. Official alerts can be delayed.,,,0,false,true,missing,
-This does not prove your medicine is safe. Official alerts can be delayed.,,,0,false,true,missing,
-This is not a confirmed match.,,,0,false,true,missing,
-This link is invalid or was removed.,,,0,false,false,missing,
-This means this exact batch failed a government test. The alert does not apply to other medicines or other batches.,,,0,false,true,missing,
-This medicine has expired. Please show it to your pharmacist.,,,0,false,true,missing,
-This medicine was not found in our official list.,,,0,false,true,missing,
-This medicine will expire soon.,,,0,false,true,missing,
-This person has agreed to receive medicine alert messages.,,,0,false,false,missing,
-Top-1,,,0,false,false,missing,
-Top-3,,,0,false,false,missing,
-Translation in review,,,0,false,false,missing,
-Transparency,,,0,false,false,missing,
-Transparency: numbers and limits,,,0,false,false,missing,
-TruthIn,,,0,false,false,missing,
-Try a demo,,,0,false,false,missing,
-Try a real flagged batch,,,0,false,false,missing,
-Try again,,,0,false,true,missing,
-Turn off alerts and delete data,,,0,false,false,missing,
-Type,,,0,false,true,missing,
-Type batch on keypad,,,0,false,true,missing,
-Type instead,,,0,false,true,missing,
-Type it,,,0,false,false,missing,
-"Type the batch number, or take a clearer photo.",,,0,false,true,missing,
-Type to check,,,0,false,false,missing,
-Typed by you,,,0,false,false,missing,
-Uncertain or different,,,0,false,false,missing,
-Understanding…,,,0,false,false,missing,
-Understood as,,,0,false,false,missing,
-Understood by Gemini Flash · Cloud,,,0,false,false,missing,
-Understood by Gemini Nano · On this device,,,0,false,false,missing,
-Understood by name search on this device · AI was not available,,,0,false,false,missing,
-Understood the spoken medicine name,,,0,false,false,missing,
-Up to date,,,0,false,false,missing,
-Valid,,,0,false,true,missing,
-Verified,,,0,false,false,missing,
-Voice,,,0,false,false,missing,
-Voice check,,,0,false,false,missing,
-Voice recognition needed the internet. You can type instead — that works offline.,,,0,false,true,missing,
-"Voice-first, in Indian languages",,,0,false,false,missing,
-Voice: medicine name,,,0,false,false,missing,
-void],,,0,false,false,missing,
-We couldn't read the strip clearly enough to check it,,,0,false,true,missing,
-We sell nothing and never suggest any other medicine.,,,0,false,false,missing,
-"We won't guess. Type the batch number on the keypad, or take a closer photo in good light.",,,0,false,true,missing,
-We'll remind you when internet is back,,,0,false,false,missing,
-What looks wrong?,,,0,false,false,missing,
-What should I do?,,,0,false,true,missing,
-What this means,,,0,false,false,missing,
-What to do next,,,0,false,false,missing,
-What was searched,,,0,false,false,missing,
-What we cannot yet prove,,,0,false,false,missing,
-What works offline,,,0,false,false,missing,
-WhatsApp number,,,0,false,false,missing,
-Where and when bought:,,,0,false,true,missing,
-Which medicine shall we check?,,,0,false,false,missing,
-Which one is your medicine? Tap it.,,,0,false,true,missing,
-Why amber: other batches of this same medicine from this company are on the official list. Your batch is not one of them.,,,0,false,true,missing,
-"Why amber: some batches of this medicine are listed, and no batch number was entered.",,,0,false,true,missing,
-Why amber: the batch number looks incomplete and starts like a flagged batch. Enter the full number.,,,0,false,true,missing,
-"Why amber: the batch number matches exactly, but no company was given to confirm it.",,,0,false,true,missing,
-"Why amber: the batch number matches exactly, but the company match is uncertain.",,,0,false,true,missing,
-"Why amber: this batch number is listed, but under a different company. Check the company name on the strip.",,,0,false,true,missing,
-"Why amber: this batch number is listed, but under a different medicine name.",,,0,false,true,missing,
-Why amber: your batch number is one character away from a flagged batch. It may be a reading slip.,,,0,false,true,missing,
-Why DawaShield,,,0,false,false,missing,
-Why this result?,,,0,false,false,missing,
-"working days, 9–5:30",,,0,false,false,missing,
-Works offline,,,0,false,false,missing,
-Works offline on cheap phones,,,0,false,false,missing,
-Write a complaint,,,0,false,false,missing,
-Wrong-result reports,,,0,false,false,missing,
-"Yes, alert me",,,0,false,false,missing,
-"Yes, this date is on the strip",,,0,false,false,missing,
-You and your family hear about it as soon as one is flagged.,,,0,false,false,missing,
-You are offline. The check still works on this phone.,,,0,false,true,missing,
-You did not enter a batch number.,,,0,false,true,missing,
-You entered,,,0,false,false,missing,
-You said,,,0,false,false,missing,
-Your batch {0} is not on that list.,,,0,false,true,missing,
-Your batch was not found in our official list.,,,0,false,true,missing,
-"Your medicine looks similar to batch {0} ({1}) on CDSCO's {2} list, but not exactly.",,,0,false,true,missing,
-"Your medicines and family numbers stay on this phone. No account, name or phone number is asked for.",,,0,false,false,missing,
-"Your medicines stay on this phone. No account, name or phone number is asked for.",,,0,false,true,missing,
-"Your mother's medicine cabinet shouldn't need an internet connection, English literacy or a technical understanding of batch numbers to stay informed about medicine safety.",,,0,false,false,missing,
-Your saved,,,0,false,false,missing,
-Your son or daughter can get an alert if a saved medicine is flagged,,,0,false,false,missing,
-"Your voice is never recorded, stored or uploaded. The browser turns it into text; with the language pack this happens on the phone.",,,0,false,false,missing,
+({0} repeats merged),({0} மறுநிகழ்வுகள் இணைக்கப்பட்டன),({0} repeats merged),1,true,false,ok,manual
+"{0} cases: {1} real (official records, the real Dolo strip), {2} generated from real records. Full method: docs/EVAL.md","{0} வழக்குகள்: {1} உண்மையானவை (அரசு பதிவுகள், உண்மையான Dolo அட்டை), {2} உண்மையான பதிவுகளிலிருந்து உருவாக்கப்பட்டவை. முழு முறை: docs/EVAL.md","{0} cases: {1} real (official records, the real Dolo strip), {2} made from real records. Full method: docs/EVAL.md",0.92,true,false,ok,manual
+"{0} CDSCO records, {1} to {2}. Some states do not report every month.","{0} CDSCO பதிவுகள், {1} முதல் {2} வரை. சில மாநிலங்கள் ஒவ்வொரு மாதமும் அறிக்கை அளிப்பதில்லை.","{0} CDSCO records, {1} to {2}. Some states do not report every month.",1,true,false,ok,manual
+{0} medicine{1} flagged by a CDSCO alert,{0} மருந்து{1} மீது CDSCO எச்சரிக்கை உள்ளது,{0} medicine{1} has a CDSCO alert,0.75,true,false,ok,manual
+{0} medicine{1} flagged since your last check,உங்கள் கடைசி சரிபார்ப்புக்குப் பிறகு {0} மருந்து{1} மீது எச்சரிக்கை வந்தது,{0} medicine{1} got an alert since your last check,0.8,true,false,ok,manual
+{0} not provided,{0} வழங்கப்படவில்லை,{0} not provided,1,true,true,ok,manual
+"{0} official records on the phone. The plain rules in the table above, in a few milliseconds, in any phone's browser.","போனில் {0} அரசு பதிவுகள். மேலே உள்ள அட்டவணையின் எளிய விதிகள், சில மில்லி விநாடிகளில், எந்த போனின் உலாவியிலும்.","{0} official records in the phone. The plain rules of the table above, in a few milliseconds, in any phone's browser.",1,true,false,ok,manual
+{0} real · {1} generated,{0} உண்மையானவை · {1} உருவாக்கப்பட்டவை,{0} real · {1} generated,1,true,false,ok,manual
+{0} saved medicine(s) now match an official alert. Open to see.,{0} சேமித்த மருந்து(கள்) இப்போது அரசு எச்சரிக்கையுடன் பொருந்துகின்றன. பார்க்கத் திறக்கவும்.,{0} saved medicine(s) now match an official alert. Open to see.,1,true,false,ok,manual
+{0}medicine (batch {1}) {2} CDSCO's {3} list. Open DawaShield to see. Don't take the next dose until you speak to your doctor or chemist; never stop an essential medicine suddenly.,{0}மருந்து (தொகுதி {1}) {2} CDSCO இன் {3} பட்டியல். பார்க்க DawaShield ஐத் திறக்கவும். உங்கள் மருத்துவர் அல்லது மருந்தாளுநரிடம் பேசாமல் அடுத்த டோஸ் எடுக்க வேண்டாம்; அத்தியாவசிய மருந்தை ஒருபோதும் திடீரென நிறுத்த வேண்டாம்.,{0}medicine (batch {1}) {2} CDSCO's {3} list. Open DawaShield to see. Don't take the next dose without speaking to your doctor or chemist; never stop an essential medicine suddenly.,0.95,true,false,ok,manual
+{medicine},{medicine},{medicine},1,true,true,ok,manual
+{month},{month},{month},1,true,true,ok,manual
+"1. You speak, type or take a photo","1. நீங்கள் பேசுகிறீர்கள், தட்டச்சு செய்கிறீர்கள் அல்லது புகைப்படம் எடுக்கிறீர்கள்","1. You speak, type or take a photo",1,true,false,ok,manual
+"2. Photo: clean up, then read","2. புகைப்படம்: சுத்தம் செய்து, பின் படித்தல்","2. Photo: clean up, then read",1,true,false,ok,manual
+3. Company and medicine resolution,3. நிறுவனம் மற்றும் மருந்தின் அடையாளம்,3. Company and medicine identification,0.75,true,false,ok,manual
+4. Offline matching engine,4. ஆஃப்லைன் பொருத்தும் இயந்திரம்,4. Offline matching engine,1,true,false,ok,manual
+"5 languages, voice top-3","5 மொழிகள், குரல் top-3","5 languages, voice top-3",1,true,false,ok,manual
+5. Where AI helps,5. AI எங்கே உதவுகிறது,5. Where AI helps,1,true,false,ok,manual
+6. Daily re-check loop,6. தினசரி மறுசரிபார்ப்பு,6. Daily re-check,0.8,true,false,ok,manual
+"A counterfeit can copy a real batch number, so GREY cannot rule it out.","போலி மருந்து உண்மையான தொகுதி எண்ணை நகலெடுக்கலாம், எனவே சாம்பல் முடிவு அதை நிராகரிக்க முடியாது.","A counterfeit can copy a real batch number, so a GREY result cannot rule it out.",1,true,false,ok,manual
+A family member invited you,ஒரு குடும்ப உறுப்பினர் உங்களை அழைத்துள்ளார்,A family member has invited you,1,true,false,ok,manual
+A family member's saved,குடும்ப உறுப்பினரின் சேமித்த,A family member's saved,1,true,false,ok,manual
+A medicine is expiring soon,ஒரு மருந்தின் காலாவதி விரைவில் முடிகிறது,A medicine's expiry ends soon,1,true,false,ok,manual
+"A ready-to-send message for CDSCO, with the email and toll-free number.","CDSCO க்கு அனுப்பத் தயாரான செய்தி, மின்னஞ்சல் மற்றும் கட்டணமில்லா எண்ணுடன்.","A message ready to send to CDSCO, with the email and toll-free number.",1,true,false,ok,manual
+"A report contains only the result colour, batch, company, record IDs and your short note. No personal details.","அறிக்கையில் முடிவின் நிறம், தொகுதி, நிறுவனம், பதிவு ID மற்றும் உங்கள் சிறு குறிப்பு மட்டுமே இருக்கும். தனிப்பட்ட விவரங்கள் இல்லை.","A report has only the result colour, batch, company, record IDs and your short note. No personal details.",0.93,true,false,ok,manual
+"A WhatsApp message, or a push alert straight to a son's or daughter's phone.","WhatsApp செய்தி, அல்லது மகன் அல்லது மகளின் போனுக்கு நேரடி push எச்சரிக்கை.","A WhatsApp message, or a push alert directly to a son's or daughter's phone.",0.88,true,false,ok,manual
+About DawaShield,DawaShield பற்றி,About DawaShield,1,true,false,ok,manual
+absolute right-3 top-3,absolute right-3 top-3,absolute right-3 top-3,1,true,false,ok,manual
+Accept,ஏற்கவும்,Accept,1,true,false,ok,manual
+Accuracy on real strip photos.,அட்டையின் உண்மையான புகைப்படங்களில் துல்லியம்.,Accuracy on real photos of the strip.,1,true,false,ok,manual
+Accuracy on real users' voices (all voice cases are written or generated).,உண்மையான பயனர்களின் குரலில் துல்லியம் (அனைத்து குரல் வழக்குகளும் எழுதப்பட்டவை அல்லது உருவாக்கப்பட்டவை).,Accuracy on real users' voices (all voice cases are written or generated).,1,true,false,ok,manual
+"Accuracy with real Punjabi, Gujarati, Marathi, Kannada and Tamil speakers.","உண்மையான பஞ்சாபி, குஜராத்தி, மராத்தி, கன்னடம் மற்றும் தமிழ் பேசுபவர்களுடன் துல்லியம்.","Accuracy with real Punjabi, Gujarati, Marathi, Kannada and Tamil speakers.",1,true,false,ok,manual
+Add a family member first,முதலில் குடும்ப உறுப்பினரைச் சேர்க்கவும்,First add a family member,1,true,false,ok,manual
+Add expiry to my calendar,காலாவதியை என் நாட்காட்டியில் சேர்க்கவும்,Add expiry to my calendar,1,true,false,ok,manual
+Add family member,குடும்ப உறுப்பினரைச் சேர்க்கவும்,Add family member,1,true,false,ok,manual
+Add medicine,மருந்து சேர்க்கவும்,Add medicine,1,true,false,ok,manual
+Add photo of other side,மறுபக்கத்தின் புகைப்படம் சேர்க்கவும்,Add photo of the other side,1,true,false,ok,manual
+Add your first medicine,உங்கள் முதல் மருந்தைச் சேர்க்கவும்,Add your first medicine,1,true,false,ok,manual
+AI is not available right now. You can still type the name and batch number to check.,AI இப்போது கிடைக்கவில்லை. சரிபார்க்க நீங்கள் இன்னும் பெயர் மற்றும் தொகுதி எண்ணைத் தட்டச்சு செய்யலாம்.,AI is not available now. You can still type the name and batch number to check.,0.91,true,true,ok,manual
+AI never decides the colour,AI ஒருபோதும் நிறத்தை முடிவு செய்வதில்லை,AI never decides the colour,1,true,false,ok,manual
+AI only explains the record; the result above is decided by fixed rules.,AI பதிவை மட்டுமே விளக்குகிறது; மேலே உள்ள முடிவு நிலையான விதிகளால் முடிவு செய்யப்படுகிறது.,AI only explains the record; the result above is decided by fixed rules.,1,true,false,ok,manual
+AIzaSyC6hXAUAauCyxZElbJLvFp_RKMyK0uqXUk,AIzaSyC6hXAUAauCyxZElbJLvFp_RKMyK0uqXUk,AIzaSyC6hXAUAauCyxZElbJLvFp_RKMyK0uqXUk,1,true,false,ok,manual
+Alert month,எச்சரிக்கை மாதம்,Alert month,1,true,false,ok,manual
+"Alert month, official link and record ID on every result.","ஒவ்வொரு முடிவிலும் எச்சரிக்கை மாதம், அரசு இணைப்பு மற்றும் பதிவு ID.","Alert month, official link and record ID on every result.",1,true,false,ok,manual
+Alerts are on,எச்சரிக்கைகள் இயக்கத்தில் உள்ளன,Alerts are on,1,true,false,ok,manual
+Alerts on a family member's phone,குடும்ப உறுப்பினரின் போனில் எச்சரிக்கைகள்,Alerts on a family member's phone,1,true,false,ok,manual
+All checked,அனைத்தும் சரிபார்க்கப்பட்டது,All checked,1,true,false,ok,manual
+Amber,மஞ்சள்,Amber,1,true,true,ok,manual
+An official alert matches this exact batch.,ஒரு அரசு எச்சரிக்கை இதே தொகுதியுடன் பொருந்துகிறது.,An official alert matches this exact batch.,1,true,true,ok,manual
+Answered your question,உங்கள் கேள்விக்குப் பதிலளிக்கப்பட்டது,Answered your question,1,true,false,ok,manual
+App Check not started,App Check தொடங்கவில்லை,App Check has not started,1,true,false,ok,manual
+Ask about this record,இந்தப் பதிவைப் பற்றிக் கேளுங்கள்,Ask about this record,1,true,false,ok,manual
+"Auto-crop, glare reduction, contrast, sharpen; Gemini reads twice and scores every field. Very low confidence = ""Can't read clearly"", never a guess. On phones, photo reading needs internet; offline photo reading works only on desktop Chrome with Gemini Nano.","தானாக வெட்டுதல், பளபளப்பைக் குறைத்தல், மாறுபாடு, கூர்மையாக்குதல்; Gemini இருமுறை படித்து ஒவ்வொரு புலத்திற்கும் மதிப்பெண் தருகிறது. மிகக் குறைந்த நம்பிக்கை = ""தெளிவாகப் படிக்க முடியவில்லை"", ஒருபோதும் ஊகம் இல்லை. போனில் புகைப்படம் படிக்க இணையம் தேவை; ஆஃப்லைன் புகைப்பட வாசிப்பு Gemini Nano உள்ள டெஸ்க்டாப் Chrome இல் மட்டுமே.","Automatic crop, glare reduction, contrast, sharpen; Gemini reads twice and scores every field. Very low confidence = ""Can't read clearly"", never a guess. On a phone, reading the photo needs internet; offline photo reading only on desktop Chrome with Gemini Nano.",0.94,true,false,ok,manual
+Automatic later alerts for saved medicines,சேமித்த மருந்துகளுக்குப் பின்னர் தானியங்கி எச்சரிக்கைகள்,Automatic later alerts for saved medicines,1,true,false,ok,manual
+Available offline,ஆஃப்லைனில் கிடைக்கும்,Available offline,1,true,false,ok,manual
+B.No.,B.No.,B.No.,1,true,false,ok,manual
+Back,பின்செல்,Back,1,true,false,ok,manual
+Backspace,அழி,Backspace,1,true,false,ok,manual
+Batch,தொகுதி,Batch,1,true,false,ok,manual
+Batch {0} was not found in our official list.,தொகுதி {0} எங்கள் அரசு பட்டியலில் கிடைக்கவில்லை.,Batch {0} was not found in our official list.,1,true,true,ok,manual
+Batch number,தொகுதி எண்,Batch number,1,true,false,ok,manual
+Batch number (B.No.),தொகுதி எண் (B.No.),Batch number (B.No.),1,true,false,ok,manual
+Batch number: {0},தொகுதி எண்: {0},Batch number: {0},1,true,true,ok,manual
+Batch: {0},தொகுதி: {0},Batch: {0},1,true,true,ok,manual
+Before you start,தொடங்கும் முன்,Before you start,1,true,true,ok,manual
+Big-button keypad,பெரிய பொத்தான் விசைப்பலகை,Big-button keypad,1,true,false,ok,manual
+"Buy from a licensed chemist, with a bill","உரிமம் பெற்ற மருந்தாளுநரிடம், ரசீதுடன் வாங்கவும்","Buy from a licensed chemist, with a bill",1,true,true,ok,manual
+Buy medicines only from a licensed shop and always take a proper bill.,"மருந்துகளை உரிமம் பெற்ற கடையில் மட்டுமே வாங்கி, எப்போதும் சரியான ரசீது பெறவும்.",Buy medicines only from a licensed shop and always take a proper bill.,1,true,true,ok,manual
+Cabinet,மருந்துப் பெட்டி,Cabinet,1,true,false,ok,manual
+Cabinet and family,மருந்துப் பெட்டி மற்றும் குடும்பம்,Cabinet and family,1,true,false,ok,manual
+Cabinet and family stay on the phone.,மருந்துப் பெட்டியும் குடும்பமும் போனிலேயே இருக்கும்.,Cabinet and family stay in the phone itself.,1,true,false,ok,manual
+Calendar file downloaded,நாட்காட்டி கோப்பு பதிவிறக்கப்பட்டது,Calendar file downloaded,1,true,false,ok,manual
+"Camera permission was blocked. Choose a photo from the gallery, or type the batch number.","கேமரா அனுமதி தடுக்கப்பட்டது. கேலரியிலிருந்து புகைப்படம் தேர்வு செய்யவும், அல்லது தொகுதி எண்ணைத் தட்டச்சு செய்யவும்.","Camera permission was blocked. Choose a photo from the gallery, or type the batch number.",1,true,true,ok,manual
+Can't find batch,தொகுதி கிடைக்கவில்லை,Can't find batch,1,true,false,ok,manual
+CAN'T READ,தெளிவாகப் படிக்க முடியவில்லை,CAN'T READ clearly,1,true,false,ok,manual
+Can't read clearly,தெளிவாகப் படிக்க முடியவில்லை,Can't read clearly,1,true,true,ok,manual
+Cancel,ரத்து செய்,Cancel,1,true,false,ok,manual
+Careful about false alarms,தவறான அச்சம் குறித்து கவனம்,Careful about false alarms,1,true,false,ok,manual
+Cases,வழக்குகள்,Cases,1,true,false,ok,manual
+CDSCO alert check,CDSCO எச்சரிக்கை சரிபார்ப்பு,CDSCO alert check,1,true,false,ok,manual
+CDSCO alert month,CDSCO எச்சரிக்கை மாதம்,CDSCO alert month,1,true,false,ok,manual
+CDSCO alert: {0},CDSCO எச்சரிக்கை: {0},CDSCO alert: {0},1,true,true,ok,manual
+CDSCO alerts page,CDSCO எச்சரிக்கைகள் பக்கம்,CDSCO alerts page,1,true,false,ok,manual
+CDSCO data: available offline,CDSCO தரவு: ஆஃப்லைனில் கிடைக்கும்,CDSCO data: available offline,1,true,false,ok,manual
+CDSCO lists arrive late; alerts in between are not visible to us.,CDSCO பட்டியல்கள் தாமதமாக வருகின்றன; இடையிலான எச்சரிக்கைகள் எங்களுக்குத் தெரிவதில்லை.,CDSCO lists come late; alerts in between are not visible to us.,0.89,true,false,ok,manual
+CDSCO NSQ portal,CDSCO NSQ தளம்,CDSCO NSQ portal,1,true,false,ok,manual
+CDSCO PDF,CDSCO PDF,CDSCO PDF,1,true,false,ok,manual
+CDSCO record,CDSCO பதிவு,CDSCO record,1,true,false,ok,manual
+CDSCO toll-free,CDSCO கட்டணமில்லா எண்,CDSCO toll-free,1,true,false,ok,manual
+CDSCO's list for {0} names batch {1} as {2}.,{0} க்கான CDSCO பட்டியல் தொகுதி {1} ஐ {2} எனக் காட்டுகிறது.,CDSCO's list for {0} shows batch {1} as {2}.,0.75,true,true,ok,manual
+Change,மாற்று,Change,1,true,false,ok,manual
+Check,சரிபார்,Check,1,true,false,ok,manual
+Check a medicine,மருந்தைச் சரிபார்க்கவும்,Check a medicine,1,true,false,ok,manual
+Check another,வேறொன்றைச் சரிபார்க்கவும்,Check another,1,true,false,ok,manual
+"Check the batch number and company name on the strip carefully, and ask your chemist. Until then treat it as neither 'safe' nor 'bad'.","அட்டையில் உள்ள தொகுதி எண் மற்றும் நிறுவனப் பெயரைக் கவனமாகச் சரிபார்த்து, உங்கள் மருந்தாளுநரிடம் கேளுங்கள். அதுவரை அதை 'பாதுகாப்பானது' அல்லது 'மோசமானது' என எதுவாகவும் கருத வேண்டாம்.","Check the batch number and company name on the strip carefully, and ask your chemist. Until then treat it as neither 'safe' nor 'bad'.",1,true,true,ok,manual
+"Check the batch number on the strip carefully, and ask your chemist.","அட்டையில் உள்ள தொகுதி எண்ணைக் கவனமாகச் சரிபார்த்து, உங்கள் மருந்தாளுநரிடம் கேளுங்கள்.","Check the batch number on the strip carefully, and ask your chemist.",1,true,true,ok,manual
+Check the expiry date,காலாவதி தேதியைச் சரிபார்க்கவும்,Check the expiry date,1,true,true,ok,manual
+"Check the expiry date, and buy medicines only from a licensed chemist, with a bill.","காலாவதி தேதியைச் சரிபார்த்து, மருந்துகளை உரிமம் பெற்ற மருந்தாளுநரிடம் மட்டும், ரசீதுடன் வாங்கவும்.","Check the expiry date, and buy medicines only from a licensed chemist, with a bill.",1,true,true,ok,manual
+Check these against the strip,இவற்றை அட்டையுடன் ஒப்பிடுங்கள்,Check these against the strip,1,true,false,ok,manual
+Check your family's medicines against official CDSCO alerts,உங்கள் குடும்ப மருந்துகளை அரசு CDSCO எச்சரிக்கைகளுடன் சரிபார்க்கவும்,Check your family's medicines against official CDSCO alerts,1,true,false,ok,manual
+Checked by plain code against {0} CDSCO records,எளிய குறியீட்டால் {0} CDSCO பதிவுகளுடன் சரிபார்க்கப்பட்டது,Checked by plain code against {0} CDSCO records,1,true,false,ok,manual
+Checking the official list…,அரசு பட்டியலைச் சரிபார்க்கிறோம்…,Checking the official list…,1,true,false,ok,manual
+Choose from gallery,கேலரியிலிருந்து தேர்வு செய்யவும்,Choose from gallery,1,true,true,ok,manual
+Choose language,மொழியைத் தேர்வு செய்யவும்,Choose language,1,true,false,ok,manual
+Clear,அழி,Clear,1,true,false,ok,manual
+Close,மூடு,Close,1,true,false,ok,manual
+Cloud,கிளவுட்,Cloud,1,true,false,ok,manual
+Cloud AI,கிளவுட் AI,Cloud AI,1,true,false,ok,manual
+Company,நிறுவனம்,Company,1,true,false,ok,manual
+Company (manufacturer),நிறுவனம் (உற்பத்தியாளர்),Company (manufacturer),1,true,false,ok,manual
+Company named in the list: {0}.,பட்டியலில் உள்ள நிறுவனப் பெயர்: {0}.,Company name in the list: {0}.,0.67,true,true,ok,manual
+Company on label,லேபிளில் உள்ள நிறுவனம்,Company on label,1,true,false,ok,manual
+"Competitor cells state only what their own public listings (app stores, NITI Aayog Frontier Tech stories) say, as of Nov 2026. 'Not verified' means we did not confirm it either way. FactsScan and TruthIn are food-label apps; Tata 1mg is an online pharmacy. They do different jobs, so this shows where DawaShield is different, not who is better.","மற்ற செயலிகளின் கட்டங்களில் அவற்றின் சொந்தப் பொதுத் தகவல் (செயலி அங்காடி, NITI Aayog Frontier Tech கட்டுரைகள்) சொல்வது மட்டுமே எழுதப்பட்டுள்ளது, நவம்பர் 2026 நிலவரப்படி. 'சரிபார்க்கப்படவில்லை' என்றால் நாங்கள் எந்தப் பக்கமும் உறுதிசெய்யவில்லை. FactsScan மற்றும் TruthIn உணவு-லேபிள் செயலிகள்; Tata 1mg ஆன்லைன் மருந்தகம். அவை வேறு வேலைகள் செய்கின்றன, எனவே இது DawaShield எங்கே வேறுபடுகிறது என்பதைக் காட்டுகிறது, யார் சிறந்தது என்பதை அல்ல.","Other apps' cells write only what their own public information (app store, NITI Aayog Frontier Tech articles) says, as of November 2026. 'Not verified' means we did not confirm either way. FactsScan and TruthIn are food-label apps; Tata 1mg is an online pharmacy. They do different jobs, so this shows where DawaShield is different, not who is better.",0.86,true,false,ok,manual
+Complaint-message helper,புகார்-செய்தி உதவி,Complaint-message help,0.67,true,false,ok,manual
+Confidence,நம்பிக்கை,Confidence,1,true,false,ok,manual
+Confirm and check,உறுதிசெய்து சரிபார்க்கவும்,Confirm and check,1,true,false,ok,manual
+Consent given,ஒப்புதல் அளிக்கப்பட்டது,Consent given,1,true,false,ok,manual
+Copied,நகலெடுக்கப்பட்டது,Copied,1,true,false,ok,manual
+Copy,நகலெடு,Copy,1,true,false,ok,manual
+Copy the message below and send it through an official channel. Keep the medicine and strip.,கீழே உள்ள செய்தியை நகலெடுத்து அரசு வழியில் அனுப்பவும். மருந்தையும் அட்டையையும் வைத்திருங்கள்.,Copy the message below and send it through an official channel. Keep the medicine and strip.,1,true,false,ok,manual
+Correctly refused to read,சரியாகப் படிக்க மறுத்தது,Correctly refused to read,1,true,false,ok,manual
+Could not open the camera. Please choose a photo from the gallery.,கேமராவைத் திறக்க முடியவில்லை. தயவுசெய்து கேலரியிலிருந்து புகைப்படம் தேர்வு செய்யவும்.,Could not open the camera. Please choose a photo from the gallery.,1,true,true,ok,manual
+Could not send. Connect to the internet and try again.,அனுப்ப முடியவில்லை. இணையத்துடன் இணைத்து மீண்டும் முயற்சிக்கவும்.,Could not send. Connect to the internet and try again.,1,true,false,ok,manual
+Couldn't create the link. Try again.,இணைப்பை உருவாக்க முடியவில்லை. மீண்டும் முயற்சிக்கவும்.,Couldn't create the link. Try again.,1,true,false,ok,manual
+Couldn't do it right now. Connect to the internet and try again.,இப்போது செய்ய முடியவில்லை. இணையத்துடன் இணைத்து மீண்டும் முயற்சிக்கவும்.,Couldn't do it now. Connect to the internet and try again.,0.86,true,false,ok,manual
+Couldn't turn on right now. Connect to the internet and try again.,இப்போது இயக்க முடியவில்லை. இணையத்துடன் இணைத்து மீண்டும் முயற்சிக்கவும்.,Couldn't turn on now. Connect to the internet and try again.,0.88,true,false,ok,manual
+Coverage,பரப்பு,Coverage,1,true,false,ok,manual
+Create invite link,அழைப்பு இணைப்பை உருவாக்கவும்,Create invite link,1,true,false,ok,manual
+Dada,தாத்தா,Dada,1,true,false,ok,manual
+Dadi,பாட்டி,Dadi,1,true,false,ok,manual
+Data available up to,தரவு இதுவரை கிடைக்கும்,Data available up to,1,true,false,ok,manual
+"DawaShield does not replace a pharmacist, doctor or official advice.","DawaShield மருந்தாளுநர், மருத்துவர் அல்லது அரசு ஆலோசனைக்கு மாற்றாகாது.","DawaShield does not replace a pharmacist, doctor or official advice.",1,true,true,ok,manual
+"DawaShield is an information tool based on public CDSCO alerts, not a quality certificate or medical advice. Counterfeits can copy real batch numbers, so a GREY result can't rule them out.","DawaShield பொது CDSCO எச்சரிக்கைகளை அடிப்படையாகக் கொண்ட தகவல் கருவி, தரச் சான்றிதழ் அல்லது மருத்துவ ஆலோசனை அல்ல. போலி மருந்துகள் உண்மையான தொகுதி எண்களை நகலெடுக்கலாம், எனவே சாம்பல் முடிவு அவற்றை நிராகரிக்க முடியாது.","DawaShield is an information tool based on public CDSCO alerts, not a quality certificate or medical advice. Counterfeits can copy real batch numbers, so a GREY result cannot rule them out.",0.96,true,true,ok,manual
+"DawaShield matches your medicine's batch against official quality alerts from CDSCO, India's drug regulator.",DawaShield உங்கள் மருந்தின் தொகுதியை இந்தியாவின் மருந்து ஒழுங்குமுறை அமைப்பான CDSCO இன் அரசு தர எச்சரிக்கைகளுடன் பொருத்துகிறது.,"DawaShield matches your medicine's batch with official quality alerts of CDSCO, India's drug regulator.",0.92,true,true,ok,manual
+DawaShield: official alert found,DawaShield: அரசு எச்சரிக்கை கண்டறியப்பட்டது,DawaShield: official alert found,1,true,true,ok,manual
+"DawaShield: open this link and tap ""Accept"" to get a notification on your phone if any of my saved medicines gets an official alert: {0}","DawaShield: இந்த இணைப்பைத் திறந்து ""ஏற்கவும்"" தட்டவும், என் சேமித்த மருந்துகளில் ஏதேனும் ஒன்றுக்கு அரசு எச்சரிக்கை வந்தால் உங்கள் போனுக்கு அறிவிப்பு வரும்: {0}","DawaShield: open this link and tap ""Accept"", if an official alert comes on any of my saved medicines a notification comes to your phone: {0}",0.87,true,false,ok,manual
+DawaShield: possible match with an official alert,DawaShield: அரசு எச்சரிக்கையுடன் சாத்தியமான பொருத்தம்,DawaShield: possible match with an official alert,1,true,true,ok,manual
+dci@nic.in,dci@nic.in,dci@nic.in,1,true,true,ok,manual
+Demo: a real official record,டெமோ: ஒரு உண்மையான அரசு பதிவு,Demo: a real official record,1,true,false,ok,manual
+Different,வேறு,Different,1,true,false,ok,manual
+"Do not burn old medicines in the open. Where available, drop them at a 'drug take-back' site run by the State Drugs Control Department and chemists' association. A few medicines have special rules, so ask your pharmacist. (Source: CDSCO guidance, May 2025)","பழைய மருந்துகளைத் திறந்த வெளியில் எரிக்க வேண்டாம். கிடைக்கும் இடங்களில், மாநில மருந்துக் கட்டுப்பாட்டுத் துறை மற்றும் மருந்தாளுநர் சங்கத்தின் 'மருந்து திரும்பப் பெறும்' மையத்தில் கொடுங்கள். சில மருந்துகளுக்குச் சிறப்பு விதிகள் உள்ளன, எனவே உங்கள் மருந்தாளுநரிடம் கேளுங்கள். (மூலம்: CDSCO வழிகாட்டுதல், மே 2025)","Do not burn old medicines in the open. Where available, give them at the 'drug take-back' centre of the State Drugs Control Department and chemists' association. Some medicines have special rules, so ask your pharmacist. (Source: CDSCO guidance, May 2025)",0.86,true,true,ok,manual
+"Dolo-650 (Micro Labs, batch DOBS4518) is not listed. A different Micro Labs medicine, Amlodipine (batch AMAS0249), is. This used to show AMBER; now it is GREY with a small note that your medicine is not affected.","Dolo-650 (Micro Labs, தொகுதி DOBS4518) பட்டியலில் இல்லை. Micro Labs இன் வேறொரு மருந்து, Amlodipine (தொகுதி AMAS0249), பட்டியலில் உள்ளது. முன்பு இது மஞ்சள் காட்டியது; இப்போது இது சாம்பல், உங்கள் மருந்து பாதிக்கப்படவில்லை என்ற சிறு குறிப்புடன்.","Dolo-650 (Micro Labs, batch DOBS4518) is not in the list. Another Micro Labs medicine, Amlodipine (batch AMAS0249), is in the list. Earlier this showed AMBER; now it is GREY, with a small note that your medicine is not affected.",0.8,true,false,ok,manual
+"Don't use it. Keep the strip and bill, and show them to your chemist.","அதைப் பயன்படுத்த வேண்டாம். அட்டையையும் ரசீதையும் வைத்திருந்து, உங்கள் மருந்தாளுநரிடம் காட்டுங்கள்.","Don't use it. Keep the strip and bill, and show them to your chemist.",1,true,true,ok,manual
+Done,முடிந்தது,Done,1,true,false,ok,manual
+"Done. If any of their saved medicines is flagged, this phone gets a notification.","முடிந்தது. அவர்களின் சேமித்த மருந்துகளில் ஏதேனும் ஒன்றுக்கு எச்சரிக்கை வந்தால், இந்த போனுக்கு அறிவிப்பு வரும்.","Done. If an alert comes on any of their saved medicines, this phone gets a notification.",0.89,true,false,ok,manual
+Download size,பதிவிறக்க அளவு,Download size,1,true,false,ok,manual
+e.g. 251TTF014,எ.கா. 251TTF014,e.g. 251TTF014,1,true,false,ok,manual
+e.g. Dolo 650,எ.கா. Dolo 650,e.g. Dolo 650,1,true,false,ok,manual
+e.g. What does 'dissolution' mean?,எ.கா. 'dissolution' என்றால் என்ன?,e.g. What does 'dissolution' mean?,1,true,false,ok,manual
+Email CDSCO,CDSCO க்கு மின்னஞ்சல் அனுப்பவும்,Email CDSCO,1,true,false,ok,manual
+en-IN,en-IN,en-IN,1,true,false,ok,manual
+Enable,இயக்கு,Enable,1,true,false,ok,manual
+Enter batch number,தொகுதி எண்ணை உள்ளிடவும்,Enter batch number,1,true,false,ok,manual
+Enter batch with big buttons,பெரிய பொத்தான்களால் தொகுதியை உள்ளிடவும்,Enter batch with big buttons,1,true,false,ok,manual
+Escape,வெளியேறு,Escape,1,true,false,ok,manual
+Eval run,eval எப்போது இயங்கியது,When the eval ran,0.5,true,false,ok,manual
+Every AI answer is labelled On this device or Cloud. Translations are made in advance; the browser never calls a translation service.,ஒவ்வொரு AI பதிலிலும் எழுதப்பட்டிருக்கும்: இந்தச் சாதனத்தில் அல்லது கிளவுட். மொழிபெயர்ப்புகள் முன்பே செய்யப்பட்டவை; உலாவி எந்த மொழிபெயர்ப்புச் சேவையையும் அழைப்பதில்லை.,Every AI answer is labelled: On this device or Cloud. Translations are made in advance; the browser does not call any translation service.,0.86,true,false,ok,manual
+"Every day your saved medicines are re-checked against the new official list. If a batch is flagged, or a medicine expires in 5 days, you get a notification on this phone.","ஒவ்வொரு நாளும் உங்கள் சேமித்த மருந்துகள் புதிய அரசு பட்டியலுடன் மறுசரிபார்க்கப்படுகின்றன. ஏதேனும் தொகுதிக்கு எச்சரிக்கை வந்தால், அல்லது மருந்து 5 நாட்களில் காலாவதியானால், இந்த போனுக்கு அறிவிப்பு வரும்.","Every day your saved medicines are re-checked against the new official list. If a batch is flagged, or a medicine expires in 5 days, a notification comes to this phone.",0.94,true,false,ok,manual
+"Every medicine at home, checked against official alerts","வீட்டில் உள்ள ஒவ்வொரு மருந்தும், அரசு எச்சரிக்கைகளுடன் சரிபார்க்கப்பட்டது","Every medicine at home, checked against official alerts",1,true,false,ok,manual
+"Exact batch AND company matched with high confidence (or the medicine name, when the record names no company, as with spurious drugs).","தொகுதி முழுமையாகப் பொருந்துகிறது மற்றும் நிறுவனம் உயர் நம்பிக்கையுடன் பொருந்துகிறது (அல்லது மருந்தின் பெயர், பதிவில் நிறுவனம் இல்லாதபோது, போலி மருந்துகளைப் போல).","Exact batch matches and company matches with high confidence (or the medicine name, when the record has no company, as with spurious drugs).",0.92,true,false,ok,manual
+Exactly this message will be shared,சரியாக இந்தச் செய்தியே பகிரப்படும்,Exactly this message will be shared,1,true,false,ok,manual
+Example: this should be easy to read in the photo,உதாரணம்: இது புகைப்படத்தில் எளிதாகப் படிக்கக்கூடியதாக இருக்க வேண்டும்,Example: this should be easy to read in the photo,1,true,false,ok,manual
+Expired,காலாவதியானது,Expired,1,true,true,ok,manual
+Expired or expiring soon,காலாவதியானது அல்லது விரைவில் காலாவதியாகும்,Expired or expiring soon,1,true,false,ok,manual
+Expires soon,விரைவில் காலாவதியாகும்,Expires soon,1,true,true,ok,manual
+Expiry,காலாவதி,Expiry,1,true,false,ok,manual
+Expiry (EXP),காலாவதி (EXP),Expiry (EXP),1,true,false,ok,manual
+Expiry reminders,காலாவதி நினைவூட்டல்கள்,Expiry reminders,1,true,false,ok,manual
+Expiry: {0},காலாவதி: {0},Expiry: {0},1,true,true,ok,manual
+Explained the record,பதிவு விளக்கப்பட்டது,Explained the record,1,true,false,ok,manual
+FactsScan,FactsScan,FactsScan,1,true,false,ok,manual
+failed to,தோல்வியடைந்தது,failed,1,true,false,ok,manual
+Failure reason,தோல்விக்கான காரணம்,Failure reason,1,true,false,ok,manual
+False-GREY rate,தவறான சாம்பல் விகிதம்,False-GREY rate,1,true,false,ok,manual
+False-RED rate,தவறான சிவப்பு விகிதம்,False-RED rate,1,true,false,ok,manual
+Family,குடும்பம்,Family,1,true,false,ok,manual
+Family alert ready to send to {0},{0} க்கு அனுப்பக் குடும்ப எச்சரிக்கை தயார்,Family alert ready to send to {0},1,true,false,ok,manual
+Family alerts,குடும்ப எச்சரிக்கைகள்,Family alerts,1,true,false,ok,manual
+Family invite,குடும்ப அழைப்பு,Family invite,1,true,false,ok,manual
+Female,பெண்,Female,1,true,false,ok,manual
+"Firebase AI Logic: Gemini Nano on the device and Gemini Flash in the cloud. Matching is always plain code, on the device.","Firebase AI Logic: சாதனத்தில் Gemini Nano மற்றும் கிளவுடில் Gemini Flash. பொருத்துதல் எப்போதும் எளிய குறியீடு, சாதனத்தில்.","Firebase AI Logic: Gemini Nano on the device and Gemini Flash in the cloud. Matching always plain code, on the device.",1,true,false,ok,manual
+Firestore rules: each device can only read and write its own documents.,Firestore விதிகள்: ஒவ்வொரு சாதனமும் தன் சொந்த ஆவணங்களை மட்டுமே படிக்கவும் எழுதவும் முடியும்.,Firestore rules: each device can only read and write its own documents.,1,true,false,ok,manual
+First turn on alerts in Settings,முதலில் Settings இல் எச்சரிக்கைகளை இயக்கவும்,First turn on alerts in Settings,1,true,false,ok,manual
+"Flagged batches caught, no correction","எச்சரிக்கை உள்ள தொகுதிகள் பிடிபட்டன, திருத்தம் இல்லாமல்","Flagged batches caught, without correction",0.8,true,false,ok,manual
+For explanations and questions only the official record and your question are sent. Every AI answer is labelled On this device or Cloud.,விளக்கங்கள் மற்றும் கேள்விகளுக்கு அரசு பதிவும் உங்கள் கேள்வியும் மட்டுமே அனுப்பப்படும். ஒவ்வொரு AI பதிலிலும் எழுதப்பட்டிருக்கும்: இந்தச் சாதனத்தில் அல்லது கிளவுட்.,For explanations and questions only the official record and your question are sent. Every AI answer is labelled: On this device or Cloud.,1,true,false,ok,manual
+"For this, our server keeps only: a notification code, your language, and for each medicine its batch number, company and expiry month. Never your name, phone number, illness or who the medicine is for. Turn it off any time and all of it is deleted.","இதற்காக எங்கள் சேவையகம் இவற்றை மட்டுமே வைத்திருக்கும்: ஒரு அறிவிப்புக் குறியீடு, உங்கள் மொழி, மற்றும் ஒவ்வொரு மருந்துக்கும் அதன் தொகுதி எண், நிறுவனம் மற்றும் காலாவதி மாதம். உங்கள் பெயர், போன் எண், நோய் அல்லது மருந்து யாருக்கு என்பது ஒருபோதும் இல்லை. எப்போது வேண்டுமானாலும் அணைக்கவும், அனைத்தும் நீக்கப்படும்.","For this our server keeps only: a notification code, your language, and for each medicine its batch number, company and expiry month. Never your name, phone number, illness or who the medicine is for. Turn it off any time, all of it is deleted.",1,true,false,ok,manual
+For whom,யாருக்காக,For whom,1,true,false,ok,manual
+For: {0},யாருக்காக: {0},For: {0},1,true,true,ok,manual
+Full matching offline,முழு பொருத்துதல் ஆஃப்லைனில்,Full matching offline,1,true,false,ok,manual
+G-QKCDPFSW2N,G-QKCDPFSW2N,G-QKCDPFSW2N,1,true,false,ok,manual
+Gemini Flash · {0},Gemini Flash · {0},Gemini Flash · {0},1,true,false,ok,manual
+Gemini Nano · {0},Gemini Nano · {0},Gemini Nano · {0},1,true,false,ok,manual
+Gemini Nano is downloading. Using cloud AI for now.,Gemini Nano பதிவிறக்கப்படுகிறது. இப்போதைக்கு கிளவுட் AI பயன்படுத்துகிறோம்.,Gemini Nano is downloading. Using cloud AI for now.,1,true,false,ok,manual
+Gemini Nano is ready on this device{0}. AI works even offline.,Gemini Nano இந்தச் சாதனத்தில் தயாராக உள்ளது{0}. AI ஆஃப்லைனிலும் வேலை செய்கிறது.,Gemini Nano is ready on this device{0}. AI works even offline.,1,true,false,ok,manual
+generated transcripts,உருவாக்கப்பட்ட எழுத்துப்படிகள்,generated transcripts,1,true,false,ok,manual
+Get alerted if it is flagged later,பின்னர் எச்சரிக்கை வந்தால் தெரிவிக்கவும்,Get alerted if an alert comes later,0.75,true,true,ok,manual
+Get alerts even when the app is closed?,செயலி மூடியிருக்கும்போதும் எச்சரிக்கைகள் வேண்டுமா?,Want alerts even when the app is closed?,0.83,true,false,ok,manual
+"GitHub Actions fetches CDSCO daily, validates it, re-checks opted-in saved medicines and sends a push if one is flagged. On iPhone, push works only when the app is added to the home screen.","GitHub Actions தினமும் CDSCO இலிருந்து தரவைக் கொண்டுவந்து, சரிபார்த்து, ஒப்புதல் அளித்தவர்களின் சேமித்த மருந்துகளை மறுசரிபார்த்து, எச்சரிக்கை இருந்தால் push அனுப்புகிறது. iPhone இல் push செயலி முகப்புத் திரையில் சேர்க்கப்பட்டால் மட்டுமே வேலை செய்யும்.","GitHub Actions brings data from CDSCO daily, validates it, re-checks saved medicines of those who consented, and sends a push if flagged. On iPhone push works only when the app is added to the home screen.",0.87,true,false,ok,manual
+Grey,சாம்பல்,Grey,1,true,true,ok,manual
+GREY,சாம்பல்,GREY,1,true,true,ok,manual
+Hand-verified,கையால் சரிபார்க்கப்பட்டது,Hand-verified,1,true,false,ok,manual
+Hand-verified records,கையால் சரிபார்க்கப்பட்ட பதிவுகள்,Hand-verified records,1,true,false,ok,manual
+Heard,கேட்டது,Heard,1,true,false,ok,manual
+"Hello, I am DawaShield. Say the medicine name, or show a photo of the strip.","வணக்கம், நான் DawaShield. மருந்தின் பெயரைச் சொல்லுங்கள், அல்லது அட்டையின் புகைப்படத்தைக் காட்டுங்கள்.","Hello, I am DawaShield. Say the medicine name, or show a photo of the strip.",1,true,true,ok,manual
+hi-IN,hi-IN,hi-IN,1,true,false,ok,manual
+Hide details,விவரங்களை மறை,Hide details,1,true,true,ok,manual
+"Hindi and English offline, 5 more Indian languages online","இந்தி மற்றும் ஆங்கிலம் ஆஃப்லைனில், மேலும் 5 இந்திய மொழிகள் ஆன்லைனில்","Hindi and English offline, 5 more Indian languages online",1,true,false,ok,manual
+"Hindi and English offline; Punjabi, Gujarati, Marathi, Kannada and Tamil online. Even a garbled transcript is matched and shown as big buttons.","இந்தி மற்றும் ஆங்கிலம் ஆஃப்லைனில்; பஞ்சாபி, குஜராத்தி, மராத்தி, கன்னடம் மற்றும் தமிழ் ஆன்லைனில். குழப்பமான எழுத்துப்படியும் பொருத்தப்பட்டு பெரிய பொத்தான்களாகக் காட்டப்படும்.","Hindi and English offline; Punjabi, Gujarati, Marathi, Kannada and Tamil online. Even a garbled transcript is matched and shown as big buttons.",1,true,false,ok,manual
+Hindi and English work offline. The other languages need internet.,இந்தி மற்றும் ஆங்கிலம் ஆஃப்லைனில் வேலை செய்யும். மற்ற மொழிகளுக்கு இணையம் தேவை.,Hindi and English work offline. The other languages need internet.,1,true,false,ok,manual
+Hindi voice check,இந்தி குரல் சரிபார்ப்பு,Hindi voice check,1,true,false,ok,manual
+Hindi voice input: works offline only if the Hindi speech pack is installed in Chrome,இந்தி குரல் உள்ளீடு: Chrome இல் இந்தி பேச்சுத் தொகுப்பு இருந்தால் மட்டுமே ஆஃப்லைனில் வேலை செய்யும்,Hindi voice input: works offline only if the Hindi speech pack is in Chrome,0.9,true,false,ok,manual
+Hindi/English voice top-3,இந்தி/ஆங்கிலம் குரல் top-3,Hindi/English voice top-3,1,true,false,ok,manual
+"Historical alert, this batch's expiry was","பழைய எச்சரிக்கை, இந்தத் தொகுதியின் காலாவதி இருந்தது","Old alert, this batch's expiry was",0.75,true,false,ok,manual
+Home,முகப்பு,Home,1,true,false,ok,manual
+Home medicine cabinet with automatic later alerts,"வீட்டு மருந்துப் பெட்டி, பின்னர் தானியங்கி எச்சரிக்கைகளுடன்","Home medicine cabinet, with automatic later alerts",1,true,false,ok,manual
+How it compares,ஒப்பீடு,How it compares,1,true,false,ok,manual
+How it works,இது எப்படி வேலை செய்கிறது,How it works,1,true,false,ok,manual
+How the result colour is decided,முடிவின் நிறம் எப்படி முடிவு செய்யப்படுகிறது,How the result colour is decided,1,true,false,ok,manual
+How this answer was made,இந்தப் பதில் எப்படி உருவானது,How this answer was made,1,true,false,ok,manual
+Hybrid AI,ஹைப்ரிட் AI,Hybrid AI,1,true,false,ok,manual
+I could not understand. Please say it again or show a photo.,எனக்குப் புரியவில்லை. தயவுசெய்து மீண்டும் சொல்லுங்கள் அல்லது புகைப்படம் காட்டுங்கள்.,I could not understand. Please say it again or show a photo.,1,true,true,ok,manual
+I didn't hear anything. Hold the phone closer and say the medicine name again.,எனக்கு எதுவும் கேட்கவில்லை. போனை அருகில் வைத்து மருந்தின் பெயரை மீண்டும் சொல்லுங்கள்.,I didn't hear anything. Hold the phone closer and say the medicine name again.,1,true,true,ok,manual
+"I understand, continue","புரிந்தது, தொடரவும்","I understand, continue",1,true,true,ok,manual
+"If the colour, smell, packing or effect seems wrong, report it to CDSCO. We help you write the message.","நிறம், மணம், பேக்கிங் அல்லது விளைவு தவறாகத் தோன்றினால், CDSCO க்குப் புகாரளிக்கவும். செய்தி எழுத நாங்கள் உதவுகிறோம்.","If the colour, smell, packing or effect seems wrong, report it to CDSCO. We help you write the message.",1,true,true,ok,manual
+"If you accept, this phone gets a notification when one of their saved medicines appears in an official alert. We keep no name or number, only a notification code.","நீங்கள் ஏற்றால், அவர்களின் சேமித்த மருந்து அரசு எச்சரிக்கையில் வரும்போது இந்த போனுக்கு அறிவிப்பு வரும். நாங்கள் பெயர் அல்லது எண் வைப்பதில்லை, அறிவிப்புக் குறியீடு மட்டுமே.","If you accept, this phone gets a notification when their saved medicine comes in an official alert. We keep no name or number, only a notification code.",0.89,true,false,ok,manual
+Is the expiry date correct? Please check the strip,காலாவதி தேதி சரியா? தயவுசெய்து அட்டையைச் சரிபார்க்கவும்,Is the expiry date correct? Please check the strip,1,true,false,ok,manual
+"It does not test the medicine. 'No alert' does not mean 'safe', because official lists come out late.","இது மருந்தைச் சோதிப்பதில்லை. 'எச்சரிக்கை இல்லை' என்றால் 'பாதுகாப்பானது' என்று பொருள் இல்லை, ஏனெனில் அரசு பட்டியல்கள் தாமதமாக வருகின்றன.","It does not test the medicine. 'No alert' does not mean 'safe', because official lists come out late.",1,true,true,ok,manual
+It never suggests any medicine. Talk to your doctor or chemist about every treatment decision.,இது ஒருபோதும் எந்த மருந்தையும் பரிந்துரைப்பதில்லை. ஒவ்வொரு சிகிச்சை முடிவு பற்றியும் உங்கள் மருத்துவர் அல்லது மருந்தாளுநரிடம் பேசுங்கள்.,It never suggests any medicine. Talk to your doctor or chemist about every treatment decision.,1,true,true,ok,manual
+It was tested by {0}. Problem found: {1}.,இதை {0} சோதித்தது. கண்டறியப்பட்ட பிரச்சனை: {1}.,It was tested by {0}. Problem found: {1}.,1,true,true,ok,manual
+Keep the strip and the bill. Don't use it. Report it to the chemist and CDSCO.,அட்டையையும் ரசீதையும் வைத்திருங்கள். அதைப் பயன்படுத்த வேண்டாம். மருந்தாளுநர் மற்றும் CDSCO க்குப் புகாரளிக்கவும்.,Keep the strip and the bill. Don't use it. Report it to the chemist and CDSCO.,1,true,true,ok,manual
+Language,மொழி,Language,1,true,false,ok,manual
+Last checked,கடைசியாகச் சரிபார்த்தது,Last checked,1,true,false,ok,manual
+Last checked against CDSCO data up to {0}: all clear,{0} வரையிலான CDSCO தரவுடன் கடைசியாகச் சரிபார்த்தது: அனைத்தும் சரி,Last checked against CDSCO data up to {0}: all clear,1,true,false,ok,manual
+Last successful refresh,கடைசி வெற்றிகரமான புதுப்பிப்பு,Last successful update,0.67,true,false,ok,manual
+Last synced,கடைசி ஒத்திசைவு,Last synced,1,true,false,ok,manual
+Last updated,கடைசி புதுப்பிப்பு,Last updated,1,true,false,ok,manual
+Latest alert month,சமீபத்திய எச்சரிக்கை மாதம்,Latest alert month,1,true,false,ok,manual
+Listed {0} times in the source PDF,மூல PDF இல் {0} முறை பட்டியலிடப்பட்டுள்ளது,Listed {0} times in the source PDF,1,true,false,ok,manual
+Listening…,கேட்கிறது…,Listening…,1,true,false,ok,manual
+"Look for the date after EXP on the strip. If it has passed, don't take it; show it to your chemist.","அட்டையில் EXP க்குப் பின் உள்ள தேதியைப் பாருங்கள். அது கடந்துவிட்டால், எடுக்க வேண்டாம்; உங்கள் மருந்தாளுநரிடம் காட்டுங்கள்.","Look at the date after EXP on the strip. If it has passed, don't take it; show it to your chemist.",1,true,true,ok,manual
+Maa,அம்மா,Maa,1,true,false,ok,manual
+Main,முதன்மை,Main,1,true,false,ok,manual
+Main job: match a medicine batch to CDSCO alerts,முதன்மை வேலை: மருந்துத் தொகுதியை CDSCO எச்சரிக்கைகளுடன் பொருத்துதல்,Main job: match a medicine batch with CDSCO alerts,1,true,false,ok,manual
+Male,ஆண்,Male,1,true,false,ok,manual
+Manufacturer,உற்பத்தியாளர்,Manufacturer,1,true,false,ok,manual
+Manufacturer (as stated),உற்பத்தியாளர் (குறிப்பிட்டபடி),Manufacturer (as stated),1,true,false,ok,manual
+Matched,பொருந்தியது,Matched,1,true,false,ok,manual
+Matched against the official list,அரசு பட்டியலுடன் பொருத்தப்பட்டது,Matched with the official list,0.75,true,false,ok,manual
+Matches,பொருத்தங்கள்,Matches,1,true,false,ok,manual
+Matching (plain code),பொருத்துதல் (எளிய குறியீடு),Matching (plain code),1,true,false,ok,manual
+Matching cases,பொருத்துதல் வழக்குகள்,Matching cases,1,true,false,ok,manual
+Matching CDSCO alert: {0},பொருந்தும் CDSCO எச்சரிக்கை: {0},Matching CDSCO alert: {0},1,true,true,ok,manual
+Me,நான்,Me,1,true,false,ok,manual
+Measured results,அளவிடப்பட்ட முடிவுகள்,Measured results,1,true,false,ok,manual
+Medicine,மருந்து,Medicine,1,true,false,ok,manual
+Medicine cabinet,மருந்துப் பெட்டி,Medicine cabinet,1,true,false,ok,manual
+Medicine expiring soon: {0},விரைவில் காலாவதியாகும் மருந்து: {0},Medicine expiring soon: {0},1,true,false,ok,manual
+Medicine matching always works fully offline on this phone.,மருந்துப் பொருத்துதல் இந்த போனில் எப்போதும் முழுமையாக ஆஃப்லைனில் வேலை செய்யும்.,Medicine matching always works fully offline on this phone.,1,true,false,ok,manual
+Medicine name,மருந்தின் பெயர்,Medicine name,1,true,false,ok,manual
+Medicine name: {0},மருந்தின் பெயர்: {0},Medicine name: {0},1,true,true,ok,manual
+Medicine: {0},மருந்து: {0},Medicine: {0},1,true,true,ok,manual
+Mfg / Expiry,தயாரிப்பு / காலாவதி,Mfg / Expiry,1,true,false,ok,manual
+"Microphone permission was blocked. Allow the mic in your browser, or type instead.","மைக்ரோஃபோன் அனுமதி தடுக்கப்பட்டது. உலாவியில் மைக்கை அனுமதிக்கவும், அல்லது தட்டச்சு செய்யவும்.","Microphone permission was blocked. Allow the mic in the browser, or type.",0.88,true,true,ok,manual
+Monthly CDSCO PDF for this alert,இந்த எச்சரிக்கைக்கான CDSCO மாதாந்திர PDF,Monthly CDSCO PDF for this alert,1,true,false,ok,manual
+Monthly PDF,மாதாந்திர PDF,Monthly PDF,1,true,false,ok,manual
+Months covered,உள்ளடக்கிய மாதங்கள்,Months covered,1,true,false,ok,manual
+More details (optional),மேலும் விவரங்கள் (விருப்பத்தேர்வு),More details (optional),1,true,false,ok,manual
+more matching records,மேலும் பொருந்தும் பதிவுகள்,more matching records,1,true,false,ok,manual
+My medicine is not the one in this alert,என் மருந்து இந்த எச்சரிக்கையில் உள்ளது அல்ல,My medicine is not the one in this alert,1,true,false,ok,manual
+My name and phone:,என் பெயர் மற்றும் போன்:,My name and phone:,1,true,true,ok,manual
+Namaste,வணக்கம்,Namaste,1,true,false,ok,manual
+Name,பெயர்,Name,1,true,false,ok,manual
+need attention,கவனம் தேவை,need attention,1,true,false,ok,manual
+Needs internet,இணையம் தேவை,Needs internet,1,true,false,ok,manual
+Never recommends medicines,ஒருபோதும் மருந்து பரிந்துரைப்பதில்லை,Never recommends medicines,1,true,false,ok,manual
+New alert,புதிய எச்சரிக்கை,New alert,1,true,false,ok,manual
+Next update expected,அடுத்த புதுப்பிப்பு எதிர்பார்க்கப்படுவது,Next update expected,1,true,true,ok,manual
+"No ads, never recommends medicines","விளம்பரங்கள் இல்லை, ஒருபோதும் மருந்து பரிந்துரைப்பதில்லை","No ads, never recommends medicines",1,true,false,ok,manual
+"No AI calls were made, you typed everything.","எந்த AI அழைப்பும் செய்யப்படவில்லை, நீங்களே அனைத்தையும் தட்டச்சு செய்தீர்கள்.","No AI calls were made, you typed everything yourself.",1,true,false,ok,manual
+No AI decides safety,எந்த AI யும் பாதுகாப்பை முடிவு செய்வதில்லை,No AI decides safety,1,true,false,ok,manual
+No expiry date,காலாவதி தேதி இல்லை,No expiry date,1,true,true,ok,manual
+"No internet, so the photo couldn't be read. Try again, or type the batch number — the check itself works offline.","இணையம் இல்லை, எனவே புகைப்படத்தைப் படிக்க முடியவில்லை. மீண்டும் முயற்சிக்கவும், அல்லது தொகுதி எண்ணைத் தட்டச்சு செய்யவும் — சரிபார்ப்பு தானே ஆஃப்லைனில் வேலை செய்யும்.","No internet, so the photo couldn't be read. Try again, or type the batch number — the check itself works offline.",1,true,true,ok,manual
+"No labelled real strip photos yet, so photo accuracy has not been measured.","இன்னும் அட்டைகளின் லேபிளிடப்பட்ட உண்மையான புகைப்படங்கள் இல்லை, எனவே புகைப்படத் துல்லியம் அளவிடப்படவில்லை.","No labelled real photos of strips yet, so photo accuracy has not been measured.",1,true,false,ok,manual
+No match is not a safety guarantee.,பொருத்தம் இல்லாதது பாதுகாப்பு உத்தரவாதம் அல்ல.,No match is not a safety guarantee.,1,true,false,ok,manual
+"No medicines yet. After a check, tap ‘Save to cabinet’.",இன்னும் மருந்துகள் இல்லை. சரிபார்ப்புக்குப் பின் ‘பெட்டியில் சேமி’ தட்டவும்.,"No medicines yet. After a check, tap ‘Save to cabinet’.",1,true,false,ok,manual
+No official alert,அரசு எச்சரிக்கை இல்லை,No official alert,1,true,true,ok,manual
+No official alert for this exact batch,இந்தத் தொகுதிக்கு அரசு எச்சரிக்கை இல்லை,No official alert for this exact batch,1,true,true,ok,manual
+No official record matched this batch. We checked this list:,எந்த அரசு பதிவும் இந்தத் தொகுதியுடன் பொருந்தவில்லை. நாங்கள் இந்தப் பட்டியலைச் சரிபார்த்தோம்:,No official record matched this batch. We checked this list:,1,true,false,ok,manual
+No record.,பதிவு இல்லை.,No record.,1,true,false,ok,manual
+None,எதுவுமில்லை,None,1,true,false,ok,manual
+"None of these, I'll type","இவற்றில் எதுவுமில்லை, நான் தட்டச்சு செய்கிறேன்","None of these, I will type",0.75,true,false,ok,manual
+Not downloaded yet,இன்னும் பதிவிறக்கப்படவில்லை,Not downloaded yet,1,true,false,ok,manual
+Not found,கிடைக்கவில்லை,Not found,1,true,false,ok,manual
+Not given,வழங்கப்படவில்லை,Not given,1,true,false,ok,manual
+Not now,இப்போது வேண்டாம்,Not now,1,true,false,ok,manual
+not of standard quality (NSQ),தரநிலைக்கு ஏற்றதல்ல (NSQ),not of standard quality (NSQ),1,true,true,ok,manual
+Not of Standard Quality (NSQ),தரநிலைக்கு ஏற்றதல்ல (NSQ),Not of Standard Quality (NSQ),1,true,true,ok,manual
+Not of Standard Quality (NSQ): this batch failed a test at a government lab.,தரநிலைக்கு ஏற்றதல்ல (NSQ): இந்தத் தொகுதி அரசு ஆய்வகச் சோதனையில் தோல்வியடைந்தது.,Not of Standard Quality (NSQ): this batch failed a test at a government lab.,1,true,true,ok,manual
+Not verified,சரிபார்க்கப்படவில்லை,Not verified,1,true,false,ok,manual
+Nothing expiring soon,விரைவில் காலாவதியாவது எதுவுமில்லை,Nothing expiring soon,1,true,false,ok,manual
+Notification,அறிவிப்பு,Notification,1,true,false,ok,manual
+Notifications,அறிவிப்புகள்,Notifications,1,true,false,ok,manual
+Notifications (only if you opt in),அறிவிப்புகள் (நீங்கள் தேர்ந்தெடுத்தால் மட்டும்),Notifications (only if you opt in),1,true,false,ok,manual
+Notifications were blocked.,அறிவிப்புகள் தடுக்கப்பட்டன.,Notifications were blocked.,1,true,false,ok,manual
+Notifications were blocked. You can still use 'Add expiry to my calendar'.,அறிவிப்புகள் தடுக்கப்பட்டன. நீங்கள் இன்னும் 'காலாவதியை என் நாட்காட்டியில் சேர்க்கவும்' பயன்படுத்தலாம்.,Notifications were blocked. You can still use 'Add expiry to my calendar'.,1,true,false,ok,manual
+"Now the batch number. It is printed after B.No. or Batch on the strip. Say it, type it, or show a photo.","இப்போது தொகுதி எண். அது அட்டையில் B.No. அல்லது Batch க்குப் பின் அச்சிடப்பட்டிருக்கும். சொல்லுங்கள், தட்டச்சு செய்யுங்கள், அல்லது புகைப்படம் காட்டுங்கள்.","Now the batch number. It is printed after B.No. or Batch on the strip. Say it, type it, or show a photo.",1,true,true,ok,manual
+NSQ / Spurious,NSQ / போலி,NSQ / Spurious,1,true,false,ok,manual
+num p-2,num p-2,num p-2,1,true,false,ok,manual
+Off,அணை,Off,1,true,false,ok,manual
+Official alert found,அரசு எச்சரிக்கை கண்டறியப்பட்டது,Official alert found,1,true,true,ok,manual
+Official CDSCO data up to,அரசு CDSCO தரவு இதுவரை,Official CDSCO data up to,1,true,false,ok,manual
+"Official CDSCO data, source on every answer","அரசு CDSCO தரவு, ஒவ்வொரு பதிலிலும் மூலம்","Official CDSCO data, source on every answer",1,true,false,ok,manual
+Official data,அரசு தரவு,Official data,1,true,false,ok,manual
+Official data + plain code. AI only helps.,அரசு தரவு + எளிய குறியீடு. AI உதவி மட்டுமே செய்கிறது.,Official data + plain code. AI only helps.,1,true,false,ok,manual
+Official data checked up to,அரசு தரவு இதுவரை சரிபார்க்கப்பட்டது,Official data checked up to,1,true,true,ok,manual
+Official dataset,அரசு தரவுத்தொகுப்பு,Official dataset,1,true,false,ok,manual
+Official link,அரசு இணைப்பு,Official link,1,true,false,ok,manual
+Official record,அரசு பதிவு,Official record,1,true,false,ok,manual
+Official record of the other medicine (not yours),வேறொரு மருந்தின் அரசு பதிவு (உங்களுடையது அல்ல),Official record of the other medicine (not yours),1,true,true,ok,manual
+official records,அரசு பதிவுகள்,official records,1,true,false,ok,manual
+official records searched on this phone,இந்த போனில் தேடப்பட்ட அரசு பதிவுகள்,official records searched on this phone,1,true,false,ok,manual
+Official source + record ID on every answer,ஒவ்வொரு பதிலிலும் அரசு மூலம் + பதிவு ID,Official source + record ID on every answer,1,true,false,ok,manual
+Offline ready,ஆஃப்லைனுக்குத் தயார்,Offline ready,1,true,false,ok,manual
+Offline ready · On this device,ஆஃப்லைனுக்குத் தயார் · இந்தச் சாதனத்தில்,Offline ready · On this device,1,true,false,ok,manual
+Offline this can take about half a minute,ஆஃப்லைனில் இதற்கு சுமார் அரை நிமிடம் ஆகலாம்,Offline this can take about half a minute,1,true,false,ok,manual
+"Offline, still working","ஆஃப்லைன், இன்னும் வேலை செய்கிறது","Offline, still working",1,true,false,ok,manual
+On,இயக்கம்,On,1,true,false,ok,manual
+"On a red or amber result, send a WhatsApp message in one tap. Numbers stay only on this phone.","சிவப்பு அல்லது மஞ்சள் முடிவில், ஒரே தட்டலில் WhatsApp செய்தி அனுப்பவும். எண்கள் இந்த போனில் மட்டுமே இருக்கும்.","On a red or amber result, send a WhatsApp message in one tap. Numbers stay only in this phone.",1,true,false,ok,manual
+On strip,அட்டையில்,On strip,1,true,false,ok,manual
+On this device,இந்தச் சாதனத்தில்,On this device,1,true,false,ok,manual
+"On WhatsApp, only with your consent.","WhatsApp இல், உங்கள் ஒப்புதலுடன் மட்டும்.","On WhatsApp, only with your consent.",1,true,false,ok,manual
+On-device AI (Gemini Nano),சாதனத்தில் உள்ள AI (Gemini Nano),On-device AI (Gemini Nano),1,true,false,ok,manual
+On-device AI needs desktop Chrome with Gemini Nano. Using cloud AI for now.,சாதனத்தில் உள்ள AI க்கு Gemini Nano உள்ள டெஸ்க்டாப் Chrome தேவை. இப்போதைக்கு கிளவுட் AI பயன்படுத்துகிறோம்.,On-device AI needs desktop Chrome with Gemini Nano. Using cloud AI for now.,1,true,false,ok,manual
+"One check, step by step","ஒரு சரிபார்ப்பு, படிப்படியாக","One check, step by step",1,true,false,ok,manual
+Online,ஆன்லைன்,Online,1,true,false,ok,manual
+Online: Gemini Flash in the cloud (Firebase AI Logic). Gemini Nano only on supported desktop Chrome. AI only reads and explains; it never picks the colour.,ஆன்லைன்: கிளவுடில் Gemini Flash (Firebase AI Logic). Gemini Nano ஆதரிக்கப்படும் டெஸ்க்டாப் Chrome இல் மட்டும். AI படித்து விளக்குகிறது மட்டுமே; ஒருபோதும் நிறத்தைத் தேர்ந்தெடுப்பதில்லை.,Online: Gemini Flash in the cloud (Firebase AI Logic). Gemini Nano only on supported desktop Chrome. AI only reads and explains; it never picks the colour.,1,true,false,ok,manual
+"Only if you turn on notifications, our Firebase server keeps: a notification code, your language, and for each saved medicine its batch number, company and expiry month. Never the medicine name, your name, phone, illness or who it is for. Each phone can only see its own data. Turning it off deletes it all.","நீங்கள் அறிவிப்புகளை இயக்கினால் மட்டுமே, எங்கள் Firebase சேவையகம் வைத்திருக்கும்: ஒரு அறிவிப்புக் குறியீடு, உங்கள் மொழி, மற்றும் ஒவ்வொரு சேமித்த மருந்துக்கும் அதன் தொகுதி எண், நிறுவனம் மற்றும் காலாவதி மாதம். மருந்தின் பெயர், உங்கள் பெயர், போன், நோய் அல்லது அது யாருக்கு என்பது ஒருபோதும் இல்லை. ஒவ்வொரு போனும் தன் சொந்தத் தரவை மட்டுமே பார்க்க முடியும். அணைத்தால் அனைத்தும் நீக்கப்படும்.","Only if you turn on notifications, our Firebase server keeps: a notification code, your language, and for each saved medicine its batch number, company and expiry month. Never the medicine name, your name, phone, illness or who it is for. Each phone can only see its own data. Turning it off deletes it all.",1,true,false,ok,manual
+"Only the result colour, batch, company and record IDs are sent. No name, phone or personal details.","முடிவின் நிறம், தொகுதி, நிறுவனம் மற்றும் பதிவு ID மட்டுமே அனுப்பப்படும். பெயர், போன் அல்லது தனிப்பட்ட விவரங்கள் இல்லை.","Only the result colour, batch, company and record IDs are sent. No name, phone or personal details.",1,true,false,ok,manual
+Only three results,மூன்று முடிவுகள் மட்டும்,Only three results,1,true,false,ok,manual
+"Only with push opt-in: token, language, batch, company, expiry month. Never name, phone or illness.","push தேர்ந்தெடுத்தால் மட்டும்: டோக்கன், மொழி, தொகுதி, நிறுவனம், காலாவதி மாதம். பெயர், போன் அல்லது நோய் ஒருபோதும் இல்லை.","Only if push is chosen: token, language, batch, company, expiry month. Never name, phone or illness.",0.92,true,false,ok,manual
+Open CDSCO alerts page,CDSCO எச்சரிக்கைகள் பக்கத்தைத் திறக்கவும்,Open CDSCO alerts page,1,true,false,ok,manual
+Open CDSCO source,CDSCO மூலத்தைத் திறக்கவும்,Open CDSCO source,1,true,false,ok,manual
+Open official PDF,அரசு PDF ஐத் திறக்கவும்,Open official PDF,1,true,false,ok,manual
+"Optional. Once they open the link and accept, they get a notification too when one of your saved medicines is flagged. No names or numbers are stored.","விருப்பத்தேர்வு. அவர்கள் இணைப்பைத் திறந்து ஏற்ற பிறகு, உங்கள் சேமித்த மருந்துக்கு எச்சரிக்கை வரும்போது அவர்களுக்கும் அறிவிப்பு வரும். பெயர்கள் அல்லது எண்கள் சேமிக்கப்படுவதில்லை.","Optional. After they open the link and accept, they also get a notification when your saved medicine is flagged. No names or numbers are stored.",0.83,true,false,ok,manual
+"Other batches flagged: same company AND same medicine, different batch.","மற்ற தொகுதிகள் எச்சரிக்கையில்: அதே நிறுவனம் மற்றும் அதே மருந்து, வேறு தொகுதி.","Other batches in alert: same company and same medicine, different batch.",0.86,true,false,ok,manual
+Other batches of this medicine are flagged: check your batch number with your chemist.,இந்த மருந்தின் மற்ற தொகுதிகளுக்கு எச்சரிக்கை உள்ளது: உங்கள் தொகுதி எண்ணை உங்கள் மருந்தாளுநரிடம் சரிபார்க்கவும்.,Other batches of this medicine are flagged: check your batch number with your chemist.,1,true,true,ok,manual
+overflow-x-auto p-0,overflow-x-auto p-0,overflow-x-auto p-0,1,true,false,ok,manual
+p-2 text-center,p-2 text-center,p-2 text-center,1,true,false,ok,manual
+p-6 text-center,p-6 text-center,p-6 text-center,1,true,false,ok,manual
+Papa,அப்பா,Papa,1,true,false,ok,manual
+Photo check,புகைப்படச் சரிபார்ப்பு,Photo check,1,true,false,ok,manual
+Photo or voice too unclear to match: keypad or retake. Never shown as GREY.,புகைப்படம் அல்லது குரல் பொருத்துவதற்கு மிகத் தெளிவற்றது: விசைப்பலகை அல்லது மீண்டும் புகைப்படம். ஒருபோதும் சாம்பல் எனக் காட்டப்படாது.,Photo or voice too unclear for matching: keypad or photo again. Never shown as GREY.,0.9,true,false,ok,manual
+Photo reading,புகைப்பட வாசிப்பு,Photo reading,1,true,false,ok,manual
+Photos,புகைப்படங்கள்,Photos,1,true,false,ok,manual
+"Photos are never stored. When online, only that single photo is sent to Google Gemini (Firebase AI Logic) to read the label. Offline, it is read on the phone.","புகைப்படங்கள் ஒருபோதும் சேமிக்கப்படுவதில்லை. ஆன்லைனில் இருக்கும்போது, லேபிளைப் படிக்க அந்த ஒரு புகைப்படம் மட்டுமே Google Gemini (Firebase AI Logic) க்கு அனுப்பப்படும். ஆஃப்லைனில், அது போனில் படிக்கப்படும்.","Photos are never stored. When online, only that one photo is sent to Google Gemini (Firebase AI Logic) to read the label. Offline, it is read on the phone.",0.94,true,false,ok,manual
+Plain code · On this device,எளிய குறியீடு · இந்தச் சாதனத்தில்,Plain code · On this device,1,true,false,ok,manual
+"Plain code matching, no AI involved.","எளிய குறியீட்டுப் பொருத்துதல், AI ஈடுபடவில்லை.","Plain code matching, no AI involved.",1,true,false,ok,manual
+Please check,தயவுசெய்து சரிபார்க்கவும்,Please check,1,true,true,ok,manual
+Please check the batch number and ask a pharmacist.,தயவுசெய்து தொகுதி எண்ணைச் சரிபார்த்து மருந்தாளுநரிடம் கேளுங்கள்.,Please check the batch number and ask a pharmacist.,1,true,true,ok,manual
+Please check this on the strip,தயவுசெய்து இதை அட்டையில் சரிபார்க்கவும்,Please check this on the strip,1,true,false,ok,manual
+Please confirm: check it against the strip and correct it,தயவுசெய்து உறுதிசெய்யவும்: அட்டையுடன் ஒப்பிட்டுத் திருத்தவும்,Please confirm: compare with the strip and correct it,0.6,true,false,ok,manual
+Please say the name of the medicine.,தயவுசெய்து மருந்தின் பெயரைச் சொல்லுங்கள்.,Please say the name of the medicine.,1,true,true,ok,manual
+Possible match: exact batch but the company is uncertain; or a batch one character off / incomplete.,சாத்தியமான பொருத்தம்: தொகுதி முழுமையாகப் பொருந்துகிறது ஆனால் நிறுவனம் நிச்சயமற்றது; அல்லது தொகுதி ஒரு எழுத்து வேறு / முழுமையற்றது.,Possible match: batch matches exactly but the company is uncertain; or batch one character different / incomplete.,0.91,true,false,ok,manual
+Possible match: show the strip to your chemist before the next dose.,சாத்தியமான பொருத்தம்: அடுத்த டோஸுக்கு முன் அட்டையை உங்கள் மருந்தாளுநரிடம் காட்டுங்கள்.,Possible match: show the strip to your chemist before the next dose.,1,true,true,ok,manual
+Possible official alert,சாத்தியமான அரசு எச்சரிக்கை,Possible official alert,1,true,false,ok,manual
+"Pre-written message filled from the official record · on this device, works offline","அரசு பதிவிலிருந்து நிரப்பப்பட்ட முன்பே எழுதிய செய்தி · இந்தச் சாதனத்தில், ஆஃப்லைனில் வேலை செய்யும்","Pre-written message filled from the official record · on this device, works offline",1,true,false,ok,manual
+Prefer no notifications? Every medicine also has 'Add expiry to my calendar'.,அறிவிப்புகள் வேண்டாமா? ஒவ்வொரு மருந்திலும் 'காலாவதியை என் நாட்காட்டியில் சேர்க்கவும்' உள்ளது.,Prefer no notifications? Every medicine also has 'Add expiry to my calendar'.,1,true,false,ok,manual
+Press Enter to check,சரிபார்க்க Enter அழுத்தவும்,Press Enter to check,1,true,false,ok,manual
+Printed after B.No. or Batch,B.No. அல்லது Batch க்குப் பின் அச்சிடப்பட்டது,Printed after B.No. or Batch,1,true,false,ok,manual
+Privacy,தனியுரிமை,Privacy,1,true,false,ok,manual
+Privacy design,தனியுரிமை வடிவமைப்பு,Privacy design,1,true,false,ok,manual
+"Punjabi, Gujarati, Marathi, Kannada, Tamil (online)","பஞ்சாபி, குஜராத்தி, மராத்தி, கன்னடம், தமிழ் (ஆன்லைன்)","Punjabi, Gujarati, Marathi, Kannada, Tamil (online)",1,true,false,ok,manual
+PvPI helpline,PvPI உதவி எண்,PvPI helpline,1,true,false,ok,manual
+Quality alerts,தர எச்சரிக்கைகள்,Quality alerts,1,true,false,ok,manual
+Re-check all,அனைத்தையும் மறுசரிபார்க்கவும்,Re-check all,1,true,false,ok,manual
+Re-checked on every new CDSCO list,ஒவ்வொரு புதிய CDSCO பட்டியலிலும் மறுசரிபார்க்கப்படுகிறது,Re-checked on every new CDSCO list,1,true,false,ok,manual
+Re-read with glare reduced and contrast boosted,பளபளப்பைக் குறைத்து மாறுபாட்டை அதிகரித்து மீண்டும் படிக்கப்பட்டது,Read again with glare reduced and contrast increased,0.67,true,false,ok,manual
+Read from photo — correct anything if needed,புகைப்படத்திலிருந்து படிக்கப்பட்டது — தேவைப்பட்டால் எதையும் திருத்தவும்,Read from photo — correct anything if needed,1,true,false,ok,manual
+Read simple explanation,எளிய விளக்கத்தைப் படிக்கவும்,Read simple explanation,1,true,false,ok,manual
+Read the full photo,முழுப் புகைப்படம் படிக்கப்பட்டது,Read the full photo,1,true,false,ok,manual
+Read the zoomed B.No / EXP area,பெரிதாக்கப்பட்ட B.No / EXP பகுதி படிக்கப்பட்டது,Read the zoomed B.No / EXP area,1,true,false,ok,manual
+Reading the photo…,புகைப்படத்தைப் படிக்கிறோம்…,Reading the photo…,1,true,false,ok,manual
+Real batches from official CDSCO alerts,அரசு CDSCO எச்சரிக்கைகளின் உண்மையான தொகுதிகள்,Real batches from official CDSCO alerts,1,true,false,ok,manual
+Real example:,உண்மையான உதாரணம்:,Real example:,1,true,false,ok,manual
+Record ID,பதிவு ID,Record ID,1,true,false,ok,manual
+Records,பதிவுகள்,Records,1,true,false,ok,manual
+Records indexed,அட்டவணைப்படுத்திய பதிவுகள்,Records indexed,1,true,false,ok,manual
+Red,சிவப்பு,Red,1,true,true,ok,manual
+"RED only when batch and company both match with confidence. If only a different medicine from the same company is listed, it is GREY with ""Your medicine is not affected.""","தொகுதியும் நிறுவனமும் நம்பிக்கையுடன் பொருந்தும்போது மட்டுமே சிவப்பு. அதே நிறுவனத்தின் வேறொரு மருந்து மட்டும் பட்டியலில் இருந்தால், சாம்பல், உடன் ""உங்கள் மருந்து பாதிக்கப்படவில்லை.""","RED only when batch and company both match with confidence. If only another medicine of the same company is in the list, GREY, with ""Your medicine is not affected.""",0.87,true,false,ok,manual
+"Red: matches an official alert. Amber: possible match, please confirm. Grey: not found in the list — not a safety guarantee. The app never says a medicine is safe.","சிவப்பு: அரசு எச்சரிக்கையுடன் பொருந்துகிறது. மஞ்சள்: சாத்தியமான பொருத்தம், தயவுசெய்து உறுதிசெய்யவும். சாம்பல்: பட்டியலில் கிடைக்கவில்லை — பாதுகாப்பு உத்தரவாதம் அல்ல. செயலி ஒருபோதும் மருந்து பாதுகாப்பானது என்று சொல்வதில்லை.","Red: matches an official alert. Amber: possible match, please confirm. Grey: not found in the list — not a safety guarantee. The app never says a medicine is safe.",1,true,false,ok,manual
+Relation,உறவு,Relation,1,true,false,ok,manual
+Remarks,குறிப்புகள்,Remarks,1,true,false,ok,manual
+Remove,நீக்கு,Remove,1,true,false,ok,manual
+Report a side effect (PvPI),பக்க விளைவைப் புகாரளிக்கவும் (PvPI),Report a side effect (PvPI),1,true,false,ok,manual
+Report a wrong result,தவறான முடிவைப் புகாரளிக்கவும்,Report a wrong result,1,true,false,ok,manual
+Report it,புகாரளிக்கவும்,Report it,1,true,false,ok,manual
+Report to the authorities,அதிகாரிகளுக்குப் புகாரளிக்கவும்,Report to the authorities,1,true,false,ok,manual
+Reporting a suspected medicine,சந்தேகத்திற்குரிய மருந்தைப் புகாரளித்தல்,Reporting a suspected medicine,1,true,false,ok,manual
+Result,முடிவு,Result,1,true,false,ok,manual
+Retake,மீண்டும் எடு,Retake,1,true,false,ok,manual
+Retake photo,புகைப்படத்தை மீண்டும் எடுக்கவும்,Retake photo,1,true,true,ok,manual
+"Rows = expected, columns = what the app showed","வரிசைகள் = எதிர்பார்த்தது, நெடுவரிசைகள் = செயலி காட்டியது","Rows = expected, columns = what the app showed",1,true,false,ok,manual
+Safe disposal,பாதுகாப்பான அகற்றல்,Safe disposal,1,true,false,ok,manual
+"Same company, different medicine: small note, ""Your medicine is not affected.""","அதே நிறுவனம், வேறு மருந்து: சிறு குறிப்பு, ""உங்கள் மருந்து பாதிக்கப்படவில்லை.""","Same company, different medicine: small note, ""Your medicine is not affected.""",1,true,false,ok,manual
+Save,சேமி,Save,1,true,false,ok,manual
+"Save it to your cabinet with one tap. If a new official list includes this batch, we tell you automatically.","ஒரே தட்டலில் உங்கள் பெட்டியில் சேமிக்கவும். புதிய அரசு பட்டியலில் இந்தத் தொகுதி வந்தால், நாங்கள் உங்களுக்குத் தானாகத் தெரிவிப்போம்.","Save it to your cabinet with one tap. If a new official list includes this batch, we will tell you automatically.",1,true,true,ok,manual
+"Save it to your cabinet. If a new list includes this batch, we will tell you automatically.","உங்கள் பெட்டியில் சேமிக்கவும். புதிய பட்டியலில் இந்தத் தொகுதி வந்தால், நாங்கள் உங்களுக்குத் தானாகத் தெரிவிப்போம்.","Save it to your cabinet. If a new list includes this batch, we will tell you automatically.",1,true,true,ok,manual
+Save medicines once. We re-check them every time CDSCO publishes a new list.,மருந்துகளை ஒருமுறை சேமிக்கவும். CDSCO ஒவ்வொரு முறை புதிய பட்டியல் வெளியிடும்போதும் நாங்கள் அவற்றை மறுசரிபார்க்கிறோம்.,Save medicines once. We re-check them every time CDSCO publishes a new list.,1,true,false,ok,manual
+Save to cabinet,பெட்டியில் சேமி,Save to cabinet,1,true,false,ok,manual
+Save with one tap,ஒரே தட்டலில் சேமி,Save with one tap,1,true,false,ok,manual
+Saved,சேமிக்கப்பட்டது,Saved,1,true,false,ok,manual
+saved medicines,சேமித்த மருந்துகள்,saved medicines,1,true,false,ok,manual
+"Saved medicines are re-checked daily against new lists, with a notification even when the app is closed.","சேமித்த மருந்துகள் தினமும் புதிய பட்டியல்களுடன் மறுசரிபார்க்கப்படுகின்றன, செயலி மூடியிருக்கும்போதும் அறிவிப்புடன்.","Saved medicines are re-checked daily against new lists, with a notification even when the app is closed.",1,true,false,ok,manual
+Saved to cabinet,பெட்டியில் சேமிக்கப்பட்டது,Saved to cabinet,1,true,false,ok,manual
+Saving the official list to this phone (once),அரசு பட்டியலை இந்த போனில் சேமிக்கிறோம் (ஒருமுறை),Saving the official list to this phone (once),1,true,false,ok,manual
+Scans packaged-food labels,பொதி செய்த உணவு லேபிள்களை ஸ்கேன் செய்கிறது,Scans packaged-food labels,1,true,false,ok,manual
+See all numbers and limits,அனைத்து எண்ணிக்கைகளையும் வரம்புகளையும் பாருங்கள்,See all numbers and limits,1,true,false,ok,manual
+See details,விவரங்களைப் பாருங்கள்,See details,1,true,true,ok,manual
+Sells medicines online,ஆன்லைனில் மருந்து விற்கிறது,Sells medicines online,1,true,false,ok,manual
+Send,அனுப்பு,Send,1,true,false,ok,manual
+Send alert to family,குடும்பத்திற்கு எச்சரிக்கை அனுப்பவும்,Send alert to family,1,true,false,ok,manual
+Send to whom?,யாருக்கு அனுப்புவது?,Send to whom?,1,true,false,ok,manual
+Settings,அமைப்புகள்,Settings,1,true,false,ok,manual
+Share with anyone,யாருடனும் பகிரவும்,Share with anyone,1,true,false,ok,manual
+"Short note (optional, no personal details)","சிறு குறிப்பு (விருப்பத்தேர்வு, தனிப்பட்ட விவரங்கள் இல்லை)","Short note (optional, no personal details)",1,true,false,ok,manual
+Show the part of the strip with B.No. and EXP,அட்டையின் B.No. மற்றும் EXP உள்ள பகுதியைக் காட்டுங்கள்,Show the part of the strip with B.No. and EXP,1,true,false,ok,manual
+Show this strip to your chemist before your next dose.,அடுத்த டோஸுக்கு முன் இந்த அட்டையை உங்கள் மருந்தாளுநரிடம் காட்டுங்கள்.,Show this strip to your chemist before your next dose.,1,true,true,ok,manual
+shrink-0 text-brand-600,shrink-0 text-brand-600,shrink-0 text-brand-600,1,true,false,ok,manual
+Some specific batches of this medicine from {0} are on CDSCO's list (for example batch {1} in {2}).,{0} இன் இந்த மருந்தின் சில குறிப்பிட்ட தொகுதிகள் CDSCO பட்டியலில் உள்ளன (உதாரணமாக {2} இல் தொகுதி {1}).,Some specific batches of this medicine from {0} are in CDSCO's list (for example batch {1} in {2}).,1,true,true,ok,manual
+Something else,வேறு ஏதோ,Something else,1,true,false,ok,manual
+"Sorry, something went wrong. Please try again.","மன்னிக்கவும், ஏதோ தவறு நடந்தது. தயவுசெய்து மீண்டும் முயற்சிக்கவும்.","Sorry, something went wrong. Please try again.",1,true,true,ok,manual
+Source,மூலம்,Source,1,true,false,ok,manual
+Source: {0},மூலம்: {0},Source: {0},1,true,true,ok,manual
+"Source: CDSCO, Government of India","மூலம்: CDSCO, இந்திய அரசு","Source: CDSCO, Government of India",1,true,false,ok,manual
+Speak,பேசுங்கள்,Speak,1,true,false,ok,manual
+Speak again,மீண்டும் பேசுங்கள்,Speak again,1,true,false,ok,manual
+"Speak, type or photograph the strip","பேசுங்கள், தட்டச்சு செய்யுங்கள் அல்லது அட்டையின் புகைப்படம் எடுங்கள்","Speak, type or take a photo of the strip",1,true,false,ok,manual
+"Speech is transliterated, reduced to phonetic keys and matched by edit distance against the medicine-name dictionary. Hindi/English offline (with Chrome's language pack); Punjabi, Gujarati, Marathi, Kannada and Tamil online.","குரல் ரோமன் எழுத்துக்கு மாற்றப்பட்டு, ஒலி-சாவிகள் உருவாக்கப்பட்டு, edit distance மூலம் மருந்துப் பெயர் அகராதியுடன் பொருத்தப்படுகிறது. இந்தி/ஆங்கிலம் ஆஃப்லைனில் (Chrome மொழித் தொகுப்புடன்); பஞ்சாபி, குஜராத்தி, மராத்தி, கன்னடம் மற்றும் தமிழ் ஆன்லைனில்.","Speech is converted to Roman letters, phonetic keys are made, and it is matched by edit distance with the medicine-name dictionary. Hindi/English offline (with Chrome language pack); Punjabi, Gujarati, Marathi, Kannada and Tamil online.",0.88,true,false,ok,manual
+Spoken replies,பேச்சுப் பதில்கள்,Spoken replies,1,true,false,ok,manual
+Spurious,போலி,Spurious,1,true,false,ok,manual
+Spurious (suspected fake),போலி (சந்தேகிக்கப்படும் போலி),Spurious (suspected fake),1,true,true,ok,manual
+Spurious: testing suggests this batch may not have been made by the company on the label.,போலி: இந்தத் தொகுதி லேபிளில் உள்ள நிறுவனத்தால் தயாரிக்கப்படாமல் இருக்கலாம் எனச் சோதனை காட்டுகிறது.,Spurious: testing suggests this batch may not have been made by the company on the label.,1,true,true,ok,manual
+States not yet reported for the latest month,சமீபத்திய மாதத்திற்கு இன்னும் அறிக்கை அளிக்காத மாநிலங்கள்,States not yet reported for the latest month,1,true,false,ok,manual
+States yet to report for the latest month,சமீபத்திய மாதத்திற்கு அறிக்கை நிலுவையில் உள்ள மாநிலங்கள்,States yet to report for the latest month,1,true,false,ok,manual
+Strip photo,அட்டையின் புகைப்படம்,Strip photo,1,true,false,ok,manual
+"Strip Pvt/Ltd, standardise spelling, alias table, token-set ratio confidence. Medicine: generic or brand name, e.g. Dolo = Paracetamol.","Pvt/Ltd நீக்குதல், எழுத்துக்கூட்டலை ஒரே மாதிரியாக்குதல், மாற்றுப்பெயர் அட்டவணை, token-set ratio மூலம் நம்பிக்கை. மருந்து: பொதுப் பெயர் அல்லது பிராண்ட் பெயர், எ.கா. Dolo = Paracetamol.","Remove Pvt/Ltd, make spelling uniform, alias table, confidence by token-set ratio. Medicine: generic or brand name, e.g. Dolo = Paracetamol.",0.89,true,false,ok,manual
+Subject: Reporting a suspected / alert-listed medicine,பொருள்: சந்தேகத்திற்குரிய / எச்சரிக்கைப் பட்டியல் மருந்தைப் புகாரளித்தல்,Subject: Reporting a suspected / alert-listed medicine,1,true,true,ok,manual
+suspected spurious (fake),சந்தேகிக்கப்படும் போலி,suspected spurious (fake),1,true,true,ok,manual
+Suspicious? Report it to CDSCO,சந்தேகமா? CDSCO க்குப் புகாரளிக்கவும்,Suspicious? Report it to CDSCO,1,true,true,ok,manual
+Sync now,இப்போது ஒத்திசை,Sync now,1,true,false,ok,manual
+"Take a close, sharp photo of the part with the Batch and EXP. You can add a second photo of the other side.","Batch மற்றும் EXP உள்ள பகுதியின் அருகிலான, கூர்மையான புகைப்படம் எடுக்கவும். மறுபக்கத்தின் இரண்டாவது புகைப்படத்தையும் சேர்க்கலாம்.","Take a close, sharp photo of the part with the Batch and EXP. You can add a second photo of the other side.",1,true,false,ok,manual
+Take closer photo,அருகில் புகைப்படம் எடுக்கவும்,Take closer photo,1,true,true,ok,manual
+Take photo,புகைப்படம் எடுக்கவும்,Take photo,1,true,false,ok,manual
+Talk to your doctor or chemist before your next dose.,அடுத்த டோஸுக்கு முன் உங்கள் மருத்துவர் அல்லது மருந்தாளுநரிடம் பேசுங்கள்.,Talk to your doctor or chemist before your next dose.,1,true,true,ok,manual
+Talk to your doctor or chemist before your next dose. Don't stop an essential medicine on your own.,அடுத்த டோஸுக்கு முன் உங்கள் மருத்துவர் அல்லது மருந்தாளுநரிடம் பேசுங்கள். அத்தியாவசிய மருந்தை நீங்களாகவே நிறுத்த வேண்டாம்.,Talk to your doctor or chemist before your next dose. Don't stop an essential medicine on your own.,1,true,true,ok,manual
+Talk to your doctor or chemist before your next dose. Don't stop an essential medicine on your own. Keep the strip and the bill.,அடுத்த டோஸுக்கு முன் உங்கள் மருத்துவர் அல்லது மருந்தாளுநரிடம் பேசுங்கள். அத்தியாவசிய மருந்தை நீங்களாகவே நிறுத்த வேண்டாம். அட்டையையும் ரசீதையும் வைத்திருங்கள்.,Talk to your doctor or chemist before your next dose. Don't stop an essential medicine on your own. Keep the strip and the bill.,1,true,true,ok,manual
+Tap and speak,தட்டிப் பேசுங்கள்,Tap and speak,1,true,false,ok,manual
+Tap what is printed after B.No. or Batch on the strip,அட்டையில் B.No. அல்லது Batch க்குப் பின் அச்சிடப்பட்டதைத் தட்டவும்,Tap what is printed after B.No. or Batch on the strip,1,true,false,ok,manual
+Tata 1mg,Tata 1mg,Tata 1mg,1,true,false,ok,manual
+Tested by (lab / state),யார் சோதித்தது (ஆய்வகம் / மாநிலம்),Tested by (lab / state),1,true,false,ok,manual
+Testing lab,சோதனை ஆய்வகம்,Testing lab,1,true,false,ok,manual
+Testing suggests this batch may not have been made by the company on the label.,இந்தத் தொகுதி லேபிளில் உள்ள நிறுவனத்தால் தயாரிக்கப்படாமல் இருக்கலாம் எனச் சோதனை காட்டுகிறது.,Testing suggests this batch may not have been made by the company on the label.,1,true,true,ok,manual
+Tests passed,தேர்ச்சி பெற்ற சோதனைகள்,Tests passed,1,true,false,ok,manual
+text-muted transition,text-muted transition,text-muted transition,1,true,false,ok,manual
+Thank you. We will look into it.,நன்றி. நாங்கள் அதைப் பார்க்கிறோம்.,Thank you. We will look into it.,1,true,false,ok,manual
+"That took too long. Please try again, or type instead.","அதிக நேரம் ஆனது. தயவுசெய்து மீண்டும் முயற்சிக்கவும், அல்லது தட்டச்சு செய்யவும்.","That took too long. Please try again, or type instead.",1,true,true,ok,manual
+"The alert covers only the listed batches, not every batch from this company. Check the batch number on the strip and ask your chemist to be sure.","எச்சரிக்கை பட்டியலிடப்பட்ட தொகுதிகளுக்கு மட்டுமே பொருந்தும், இந்த நிறுவனத்தின் ஒவ்வொரு தொகுதிக்கும் அல்ல. அட்டையில் தொகுதி எண்ணைச் சரிபார்த்து உறுதிசெய்ய உங்கள் மருந்தாளுநரிடம் கேளுங்கள்.","The alert covers only the listed batches, not every batch of this company. Check the batch number on the strip and ask your chemist to be sure.",1,true,true,ok,manual
+"The Batch / EXP text is too small or blurry. I won't guess — please take a closer, sharper photo of that part in good light.","Batch / EXP எழுத்து மிகச் சிறியது அல்லது மங்கலானது. நான் ஊகிக்க மாட்டேன் — தயவுசெய்து நல்ல வெளிச்சத்தில் அந்தப் பகுதியின் அருகிலான, கூர்மையான புகைப்படம் எடுக்கவும்.","The Batch / EXP text is too small or blurry. I won't guess — please take a closer, sharper photo of that part in good light.",1,true,false,ok,manual
+"The Batch / EXP text is too small or blurry. I won't guess — take a closer, sharper photo of that part in good light.","Batch / EXP எழுத்து மிகச் சிறியது அல்லது மங்கலானது. நான் ஊகிக்க மாட்டேன் — நல்ல வெளிச்சத்தில் அந்தப் பகுதியின் அருகிலான, கூர்மையான புகைப்படம் எடுக்கவும்.","The Batch / EXP text is too small or blurry. I won't guess — take a closer, sharper photo of that part in good light.",1,true,true,ok,manual
+"The batch number may differ by one character from a reading or typing slip, or the company name may be written differently.","படிக்கும் அல்லது தட்டச்சு செய்யும் தவறால் தொகுதி எண் ஒரு எழுத்து வேறுபடலாம், அல்லது நிறுவனப் பெயர் வேறு விதமாக எழுதப்பட்டிருக்கலாம்.","The batch number may differ by one character from a reading or typing slip, or the company name may be written differently.",1,true,true,ok,manual
+"The batch number or date read from the photo was not certain. Check the fields marked in amber against the strip, correct them, and check again.","புகைப்படத்திலிருந்து படித்த தொகுதி எண் அல்லது தேதி உறுதியாக இல்லை. மஞ்சள் குறியிட்ட புலங்களை அட்டையுடன் சரிபார்த்து, திருத்தி, மீண்டும் சரிபார்க்கவும்.","The batch number or date read from the photo was not certain. Check the fields marked in amber against the strip, correct them, and check again.",1,true,true,ok,manual
+"The colour is decided by plain code, never by AI","நிறம் எளிய குறியீட்டால் முடிவு செய்யப்படுகிறது, ஒருபோதும் AI ஆல் அல்ல","The colour is decided by plain code, never by AI",1,true,false,ok,manual
+The expiry date on the strip ({0}) has passed. Don't take it; show it to your chemist.,அட்டையில் உள்ள காலாவதி தேதி ({0}) கடந்துவிட்டது. எடுக்க வேண்டாம்; உங்கள் மருந்தாளுநரிடம் காட்டுங்கள்.,The expiry date on the strip ({0}) has passed. Don't take it; show it to your chemist.,1,true,true,ok,manual
+The full official list lives on the phone. Matching is plain code; no AI needed.,முழு அரசு பட்டியலும் போனிலேயே இருக்கும். பொருத்துதல் எளிய குறியீடு; AI தேவையில்லை.,The full official list stays in the phone. Matching is plain code; no AI needed.,0.91,true,false,ok,manual
+The medicine with batch {0} expires {1}. Ask your chemist about a fresh pack.,தொகுதி {0} உள்ள மருந்து {1} காலாவதியாகிறது. புதிய பொதி பற்றி உங்கள் மருந்தாளுநரிடம் கேளுங்கள்.,The medicine with batch {0} expires {1}. Ask your chemist about a new pack.,0.88,true,false,ok,manual
+The message to your family is ready to send.,உங்கள் குடும்பத்திற்கான செய்தி அனுப்பத் தயாராக உள்ளது.,The message for your family is ready to send.,1,true,true,ok,manual
+The microphone is not working. You can type instead.,மைக்ரோஃபோன் வேலை செய்யவில்லை. நீங்கள் தட்டச்சு செய்யலாம்.,The microphone is not working. You can type instead.,1,true,true,ok,manual
+The official list has not loaded yet. Please connect to the internet once.,அரசு பட்டியல் இன்னும் ஏற்றப்படவில்லை. தயவுசெய்து ஒருமுறை இணையத்துடன் இணைக்கவும்.,The official list has not loaded yet. Please connect to the internet once.,1,true,true,ok,manual
+"The official list lives on the phone, works offline","அரசு பட்டியல் போனிலேயே இருக்கும், ஆஃப்லைனில் வேலை செய்யும்","The official list stays in the phone, works offline",0.83,true,false,ok,manual
+"The photo could not be read clearly. Try again closer, in good light, or type the batch number.","புகைப்படத்தைத் தெளிவாகப் படிக்க முடியவில்லை. அருகில், நல்ல வெளிச்சத்தில் மீண்டும் முயற்சிக்கவும், அல்லது தொகுதி எண்ணைத் தட்டச்சு செய்யவும்.","The photo could not be read clearly. Try again closer, in good light, or type the batch number.",1,true,true,ok,manual
+The photo was read wrongly,புகைப்படம் தவறாகப் படிக்கப்பட்டது,The photo was read wrongly,1,true,false,ok,manual
+The record shown is wrong,காட்டப்பட்ட பதிவு தவறானது,The record shown is wrong,1,true,false,ok,manual
+This batch failed a test at a government lab.,இந்தத் தொகுதி அரசு ஆய்வகச் சோதனையில் தோல்வியடைந்தது.,This batch failed a test at a government lab.,1,true,true,ok,manual
+"This batch is on an alert, but the app missed it","இந்தத் தொகுதி எச்சரிக்கையில் உள்ளது, ஆனால் செயலி அதைத் தவறவிட்டது","This batch is in an alert, but the app missed it",1,true,false,ok,manual
+This browser can't receive notifications. Use 'Add expiry to my calendar' instead.,இந்த உலாவியால் அறிவிப்புகளைப் பெற முடியாது. பதிலாக 'காலாவதியை என் நாட்காட்டியில் சேர்க்கவும்' பயன்படுத்தவும்.,This browser can't receive notifications. Use 'Add expiry to my calendar' instead.,1,true,false,ok,manual
+This browser can't receive notifications. WhatsApp messages still work.,இந்த உலாவியால் அறிவிப்புகளைப் பெற முடியாது. WhatsApp செய்திகள் இன்னும் வேலை செய்யும்.,This browser can't receive notifications. WhatsApp messages still work.,1,true,false,ok,manual
+This company has a different medicine on the list. Your medicine is not affected,இந்த நிறுவனத்தின் வேறொரு மருந்து பட்டியலில் உள்ளது. உங்கள் மருந்து பாதிக்கப்படவில்லை,This company has a different medicine in the list. Your medicine is not affected,1,true,true,ok,manual
+"This company has a different medicine on the official list ({medicine}, {month}). Your medicine is not affected.","இந்த நிறுவனத்தின் வேறொரு மருந்து அரசு பட்டியலில் உள்ளது ({medicine}, {month}). உங்கள் மருந்து பாதிக்கப்படவில்லை.","This company has a different medicine in the official list ({medicine}, {month}). Your medicine is not affected.",1,true,true,ok,manual
+"This company has other batches on the official list ({medicine}, {month}). Your batch is not one of them.","இந்த நிறுவனத்தின் மற்ற தொகுதிகள் அரசு பட்டியலில் உள்ளன ({medicine}, {month}). உங்கள் தொகுதி அவற்றில் ஒன்று அல்ல.","This company has other batches in the official list ({medicine}, {month}). Your batch is not one of them.",1,true,true,ok,manual
+"This company's listed alert is for a different medicine ({0}), and only for that specific batch.","இந்த நிறுவனத்தின் பட்டியலிடப்பட்ட எச்சரிக்கை வேறொரு மருந்துக்கானது ({0}), அந்தக் குறிப்பிட்ட தொகுதிக்கு மட்டுமே.","This company's listed alert is for a different medicine ({0}), and only for that specific batch.",1,true,true,ok,manual
+"This does not prove the medicine is safe. Official alerts can be delayed, and not every medicine is tested. Counterfeits can copy real batch numbers.","இது மருந்து பாதுகாப்பானது என்று நிரூபிக்கவில்லை. அரசு எச்சரிக்கைகள் தாமதமாக வரலாம், மேலும் ஒவ்வொரு மருந்தும் சோதிக்கப்படுவதில்லை. போலி மருந்துகள் உண்மையான தொகுதி எண்களை நகலெடுக்கலாம்.","This does not prove the medicine is safe. Official alerts can come late, and not every medicine is tested. Counterfeits can copy real batch numbers.",0.93,true,true,ok,manual
+This does not prove the medicine is safe. Official alerts can be delayed.,இது மருந்து பாதுகாப்பானது என்று நிரூபிக்கவில்லை. அரசு எச்சரிக்கைகள் தாமதமாக வரலாம்.,This does not prove the medicine is safe. Official alerts can come late.,0.86,true,true,ok,manual
+This does not prove your medicine is safe. Official alerts can be delayed.,இது உங்கள் மருந்து பாதுகாப்பானது என்று நிரூபிக்கவில்லை. அரசு எச்சரிக்கைகள் தாமதமாக வரலாம்.,This does not prove your medicine is safe. Official alerts can come late.,0.86,true,true,ok,manual
+This is not a confirmed match.,இது உறுதிசெய்யப்பட்ட பொருத்தம் அல்ல.,This is not a confirmed match.,1,true,true,ok,manual
+This link is invalid or was removed.,இந்த இணைப்பு செல்லாதது அல்லது நீக்கப்பட்டது.,This link is invalid or was removed.,1,true,false,ok,manual
+This means this exact batch failed a government test. The alert does not apply to other medicines or other batches.,இதன் பொருள் இதே தொகுதி அரசு சோதனையில் தோல்வியடைந்தது. எச்சரிக்கை மற்ற மருந்துகளுக்கோ மற்ற தொகுதிகளுக்கோ பொருந்தாது.,This means this exact batch failed a government test. The alert does not apply to other medicines or other batches.,1,true,true,ok,manual
+This medicine has expired. Please show it to your pharmacist.,இந்த மருந்து காலாவதியாகிவிட்டது. தயவுசெய்து உங்கள் மருந்தாளுநரிடம் காட்டுங்கள்.,This medicine has expired. Please show it to your pharmacist.,1,true,true,ok,manual
+This medicine was not found in our official list.,இந்த மருந்து எங்கள் அரசு பட்டியலில் கிடைக்கவில்லை.,This medicine was not found in our official list.,1,true,true,ok,manual
+This medicine will expire soon.,இந்த மருந்து விரைவில் காலாவதியாகும்.,This medicine will expire soon.,1,true,true,ok,manual
+This person has agreed to receive medicine alert messages.,இந்த நபர் மருந்து எச்சரிக்கைச் செய்திகளைப் பெற ஒப்புக்கொண்டுள்ளார்.,This person has agreed to receive medicine alert messages.,1,true,false,ok,manual
+Top-1,Top-1,Top-1,1,true,false,ok,manual
+Top-3,Top-3,Top-3,1,true,false,ok,manual
+Translation in review,மொழிபெயர்ப்பு மதிப்பாய்வில் உள்ளது,Translation in review,1,true,false,ok,manual
+Transparency,வெளிப்படைத்தன்மை,Transparency,1,true,false,ok,manual
+Transparency: numbers and limits,வெளிப்படைத்தன்மை: எண்ணிக்கைகள் மற்றும் வரம்புகள்,Transparency: numbers and limits,1,true,false,ok,manual
+TruthIn,TruthIn,TruthIn,1,true,false,ok,manual
+Try a demo,டெமோவை முயற்சிக்கவும்,Try a demo,1,true,false,ok,manual
+Try a real flagged batch,எச்சரிக்கை உள்ள உண்மையான தொகுதியை முயற்சிக்கவும்,Try a real flagged batch,1,true,false,ok,manual
+Try again,மீண்டும் முயற்சிக்கவும்,Try again,1,true,true,ok,manual
+Turn off alerts and delete data,எச்சரிக்கைகளை அணைத்துத் தரவை நீக்கவும்,Turn off alerts and delete data,1,true,false,ok,manual
+Type,தட்டச்சு,Type,1,true,true,ok,manual
+Type batch on keypad,விசைப்பலகையில் தொகுதியைத் தட்டச்சு செய்யவும்,Type batch on keypad,1,true,true,ok,manual
+Type instead,பதிலாகத் தட்டச்சு செய்யவும்,Type instead,1,true,true,ok,manual
+Type it,தட்டச்சு செய்யவும்,Type it,1,true,false,ok,manual
+"Type the batch number, or take a clearer photo.","தொகுதி எண்ணைத் தட்டச்சு செய்யவும், அல்லது தெளிவான புகைப்படம் எடுக்கவும்.","Type the batch number, or take a clearer photo.",1,true,true,ok,manual
+Type to check,சரிபார்க்கத் தட்டச்சு செய்யவும்,Type to check,1,true,false,ok,manual
+Typed by you,நீங்கள் தட்டச்சு செய்தது,Typed by you,1,true,false,ok,manual
+Uncertain or different,நிச்சயமற்றது அல்லது வேறு,Uncertain or different,1,true,false,ok,manual
+Understanding…,புரிந்துகொள்கிறது…,Understanding…,1,true,false,ok,manual
+Understood as,இப்படிப் புரிந்துகொள்ளப்பட்டது,Understood as,1,true,false,ok,manual
+Understood by Gemini Flash · Cloud,Gemini Flash புரிந்துகொண்டது · கிளவுட்,Understood by Gemini Flash · Cloud,1,true,false,ok,manual
+Understood by Gemini Nano · On this device,Gemini Nano புரிந்துகொண்டது · இந்தச் சாதனத்தில்,Understood by Gemini Nano · On this device,1,true,false,ok,manual
+Understood by name search on this device · AI was not available,இந்தச் சாதனத்தில் பெயர்த் தேடலால் புரிந்துகொள்ளப்பட்டது · AI கிடைக்கவில்லை,Understood by name search on this device · AI was not available,1,true,false,ok,manual
+Understood the spoken medicine name,சொன்ன மருந்தின் பெயர் புரிந்துகொள்ளப்பட்டது,Understood the spoken medicine name,1,true,false,ok,manual
+Up to date,புதுப்பித்த நிலையில்,Up to date,1,true,false,ok,manual
+Valid,செல்லுபடியானது,Valid,1,true,true,ok,manual
+Verified,சரிபார்க்கப்பட்டது,Verified,1,true,false,ok,manual
+Voice,குரல்,Voice,1,true,false,ok,manual
+Voice check,குரல் சரிபார்ப்பு,Voice check,1,true,false,ok,manual
+Voice recognition needed the internet. You can type instead — that works offline.,குரல் அறிதலுக்கு இணையம் தேவைப்பட்டது. நீங்கள் தட்டச்சு செய்யலாம் — அது ஆஃப்லைனில் வேலை செய்யும்.,Voice recognition needed the internet. You can type instead — that works offline.,1,true,true,ok,manual
+"Voice-first, in Indian languages","குரல் முதலில், இந்திய மொழிகளில்","Voice-first, in Indian languages",1,true,false,ok,manual
+Voice: medicine name,குரல்: மருந்தின் பெயர்,Voice: medicine name,1,true,false,ok,manual
+void],void],void],1,true,false,ok,manual
+We couldn't read the strip clearly enough to check it,சரிபார்க்கும் அளவுக்குத் தெளிவாக அட்டையை எங்களால் படிக்க முடியவில்லை,We couldn't read the strip clearly enough to check it,1,true,true,ok,manual
+We sell nothing and never suggest any other medicine.,"நாங்கள் எதையும் விற்பதில்லை, ஒருபோதும் வேறு எந்த மருந்தையும் பரிந்துரைப்பதில்லை.",We sell nothing and never suggest any other medicine.,1,true,false,ok,manual
+"We won't guess. Type the batch number on the keypad, or take a closer photo in good light.","நாங்கள் ஊகிக்க மாட்டோம். விசைப்பலகையில் தொகுதி எண்ணைத் தட்டச்சு செய்யவும், அல்லது நல்ல வெளிச்சத்தில் அருகில் புகைப்படம் எடுக்கவும்.","We won't guess. Type the batch number on the keypad, or take a closer photo in good light.",1,true,true,ok,manual
+We'll remind you when internet is back,இணையம் திரும்பி வரும்போது நினைவூட்டுவோம்,We will remind you when internet is back,0.8,true,false,ok,manual
+What looks wrong?,எது தவறாகத் தெரிகிறது?,What looks wrong?,1,true,false,ok,manual
+What should I do?,நான் என்ன செய்ய வேண்டும்?,What should I do?,1,true,true,ok,manual
+What this means,இதன் பொருள்,What this means,1,true,false,ok,manual
+What to do next,அடுத்து என்ன செய்வது,What to do next,1,true,false,ok,manual
+What was searched,என்ன தேடப்பட்டது,What was searched,1,true,false,ok,manual
+What we cannot yet prove,நாங்கள் இன்னும் நிரூபிக்க முடியாதவை,What we cannot yet prove,1,true,false,ok,manual
+What works offline,ஆஃப்லைனில் எது வேலை செய்யும்,What works offline,1,true,false,ok,manual
+WhatsApp number,WhatsApp எண்,WhatsApp number,1,true,false,ok,manual
+Where and when bought:,"எங்கே, எப்போது வாங்கியது:",Where and when bought:,1,true,true,ok,manual
+Which medicine shall we check?,எந்த மருந்தைச் சரிபார்க்கலாம்?,Which medicine shall we check?,1,true,false,ok,manual
+Which one is your medicine? Tap it.,உங்கள் மருந்து எது? அதைத் தட்டவும்.,Which one is your medicine? Tap it.,1,true,true,ok,manual
+Why amber: other batches of this same medicine from this company are on the official list. Your batch is not one of them.,ஏன் மஞ்சள்: இந்த நிறுவனத்தின் இதே மருந்தின் மற்ற தொகுதிகள் அரசு பட்டியலில் உள்ளன. உங்கள் தொகுதி அவற்றில் ஒன்று அல்ல.,Why amber: other batches of this same medicine of this company are in the official list. Your batch is not one of them.,1,true,true,ok,manual
+"Why amber: some batches of this medicine are listed, and no batch number was entered.","ஏன் மஞ்சள்: இந்த மருந்தின் சில தொகுதிகள் பட்டியலில் உள்ளன, மேலும் தொகுதி எண் உள்ளிடப்படவில்லை.","Why amber: some batches of this medicine are in the list, and no batch number was entered.",0.89,true,true,ok,manual
+Why amber: the batch number looks incomplete and starts like a flagged batch. Enter the full number.,ஏன் மஞ்சள்: தொகுதி எண் முழுமையற்றதாகத் தெரிகிறது மற்றும் எச்சரிக்கை உள்ள தொகுதி போலத் தொடங்குகிறது. முழு எண்ணை உள்ளிடவும்.,Why amber: the batch number looks incomplete and starts like a flagged batch. Enter the full number.,1,true,true,ok,manual
+"Why amber: the batch number matches exactly, but no company was given to confirm it.","ஏன் மஞ்சள்: தொகுதி எண் முழுமையாகப் பொருந்துகிறது, ஆனால் உறுதிசெய்ய நிறுவனம் வழங்கப்படவில்லை.","Why amber: the batch number matches exactly, but no company was given to confirm.",1,true,true,ok,manual
+"Why amber: the batch number matches exactly, but the company match is uncertain.","ஏன் மஞ்சள்: தொகுதி எண் முழுமையாகப் பொருந்துகிறது, ஆனால் நிறுவனப் பொருத்தம் நிச்சயமற்றது.","Why amber: the batch number matches exactly, but the company match is uncertain.",1,true,true,ok,manual
+"Why amber: this batch number is listed, but under a different company. Check the company name on the strip.","ஏன் மஞ்சள்: இந்தத் தொகுதி எண் பட்டியலில் உள்ளது, ஆனால் வேறொரு நிறுவனத்தின் பெயரில். அட்டையில் நிறுவனப் பெயரைச் சரிபார்க்கவும்.","Why amber: this batch number is in the list, but under another company's name. Check the company name on the strip.",0.83,true,true,ok,manual
+"Why amber: this batch number is listed, but under a different medicine name.","ஏன் மஞ்சள்: இந்தத் தொகுதி எண் பட்டியலில் உள்ளது, ஆனால் வேறொரு மருந்தின் பெயரில்.","Why amber: this batch number is in the list, but under another medicine name.",0.8,true,true,ok,manual
+Why amber: your batch number is one character away from a flagged batch. It may be a reading slip.,ஏன் மஞ்சள்: உங்கள் தொகுதி எண் எச்சரிக்கை உள்ள தொகுதியிலிருந்து ஒரு எழுத்து வேறுபடுகிறது. அது படிக்கும் தவறாக இருக்கலாம்.,Why amber: your batch number differs by one character from a flagged batch. It may be a reading slip.,0.9,true,true,ok,manual
+Why DawaShield,ஏன் DawaShield,Why DawaShield,1,true,false,ok,manual
+Why this result?,ஏன் இந்த முடிவு?,Why this result?,1,true,false,ok,manual
+"working days, 9–5:30","வேலை நாட்கள், 9–5:30","working days, 9–5:30",1,true,false,ok,manual
+Works offline,ஆஃப்லைனில் வேலை செய்யும்,Works offline,1,true,false,ok,manual
+Works offline on cheap phones,மலிவான போன்களில் ஆஃப்லைனில் வேலை செய்யும்,Works offline on cheap phones,1,true,false,ok,manual
+Write a complaint,புகார் எழுதவும்,Write a complaint,1,true,false,ok,manual
+Wrong-result reports,தவறான முடிவு அறிக்கைகள்,Wrong-result reports,1,true,false,ok,manual
+"Yes, alert me","ஆம், எனக்குத் தெரிவிக்கவும்","Yes, alert me",1,true,false,ok,manual
+"Yes, this date is on the strip","ஆம், இந்தத் தேதி அட்டையில் உள்ளது","Yes, this date is on the strip",1,true,false,ok,manual
+You and your family hear about it as soon as one is flagged.,ஏதேனும் ஒன்றுக்கு எச்சரிக்கை வந்தவுடன் உங்களுக்கும் உங்கள் குடும்பத்திற்கும் தெரியும்.,As soon as one is flagged you and your family will know.,0.67,true,false,ok,manual
+You are offline. The check still works on this phone.,நீங்கள் ஆஃப்லைனில் உள்ளீர்கள். சரிபார்ப்பு இன்னும் இந்த போனில் வேலை செய்யும்.,You are offline. The check still works on this phone.,1,true,true,ok,manual
+You did not enter a batch number.,நீங்கள் தொகுதி எண்ணை உள்ளிடவில்லை.,You did not enter a batch number.,1,true,true,ok,manual
+You entered,நீங்கள் உள்ளிட்டது,You entered,1,true,false,ok,manual
+You said,நீங்கள் சொன்னது,You said,1,true,false,ok,manual
+Your batch {0} is not on that list.,உங்கள் தொகுதி {0} அந்தப் பட்டியலில் இல்லை.,Your batch {0} is not in that list.,1,true,true,ok,manual
+Your batch was not found in our official list.,உங்கள் தொகுதி எங்கள் அரசு பட்டியலில் கிடைக்கவில்லை.,Your batch was not found in our official list.,1,true,true,ok,manual
+"Your medicine looks similar to batch {0} ({1}) on CDSCO's {2} list, but not exactly.","உங்கள் மருந்து CDSCO இன் {2} பட்டியலில் உள்ள தொகுதி {0} ({1}) போலத் தெரிகிறது, ஆனால் சரியாக அதுவல்ல.","Your medicine looks like batch {0} ({1}) of CDSCO's {2} list, but not exactly the same.",0.89,true,true,ok,manual
+"Your medicines and family numbers stay on this phone. No account, name or phone number is asked for.","உங்கள் மருந்துகளும் குடும்ப எண்களும் இந்த போனிலேயே இருக்கும். கணக்கு, பெயர் அல்லது போன் எண் கேட்கப்படுவதில்லை.","Your medicines and family numbers stay in this phone itself. No account, name or phone number is asked for.",1,true,false,ok,manual
+"Your medicines stay on this phone. No account, name or phone number is asked for.","உங்கள் மருந்துகள் இந்த போனிலேயே இருக்கும். கணக்கு, பெயர் அல்லது போன் எண் கேட்கப்படுவதில்லை.","Your medicines stay in this phone itself. No account, name or phone number is asked for.",1,true,true,ok,manual
+"Your mother's medicine cabinet shouldn't need an internet connection, English literacy or a technical understanding of batch numbers to stay informed about medicine safety.","மருந்துப் பாதுகாப்பு பற்றித் தெரிந்துகொள்ள உங்கள் அம்மாவின் மருந்துப் பெட்டிக்கு இணையம், ஆங்கில வாசிப்பு அல்லது தொகுதி எண்களின் தொழில்நுட்பப் புரிதல் தேவைப்படக் கூடாது.","To be informed about medicine safety your mother's medicine cabinet should not need internet, English reading or technical understanding of batch numbers.",0.82,true,false,ok,manual
+Your saved,உங்கள் சேமித்த,Your saved,1,true,false,ok,manual
+Your son or daughter can get an alert if a saved medicine is flagged,சேமித்த மருந்துக்கு எச்சரிக்கை வந்தால் உங்கள் மகன் அல்லது மகளுக்குத் தெரியலாம்,Your son or daughter can get an alert if a saved medicine is flagged,1,true,false,ok,manual
+"Your voice is never recorded, stored or uploaded. The browser turns it into text; with the language pack this happens on the phone.","உங்கள் குரல் ஒருபோதும் பதிவு, சேமிப்பு அல்லது பதிவேற்றம் செய்யப்படுவதில்லை. உலாவி அதை எழுத்தாக மாற்றுகிறது; மொழித் தொகுப்புடன் இது போனிலேயே நடக்கும்.","Your voice is never recorded, stored or uploaded. The browser turns it into text; with the language pack this happens on the phone itself.",1,true,false,ok,manual
+"[voice:welcome] Hello, I am DawaShield. Say the medicine name, or show a photo of the strip.","வணக்கம், நான் DawaShield. மருந்தின் பெயரைச் சொல்லுங்கள், அல்லது அட்டையின் புகைப்படத்தைக் காட்டுங்கள்.","Hello, I am DawaShield. Say the medicine name, or show a photo of the strip.",1,true,true,ok,voice/manual
+[voice:ask_name] Please say the name of the medicine.,தயவுசெய்து மருந்தின் பெயரைச் சொல்லுங்கள்.,Please say the name of the medicine.,1,true,true,ok,voice/manual
+[voice:pick_option] Which one is your medicine? Tap it.,உங்கள் மருந்து எது? அதைத் தட்டவும்.,Which one is your medicine? Tap it.,1,true,true,ok,voice/manual
+"[voice:ask_batch] Now the batch number. It is printed after B.No. or Batch on the strip. Say it, type it, or show a photo.","இப்போது தொகுதி எண். அது அட்டையில் B.No. அல்லது Batch க்குப் பின் அச்சிடப்பட்டிருக்கும். சொல்லுங்கள், தட்டச்சு செய்யுங்கள், அல்லது புகைப்படம் காட்டுங்கள்.","Now the batch number. It is printed after B.No. or Batch on the strip. Say it, type it, or show a photo.",1,true,true,ok,voice/manual
+[voice:offline] You are offline. The check still works on this phone.,நீங்கள் ஆஃப்லைனில் உள்ளீர்கள். சரிபார்ப்பு இன்னும் இந்த போனில் வேலை செய்யும்.,You are offline. The check still works on this phone.,1,true,true,ok,voice/manual
+"[voice:error] Sorry, something went wrong. Please try again.","மன்னிக்கவும், ஏதோ தவறு நடந்தது. தயவுசெய்து மீண்டும் முயற்சிக்கவும்.","Sorry, something went wrong. Please try again.",1,true,true,ok,voice/manual
+[voice:fallback] I could not understand. Please say it again or show a photo.,எனக்குப் புரியவில்லை. தயவுசெய்து மீண்டும் சொல்லுங்கள் அல்லது புகைப்படம் காட்டுங்கள்.,I could not understand. Please say it again or show a photo.,1,true,true,ok,voice/manual
+[voice:expiry_soon] This medicine will expire soon.,இந்த மருந்து விரைவில் காலாவதியாகும்.,This medicine will expire soon.,1,true,true,ok,voice/manual
+[voice:expired] This medicine has expired. Please show it to your pharmacist.,இந்த மருந்து காலாவதியாகிவிட்டது. தயவுசெய்து உங்கள் மருந்தாளுநரிடம் காட்டுங்கள்.,This medicine has expired. Please show it to your pharmacist.,1,true,true,ok,voice/manual
+[voice:family_sent] The message to your family is ready to send.,உங்கள் குடும்பத்திற்கான செய்தி அனுப்பத் தயாராக உள்ளது.,The message for your family is ready to send.,1,true,true,ok,voice/manual
+"[voice:grey_steps] Check the expiry date. Buy from a licensed chemist, with a bill. Get alerted if it is flagged later. Suspicious? Report it to CDSCO.","காலாவதி தேதியைச் சரிபார்க்கவும். உரிமம் பெற்ற மருந்தாளுநரிடம், ரசீதுடன் வாங்கவும். பின்னர் எச்சரிக்கை வந்தால் தெரிவிக்கவும். சந்தேகமா? CDSCO க்குப் புகாரளிக்கவும்.","Check the expiry date. Buy from a licensed chemist, with a bill. Get alerted if an alert comes later. Suspicious? Report it to CDSCO.",0.93,true,true,ok,voice/manual
+"[voice:first_run] DawaShield matches your medicine's batch against official quality alerts from CDSCO, India's drug regulator. It does not test the medicine. 'No alert' does not mean 'safe', because official lists come out late. It never suggests any medicine. Talk to your doctor or chemist about every treatment decision. Your medicines stay on this phone. No account, name or phone number is asked for.","DawaShield உங்கள் மருந்தின் தொகுதியை இந்தியாவின் மருந்து ஒழுங்குமுறை அமைப்பான CDSCO இன் அரசு தர எச்சரிக்கைகளுடன் பொருத்துகிறது. இது மருந்தைச் சோதிப்பதில்லை. 'எச்சரிக்கை இல்லை' என்றால் 'பாதுகாப்பானது' என்று பொருள் இல்லை, ஏனெனில் அரசு பட்டியல்கள் தாமதமாக வருகின்றன. இது ஒருபோதும் எந்த மருந்தையும் பரிந்துரைப்பதில்லை. ஒவ்வொரு சிகிச்சை முடிவு பற்றியும் உங்கள் மருத்துவர் அல்லது மருந்தாளுநரிடம் பேசுங்கள். உங்கள் மருந்துகள் இந்த போனிலேயே இருக்கும். கணக்கு, பெயர் அல்லது போன் எண் கேட்கப்படுவதில்லை.","DawaShield matches your medicine's batch with official quality alerts of CDSCO, India's drug regulator. It does not test the medicine. 'No alert' does not mean 'safe', because official lists come out late. It never suggests any medicine. Talk to your doctor or chemist about every treatment decision. Your medicines stay in this phone itself. No account, name or phone number is asked for.",0.98,true,true,ok,voice/manual
+[voice:red_nsq] Red. An official alert matches this exact batch. Talk to your doctor or chemist before your next dose. Don't stop an essential medicine on your own. Not of Standard Quality (NSQ).,சிவப்பு. ஒரு அரசு எச்சரிக்கை இதே தொகுதியுடன் பொருந்துகிறது. அடுத்த டோஸுக்கு முன் உங்கள் மருத்துவர் அல்லது மருந்தாளுநரிடம் பேசுங்கள். அத்தியாவசிய மருந்தை நீங்களாகவே நிறுத்த வேண்டாம். தரநிலைக்கு ஏற்றதல்ல (NSQ).,Red. An official alert matches this exact batch. Talk to your doctor or chemist before your next dose. Don't stop an essential medicine on your own. Not of Standard Quality (NSQ).,1,true,true,ok,voice/manual
+[voice:red_spurious] Red. An official alert matches this exact batch. Keep the strip and the bill. Don't use it. Report it to the chemist and CDSCO. Spurious (suspected fake).,சிவப்பு. ஒரு அரசு எச்சரிக்கை இதே தொகுதியுடன் பொருந்துகிறது. அட்டையையும் ரசீதையும் வைத்திருங்கள். அதைப் பயன்படுத்த வேண்டாம். மருந்தாளுநர் மற்றும் CDSCO க்குப் புகாரளிக்கவும். போலி (சந்தேகிக்கப்படும் போலி).,Red. An official alert matches this exact batch. Keep the strip and the bill. Don't use it. Report it to the chemist and CDSCO. Spurious (suspected fake).,1,true,true,ok,voice/manual
+[voice:amber] Amber. Possible match: show the strip to your chemist before the next dose. This is not a confirmed match.,மஞ்சள். சாத்தியமான பொருத்தம்: அடுத்த டோஸுக்கு முன் அட்டையை உங்கள் மருந்தாளுநரிடம் காட்டுங்கள். இது உறுதிசெய்யப்பட்ட பொருத்தம் அல்ல.,Amber. Possible match: show the strip to your chemist before the next dose. This is not a confirmed match.,1,true,true,ok,voice/manual
+"[voice:amber_possible_company] Amber. Possible match: show the strip to your chemist before the next dose. Why amber: the batch number matches exactly, but the company match is uncertain.","மஞ்சள். சாத்தியமான பொருத்தம்: அடுத்த டோஸுக்கு முன் அட்டையை உங்கள் மருந்தாளுநரிடம் காட்டுங்கள். ஏன் மஞ்சள்: தொகுதி எண் முழுமையாகப் பொருந்துகிறது, ஆனால் நிறுவனப் பொருத்தம் நிச்சயமற்றது.","Amber. Possible match: show the strip to your chemist before the next dose. Why amber: the batch number matches exactly, but the company match is uncertain.",1,true,true,ok,voice/manual
+"[voice:amber_company_unconfirmed] Amber. Possible match: show the strip to your chemist before the next dose. Why amber: the batch number matches exactly, but no company was given to confirm it.","மஞ்சள். சாத்தியமான பொருத்தம்: அடுத்த டோஸுக்கு முன் அட்டையை உங்கள் மருந்தாளுநரிடம் காட்டுங்கள். ஏன் மஞ்சள்: தொகுதி எண் முழுமையாகப் பொருந்துகிறது, ஆனால் உறுதிசெய்ய நிறுவனம் வழங்கப்படவில்லை.","Amber. Possible match: show the strip to your chemist before the next dose. Why amber: the batch number matches exactly, but no company was given to confirm.",1,true,true,ok,voice/manual
+"[voice:amber_batch_other_company] Amber. Possible match: show the strip to your chemist before the next dose. Why amber: this batch number is listed, but under a different company. Check the company name on the strip.","மஞ்சள். சாத்தியமான பொருத்தம்: அடுத்த டோஸுக்கு முன் அட்டையை உங்கள் மருந்தாளுநரிடம் காட்டுங்கள். ஏன் மஞ்சள்: இந்தத் தொகுதி எண் பட்டியலில் உள்ளது, ஆனால் வேறொரு நிறுவனத்தின் பெயரில். அட்டையில் நிறுவனப் பெயரைச் சரிபார்க்கவும்.","Amber. Possible match: show the strip to your chemist before the next dose. Why amber: this batch number is in the list, but under another company's name. Check the company name on the strip.",0.89,true,true,ok,voice/manual
+"[voice:amber_batch_other_name] Amber. Possible match: show the strip to your chemist before the next dose. Why amber: this batch number is listed, but under a different medicine name.","மஞ்சள். சாத்தியமான பொருத்தம்: அடுத்த டோஸுக்கு முன் அட்டையை உங்கள் மருந்தாளுநரிடம் காட்டுங்கள். ஏன் மஞ்சள்: இந்தத் தொகுதி எண் பட்டியலில் உள்ளது, ஆனால் வேறொரு மருந்தின் பெயரில்.","Amber. Possible match: show the strip to your chemist before the next dose. Why amber: this batch number is in the list, but under another medicine name.",0.89,true,true,ok,voice/manual
+[voice:amber_near_batch] Amber. Possible match: show the strip to your chemist before the next dose. Why amber: your batch number is one character away from a flagged batch. It may be a reading slip.,மஞ்சள். சாத்தியமான பொருத்தம்: அடுத்த டோஸுக்கு முன் அட்டையை உங்கள் மருந்தாளுநரிடம் காட்டுங்கள். ஏன் மஞ்சள்: உங்கள் தொகுதி எண் எச்சரிக்கை உள்ள தொகுதியிலிருந்து ஒரு எழுத்து வேறுபடுகிறது. அது படிக்கும் தவறாக இருக்கலாம்.,Amber. Possible match: show the strip to your chemist before the next dose. Why amber: your batch number differs by one character from a flagged batch. It may be a reading slip.,0.94,true,true,ok,voice/manual
+[voice:amber_partial_batch] Amber. Possible match: show the strip to your chemist before the next dose. Why amber: the batch number looks incomplete and starts like a flagged batch. Enter the full number.,மஞ்சள். சாத்தியமான பொருத்தம்: அடுத்த டோஸுக்கு முன் அட்டையை உங்கள் மருந்தாளுநரிடம் காட்டுங்கள். ஏன் மஞ்சள்: தொகுதி எண் முழுமையற்றதாகத் தெரிகிறது மற்றும் எச்சரிக்கை உள்ள தொகுதி போலத் தொடங்குகிறது. முழு எண்ணை உள்ளிடவும்.,Amber. Possible match: show the strip to your chemist before the next dose. Why amber: the batch number looks incomplete and starts like a flagged batch. Enter the full number.,1,true,true,ok,voice/manual
+[voice:amber_other_batches] Amber. Other batches of this medicine are flagged: check your batch number with your chemist. Why amber: other batches of this same medicine from this company are on the official list. Your batch is not one of them.,மஞ்சள். இந்த மருந்தின் மற்ற தொகுதிகளுக்கு எச்சரிக்கை உள்ளது: உங்கள் தொகுதி எண்ணை உங்கள் மருந்தாளுநரிடம் சரிபார்க்கவும். ஏன் மஞ்சள்: இந்த நிறுவனத்தின் இதே மருந்தின் மற்ற தொகுதிகள் அரசு பட்டியலில் உள்ளன. உங்கள் தொகுதி அவற்றில் ஒன்று அல்ல.,Amber. Other batches of this medicine are flagged: check your batch number with your chemist. Why amber: other batches of this same medicine of this company are in the official list. Your batch is not one of them.,1,true,true,ok,voice/manual
+"[voice:amber_name_no_batch] Amber. Other batches of this medicine are flagged: check your batch number with your chemist. Why amber: some batches of this medicine are listed, and no batch number was entered.","மஞ்சள். இந்த மருந்தின் மற்ற தொகுதிகளுக்கு எச்சரிக்கை உள்ளது: உங்கள் தொகுதி எண்ணை உங்கள் மருந்தாளுநரிடம் சரிபார்க்கவும். ஏன் மஞ்சள்: இந்த மருந்தின் சில தொகுதிகள் பட்டியலில் உள்ளன, மேலும் தொகுதி எண் உள்ளிடப்படவில்லை.","Amber. Other batches of this medicine are flagged: check your batch number with your chemist. Why amber: some batches of this medicine are in the list, and no batch number was entered.",0.92,true,true,ok,voice/manual
+[voice:grey] Grey. No official alert for this exact batch. This does not prove the medicine is safe. Official alerts can be delayed.,சாம்பல். இந்தத் தொகுதிக்கு அரசு எச்சரிக்கை இல்லை. இது மருந்து பாதுகாப்பானது என்று நிரூபிக்கவில்லை. அரசு எச்சரிக்கைகள் தாமதமாக வரலாம்.,Grey. No official alert for this exact batch. This does not prove the medicine is safe. Official alerts can come late.,0.91,true,true,ok,voice/manual
+[voice:grey_company] Grey. No official alert for this exact batch. This company has a different medicine on the list. Your medicine is not affected.,சாம்பல். இந்தத் தொகுதிக்கு அரசு எச்சரிக்கை இல்லை. இந்த நிறுவனத்தின் வேறொரு மருந்து பட்டியலில் உள்ளது. உங்கள் மருந்து பாதிக்கப்படவில்லை.,Grey. No official alert for this exact batch. This company has a different medicine in the list. Your medicine is not affected.,1,true,true,ok,voice/manual
+"[voice:unreadable] We couldn't read the strip clearly enough to check it. We won't guess. Type the batch number on the keypad, or take a closer photo in good light.","சரிபார்க்கும் அளவுக்குத் தெளிவாக அட்டையை எங்களால் படிக்க முடியவில்லை. நாங்கள் ஊகிக்க மாட்டோம். விசைப்பலகையில் தொகுதி எண்ணைத் தட்டச்சு செய்யவும், அல்லது நல்ல வெளிச்சத்தில் அருகில் புகைப்படம் எடுக்கவும்.","We couldn't read the strip clearly enough to check it. We won't guess. Type the batch number on the keypad, or take a closer photo in good light.",1,true,true,ok,voice/manual

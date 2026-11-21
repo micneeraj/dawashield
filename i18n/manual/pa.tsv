@@ -1,0 +1,138 @@
+# Punjabi (pa-IN). Fills only what Sarvam had not translated; cached Sarvam Punjabi is kept.
+# index|translation|back-translation   (index! = retranslation for a safety string that drifted)
+1|{0} ਕੇਸ: {1} ਅਸਲੀ (ਸਰਕਾਰੀ ਰਿਕਾਰਡ, ਅਸਲੀ Dolo ਪੱਤਾ), {2} ਅਸਲੀ ਰਿਕਾਰਡਾਂ ਤੋਂ ਬਣਾਏ ਗਏ। ਪੂਰਾ ਤਰੀਕਾ: docs/EVAL.md|{0} cases: {1} real (official records, the real Dolo strip), {2} made from real records. Full method: docs/EVAL.md
+6|ਫ਼ੋਨ ਵਿੱਚ {0} ਸਰਕਾਰੀ ਰਿਕਾਰਡ। ਉੱਪਰ ਦਿੱਤੀ ਸਾਰਣੀ ਦੇ ਸਾਦੇ ਨਿਯਮ, ਕੁਝ ਮਿਲੀਸਕਿੰਟਾਂ ਵਿੱਚ, ਕਿਸੇ ਵੀ ਫ਼ੋਨ ਦੇ ਬ੍ਰਾਊਜ਼ਰ ਵਿੱਚ।|{0} official records in the phone. The plain rules of the table above, in a few milliseconds, in any phone's browser.
+7|{0} ਅਸਲੀ · {1} ਬਣਾਏ ਗਏ|{0} real · {1} generated
+14|3. ਕੰਪਨੀ ਅਤੇ ਦਵਾਈ ਦੀ ਪਛਾਣ|3. Company and medicine identification
+15|4. ਬਿਨਾਂ ਇੰਟਰਨੈੱਟ ਮਿਲਾਨ ਇੰਜਣ|4. Matching engine without internet
+16|5 ਭਾਸ਼ਾਵਾਂ, ਆਵਾਜ਼ top-3|5 languages, voice top-3
+17|5. AI ਕਿੱਥੇ ਮਦਦ ਕਰਦਾ ਹੈ|5. Where AI helps
+19|ਨਕਲੀ ਦਵਾਈ ਅਸਲੀ ਬੈਚ ਨੰਬਰ ਦੀ ਨਕਲ ਕਰ ਸਕਦੀ ਹੈ, ਇਸ ਲਈ ਸਲੇਟੀ ਉਸ ਨੂੰ ਰੱਦ ਨਹੀਂ ਕਰ ਸਕਦਾ।|A fake medicine can copy a real batch number, so GREY cannot rule it out.
+29|ਪੱਤਿਆਂ ਦੀਆਂ ਅਸਲੀ ਫ਼ੋਟੋਆਂ 'ਤੇ ਸ਼ੁੱਧਤਾ।|Accuracy on real photos of strips.
+30|ਅਸਲੀ ਵਰਤੋਂਕਾਰਾਂ ਦੀ ਆਵਾਜ਼ 'ਤੇ ਸ਼ੁੱਧਤਾ (ਸਾਰੇ ਆਵਾਜ਼ ਕੇਸ ਲਿਖੇ ਜਾਂ ਬਣਾਏ ਗਏ ਹਨ)।|Accuracy on real users' voices (all voice cases are written or generated).
+31|ਅਸਲੀ ਪੰਜਾਬੀ, ਗੁਜਰਾਤੀ, ਮਰਾਠੀ, ਕੰਨੜ ਅਤੇ ਤਾਮਿਲ ਬੋਲਣ ਵਾਲਿਆਂ ਨਾਲ ਸ਼ੁੱਧਤਾ।|Accuracy with real Punjabi, Gujarati, Marathi, Kannada and Tamil speakers.
+47!|ਪੀਲਾ|Amber
+52|ਆਪਣੇ-ਆਪ ਕੱਟਣਾ, ਚਮਕ ਘਟਾਉਣਾ, ਕੰਟ੍ਰਾਸਟ, ਤਿੱਖਾ ਕਰਨਾ; Gemini ਦੋ ਵਾਰ ਪੜ੍ਹਦਾ ਹੈ ਅਤੇ ਹਰ ਖ਼ਾਨੇ ਨੂੰ ਅੰਕ ਦਿੰਦਾ ਹੈ। ਬਹੁਤ ਘੱਟ ਭਰੋਸਾ = "ਸਾਫ਼ ਨਹੀਂ ਪੜ੍ਹਿਆ ਜਾ ਸਕਿਆ", ਕਦੇ ਅੰਦਾਜ਼ਾ ਨਹੀਂ। ਫ਼ੋਨ 'ਤੇ ਫ਼ੋਟੋ ਪੜ੍ਹਨ ਲਈ ਇੰਟਰਨੈੱਟ ਚਾਹੀਦਾ ਹੈ; ਬਿਨਾਂ ਇੰਟਰਨੈੱਟ ਫ਼ੋਟੋ ਸਿਰਫ਼ Gemini Nano ਵਾਲੇ ਡੈਸਕਟਾਪ Chrome 'ਤੇ ਪੜ੍ਹੀ ਜਾਂਦੀ ਹੈ।|Automatic crop, glare reduction, contrast, sharpening; Gemini reads twice and scores every field. Very low confidence = "Could not read clearly", never a guess. On a phone, reading the photo needs internet; without internet the photo is read only on desktop Chrome with Gemini Nano.
+74|ਸਾਫ਼ ਨਹੀਂ ਪੜ੍ਹਿਆ|CAN'T READ clearly
+75!|ਸਾਫ਼ ਨਹੀਂ ਪੜ੍ਹਿਆ ਜਾ ਸਕਦਾ|Can't be read clearly
+77|ਝੂਠੇ ਡਰ ਤੋਂ ਸਾਵਧਾਨ|Careful about false alarms
+78|ਕੇਸ|Cases
+84|CDSCO ਦੀਆਂ ਸੂਚੀਆਂ ਦੇਰ ਨਾਲ ਆਉਂਦੀਆਂ ਹਨ; ਵਿਚਕਾਰ ਦੀਆਂ ਚੇਤਾਵਨੀਆਂ ਸਾਨੂੰ ਨਹੀਂ ਦਿਸਦੀਆਂ।|CDSCO lists arrive late; alerts in between are not visible to us.
+94!|ਪੱਤੇ 'ਤੇ ਬੈਚ ਨੰਬਰ ਅਤੇ ਕੰਪਨੀ ਦਾ ਨਾਮ ਧਿਆਨ ਨਾਲ ਜਾਂਚੋ, ਅਤੇ ਆਪਣੇ ਕੈਮਿਸਟ ਨੂੰ ਪੁੱਛੋ। ਉਦੋਂ ਤੱਕ ਇਸ ਨੂੰ ਨਾ 'ਸੁਰੱਖਿਅਤ' ਮੰਨੋ ਨਾ 'ਖ਼ਰਾਬ'।|Check the batch number and company name on the strip carefully, and ask your chemist. Until then treat it as neither 'safe' nor 'bad'.
+103|ਭਾਸ਼ਾ ਚੁਣੋ|Choose language
+120|ਸਹੀ ਢੰਗ ਨਾਲ ਪੜ੍ਹਨ ਤੋਂ ਇਨਕਾਰ ਕੀਤਾ|Correctly refused to read
+121!|ਕੈਮਰਾ ਨਹੀਂ ਖੁੱਲ੍ਹ ਸਕਿਆ। ਕਿਰਪਾ ਕਰਕੇ ਗੈਲਰੀ ਵਿੱਚੋਂ ਫ਼ੋਟੋ ਚੁਣੋ।|Could not open the camera. Please choose a photo from the gallery.
+141|Dolo-650 (Micro Labs, ਬੈਚ DOBS4518) ਸੂਚੀ ਵਿੱਚ ਨਹੀਂ ਹੈ। Micro Labs ਦੀ ਇੱਕ ਹੋਰ ਦਵਾਈ, Amlodipine (ਬੈਚ AMAS0249), ਸੂਚੀ ਵਿੱਚ ਹੈ। ਪਹਿਲਾਂ ਇਹ ਪੀਲਾ ਦਿਖਾਉਂਦਾ ਸੀ; ਹੁਣ ਇਹ ਸਲੇਟੀ ਹੈ, ਛੋਟੇ ਨੋਟ ਨਾਲ ਕਿ ਤੁਹਾਡੀ ਦਵਾਈ ਪ੍ਰਭਾਵਿਤ ਨਹੀਂ ਹੈ।|Dolo-650 (Micro Labs, batch DOBS4518) is not in the list. Another Micro Labs medicine, Amlodipine (batch AMAS0249), is in the list. Earlier this showed AMBER; now it is GREY, with a small note that your medicine is not affected.
+155|eval ਕਦੋਂ ਚੱਲਿਆ|When the eval ran
+156|ਹਰ AI ਜਵਾਬ 'ਤੇ ਲਿਖਿਆ ਹੁੰਦਾ ਹੈ: ਇਸ ਡਿਵਾਈਸ 'ਤੇ ਜਾਂ ਕਲਾਊਡ। ਅਨੁਵਾਦ ਪਹਿਲਾਂ ਤੋਂ ਬਣੇ ਹਨ; ਬ੍ਰਾਊਜ਼ਰ ਕਦੇ ਕਿਸੇ ਅਨੁਵਾਦ ਸੇਵਾ ਨੂੰ ਨਹੀਂ ਬੁਲਾਉਂਦਾ।|Every AI answer says: On this device or Cloud. Translations are made in advance; the browser never calls any translation service.
+159|ਬੈਚ ਪੂਰਾ ਮਿਲਦਾ ਹੈ ਅਤੇ ਕੰਪਨੀ ਪੱਕੇ ਭਰੋਸੇ ਨਾਲ ਮਿਲਦੀ ਹੈ (ਜਾਂ ਦਵਾਈ ਦਾ ਨਾਮ, ਜਦੋਂ ਰਿਕਾਰਡ ਵਿੱਚ ਕੰਪਨੀ ਨਹੀਂ, ਜਿਵੇਂ ਨਕਲੀ ਦਵਾਈਆਂ ਵਿੱਚ)।|Exact batch matches and the company matches with high confidence (or the medicine name, when the record has no company, as with spurious drugs).
+174|ਗ਼ਲਤ ਲਾਲ ਦਰ|False-RED rate
+183|ਚੇਤਾਵਨੀ ਵਾਲੇ ਬੈਚ ਫੜੇ, ਬਿਨਾਂ ਸੁਧਾਰ|Flagged batches caught, without correction
+194|ਬਣਾਈਆਂ ਗਈਆਂ ਲਿਖਤਾਂ|generated transcripts
+197|GitHub Actions ਹਰ ਰੋਜ਼ CDSCO ਤੋਂ ਡਾਟਾ ਲਿਆਉਂਦਾ ਹੈ, ਜਾਂਚਦਾ ਹੈ, ਸਹਿਮਤੀ ਦੇਣ ਵਾਲਿਆਂ ਦੀਆਂ ਸੰਭਾਲੀਆਂ ਦਵਾਈਆਂ ਦੁਬਾਰਾ ਜਾਂਚਦਾ ਹੈ ਅਤੇ ਚੇਤਾਵਨੀ ਹੋਵੇ ਤਾਂ push ਭੇਜਦਾ ਹੈ। iPhone 'ਤੇ push ਸਿਰਫ਼ ਉਦੋਂ ਚੱਲਦਾ ਹੈ ਜਦੋਂ ਐਪ ਹੋਮ ਸਕ੍ਰੀਨ 'ਤੇ ਜੋੜੀ ਗਈ ਹੋਵੇ।|GitHub Actions brings data from CDSCO every day, validates it, re-checks saved medicines of those who consented and sends a push if flagged. On iPhone, push works only when the app is added to the home screen.
+198!|ਸਲੇਟੀ|Grey
+199!|ਸਲੇਟੀ|GREY
+201|ਹੱਥ ਨਾਲ ਜਾਂਚੇ ਰਿਕਾਰਡ|Hand-verified records
+206|ਹਿੰਦੀ ਅਤੇ ਅੰਗਰੇਜ਼ੀ ਬਿਨਾਂ ਇੰਟਰਨੈੱਟ, 5 ਹੋਰ ਭਾਰਤੀ ਭਾਸ਼ਾਵਾਂ ਇੰਟਰਨੈੱਟ ਨਾਲ|Hindi and English without internet, 5 more Indian languages with internet
+207|ਹਿੰਦੀ ਅਤੇ ਅੰਗਰੇਜ਼ੀ ਬਿਨਾਂ ਇੰਟਰਨੈੱਟ; ਪੰਜਾਬੀ, ਗੁਜਰਾਤੀ, ਮਰਾਠੀ, ਕੰਨੜ ਅਤੇ ਤਾਮਿਲ ਇੰਟਰਨੈੱਟ ਨਾਲ। ਗੜਬੜ ਵਾਲੀ ਲਿਖਤ ਵੀ ਮਿਲਾਈ ਜਾਂਦੀ ਹੈ ਅਤੇ ਵੱਡੇ ਬਟਨਾਂ ਵਜੋਂ ਦਿਖਾਈ ਜਾਂਦੀ ਹੈ।|Hindi and English without internet; Punjabi, Gujarati, Marathi, Kannada and Tamil with internet. Even a garbled transcript is matched and shown as big buttons.
+208|ਹਿੰਦੀ ਅਤੇ ਅੰਗਰੇਜ਼ੀ ਬਿਨਾਂ ਇੰਟਰਨੈੱਟ ਚੱਲਦੀਆਂ ਹਨ। ਬਾਕੀ ਭਾਸ਼ਾਵਾਂ ਲਈ ਇੰਟਰਨੈੱਟ ਚਾਹੀਦਾ ਹੈ।|Hindi and English work without internet. The other languages need internet.
+211|ਹਿੰਦੀ/ਅੰਗਰੇਜ਼ੀ ਆਵਾਜ਼ top-3|Hindi/English voice top-3
+217|ਨਤੀਜੇ ਦਾ ਰੰਗ ਕਿਵੇਂ ਤੈਅ ਹੁੰਦਾ ਹੈ|How the result colour is decided
+233|ਆਖ਼ਰੀ ਸਫਲ ਅੱਪਡੇਟ|Last successful update
+236|ਸਭ ਤੋਂ ਨਵੀਂ ਚੇਤਾਵਨੀ ਦਾ ਮਹੀਨਾ|Month of the newest alert
+249|ਮਿਲਾਨ (ਸਾਦਾ ਕੋਡ)|Matching (plain code)
+250|ਮਿਲਾਨ ਦੇ ਕੇਸ|Matching cases
+273|ਇੰਟਰਨੈੱਟ ਚਾਹੀਦਾ ਹੈ|Needs internet
+282|ਅਜੇ ਪੱਤਿਆਂ ਦੀਆਂ ਲੇਬਲ ਵਾਲੀਆਂ ਅਸਲੀ ਫ਼ੋਟੋਆਂ ਨਹੀਂ ਹਨ, ਇਸ ਲਈ ਫ਼ੋਟੋ ਦੀ ਸ਼ੁੱਧਤਾ ਨਹੀਂ ਮਾਪੀ ਗਈ।|No labelled real photos of strips yet, so photo accuracy has not been measured.
+288|ਕੋਈ ਰਿਕਾਰਡ ਨਹੀਂ।|No record.
+335|ਇੰਟਰਨੈੱਟ ਨਾਲ: ਕਲਾਊਡ ਵਿੱਚ Gemini Flash (Firebase AI Logic)। Gemini Nano ਸਿਰਫ਼ ਸਹਾਇਕ ਡੈਸਕਟਾਪ Chrome 'ਤੇ। AI ਸਿਰਫ਼ ਪੜ੍ਹਦਾ ਅਤੇ ਸਮਝਾਉਂਦਾ ਹੈ; ਰੰਗ ਕਦੇ ਨਹੀਂ ਚੁਣਦਾ।|Online: Gemini Flash in the cloud (Firebase AI Logic). Gemini Nano only on supported desktop Chrome. AI only reads and explains; it never chooses the colour.
+344|ਹੋਰ ਬੈਚ ਚੇਤਾਵਨੀ ਵਿੱਚ: ਉਹੀ ਕੰਪਨੀ ਅਤੇ ਉਹੀ ਦਵਾਈ, ਵੱਖਰਾ ਬੈਚ।|Other batches in alert: same company and same medicine, different batch.
+351|ਫ਼ੋਟੋ ਜਾਂ ਆਵਾਜ਼ ਮਿਲਾਨ ਲਈ ਬਹੁਤ ਅਸਪਸ਼ਟ: ਕੀਪੈਡ ਜਾਂ ਦੁਬਾਰਾ ਫ਼ੋਟੋ। ਕਦੇ ਸਲੇਟੀ ਨਹੀਂ ਦਿਖਾਇਆ ਜਾਂਦਾ।|Photo or voice too unclear for matching: keypad or photo again. Never shown as GREY.
+352|ਫ਼ੋਟੋ ਪੜ੍ਹਨਾ|Photo reading
+362|ਸੰਭਾਵੀ ਮੇਲ: ਬੈਚ ਪੂਰਾ ਮਿਲਦਾ ਹੈ ਪਰ ਕੰਪਨੀ ਪੱਕੀ ਨਹੀਂ; ਜਾਂ ਬੈਚ ਇੱਕ ਅੱਖਰ ਵੱਖਰਾ / ਅਧੂਰਾ।|Possible match: batch matches exactly but company is uncertain; or batch one character different / incomplete.
+371|ਪੰਜਾਬੀ, ਗੁਜਰਾਤੀ, ਮਰਾਠੀ, ਕੰਨੜ, ਤਾਮਿਲ (ਇੰਟਰਨੈੱਟ ਨਾਲ)|Punjabi, Gujarati, Marathi, Kannada, Tamil (with internet)
+383|ਅਸਲੀ ਉਦਾਹਰਨ:|Real example:
+386|ਰਿਕਾਰਡ ਸੂਚੀਬੱਧ|Records indexed
+388|ਲਾਲ ਸਿਰਫ਼ ਉਦੋਂ, ਜਦੋਂ ਬੈਚ ਅਤੇ ਕੰਪਨੀ ਦੋਵੇਂ ਭਰੋਸੇ ਨਾਲ ਮਿਲਣ। ਜੇ ਉਸੇ ਕੰਪਨੀ ਦੀ ਸਿਰਫ਼ ਕੋਈ ਹੋਰ ਦਵਾਈ ਸੂਚੀ ਵਿੱਚ ਹੈ, ਤਾਂ ਸਲੇਟੀ, ਨਾਲ "ਤੁਹਾਡੀ ਦਵਾਈ ਪ੍ਰਭਾਵਿਤ ਨਹੀਂ ਹੈ।"|RED only when batch and company both match with confidence. If only another medicine of the same company is in the list, then GREY, with "Your medicine is not affected."
+401|ਕਤਾਰਾਂ = ਉਮੀਦ, ਕਾਲਮ = ਐਪ ਨੇ ਕੀ ਦਿਖਾਇਆ|Rows = expected, columns = what the app showed
+403|ਉਹੀ ਕੰਪਨੀ, ਵੱਖਰੀ ਦਵਾਈ: ਛੋਟਾ ਨੋਟ, "ਤੁਹਾਡੀ ਦਵਾਈ ਪ੍ਰਭਾਵਿਤ ਨਹੀਂ ਹੈ।"|Same company, different medicine: small note, "Your medicine is not affected."
+416|ਸਾਰੇ ਅੰਕੜੇ ਅਤੇ ਸੀਮਾਵਾਂ ਵੇਖੋ|See all numbers and limits
+437|ਆਵਾਜ਼ ਨੂੰ ਰੋਮਨ ਵਿੱਚ ਬਦਲ ਕੇ, ਧੁਨੀ-ਕੁੰਜੀਆਂ ਬਣਾ ਕੇ, edit distance ਨਾਲ ਦਵਾਈਆਂ ਦੇ ਨਾਮਾਂ ਦੇ ਸ਼ਬਦਕੋਸ਼ ਨਾਲ ਮਿਲਾਇਆ ਜਾਂਦਾ ਹੈ। ਹਿੰਦੀ/ਅੰਗਰੇਜ਼ੀ ਬਿਨਾਂ ਇੰਟਰਨੈੱਟ (Chrome ਦੇ ਭਾਸ਼ਾ ਪੈਕ ਨਾਲ); ਪੰਜਾਬੀ, ਗੁਜਰਾਤੀ, ਮਰਾਠੀ, ਕੰਨੜ ਅਤੇ ਤਾਮਿਲ ਇੰਟਰਨੈੱਟ ਨਾਲ।|Speech is converted to Roman, phonetic keys are made, and it is matched by edit distance with the dictionary of medicine names. Hindi/English without internet (with Chrome's language pack); Punjabi, Gujarati, Marathi, Kannada and Tamil with internet.
+445|Pvt/Ltd ਹਟਾਉਣਾ, ਸ਼ਬਦ-ਜੋੜ ਇੱਕੋ ਜਿਹੇ ਕਰਨਾ, ਉਪਨਾਮ ਸਾਰਣੀ, token-set ratio ਨਾਲ ਭਰੋਸਾ। ਦਵਾਈ: ਜੈਨਰਿਕ ਜਾਂ ਬ੍ਰਾਂਡ ਨਾਮ, ਜਿਵੇਂ Dolo = Paracetamol।|Remove Pvt/Ltd, make spelling uniform, alias table, confidence with token-set ratio. Medicine: generic or brand name, e.g. Dolo = Paracetamol.
+447!|ਸ਼ੱਕੀ ਨਕਲੀ (spurious)|suspected spurious (fake)
+462|ਟੈਸਟ ਪਾਸ|Tests passed
+500|Top-1|Top-1
+501|Top-3|Top-3
+502|ਅਨੁਵਾਦ ਜਾਂਚ ਅਧੀਨ|Translation under review
+503|ਪਾਰਦਰਸ਼ਤਾ|Transparency
+504|ਪਾਰਦਰਸ਼ਤਾ: ਅੰਕੜੇ ਅਤੇ ਸੀਮਾਵਾਂ|Transparency: numbers and limits
+525!|ਵੈਧ (ਮਿਆਦ ਬਾਕੀ)|Valid (expiry remaining)
+529|ਆਵਾਜ਼ ਪਛਾਣ ਲਈ ਇੰਟਰਨੈੱਟ ਚਾਹੀਦਾ ਸੀ। ਤੁਸੀਂ ਲਿਖ ਸਕਦੇ ਹੋ, ਉਹ ਬਿਨਾਂ ਇੰਟਰਨੈੱਟ ਚੱਲਦਾ ਹੈ।|Voice recognition needed the internet. You can type instead, that works without internet.
+530|ਬੋਲ ਕੇ, ਭਾਰਤੀ ਭਾਸ਼ਾਵਾਂ ਵਿੱਚ|Voice-first, in Indian languages
+531|ਆਵਾਜ਼: ਦਵਾਈ ਦਾ ਨਾਮ|Voice: medicine name
+535|ਅਸੀਂ ਅੰਦਾਜ਼ਾ ਨਹੀਂ ਲਗਾਵਾਂਗੇ। ਕੀਪੈਡ 'ਤੇ ਬੈਚ ਨੰਬਰ ਲਿਖੋ, ਜਾਂ ਚੰਗੀ ਰੋਸ਼ਨੀ ਵਿੱਚ ਨੇੜੇ ਤੋਂ ਫ਼ੋਟੋ ਲਓ।|We won't guess. Type the batch number on the keypad, or take a closer photo in good light.
+536|ਇੰਟਰਨੈੱਟ ਵਾਪਸ ਆਉਣ 'ਤੇ ਅਸੀਂ ਯਾਦ ਕਰਾਵਾਂਗੇ|We will remind you when internet is back
+537|ਕੀ ਗ਼ਲਤ ਲੱਗਦਾ ਹੈ?|What looks wrong?
+538|ਮੈਂ ਕੀ ਕਰਾਂ?|What should I do?
+539|ਇਸ ਦਾ ਮਤਲਬ|What this means
+540|ਅੱਗੇ ਕੀ ਕਰਨਾ ਹੈ|What to do next
+541|ਕੀ ਖੋਜਿਆ ਗਿਆ|What was searched
+542|ਜੋ ਅਸੀਂ ਅਜੇ ਸਾਬਤ ਨਹੀਂ ਕਰ ਸਕਦੇ|What we cannot yet prove
+543|ਬਿਨਾਂ ਇੰਟਰਨੈੱਟ ਕੀ ਚੱਲਦਾ ਹੈ|What works without internet
+544|WhatsApp ਨੰਬਰ|WhatsApp number
+545|ਕਿੱਥੋਂ ਅਤੇ ਕਦੋਂ ਖ਼ਰੀਦੀ:|Where and when bought:
+546|ਕਿਹੜੀ ਦਵਾਈ ਜਾਂਚੀਏ?|Which medicine shall we check?
+547|ਤੁਹਾਡੀ ਦਵਾਈ ਕਿਹੜੀ ਹੈ? ਉਸ 'ਤੇ ਟੈਪ ਕਰੋ।|Which one is your medicine? Tap on it.
+548|ਪੀਲਾ ਕਿਉਂ: ਇਸ ਕੰਪਨੀ ਦੀ ਇਸੇ ਦਵਾਈ ਦੇ ਹੋਰ ਬੈਚ ਸਰਕਾਰੀ ਸੂਚੀ ਵਿੱਚ ਹਨ। ਤੁਹਾਡਾ ਬੈਚ ਉਨ੍ਹਾਂ ਵਿੱਚੋਂ ਨਹੀਂ ਹੈ।|Why amber: other batches of this same medicine of this company are in the official list. Your batch is not one of them.
+549|ਪੀਲਾ ਕਿਉਂ: ਇਸ ਦਵਾਈ ਦੇ ਕੁਝ ਬੈਚ ਸੂਚੀ ਵਿੱਚ ਹਨ, ਅਤੇ ਕੋਈ ਬੈਚ ਨੰਬਰ ਨਹੀਂ ਦਿੱਤਾ ਗਿਆ।|Why amber: some batches of this medicine are in the list, and no batch number was given.
+550|ਪੀਲਾ ਕਿਉਂ: ਬੈਚ ਨੰਬਰ ਅਧੂਰਾ ਲੱਗਦਾ ਹੈ ਅਤੇ ਚੇਤਾਵਨੀ ਵਾਲੇ ਬੈਚ ਵਾਂਗ ਸ਼ੁਰੂ ਹੁੰਦਾ ਹੈ। ਪੂਰਾ ਨੰਬਰ ਲਿਖੋ।|Why amber: the batch number looks incomplete and starts like a flagged batch. Enter the full number.
+551|ਪੀਲਾ ਕਿਉਂ: ਬੈਚ ਨੰਬਰ ਪੂਰਾ ਮਿਲਦਾ ਹੈ, ਪਰ ਪੱਕਾ ਕਰਨ ਲਈ ਕੋਈ ਕੰਪਨੀ ਨਹੀਂ ਦਿੱਤੀ ਗਈ।|Why amber: the batch number matches exactly, but no company was given to confirm.
+552|ਪੀਲਾ ਕਿਉਂ: ਬੈਚ ਨੰਬਰ ਪੂਰਾ ਮਿਲਦਾ ਹੈ, ਪਰ ਕੰਪਨੀ ਦਾ ਮੇਲ ਪੱਕਾ ਨਹੀਂ।|Why amber: the batch number matches exactly, but the company match is not certain.
+553|ਪੀਲਾ ਕਿਉਂ: ਇਹ ਬੈਚ ਨੰਬਰ ਸੂਚੀ ਵਿੱਚ ਹੈ, ਪਰ ਕਿਸੇ ਹੋਰ ਕੰਪਨੀ ਦੇ ਨਾਮ ਹੇਠ। ਪੱਤੇ 'ਤੇ ਕੰਪਨੀ ਦਾ ਨਾਮ ਜਾਂਚੋ।|Why amber: this batch number is in the list, but under another company's name. Check the company name on the strip.
+554|ਪੀਲਾ ਕਿਉਂ: ਇਹ ਬੈਚ ਨੰਬਰ ਸੂਚੀ ਵਿੱਚ ਹੈ, ਪਰ ਕਿਸੇ ਹੋਰ ਦਵਾਈ ਦੇ ਨਾਮ ਹੇਠ।|Why amber: this batch number is in the list, but under another medicine name.
+555|ਪੀਲਾ ਕਿਉਂ: ਤੁਹਾਡਾ ਬੈਚ ਨੰਬਰ ਚੇਤਾਵਨੀ ਵਾਲੇ ਬੈਚ ਤੋਂ ਸਿਰਫ਼ ਇੱਕ ਅੱਖਰ ਵੱਖਰਾ ਹੈ। ਇਹ ਪੜ੍ਹਨ ਦੀ ਗ਼ਲਤੀ ਹੋ ਸਕਦੀ ਹੈ।|Why amber: your batch number is only one character different from a flagged batch. It may be a reading mistake.
+556|ਦਵਾ ਕਵਚ ਕਿਉਂ|Why DawaShield
+557|ਇਹ ਨਤੀਜਾ ਕਿਉਂ?|Why this result?
+558|ਕੰਮ ਦੇ ਦਿਨ, 9–5:30|working days, 9–5:30
+559|ਬਿਨਾਂ ਇੰਟਰਨੈੱਟ ਚੱਲਦਾ ਹੈ|Works without internet
+560|ਸਸਤੇ ਫ਼ੋਨਾਂ 'ਤੇ ਬਿਨਾਂ ਇੰਟਰਨੈੱਟ ਚੱਲਦਾ ਹੈ|Works without internet on cheap phones
+561|ਸ਼ਿਕਾਇਤ ਲਿਖੋ|Write a complaint
+562|ਗ਼ਲਤ ਨਤੀਜੇ ਦੀਆਂ ਰਿਪੋਰਟਾਂ|Wrong-result reports
+563|ਹਾਂ, ਮੈਨੂੰ ਦੱਸੋ|Yes, alert me
+564|ਹਾਂ, ਇਹ ਤਾਰੀਖ਼ ਪੱਤੇ 'ਤੇ ਹੈ|Yes, this date is on the strip
+565|ਜਿਵੇਂ ਹੀ ਕਿਸੇ 'ਤੇ ਚੇਤਾਵਨੀ ਆਉਂਦੀ ਹੈ, ਤੁਹਾਨੂੰ ਅਤੇ ਤੁਹਾਡੇ ਪਰਿਵਾਰ ਨੂੰ ਪਤਾ ਲੱਗ ਜਾਂਦਾ ਹੈ।|As soon as one is flagged, you and your family come to know.
+566|ਤੁਸੀਂ ਆਫ਼ਲਾਈਨ ਹੋ। ਜਾਂਚ ਫਿਰ ਵੀ ਇਸ ਫ਼ੋਨ 'ਤੇ ਚੱਲਦੀ ਹੈ।|You are offline. The check still works on this phone.
+567|ਤੁਸੀਂ ਬੈਚ ਨੰਬਰ ਨਹੀਂ ਦਿੱਤਾ।|You did not give a batch number.
+568|ਤੁਸੀਂ ਲਿਖਿਆ|You entered
+569|ਤੁਸੀਂ ਕਿਹਾ|You said
+570|ਤੁਹਾਡਾ ਬੈਚ {0} ਉਸ ਸੂਚੀ ਵਿੱਚ ਨਹੀਂ ਹੈ।|Your batch {0} is not in that list.
+571|ਤੁਹਾਡਾ ਬੈਚ ਸਾਡੀ ਸਰਕਾਰੀ ਸੂਚੀ ਵਿੱਚ ਨਹੀਂ ਮਿਲਿਆ।|Your batch was not found in our official list.
+572|ਤੁਹਾਡੀ ਦਵਾਈ CDSCO ਦੀ {2} ਸੂਚੀ ਵਿੱਚ ਬੈਚ {0} ({1}) ਵਰਗੀ ਲੱਗਦੀ ਹੈ, ਪਰ ਬਿਲਕੁਲ ਉਹੀ ਨਹੀਂ।|Your medicine looks like batch {0} ({1}) in CDSCO's {2} list, but not exactly the same.
+573|ਤੁਹਾਡੀਆਂ ਦਵਾਈਆਂ ਅਤੇ ਪਰਿਵਾਰ ਦੇ ਨੰਬਰ ਇਸੇ ਫ਼ੋਨ ਵਿੱਚ ਰਹਿੰਦੇ ਹਨ। ਕੋਈ ਖਾਤਾ, ਨਾਮ ਜਾਂ ਫ਼ੋਨ ਨੰਬਰ ਨਹੀਂ ਮੰਗਿਆ ਜਾਂਦਾ।|Your medicines and family numbers stay in this phone. No account, name or phone number is asked.
+574|ਤੁਹਾਡੀਆਂ ਦਵਾਈਆਂ ਇਸੇ ਫ਼ੋਨ ਵਿੱਚ ਰਹਿੰਦੀਆਂ ਹਨ। ਕੋਈ ਖਾਤਾ, ਨਾਮ ਜਾਂ ਫ਼ੋਨ ਨੰਬਰ ਨਹੀਂ ਮੰਗਿਆ ਜਾਂਦਾ।|Your medicines stay in this phone. No account, name or phone number is asked.
+575|ਤੁਹਾਡੀ ਮਾਂ ਦੀ ਦਵਾਈਆਂ ਦੀ ਅਲਮਾਰੀ ਨੂੰ ਦਵਾਈ ਦੀ ਸੁਰੱਖਿਆ ਬਾਰੇ ਜਾਣਕਾਰੀ ਲਈ ਇੰਟਰਨੈੱਟ, ਅੰਗਰੇਜ਼ੀ ਪੜ੍ਹਨ ਜਾਂ ਬੈਚ ਨੰਬਰਾਂ ਦੀ ਤਕਨੀਕੀ ਸਮਝ ਦੀ ਲੋੜ ਨਹੀਂ ਹੋਣੀ ਚਾਹੀਦੀ।|Your mother's medicine cabinet should not need internet, English reading or technical understanding of batch numbers for information about medicine safety.
+576|ਤੁਹਾਡੀ ਸੰਭਾਲੀ|Your saved
+577|ਜੇ ਸੰਭਾਲੀ ਦਵਾਈ 'ਤੇ ਚੇਤਾਵਨੀ ਆਵੇ ਤਾਂ ਤੁਹਾਡੇ ਪੁੱਤਰ ਜਾਂ ਧੀ ਨੂੰ ਸੂਚਨਾ ਮਿਲ ਸਕਦੀ ਹੈ|Your son or daughter can get a notification if a saved medicine is flagged
+578|ਤੁਹਾਡੀ ਆਵਾਜ਼ ਕਦੇ ਰਿਕਾਰਡ, ਸੰਭਾਲੀ ਜਾਂ ਅੱਪਲੋਡ ਨਹੀਂ ਹੁੰਦੀ। ਬ੍ਰਾਊਜ਼ਰ ਉਸ ਨੂੰ ਲਿਖਤ ਵਿੱਚ ਬਦਲਦਾ ਹੈ; ਭਾਸ਼ਾ ਪੈਕ ਨਾਲ ਇਹ ਫ਼ੋਨ 'ਤੇ ਹੀ ਹੁੰਦਾ ਹੈ।|Your voice is never recorded, saved or uploaded. The browser turns it into text; with the language pack this happens on the phone itself.
+581|ਤੁਹਾਡੀ ਦਵਾਈ ਕਿਹੜੀ ਹੈ? ਉਸ 'ਤੇ ਟੈਪ ਕਰੋ।|Which one is your medicine? Tap on it.
+583|ਤੁਸੀਂ ਆਫ਼ਲਾਈਨ ਹੋ। ਜਾਂਚ ਫਿਰ ਵੀ ਇਸ ਫ਼ੋਨ 'ਤੇ ਚੱਲਦੀ ਹੈ।|You are offline. The check still works on this phone.
+589|ਮਿਆਦ ਦੀ ਤਾਰੀਖ਼ ਜਾਂਚੋ। ਲਾਇਸੈਂਸ ਵਾਲੇ ਕੈਮਿਸਟ ਤੋਂ ਬਿੱਲ ਨਾਲ ਖ਼ਰੀਦੋ। ਜੇ ਬਾਅਦ ਵਿੱਚ ਚੇਤਾਵਨੀ ਆਵੇ ਤਾਂ ਸੂਚਨਾ ਲਓ। ਸ਼ੱਕ ਹੈ? CDSCO ਨੂੰ ਰਿਪੋਰਟ ਕਰੋ।|Check the expiry date. Buy from a licensed chemist with a bill. Get alerted if it is flagged later. Suspicious? Report it to CDSCO.
+590|ਦਵਾ ਕਵਚ ਤੁਹਾਡੀ ਦਵਾਈ ਦੇ ਬੈਚ ਨੂੰ ਭਾਰਤ ਦੇ ਦਵਾਈ ਰੈਗੂਲੇਟਰ CDSCO ਦੀਆਂ ਸਰਕਾਰੀ ਗੁਣਵੱਤਾ ਚੇਤਾਵਨੀਆਂ ਨਾਲ ਮਿਲਾਉਂਦਾ ਹੈ। ਇਹ ਦਵਾਈ ਦੀ ਜਾਂਚ ਨਹੀਂ ਕਰਦਾ। 'ਕੋਈ ਚੇਤਾਵਨੀ ਨਹੀਂ' ਦਾ ਮਤਲਬ 'ਸੁਰੱਖਿਅਤ' ਨਹੀਂ, ਕਿਉਂਕਿ ਸਰਕਾਰੀ ਸੂਚੀਆਂ ਦੇਰ ਨਾਲ ਆਉਂਦੀਆਂ ਹਨ। ਇਹ ਕਦੇ ਕੋਈ ਦਵਾਈ ਨਹੀਂ ਸੁਝਾਉਂਦਾ। ਹਰ ਇਲਾਜ ਦੇ ਫ਼ੈਸਲੇ ਬਾਰੇ ਆਪਣੇ ਡਾਕਟਰ ਜਾਂ ਕੈਮਿਸਟ ਨਾਲ ਗੱਲ ਕਰੋ। ਤੁਹਾਡੀਆਂ ਦਵਾਈਆਂ ਇਸੇ ਫ਼ੋਨ ਵਿੱਚ ਰਹਿੰਦੀਆਂ ਹਨ। ਕੋਈ ਖਾਤਾ, ਨਾਮ ਜਾਂ ਫ਼ੋਨ ਨੰਬਰ ਨਹੀਂ ਮੰਗਿਆ ਜਾਂਦਾ।|DawaShield matches your medicine's batch with official quality alerts of CDSCO, India's drug regulator. It does not test the medicine. 'No alert' does not mean 'safe', because official lists come out late. It never suggests any medicine. Talk to your doctor or chemist about every treatment decision. Your medicines stay in this phone. No account, name or phone number is asked.
+591|ਲਾਲ। ਇੱਕ ਸਰਕਾਰੀ ਚੇਤਾਵਨੀ ਇਸੇ ਬੈਚ ਨਾਲ ਮਿਲਦੀ ਹੈ। ਅਗਲੀ ਖ਼ੁਰਾਕ ਤੋਂ ਪਹਿਲਾਂ ਆਪਣੇ ਡਾਕਟਰ ਜਾਂ ਕੈਮਿਸਟ ਨਾਲ ਗੱਲ ਕਰੋ। ਜ਼ਰੂਰੀ ਦਵਾਈ ਆਪਣੇ-ਆਪ ਬੰਦ ਨਾ ਕਰੋ। ਮਿਆਰੀ ਗੁਣਵੱਤਾ ਦੀ ਨਹੀਂ (NSQ)।|Red. An official alert matches this exact batch. Talk to your doctor or chemist before the next dose. Don't stop an essential medicine on your own. Not of Standard Quality (NSQ).
+592|ਲਾਲ। ਇੱਕ ਸਰਕਾਰੀ ਚੇਤਾਵਨੀ ਇਸੇ ਬੈਚ ਨਾਲ ਮਿਲਦੀ ਹੈ। ਪੱਤਾ ਅਤੇ ਬਿੱਲ ਸੰਭਾਲ ਕੇ ਰੱਖੋ। ਇਸ ਨੂੰ ਨਾ ਵਰਤੋ। ਕੈਮਿਸਟ ਅਤੇ CDSCO ਨੂੰ ਰਿਪੋਰਟ ਕਰੋ। ਨਕਲੀ ਹੋਣ ਦਾ ਸ਼ੱਕ (spurious)।|Red. An official alert matches this exact batch. Keep the strip and the bill. Don't use it. Report to the chemist and CDSCO. Suspected fake (spurious).
+593|ਪੀਲਾ। ਸੰਭਾਵੀ ਮੇਲ: ਅਗਲੀ ਖ਼ੁਰਾਕ ਤੋਂ ਪਹਿਲਾਂ ਪੱਤਾ ਆਪਣੇ ਕੈਮਿਸਟ ਨੂੰ ਦਿਖਾਓ। ਇਹ ਪੱਕਾ ਮੇਲ ਨਹੀਂ ਹੈ।|Amber. Possible match: show the strip to your chemist before the next dose. This is not a confirmed match.
+594|ਪੀਲਾ। ਸੰਭਾਵੀ ਮੇਲ: ਅਗਲੀ ਖ਼ੁਰਾਕ ਤੋਂ ਪਹਿਲਾਂ ਪੱਤਾ ਆਪਣੇ ਕੈਮਿਸਟ ਨੂੰ ਦਿਖਾਓ। ਪੀਲਾ ਕਿਉਂ: ਬੈਚ ਨੰਬਰ ਪੂਰਾ ਮਿਲਦਾ ਹੈ, ਪਰ ਕੰਪਨੀ ਦਾ ਮੇਲ ਪੱਕਾ ਨਹੀਂ।|Amber. Possible match: show the strip to your chemist before the next dose. Why amber: the batch number matches exactly, but the company match is not certain.
+595|ਪੀਲਾ। ਸੰਭਾਵੀ ਮੇਲ: ਅਗਲੀ ਖ਼ੁਰਾਕ ਤੋਂ ਪਹਿਲਾਂ ਪੱਤਾ ਆਪਣੇ ਕੈਮਿਸਟ ਨੂੰ ਦਿਖਾਓ। ਪੀਲਾ ਕਿਉਂ: ਬੈਚ ਨੰਬਰ ਪੂਰਾ ਮਿਲਦਾ ਹੈ, ਪਰ ਪੱਕਾ ਕਰਨ ਲਈ ਕੋਈ ਕੰਪਨੀ ਨਹੀਂ ਦਿੱਤੀ ਗਈ।|Amber. Possible match: show the strip to your chemist before the next dose. Why amber: the batch number matches exactly, but no company was given to confirm.
+596|ਪੀਲਾ। ਸੰਭਾਵੀ ਮੇਲ: ਅਗਲੀ ਖ਼ੁਰਾਕ ਤੋਂ ਪਹਿਲਾਂ ਪੱਤਾ ਆਪਣੇ ਕੈਮਿਸਟ ਨੂੰ ਦਿਖਾਓ। ਪੀਲਾ ਕਿਉਂ: ਇਹ ਬੈਚ ਨੰਬਰ ਸੂਚੀ ਵਿੱਚ ਹੈ, ਪਰ ਕਿਸੇ ਹੋਰ ਕੰਪਨੀ ਦੇ ਨਾਮ ਹੇਠ। ਪੱਤੇ 'ਤੇ ਕੰਪਨੀ ਦਾ ਨਾਮ ਜਾਂਚੋ।|Amber. Possible match: show the strip to your chemist before the next dose. Why amber: this batch number is in the list, but under another company's name. Check the company name on the strip.
+597|ਪੀਲਾ। ਸੰਭਾਵੀ ਮੇਲ: ਅਗਲੀ ਖ਼ੁਰਾਕ ਤੋਂ ਪਹਿਲਾਂ ਪੱਤਾ ਆਪਣੇ ਕੈਮਿਸਟ ਨੂੰ ਦਿਖਾਓ। ਪੀਲਾ ਕਿਉਂ: ਇਹ ਬੈਚ ਨੰਬਰ ਸੂਚੀ ਵਿੱਚ ਹੈ, ਪਰ ਕਿਸੇ ਹੋਰ ਦਵਾਈ ਦੇ ਨਾਮ ਹੇਠ।|Amber. Possible match: show the strip to your chemist before the next dose. Why amber: this batch number is in the list, but under another medicine name.
+598|ਪੀਲਾ। ਸੰਭਾਵੀ ਮੇਲ: ਅਗਲੀ ਖ਼ੁਰਾਕ ਤੋਂ ਪਹਿਲਾਂ ਪੱਤਾ ਆਪਣੇ ਕੈਮਿਸਟ ਨੂੰ ਦਿਖਾਓ। ਪੀਲਾ ਕਿਉਂ: ਤੁਹਾਡਾ ਬੈਚ ਨੰਬਰ ਚੇਤਾਵਨੀ ਵਾਲੇ ਬੈਚ ਤੋਂ ਸਿਰਫ਼ ਇੱਕ ਅੱਖਰ ਵੱਖਰਾ ਹੈ। ਇਹ ਪੜ੍ਹਨ ਦੀ ਗ਼ਲਤੀ ਹੋ ਸਕਦੀ ਹੈ।|Amber. Possible match: show the strip to your chemist before the next dose. Why amber: your batch number is only one character different from a flagged batch. It may be a reading mistake.
+599|ਪੀਲਾ। ਸੰਭਾਵੀ ਮੇਲ: ਅਗਲੀ ਖ਼ੁਰਾਕ ਤੋਂ ਪਹਿਲਾਂ ਪੱਤਾ ਆਪਣੇ ਕੈਮਿਸਟ ਨੂੰ ਦਿਖਾਓ। ਪੀਲਾ ਕਿਉਂ: ਬੈਚ ਨੰਬਰ ਅਧੂਰਾ ਲੱਗਦਾ ਹੈ ਅਤੇ ਚੇਤਾਵਨੀ ਵਾਲੇ ਬੈਚ ਵਾਂਗ ਸ਼ੁਰੂ ਹੁੰਦਾ ਹੈ। ਪੂਰਾ ਨੰਬਰ ਲਿਖੋ।|Amber. Possible match: show the strip to your chemist before the next dose. Why amber: the batch number looks incomplete and starts like a flagged batch. Enter the full number.
+600|ਪੀਲਾ। ਇਸ ਦਵਾਈ ਦੇ ਹੋਰ ਬੈਚਾਂ 'ਤੇ ਚੇਤਾਵਨੀ ਹੈ: ਆਪਣਾ ਬੈਚ ਨੰਬਰ ਕੈਮਿਸਟ ਨਾਲ ਜਾਂਚੋ। ਪੀਲਾ ਕਿਉਂ: ਇਸ ਕੰਪਨੀ ਦੀ ਇਸੇ ਦਵਾਈ ਦੇ ਹੋਰ ਬੈਚ ਸਰਕਾਰੀ ਸੂਚੀ ਵਿੱਚ ਹਨ। ਤੁਹਾਡਾ ਬੈਚ ਉਨ੍ਹਾਂ ਵਿੱਚੋਂ ਨਹੀਂ ਹੈ।|Amber. Other batches of this medicine are flagged: check your batch number with the chemist. Why amber: other batches of this same medicine of this company are in the official list. Your batch is not one of them.
+601|ਪੀਲਾ। ਇਸ ਦਵਾਈ ਦੇ ਹੋਰ ਬੈਚਾਂ 'ਤੇ ਚੇਤਾਵਨੀ ਹੈ: ਆਪਣਾ ਬੈਚ ਨੰਬਰ ਕੈਮਿਸਟ ਨਾਲ ਜਾਂਚੋ। ਪੀਲਾ ਕਿਉਂ: ਇਸ ਦਵਾਈ ਦੇ ਕੁਝ ਬੈਚ ਸੂਚੀ ਵਿੱਚ ਹਨ, ਅਤੇ ਕੋਈ ਬੈਚ ਨੰਬਰ ਨਹੀਂ ਦਿੱਤਾ ਗਿਆ।|Amber. Other batches of this medicine are flagged: check your batch number with the chemist. Why amber: some batches of this medicine are in the list, and no batch number was given.
+602|ਸਲੇਟੀ। ਇਸ ਬੈਚ ਲਈ ਕੋਈ ਸਰਕਾਰੀ ਚੇਤਾਵਨੀ ਨਹੀਂ। ਇਸ ਨਾਲ ਇਹ ਸਾਬਤ ਨਹੀਂ ਹੁੰਦਾ ਕਿ ਦਵਾਈ ਸੁਰੱਖਿਅਤ ਹੈ। ਸਰਕਾਰੀ ਚੇਤਾਵਨੀਆਂ ਦੇਰ ਨਾਲ ਆ ਸਕਦੀਆਂ ਹਨ।|Grey. No official alert for this exact batch. This does not prove that the medicine is safe. Official alerts can come late.
+603|ਸਲੇਟੀ। ਇਸ ਬੈਚ ਲਈ ਕੋਈ ਸਰਕਾਰੀ ਚੇਤਾਵਨੀ ਨਹੀਂ। ਇਸ ਕੰਪਨੀ ਦੀ ਇੱਕ ਹੋਰ ਦਵਾਈ ਸੂਚੀ ਵਿੱਚ ਹੈ। ਤੁਹਾਡੀ ਦਵਾਈ ਪ੍ਰਭਾਵਿਤ ਨਹੀਂ ਹੈ।|Grey. No official alert for this exact batch. Another medicine of this company is in the list. Your medicine is not affected.
+604|ਅਸੀਂ ਪੱਤਾ ਇੰਨਾ ਸਾਫ਼ ਨਹੀਂ ਪੜ੍ਹ ਸਕੇ ਕਿ ਜਾਂਚ ਕਰ ਸਕੀਏ। ਅਸੀਂ ਅੰਦਾਜ਼ਾ ਨਹੀਂ ਲਗਾਵਾਂਗੇ। ਕੀਪੈਡ 'ਤੇ ਬੈਚ ਨੰਬਰ ਲਿਖੋ, ਜਾਂ ਚੰਗੀ ਰੋਸ਼ਨੀ ਵਿੱਚ ਨੇੜੇ ਤੋਂ ਫ਼ੋਟੋ ਲਓ।|We could not read the strip clearly enough to check it. We won't guess. Type the batch number on the keypad, or take a closer photo in good light.
+488|ਇਸ ਕੰਪਨੀ ਦੇ ਹੋਰ ਬੈਚ ਸਰਕਾਰੀ ਸੂਚੀ ਵਿੱਚ ਹਨ ({medicine}, {month})। ਤੁਹਾਡਾ ਬੈਚ ਉਨ੍ਹਾਂ ਵਿੱਚੋਂ ਨਹੀਂ ਹੈ।|This company has other batches in the official list ({medicine}, {month}). Your batch is not one of them.
+529!|ਆਵਾਜ਼ ਪਛਾਣ ਲਈ ਇੰਟਰਨੈੱਟ ਚਾਹੀਦਾ ਸੀ। ਤੁਸੀਂ ਲਿਖ ਸਕਦੇ ਹੋ, ਉਹ ਆਫ਼ਲਾਈਨ ਚੱਲਦਾ ਹੈ।|Voice recognition needed the internet. You can type instead, that works offline.
+552!|ਪੀਲਾ ਕਿਉਂ: ਬੈਚ ਨੰਬਰ ਪੂਰਾ ਮਿਲਦਾ ਹੈ, ਪਰ ਕੰਪਨੀ ਦਾ ਮੇਲ ਅਨਿਸ਼ਚਿਤ ਹੈ।|Why amber: the batch number matches exactly, but the company match is uncertain.
+594!|ਪੀਲਾ। ਸੰਭਾਵੀ ਮੇਲ: ਅਗਲੀ ਖ਼ੁਰਾਕ ਤੋਂ ਪਹਿਲਾਂ ਪੱਤਾ ਆਪਣੇ ਕੈਮਿਸਟ ਨੂੰ ਦਿਖਾਓ। ਪੀਲਾ ਕਿਉਂ: ਬੈਚ ਨੰਬਰ ਪੂਰਾ ਮਿਲਦਾ ਹੈ, ਪਰ ਕੰਪਨੀ ਦਾ ਮੇਲ ਅਨਿਸ਼ਚਿਤ ਹੈ।|Amber. Possible match: show the strip to your chemist before the next dose. Why amber: the batch number matches exactly, but the company match is uncertain.

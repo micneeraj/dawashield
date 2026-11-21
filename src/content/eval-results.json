@@ -5,8 +5,8 @@
   "latestMonth": "2026-09",
   "verified": 55,
   "tests": {
-    "passed": 186,
-    "total": 186
+    "passed": 189,
+    "total": 189
   },
   "matching": {
     "cases": 728,
@@ -46,7 +46,7 @@
         "UNREADABLE": 55
       }
     },
-    "msPerCheck": 4.73,
+    "msPerCheck": 7.19,
     "groups": [
       {
         "group": "same company, different medicine (Dolo case)",

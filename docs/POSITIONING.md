@@ -25,7 +25,7 @@ The competitor columns state only what each product's own public listing or a pu
 | Scans packaged-food labels | No | Yes | Yes | Not verified |
 | Sells medicines | No | No | No | Yes |
 | Hindi voice check | Yes | Not verified | Not verified | Not verified |
-| Punjabi, Gujarati, Marathi, Kannada, Tamil (online) | Yes (translation rollout in progress) | Not verified | Not verified | Not verified |
+| Punjabi, Gujarati, Marathi, Kannada, Tamil (online) | Yes (AI-translated, native review recommended) | Not verified | Not verified | Not verified |
 | Full check works offline | Yes | Not verified | Not verified | Not verified |
 | Official source + record ID on every answer | Yes | Not verified | Not verified | Not verified |
 | Automatic later alerts for saved medicines | Yes | Not verified | Not verified | Not verified |

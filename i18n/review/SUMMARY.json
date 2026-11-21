@@ -1,67 +1,58 @@
 {
   "pa": {
     "strings": 579,
-    "translated": 462,
+    "translated": 579,
     "safety": 139,
-    "safetyTranslated": 112,
-    "flagged": [
-      "Amber",
-      "Can't read clearly",
-      "Check the batch number and company name on the strip carefully, and ask your chemist. Until then treat it as neither 'safe' nor 'bad'.",
-      "Could not open the camera. Please choose a photo from the gallery.",
-      "Grey",
-      "GREY",
-      "suspected spurious (fake)",
-      "Valid"
-    ],
-    "retranslated": 2,
-    "missing": 109,
+    "safetyTranslated": 139,
+    "flagged": [],
+    "retranslated": 13,
+    "missing": 0,
     "clips": 0,
-    "available": false
+    "available": true
   },
   "gu": {
     "strings": 579,
-    "translated": 0,
+    "translated": 579,
     "safety": 139,
-    "safetyTranslated": 0,
+    "safetyTranslated": 139,
     "flagged": [],
     "retranslated": 0,
-    "missing": 579,
+    "missing": 0,
     "clips": 0,
-    "available": false
+    "available": true
   },
   "mr": {
     "strings": 579,
-    "translated": 0,
+    "translated": 579,
     "safety": 139,
-    "safetyTranslated": 0,
+    "safetyTranslated": 139,
     "flagged": [],
     "retranslated": 0,
-    "missing": 579,
+    "missing": 0,
     "clips": 0,
-    "available": false
+    "available": true
   },
   "kn": {
     "strings": 579,
-    "translated": 0,
+    "translated": 579,
     "safety": 139,
-    "safetyTranslated": 0,
+    "safetyTranslated": 139,
     "flagged": [],
     "retranslated": 0,
-    "missing": 579,
+    "missing": 0,
     "clips": 0,
-    "available": false
+    "available": true
   },
   "ta": {
     "strings": 579,
-    "translated": 0,
+    "translated": 579,
     "safety": 139,
-    "safetyTranslated": 0,
+    "safetyTranslated": 139,
     "flagged": [],
     "retranslated": 0,
-    "missing": 579,
+    "missing": 0,
     "clips": 0,
-    "available": false
+    "available": true
   },
-  "note": "Sarvam 402: {\"error\":{\"message\":\"No credits available.\",\"code\":\"insufficient_quota_error\",\"request_id\":\"20261121_6fd3fcce-faa4-488a-a146-adf88bf9165b\"}}"
+  "note": "CACHE_ONLY run"
 }

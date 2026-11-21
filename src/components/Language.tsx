@@ -85,6 +85,25 @@ export function RegionalFallbackBanner() {
   );
 }
 
+const NO_VOICE: Record<string, string> = {
+  pa: "ਇਸ ਫ਼ੋਨ ਵਿੱਚ ਪੰਜਾਬੀ ਆਵਾਜ਼ ਨਹੀਂ ਹੈ, ਇਸ ਲਈ ਸਿਰਫ਼ ਲਿਖਤ ਦਿਖਾਈ ਜਾਵੇਗੀ।",
+  gu: "આ ફોનમાં ગુજરાતી અવાજ નથી, તેથી ફક્ત લખાણ બતાવીશું.",
+  mr: "या फोनमध्ये मराठी आवाज नाही, म्हणून फक्त मजकूर दाखवू.",
+  kn: "ಈ ಫೋನಿನಲ್ಲಿ ಕನ್ನಡ ಧ್ವನಿ ಇಲ್ಲ, ಆದ್ದರಿಂದ ಪಠ್ಯ ಮಾತ್ರ ತೋರಿಸುತ್ತೇವೆ.",
+  ta: "இந்த போனில் தமிழ் குரல் இல்லை, எனவே எழுத்து மட்டும் காட்டப்படும்.",
+};
+
+/** Regional language active but the device has no speech voice for it: small text-only note. */
+export function RegionalNoVoiceNote() {
+  const { uiLang, regionalActive, regionalVoiceOk, muted } = useApp();
+  if (!regionalActive || regionalVoiceOk || muted || !NO_VOICE[uiLang]) return null;
+  return (
+    <p className="mx-4 mb-2 rounded-xl bg-white/70 px-3 py-2 text-[14px] text-muted" role="note" translate="no" data-testid="regional-no-voice">
+      {NO_VOICE[uiLang]} · Text only
+    </p>
+  );
+}
+
 /** Applies the reviewed regional translation to the screen while it is active. */
 export function TranslationLayer() {
   const { regionalActive, regionalDict } = useApp();

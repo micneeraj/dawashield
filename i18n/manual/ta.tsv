@@ -1,0 +1,576 @@
+0|({0} மறுநிகழ்வுகள் இணைக்கப்பட்டன)|({0} repeats merged)
+1|{0} வழக்குகள்: {1} உண்மையானவை (அரசு பதிவுகள், உண்மையான Dolo அட்டை), {2} உண்மையான பதிவுகளிலிருந்து உருவாக்கப்பட்டவை. முழு முறை: docs/EVAL.md|{0} cases: {1} real (official records, the real Dolo strip), {2} made from real records. Full method: docs/EVAL.md
+2|{0} CDSCO பதிவுகள், {1} முதல் {2} வரை. சில மாநிலங்கள் ஒவ்வொரு மாதமும் அறிக்கை அளிப்பதில்லை.|{0} CDSCO records, {1} to {2}. Some states do not report every month.
+3|{0} மருந்து{1} மீது CDSCO எச்சரிக்கை உள்ளது|{0} medicine{1} has a CDSCO alert
+4|உங்கள் கடைசி சரிபார்ப்புக்குப் பிறகு {0} மருந்து{1} மீது எச்சரிக்கை வந்தது|{0} medicine{1} got an alert since your last check
+5|{0} வழங்கப்படவில்லை|{0} not provided
+6|போனில் {0} அரசு பதிவுகள். மேலே உள்ள அட்டவணையின் எளிய விதிகள், சில மில்லி விநாடிகளில், எந்த போனின் உலாவியிலும்.|{0} official records in the phone. The plain rules of the table above, in a few milliseconds, in any phone's browser.
+7|{0} உண்மையானவை · {1} உருவாக்கப்பட்டவை|{0} real · {1} generated
+8|{0} சேமித்த மருந்து(கள்) இப்போது அரசு எச்சரிக்கையுடன் பொருந்துகின்றன. பார்க்கத் திறக்கவும்.|{0} saved medicine(s) now match an official alert. Open to see.
+9|{0}மருந்து (தொகுதி {1}) {2} CDSCO இன் {3} பட்டியல். பார்க்க DawaShield ஐத் திறக்கவும். உங்கள் மருத்துவர் அல்லது மருந்தாளுநரிடம் பேசாமல் அடுத்த டோஸ் எடுக்க வேண்டாம்; அத்தியாவசிய மருந்தை ஒருபோதும் திடீரென நிறுத்த வேண்டாம்.|{0}medicine (batch {1}) {2} CDSCO's {3} list. Open DawaShield to see. Don't take the next dose without speaking to your doctor or chemist; never stop an essential medicine suddenly.
+12|1. நீங்கள் பேசுகிறீர்கள், தட்டச்சு செய்கிறீர்கள் அல்லது புகைப்படம் எடுக்கிறீர்கள்|1. You speak, type or take a photo
+13|2. புகைப்படம்: சுத்தம் செய்து, பின் படித்தல்|2. Photo: clean up, then read
+14|3. நிறுவனம் மற்றும் மருந்தின் அடையாளம்|3. Company and medicine identification
+15|4. ஆஃப்லைன் பொருத்தும் இயந்திரம்|4. Offline matching engine
+16|5 மொழிகள், குரல் top-3|5 languages, voice top-3
+17|5. AI எங்கே உதவுகிறது|5. Where AI helps
+18|6. தினசரி மறுசரிபார்ப்பு|6. Daily re-check
+19|போலி மருந்து உண்மையான தொகுதி எண்ணை நகலெடுக்கலாம், எனவே சாம்பல் முடிவு அதை நிராகரிக்க முடியாது.|A counterfeit can copy a real batch number, so a GREY result cannot rule it out.
+20|ஒரு குடும்ப உறுப்பினர் உங்களை அழைத்துள்ளார்|A family member has invited you
+21|குடும்ப உறுப்பினரின் சேமித்த|A family member's saved
+22|ஒரு மருந்தின் காலாவதி விரைவில் முடிகிறது|A medicine's expiry ends soon
+23|CDSCO க்கு அனுப்பத் தயாரான செய்தி, மின்னஞ்சல் மற்றும் கட்டணமில்லா எண்ணுடன்.|A message ready to send to CDSCO, with the email and toll-free number.
+24|அறிக்கையில் முடிவின் நிறம், தொகுதி, நிறுவனம், பதிவு ID மற்றும் உங்கள் சிறு குறிப்பு மட்டுமே இருக்கும். தனிப்பட்ட விவரங்கள் இல்லை.|A report has only the result colour, batch, company, record IDs and your short note. No personal details.
+25|WhatsApp செய்தி, அல்லது மகன் அல்லது மகளின் போனுக்கு நேரடி push எச்சரிக்கை.|A WhatsApp message, or a push alert directly to a son's or daughter's phone.
+26|DawaShield பற்றி|About DawaShield
+28|ஏற்கவும்|Accept
+29|அட்டையின் உண்மையான புகைப்படங்களில் துல்லியம்.|Accuracy on real photos of the strip.
+30|உண்மையான பயனர்களின் குரலில் துல்லியம் (அனைத்து குரல் வழக்குகளும் எழுதப்பட்டவை அல்லது உருவாக்கப்பட்டவை).|Accuracy on real users' voices (all voice cases are written or generated).
+31|உண்மையான பஞ்சாபி, குஜராத்தி, மராத்தி, கன்னடம் மற்றும் தமிழ் பேசுபவர்களுடன் துல்லியம்.|Accuracy with real Punjabi, Gujarati, Marathi, Kannada and Tamil speakers.
+32|முதலில் குடும்ப உறுப்பினரைச் சேர்க்கவும்|First add a family member
+33|காலாவதியை என் நாட்காட்டியில் சேர்க்கவும்|Add expiry to my calendar
+34|குடும்ப உறுப்பினரைச் சேர்க்கவும்|Add family member
+35|மருந்து சேர்க்கவும்|Add medicine
+36|மறுபக்கத்தின் புகைப்படம் சேர்க்கவும்|Add photo of the other side
+37|உங்கள் முதல் மருந்தைச் சேர்க்கவும்|Add your first medicine
+38|AI இப்போது கிடைக்கவில்லை. சரிபார்க்க நீங்கள் இன்னும் பெயர் மற்றும் தொகுதி எண்ணைத் தட்டச்சு செய்யலாம்.|AI is not available now. You can still type the name and batch number to check.
+39|AI ஒருபோதும் நிறத்தை முடிவு செய்வதில்லை|AI never decides the colour
+40|AI பதிவை மட்டுமே விளக்குகிறது; மேலே உள்ள முடிவு நிலையான விதிகளால் முடிவு செய்யப்படுகிறது.|AI only explains the record; the result above is decided by fixed rules.
+42|எச்சரிக்கை மாதம்|Alert month
+43|ஒவ்வொரு முடிவிலும் எச்சரிக்கை மாதம், அரசு இணைப்பு மற்றும் பதிவு ID.|Alert month, official link and record ID on every result.
+44|எச்சரிக்கைகள் இயக்கத்தில் உள்ளன|Alerts are on
+45|குடும்ப உறுப்பினரின் போனில் எச்சரிக்கைகள்|Alerts on a family member's phone
+46|அனைத்தும் சரிபார்க்கப்பட்டது|All checked
+47|மஞ்சள்|Amber
+48|ஒரு அரசு எச்சரிக்கை இதே தொகுதியுடன் பொருந்துகிறது.|An official alert matches this exact batch.
+49|உங்கள் கேள்விக்குப் பதிலளிக்கப்பட்டது|Answered your question
+50|App Check தொடங்கவில்லை|App Check has not started
+51|இந்தப் பதிவைப் பற்றிக் கேளுங்கள்|Ask about this record
+52|தானாக வெட்டுதல், பளபளப்பைக் குறைத்தல், மாறுபாடு, கூர்மையாக்குதல்; Gemini இருமுறை படித்து ஒவ்வொரு புலத்திற்கும் மதிப்பெண் தருகிறது. மிகக் குறைந்த நம்பிக்கை = "தெளிவாகப் படிக்க முடியவில்லை", ஒருபோதும் ஊகம் இல்லை. போனில் புகைப்படம் படிக்க இணையம் தேவை; ஆஃப்லைன் புகைப்பட வாசிப்பு Gemini Nano உள்ள டெஸ்க்டாப் Chrome இல் மட்டுமே.|Automatic crop, glare reduction, contrast, sharpen; Gemini reads twice and scores every field. Very low confidence = "Can't read clearly", never a guess. On a phone, reading the photo needs internet; offline photo reading only on desktop Chrome with Gemini Nano.
+53|சேமித்த மருந்துகளுக்குப் பின்னர் தானியங்கி எச்சரிக்கைகள்|Automatic later alerts for saved medicines
+54|ஆஃப்லைனில் கிடைக்கும்|Available offline
+56|பின்செல்|Back
+57|அழி|Backspace
+58|தொகுதி|Batch
+59|தொகுதி {0} எங்கள் அரசு பட்டியலில் கிடைக்கவில்லை.|Batch {0} was not found in our official list.
+60|தொகுதி எண்|Batch number
+61|தொகுதி எண் (B.No.)|Batch number (B.No.)
+62|தொகுதி எண்: {0}|Batch number: {0}
+63|தொகுதி: {0}|Batch: {0}
+64|தொடங்கும் முன்|Before you start
+65|பெரிய பொத்தான் விசைப்பலகை|Big-button keypad
+66|உரிமம் பெற்ற மருந்தாளுநரிடம், ரசீதுடன் வாங்கவும்|Buy from a licensed chemist, with a bill
+67|மருந்துகளை உரிமம் பெற்ற கடையில் மட்டுமே வாங்கி, எப்போதும் சரியான ரசீது பெறவும்.|Buy medicines only from a licensed shop and always take a proper bill.
+68|மருந்துப் பெட்டி|Cabinet
+69|மருந்துப் பெட்டி மற்றும் குடும்பம்|Cabinet and family
+70|மருந்துப் பெட்டியும் குடும்பமும் போனிலேயே இருக்கும்.|Cabinet and family stay in the phone itself.
+71|நாட்காட்டி கோப்பு பதிவிறக்கப்பட்டது|Calendar file downloaded
+72|கேமரா அனுமதி தடுக்கப்பட்டது. கேலரியிலிருந்து புகைப்படம் தேர்வு செய்யவும், அல்லது தொகுதி எண்ணைத் தட்டச்சு செய்யவும்.|Camera permission was blocked. Choose a photo from the gallery, or type the batch number.
+73|தொகுதி கிடைக்கவில்லை|Can't find batch
+74|தெளிவாகப் படிக்க முடியவில்லை|CAN'T READ clearly
+75|தெளிவாகப் படிக்க முடியவில்லை|Can't read clearly
+76|ரத்து செய்|Cancel
+77|தவறான அச்சம் குறித்து கவனம்|Careful about false alarms
+78|வழக்குகள்|Cases
+79|CDSCO எச்சரிக்கை சரிபார்ப்பு|CDSCO alert check
+80|CDSCO எச்சரிக்கை மாதம்|CDSCO alert month
+81|CDSCO எச்சரிக்கை: {0}|CDSCO alert: {0}
+82|CDSCO எச்சரிக்கைகள் பக்கம்|CDSCO alerts page
+83|CDSCO தரவு: ஆஃப்லைனில் கிடைக்கும்|CDSCO data: available offline
+84|CDSCO பட்டியல்கள் தாமதமாக வருகின்றன; இடையிலான எச்சரிக்கைகள் எங்களுக்குத் தெரிவதில்லை.|CDSCO lists come late; alerts in between are not visible to us.
+85|CDSCO NSQ தளம்|CDSCO NSQ portal
+86|CDSCO PDF|CDSCO PDF
+87|CDSCO பதிவு|CDSCO record
+88|CDSCO கட்டணமில்லா எண்|CDSCO toll-free
+89|{0} க்கான CDSCO பட்டியல் தொகுதி {1} ஐ {2} எனக் காட்டுகிறது.|CDSCO's list for {0} shows batch {1} as {2}.
+90|மாற்று|Change
+91|சரிபார்|Check
+92|மருந்தைச் சரிபார்க்கவும்|Check a medicine
+93|வேறொன்றைச் சரிபார்க்கவும்|Check another
+94|அட்டையில் உள்ள தொகுதி எண் மற்றும் நிறுவனப் பெயரைக் கவனமாகச் சரிபார்த்து, உங்கள் மருந்தாளுநரிடம் கேளுங்கள். அதுவரை அதை 'பாதுகாப்பானது' அல்லது 'மோசமானது' என எதுவாகவும் கருத வேண்டாம்.|Check the batch number and company name on the strip carefully, and ask your chemist. Until then treat it as neither 'safe' nor 'bad'.
+95|அட்டையில் உள்ள தொகுதி எண்ணைக் கவனமாகச் சரிபார்த்து, உங்கள் மருந்தாளுநரிடம் கேளுங்கள்.|Check the batch number on the strip carefully, and ask your chemist.
+96|காலாவதி தேதியைச் சரிபார்க்கவும்|Check the expiry date
+97|காலாவதி தேதியைச் சரிபார்த்து, மருந்துகளை உரிமம் பெற்ற மருந்தாளுநரிடம் மட்டும், ரசீதுடன் வாங்கவும்.|Check the expiry date, and buy medicines only from a licensed chemist, with a bill.
+98|இவற்றை அட்டையுடன் ஒப்பிடுங்கள்|Check these against the strip
+99|உங்கள் குடும்ப மருந்துகளை அரசு CDSCO எச்சரிக்கைகளுடன் சரிபார்க்கவும்|Check your family's medicines against official CDSCO alerts
+100|எளிய குறியீட்டால் {0} CDSCO பதிவுகளுடன் சரிபார்க்கப்பட்டது|Checked by plain code against {0} CDSCO records
+101|அரசு பட்டியலைச் சரிபார்க்கிறோம்…|Checking the official list…
+102|கேலரியிலிருந்து தேர்வு செய்யவும்|Choose from gallery
+103|மொழியைத் தேர்வு செய்யவும்|Choose language
+104|அழி|Clear
+105|மூடு|Close
+106|கிளவுட்|Cloud
+107|கிளவுட் AI|Cloud AI
+108|நிறுவனம்|Company
+109|நிறுவனம் (உற்பத்தியாளர்)|Company (manufacturer)
+110|பட்டியலில் உள்ள நிறுவனப் பெயர்: {0}.|Company name in the list: {0}.
+111|லேபிளில் உள்ள நிறுவனம்|Company on label
+112|மற்ற செயலிகளின் கட்டங்களில் அவற்றின் சொந்தப் பொதுத் தகவல் (செயலி அங்காடி, NITI Aayog Frontier Tech கட்டுரைகள்) சொல்வது மட்டுமே எழுதப்பட்டுள்ளது, நவம்பர் 2026 நிலவரப்படி. 'சரிபார்க்கப்படவில்லை' என்றால் நாங்கள் எந்தப் பக்கமும் உறுதிசெய்யவில்லை. FactsScan மற்றும் TruthIn உணவு-லேபிள் செயலிகள்; Tata 1mg ஆன்லைன் மருந்தகம். அவை வேறு வேலைகள் செய்கின்றன, எனவே இது DawaShield எங்கே வேறுபடுகிறது என்பதைக் காட்டுகிறது, யார் சிறந்தது என்பதை அல்ல.|Other apps' cells write only what their own public information (app store, NITI Aayog Frontier Tech articles) says, as of November 2026. 'Not verified' means we did not confirm either way. FactsScan and TruthIn are food-label apps; Tata 1mg is an online pharmacy. They do different jobs, so this shows where DawaShield is different, not who is better.
+113|புகார்-செய்தி உதவி|Complaint-message help
+114|நம்பிக்கை|Confidence
+115|உறுதிசெய்து சரிபார்க்கவும்|Confirm and check
+116|ஒப்புதல் அளிக்கப்பட்டது|Consent given
+117|நகலெடுக்கப்பட்டது|Copied
+118|நகலெடு|Copy
+119|கீழே உள்ள செய்தியை நகலெடுத்து அரசு வழியில் அனுப்பவும். மருந்தையும் அட்டையையும் வைத்திருங்கள்.|Copy the message below and send it through an official channel. Keep the medicine and strip.
+120|சரியாகப் படிக்க மறுத்தது|Correctly refused to read
+121|கேமராவைத் திறக்க முடியவில்லை. தயவுசெய்து கேலரியிலிருந்து புகைப்படம் தேர்வு செய்யவும்.|Could not open the camera. Please choose a photo from the gallery.
+122|அனுப்ப முடியவில்லை. இணையத்துடன் இணைத்து மீண்டும் முயற்சிக்கவும்.|Could not send. Connect to the internet and try again.
+123|இணைப்பை உருவாக்க முடியவில்லை. மீண்டும் முயற்சிக்கவும்.|Couldn't create the link. Try again.
+124|இப்போது செய்ய முடியவில்லை. இணையத்துடன் இணைத்து மீண்டும் முயற்சிக்கவும்.|Couldn't do it now. Connect to the internet and try again.
+125|இப்போது இயக்க முடியவில்லை. இணையத்துடன் இணைத்து மீண்டும் முயற்சிக்கவும்.|Couldn't turn on now. Connect to the internet and try again.
+126|பரப்பு|Coverage
+127|அழைப்பு இணைப்பை உருவாக்கவும்|Create invite link
+128|தாத்தா|Dada
+129|பாட்டி|Dadi
+130|தரவு இதுவரை கிடைக்கும்|Data available up to
+131|DawaShield மருந்தாளுநர், மருத்துவர் அல்லது அரசு ஆலோசனைக்கு மாற்றாகாது.|DawaShield does not replace a pharmacist, doctor or official advice.
+132|DawaShield பொது CDSCO எச்சரிக்கைகளை அடிப்படையாகக் கொண்ட தகவல் கருவி, தரச் சான்றிதழ் அல்லது மருத்துவ ஆலோசனை அல்ல. போலி மருந்துகள் உண்மையான தொகுதி எண்களை நகலெடுக்கலாம், எனவே சாம்பல் முடிவு அவற்றை நிராகரிக்க முடியாது.|DawaShield is an information tool based on public CDSCO alerts, not a quality certificate or medical advice. Counterfeits can copy real batch numbers, so a GREY result cannot rule them out.
+133|DawaShield உங்கள் மருந்தின் தொகுதியை இந்தியாவின் மருந்து ஒழுங்குமுறை அமைப்பான CDSCO இன் அரசு தர எச்சரிக்கைகளுடன் பொருத்துகிறது.|DawaShield matches your medicine's batch with official quality alerts of CDSCO, India's drug regulator.
+134|DawaShield: அரசு எச்சரிக்கை கண்டறியப்பட்டது|DawaShield: official alert found
+135|DawaShield: இந்த இணைப்பைத் திறந்து "ஏற்கவும்" தட்டவும், என் சேமித்த மருந்துகளில் ஏதேனும் ஒன்றுக்கு அரசு எச்சரிக்கை வந்தால் உங்கள் போனுக்கு அறிவிப்பு வரும்: {0}|DawaShield: open this link and tap "Accept", if an official alert comes on any of my saved medicines a notification comes to your phone: {0}
+136|DawaShield: அரசு எச்சரிக்கையுடன் சாத்தியமான பொருத்தம்|DawaShield: possible match with an official alert
+138|டெமோ: ஒரு உண்மையான அரசு பதிவு|Demo: a real official record
+139|வேறு|Different
+140|பழைய மருந்துகளைத் திறந்த வெளியில் எரிக்க வேண்டாம். கிடைக்கும் இடங்களில், மாநில மருந்துக் கட்டுப்பாட்டுத் துறை மற்றும் மருந்தாளுநர் சங்கத்தின் 'மருந்து திரும்பப் பெறும்' மையத்தில் கொடுங்கள். சில மருந்துகளுக்குச் சிறப்பு விதிகள் உள்ளன, எனவே உங்கள் மருந்தாளுநரிடம் கேளுங்கள். (மூலம்: CDSCO வழிகாட்டுதல், மே 2025)|Do not burn old medicines in the open. Where available, give them at the 'drug take-back' centre of the State Drugs Control Department and chemists' association. Some medicines have special rules, so ask your pharmacist. (Source: CDSCO guidance, May 2025)
+141|Dolo-650 (Micro Labs, தொகுதி DOBS4518) பட்டியலில் இல்லை. Micro Labs இன் வேறொரு மருந்து, Amlodipine (தொகுதி AMAS0249), பட்டியலில் உள்ளது. முன்பு இது மஞ்சள் காட்டியது; இப்போது இது சாம்பல், உங்கள் மருந்து பாதிக்கப்படவில்லை என்ற சிறு குறிப்புடன்.|Dolo-650 (Micro Labs, batch DOBS4518) is not in the list. Another Micro Labs medicine, Amlodipine (batch AMAS0249), is in the list. Earlier this showed AMBER; now it is GREY, with a small note that your medicine is not affected.
+142|அதைப் பயன்படுத்த வேண்டாம். அட்டையையும் ரசீதையும் வைத்திருந்து, உங்கள் மருந்தாளுநரிடம் காட்டுங்கள்.|Don't use it. Keep the strip and bill, and show them to your chemist.
+143|முடிந்தது|Done
+144|முடிந்தது. அவர்களின் சேமித்த மருந்துகளில் ஏதேனும் ஒன்றுக்கு எச்சரிக்கை வந்தால், இந்த போனுக்கு அறிவிப்பு வரும்.|Done. If an alert comes on any of their saved medicines, this phone gets a notification.
+145|பதிவிறக்க அளவு|Download size
+146|எ.கா. 251TTF014|e.g. 251TTF014
+147|எ.கா. Dolo 650|e.g. Dolo 650
+148|எ.கா. 'dissolution' என்றால் என்ன?|e.g. What does 'dissolution' mean?
+149|CDSCO க்கு மின்னஞ்சல் அனுப்பவும்|Email CDSCO
+151|இயக்கு|Enable
+152|தொகுதி எண்ணை உள்ளிடவும்|Enter batch number
+153|பெரிய பொத்தான்களால் தொகுதியை உள்ளிடவும்|Enter batch with big buttons
+154|வெளியேறு|Escape
+155|eval எப்போது இயங்கியது|When the eval ran
+156|ஒவ்வொரு AI பதிலிலும் எழுதப்பட்டிருக்கும்: இந்தச் சாதனத்தில் அல்லது கிளவுட். மொழிபெயர்ப்புகள் முன்பே செய்யப்பட்டவை; உலாவி எந்த மொழிபெயர்ப்புச் சேவையையும் அழைப்பதில்லை.|Every AI answer is labelled: On this device or Cloud. Translations are made in advance; the browser does not call any translation service.
+157|ஒவ்வொரு நாளும் உங்கள் சேமித்த மருந்துகள் புதிய அரசு பட்டியலுடன் மறுசரிபார்க்கப்படுகின்றன. ஏதேனும் தொகுதிக்கு எச்சரிக்கை வந்தால், அல்லது மருந்து 5 நாட்களில் காலாவதியானால், இந்த போனுக்கு அறிவிப்பு வரும்.|Every day your saved medicines are re-checked against the new official list. If a batch is flagged, or a medicine expires in 5 days, a notification comes to this phone.
+158|வீட்டில் உள்ள ஒவ்வொரு மருந்தும், அரசு எச்சரிக்கைகளுடன் சரிபார்க்கப்பட்டது|Every medicine at home, checked against official alerts
+159|தொகுதி முழுமையாகப் பொருந்துகிறது மற்றும் நிறுவனம் உயர் நம்பிக்கையுடன் பொருந்துகிறது (அல்லது மருந்தின் பெயர், பதிவில் நிறுவனம் இல்லாதபோது, போலி மருந்துகளைப் போல).|Exact batch matches and company matches with high confidence (or the medicine name, when the record has no company, as with spurious drugs).
+160|சரியாக இந்தச் செய்தியே பகிரப்படும்|Exactly this message will be shared
+161|உதாரணம்: இது புகைப்படத்தில் எளிதாகப் படிக்கக்கூடியதாக இருக்க வேண்டும்|Example: this should be easy to read in the photo
+162|காலாவதியானது|Expired
+163|காலாவதியானது அல்லது விரைவில் காலாவதியாகும்|Expired or expiring soon
+164|விரைவில் காலாவதியாகும்|Expires soon
+165|காலாவதி|Expiry
+166|காலாவதி (EXP)|Expiry (EXP)
+167|காலாவதி நினைவூட்டல்கள்|Expiry reminders
+168|காலாவதி: {0}|Expiry: {0}
+169|பதிவு விளக்கப்பட்டது|Explained the record
+171|தோல்வியடைந்தது|failed
+172|தோல்விக்கான காரணம்|Failure reason
+173|தவறான சாம்பல் விகிதம்|False-GREY rate
+174|தவறான சிவப்பு விகிதம்|False-RED rate
+175|குடும்பம்|Family
+176|{0} க்கு அனுப்பக் குடும்ப எச்சரிக்கை தயார்|Family alert ready to send to {0}
+177|குடும்ப எச்சரிக்கைகள்|Family alerts
+178|குடும்ப அழைப்பு|Family invite
+179|பெண்|Female
+180|Firebase AI Logic: சாதனத்தில் Gemini Nano மற்றும் கிளவுடில் Gemini Flash. பொருத்துதல் எப்போதும் எளிய குறியீடு, சாதனத்தில்.|Firebase AI Logic: Gemini Nano on the device and Gemini Flash in the cloud. Matching always plain code, on the device.
+181|Firestore விதிகள்: ஒவ்வொரு சாதனமும் தன் சொந்த ஆவணங்களை மட்டுமே படிக்கவும் எழுதவும் முடியும்.|Firestore rules: each device can only read and write its own documents.
+182|முதலில் Settings இல் எச்சரிக்கைகளை இயக்கவும்|First turn on alerts in Settings
+183|எச்சரிக்கை உள்ள தொகுதிகள் பிடிபட்டன, திருத்தம் இல்லாமல்|Flagged batches caught, without correction
+184|விளக்கங்கள் மற்றும் கேள்விகளுக்கு அரசு பதிவும் உங்கள் கேள்வியும் மட்டுமே அனுப்பப்படும். ஒவ்வொரு AI பதிலிலும் எழுதப்பட்டிருக்கும்: இந்தச் சாதனத்தில் அல்லது கிளவுட்.|For explanations and questions only the official record and your question are sent. Every AI answer is labelled: On this device or Cloud.
+185|இதற்காக எங்கள் சேவையகம் இவற்றை மட்டுமே வைத்திருக்கும்: ஒரு அறிவிப்புக் குறியீடு, உங்கள் மொழி, மற்றும் ஒவ்வொரு மருந்துக்கும் அதன் தொகுதி எண், நிறுவனம் மற்றும் காலாவதி மாதம். உங்கள் பெயர், போன் எண், நோய் அல்லது மருந்து யாருக்கு என்பது ஒருபோதும் இல்லை. எப்போது வேண்டுமானாலும் அணைக்கவும், அனைத்தும் நீக்கப்படும்.|For this our server keeps only: a notification code, your language, and for each medicine its batch number, company and expiry month. Never your name, phone number, illness or who the medicine is for. Turn it off any time, all of it is deleted.
+186|யாருக்காக|For whom
+187|யாருக்காக: {0}|For: {0}
+188|முழு பொருத்துதல் ஆஃப்லைனில்|Full matching offline
+190|Gemini Flash · {0}|Gemini Flash · {0}
+191|Gemini Nano · {0}|Gemini Nano · {0}
+192|Gemini Nano பதிவிறக்கப்படுகிறது. இப்போதைக்கு கிளவுட் AI பயன்படுத்துகிறோம்.|Gemini Nano is downloading. Using cloud AI for now.
+193|Gemini Nano இந்தச் சாதனத்தில் தயாராக உள்ளது{0}. AI ஆஃப்லைனிலும் வேலை செய்கிறது.|Gemini Nano is ready on this device{0}. AI works even offline.
+194|உருவாக்கப்பட்ட எழுத்துப்படிகள்|generated transcripts
+195|பின்னர் எச்சரிக்கை வந்தால் தெரிவிக்கவும்|Get alerted if an alert comes later
+196|செயலி மூடியிருக்கும்போதும் எச்சரிக்கைகள் வேண்டுமா?|Want alerts even when the app is closed?
+197|GitHub Actions தினமும் CDSCO இலிருந்து தரவைக் கொண்டுவந்து, சரிபார்த்து, ஒப்புதல் அளித்தவர்களின் சேமித்த மருந்துகளை மறுசரிபார்த்து, எச்சரிக்கை இருந்தால் push அனுப்புகிறது. iPhone இல் push செயலி முகப்புத் திரையில் சேர்க்கப்பட்டால் மட்டுமே வேலை செய்யும்.|GitHub Actions brings data from CDSCO daily, validates it, re-checks saved medicines of those who consented, and sends a push if flagged. On iPhone push works only when the app is added to the home screen.
+198|சாம்பல்|Grey
+199|சாம்பல்|GREY
+200|கையால் சரிபார்க்கப்பட்டது|Hand-verified
+201|கையால் சரிபார்க்கப்பட்ட பதிவுகள்|Hand-verified records
+202|கேட்டது|Heard
+203|வணக்கம், நான் DawaShield. மருந்தின் பெயரைச் சொல்லுங்கள், அல்லது அட்டையின் புகைப்படத்தைக் காட்டுங்கள்.|Hello, I am DawaShield. Say the medicine name, or show a photo of the strip.
+205|விவரங்களை மறை|Hide details
+206|இந்தி மற்றும் ஆங்கிலம் ஆஃப்லைனில், மேலும் 5 இந்திய மொழிகள் ஆன்லைனில்|Hindi and English offline, 5 more Indian languages online
+207|இந்தி மற்றும் ஆங்கிலம் ஆஃப்லைனில்; பஞ்சாபி, குஜராத்தி, மராத்தி, கன்னடம் மற்றும் தமிழ் ஆன்லைனில். குழப்பமான எழுத்துப்படியும் பொருத்தப்பட்டு பெரிய பொத்தான்களாகக் காட்டப்படும்.|Hindi and English offline; Punjabi, Gujarati, Marathi, Kannada and Tamil online. Even a garbled transcript is matched and shown as big buttons.
+208|இந்தி மற்றும் ஆங்கிலம் ஆஃப்லைனில் வேலை செய்யும். மற்ற மொழிகளுக்கு இணையம் தேவை.|Hindi and English work offline. The other languages need internet.
+209|இந்தி குரல் சரிபார்ப்பு|Hindi voice check
+210|இந்தி குரல் உள்ளீடு: Chrome இல் இந்தி பேச்சுத் தொகுப்பு இருந்தால் மட்டுமே ஆஃப்லைனில் வேலை செய்யும்|Hindi voice input: works offline only if the Hindi speech pack is in Chrome
+211|இந்தி/ஆங்கிலம் குரல் top-3|Hindi/English voice top-3
+212|பழைய எச்சரிக்கை, இந்தத் தொகுதியின் காலாவதி இருந்தது|Old alert, this batch's expiry was
+213|முகப்பு|Home
+214|வீட்டு மருந்துப் பெட்டி, பின்னர் தானியங்கி எச்சரிக்கைகளுடன்|Home medicine cabinet, with automatic later alerts
+215|ஒப்பீடு|How it compares
+216|இது எப்படி வேலை செய்கிறது|How it works
+217|முடிவின் நிறம் எப்படி முடிவு செய்யப்படுகிறது|How the result colour is decided
+218|இந்தப் பதில் எப்படி உருவானது|How this answer was made
+219|ஹைப்ரிட் AI|Hybrid AI
+220|எனக்குப் புரியவில்லை. தயவுசெய்து மீண்டும் சொல்லுங்கள் அல்லது புகைப்படம் காட்டுங்கள்.|I could not understand. Please say it again or show a photo.
+221|எனக்கு எதுவும் கேட்கவில்லை. போனை அருகில் வைத்து மருந்தின் பெயரை மீண்டும் சொல்லுங்கள்.|I didn't hear anything. Hold the phone closer and say the medicine name again.
+222|புரிந்தது, தொடரவும்|I understand, continue
+223|நிறம், மணம், பேக்கிங் அல்லது விளைவு தவறாகத் தோன்றினால், CDSCO க்குப் புகாரளிக்கவும். செய்தி எழுத நாங்கள் உதவுகிறோம்.|If the colour, smell, packing or effect seems wrong, report it to CDSCO. We help you write the message.
+224|நீங்கள் ஏற்றால், அவர்களின் சேமித்த மருந்து அரசு எச்சரிக்கையில் வரும்போது இந்த போனுக்கு அறிவிப்பு வரும். நாங்கள் பெயர் அல்லது எண் வைப்பதில்லை, அறிவிப்புக் குறியீடு மட்டுமே.|If you accept, this phone gets a notification when their saved medicine comes in an official alert. We keep no name or number, only a notification code.
+225|காலாவதி தேதி சரியா? தயவுசெய்து அட்டையைச் சரிபார்க்கவும்|Is the expiry date correct? Please check the strip
+226|இது மருந்தைச் சோதிப்பதில்லை. 'எச்சரிக்கை இல்லை' என்றால் 'பாதுகாப்பானது' என்று பொருள் இல்லை, ஏனெனில் அரசு பட்டியல்கள் தாமதமாக வருகின்றன.|It does not test the medicine. 'No alert' does not mean 'safe', because official lists come out late.
+227|இது ஒருபோதும் எந்த மருந்தையும் பரிந்துரைப்பதில்லை. ஒவ்வொரு சிகிச்சை முடிவு பற்றியும் உங்கள் மருத்துவர் அல்லது மருந்தாளுநரிடம் பேசுங்கள்.|It never suggests any medicine. Talk to your doctor or chemist about every treatment decision.
+228|இதை {0} சோதித்தது. கண்டறியப்பட்ட பிரச்சனை: {1}.|It was tested by {0}. Problem found: {1}.
+229|அட்டையையும் ரசீதையும் வைத்திருங்கள். அதைப் பயன்படுத்த வேண்டாம். மருந்தாளுநர் மற்றும் CDSCO க்குப் புகாரளிக்கவும்.|Keep the strip and the bill. Don't use it. Report it to the chemist and CDSCO.
+230|மொழி|Language
+231|கடைசியாகச் சரிபார்த்தது|Last checked
+232|{0} வரையிலான CDSCO தரவுடன் கடைசியாகச் சரிபார்த்தது: அனைத்தும் சரி|Last checked against CDSCO data up to {0}: all clear
+233|கடைசி வெற்றிகரமான புதுப்பிப்பு|Last successful update
+234|கடைசி ஒத்திசைவு|Last synced
+235|கடைசி புதுப்பிப்பு|Last updated
+236|சமீபத்திய எச்சரிக்கை மாதம்|Latest alert month
+237|மூல PDF இல் {0} முறை பட்டியலிடப்பட்டுள்ளது|Listed {0} times in the source PDF
+238|கேட்கிறது…|Listening…
+239|அட்டையில் EXP க்குப் பின் உள்ள தேதியைப் பாருங்கள். அது கடந்துவிட்டால், எடுக்க வேண்டாம்; உங்கள் மருந்தாளுநரிடம் காட்டுங்கள்.|Look at the date after EXP on the strip. If it has passed, don't take it; show it to your chemist.
+240|அம்மா|Maa
+241|முதன்மை|Main
+242|முதன்மை வேலை: மருந்துத் தொகுதியை CDSCO எச்சரிக்கைகளுடன் பொருத்துதல்|Main job: match a medicine batch with CDSCO alerts
+243|ஆண்|Male
+244|உற்பத்தியாளர்|Manufacturer
+245|உற்பத்தியாளர் (குறிப்பிட்டபடி)|Manufacturer (as stated)
+246|பொருந்தியது|Matched
+247|அரசு பட்டியலுடன் பொருத்தப்பட்டது|Matched with the official list
+248|பொருத்தங்கள்|Matches
+249|பொருத்துதல் (எளிய குறியீடு)|Matching (plain code)
+250|பொருத்துதல் வழக்குகள்|Matching cases
+251|பொருந்தும் CDSCO எச்சரிக்கை: {0}|Matching CDSCO alert: {0}
+252|நான்|Me
+253|அளவிடப்பட்ட முடிவுகள்|Measured results
+254|மருந்து|Medicine
+255|மருந்துப் பெட்டி|Medicine cabinet
+256|விரைவில் காலாவதியாகும் மருந்து: {0}|Medicine expiring soon: {0}
+257|மருந்துப் பொருத்துதல் இந்த போனில் எப்போதும் முழுமையாக ஆஃப்லைனில் வேலை செய்யும்.|Medicine matching always works fully offline on this phone.
+258|மருந்தின் பெயர்|Medicine name
+259|மருந்தின் பெயர்: {0}|Medicine name: {0}
+260|மருந்து: {0}|Medicine: {0}
+261|தயாரிப்பு / காலாவதி|Mfg / Expiry
+262|மைக்ரோஃபோன் அனுமதி தடுக்கப்பட்டது. உலாவியில் மைக்கை அனுமதிக்கவும், அல்லது தட்டச்சு செய்யவும்.|Microphone permission was blocked. Allow the mic in the browser, or type.
+263|இந்த எச்சரிக்கைக்கான CDSCO மாதாந்திர PDF|Monthly CDSCO PDF for this alert
+264|மாதாந்திர PDF|Monthly PDF
+265|உள்ளடக்கிய மாதங்கள்|Months covered
+266|மேலும் விவரங்கள் (விருப்பத்தேர்வு)|More details (optional)
+267|மேலும் பொருந்தும் பதிவுகள்|more matching records
+268|என் மருந்து இந்த எச்சரிக்கையில் உள்ளது அல்ல|My medicine is not the one in this alert
+269|என் பெயர் மற்றும் போன்:|My name and phone:
+270|வணக்கம்|Namaste
+271|பெயர்|Name
+272|கவனம் தேவை|need attention
+273|இணையம் தேவை|Needs internet
+274|ஒருபோதும் மருந்து பரிந்துரைப்பதில்லை|Never recommends medicines
+275|புதிய எச்சரிக்கை|New alert
+276|அடுத்த புதுப்பிப்பு எதிர்பார்க்கப்படுவது|Next update expected
+277|விளம்பரங்கள் இல்லை, ஒருபோதும் மருந்து பரிந்துரைப்பதில்லை|No ads, never recommends medicines
+278|எந்த AI அழைப்பும் செய்யப்படவில்லை, நீங்களே அனைத்தையும் தட்டச்சு செய்தீர்கள்.|No AI calls were made, you typed everything yourself.
+279|எந்த AI யும் பாதுகாப்பை முடிவு செய்வதில்லை|No AI decides safety
+280|காலாவதி தேதி இல்லை|No expiry date
+281|இணையம் இல்லை, எனவே புகைப்படத்தைப் படிக்க முடியவில்லை. மீண்டும் முயற்சிக்கவும், அல்லது தொகுதி எண்ணைத் தட்டச்சு செய்யவும் — சரிபார்ப்பு தானே ஆஃப்லைனில் வேலை செய்யும்.|No internet, so the photo couldn't be read. Try again, or type the batch number — the check itself works offline.
+282|இன்னும் அட்டைகளின் லேபிளிடப்பட்ட உண்மையான புகைப்படங்கள் இல்லை, எனவே புகைப்படத் துல்லியம் அளவிடப்படவில்லை.|No labelled real photos of strips yet, so photo accuracy has not been measured.
+283|பொருத்தம் இல்லாதது பாதுகாப்பு உத்தரவாதம் அல்ல.|No match is not a safety guarantee.
+284|இன்னும் மருந்துகள் இல்லை. சரிபார்ப்புக்குப் பின் ‘பெட்டியில் சேமி’ தட்டவும்.|No medicines yet. After a check, tap ‘Save to cabinet’.
+285|அரசு எச்சரிக்கை இல்லை|No official alert
+286|இந்தத் தொகுதிக்கு அரசு எச்சரிக்கை இல்லை|No official alert for this exact batch
+287|எந்த அரசு பதிவும் இந்தத் தொகுதியுடன் பொருந்தவில்லை. நாங்கள் இந்தப் பட்டியலைச் சரிபார்த்தோம்:|No official record matched this batch. We checked this list:
+288|பதிவு இல்லை.|No record.
+289|எதுவுமில்லை|None
+290|இவற்றில் எதுவுமில்லை, நான் தட்டச்சு செய்கிறேன்|None of these, I will type
+291|இன்னும் பதிவிறக்கப்படவில்லை|Not downloaded yet
+292|கிடைக்கவில்லை|Not found
+293|வழங்கப்படவில்லை|Not given
+294|இப்போது வேண்டாம்|Not now
+295|தரநிலைக்கு ஏற்றதல்ல (NSQ)|not of standard quality (NSQ)
+296|தரநிலைக்கு ஏற்றதல்ல (NSQ)|Not of Standard Quality (NSQ)
+297|தரநிலைக்கு ஏற்றதல்ல (NSQ): இந்தத் தொகுதி அரசு ஆய்வகச் சோதனையில் தோல்வியடைந்தது.|Not of Standard Quality (NSQ): this batch failed a test at a government lab.
+298|சரிபார்க்கப்படவில்லை|Not verified
+299|விரைவில் காலாவதியாவது எதுவுமில்லை|Nothing expiring soon
+300|அறிவிப்பு|Notification
+301|அறிவிப்புகள்|Notifications
+302|அறிவிப்புகள் (நீங்கள் தேர்ந்தெடுத்தால் மட்டும்)|Notifications (only if you opt in)
+303|அறிவிப்புகள் தடுக்கப்பட்டன.|Notifications were blocked.
+304|அறிவிப்புகள் தடுக்கப்பட்டன. நீங்கள் இன்னும் 'காலாவதியை என் நாட்காட்டியில் சேர்க்கவும்' பயன்படுத்தலாம்.|Notifications were blocked. You can still use 'Add expiry to my calendar'.
+305|இப்போது தொகுதி எண். அது அட்டையில் B.No. அல்லது Batch க்குப் பின் அச்சிடப்பட்டிருக்கும். சொல்லுங்கள், தட்டச்சு செய்யுங்கள், அல்லது புகைப்படம் காட்டுங்கள்.|Now the batch number. It is printed after B.No. or Batch on the strip. Say it, type it, or show a photo.
+306|NSQ / போலி|NSQ / Spurious
+308|அணை|Off
+309|அரசு எச்சரிக்கை கண்டறியப்பட்டது|Official alert found
+310|அரசு CDSCO தரவு இதுவரை|Official CDSCO data up to
+311|அரசு CDSCO தரவு, ஒவ்வொரு பதிலிலும் மூலம்|Official CDSCO data, source on every answer
+312|அரசு தரவு|Official data
+313|அரசு தரவு + எளிய குறியீடு. AI உதவி மட்டுமே செய்கிறது.|Official data + plain code. AI only helps.
+314|அரசு தரவு இதுவரை சரிபார்க்கப்பட்டது|Official data checked up to
+315|அரசு தரவுத்தொகுப்பு|Official dataset
+316|அரசு இணைப்பு|Official link
+317|அரசு பதிவு|Official record
+318|வேறொரு மருந்தின் அரசு பதிவு (உங்களுடையது அல்ல)|Official record of the other medicine (not yours)
+319|அரசு பதிவுகள்|official records
+320|இந்த போனில் தேடப்பட்ட அரசு பதிவுகள்|official records searched on this phone
+321|ஒவ்வொரு பதிலிலும் அரசு மூலம் + பதிவு ID|Official source + record ID on every answer
+322|ஆஃப்லைனுக்குத் தயார்|Offline ready
+323|ஆஃப்லைனுக்குத் தயார் · இந்தச் சாதனத்தில்|Offline ready · On this device
+324|ஆஃப்லைனில் இதற்கு சுமார் அரை நிமிடம் ஆகலாம்|Offline this can take about half a minute
+325|ஆஃப்லைன், இன்னும் வேலை செய்கிறது|Offline, still working
+326|இயக்கம்|On
+327|சிவப்பு அல்லது மஞ்சள் முடிவில், ஒரே தட்டலில் WhatsApp செய்தி அனுப்பவும். எண்கள் இந்த போனில் மட்டுமே இருக்கும்.|On a red or amber result, send a WhatsApp message in one tap. Numbers stay only in this phone.
+328|அட்டையில்|On strip
+329|இந்தச் சாதனத்தில்|On this device
+330|WhatsApp இல், உங்கள் ஒப்புதலுடன் மட்டும்.|On WhatsApp, only with your consent.
+331|சாதனத்தில் உள்ள AI (Gemini Nano)|On-device AI (Gemini Nano)
+332|சாதனத்தில் உள்ள AI க்கு Gemini Nano உள்ள டெஸ்க்டாப் Chrome தேவை. இப்போதைக்கு கிளவுட் AI பயன்படுத்துகிறோம்.|On-device AI needs desktop Chrome with Gemini Nano. Using cloud AI for now.
+333|ஒரு சரிபார்ப்பு, படிப்படியாக|One check, step by step
+334|ஆன்லைன்|Online
+335|ஆன்லைன்: கிளவுடில் Gemini Flash (Firebase AI Logic). Gemini Nano ஆதரிக்கப்படும் டெஸ்க்டாப் Chrome இல் மட்டும். AI படித்து விளக்குகிறது மட்டுமே; ஒருபோதும் நிறத்தைத் தேர்ந்தெடுப்பதில்லை.|Online: Gemini Flash in the cloud (Firebase AI Logic). Gemini Nano only on supported desktop Chrome. AI only reads and explains; it never picks the colour.
+336|நீங்கள் அறிவிப்புகளை இயக்கினால் மட்டுமே, எங்கள் Firebase சேவையகம் வைத்திருக்கும்: ஒரு அறிவிப்புக் குறியீடு, உங்கள் மொழி, மற்றும் ஒவ்வொரு சேமித்த மருந்துக்கும் அதன் தொகுதி எண், நிறுவனம் மற்றும் காலாவதி மாதம். மருந்தின் பெயர், உங்கள் பெயர், போன், நோய் அல்லது அது யாருக்கு என்பது ஒருபோதும் இல்லை. ஒவ்வொரு போனும் தன் சொந்தத் தரவை மட்டுமே பார்க்க முடியும். அணைத்தால் அனைத்தும் நீக்கப்படும்.|Only if you turn on notifications, our Firebase server keeps: a notification code, your language, and for each saved medicine its batch number, company and expiry month. Never the medicine name, your name, phone, illness or who it is for. Each phone can only see its own data. Turning it off deletes it all.
+337|முடிவின் நிறம், தொகுதி, நிறுவனம் மற்றும் பதிவு ID மட்டுமே அனுப்பப்படும். பெயர், போன் அல்லது தனிப்பட்ட விவரங்கள் இல்லை.|Only the result colour, batch, company and record IDs are sent. No name, phone or personal details.
+338|மூன்று முடிவுகள் மட்டும்|Only three results
+339|push தேர்ந்தெடுத்தால் மட்டும்: டோக்கன், மொழி, தொகுதி, நிறுவனம், காலாவதி மாதம். பெயர், போன் அல்லது நோய் ஒருபோதும் இல்லை.|Only if push is chosen: token, language, batch, company, expiry month. Never name, phone or illness.
+340|CDSCO எச்சரிக்கைகள் பக்கத்தைத் திறக்கவும்|Open CDSCO alerts page
+341|CDSCO மூலத்தைத் திறக்கவும்|Open CDSCO source
+342|அரசு PDF ஐத் திறக்கவும்|Open official PDF
+343|விருப்பத்தேர்வு. அவர்கள் இணைப்பைத் திறந்து ஏற்ற பிறகு, உங்கள் சேமித்த மருந்துக்கு எச்சரிக்கை வரும்போது அவர்களுக்கும் அறிவிப்பு வரும். பெயர்கள் அல்லது எண்கள் சேமிக்கப்படுவதில்லை.|Optional. After they open the link and accept, they also get a notification when your saved medicine is flagged. No names or numbers are stored.
+344|மற்ற தொகுதிகள் எச்சரிக்கையில்: அதே நிறுவனம் மற்றும் அதே மருந்து, வேறு தொகுதி.|Other batches in alert: same company and same medicine, different batch.
+345|இந்த மருந்தின் மற்ற தொகுதிகளுக்கு எச்சரிக்கை உள்ளது: உங்கள் தொகுதி எண்ணை உங்கள் மருந்தாளுநரிடம் சரிபார்க்கவும்.|Other batches of this medicine are flagged: check your batch number with your chemist.
+349|அப்பா|Papa
+350|புகைப்படச் சரிபார்ப்பு|Photo check
+351|புகைப்படம் அல்லது குரல் பொருத்துவதற்கு மிகத் தெளிவற்றது: விசைப்பலகை அல்லது மீண்டும் புகைப்படம். ஒருபோதும் சாம்பல் எனக் காட்டப்படாது.|Photo or voice too unclear for matching: keypad or photo again. Never shown as GREY.
+352|புகைப்பட வாசிப்பு|Photo reading
+353|புகைப்படங்கள்|Photos
+354|புகைப்படங்கள் ஒருபோதும் சேமிக்கப்படுவதில்லை. ஆன்லைனில் இருக்கும்போது, லேபிளைப் படிக்க அந்த ஒரு புகைப்படம் மட்டுமே Google Gemini (Firebase AI Logic) க்கு அனுப்பப்படும். ஆஃப்லைனில், அது போனில் படிக்கப்படும்.|Photos are never stored. When online, only that one photo is sent to Google Gemini (Firebase AI Logic) to read the label. Offline, it is read on the phone.
+355|எளிய குறியீடு · இந்தச் சாதனத்தில்|Plain code · On this device
+356|எளிய குறியீட்டுப் பொருத்துதல், AI ஈடுபடவில்லை.|Plain code matching, no AI involved.
+357|தயவுசெய்து சரிபார்க்கவும்|Please check
+358|தயவுசெய்து தொகுதி எண்ணைச் சரிபார்த்து மருந்தாளுநரிடம் கேளுங்கள்.|Please check the batch number and ask a pharmacist.
+359|தயவுசெய்து இதை அட்டையில் சரிபார்க்கவும்|Please check this on the strip
+360|தயவுசெய்து உறுதிசெய்யவும்: அட்டையுடன் ஒப்பிட்டுத் திருத்தவும்|Please confirm: compare with the strip and correct it
+361|தயவுசெய்து மருந்தின் பெயரைச் சொல்லுங்கள்.|Please say the name of the medicine.
+362|சாத்தியமான பொருத்தம்: தொகுதி முழுமையாகப் பொருந்துகிறது ஆனால் நிறுவனம் நிச்சயமற்றது; அல்லது தொகுதி ஒரு எழுத்து வேறு / முழுமையற்றது.|Possible match: batch matches exactly but the company is uncertain; or batch one character different / incomplete.
+363|சாத்தியமான பொருத்தம்: அடுத்த டோஸுக்கு முன் அட்டையை உங்கள் மருந்தாளுநரிடம் காட்டுங்கள்.|Possible match: show the strip to your chemist before the next dose.
+364|சாத்தியமான அரசு எச்சரிக்கை|Possible official alert
+365|அரசு பதிவிலிருந்து நிரப்பப்பட்ட முன்பே எழுதிய செய்தி · இந்தச் சாதனத்தில், ஆஃப்லைனில் வேலை செய்யும்|Pre-written message filled from the official record · on this device, works offline
+366|அறிவிப்புகள் வேண்டாமா? ஒவ்வொரு மருந்திலும் 'காலாவதியை என் நாட்காட்டியில் சேர்க்கவும்' உள்ளது.|Prefer no notifications? Every medicine also has 'Add expiry to my calendar'.
+367|சரிபார்க்க Enter அழுத்தவும்|Press Enter to check
+368|B.No. அல்லது Batch க்குப் பின் அச்சிடப்பட்டது|Printed after B.No. or Batch
+369|தனியுரிமை|Privacy
+370|தனியுரிமை வடிவமைப்பு|Privacy design
+371|பஞ்சாபி, குஜராத்தி, மராத்தி, கன்னடம், தமிழ் (ஆன்லைன்)|Punjabi, Gujarati, Marathi, Kannada, Tamil (online)
+372|PvPI உதவி எண்|PvPI helpline
+373|தர எச்சரிக்கைகள்|Quality alerts
+374|அனைத்தையும் மறுசரிபார்க்கவும்|Re-check all
+375|ஒவ்வொரு புதிய CDSCO பட்டியலிலும் மறுசரிபார்க்கப்படுகிறது|Re-checked on every new CDSCO list
+376|பளபளப்பைக் குறைத்து மாறுபாட்டை அதிகரித்து மீண்டும் படிக்கப்பட்டது|Read again with glare reduced and contrast increased
+377|புகைப்படத்திலிருந்து படிக்கப்பட்டது — தேவைப்பட்டால் எதையும் திருத்தவும்|Read from photo — correct anything if needed
+378|எளிய விளக்கத்தைப் படிக்கவும்|Read simple explanation
+379|முழுப் புகைப்படம் படிக்கப்பட்டது|Read the full photo
+380|பெரிதாக்கப்பட்ட B.No / EXP பகுதி படிக்கப்பட்டது|Read the zoomed B.No / EXP area
+381|புகைப்படத்தைப் படிக்கிறோம்…|Reading the photo…
+382|அரசு CDSCO எச்சரிக்கைகளின் உண்மையான தொகுதிகள்|Real batches from official CDSCO alerts
+383|உண்மையான உதாரணம்:|Real example:
+384|பதிவு ID|Record ID
+385|பதிவுகள்|Records
+386|அட்டவணைப்படுத்திய பதிவுகள்|Records indexed
+387|சிவப்பு|Red
+388|தொகுதியும் நிறுவனமும் நம்பிக்கையுடன் பொருந்தும்போது மட்டுமே சிவப்பு. அதே நிறுவனத்தின் வேறொரு மருந்து மட்டும் பட்டியலில் இருந்தால், சாம்பல், உடன் "உங்கள் மருந்து பாதிக்கப்படவில்லை."|RED only when batch and company both match with confidence. If only another medicine of the same company is in the list, GREY, with "Your medicine is not affected."
+389|சிவப்பு: அரசு எச்சரிக்கையுடன் பொருந்துகிறது. மஞ்சள்: சாத்தியமான பொருத்தம், தயவுசெய்து உறுதிசெய்யவும். சாம்பல்: பட்டியலில் கிடைக்கவில்லை — பாதுகாப்பு உத்தரவாதம் அல்ல. செயலி ஒருபோதும் மருந்து பாதுகாப்பானது என்று சொல்வதில்லை.|Red: matches an official alert. Amber: possible match, please confirm. Grey: not found in the list — not a safety guarantee. The app never says a medicine is safe.
+390|உறவு|Relation
+391|குறிப்புகள்|Remarks
+392|நீக்கு|Remove
+393|பக்க விளைவைப் புகாரளிக்கவும் (PvPI)|Report a side effect (PvPI)
+394|தவறான முடிவைப் புகாரளிக்கவும்|Report a wrong result
+395|புகாரளிக்கவும்|Report it
+396|அதிகாரிகளுக்குப் புகாரளிக்கவும்|Report to the authorities
+397|சந்தேகத்திற்குரிய மருந்தைப் புகாரளித்தல்|Reporting a suspected medicine
+398|முடிவு|Result
+399|மீண்டும் எடு|Retake
+400|புகைப்படத்தை மீண்டும் எடுக்கவும்|Retake photo
+401|வரிசைகள் = எதிர்பார்த்தது, நெடுவரிசைகள் = செயலி காட்டியது|Rows = expected, columns = what the app showed
+402|பாதுகாப்பான அகற்றல்|Safe disposal
+403|அதே நிறுவனம், வேறு மருந்து: சிறு குறிப்பு, "உங்கள் மருந்து பாதிக்கப்படவில்லை."|Same company, different medicine: small note, "Your medicine is not affected."
+404|சேமி|Save
+405|ஒரே தட்டலில் உங்கள் பெட்டியில் சேமிக்கவும். புதிய அரசு பட்டியலில் இந்தத் தொகுதி வந்தால், நாங்கள் உங்களுக்குத் தானாகத் தெரிவிப்போம்.|Save it to your cabinet with one tap. If a new official list includes this batch, we will tell you automatically.
+406|உங்கள் பெட்டியில் சேமிக்கவும். புதிய பட்டியலில் இந்தத் தொகுதி வந்தால், நாங்கள் உங்களுக்குத் தானாகத் தெரிவிப்போம்.|Save it to your cabinet. If a new list includes this batch, we will tell you automatically.
+407|மருந்துகளை ஒருமுறை சேமிக்கவும். CDSCO ஒவ்வொரு முறை புதிய பட்டியல் வெளியிடும்போதும் நாங்கள் அவற்றை மறுசரிபார்க்கிறோம்.|Save medicines once. We re-check them every time CDSCO publishes a new list.
+408|பெட்டியில் சேமி|Save to cabinet
+409|ஒரே தட்டலில் சேமி|Save with one tap
+410|சேமிக்கப்பட்டது|Saved
+411|சேமித்த மருந்துகள்|saved medicines
+412|சேமித்த மருந்துகள் தினமும் புதிய பட்டியல்களுடன் மறுசரிபார்க்கப்படுகின்றன, செயலி மூடியிருக்கும்போதும் அறிவிப்புடன்.|Saved medicines are re-checked daily against new lists, with a notification even when the app is closed.
+413|பெட்டியில் சேமிக்கப்பட்டது|Saved to cabinet
+414|அரசு பட்டியலை இந்த போனில் சேமிக்கிறோம் (ஒருமுறை)|Saving the official list to this phone (once)
+415|பொதி செய்த உணவு லேபிள்களை ஸ்கேன் செய்கிறது|Scans packaged-food labels
+416|அனைத்து எண்ணிக்கைகளையும் வரம்புகளையும் பாருங்கள்|See all numbers and limits
+417|விவரங்களைப் பாருங்கள்|See details
+418|ஆன்லைனில் மருந்து விற்கிறது|Sells medicines online
+419|அனுப்பு|Send
+420|குடும்பத்திற்கு எச்சரிக்கை அனுப்பவும்|Send alert to family
+421|யாருக்கு அனுப்புவது?|Send to whom?
+422|அமைப்புகள்|Settings
+423|யாருடனும் பகிரவும்|Share with anyone
+424|சிறு குறிப்பு (விருப்பத்தேர்வு, தனிப்பட்ட விவரங்கள் இல்லை)|Short note (optional, no personal details)
+425|அட்டையின் B.No. மற்றும் EXP உள்ள பகுதியைக் காட்டுங்கள்|Show the part of the strip with B.No. and EXP
+426|அடுத்த டோஸுக்கு முன் இந்த அட்டையை உங்கள் மருந்தாளுநரிடம் காட்டுங்கள்.|Show this strip to your chemist before your next dose.
+428|{0} இன் இந்த மருந்தின் சில குறிப்பிட்ட தொகுதிகள் CDSCO பட்டியலில் உள்ளன (உதாரணமாக {2} இல் தொகுதி {1}).|Some specific batches of this medicine from {0} are in CDSCO's list (for example batch {1} in {2}).
+429|வேறு ஏதோ|Something else
+430|மன்னிக்கவும், ஏதோ தவறு நடந்தது. தயவுசெய்து மீண்டும் முயற்சிக்கவும்.|Sorry, something went wrong. Please try again.
+431|மூலம்|Source
+432|மூலம்: {0}|Source: {0}
+433|மூலம்: CDSCO, இந்திய அரசு|Source: CDSCO, Government of India
+434|பேசுங்கள்|Speak
+435|மீண்டும் பேசுங்கள்|Speak again
+436|பேசுங்கள், தட்டச்சு செய்யுங்கள் அல்லது அட்டையின் புகைப்படம் எடுங்கள்|Speak, type or take a photo of the strip
+437|குரல் ரோமன் எழுத்துக்கு மாற்றப்பட்டு, ஒலி-சாவிகள் உருவாக்கப்பட்டு, edit distance மூலம் மருந்துப் பெயர் அகராதியுடன் பொருத்தப்படுகிறது. இந்தி/ஆங்கிலம் ஆஃப்லைனில் (Chrome மொழித் தொகுப்புடன்); பஞ்சாபி, குஜராத்தி, மராத்தி, கன்னடம் மற்றும் தமிழ் ஆன்லைனில்.|Speech is converted to Roman letters, phonetic keys are made, and it is matched by edit distance with the medicine-name dictionary. Hindi/English offline (with Chrome language pack); Punjabi, Gujarati, Marathi, Kannada and Tamil online.
+438|பேச்சுப் பதில்கள்|Spoken replies
+439|போலி|Spurious
+440|போலி (சந்தேகிக்கப்படும் போலி)|Spurious (suspected fake)
+441|போலி: இந்தத் தொகுதி லேபிளில் உள்ள நிறுவனத்தால் தயாரிக்கப்படாமல் இருக்கலாம் எனச் சோதனை காட்டுகிறது.|Spurious: testing suggests this batch may not have been made by the company on the label.
+442|சமீபத்திய மாதத்திற்கு இன்னும் அறிக்கை அளிக்காத மாநிலங்கள்|States not yet reported for the latest month
+443|சமீபத்திய மாதத்திற்கு அறிக்கை நிலுவையில் உள்ள மாநிலங்கள்|States yet to report for the latest month
+444|அட்டையின் புகைப்படம்|Strip photo
+445|Pvt/Ltd நீக்குதல், எழுத்துக்கூட்டலை ஒரே மாதிரியாக்குதல், மாற்றுப்பெயர் அட்டவணை, token-set ratio மூலம் நம்பிக்கை. மருந்து: பொதுப் பெயர் அல்லது பிராண்ட் பெயர், எ.கா. Dolo = Paracetamol.|Remove Pvt/Ltd, make spelling uniform, alias table, confidence by token-set ratio. Medicine: generic or brand name, e.g. Dolo = Paracetamol.
+446|பொருள்: சந்தேகத்திற்குரிய / எச்சரிக்கைப் பட்டியல் மருந்தைப் புகாரளித்தல்|Subject: Reporting a suspected / alert-listed medicine
+447|சந்தேகிக்கப்படும் போலி|suspected spurious (fake)
+448|சந்தேகமா? CDSCO க்குப் புகாரளிக்கவும்|Suspicious? Report it to CDSCO
+449|இப்போது ஒத்திசை|Sync now
+450|Batch மற்றும் EXP உள்ள பகுதியின் அருகிலான, கூர்மையான புகைப்படம் எடுக்கவும். மறுபக்கத்தின் இரண்டாவது புகைப்படத்தையும் சேர்க்கலாம்.|Take a close, sharp photo of the part with the Batch and EXP. You can add a second photo of the other side.
+451|அருகில் புகைப்படம் எடுக்கவும்|Take closer photo
+452|புகைப்படம் எடுக்கவும்|Take photo
+453|அடுத்த டோஸுக்கு முன் உங்கள் மருத்துவர் அல்லது மருந்தாளுநரிடம் பேசுங்கள்.|Talk to your doctor or chemist before your next dose.
+454|அடுத்த டோஸுக்கு முன் உங்கள் மருத்துவர் அல்லது மருந்தாளுநரிடம் பேசுங்கள். அத்தியாவசிய மருந்தை நீங்களாகவே நிறுத்த வேண்டாம்.|Talk to your doctor or chemist before your next dose. Don't stop an essential medicine on your own.
+455|அடுத்த டோஸுக்கு முன் உங்கள் மருத்துவர் அல்லது மருந்தாளுநரிடம் பேசுங்கள். அத்தியாவசிய மருந்தை நீங்களாகவே நிறுத்த வேண்டாம். அட்டையையும் ரசீதையும் வைத்திருங்கள்.|Talk to your doctor or chemist before your next dose. Don't stop an essential medicine on your own. Keep the strip and the bill.
+456|தட்டிப் பேசுங்கள்|Tap and speak
+457|அட்டையில் B.No. அல்லது Batch க்குப் பின் அச்சிடப்பட்டதைத் தட்டவும்|Tap what is printed after B.No. or Batch on the strip
+459|யார் சோதித்தது (ஆய்வகம் / மாநிலம்)|Tested by (lab / state)
+460|சோதனை ஆய்வகம்|Testing lab
+461|இந்தத் தொகுதி லேபிளில் உள்ள நிறுவனத்தால் தயாரிக்கப்படாமல் இருக்கலாம் எனச் சோதனை காட்டுகிறது.|Testing suggests this batch may not have been made by the company on the label.
+462|தேர்ச்சி பெற்ற சோதனைகள்|Tests passed
+464|நன்றி. நாங்கள் அதைப் பார்க்கிறோம்.|Thank you. We will look into it.
+465|அதிக நேரம் ஆனது. தயவுசெய்து மீண்டும் முயற்சிக்கவும், அல்லது தட்டச்சு செய்யவும்.|That took too long. Please try again, or type instead.
+466|எச்சரிக்கை பட்டியலிடப்பட்ட தொகுதிகளுக்கு மட்டுமே பொருந்தும், இந்த நிறுவனத்தின் ஒவ்வொரு தொகுதிக்கும் அல்ல. அட்டையில் தொகுதி எண்ணைச் சரிபார்த்து உறுதிசெய்ய உங்கள் மருந்தாளுநரிடம் கேளுங்கள்.|The alert covers only the listed batches, not every batch of this company. Check the batch number on the strip and ask your chemist to be sure.
+467|Batch / EXP எழுத்து மிகச் சிறியது அல்லது மங்கலானது. நான் ஊகிக்க மாட்டேன் — தயவுசெய்து நல்ல வெளிச்சத்தில் அந்தப் பகுதியின் அருகிலான, கூர்மையான புகைப்படம் எடுக்கவும்.|The Batch / EXP text is too small or blurry. I won't guess — please take a closer, sharper photo of that part in good light.
+468|Batch / EXP எழுத்து மிகச் சிறியது அல்லது மங்கலானது. நான் ஊகிக்க மாட்டேன் — நல்ல வெளிச்சத்தில் அந்தப் பகுதியின் அருகிலான, கூர்மையான புகைப்படம் எடுக்கவும்.|The Batch / EXP text is too small or blurry. I won't guess — take a closer, sharper photo of that part in good light.
+469|படிக்கும் அல்லது தட்டச்சு செய்யும் தவறால் தொகுதி எண் ஒரு எழுத்து வேறுபடலாம், அல்லது நிறுவனப் பெயர் வேறு விதமாக எழுதப்பட்டிருக்கலாம்.|The batch number may differ by one character from a reading or typing slip, or the company name may be written differently.
+470|புகைப்படத்திலிருந்து படித்த தொகுதி எண் அல்லது தேதி உறுதியாக இல்லை. மஞ்சள் குறியிட்ட புலங்களை அட்டையுடன் சரிபார்த்து, திருத்தி, மீண்டும் சரிபார்க்கவும்.|The batch number or date read from the photo was not certain. Check the fields marked in amber against the strip, correct them, and check again.
+471|நிறம் எளிய குறியீட்டால் முடிவு செய்யப்படுகிறது, ஒருபோதும் AI ஆல் அல்ல|The colour is decided by plain code, never by AI
+472|அட்டையில் உள்ள காலாவதி தேதி ({0}) கடந்துவிட்டது. எடுக்க வேண்டாம்; உங்கள் மருந்தாளுநரிடம் காட்டுங்கள்.|The expiry date on the strip ({0}) has passed. Don't take it; show it to your chemist.
+473|முழு அரசு பட்டியலும் போனிலேயே இருக்கும். பொருத்துதல் எளிய குறியீடு; AI தேவையில்லை.|The full official list stays in the phone. Matching is plain code; no AI needed.
+474|தொகுதி {0} உள்ள மருந்து {1} காலாவதியாகிறது. புதிய பொதி பற்றி உங்கள் மருந்தாளுநரிடம் கேளுங்கள்.|The medicine with batch {0} expires {1}. Ask your chemist about a new pack.
+475|உங்கள் குடும்பத்திற்கான செய்தி அனுப்பத் தயாராக உள்ளது.|The message for your family is ready to send.
+476|மைக்ரோஃபோன் வேலை செய்யவில்லை. நீங்கள் தட்டச்சு செய்யலாம்.|The microphone is not working. You can type instead.
+477|அரசு பட்டியல் இன்னும் ஏற்றப்படவில்லை. தயவுசெய்து ஒருமுறை இணையத்துடன் இணைக்கவும்.|The official list has not loaded yet. Please connect to the internet once.
+478|அரசு பட்டியல் போனிலேயே இருக்கும், ஆஃப்லைனில் வேலை செய்யும்|The official list stays in the phone, works offline
+479|புகைப்படத்தைத் தெளிவாகப் படிக்க முடியவில்லை. அருகில், நல்ல வெளிச்சத்தில் மீண்டும் முயற்சிக்கவும், அல்லது தொகுதி எண்ணைத் தட்டச்சு செய்யவும்.|The photo could not be read clearly. Try again closer, in good light, or type the batch number.
+480|புகைப்படம் தவறாகப் படிக்கப்பட்டது|The photo was read wrongly
+481|காட்டப்பட்ட பதிவு தவறானது|The record shown is wrong
+482|இந்தத் தொகுதி அரசு ஆய்வகச் சோதனையில் தோல்வியடைந்தது.|This batch failed a test at a government lab.
+483|இந்தத் தொகுதி எச்சரிக்கையில் உள்ளது, ஆனால் செயலி அதைத் தவறவிட்டது|This batch is in an alert, but the app missed it
+484|இந்த உலாவியால் அறிவிப்புகளைப் பெற முடியாது. பதிலாக 'காலாவதியை என் நாட்காட்டியில் சேர்க்கவும்' பயன்படுத்தவும்.|This browser can't receive notifications. Use 'Add expiry to my calendar' instead.
+485|இந்த உலாவியால் அறிவிப்புகளைப் பெற முடியாது. WhatsApp செய்திகள் இன்னும் வேலை செய்யும்.|This browser can't receive notifications. WhatsApp messages still work.
+486|இந்த நிறுவனத்தின் வேறொரு மருந்து பட்டியலில் உள்ளது. உங்கள் மருந்து பாதிக்கப்படவில்லை|This company has a different medicine in the list. Your medicine is not affected
+487|இந்த நிறுவனத்தின் வேறொரு மருந்து அரசு பட்டியலில் உள்ளது ({medicine}, {month}). உங்கள் மருந்து பாதிக்கப்படவில்லை.|This company has a different medicine in the official list ({medicine}, {month}). Your medicine is not affected.
+488|இந்த நிறுவனத்தின் மற்ற தொகுதிகள் அரசு பட்டியலில் உள்ளன ({medicine}, {month}). உங்கள் தொகுதி அவற்றில் ஒன்று அல்ல.|This company has other batches in the official list ({medicine}, {month}). Your batch is not one of them.
+489|இந்த நிறுவனத்தின் பட்டியலிடப்பட்ட எச்சரிக்கை வேறொரு மருந்துக்கானது ({0}), அந்தக் குறிப்பிட்ட தொகுதிக்கு மட்டுமே.|This company's listed alert is for a different medicine ({0}), and only for that specific batch.
+490|இது மருந்து பாதுகாப்பானது என்று நிரூபிக்கவில்லை. அரசு எச்சரிக்கைகள் தாமதமாக வரலாம், மேலும் ஒவ்வொரு மருந்தும் சோதிக்கப்படுவதில்லை. போலி மருந்துகள் உண்மையான தொகுதி எண்களை நகலெடுக்கலாம்.|This does not prove the medicine is safe. Official alerts can come late, and not every medicine is tested. Counterfeits can copy real batch numbers.
+491|இது மருந்து பாதுகாப்பானது என்று நிரூபிக்கவில்லை. அரசு எச்சரிக்கைகள் தாமதமாக வரலாம்.|This does not prove the medicine is safe. Official alerts can come late.
+492|இது உங்கள் மருந்து பாதுகாப்பானது என்று நிரூபிக்கவில்லை. அரசு எச்சரிக்கைகள் தாமதமாக வரலாம்.|This does not prove your medicine is safe. Official alerts can come late.
+493|இது உறுதிசெய்யப்பட்ட பொருத்தம் அல்ல.|This is not a confirmed match.
+494|இந்த இணைப்பு செல்லாதது அல்லது நீக்கப்பட்டது.|This link is invalid or was removed.
+495|இதன் பொருள் இதே தொகுதி அரசு சோதனையில் தோல்வியடைந்தது. எச்சரிக்கை மற்ற மருந்துகளுக்கோ மற்ற தொகுதிகளுக்கோ பொருந்தாது.|This means this exact batch failed a government test. The alert does not apply to other medicines or other batches.
+496|இந்த மருந்து காலாவதியாகிவிட்டது. தயவுசெய்து உங்கள் மருந்தாளுநரிடம் காட்டுங்கள்.|This medicine has expired. Please show it to your pharmacist.
+497|இந்த மருந்து எங்கள் அரசு பட்டியலில் கிடைக்கவில்லை.|This medicine was not found in our official list.
+498|இந்த மருந்து விரைவில் காலாவதியாகும்.|This medicine will expire soon.
+499|இந்த நபர் மருந்து எச்சரிக்கைச் செய்திகளைப் பெற ஒப்புக்கொண்டுள்ளார்.|This person has agreed to receive medicine alert messages.
+500|Top-1|Top-1
+501|Top-3|Top-3
+502|மொழிபெயர்ப்பு மதிப்பாய்வில் உள்ளது|Translation in review
+503|வெளிப்படைத்தன்மை|Transparency
+504|வெளிப்படைத்தன்மை: எண்ணிக்கைகள் மற்றும் வரம்புகள்|Transparency: numbers and limits
+506|டெமோவை முயற்சிக்கவும்|Try a demo
+507|எச்சரிக்கை உள்ள உண்மையான தொகுதியை முயற்சிக்கவும்|Try a real flagged batch
+508|மீண்டும் முயற்சிக்கவும்|Try again
+509|எச்சரிக்கைகளை அணைத்துத் தரவை நீக்கவும்|Turn off alerts and delete data
+510|தட்டச்சு|Type
+511|விசைப்பலகையில் தொகுதியைத் தட்டச்சு செய்யவும்|Type batch on keypad
+512|பதிலாகத் தட்டச்சு செய்யவும்|Type instead
+513|தட்டச்சு செய்யவும்|Type it
+514|தொகுதி எண்ணைத் தட்டச்சு செய்யவும், அல்லது தெளிவான புகைப்படம் எடுக்கவும்.|Type the batch number, or take a clearer photo.
+515|சரிபார்க்கத் தட்டச்சு செய்யவும்|Type to check
+516|நீங்கள் தட்டச்சு செய்தது|Typed by you
+517|நிச்சயமற்றது அல்லது வேறு|Uncertain or different
+518|புரிந்துகொள்கிறது…|Understanding…
+519|இப்படிப் புரிந்துகொள்ளப்பட்டது|Understood as
+520|Gemini Flash புரிந்துகொண்டது · கிளவுட்|Understood by Gemini Flash · Cloud
+521|Gemini Nano புரிந்துகொண்டது · இந்தச் சாதனத்தில்|Understood by Gemini Nano · On this device
+522|இந்தச் சாதனத்தில் பெயர்த் தேடலால் புரிந்துகொள்ளப்பட்டது · AI கிடைக்கவில்லை|Understood by name search on this device · AI was not available
+523|சொன்ன மருந்தின் பெயர் புரிந்துகொள்ளப்பட்டது|Understood the spoken medicine name
+524|புதுப்பித்த நிலையில்|Up to date
+525|செல்லுபடியானது|Valid
+526|சரிபார்க்கப்பட்டது|Verified
+527|குரல்|Voice
+528|குரல் சரிபார்ப்பு|Voice check
+529|குரல் அறிதலுக்கு இணையம் தேவைப்பட்டது. நீங்கள் தட்டச்சு செய்யலாம் — அது ஆஃப்லைனில் வேலை செய்யும்.|Voice recognition needed the internet. You can type instead — that works offline.
+530|குரல் முதலில், இந்திய மொழிகளில்|Voice-first, in Indian languages
+531|குரல்: மருந்தின் பெயர்|Voice: medicine name
+533|சரிபார்க்கும் அளவுக்குத் தெளிவாக அட்டையை எங்களால் படிக்க முடியவில்லை|We couldn't read the strip clearly enough to check it
+534|நாங்கள் எதையும் விற்பதில்லை, ஒருபோதும் வேறு எந்த மருந்தையும் பரிந்துரைப்பதில்லை.|We sell nothing and never suggest any other medicine.
+535|நாங்கள் ஊகிக்க மாட்டோம். விசைப்பலகையில் தொகுதி எண்ணைத் தட்டச்சு செய்யவும், அல்லது நல்ல வெளிச்சத்தில் அருகில் புகைப்படம் எடுக்கவும்.|We won't guess. Type the batch number on the keypad, or take a closer photo in good light.
+536|இணையம் திரும்பி வரும்போது நினைவூட்டுவோம்|We will remind you when internet is back
+537|எது தவறாகத் தெரிகிறது?|What looks wrong?
+538|நான் என்ன செய்ய வேண்டும்?|What should I do?
+539|இதன் பொருள்|What this means
+540|அடுத்து என்ன செய்வது|What to do next
+541|என்ன தேடப்பட்டது|What was searched
+542|நாங்கள் இன்னும் நிரூபிக்க முடியாதவை|What we cannot yet prove
+543|ஆஃப்லைனில் எது வேலை செய்யும்|What works offline
+544|WhatsApp எண்|WhatsApp number
+545|எங்கே, எப்போது வாங்கியது:|Where and when bought:
+546|எந்த மருந்தைச் சரிபார்க்கலாம்?|Which medicine shall we check?
+547|உங்கள் மருந்து எது? அதைத் தட்டவும்.|Which one is your medicine? Tap it.
+548|ஏன் மஞ்சள்: இந்த நிறுவனத்தின் இதே மருந்தின் மற்ற தொகுதிகள் அரசு பட்டியலில் உள்ளன. உங்கள் தொகுதி அவற்றில் ஒன்று அல்ல.|Why amber: other batches of this same medicine of this company are in the official list. Your batch is not one of them.
+549|ஏன் மஞ்சள்: இந்த மருந்தின் சில தொகுதிகள் பட்டியலில் உள்ளன, மேலும் தொகுதி எண் உள்ளிடப்படவில்லை.|Why amber: some batches of this medicine are in the list, and no batch number was entered.
+550|ஏன் மஞ்சள்: தொகுதி எண் முழுமையற்றதாகத் தெரிகிறது மற்றும் எச்சரிக்கை உள்ள தொகுதி போலத் தொடங்குகிறது. முழு எண்ணை உள்ளிடவும்.|Why amber: the batch number looks incomplete and starts like a flagged batch. Enter the full number.
+551|ஏன் மஞ்சள்: தொகுதி எண் முழுமையாகப் பொருந்துகிறது, ஆனால் உறுதிசெய்ய நிறுவனம் வழங்கப்படவில்லை.|Why amber: the batch number matches exactly, but no company was given to confirm.
+552|ஏன் மஞ்சள்: தொகுதி எண் முழுமையாகப் பொருந்துகிறது, ஆனால் நிறுவனப் பொருத்தம் நிச்சயமற்றது.|Why amber: the batch number matches exactly, but the company match is uncertain.
+553|ஏன் மஞ்சள்: இந்தத் தொகுதி எண் பட்டியலில் உள்ளது, ஆனால் வேறொரு நிறுவனத்தின் பெயரில். அட்டையில் நிறுவனப் பெயரைச் சரிபார்க்கவும்.|Why amber: this batch number is in the list, but under another company's name. Check the company name on the strip.
+554|ஏன் மஞ்சள்: இந்தத் தொகுதி எண் பட்டியலில் உள்ளது, ஆனால் வேறொரு மருந்தின் பெயரில்.|Why amber: this batch number is in the list, but under another medicine name.
+555|ஏன் மஞ்சள்: உங்கள் தொகுதி எண் எச்சரிக்கை உள்ள தொகுதியிலிருந்து ஒரு எழுத்து வேறுபடுகிறது. அது படிக்கும் தவறாக இருக்கலாம்.|Why amber: your batch number differs by one character from a flagged batch. It may be a reading slip.
+556|ஏன் DawaShield|Why DawaShield
+557|ஏன் இந்த முடிவு?|Why this result?
+558|வேலை நாட்கள், 9–5:30|working days, 9–5:30
+559|ஆஃப்லைனில் வேலை செய்யும்|Works offline
+560|மலிவான போன்களில் ஆஃப்லைனில் வேலை செய்யும்|Works offline on cheap phones
+561|புகார் எழுதவும்|Write a complaint
+562|தவறான முடிவு அறிக்கைகள்|Wrong-result reports
+563|ஆம், எனக்குத் தெரிவிக்கவும்|Yes, alert me
+564|ஆம், இந்தத் தேதி அட்டையில் உள்ளது|Yes, this date is on the strip
+565|ஏதேனும் ஒன்றுக்கு எச்சரிக்கை வந்தவுடன் உங்களுக்கும் உங்கள் குடும்பத்திற்கும் தெரியும்.|As soon as one is flagged you and your family will know.
+566|நீங்கள் ஆஃப்லைனில் உள்ளீர்கள். சரிபார்ப்பு இன்னும் இந்த போனில் வேலை செய்யும்.|You are offline. The check still works on this phone.
+567|நீங்கள் தொகுதி எண்ணை உள்ளிடவில்லை.|You did not enter a batch number.
+568|நீங்கள் உள்ளிட்டது|You entered
+569|நீங்கள் சொன்னது|You said
+570|உங்கள் தொகுதி {0} அந்தப் பட்டியலில் இல்லை.|Your batch {0} is not in that list.
+571|உங்கள் தொகுதி எங்கள் அரசு பட்டியலில் கிடைக்கவில்லை.|Your batch was not found in our official list.
+572|உங்கள் மருந்து CDSCO இன் {2} பட்டியலில் உள்ள தொகுதி {0} ({1}) போலத் தெரிகிறது, ஆனால் சரியாக அதுவல்ல.|Your medicine looks like batch {0} ({1}) of CDSCO's {2} list, but not exactly the same.
+573|உங்கள் மருந்துகளும் குடும்ப எண்களும் இந்த போனிலேயே இருக்கும். கணக்கு, பெயர் அல்லது போன் எண் கேட்கப்படுவதில்லை.|Your medicines and family numbers stay in this phone itself. No account, name or phone number is asked for.
+574|உங்கள் மருந்துகள் இந்த போனிலேயே இருக்கும். கணக்கு, பெயர் அல்லது போன் எண் கேட்கப்படுவதில்லை.|Your medicines stay in this phone itself. No account, name or phone number is asked for.
+575|மருந்துப் பாதுகாப்பு பற்றித் தெரிந்துகொள்ள உங்கள் அம்மாவின் மருந்துப் பெட்டிக்கு இணையம், ஆங்கில வாசிப்பு அல்லது தொகுதி எண்களின் தொழில்நுட்பப் புரிதல் தேவைப்படக் கூடாது.|To be informed about medicine safety your mother's medicine cabinet should not need internet, English reading or technical understanding of batch numbers.
+576|உங்கள் சேமித்த|Your saved
+577|சேமித்த மருந்துக்கு எச்சரிக்கை வந்தால் உங்கள் மகன் அல்லது மகளுக்குத் தெரியலாம்|Your son or daughter can get an alert if a saved medicine is flagged
+578|உங்கள் குரல் ஒருபோதும் பதிவு, சேமிப்பு அல்லது பதிவேற்றம் செய்யப்படுவதில்லை. உலாவி அதை எழுத்தாக மாற்றுகிறது; மொழித் தொகுப்புடன் இது போனிலேயே நடக்கும்.|Your voice is never recorded, stored or uploaded. The browser turns it into text; with the language pack this happens on the phone itself.
+589|காலாவதி தேதியைச் சரிபார்க்கவும். உரிமம் பெற்ற மருந்தாளுநரிடம், ரசீதுடன் வாங்கவும். பின்னர் எச்சரிக்கை வந்தால் தெரிவிக்கவும். சந்தேகமா? CDSCO க்குப் புகாரளிக்கவும்.|Check the expiry date. Buy from a licensed chemist, with a bill. Get alerted if an alert comes later. Suspicious? Report it to CDSCO.
+590|DawaShield உங்கள் மருந்தின் தொகுதியை இந்தியாவின் மருந்து ஒழுங்குமுறை அமைப்பான CDSCO இன் அரசு தர எச்சரிக்கைகளுடன் பொருத்துகிறது. இது மருந்தைச் சோதிப்பதில்லை. 'எச்சரிக்கை இல்லை' என்றால் 'பாதுகாப்பானது' என்று பொருள் இல்லை, ஏனெனில் அரசு பட்டியல்கள் தாமதமாக வருகின்றன. இது ஒருபோதும் எந்த மருந்தையும் பரிந்துரைப்பதில்லை. ஒவ்வொரு சிகிச்சை முடிவு பற்றியும் உங்கள் மருத்துவர் அல்லது மருந்தாளுநரிடம் பேசுங்கள். உங்கள் மருந்துகள் இந்த போனிலேயே இருக்கும். கணக்கு, பெயர் அல்லது போன் எண் கேட்கப்படுவதில்லை.|DawaShield matches your medicine's batch with official quality alerts of CDSCO, India's drug regulator. It does not test the medicine. 'No alert' does not mean 'safe', because official lists come out late. It never suggests any medicine. Talk to your doctor or chemist about every treatment decision. Your medicines stay in this phone itself. No account, name or phone number is asked for.
+591|சிவப்பு. ஒரு அரசு எச்சரிக்கை இதே தொகுதியுடன் பொருந்துகிறது. அடுத்த டோஸுக்கு முன் உங்கள் மருத்துவர் அல்லது மருந்தாளுநரிடம் பேசுங்கள். அத்தியாவசிய மருந்தை நீங்களாகவே நிறுத்த வேண்டாம். தரநிலைக்கு ஏற்றதல்ல (NSQ).|Red. An official alert matches this exact batch. Talk to your doctor or chemist before your next dose. Don't stop an essential medicine on your own. Not of Standard Quality (NSQ).
+592|சிவப்பு. ஒரு அரசு எச்சரிக்கை இதே தொகுதியுடன் பொருந்துகிறது. அட்டையையும் ரசீதையும் வைத்திருங்கள். அதைப் பயன்படுத்த வேண்டாம். மருந்தாளுநர் மற்றும் CDSCO க்குப் புகாரளிக்கவும். போலி (சந்தேகிக்கப்படும் போலி).|Red. An official alert matches this exact batch. Keep the strip and the bill. Don't use it. Report it to the chemist and CDSCO. Spurious (suspected fake).
+593|மஞ்சள். சாத்தியமான பொருத்தம்: அடுத்த டோஸுக்கு முன் அட்டையை உங்கள் மருந்தாளுநரிடம் காட்டுங்கள். இது உறுதிசெய்யப்பட்ட பொருத்தம் அல்ல.|Amber. Possible match: show the strip to your chemist before the next dose. This is not a confirmed match.
+594|மஞ்சள். சாத்தியமான பொருத்தம்: அடுத்த டோஸுக்கு முன் அட்டையை உங்கள் மருந்தாளுநரிடம் காட்டுங்கள். ஏன் மஞ்சள்: தொகுதி எண் முழுமையாகப் பொருந்துகிறது, ஆனால் நிறுவனப் பொருத்தம் நிச்சயமற்றது.|Amber. Possible match: show the strip to your chemist before the next dose. Why amber: the batch number matches exactly, but the company match is uncertain.
+595|மஞ்சள். சாத்தியமான பொருத்தம்: அடுத்த டோஸுக்கு முன் அட்டையை உங்கள் மருந்தாளுநரிடம் காட்டுங்கள். ஏன் மஞ்சள்: தொகுதி எண் முழுமையாகப் பொருந்துகிறது, ஆனால் உறுதிசெய்ய நிறுவனம் வழங்கப்படவில்லை.|Amber. Possible match: show the strip to your chemist before the next dose. Why amber: the batch number matches exactly, but no company was given to confirm.
+596|மஞ்சள். சாத்தியமான பொருத்தம்: அடுத்த டோஸுக்கு முன் அட்டையை உங்கள் மருந்தாளுநரிடம் காட்டுங்கள். ஏன் மஞ்சள்: இந்தத் தொகுதி எண் பட்டியலில் உள்ளது, ஆனால் வேறொரு நிறுவனத்தின் பெயரில். அட்டையில் நிறுவனப் பெயரைச் சரிபார்க்கவும்.|Amber. Possible match: show the strip to your chemist before the next dose. Why amber: this batch number is in the list, but under another company's name. Check the company name on the strip.
+597|மஞ்சள். சாத்தியமான பொருத்தம்: அடுத்த டோஸுக்கு முன் அட்டையை உங்கள் மருந்தாளுநரிடம் காட்டுங்கள். ஏன் மஞ்சள்: இந்தத் தொகுதி எண் பட்டியலில் உள்ளது, ஆனால் வேறொரு மருந்தின் பெயரில்.|Amber. Possible match: show the strip to your chemist before the next dose. Why amber: this batch number is in the list, but under another medicine name.
+598|மஞ்சள். சாத்தியமான பொருத்தம்: அடுத்த டோஸுக்கு முன் அட்டையை உங்கள் மருந்தாளுநரிடம் காட்டுங்கள். ஏன் மஞ்சள்: உங்கள் தொகுதி எண் எச்சரிக்கை உள்ள தொகுதியிலிருந்து ஒரு எழுத்து வேறுபடுகிறது. அது படிக்கும் தவறாக இருக்கலாம்.|Amber. Possible match: show the strip to your chemist before the next dose. Why amber: your batch number differs by one character from a flagged batch. It may be a reading slip.
+599|மஞ்சள். சாத்தியமான பொருத்தம்: அடுத்த டோஸுக்கு முன் அட்டையை உங்கள் மருந்தாளுநரிடம் காட்டுங்கள். ஏன் மஞ்சள்: தொகுதி எண் முழுமையற்றதாகத் தெரிகிறது மற்றும் எச்சரிக்கை உள்ள தொகுதி போலத் தொடங்குகிறது. முழு எண்ணை உள்ளிடவும்.|Amber. Possible match: show the strip to your chemist before the next dose. Why amber: the batch number looks incomplete and starts like a flagged batch. Enter the full number.
+600|மஞ்சள். இந்த மருந்தின் மற்ற தொகுதிகளுக்கு எச்சரிக்கை உள்ளது: உங்கள் தொகுதி எண்ணை உங்கள் மருந்தாளுநரிடம் சரிபார்க்கவும். ஏன் மஞ்சள்: இந்த நிறுவனத்தின் இதே மருந்தின் மற்ற தொகுதிகள் அரசு பட்டியலில் உள்ளன. உங்கள் தொகுதி அவற்றில் ஒன்று அல்ல.|Amber. Other batches of this medicine are flagged: check your batch number with your chemist. Why amber: other batches of this same medicine of this company are in the official list. Your batch is not one of them.
+601|மஞ்சள். இந்த மருந்தின் மற்ற தொகுதிகளுக்கு எச்சரிக்கை உள்ளது: உங்கள் தொகுதி எண்ணை உங்கள் மருந்தாளுநரிடம் சரிபார்க்கவும். ஏன் மஞ்சள்: இந்த மருந்தின் சில தொகுதிகள் பட்டியலில் உள்ளன, மேலும் தொகுதி எண் உள்ளிடப்படவில்லை.|Amber. Other batches of this medicine are flagged: check your batch number with your chemist. Why amber: some batches of this medicine are in the list, and no batch number was entered.
+602|சாம்பல். இந்தத் தொகுதிக்கு அரசு எச்சரிக்கை இல்லை. இது மருந்து பாதுகாப்பானது என்று நிரூபிக்கவில்லை. அரசு எச்சரிக்கைகள் தாமதமாக வரலாம்.|Grey. No official alert for this exact batch. This does not prove the medicine is safe. Official alerts can come late.
+603|சாம்பல். இந்தத் தொகுதிக்கு அரசு எச்சரிக்கை இல்லை. இந்த நிறுவனத்தின் வேறொரு மருந்து பட்டியலில் உள்ளது. உங்கள் மருந்து பாதிக்கப்படவில்லை.|Grey. No official alert for this exact batch. This company has a different medicine in the list. Your medicine is not affected.
+604|சரிபார்க்கும் அளவுக்குத் தெளிவாக அட்டையை எங்களால் படிக்க முடியவில்லை. நாங்கள் ஊகிக்க மாட்டோம். விசைப்பலகையில் தொகுதி எண்ணைத் தட்டச்சு செய்யவும், அல்லது நல்ல வெளிச்சத்தில் அருகில் புகைப்படம் எடுக்கவும்.|We couldn't read the strip clearly enough to check it. We won't guess. Type the batch number on the keypad, or take a closer photo in good light.

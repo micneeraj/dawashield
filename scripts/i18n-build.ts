@@ -17,6 +17,14 @@
 // dates are never translated: they are runtime values ({0} placeholders) or are
 // excluded from the string list. Every result is cached in i18n/.cache.json, so
 // a re-run only asks for what is new. CACHE_ONLY=1 rebuilds from the cache alone.
+//
+// Without Sarvam (no key, or no credits): translations come from
+// i18n/manual/<lang>.tsv ("index|translation|back-translation"; a line
+// starting "index!" is the retranslation used when a safety string drifts).
+// Indexes refer to i18n/strings.json. These go through the same meaning check
+// and the same 90% rules. Sarvam stays the optional upgrade path: a cached or
+// live Sarvam answer is always preferred, and voice clips need Sarvam (without
+// them the app uses the browser's own voice for that language, if the device has one).
 import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import { SarvamAIClient } from "sarvamai";
@@ -24,7 +32,7 @@ import { collectStrings } from "./i18n-strings";
 import { CLIPS } from "../src/content/messages";
 
 const key = process.env.SARVAM_API_KEY;
-if (!key && process.env.CACHE_ONLY !== "1") { console.error("Set SARVAM_API_KEY in .env"); process.exit(1); }
+if (!key) console.log("No SARVAM_API_KEY: using cache + i18n/manual only.");
 const client = new SarvamAIClient({ apiSubscriptionKey: key ?? "" });
 
 const LANGS = [
@@ -48,7 +56,7 @@ let dirty = 0;
 const saveCache = () => { writeFileSync(CACHE, JSON.stringify(cache)); dirty = 0; };
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
-let noCredits = process.env.CACHE_ONLY === "1";
+let noCredits = process.env.CACHE_ONLY === "1" || !key;
 let creditNote = noCredits ? "CACHE_ONLY run" : "";
 
 /** Translation, or null when it is not available (no credits / not cached). Never guessed. */
@@ -84,6 +92,24 @@ async function translate(text: string, src: string, tgt: string, model: "sarvam-
   }
 }
 
+// ---------- local translations (no Sarvam) ----------
+interface Manual { tr: string; back: string }
+const SNAP: { en: string }[] = existsSync("i18n/strings.json") ? JSON.parse(readFileSync("i18n/strings.json", "utf8")) : [];
+// Code fragments the string scanner picks up (CSS classes, ids, product names): passed through unchanged.
+const PASS_IDX = [10, 11, 27, 41, 55, 137, 150, 170, 189, 204, 307, 346, 347, 348, 427, 458, 463, 505, 532]; // placeholders, CSS classes, ids, product names, email
+function loadManual(code: string) {
+  const main = new Map<string, Manual>(), alt = new Map<string, Manual>();
+  for (const i of PASS_IDX) { const en = SNAP[i]?.en; if (en) main.set(en, { tr: en, back: en }); }
+  const f = `i18n/manual/${code}.tsv`;
+  if (existsSync(f)) for (const line of readFileSync(f, "utf8").split(/\r?\n/)) {
+    const m = line.match(/^(\d+)(!?)[\t|]([^\t|]*)[\t|]([^\t|]*)$/);
+    if (!m) continue;
+    const en = SNAP[+m[1]]?.en;
+    if (en) (m[2] ? alt : main).set(en, { tr: m[3].trim(), back: m[4].trim() });
+  }
+  return { main, alt };
+}
+
 // ---------- meaning check (plain code) ----------
 const STOP = new Set("a an the of to in on for and or is are be it this that your you we our with as at by from if so do does was were has have had will can may please just".split(" "));
 const SYN: [RegExp, string][] = [
@@ -100,7 +126,7 @@ function meaningScore(orig: string, back: string): { score: number; negationOk: 
   const hit = a.filter((w) => b.some((v) => v === w || (w.length >= 5 && v.length >= 5 && v.slice(0, 5) === w.slice(0, 5)))).length;
   return { score: a.length ? hit / a.length : 1, negationOk: NEG.test(orig) === NEG.test(back) };
 }
-const placeholdersOk = (src: string, out: string) => !!out && (src.match(/\{\d+\}/g) ?? []).every((p) => out.includes(p));
+const placeholdersOk = (src: string, out: string) => !!out && (src.match(/\{\w+\}/g) ?? []).every((p) => out.includes(p));
 const SAFETY_MIN = 0.5;
 
 // ---------- run ----------
@@ -125,13 +151,24 @@ const good = (s: Status) => s === "ok" || s === "retranslated";
 
 for (const L of LANGS) {
   if (ONLY && !ONLY.has(L.code)) continue;
+  const MAN = loadManual(L.code);
   const attempt = async (text: string, model: "sarvam-translate:v1" | "mayura:v1"): Promise<Attempt | null> => {
-    const tr = await translate(text, "en-IN", L.bcp, model);
-    const back = tr ? await translate(tr, L.bcp, "en-IN", "sarvam-translate:v1") : null;
-    if (tr == null || back == null) return null; // not available: never shipped unverified
-    return { tr, back, model, ...meaningScore(text, back), ph: placeholdersOk(text, tr) };
+    let tr = await translate(text, "en-IN", L.bcp, model);
+    let back = tr ? await translate(tr, L.bcp, "en-IN", "sarvam-translate:v1") : null;
+    let used: string = model;
+    if (tr == null || back == null) {
+      const m = (model === "mayura:v1" ? MAN.alt : MAN.main).get(text);
+      if (!m) return null; // not available: never shipped unverified
+      ({ tr, back } = m);
+      used = model === "mayura:v1" ? "manual-retranslation" : "manual";
+    }
+    return { tr, back, model: used, ...meaningScore(text, back), ph: placeholdersOk(text, tr) };
   };
 
+  const localAttempt = (text: string, which: "main" | "alt"): Attempt | null => {
+    const m = MAN[which].get(text);
+    return m ? { tr: m.tr, back: m.back, model: which === "alt" ? "manual-retranslation" : "manual", ...meaningScore(text, m.back), ph: placeholdersOk(text, m.tr) } : null;
+  };
   const rows = await pool(strings, 6, async (s): Promise<Row> => {
     const bad = (x: Attempt) => !x.ph || (s.safety && (!x.negationOk || x.score < SAFETY_MIN));
     let best = await attempt(s.text, "sarvam-translate:v1");
@@ -140,6 +177,8 @@ for (const L of LANGS) {
     if (bad(best)) {
       const alt = await attempt(s.text, "mayura:v1").catch(() => null);
       if (alt && (!bad(alt) || (alt.ph && alt.negationOk && alt.score > best.score))) best = alt;
+      // Still drifting: try the local translation and its retranslation.
+      for (const m of [localAttempt(s.text, "main"), localAttempt(s.text, "alt")]) if (bad(best) && m && !bad(m)) best = m;
       status = bad(best) ? "FLAGGED" : "retranslated";
     }
     // A safety string whose meaning still drifts after retranslation is shown in English.
@@ -154,6 +193,7 @@ for (const L of LANGS) {
     if (!a.negationOk || a.score < SAFETY_MIN) {
       const b = await attempt(c.text, "mayura:v1").catch(() => null);
       if (b && b.negationOk && b.score >= a.score) a = b;
+      for (const m of [localAttempt(c.text, "main"), localAttempt(c.text, "alt")]) if ((!a.negationOk || a.score < SAFETY_MIN) && m && m.ph && m.negationOk && m.score >= SAFETY_MIN) a = m;
     }
     return { clip: c.clip, en: c.text, ...a, ok: a.negationOk && a.score >= SAFETY_MIN };
   });
@@ -226,7 +266,7 @@ for (const L of LANGS) {
 
 // Manifest the app reads to decide which regional languages to offer.
 const manifest = existsSync("public/i18n/index.json") ? JSON.parse(readFileSync("public/i18n/index.json", "utf8")) : { langs: {} };
-for (const [k, v] of Object.entries(summary)) manifest.langs[k] = { available: v.available, coverage: Math.round((v.translated / v.strings) * 1000) / 1000, clips: v.clips };
+for (const [k, v] of Object.entries(summary)) manifest.langs[k] = { available: v.available, coverage: Math.round((v.translated / v.strings) * 1000) / 1000, clips: v.clips, voice: v.clips > 0 ? "sarvam" : "browser" };
 writeFileSync("public/i18n/index.json", JSON.stringify(manifest, null, 1) + "\n");
 const prevSum = existsSync("i18n/review/SUMMARY.json") ? JSON.parse(readFileSync("i18n/review/SUMMARY.json", "utf8")) : {};
 writeFileSync("i18n/review/SUMMARY.json", JSON.stringify({ ...prevSum, ...summary, note: creditNote || undefined }, null, 2) + "\n");

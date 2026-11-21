@@ -2,7 +2,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState, t
 import type { Lang } from "./content/messages";
 import { UI, type UIKey } from "./content/ui";
 import { loadDataset, syncIfNewer, recheckCabinet, expiryReminders, flushQueue, type Dataset } from "./lib/sync";
-import { playClip } from "./lib/audio";
+import { playClip, regionalVoiceAvailable } from "./lib/audio";
 import { isRegional, loadDict, type AppLang } from "./lib/i18n";
 import type { Regional } from "./lib/indic";
 import { setDisplayLocale } from "./lib/format";
@@ -82,6 +82,8 @@ interface Ctx {
   regionalAvailable: Partial<Record<Regional, boolean>>;
   /** Translation dictionary for the active regional language (for the screen layer). */
   regionalDict: Awaited<ReturnType<typeof loadDict>>;
+  /** false when the device has no speech voice for the active regional language (text only). */
+  regionalVoiceOk: boolean;
   t(k: UIKey): string;
   voice: "female" | "male";
   setVoice(v: "female" | "male"): void;
@@ -118,6 +120,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
   });
   const [regionalDict, setRegionalDict] = useState<Awaited<ReturnType<typeof loadDict>>>(null);
   const [regionalAvailable, setRegionalAvailable] = useState<Partial<Record<Regional, boolean>>>({});
+  const [regionalVoiceMode, setRegionalVoiceMode] = useState<Partial<Record<Regional, "sarvam" | "browser">>>({});
+  const [regionalVoiceOk, setRegionalVoiceOk] = useState(true);
   const [voice, setVoiceS] = useState<"female" | "male">(() => (read("ds-voice", "female") === "male" ? "male" : "female"));
   const [muted, setMutedS] = useState(() => read("ds-muted", "0") === "1");
   const [online, setOnline] = useState(navigator.onLine);
@@ -147,7 +151,14 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const setMuted = (m: boolean) => { setMutedS(m); write("ds-muted", m ? "1" : "0"); };
   const t = useCallback((k: UIKey) => UI[k][lang], [lang]);
   const clipLang: AppLang = regionalActive ? uiLang : lang;
-  const say = useCallback((clip: string) => void playClip(clip, clipLang, voice, muted, regionalActive ? regionalDict?.dict.clips : undefined), [clipLang, voice, muted, regionalActive, regionalDict]);
+  const say = useCallback((clip: string) => void playClip(clip, clipLang, voice, muted, regionalActive ? { texts: regionalDict?.dict.clips, mode: isRegional(uiLang) ? regionalVoiceMode[uiLang] ?? "browser" : "browser" } : undefined), [clipLang, voice, muted, regionalActive, regionalDict, uiLang, regionalVoiceMode]);
+  useEffect(() => {
+    if (!regionalActive) { setRegionalVoiceOk(true); return; }
+    if (isRegional(uiLang) && regionalVoiceMode[uiLang] === "sarvam") { setRegionalVoiceOk(true); return; }
+    let live = true;
+    void regionalVoiceAvailable(uiLang).then((ok) => { if (live) setRegionalVoiceOk(ok); });
+    return () => { live = false; };
+  }, [regionalActive, uiLang, regionalVoiceMode]);
 
   useEffect(() => {
     document.documentElement.lang = regionalActive ? uiLang : lang;
@@ -164,8 +175,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
   // Which regional languages are published (manifest is small, online only).
   useEffect(() => {
     if (!online) return;
-    fetch("/i18n/index.json", { cache: "no-cache" }).then((r) => (r.ok ? r.json() : null)).then((m: { langs?: Record<string, { available?: boolean }> } | null) => {
-      if (m?.langs) setRegionalAvailable(Object.fromEntries(Object.entries(m.langs).map(([k, v]) => [k, !!v.available])) as Partial<Record<Regional, boolean>>);
+    fetch("/i18n/index.json", { cache: "no-cache" }).then((r) => (r.ok ? r.json() : null)).then((m: { langs?: Record<string, { available?: boolean; voice?: string }> } | null) => {
+      if (m?.langs) {
+        setRegionalAvailable(Object.fromEntries(Object.entries(m.langs).map(([k, v]) => [k, !!v.available])) as Partial<Record<Regional, boolean>>);
+        setRegionalVoiceMode(Object.fromEntries(Object.entries(m.langs).map(([k, v]) => [k, v.voice === "sarvam" ? "sarvam" : "browser"])) as Partial<Record<Regional, "sarvam" | "browser">>);
+      }
     }).catch(() => {});
   }, [online]);
 
@@ -206,7 +220,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const value = useMemo<Ctx>(() => ({
-    lang, setLang, uiLang, setUiLang, regionalActive, regionalFallback, regionalAvailable, regionalDict, t, voice, setVoice, muted, setMuted, say, online, dataset, dataMeta: dataset?.meta ?? metaFirst, syncing, sync, download,
+    lang, setLang, uiLang, setUiLang, regionalActive, regionalFallback, regionalAvailable, regionalDict, regionalVoiceOk, t, voice, setVoice, muted, setMuted, say, online, dataset, dataMeta: dataset?.meta ?? metaFirst, syncing, sync, download,
     screen: stack[stack.length - 1],
     go: (s) => {
       setStack((st) => (s.name === "home" ? [s] : [...st, s]));
@@ -218,7 +232,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     cabinetVersion, bumpCabinet: () => setCV((v) => v + 1),
     lastAi, noteAi: setLastAi,
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }), [lang, uiLang, regionalActive, regionalFallback, regionalAvailable, regionalDict, t, voice, muted, say, online, dataset, metaFirst, syncing, sync, download, stack, check, cabinetVersion, lastAi]);
+  }), [lang, uiLang, regionalActive, regionalFallback, regionalAvailable, regionalDict, regionalVoiceOk, t, voice, muted, say, online, dataset, metaFirst, syncing, sync, download, stack, check, cabinetVersion, lastAi]);
 
   return <C.Provider value={value}>{children}</C.Provider>;
 }
