@@ -53,6 +53,7 @@ const L = {
   entries: { hi: "प्रविष्टि", en: "entries" },
   task: {
     speech: { hi: "आवाज़ से दवा का नाम समझा", en: "Understood the spoken medicine name" },
+    transcribe: { hi: "रिकॉर्ड की गई आवाज़ को शब्दों में लिखा", en: "Wrote the recorded speech as text" },
     "photo-full": { hi: "पूरी फ़ोटो पढ़ी", en: "Read the full photo" },
     "photo-crop": { hi: "B.No / EXP वाला हिस्सा ज़ूम करके पढ़ा", en: "Read the zoomed B.No / EXP area" },
     "photo-enhanced": { hi: "चमक घटाकर, कंट्रास्ट बढ़ाकर दोबारा पढ़ा", en: "Re-read with glare reduced and contrast boosted" },

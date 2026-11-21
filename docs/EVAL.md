@@ -89,3 +89,31 @@ Labels live in `data/eval_images/labels.csv` (`file,medicine,batch,expiry,compan
 ```
 npm run eval
 ```
+
+<!-- voice-loop -->
+## d) Voice loop test (generated speech, not real speakers)
+
+Run 2026-11-21 15:44 UTC on the live site (https://dawashield-hybrid-3023.web.app) with `node --env-file=.env scripts/voice-loop.mjs`, then `node scripts/voice-report.mjs`.
+Chromium with a fake microphone (`--use-fake-ui-for-media-stream --use-file-for-fake-audio-capture`) fed one generated sentence per case, “I want to check <medicine>” in the language (`eval/voice/phrases.json`; voices: edge-tts neural voices, gTTS for Punjabi).
+Flow per case: tap Speak → welcome clip → app records (MediaRecorder, max 8 s) → Gemini Flash-Lite transcript → deterministic matcher → option buttons. First case per language also taps the demo RED batch.
+
+**App Check note:** reCAPTCHA Enterprise correctly rejects headless browsers, so in this test the page's own Firebase AI Logic request is forwarded unchanged to the same model with the developer key held by the Node test process (never by the page). Everything except the App Check token itself is exercised. Hindi/English: headless Chromium has no working Web Speech service, so these runs also cover the fallback from browser recognition to recording.
+
+| Language | Transcribed | Top-1 | Top-3 | Welcome clip | Demo RED clip | Clip source |
+|---|---|---|---|---|---|---|
+| Hindi | 4/4 | 4/4 | **4/4** | played /audio/hi/welcome.mp3 | played /audio/hi/red_nsq.mp3 | Sarvam clips (unchanged) |
+| English | 4/4 | 4/4 | **4/4** | played /audio/en/welcome.mp3 | played /audio/en/red_nsq.mp3 | Sarvam clips (unchanged) |
+| Punjabi | 4/4 | 4/4 | **4/4** | played /audio/pa/welcome.mp3 | played /audio/pa/red_nsq.mp3 | Gemini TTS (11/26), rest browser voice → text |
+| Gujarati | 4/4 | 3/4 | **3/4** | text only (no device voice for this language in test Chromium) | text only (RED result shown) | browser voice → text only (Gemini clips not generated yet: daily TTS quota) |
+| Marathi | 4/4 | 4/4 | **4/4** | text only (no device voice for this language in test Chromium) | text only (RED result shown) | browser voice → text only (Gemini clips not generated yet: daily TTS quota) |
+| Kannada | 4/4 | 4/4 | **4/4** | played /audio/kn/welcome.mp3 | played /audio/kn/red_nsq.mp3 | Gemini TTS (26/26) |
+| Tamil | 4/4 | 4/4 | **4/4** | text only (no device voice for this language in test Chromium) | text only (RED result shown) | browser voice → text only (Gemini clips not generated yet: daily TTS quota) |
+| **All** | 28/28 | 27/28 | **27/28** | | | |
+
+Misses:
+- Gujarati: Telmisartan: heard “mare tell me saturn tupasvi che” → Sterio 16, Satrang Arhi
+
+**iPhone Safari emulation (Playwright WebKit, iPhone 13 profile, Windows):** Web Speech absent, MediaRecorder absent, getUserMedia absent; welcome clip played. Playwright's Windows WebKit build has no media-capture APIs, so it can only confirm the app picks the recording path and shows the polite "type instead" card when no microphone API exists. The iOS format choice (audio/mp4 when webm is unsupported) is covered by unit tests (`tests/voice-record.test.ts`); a real iPhone test is still needed.
+
+What this does not prove: accuracy with real speakers, accents, background noise or real phone microphones; App Check acceptance of the new transcription call on a real phone.
+<!-- /voice-loop -->

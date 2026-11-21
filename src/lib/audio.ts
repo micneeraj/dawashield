@@ -5,7 +5,9 @@
 //            browser's built-in speech synthesis, ONLY with a voice for that exact
 //            language. No matching voice on the device = text only (never a wrong voice).
 //            Optional upgrade path: if the build made Sarvam clips (index.json
-//            voice: "sarvam"), those mp3s are played instead.
+//            voice: "sarvam" or "gemini"), those mp3s are played instead.
+//            Gemini TTS clips are made at build time (scripts/make-gemini-audio.mjs),
+//            lazy-loaded per clip, never precached for offline.
 import type { AppLang } from "./i18n";
 
 let current: HTMLAudioElement | null = null;
@@ -54,19 +56,21 @@ export async function regionalVoiceAvailable(lang: AppLang): Promise<boolean> {
   return !!pickVoice(await voices(), lang);
 }
 
-export interface RegionalVoice { texts?: Record<string, string>; mode?: "sarvam" | "browser" }
+export interface RegionalVoice { texts?: Record<string, string>; mode?: "sarvam" | "gemini" | "browser" }
 
 export async function playClip(clip: string, lang: AppLang, voice: "female" | "male", muted: boolean, regional?: RegionalVoice): Promise<void> {
   if (muted) return;
   stopClip();
-  if (lang === "hi" || lang === "en" || (regional?.mode === "sarvam" && regional.texts?.[clip])) {
+  if (lang === "hi" || lang === "en" || ((regional?.mode === "sarvam" || regional?.mode === "gemini") && regional.texts?.[clip])) {
     try {
       current = new Audio(`/audio/${clipDir(lang, voice)}/${clip}.mp3`);
       await current.play();
+      return;
     } catch {
       // Missing clip or autoplay blocked: the same text is always on screen.
+      // Regional clip failed to load: try the device voice below.
+      if (lang === "hi" || lang === "en") return;
     }
-    return;
   }
   const text = regional?.texts?.[clip];
   const s = synth();

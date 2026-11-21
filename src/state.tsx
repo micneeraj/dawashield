@@ -120,7 +120,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   });
   const [regionalDict, setRegionalDict] = useState<Awaited<ReturnType<typeof loadDict>>>(null);
   const [regionalAvailable, setRegionalAvailable] = useState<Partial<Record<Regional, boolean>>>({});
-  const [regionalVoiceMode, setRegionalVoiceMode] = useState<Partial<Record<Regional, "sarvam" | "browser">>>({});
+  const [regionalVoiceMode, setRegionalVoiceMode] = useState<Partial<Record<Regional, "sarvam" | "gemini" | "browser">>>({});
   const [regionalVoiceOk, setRegionalVoiceOk] = useState(true);
   const [voice, setVoiceS] = useState<"female" | "male">(() => (read("ds-voice", "female") === "male" ? "male" : "female"));
   const [muted, setMutedS] = useState(() => read("ds-muted", "0") === "1");
@@ -154,7 +154,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const say = useCallback((clip: string) => void playClip(clip, clipLang, voice, muted, regionalActive ? { texts: regionalDict?.dict.clips, mode: isRegional(uiLang) ? regionalVoiceMode[uiLang] ?? "browser" : "browser" } : undefined), [clipLang, voice, muted, regionalActive, regionalDict, uiLang, regionalVoiceMode]);
   useEffect(() => {
     if (!regionalActive) { setRegionalVoiceOk(true); return; }
-    if (isRegional(uiLang) && regionalVoiceMode[uiLang] === "sarvam") { setRegionalVoiceOk(true); return; }
+    if (isRegional(uiLang) && (regionalVoiceMode[uiLang] === "sarvam" || regionalVoiceMode[uiLang] === "gemini")) { setRegionalVoiceOk(true); return; }
     let live = true;
     void regionalVoiceAvailable(uiLang).then((ok) => { if (live) setRegionalVoiceOk(ok); });
     return () => { live = false; };
@@ -178,7 +178,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     fetch("/i18n/index.json", { cache: "no-cache" }).then((r) => (r.ok ? r.json() : null)).then((m: { langs?: Record<string, { available?: boolean; voice?: string }> } | null) => {
       if (m?.langs) {
         setRegionalAvailable(Object.fromEntries(Object.entries(m.langs).map(([k, v]) => [k, !!v.available])) as Partial<Record<Regional, boolean>>);
-        setRegionalVoiceMode(Object.fromEntries(Object.entries(m.langs).map(([k, v]) => [k, v.voice === "sarvam" ? "sarvam" : "browser"])) as Partial<Record<Regional, "sarvam" | "browser">>);
+        setRegionalVoiceMode(Object.fromEntries(Object.entries(m.langs).map(([k, v]) => [k, v.voice === "sarvam" || v.voice === "gemini" ? v.voice : "browser"])) as Partial<Record<Regional, "sarvam" | "gemini" | "browser">>);
       }
     }).catch(() => {});
   }, [online]);

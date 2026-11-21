@@ -3,32 +3,43 @@
   "pa": {
    "available": true,
    "coverage": 1,
-   "clips": 0,
-   "voice": "browser"
+   "clips": 11,
+   "voice": "gemini",
+   "ttsCheck": 0.93,
+   "ttsModel": "gemini-2.5-flash-preview-tts",
+   "ttsNote": "11 of 26 clips (most important first); remaining clips use the browser voice until the next run"
   },
   "gu": {
    "available": true,
    "coverage": 1,
    "clips": 0,
-   "voice": "browser"
+   "voice": "browser",
+   "ttsCheck": null,
+   "ttsNote": "not generated yet: Gemini TTS free-tier daily quota (10 requests per model) used up; rerun npm run audio:gemini"
   },
   "mr": {
    "available": true,
    "coverage": 1,
    "clips": 0,
-   "voice": "browser"
+   "voice": "browser",
+   "ttsCheck": null,
+   "ttsNote": "not generated yet: Gemini TTS free-tier daily quota (10 requests per model) used up; rerun npm run audio:gemini"
   },
   "kn": {
    "available": true,
    "coverage": 1,
-   "clips": 0,
-   "voice": "browser"
+   "clips": 26,
+   "voice": "gemini",
+   "ttsCheck": 0.81,
+   "ttsModel": "gemini-3.8-flash-lite-tts"
   },
   "ta": {
    "available": true,
    "coverage": 1,
    "clips": 0,
-   "voice": "browser"
+   "voice": "browser",
+   "ttsCheck": null,
+   "ttsNote": "not generated yet: Gemini TTS free-tier daily quota (10 requests per model) used up; rerun npm run audio:gemini"
   }
  }
 }

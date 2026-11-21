@@ -1,0 +1,71 @@
+{
+ "note": "Machine translation (Gemini Flash-Lite), not yet human-reviewed. Non-safety UI strings only.",
+ "when": "2026-11-21T15:33:22.411Z",
+ "added": {
+  "pa": {
+   "Built by Neeraj Kumar": "नीरज कुमार द्वारा तैयार ਕੀਤਾ ਗਏ",
+   "Built by Neeraj Kumar · MIT licence · #BuildHybridAI 2026": "नीरज कुमार द्वारा तैयार ਕੀਤਾ ਗਏ · MIT ਲਾਇਸੈਂস · #BuildHybridAI 2026",
+   "DawaShield": "DawaShield",
+   "In Hindi / English the browser turns your voice into text; with the language pack this happens on the phone. In other languages (or when the browser cannot), up to 8 seconds of audio is sent once to Google Gemini only to write it as text. Your voice is never stored.": "ਹਿੰਦੀ ਜਾਂ ਅੰਗਰੇਜ਼ੀ ਵਿੱਚ ਬ੍ਰਾਊਜ਼ਰ ਤੁਹਾਡੀ ਆਵਾਜ਼ ਨੂੰ ਲਿਖਤ ਵਿੱਚ ਬਦਲ ਦਿੰਦਾ ਹੈ; ਭਾਸ਼ਾ ਪੈਕ ਨਾਲ ਇਹ ਫ਼ੋਨ ਵਿੱਚ ਹੀ ਹੋ ਜਾਂਦਾ ਹੈ। ਦੂਜੀਆਂ ਭਾਸ਼ਾਵਾਂ ਵਿੱਚ (ਜਾਂ ਜਦੋਂ ਬ੍ਰਾਊਜ਼ਰ ਨਹੀਂ ਕਰ ਸਕਦਾ), ਸਿਰਫ਼ ਲਿਖਤ ਵਿੱਚ ਬਦਲਣ ਲਈ 8 ਸਕਿੰਟ ਤੱਕ ਦੀ ਆਵਾਜ਼ Google Gemini ਨੂੰ ਭੇਜੀ ਜਾਂਦੀ ਹੈ। ਤੁਹਾਡੀ ਆਵਾਜ਼ ਕਦੇ ਵੀ ਸੁਰੱਖਿਅਤ ਨਹੀਂ ਕੀਤੀ ਜਾਂਦੀ।",
+   "MM/YYYY": "महीना/साल (MM/YYYY)",
+   "NotAllowedError": "इजाजत नहीं है (NotAllowedError)",
+   "Processing your voice…": "ਤੁਹਾਡੀ ਆਵਾਜ਼ 'ਤੇ ਕੰਮ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ...",
+   "Say the medicine name, then tap to stop (up to 8 seconds)": "ਦਵਾਈ ਦਾ ਨਾਮ ਬੋਲੋ, ਫਿਰ ਰੋਕਣ ਲਈ ਦਬਾਓ (8 ਸਕਿੰਟ ਤੱਕ)",
+   "SecurityError": "सुरक्षा त्रुटि (SecurityError)",
+   "Voice needs internet in this language. Please type or use a photo.": "ਇਸ ਭਾਸ਼ਾ ਵਿੱਚ ਬੋਲਣ ਲਈ ਇੰਟਰਨੈੱਟ ਦੀ ਲੋੜ ਹੈ। ਕਿਰਪਾ ਕਰਕੇ ਲਿਖੋ ਜਾਂ ਫੋਟੋ ਦੀ ਵਰਤੋਂ ਕਰੋ।",
+   "Wrote the recorded speech as text": "ਬੋਲੀ ਗਈ ਗੱਲ ਨੂੰ ਲਿਖ ਦਿੱਤਾ ਗਿਆ ਹੈ"
+  },
+  "gu": {
+   "Built by Neeraj Kumar": "નીરજ કુમાર દ્વારા બનાવવામાં આવ્યું છે",
+   "Built by Neeraj Kumar · MIT licence · #BuildHybridAI 2026": "નીરજ કુમાર દ્વારા બનાવવામાં આવ્યું · MIT લાયસન્સ · #BuildHybridAI 2026",
+   "DawaShield": "DawaShield",
+   "In Hindi / English the browser turns your voice into text; with the language pack this happens on the phone. In other languages (or when the browser cannot), up to 8 seconds of audio is sent once to Google Gemini only to write it as text. Your voice is never stored.": "હિન્દી કે અંગ્રેજીમાં બ્રાઉઝર તમારા અવાજને લખાણમાં બદલે છે; ભાષાના પેક સાથે આ ફોનમાં જ થાય છે. બીજી ભાષાઓમાં (અથવા જ્યારે બ્રાઉઝર ન કરી શકે), ત્યારે માત્ર લખાણમાં બદલવા માટે ૮ સેકન્ડ સુધીનો અવાજ Google Gemini ને મોકલવામાં આવે છે. તમારો અવાજ ક્યારેય સંગ્રહિત થતો નથી.",
+   "MM/YYYY": "મહિનો/વર્ષ",
+   "NotAllowedError": "પરવાનગી નથી",
+   "Processing your voice…": "તમારા અવાજ પર પ્રક્રિયા થઈ રહી છે...",
+   "Say the medicine name, then tap to stop (up to 8 seconds)": "દવાવાનું નામ બોલો, પછી બંધ કરવા માટે ટૅપ કરો (૮ સેકન્ડ સુધી)",
+   "SecurityError": "સુરક્ષા ભૂલ",
+   "Voice needs internet in this language. Please type or use a photo.": "આ ભાષામાં અવાજ માટે ઇન્ટરનેટની જરૂર છે. કૃપા કરીને ટાઈપ કરો અથવા ફોટો વાપરો.",
+   "Wrote the recorded speech as text": "રેકોર્ડ કરેલા અવાજને લખાણમાં લખ્યું"
+  },
+  "mr": {
+   "Built by Neeraj Kumar": "नीरज कुमार यांनी तयार केले आहे",
+   "Built by Neeraj Kumar · MIT licence · #BuildHybridAI 2026": "नीरज कुमार द्वारे निर्मित · एमआयटी परवाना · #BuildHybridAI 2026",
+   "DawaShield": "दवाशील्ड",
+   "In Hindi / English the browser turns your voice into text; with the language pack this happens on the phone. In other languages (or when the browser cannot), up to 8 seconds of audio is sent once to Google Gemini only to write it as text. Your voice is never stored.": "हिंदी किंवा इंग्रजीत ब्राउझर तुमच्या आवाजाचे मजकुरात रूपांतर करतो; भाषा पॅकमुळे हे फोनवरच होते. इतर भाषांमध्ये (किंवा ब्राउझर करू शकत नसल्यास), मजकूर लिहिण्यासाठी जास्तीत जास्त ८ सेकंदांचा ऑडिओ एकदा Google Gemini कडे पाठवला जातो. तुमचा आवाज कधीही साठवला जात नाही.",
+   "MM/YYYY": "महिना/वर्ष",
+   "NotAllowedError": "परवानगी नाही त्रुटी",
+   "Processing your voice…": "तुमच्या आवाजावर प्रक्रिया होत आहे…",
+   "Say the medicine name, then tap to stop (up to 8 seconds)": "औषधाचे नाव सांगा, नंतर थांबण्यासाठी टॅप करा (जास्तीत जास्त ८ सेकंद)",
+   "SecurityError": "सुरक्षा त्रुटी",
+   "Voice needs internet in this language. Please type or use a photo.": "या भाषेत आवाजासाठी इंटरनेटची आवश्यकता आहे. कृपया लिहून सांगा किंवा फोटो वापर.",
+   "Wrote the recorded speech as text": "रेकॉर्ड केलेले भाषण मजकुरात लिहिले आहे"
+  },
+  "kn": {
+   "Built by Neeraj Kumar": "ನೀರಾಜ್ ಕುಮಾರ್ ಅವರು ನಿರ್ಮಿಸಿದ್ದಾರೆ",
+   "Built by Neeraj Kumar · MIT licence · #BuildHybridAI 2026": "ನೀರಾಜ್ ಕುಮಾರ್ ನಿರ್ಮಿಸಿದ್ದಾರೆ · ಎಮ್.ಐ.ಟಿ ಪರವಾನಗಿ · #BuildHybridAI 2026",
+   "DawaShield": "DawaShield",
+   "In Hindi / English the browser turns your voice into text; with the language pack this happens on the phone. In other languages (or when the browser cannot), up to 8 seconds of audio is sent once to Google Gemini only to write it as text. Your voice is never stored.": "ಹಿಂದಿ ಅಥವಾ ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಬ್ರೌಸರ್ ನಿಮ್ಮ ಧ್ವನಿಯನ್ನು ಪಠ್ಯವನ್ನಾಗಿ ಮಾಡುತ್ತದೆ; ಭಾಷಾ ಪ್ಯಾಕ್ ಇದ್ದರೆ ಇದು ನಿಮ್ಮ ಫೋನ್‌ನಲ್ಲೇ ಆಗುತ್ತದೆ. ಇತರ ಭಾಷೆಗಳಲ್ಲಿ (ಅಥವಾ ಬ್ರೌಷರ್‌ಗೆ ಸಾಧ್ಯವಾಗದಿದ್ದಾಗ), ಪಠ್ಯವಾಗಿ ಬದಲಾಯಿಸಲು ಮಾತ್ರ ಗರಿಷ್ಠ 8 ಸೆಕೆಂಡುಗಳ ಧ್ವನಿಯನ್ನು ಒಮ್ಮೆ Google Gemini ಗೆ ಕಳುಹಿಸಲಾಗುತ್ತದೆ. ನಿಮ್ಮ ಧ್ವನಿಯನ್ನು ಎಲ್ಲಿಯೂ ಉಳಿಸಿಟ್ಟುಕೊಳ್ಳುವುದಿಲ್ಲ.",
+   "MM/YYYY": "ತಿಂಗಳು/ವರ್ಷ (MM/YYYY)",
+   "NotAllowedError": "ಅನುಮತಿ ನಿರಾಕರಿಸಲಾಗಿದೆ (NotAllowedError)",
+   "Processing your voice…": "ನಿಮ್ಮ ಧ್ವನಿಯನ್ನು ಪರಿಶೀಲಿಸಲಾಗುತ್ತಿದೆ...",
+   "Say the medicine name, then tap to stop (up to 8 seconds)": "ಔಷಧದ ಹೆಸರನ್ನು ಹೇಳಿ, ನಂತರ ನಿಲ್ಲಿಸಲು ಸ್ಪರ್ಶಿಸಿ (ಗರಿಷ್ಠ 8 ಸೆಕೆಂಡುಗಳು)",
+   "SecurityError": "ಭದ್ರತಾ ದೋಷ (SecurityError)",
+   "Voice needs internet in this language. Please type or use a photo.": "ಈ ಭಾಷೆಯಲ್ಲಿ ಧ್ವನಿ ಗುರುತಿಸಲು ಇಂಟರ್ನೆಟ್ ಬೇಕು. ದಯವಿಟ್ಟು ಟೈಪ್ ಮಾಡಿ ಅಥವಾ ಫೋಟೋ ಬಳಸಿ.",
+   "Wrote the recorded speech as text": "ಮಾತನಾಡಿದ್ದನ್ನು ಪಠ್ಯವಾಗಿ ಬರೆಯಲಾಗಿದೆ"
+  },
+  "ta": {
+   "DawaShield": "DawaShield",
+   "MM/YYYY": "மாதம்/ஆண்டு",
+   "NotAllowedError": "அனுமதி இல்லை பிழை",
+   "SecurityError": "பாதுகாப்பு பிழை",
+   "Built by Neeraj Kumar": "Neeraj Kumar அவர்களால் உருவாக்கப்பட்டது",
+   "Built by Neeraj Kumar · MIT licence · #BuildHybridAI 2026": "Neeraj Kumar அவர்களால் உருவாக்கப்பட்டது · MIT உரிமம் · #BuildHybridAI 2026",
+   "In Hindi / English the browser turns your voice into text; with the language pack this happens on the phone. In other languages (or when the browser cannot), up to 8 seconds of audio is sent once to Google Gemini only to write it as text. Your voice is never stored.": "ஹிந்தி அல்லது ஆங்கிலத்தில் உங்கள் குரல் எழுத்தாக மாற்றப்படும்; மொழிப் பொதியுடன் இது உங்கள் போனிலேயே நடக்கும். மற்ற மொழிகளில் (அல்லது பிரவுசரால் முடியாவிட்டால்), 8 விநாடிகள் வரை உள்ள உங்கள் குரல், எழுத்தாக மாற்ற மட்டும் Google Gemini-க்கு அனுப்பப்படும். உங்கள் குரல் எங்கும் சேமிக்கப்படாது.",
+   "Processing your voice…": "உங்கள் குரல் செயலாக்கப்படுகிறது…",
+   "Say the medicine name, then tap to stop (up to 8 seconds)": "மருந்தின் பெயரைக் கூறுங்கள், பின்னர் நிறுத்த தொடுங்கள் (8 விநாடிகள் வரை)",
+   "Voice needs internet in this language. Please type or use a photo.": "இந்த மொழியில் குரல் உள்ளிட இன்டர்நெட் தேவை. தயவுசெய்து தட்டச்சு செய்யவும் அல்லது போட்டோ எடுக்கவும்.",
+   "Wrote the recorded speech as text": "பதிவு செய்யப்பட்ட குரல் எழுத்தாக மாற்றப்பட்டது"
+  }
+ }
+}

@@ -121,7 +121,7 @@ Every AI answer shows **"On this device"** or **"Cloud"**, taken from the SDK's 
 
 ## Privacy
 
-Voice is never recorded. Photos are never stored. The cabinet and family numbers stay in the phone's IndexedDB. **Only if you opt in to push**, Firestore keeps a push token, language, and per saved medicine the batch number, company and expiry month: no medicine names, person names, phone numbers or health information. Firestore rules ([`firestore.rules`](firestore.rules)) let each anonymous device read/write only its own documents. No ads, no analytics.
+Voice is never stored: Hindi/English speech is turned into text by the browser; in the regional languages (or when browser recognition is unavailable) a clip of at most 8 s is sent once to Gemini via Firebase AI Logic + App Check, only to be transcribed. Photos are never stored. The cabinet and family numbers stay in the phone's IndexedDB. **Only if you opt in to push**, Firestore keeps a push token, language, and per saved medicine the batch number, company and expiry month: no medicine names, person names, phone numbers or health information. Firestore rules ([`firestore.rules`](firestore.rules)) let each anonymous device read/write only its own documents. No ads, no analytics.
 
 ## Run it
 

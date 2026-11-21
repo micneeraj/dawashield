@@ -1,0 +1,13 @@
+{
+  "_note": "Generated speech, not real speakers. Each phrase is a short natural sentence: 'I want to check <medicine>'. Expected = medicine that must appear in the top 3 options.",
+  "voices": { "hi": "edge:hi-IN-SwaraNeural", "en": "edge:en-IN-NeerjaNeural", "pa": "gtts:pa", "gu": "edge:gu-IN-DhwaniNeural", "mr": "edge:mr-IN-AarohiNeural", "kn": "edge:kn-IN-SapnaNeural", "ta": "edge:ta-IN-PallaviNeural" },
+  "cases": {
+    "hi": [["dolo", "Dolo 650", "मुझे डोलो 650 जाँचनी है"], ["para", "Paracetamol", "मुझे पैरासिटामोल जाँचनी है"], ["telmi", "Telmisartan", "मुझे टेल्मिसार्टन जाँचनी है"], ["amlo", "Amlodipine", "मुझे एम्लोडिपिन जाँचनी है"]],
+    "en": [["dolo", "Dolo 650", "I want to check Dolo 650"], ["para", "Paracetamol", "I want to check Paracetamol"], ["telmi", "Telmisartan", "I want to check Telmisartan"], ["amlo", "Amlodipine", "I want to check Amlodipine"]],
+    "pa": [["dolo", "Dolo 650", "ਮੈਂ ਡੋਲੋ 650 ਚੈੱਕ ਕਰਨੀ ਹੈ"], ["para", "Paracetamol", "ਮੈਂ ਪੈਰਾਸੀਟਾਮੋਲ ਚੈੱਕ ਕਰਨੀ ਹੈ"], ["telmi", "Telmisartan", "ਮੈਂ ਟੈਲਮੀਸਾਰਟਨ ਚੈੱਕ ਕਰਨੀ ਹੈ"], ["amlo", "Amlodipine", "ਮੈਂ ਐਮਲੋਡੀਪੀਨ ਚੈੱਕ ਕਰਨੀ ਹੈ"]],
+    "gu": [["dolo", "Dolo 650", "મારે ડોલો 650 તપાસવી છે"], ["para", "Paracetamol", "મારે પેરાસીટામોલ તપાસવી છે"], ["telmi", "Telmisartan", "મારે ટેલ્મીસાર્ટન તપાસવી છે"], ["amlo", "Amlodipine", "મારે એમ્લોડિપિન તપાસવી છે"]],
+    "mr": [["dolo", "Dolo 650", "मला डोलो 650 तपासायची आहे"], ["para", "Paracetamol", "मला पॅरासिटामॉल तपासायची आहे"], ["telmi", "Telmisartan", "मला टेल्मिसार्टन तपासायची आहे"], ["amlo", "Amlodipine", "मला अॅम्लोडिपिन तपासायची आहे"]],
+    "kn": [["dolo", "Dolo 650", "ನನಗೆ ಡೋಲೋ 650 ಪರಿಶೀಲಿಸಬೇಕು"], ["para", "Paracetamol", "ನನಗೆ ಪ್ಯಾರಸಿಟಮಾಲ್ ಪರಿಶೀಲಿಸಬೇಕು"], ["telmi", "Telmisartan", "ನನಗೆ ಟೆಲ್ಮಿಸಾರ್ಟನ್ ಪರಿಶೀಲಿಸಬೇಕು"], ["amlo", "Amlodipine", "ನನಗೆ ಆಮ್ಲೋಡಿಪಿನ್ ಪರಿಶೀಲಿಸಬೇಕು"]],
+    "ta": [["dolo", "Dolo 650", "எனக்கு டோலோ 650 சரிபார்க்க வேண்டும்"], ["para", "Paracetamol", "எனக்கு பாராசிட்டமால் சரிபார்க்க வேண்டும்"], ["telmi", "Telmisartan", "எனக்கு டெல்மிசார்டன் சரிபார்க்க வேண்டும்"], ["amlo", "Amlodipine", "எனக்கு அம்லோடிபின் சரிபார்க்க வேண்டும்"]]
+  }
+}

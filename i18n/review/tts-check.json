@@ -1,0 +1,26 @@
+{
+ "when": "2026-11-21T15:06:05.128Z",
+ "model": "gemini-2.5-flash-preview-tts",
+ "voice": "Kore",
+ "pass": 0.8,
+ "report": {
+  "pa": {
+   "voice": "gemini",
+   "mean": 0.9297924297924298,
+   "n": 11,
+   "kb": 429
+  },
+  "gu": {
+   "voice": "browser",
+   "mean": 0
+  },
+  "mr": {
+   "voice": "browser",
+   "mean": 0
+  },
+  "ta": {
+   "voice": "browser",
+   "mean": 0
+  }
+ }
+}

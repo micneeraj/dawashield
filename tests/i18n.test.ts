@@ -125,7 +125,7 @@ describe("regional browser voice", () => {
     const m = JSON.parse(readFileSync("public/i18n/index.json", "utf8")) as { langs: Record<string, { available: boolean; voice: string }> };
     for (const l of REGIONAL) {
       expect(m.langs[l].available).toBe(true);
-      expect(["browser", "sarvam"]).toContain(m.langs[l].voice);
+      expect(["browser", "sarvam", "gemini"]).toContain(m.langs[l].voice);
     }
     const sum = JSON.parse(readFileSync("i18n/review/SUMMARY.json", "utf8")) as Record<string, { flagged: string[] }>;
     for (const l of REGIONAL) expect(sum[l].flagged).toEqual([]);

@@ -1,0 +1,887 @@
+{
+ "when": "2026-11-21T15:44:00.081Z",
+ "base": "https://dawashield-hybrid-3023.web.app",
+ "voices": {
+  "hi": "edge:hi-IN-SwaraNeural",
+  "en": "edge:en-IN-NeerjaNeural",
+  "pa": "gtts:pa",
+  "gu": "edge:gu-IN-DhwaniNeural",
+  "mr": "edge:mr-IN-AarohiNeural",
+  "kn": "edge:kn-IN-SapnaNeural",
+  "ta": "edge:ta-IN-PallaviNeural"
+ },
+ "clipModes": {
+  "pa": {
+   "voice": "gemini",
+   "clips": 11
+  },
+  "gu": {
+   "voice": "browser",
+   "clips": 0
+  },
+  "mr": {
+   "voice": "browser",
+   "clips": 0
+  },
+  "kn": {
+   "voice": "gemini",
+   "clips": 26
+  },
+  "ta": {
+   "voice": "browser",
+   "clips": 0
+  }
+ },
+ "results": [
+  {
+   "lang": "hi",
+   "id": "dolo",
+   "expected": "Dolo 650",
+   "spoken": "मुझे डोलो 650 जाँचनी है",
+   "welcome": "played /audio/hi/welcome.mp3",
+   "ms": 15752,
+   "sawProcessing": true,
+   "transcript": "मुझे डोलो 650 जांचनी है।",
+   "options": [
+    "Dolo 650"
+   ],
+   "outcome": "options",
+   "top1": true,
+   "top3": true,
+   "transcribed": true,
+   "redClip": "played /audio/hi/red_nsq.mp3"
+  },
+  {
+   "lang": "hi",
+   "id": "para",
+   "expected": "Paracetamol",
+   "spoken": "मुझे पैरासिटामोल जाँचनी है",
+   "welcome": "played /audio/hi/welcome.mp3",
+   "ms": 10059,
+   "sawProcessing": true,
+   "transcript": "मुझे पैरासिटामोल जांचनी है।",
+   "options": [
+    "Paracetamol",
+    "Paracetamol Parayes",
+    "Restomol Paracetamol",
+    "Paracetamol Jan"
+   ],
+   "outcome": "options",
+   "top1": true,
+   "top3": true,
+   "transcribed": true
+  },
+  {
+   "lang": "hi",
+   "id": "telmi",
+   "expected": "Telmisartan",
+   "spoken": "मुझे टेल्मिसार्टन जाँचनी है",
+   "welcome": "played /audio/hi/welcome.mp3",
+   "ms": 14182,
+   "sawProcessing": true,
+   "transcript": "मुझे Telmisartan जांचनी है।",
+   "options": [
+    "Telmisartan",
+    "Telma Telmisartan",
+    "Telmisartan Telma",
+    "Telma"
+   ],
+   "outcome": "options",
+   "top1": true,
+   "top3": true,
+   "transcribed": true
+  },
+  {
+   "lang": "hi",
+   "id": "amlo",
+   "expected": "Amlodipine",
+   "spoken": "मुझे एम्लोडिपिन जाँचनी है",
+   "welcome": "played /audio/hi/welcome.mp3",
+   "ms": 14416,
+   "sawProcessing": true,
+   "transcript": "मुझे Amlodipine जांचनी है।",
+   "options": [
+    "Amlodipine",
+    "Amlopen Amlodipine",
+    "Amlod",
+    "Amole-AT Tablet"
+   ],
+   "outcome": "options",
+   "top1": true,
+   "top3": true,
+   "transcribed": true
+  },
+  {
+   "lang": "en",
+   "id": "dolo",
+   "expected": "Dolo 650",
+   "spoken": "I want to check Dolo 650",
+   "welcome": "played /audio/en/welcome.mp3",
+   "ms": 10603,
+   "sawProcessing": true,
+   "transcript": "I want to check Dolo 650.",
+   "options": [
+    "Dolo 650",
+    "Avnate",
+    "Ventee-AX",
+    "Ventrozole"
+   ],
+   "outcome": "options",
+   "top1": true,
+   "top3": true,
+   "transcribed": true,
+   "redClip": "played /audio/en/red_nsq.mp3"
+  },
+  {
+   "lang": "en",
+   "id": "para",
+   "expected": "Paracetamol",
+   "spoken": "I want to check Paracetamol",
+   "welcome": "played /audio/en/welcome.mp3",
+   "ms": 10606,
+   "sawProcessing": true,
+   "transcript": "I want to check paracetamol.",
+   "options": [
+    "Paracetamol",
+    "Paracetamol Parayes",
+    "Avnate",
+    "Ventee-AX"
+   ],
+   "outcome": "options",
+   "top1": true,
+   "top3": true,
+   "transcribed": true
+  },
+  {
+   "lang": "en",
+   "id": "telmi",
+   "expected": "Telmisartan",
+   "spoken": "I want to check Telmisartan",
+   "welcome": "played /audio/en/welcome.mp3",
+   "ms": 10084,
+   "sawProcessing": true,
+   "transcript": "I want to check Telmisartan.",
+   "options": [
+    "Telmisartan",
+    "Telma Telmisartan",
+    "Telmisartan Telma",
+    "Avnate"
+   ],
+   "outcome": "options",
+   "top1": true,
+   "top3": true,
+   "transcribed": true
+  },
+  {
+   "lang": "en",
+   "id": "amlo",
+   "expected": "Amlodipine",
+   "spoken": "I want to check Amlodipine",
+   "welcome": "played /audio/en/welcome.mp3",
+   "ms": 12612,
+   "sawProcessing": true,
+   "transcript": "I want to check Amlodipine.",
+   "options": [
+    "Amlodipine",
+    "Amlopen Amlodipine",
+    "Avnate",
+    "Ventee-AX"
+   ],
+   "outcome": "options",
+   "top1": true,
+   "top3": true,
+   "transcribed": true
+  },
+  {
+   "lang": "pa",
+   "id": "dolo",
+   "expected": "Dolo 650",
+   "spoken": "ਮੈਂ ਡੋਲੋ 650 ਚੈੱਕ ਕਰਨੀ ਹੈ",
+   "welcome": "played /audio/pa/welcome.mp3",
+   "ms": 17916,
+   "sawProcessing": true,
+   "transcript": "Main Dolo 650 check karni hai.",
+   "options": [
+    "Dolo 650",
+    "MN-10"
+   ],
+   "outcome": "options",
+   "top1": true,
+   "top3": true,
+   "transcribed": true,
+   "redClip": "played /audio/pa/red_nsq.mp3"
+  },
+  {
+   "lang": "pa",
+   "id": "para",
+   "expected": "Paracetamol",
+   "spoken": "ਮੈਂ ਪੈਰਾਸੀਟਾਮੋਲ ਚੈੱਕ ਕਰਨੀ ਹੈ",
+   "welcome": "played /audio/pa/welcome.mp3",
+   "ms": 12107,
+   "sawProcessing": true,
+   "transcript": "Main paracetamol check karni hai.",
+   "options": [
+    "Paracetamol",
+    "Paracetamol Parayes",
+    "Piracetam",
+    "PARAREST SR 1000"
+   ],
+   "outcome": "options",
+   "top1": true,
+   "top3": true,
+   "transcribed": true
+  },
+  {
+   "lang": "pa",
+   "id": "telmi",
+   "expected": "Telmisartan",
+   "spoken": "ਮੈਂ ਟੈਲਮੀਸਾਰਟਨ ਚੈੱਕ ਕਰਨੀ ਹੈ",
+   "welcome": "played /audio/pa/welcome.mp3",
+   "ms": 17302,
+   "sawProcessing": true,
+   "transcript": "Telmisartan check karni hai",
+   "options": [
+    "Telmisartan",
+    "Telma Telmisartan",
+    "Telmisartan Telma",
+    "Telma"
+   ],
+   "outcome": "options",
+   "top1": true,
+   "top3": true,
+   "transcribed": true
+  },
+  {
+   "lang": "pa",
+   "id": "amlo",
+   "expected": "Amlodipine",
+   "spoken": "ਮੈਂ ਐਮਲੋਡੀਪੀਨ ਚੈੱਕ ਕਰਨੀ ਹੈ",
+   "welcome": "played /audio/pa/welcome.mp3",
+   "ms": 11681,
+   "sawProcessing": true,
+   "transcript": "Main Amlodipine check karni hai.",
+   "options": [
+    "Amlodipine",
+    "Amlopen Amlodipine",
+    "Amlod",
+    "Amole-AT Tablet"
+   ],
+   "outcome": "options",
+   "top1": true,
+   "top3": true,
+   "transcribed": true
+  },
+  {
+   "lang": "gu",
+   "id": "dolo",
+   "expected": "Dolo 650",
+   "spoken": "મારે ડોલો 650 તપાસવી છે",
+   "welcome": "none",
+   "ms": 17688,
+   "sawProcessing": true,
+   "transcript": "12 Dolor 650 तपासवी छے۔",
+   "options": [
+    "Dolo 650"
+   ],
+   "outcome": "options",
+   "top1": true,
+   "top3": true,
+   "transcribed": true,
+   "redClip": "none"
+  },
+  {
+   "lang": "gu",
+   "id": "para",
+   "expected": "Paracetamol",
+   "spoken": "મારે પેરાસીટામોલ તપાસવી છે",
+   "welcome": "none",
+   "ms": 12617,
+   "sawProcessing": true,
+   "transcript": "മാരേ पैरासिटामोल तपासवी छे.",
+   "options": [
+    "Paracetamol",
+    "Paracetamol Parayes",
+    "Piracetam",
+    "PARAREST SR 1000"
+   ],
+   "outcome": "options",
+   "top1": true,
+   "top3": true,
+   "transcribed": true
+  },
+  {
+   "lang": "gu",
+   "id": "telmi",
+   "expected": "Telmisartan",
+   "spoken": "મારે ટેલ્મીસાર્ટન તપાસવી છે",
+   "welcome": "none",
+   "ms": 12119,
+   "sawProcessing": true,
+   "transcript": "mare tell me saturn tupasvi che",
+   "options": [
+    "Sterio 16",
+    "Satrang Arhi"
+   ],
+   "outcome": "options",
+   "top1": false,
+   "top3": false,
+   "transcribed": true
+  },
+  {
+   "lang": "gu",
+   "id": "amlo",
+   "expected": "Amlodipine",
+   "spoken": "મારે એમ્લોડિપિન તપાસવી છે",
+   "welcome": "none",
+   "ms": 12065,
+   "sawProcessing": true,
+   "transcript": "mhare Amlodipine tapasvi che",
+   "options": [
+    "Amlodipine",
+    "Amlopen Amlodipine",
+    "Amlod",
+    "Amole-AT Tablet"
+   ],
+   "outcome": "options",
+   "top1": true,
+   "top3": true,
+   "transcribed": true
+  },
+  {
+   "lang": "mr",
+   "id": "dolo",
+   "expected": "Dolo 650",
+   "spoken": "मला डोलो 650 तपासायची आहे",
+   "welcome": "none",
+   "ms": 12044,
+   "sawProcessing": true,
+   "transcript": "मला Dolo 650 तपासायची आहे.",
+   "options": [
+    "Dolo 650"
+   ],
+   "outcome": "options",
+   "top1": true,
+   "top3": true,
+   "transcribed": true,
+   "redClip": "none"
+  },
+  {
+   "lang": "mr",
+   "id": "para",
+   "expected": "Paracetamol",
+   "spoken": "मला पॅरासिटामॉल तपासायची आहे",
+   "welcome": "none",
+   "ms": 12076,
+   "sawProcessing": true,
+   "transcript": "मला प्रासिटामॉल तपासायची आहे.",
+   "options": [
+    "Paracetamol",
+    "Piracetam",
+    "PARAREST SR 1000",
+    "Paracetamol Parayes"
+   ],
+   "outcome": "options",
+   "top1": true,
+   "top3": true,
+   "transcribed": true
+  },
+  {
+   "lang": "mr",
+   "id": "telmi",
+   "expected": "Telmisartan",
+   "spoken": "मला टेल्मिसार्टन तपासायची आहे",
+   "welcome": "none",
+   "ms": 12419,
+   "sawProcessing": true,
+   "transcript": "मला Telmisartan तपासयची आहे.",
+   "options": [
+    "Telmisartan",
+    "Telma",
+    "Telma Telmisartan",
+    "Telmisartan Telma"
+   ],
+   "outcome": "options",
+   "top1": true,
+   "top3": true,
+   "transcribed": true
+  },
+  {
+   "lang": "mr",
+   "id": "amlo",
+   "expected": "Amlodipine",
+   "spoken": "मला अॅम्लोडिपिन तपासायची आहे",
+   "welcome": "none",
+   "ms": 12132,
+   "sawProcessing": true,
+   "transcript": "मला एमलोडिपिन तपासायची आहे.",
+   "options": [
+    "Amlodipine",
+    "Amlod",
+    "Amole-AT Tablet",
+    "Amlopen Amlodipine"
+   ],
+   "outcome": "options",
+   "top1": true,
+   "top3": true,
+   "transcribed": true
+  },
+  {
+   "lang": "kn",
+   "id": "dolo",
+   "expected": "Dolo 650",
+   "spoken": "ನನಗೆ ಡೋಲೋ 650 ಪರಿಶೀಲಿಸಬೇಕು",
+   "welcome": "played /audio/kn/welcome.mp3",
+   "ms": 12368,
+   "sawProcessing": true,
+   "transcript": "ನನಗೆ Dolo 650 ಪರಿಶೀಲಿಸಬೇಕು.",
+   "options": [
+    "Dolo 650",
+    "Paracell-650"
+   ],
+   "outcome": "options",
+   "top1": true,
+   "top3": true,
+   "transcribed": true,
+   "redClip": "played /audio/kn/red_nsq.mp3"
+  },
+  {
+   "lang": "kn",
+   "id": "para",
+   "expected": "Paracetamol",
+   "spoken": "ನನಗೆ ಪ್ಯಾರಸಿಟಮಾಲ್ ಪರಿಶೀಲಿಸಬೇಕು",
+   "welcome": "played /audio/kn/welcome.mp3",
+   "ms": 13160,
+   "sawProcessing": true,
+   "transcript": "ನಗೆ ಪ್ಯಾರಾಸಿಟಮಾಲ್ ಪರಿಶೀಲಿಸಬೇಕು.",
+   "options": [
+    "Paracetamol",
+    "Paracetamol Parayes",
+    "Paracetamol Para",
+    "Paracetamol Alpa"
+   ],
+   "outcome": "options",
+   "top1": true,
+   "top3": true,
+   "transcribed": true
+  },
+  {
+   "lang": "kn",
+   "id": "telmi",
+   "expected": "Telmisartan",
+   "spoken": "ನನಗೆ ಟೆಲ್ಮಿಸಾರ್ಟನ್ ಪರಿಶೀಲಿಸಬೇಕು",
+   "welcome": "played /audio/kn/welcome.mp3",
+   "ms": 12353,
+   "sawProcessing": true,
+   "transcript": "ನಗೆ Telmisartan ಪರಿಶೀಲಿಸಬೇಕು.",
+   "options": [
+    "Telmisartan",
+    "Telma",
+    "Telma Telmisartan",
+    "Telmisartan Telma"
+   ],
+   "outcome": "options",
+   "top1": true,
+   "top3": true,
+   "transcribed": true
+  },
+  {
+   "lang": "kn",
+   "id": "amlo",
+   "expected": "Amlodipine",
+   "spoken": "ನನಗೆ ಆಮ್ಲೋಡಿಪಿನ್ ಪರಿಶೀಲಿಸಬೇಕು",
+   "welcome": "played /audio/kn/welcome.mp3",
+   "ms": 12669,
+   "sawProcessing": true,
+   "transcript": "ನನಗೆ ಆಮ್ಲೋಡಿಪಿನ್ ಪರಿಶೀಲಿಸಬೇಕು.",
+   "options": [
+    "Amlodipine",
+    "Amlod",
+    "Amole-AT Tablet",
+    "Amlopen Amlodipine"
+   ],
+   "outcome": "options",
+   "top1": true,
+   "top3": true,
+   "transcribed": true
+  },
+  {
+   "lang": "ta",
+   "id": "dolo",
+   "expected": "Dolo 650",
+   "spoken": "எனக்கு டோலோ 650 சரிபார்க்க வேண்டும்",
+   "welcome": "none",
+   "ms": 11924,
+   "sawProcessing": true,
+   "transcript": "எனக்கு டோலோ 650 சரி பார்க்க வேண்டும்",
+   "options": [
+    "Dolo 650",
+    "Park",
+    "Paragee-650",
+    "T-SAR"
+   ],
+   "outcome": "options",
+   "top1": true,
+   "top3": true,
+   "transcribed": true,
+   "redClip": "none"
+  },
+  {
+   "lang": "ta",
+   "id": "para",
+   "expected": "Paracetamol",
+   "spoken": "எனக்கு பாராசிட்டமால் சரிபார்க்க வேண்டும்",
+   "welcome": "none",
+   "ms": 12343,
+   "sawProcessing": true,
+   "transcript": "எனக்கு பாராசிட்டமால் சரி பார்க்க வேண்டும்.",
+   "options": [
+    "Paracetamol",
+    "Paracetamol Parayes",
+    "Park",
+    "Paragee-650"
+   ],
+   "outcome": "options",
+   "top1": true,
+   "top3": true,
+   "transcribed": true
+  },
+  {
+   "lang": "ta",
+   "id": "telmi",
+   "expected": "Telmisartan",
+   "spoken": "எனக்கு டெல்மிசார்டன் சரிபார்க்க வேண்டும்",
+   "welcome": "none",
+   "ms": 12142,
+   "sawProcessing": true,
+   "transcript": "எனக்கு டெல்மிசார்த்தன் சரி பார்க்க வேண்டும்.",
+   "options": [
+    "Telmisartan",
+    "Telma Telmisartan",
+    "Telmisartan Telma",
+    "Telma"
+   ],
+   "outcome": "options",
+   "top1": true,
+   "top3": true,
+   "transcribed": true
+  },
+  {
+   "lang": "ta",
+   "id": "amlo",
+   "expected": "Amlodipine",
+   "spoken": "எனக்கு அம்லோடிபின் சரிபார்க்க வேண்டும்",
+   "welcome": "none",
+   "ms": 16541,
+   "sawProcessing": true,
+   "transcript": "எனக்கு Amlodipine சரி பார்க்க வேண்டும்.",
+   "options": [
+    "Amlodipine",
+    "Amlopen Amlodipine",
+    "Park",
+    "Paragee-650"
+   ],
+   "outcome": "options",
+   "top1": true,
+   "top3": true,
+   "transcribed": true
+  }
+ ],
+ "webkit": {
+  "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Mobile/15E148 Safari/604.1",
+  "webSpeech": false,
+  "mediaRecorder": false,
+  "getUserMedia": false,
+  "supported": [],
+  "welcome": {
+   "kind": "mp3",
+   "src": "https://dawashield-hybrid-3023.web.app/audio/kn/welcome.mp3",
+   "ok": true
+  },
+  "micShown": false,
+  "screen": "ಧ್ವನಿ ಪರಿಶೀಲನೆ\n\nದಯವಿಟ್ಟು ಔಷಧದ ಹೆಸರು ಹೇಳಿ.\n\nಮೈಕ್ರೊಫೋನ್ ಕೆಲಸ ಮಾಡುತ್ತಿಲ್ಲ. ನೀವು ಟೈಪ್ ಮಾಡಬಹುದು.\n\nಬದಲಿಗೆ ಟೈಪ್ ಮಾಡಿ\nಟೈಪ್ ಮಾಡಿ\nಪಟ್ಟಿಯ ಫೋಟೋ"
+ },
+ "aiCalls": [
+  {
+   "model": "gemini-3.5-flash-lite",
+   "status": 200,
+   "audio": true
+  },
+  {
+   "model": "gemini-3.5-flash-lite",
+   "status": 200,
+   "audio": true
+  },
+  {
+   "model": "gemini-3.5-flash",
+   "status": 429,
+   "audio": false
+  },
+  {
+   "model": "gemini-3.5-flash-lite",
+   "status": 200,
+   "audio": true
+  },
+  {
+   "model": "gemini-3.5-flash-lite",
+   "status": 200,
+   "audio": true
+  },
+  {
+   "model": "gemini-3.5-flash",
+   "status": 429,
+   "audio": false
+  },
+  {
+   "model": "gemini-3.5-flash",
+   "status": 200,
+   "audio": false
+  },
+  {
+   "model": "gemini-3.5-flash-lite",
+   "status": 200,
+   "audio": true
+  },
+  {
+   "model": "gemini-3.5-flash",
+   "status": 200,
+   "audio": false
+  },
+  {
+   "model": "gemini-3.5-flash-lite",
+   "status": 200,
+   "audio": true
+  },
+  {
+   "model": "gemini-3.5-flash",
+   "status": 429,
+   "audio": false
+  },
+  {
+   "model": "gemini-3.5-flash",
+   "status": 200,
+   "audio": false
+  },
+  {
+   "model": "gemini-3.5-flash-lite",
+   "status": 200,
+   "audio": true
+  },
+  {
+   "model": "gemini-3.5-flash",
+   "status": 429,
+   "audio": false
+  },
+  {
+   "model": "gemini-3.5-flash-lite",
+   "status": 200,
+   "audio": true
+  },
+  {
+   "model": "gemini-3.5-flash",
+   "status": 429,
+   "audio": false
+  },
+  {
+   "model": "gemini-3.5-flash-lite",
+   "status": 200,
+   "audio": true
+  },
+  {
+   "model": "gemini-3.5-flash",
+   "status": 429,
+   "audio": false
+  },
+  {
+   "model": "gemini-3.5-flash-lite",
+   "status": 200,
+   "audio": true
+  },
+  {
+   "model": "gemini-3.5-flash",
+   "status": 429,
+   "audio": false
+  },
+  {
+   "model": "gemini-3.5-flash-lite",
+   "status": 200,
+   "audio": true
+  },
+  {
+   "model": "gemini-3.5-flash",
+   "status": 429,
+   "audio": false
+  },
+  {
+   "model": "gemini-3.5-flash-lite",
+   "status": 200,
+   "audio": true
+  },
+  {
+   "model": "gemini-3.5-flash",
+   "status": 429,
+   "audio": false
+  },
+  {
+   "model": "gemini-3.5-flash-lite",
+   "status": 200,
+   "audio": true
+  },
+  {
+   "model": "gemini-3.5-flash",
+   "status": 429,
+   "audio": false
+  },
+  {
+   "model": "gemini-3.5-flash-lite",
+   "status": 200,
+   "audio": true
+  },
+  {
+   "model": "gemini-3.5-flash",
+   "status": 429,
+   "audio": false
+  },
+  {
+   "model": "gemini-3.5-flash-lite",
+   "status": 200,
+   "audio": true
+  },
+  {
+   "model": "gemini-3.5-flash",
+   "status": 429,
+   "audio": false
+  },
+  {
+   "model": "gemini-3.5-flash-lite",
+   "status": 200,
+   "audio": true
+  },
+  {
+   "model": "gemini-3.5-flash",
+   "status": 429,
+   "audio": false
+  },
+  {
+   "model": "gemini-3.5-flash-lite",
+   "status": 200,
+   "audio": true
+  },
+  {
+   "model": "gemini-3.5-flash",
+   "status": 429,
+   "audio": false
+  },
+  {
+   "model": "gemini-3.5-flash-lite",
+   "status": 200,
+   "audio": true
+  },
+  {
+   "model": "gemini-3.5-flash",
+   "status": 429,
+   "audio": false
+  },
+  {
+   "model": "gemini-3.5-flash-lite",
+   "status": 200,
+   "audio": true
+  },
+  {
+   "model": "gemini-3.5-flash",
+   "status": 429,
+   "audio": false
+  },
+  {
+   "model": "gemini-3.5-flash-lite",
+   "status": 200,
+   "audio": true
+  },
+  {
+   "model": "gemini-3.5-flash",
+   "status": 429,
+   "audio": false
+  },
+  {
+   "model": "gemini-3.5-flash-lite",
+   "status": 200,
+   "audio": true
+  },
+  {
+   "model": "gemini-3.5-flash",
+   "status": 429,
+   "audio": false
+  },
+  {
+   "model": "gemini-3.5-flash-lite",
+   "status": 200,
+   "audio": true
+  },
+  {
+   "model": "gemini-3.5-flash",
+   "status": 429,
+   "audio": false
+  },
+  {
+   "model": "gemini-3.5-flash-lite",
+   "status": 200,
+   "audio": true
+  },
+  {
+   "model": "gemini-3.5-flash",
+   "status": 429,
+   "audio": false
+  },
+  {
+   "model": "gemini-3.5-flash-lite",
+   "status": 200,
+   "audio": true
+  },
+  {
+   "model": "gemini-3.5-flash",
+   "status": 429,
+   "audio": false
+  },
+  {
+   "model": "gemini-3.5-flash-lite",
+   "status": 200,
+   "audio": true
+  },
+  {
+   "model": "gemini-3.5-flash",
+   "status": 429,
+   "audio": false
+  },
+  {
+   "model": "gemini-3.5-flash-lite",
+   "status": 200,
+   "audio": true
+  },
+  {
+   "model": "gemini-3.5-flash",
+   "status": 429,
+   "audio": false
+  },
+  {
+   "model": "gemini-3.5-flash-lite",
+   "status": 200,
+   "audio": true
+  },
+  {
+   "model": "gemini-3.5-flash",
+   "status": 429,
+   "audio": false
+  },
+  {
+   "model": "gemini-3.5-flash-lite",
+   "status": 200,
+   "audio": true
+  },
+  {
+   "model": "gemini-3.5-flash",
+   "status": 429,
+   "audio": false
+  }
+ ],
+ "appCheck": "bypassed in test (proxied to same model)",
+ "note": "hi/en run 2026-11-21T15:44:00.081Z, regional run 2026-11-21T15:38:21.662Z"
+}

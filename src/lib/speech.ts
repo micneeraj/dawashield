@@ -17,8 +17,9 @@ type SR = {
 };
 type SRCtor = { new (): SR; available?: (o: object) => Promise<string> };
 
-const Ctor = (self as unknown as { SpeechRecognition?: SRCtor; webkitSpeechRecognition?: SRCtor }).SpeechRecognition ||
-  (self as unknown as { webkitSpeechRecognition?: SRCtor }).webkitSpeechRecognition;
+const G = (typeof self === "undefined" ? {} : self) as unknown;
+const Ctor = (G as unknown as { SpeechRecognition?: SRCtor; webkitSpeechRecognition?: SRCtor }).SpeechRecognition ||
+  (G as { webkitSpeechRecognition?: SRCtor }).webkitSpeechRecognition;
 
 export const speechSupported = !!Ctor;
 
@@ -83,4 +84,10 @@ export async function listen(
     return null;
   }
   return { stop: () => rec.stop() };
+}
+
+/** Pure: browser recognition errors that mean "this browser can't do it here",
+ *  so we switch to recording + cloud transcript. Mic-permission and silence are not. */
+export function browserFailed(err: string): boolean {
+  return ["unsupported", "start-failed", "service-not-allowed", "network", "language-not-supported"].includes(err);
 }

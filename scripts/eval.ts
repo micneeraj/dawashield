@@ -316,7 +316,13 @@ Labels live in \`data/eval_images/labels.csv\` (\`file,medicine,batch,expiry,com
 npm run eval
 \`\`\`
 `;
-writeFileSync("docs/EVAL.md", md);
+// Keep the voice loop section written by scripts/voice-report.mjs (live browser test).
+const prevEval = existsSync("docs/EVAL.md") ? readFileSync("docs/EVAL.md", "utf8") : "";
+const voiceBlock = /<!-- voice-loop -->[\s\S]*<!-- \/voice-loop -->/.exec(prevEval)?.[0];
+writeFileSync("docs/EVAL.md", voiceBlock ? `${md.trimEnd()}
+
+${voiceBlock}
+` : md);
 console.log(JSON.stringify({
   matching: { cases: cases.length, real: matching.real, generated: matching.generated, falseRed: pct(matching.falseRedRate), falseGrey: pct(matching.falseGreyRate), accuracy: pct(matching.accuracy), confusion },
   speech: speech.perLanguage.map((s) => `${s.lang}: top1 ${pct(s.top1)} top3 ${pct(s.top3)} (${s.cases})`), tests, photo,

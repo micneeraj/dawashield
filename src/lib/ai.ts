@@ -4,12 +4,13 @@
 //   - explains an official record in simple words / answers follow-up questions.
 // AI never decides a result colour and never writes a safety message.
 import { getGenerativeModel, InferenceMode, type ChatSession } from "firebase/ai";
-import { ai, CLOUD_MODEL } from "./firebase";
+import { ai, CLOUD_MODEL, TRANSCRIBE_MODEL } from "./firebase";
 import { parseCandidates } from "./json";
 import { compareReads, mergeLabels, needsCheck, needsCloserPhoto, parseStripRead, preferCrop, type LabelReading, type StripRead } from "./label";
 import { isSmallBox, preparePhoto } from "./image";
 import { toSource } from "./source";
 import { transliterate } from "./normalize";
+import { geminiAudioMime } from "./recorder";
 import type { AlertRecord, Source } from "./types";
 
 type Mode = (typeof InferenceMode)[keyof typeof InferenceMode];
@@ -36,7 +37,7 @@ const fallbackFor = (mode: Mode): Source =>
 
 /** One AI call as it actually ran: what it did, where (SDK inferenceSource) and how long. */
 export interface AiStep {
-  task: "speech" | "photo-full" | "photo-crop" | "photo-enhanced" | "explain" | "chat";
+  task: "speech" | "transcribe" | "photo-full" | "photo-crop" | "photo-enhanced" | "explain" | "chat";
   source: Source;
   ms: number;
 }
@@ -77,14 +78,41 @@ export async function candidatesFromSpeech(transcript: string): Promise<AiText<s
   return run(mode, model(mode, { json: true }), prompt, parseCandidates);
 }
 
-async function filePart(file: Blob) {
+const SPEECH_LANG: Record<string, string> = { hi: "Hindi", en: "English (Indian)", pa: "Punjabi", gu: "Gujarati", mr: "Marathi", kn: "Kannada", ta: "Tamil" };
+
+/** Pure: the transcription-only prompt. The model never picks a medicine or a result. */
+export function transcribePrompt(lang: string): string {
+  const name = SPEECH_LANG[lang] ?? "the spoken language";
+  return (
+    `Transcribe this short audio clip exactly as spoken. The speaker is in India and is most likely saying a medicine name, ` +
+    `possibly with a few ${name} words around it. Write ${name} words in their native script; write medicine brand or generic ` +
+    `names as they sound (Latin or native script, whichever fits). Do not translate, correct, explain or add anything. ` +
+    `Reply with only the transcript text. If there is no speech, reply with nothing.`
+  );
+}
+
+/** Cloud Gemini Flash (App Check protected): recorded speech -> plain transcript in that language.
+ *  The transcript then goes through the same deterministic matcher as browser speech. */
+export async function transcribeAudio(clip: Blob, lang: string): Promise<AiText<string>> {
+  const t0 = performance.now();
+  const part = await filePart(clip, geminiAudioMime(clip.type));
+  const ask = (model: string) => getGenerativeModel(ai, { model, generationConfig: { temperature: 0 } }).generateContent([transcribePrompt(lang), part]);
+  // Flash-Lite: plain transcription needs no reasoning and answers in ~2 s; Flash if it fails.
+  let res;
+  try { res = await ask(TRANSCRIBE_MODEL); } catch { res = await ask(CLOUD_MODEL); }
+  const ms = Math.round(performance.now() - t0);
+  trace.push({ task: "transcribe", source: "cloud", ms });
+  return { value: res.response.text().replace(/^["“”']+|["“”']+$/g, "").trim(), source: "cloud", ms };
+}
+
+async function filePart(file: Blob, mimeType?: string) {
   const data = await new Promise<string>((resolve, reject) => {
     const r = new FileReader();
     r.onloadend = () => resolve(String(r.result).split(",")[1]);
     r.onerror = () => reject(r.error);
     r.readAsDataURL(file);
   });
-  return { type: "inlineData" as const, inlineData: { data, mimeType: file.type || "image/jpeg" } };
+  return { type: "inlineData" as const, inlineData: { data, mimeType: mimeType || file.type || "image/jpeg" } };
 }
 
 export const LABEL_PROMPT =

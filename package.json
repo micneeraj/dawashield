@@ -11,6 +11,7 @@
     "test": "vitest run",
     "data": "python -I data/build_dataset.py",
     "audio": "node --env-file=.env scripts/make-audio.mjs",
+    "audio:gemini": "node --env-file=.env scripts/make-gemini-audio.mjs",
     "eval": "tsx scripts/eval.ts",
     "push": "tsx scripts/daily-push.ts",
     "test:data": "python -I -m unittest discover -s data -p \"test_*.py\"",

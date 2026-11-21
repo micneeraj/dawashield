@@ -5,10 +5,11 @@ import { useApp } from "../state";
 import { Button, Card, ErrorCard, Field, Page, SourceChip, Spinner, inputCls, cx } from "../components/ui";
 import { MicButton } from "../components/MicButton";
 import { BatchKeypad } from "../components/Keypad";
-import { listen, speechLangSupported, type Listener } from "../lib/speech";
+import { browserFailed, listen, speechSupported as browserSpeech, type Listener } from "../lib/speech";
+import { record, recordingSupported, type Recording } from "../lib/recorder";
 import { transliterateName } from "../lib/indic";
 import { isRegional } from "../lib/i18n";
-import { candidatesFromSpeech, traceStart, traceTake, type AiStep } from "../lib/ai";
+import { candidatesFromSpeech, transcribeAudio, traceStart, traceTake, type AiStep } from "../lib/ai";
 import { transliterate } from "../lib/normalize";
 import { matchSpoken, toDevanagari } from "../lib/phonetic";
 import { getDictionary } from "../lib/dictionary";
@@ -28,9 +29,17 @@ export default function Voice() {
   const { t, lang, uiLang, regionalActive, go, dataset, say, noteAi, online } = useApp();
   // Speech locale: the picked regional language while it is active, else Hindi / English.
   const speechLang = regionalActive ? uiLang : lang;
-  // Hide the mic when this browser cannot recognise the language; keypad and photo stay.
-  const [speechSupported, setSpeechSupported] = useState(true);
-  useEffect(() => { let live = true; void speechLangSupported(speechLang).then((ok) => { if (live) setSpeechSupported(ok); }); return () => { live = false; }; }, [speechLang]);
+  // How we hear: regional languages always record + Gemini transcript (browser
+  // recognition for them is missing on iPhone and unreliable elsewhere).
+  // Hindi / English use browser recognition, and switch to recording when it is
+  // unavailable or fails. Mic is hidden only when neither path exists.
+  const [hearing, setHearing] = useState<"browser" | "record">(isRegional(speechLang) || !browserSpeech ? "record" : "browser");
+  const hearingRef = useRef(hearing);
+  hearingRef.current = hearing;
+  const speechSupported = hearing === "browser" || recordingSupported();
+  const [processing, setProcessing] = useState(false);
+  const [offlineVoice, setOfflineVoice] = useState(false);
+  const clipRec = useRef<Recording | null>(null);
   const runCheck = useRunCheck();
   const [step, setStep] = useState<Step>("listen");
   const [listening, setListening] = useState(false);
@@ -50,24 +59,59 @@ export default function Voice() {
   const startListening = async () => {
     setNotUnderstood(false);
     setErrKey(null);
+    setOfflineVoice(false);
     setTranscript("");
+    if (hearingRef.current === "record") return startRecording();
     setListening(true);
     rec.current = await listen(speechLang, (txt) => setTranscript(txt), (final, err) => {
       setListening(false);
       if (final) void understand(final);
-      else if (err) { setErrKey(speechErrorKey(err)); say(VOICE.fallback.clip); }
+      else if (err && browserFailed(err) && recordingSupported()) {
+        // Browser recognition is unavailable here: record and transcribe instead.
+        setHearing("record");
+        hearingRef.current = "record";
+        void startRecording();
+      } else if (err) { setErrKey(speechErrorKey(err)); say(VOICE.fallback.clip); }
     });
     if (!rec.current) setListening(false);
   };
 
+  async function startRecording() {
+    if (!navigator.onLine) { setOfflineVoice(true); return; }
+    setListening(true);
+    clipRec.current = await record(async (clip, err) => {
+      clipRec.current = null;
+      setListening(false);
+      if (err) { setErrKey(speechErrorKey(err)); say(VOICE.fallback.clip); return; }
+      if (!clip) return;
+      if (!navigator.onLine) { setOfflineVoice(true); return; }
+      setProcessing(true);
+      try {
+        const r = await withTimeout(transcribeAudio(clip, speechLang), 20000);
+        noteAi(r.source);
+        if (!r.value) { setNotUnderstood(true); say(VOICE.fallback.clip); return; }
+        setTranscript(r.value);
+        await understand(r.value, true);
+      } catch (e) {
+        setErrKey(navigator.onLine ? (String((e as Error)?.message).includes("timeout") ? "timeout" : "aiUnavailable") : "network");
+        say(VOICE.fallback.clip);
+      } finally {
+        setProcessing(false);
+      }
+    });
+    if (!clipRec.current) setListening(false);
+  }
+
+  const stopListening = () => { rec.current?.stop(); clipRec.current?.stop(); };
+
   useEffect(() => {
-    // Give the welcome clip a moment, then listen.
-    const id = setTimeout(() => { void speechLangSupported(speechLang).then((ok) => { if (ok) void startListening(); }); }, 600);
-    return () => { clearTimeout(id); rec.current?.stop(); };
+    // Give the welcome clip time to play, then listen (longer when recording, so the clip is not captured).
+    const id = setTimeout(() => { if (speechSupported) void startListening(); }, hearing === "record" ? 2500 : 600);
+    return () => { clearTimeout(id); rec.current?.stop(); clipRec.current?.cancel(); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  async function understand(text: string) {
+  async function understand(text: string, transcribed = false) {
     setStep("think");
     const records = dataset?.records ?? [];
     // 1. Rule-based, offline: fuzzy + phonetic match against the medicine dictionary.
@@ -75,7 +119,7 @@ export default function Voice() {
     const local = matchSpoken(text, dict, 4).map((m) => m.entry.name);
     // 2. Extra, only when available: AI candidates (Nano on device, else Flash in cloud).
     let aiNames: string[] = [];
-    traceStart();
+    if (!transcribed) traceStart(); // keep the transcription step in the trace
     if (online) {
       try {
         const r = await withTimeout(candidatesFromSpeech(text), local.length ? 6000 : 12000);
@@ -135,16 +179,19 @@ export default function Voice() {
         {step === "listen" && (
           <motion.div key="listen" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="flex flex-col items-center">
             <p className="mt-2 text-center text-[22px] font-semibold text-ink">{VOICE.askName.text[lang]}</p>
-            {speechSupported && <MicButton listening={listening} onClick={() => (listening ? rec.current?.stop() : void startListening())} label={listening ? t("listening") : t("tapToSpeak")} size={150} />}
+            {speechSupported && <MicButton listening={listening} onClick={() => (listening ? stopListening() : processing ? undefined : void startListening())} label={listening ? t("listening") : t("tapToSpeak")} size={150} />}
             <div className="min-h-[88px] w-full" aria-live="polite">
-              {listening && !transcript && <p className="text-center text-[18px] font-medium text-brand-700">{t("listening")}</p>}
+              {listening && !transcript && <p className="text-center text-[18px] font-medium text-brand-700" data-testid="voice-state">{t("listening")}</p>}
+              {listening && hearing === "record" && <p className="mt-1 text-center text-[15px] text-muted">{t("recordHint")}</p>}
+              {processing && <div data-testid="voice-processing"><Spinner label={t("processingSpeech")} /></div>}
+              {offlineVoice && <Card className="px-5 py-4 text-center text-[18px] font-medium text-ink" data-testid="voice-offline">{t("voiceOffline")}</Card>}
               {transcript && (
                 <Card className="px-5 py-4 text-center">
                   <p className="text-[14px] font-semibold uppercase tracking-wide text-muted">{t("youSaid")}</p>
                   <p className="mt-1 text-[22px] font-medium text-ink" data-testid="transcript">“{transcript}”</p>
                 </Card>
               )}
-              {notUnderstood && !listening && !errKey && (
+              {notUnderstood && !listening && !processing && !errKey && (
                 <ErrorCard k="micNoSpeech" on={{ retry: () => void startListening(), type: () => go({ name: "type" }) }} />
               )}
               {errKey && !listening && speechSupported && (

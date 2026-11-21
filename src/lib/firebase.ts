@@ -39,3 +39,5 @@ try {
 
 export const ai = getAI(app, { backend: new GoogleAIBackend() });
 export const CLOUD_MODEL = "gemini-3.5-flash";
+/** Speech-to-text only (recorded voice -> transcript). */
+export const TRANSCRIBE_MODEL = "gemini-3.5-flash-lite";

@@ -13,3 +13,5 @@ __pycache__/
 screenshots/
 .vitest/
 i18n/.tts/
+eval/voice/wav/
+eval/voice/run.log

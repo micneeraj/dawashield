@@ -24,8 +24,8 @@ export function Privacy() {
     <Page title={t("privacy")}>
       <Card className="p-5">
         <Item icon={<Mic size={22} />} title={hi ? "आवाज़" : "Voice"}>
-          {hi ? "आपकी आवाज़ कभी रिकॉर्ड, सेव या अपलोड नहीं होती। ब्राउज़र उसे शब्दों में बदलता है; भाषा-पैक होने पर यह फ़ोन पर ही होता है।"
-              : "Your voice is never recorded, stored or uploaded. The browser turns it into text; with the language pack this happens on the phone."}
+          {hi ? "हिन्दी/अंग्रेज़ी में ब्राउज़र आवाज़ को शब्दों में बदलता है; भाषा-पैक होने पर यह फ़ोन पर ही होता है। अन्य भाषाओं में (या जब ब्राउज़र यह न कर सके) 8 सेकंड तक की आवाज़ एक बार Google Gemini को केवल शब्दों में लिखने के लिए भेजी जाती है। आवाज़ कहीं सेव नहीं होती।"
+              : "In Hindi / English the browser turns your voice into text; with the language pack this happens on the phone. In other languages (or when the browser cannot), up to 8 seconds of audio is sent once to Google Gemini only to write it as text. Your voice is never stored."}
         </Item>
         <Item icon={<Camera size={22} />} title={hi ? "फ़ोटो" : "Photos"}>
           {hi ? "फ़ोटो सेव नहीं होती। इंटरनेट होने पर सिर्फ़ वही एक फ़ोटो लेबल पढ़ने के लिए Google Gemini (Firebase AI Logic) को भेजी जाती है। बिना इंटरनेट फ़ोटो फ़ोन पर ही पढ़ी जाती है।"
