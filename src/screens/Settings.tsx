@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { ChevronRight, Cpu, Database, Info, Languages, Lock, RefreshCw, CheckCircle2, Sparkles, Volume2, WifiOff, HardDriveDownload } from "lucide-react";
+import { ChevronRight, Cpu, Database, Info, Languages, Lock, RefreshCw, CheckCircle2, Sparkles, Volume2, WifiOff, HardDriveDownload, ScrollText } from "lucide-react";
 import { PushOffer } from "../components/PushOffer";
+import { LanguagePicker } from "../components/Language";
 import { useApp } from "../state";
 import { Button, Card, Page, cx } from "../components/ui";
 import { Facts } from "../components/ui";
@@ -22,7 +23,7 @@ function Seg<T extends string>({ value, options, onChange }: { value: T; options
 }
 
 export default function Settings() {
-  const { t, lang, setLang, voice, setVoice, muted, setMuted, dataset, sync, syncing, online, go } = useApp();
+  const { t, lang, voice, setVoice, muted, setMuted, dataset, sync, syncing, online, go } = useApp();
   const [nano, setNano] = useState("…");
   const [nanoImg, setNanoImg] = useState("…");
   const [syncMsg, setSyncMsg] = useState("");
@@ -74,7 +75,7 @@ export default function Settings() {
       <Card className="mt-4 divide-y divide-line/70">
         <div className="flex flex-col gap-2 p-4">
           <span className="flex items-center gap-2 text-[17px] font-semibold"><Languages size={20} className="text-brand-600" /> {t("language")}</span>
-          <Seg value={lang} onChange={setLang} options={[{ v: "hi", l: "हिन्दी" }, { v: "en", l: "English" }]} />
+          <LanguagePicker />
         </div>
         <div className="flex flex-col gap-2 p-4">
           <span className="flex items-center gap-2 text-[17px] font-semibold"><Volume2 size={20} className="text-brand-600" /> {t("voice")}</span>
@@ -102,7 +103,7 @@ export default function Settings() {
       <p className="mt-2 flex items-center gap-1.5 px-1 text-[14px] text-muted"><HardDriveDownload size={15} aria-hidden /> {lang === "hi" ? "सूचना नहीं चाहिए? हर दवा पर 'कैलेंडर में जोड़ें' भी है।" : "Prefer no notifications? Every medicine also has 'Add expiry to my calendar'."}</p>
 
       <Card className="mt-4 divide-y divide-line/70">
-        {([["how", Cpu, lang === "hi" ? "यह कैसे काम करता है" : "How it works"], ["why", Sparkles, lang === "hi" ? "दवा कवच क्यों" : "Why DawaShield"]] as const).map(([k, Icon, label]) => (
+        {([["how", Cpu, lang === "hi" ? "यह कैसे काम करता है" : "How it works"], ["transparency", ScrollText, lang === "hi" ? "पारदर्शिता: आँकड़े और सीमाएँ" : "Transparency: numbers and limits"], ["why", Sparkles, lang === "hi" ? "दवा कवच क्यों" : "Why DawaShield"]] as const).map(([k, Icon, label]) => (
           <button key={k} onClick={() => go({ name: k })} className="flex min-h-[60px] w-full items-center gap-3 px-4 text-left">
             <Icon size={20} className="text-brand-600" />
             <span className="flex-1 text-[17px] font-semibold">{label}</span>

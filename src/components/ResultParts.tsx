@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ArrowRight, Check, ChevronDown, Cloud, Code2, Copy, Cpu, ExternalLink, FileText, HelpCircle, History, Keyboard, Minus, Smartphone, X } from "lucide-react";
 import { useApp, type CheckState } from "../state";
 import { Card, cx } from "./ui";
-import { monthLabel } from "../lib/format";
+import { monthLabel, officialLink } from "../lib/format";
 import { isPastOrToday, formatExpiry } from "../lib/expiry";
 import { explainResult, whySummary, type RowStatus } from "../lib/why";
 import type { AlertRecord } from "../lib/types";
@@ -16,7 +16,7 @@ const L = {
   nsq: { hi: "मानक से कम (NSQ)", en: "Not of Standard Quality (NSQ)" },
   spurious: { hi: "नकली (Spurious)", en: "Spurious" },
   pdf: { hi: "सरकारी PDF खोलें", en: "Open official PDF" },
-  portal: { hi: "CDSCO पोर्टल खोलें", en: "Open CDSCO portal" },
+  portal: { hi: "CDSCO चेतावनी पेज खोलें", en: "Open CDSCO alerts page" },
   upTo: { hi: "डेटा उपलब्ध", en: "Data available up to" },
   historical: { hi: "पुरानी चेतावनी — इस बैच की समाप्ति तिथि थी", en: "Historical alert, this batch's expiry was" },
   why: { hi: "यह नतीजा क्यों?", en: "Why this result?" },
@@ -198,8 +198,8 @@ export function RedFacts({ r }: { r: AlertRecord }) {
         </div>
       </dl>
       <div className="flex flex-wrap items-center gap-2 border-t border-line/70 px-5 py-4">
-        <a href={r.pdfUrl || r.sourceUrl} target="_blank" rel="noreferrer" className="tap inline-flex items-center gap-2 rounded-2xl bg-brand-700 px-4 text-[16px] font-semibold text-white hover:bg-brand-800" data-testid="source-pdf">
-          {r.pdfUrl ? <FileText size={18} /> : <ExternalLink size={18} />} {r.pdfUrl ? L.pdf[lang] : L.portal[lang]}
+        <a href={officialLink(r).url} target="_blank" rel="noreferrer" className="tap inline-flex items-center gap-2 rounded-2xl bg-brand-700 px-4 text-[16px] font-semibold text-white hover:bg-brand-800" data-testid="source-pdf" data-kind={officialLink(r).kind}>
+          {officialLink(r).kind === "pdf" ? <FileText size={18} /> : <ExternalLink size={18} />} {officialLink(r).kind === "pdf" ? L.pdf[lang] : L.portal[lang]}
         </a>
         <span className="text-[14px] text-muted">{L.upTo[lang]} <b className="text-ink">{monthLabel(dataset?.meta.latestMonth, lang)}</b></span>
       </div>
@@ -216,7 +216,7 @@ const STATUS_ICON: Record<RowStatus, { icon: typeof Check; cls: string }> = {
 /** "Why this result?" — plain code, on every result. */
 export function WhyPanel({ check }: { check: CheckState }) {
   const { lang, dataset } = useApp();
-  const [open, setOpen] = useState(check.result.level !== "GREY");
+  const [open, setOpen] = useState(check.result.level === "RED" || check.result.level === "AMBER");
   const w = explainResult(check.input, check.result, dataset?.meta);
   const fieldLabel = { name: L.name, batch: L.batch, manufacturer: L.manufacturer };
 
@@ -229,10 +229,10 @@ export function WhyPanel({ check }: { check: CheckState }) {
       </button>
       {open && (
         <div className="border-t border-line/70 px-5 pb-5 pt-4" data-testid="why-panel" data-level={w.level}>
-          {w.level !== "GREY" && (
+          {(w.level === "RED" || w.level === "AMBER") && (
             <p className="mb-3 rounded-2xl bg-paper px-4 py-3 text-[16px] font-semibold text-ink" data-testid="why-summary">{whySummary(w.rows, lang)}</p>
           )}
-          {w.level !== "GREY" && (
+          {(w.level === "RED" || w.level === "AMBER") && (
             <table className="w-full table-fixed border-separate border-spacing-y-1.5 text-left">
               <thead>
                 <tr className="text-[12.5px] font-bold uppercase tracking-wide text-muted">

@@ -11,17 +11,18 @@ const records = nsq as unknown as AlertRecord[];
 const meta = metaJson as unknown as DatasetMeta;
 
 describe("safer RED wording", () => {
-  const en = `${RESULT.RED.title.en}. ${RESULT.RED.body.en}`;
+  const en = `${RESULT.RED.title.en} ${RESULT.RED.body.en}`;
   it("uses the exact required wording", () => {
-    expect(en).toBe("This batch appears in an official CDSCO quality alert. Don't take the next dose until you speak to your doctor or chemist. Never stop an essential medicine suddenly.");
+    expect(en).toBe("An official alert matches this exact batch. Talk to your doctor or chemist before your next dose. Don't stop an essential medicine on your own.");
   });
   it("voice clip text and family message use it too, in both languages", () => {
-    const clip = CLIPS.find((c) => c.clip === "red")!;
-    expect(clip.text.en).toContain("Never stop an essential medicine suddenly");
-    expect(clip.text.hi).toContain(RESULT.RED.body.hi);
+    const clip = CLIPS.find((c) => c.clip === "red_nsq")!;
+    expect(clip.text.en.startsWith("Red. An official alert matches this exact batch.")).toBe(true);
+    expect(clip.text.en).toContain("Don't stop an essential medicine on your own");
+    expect(clip.text.hi.startsWith("लाल।")).toBe(true);
     const fam = familyMessage("en", { level: "RED", name: "X", batch: "B", month: "June 2025", link: "u" });
-    expect(fam).toContain("Don't take the next dose until you speak to your doctor or chemist");
-    expect(familyMessage("hi", { level: "RED", name: "X", batch: "B", month: "m", link: "u" })).toContain("अचानक बंद न करें");
+    expect(fam).toContain("Talk to your doctor or chemist before your next dose");
+    expect(familyMessage("hi", { level: "RED", name: "X", batch: "B", month: "m", link: "u" })).toContain("अपने-आप बंद न करें");
   });
 });
 

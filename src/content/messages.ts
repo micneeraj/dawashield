@@ -24,69 +24,163 @@ export const OFFICIAL = {
 export const RESULT = {
   RED: {
     clip: "red",
+    color: { hi: "लाल", en: "Red" },
     word: { hi: "सरकारी चेतावनी मिली", en: "Official alert found" },
     title: {
-      hi: "यह बैच CDSCO की सरकारी गुणवत्ता चेतावनी में दर्ज है",
-      en: "This batch appears in an official CDSCO quality alert",
+      hi: "एक सरकारी चेतावनी ठीक इसी बैच से मिलती है।",
+      en: "An official alert matches this exact batch.",
     },
     body: {
-      hi: "अपने डॉक्टर या केमिस्ट से बात किए बिना अगली खुराक न लें। ज़रूरी दवा कभी भी अचानक बंद न करें।",
-      en: "Don't take the next dose until you speak to your doctor or chemist. Never stop an essential medicine suddenly.",
+      hi: "अगली खुराक से पहले अपने डॉक्टर या केमिस्ट से बात कीजिए। ज़रूरी दवा अपने-आप बंद न करें।",
+      en: "Talk to your doctor or chemist before your next dose. Don't stop an essential medicine on your own.",
     },
   },
   AMBER: {
     clip: "amber",
-    word: { hi: "पक्का कीजिए", en: "Please confirm" },
+    color: { hi: "पीला", en: "Amber" },
+    word: { hi: "पक्का कीजिए", en: "Please check" },
     title: {
-      hi: "मिलती-जुलती सरकारी चेतावनी मिली",
-      en: "A possible match was found",
+      hi: "संभावित मेल: अगली खुराक से पहले केमिस्ट को पत्ता दिखाइए।",
+      en: "Possible match: show the strip to your chemist before the next dose.",
     },
     body: {
-      hi: "यह पक्का मेल नहीं है। कृपया पत्ते पर बैच नंबर और कंपनी का नाम दोबारा मिलाइए, और अपने केमिस्ट से जाँच करवाइए।",
-      en: "This is not a confirmed match. Please check the batch number and company name on the strip again, and check with your chemist.",
+      hi: "यह पक्का मेल नहीं है।",
+      en: "This is not a confirmed match.",
     },
   },
   GREY: {
     clip: "grey",
-    word: { hi: "कोई सरकारी चेतावनी नहीं मिली", en: "No official alert found" },
+    color: { hi: "धूसर", en: "Grey" },
+    word: { hi: "कोई सरकारी चेतावनी नहीं", en: "No official alert" },
     title: {
-      hi: "इस बैच पर कोई सरकारी चेतावनी नहीं मिली।",
-      en: "No official alert found for this batch.",
+      hi: "ठीक इस बैच पर कोई सरकारी चेतावनी नहीं है",
+      en: "No official alert for this exact batch",
     },
     body: {
-      hi: "इसका मतलब यह नहीं कि दवा जाँच में सुरक्षित पाई गई है। CDSCO की सूचियाँ देर से आती हैं।",
-      en: "This does not mean the medicine is tested safe. CDSCO lists come out late.",
+      hi: "इससे यह साबित नहीं होता कि दवा सुरक्षित है। सरकारी चेतावनियाँ देर से आ सकती हैं।",
+      en: "This does not prove the medicine is safe. Official alerts can be delayed.",
+    },
+  },
+  UNREADABLE: {
+    clip: "unreadable",
+    color: { hi: "साफ़ नहीं पढ़ा गया", en: "Can't read clearly" },
+    word: { hi: "साफ़ नहीं पढ़ा गया", en: "Can't read clearly" },
+    title: {
+      hi: "पत्ता इतना साफ़ नहीं पढ़ा गया कि जाँच हो सके",
+      en: "We couldn't read the strip clearly enough to check it",
+    },
+    body: {
+      hi: "हम अंदाज़ा नहीं लगाएँगे। बटनों से बैच नंबर डालिए, या रोशनी में पास से दोबारा फ़ोटो लीजिए।",
+      en: "We won't guess. Type the batch number on the keypad, or take a closer photo in good light.",
     },
   },
 } as const;
 
-/** Extra line explaining why an AMBER result is amber. */
-export const AMBER_REASON: Record<string, T> = {
-  "possible-company": {
-    hi: "बैच नंबर सूची से पूरा मिलता है, पर कंपनी का नाम पूरी तरह नहीं मिलता। यह वही कंपनी हो सकती है। कृपया केमिस्ट से जाँच करवाइए।",
-    en: "The batch number matches the list exactly, but the company name only partly matches. It may be the same company. Please check with your chemist.",
+/** RED must say which kind of alert it is. */
+export const RED_TYPE: Record<"NSQ" | "SPURIOUS", { label: T; line: T; extra?: T }> = {
+  NSQ: {
+    label: { hi: "मानक गुणवत्ता से कम (NSQ)", en: "Not of Standard Quality (NSQ)" },
+    line: { hi: "यह बैच सरकारी लैब की जाँच में किसी मानक पर खरा नहीं उतरा।", en: "This batch failed a test at a government lab." },
   },
-  "batch-other-company": {
-    hi: "यही बैच नंबर सूची में है, पर दूसरी कंपनी के नाम से। अलग कंपनियों के बैच नंबर एक जैसे हो सकते हैं। कृपया पत्ते पर कंपनी का नाम मिलाइए।",
-    en: "This batch number is on the list, but under a different company. Different companies can use the same batch number. Please check the company name on the strip.",
-  },
-  "near-batch": {
-    hi: "आपका बैच नंबर एक चेतावनी वाले बैच से सिर्फ़ एक अक्षर अलग है। हो सकता है पढ़ने या लिखने में गलती हुई हो।",
-    en: "Your batch number is one character away from a batch on the alert list. It may be a reading or typing mistake.",
-  },
-  "batch-other-name": {
-    hi: "यह बैच नंबर चेतावनी सूची में है, पर दवा का नाम अलग लिखा है। कृपया दवा का नाम मिला लीजिए।",
-    en: "This batch number is on the alert list, but under a different medicine name. Please check the medicine name.",
-  },
-  company: {
-    hi: "इस कंपनी के कुछ खास बैच सरकारी सूची में हैं, पर आपका बैच उनमें नहीं है। चेतावनी सिर्फ़ सूची में लिखे बैचों पर है, कंपनी के सभी बैचों पर नहीं। शक हो तो केमिस्ट से पूछिए।",
-    en: "Some specific batches from this company are on the official list, but your batch is not one of them. The alert covers only the listed batches, not all of this company's batches. Ask your chemist if unsure.",
-  },
-  "name-no-batch": {
-    hi: "इस दवा के कुछ बैच चेतावनी सूची में हैं। सही जानकारी के लिए पत्ते पर लिखा बैच नंबर डालिए।",
-    en: "Some batches of this medicine are on the alert list. Please enter the batch number printed on the strip to check properly.",
+  SPURIOUS: {
+    label: { hi: "नकली (स्प्यूरियस) होने का शक", en: "Spurious (suspected fake)" },
+    line: { hi: "जाँच के अनुसार यह बैच लेबल वाली कंपनी ने नहीं बनाया हो सकता है।", en: "Testing suggests this batch may not have been made by the company on the label." },
+    extra: {
+      hi: "पत्ता और बिल संभालकर रखें। इसे इस्तेमाल न करें। केमिस्ट और CDSCO को इसकी शिकायत करें।",
+      en: "Keep the strip and the bill. Don't use it. Report it to the chemist and CDSCO.",
+    },
   },
 };
+
+/** The two kinds of AMBER get their own headline. */
+export const AMBER_TITLE: Record<"possible" | "other", T> = {
+  possible: RESULT.AMBER.title,
+  other: {
+    hi: "इसी दवा के दूसरे बैच चेतावनी में हैं: अपना बैच नंबर केमिस्ट से मिलवाइए।",
+    en: "Other batches of this medicine are flagged: check your batch number with your chemist.",
+  },
+};
+export const amberKind = (reason: string): "possible" | "other" => (reason === "other-batches" || reason === "name-no-batch" ? "other" : "possible");
+
+/** One line: WHY this result is amber. */
+export const AMBER_REASON: Record<string, T> = {
+  "possible-company": {
+    hi: "क्यों पीला: बैच नंबर पूरा मिलता है, पर कंपनी का नाम पक्का नहीं मिलता।",
+    en: "Why amber: the batch number matches exactly, but the company match is uncertain.",
+  },
+  "company-unconfirmed": {
+    hi: "क्यों पीला: बैच नंबर पूरा मिलता है, पर कंपनी का नाम नहीं डाला गया, इसलिए पक्का नहीं।",
+    en: "Why amber: the batch number matches exactly, but no company was given to confirm it.",
+  },
+  "batch-other-company": {
+    hi: "क्यों पीला: यही बैच नंबर सूची में है, पर दूसरी कंपनी के नाम से। पत्ते पर कंपनी का नाम मिलाइए।",
+    en: "Why amber: this batch number is listed, but under a different company. Check the company name on the strip.",
+  },
+  "batch-other-name": {
+    hi: "क्यों पीला: यही बैच नंबर सूची में है, पर दूसरी दवा के नाम से।",
+    en: "Why amber: this batch number is listed, but under a different medicine name.",
+  },
+  "near-batch": {
+    hi: "क्यों पीला: आपका बैच नंबर एक चेतावनी वाले बैच से सिर्फ़ एक अक्षर अलग है। पढ़ने में गलती हो सकती है।",
+    en: "Why amber: your batch number is one character away from a flagged batch. It may be a reading slip.",
+  },
+  "partial-batch": {
+    hi: "क्यों पीला: बैच नंबर अधूरा लगता है, और इसकी शुरुआत एक चेतावनी वाले बैच जैसी है। पूरा नंबर डालिए।",
+    en: "Why amber: the batch number looks incomplete and starts like a flagged batch. Enter the full number.",
+  },
+  "other-batches": {
+    hi: "क्यों पीला: इसी कंपनी की इसी दवा के दूसरे बैच सरकारी सूची में हैं। आपका बैच उनमें नहीं है।",
+    en: "Why amber: other batches of this same medicine from this company are on the official list. Your batch is not one of them.",
+  },
+  "name-no-batch": {
+    hi: "क्यों पीला: इस दवा के कुछ बैच सूची में हैं, और आपने बैच नंबर नहीं डाला।",
+    en: "Why amber: some batches of this medicine are listed, and no batch number was entered.",
+  },
+};
+
+/** GREY info notes (small, below the headline). {medicine} and {month} are filled from the record. */
+export const GREY_NOTE: Record<"company-other-medicine" | "company-batch-unlisted", T> = {
+  "company-other-medicine": {
+    hi: "इस कंपनी की एक अलग दवा सरकारी सूची में है ({medicine}, {month})। आपकी दवा पर इसका असर नहीं है।",
+    en: "This company has a different medicine on the official list ({medicine}, {month}). Your medicine is not affected.",
+  },
+  "company-batch-unlisted": {
+    hi: "इस कंपनी के दूसरे बैच सरकारी सूची में हैं ({medicine}, {month})। आपका बैच उनमें नहीं है।",
+    en: "This company has other batches on the official list ({medicine}, {month}). Your batch is not one of them.",
+  },
+};
+export const fillNote = (t: string, o: { medicine: string; month: string }) => t.replace("{medicine}", o.medicine).replace("{month}", o.month);
+
+/** "What should I do?": the one action, repeated in large type under every result. */
+export const ACTION: Record<"RED_NSQ" | "RED_SPURIOUS" | "AMBER" | "AMBER_OTHER" | "GREY" | "UNREADABLE", T> = {
+  RED_NSQ: { hi: "अगली खुराक से पहले डॉक्टर या केमिस्ट से बात कीजिए।", en: "Talk to your doctor or chemist before your next dose." },
+  RED_SPURIOUS: { hi: "इसे इस्तेमाल न करें। पत्ता और बिल रखें, और केमिस्ट को दिखाइए।", en: "Don't use it. Keep the strip and bill, and show them to your chemist." },
+  AMBER: { hi: "अगली खुराक से पहले यह पत्ता केमिस्ट को दिखाइए।", en: "Show this strip to your chemist before your next dose." },
+  AMBER_OTHER: { hi: "पत्ते पर बैच नंबर ध्यान से मिलाइए, और केमिस्ट से पूछिए।", en: "Check the batch number on the strip carefully, and ask your chemist." },
+  GREY: { hi: "समाप्ति तिथि देखिए, और दवा लाइसेंस वाले केमिस्ट से बिल के साथ ही खरीदिए।", en: "Check the expiry date, and buy medicines only from a licensed chemist, with a bill." },
+  UNREADABLE: { hi: "बटनों से बैच नंबर डालिए, या साफ़ फ़ोटो लीजिए।", en: "Type the batch number, or take a clearer photo." },
+};
+export function actionKey(level: string, reason: string, type?: "NSQ" | "SPURIOUS"): keyof typeof ACTION {
+  if (level === "RED") return type === "SPURIOUS" ? "RED_SPURIOUS" : "RED_NSQ";
+  if (level === "AMBER") return amberKind(reason) === "other" ? "AMBER_OTHER" : "AMBER";
+  if (level === "UNREADABLE") return "UNREADABLE";
+  return "GREY";
+}
+
+/** Shown wherever a result or data claim appears. */
+export const INFO_TOOL: T = {
+  hi: "दवा कवच सार्वजनिक CDSCO चेतावनियों पर आधारित एक जानकारी देने वाला साधन है। यह गुणवत्ता प्रमाणपत्र या डॉक्टरी सलाह नहीं है। नकली दवाएँ असली बैच नंबर छाप सकती हैं, इसलिए धूसर नतीजा उन्हें पूरी तरह नहीं नकार सकता।",
+  en: "DawaShield is an information tool based on public CDSCO alerts, not a quality certificate or medical advice. Counterfeits can copy real batch numbers, so a GREY result can't rule them out.",
+};
+
+/** Spoken reply: colour + one clear sentence first, details after. Clip names match make-audio. */
+export function spokenClip(level: string, reason: string, type?: "NSQ" | "SPURIOUS"): string {
+  if (level === "RED") return type === "SPURIOUS" ? "red_spurious" : "red_nsq";
+  if (level === "AMBER") return AMBER_REASON[reason] ? `amber_${reason.replace(/-/g, "_")}` : "amber";
+  if (level === "UNREADABLE") return "unreadable";
+  if (reason === "company-other-medicine") return "grey_company";
+  return "grey";
+}
 
 /** Useful next steps under every GREY result. */
 export const GREY_STEPS: { key: "expiry" | "chemist" | "save" | "report"; title: T; body: T }[] = [
@@ -284,7 +378,7 @@ export function familyMessage(lang: Lang, o: { level: "RED" | "AMBER"; who?: str
       `बैच: ${o.batch}`,
       `CDSCO चेतावनी: ${o.month}`,
       o.level === "RED"
-        ? "डॉक्टर या केमिस्ट से बात किए बिना अगली खुराक न लें। ज़रूरी दवा कभी भी अचानक बंद न करें।"
+        ? "अगली खुराक से पहले अपने डॉक्टर या केमिस्ट से बात कीजिए। ज़रूरी दवा अपने-आप बंद न करें।"
         : "कृपया बैच नंबर मिलाएँ और फार्मासिस्ट से पूछें।",
       `स्रोत: ${o.link}`,
     ].filter(Boolean).join("\n");
@@ -296,7 +390,7 @@ export function familyMessage(lang: Lang, o: { level: "RED" | "AMBER"; who?: str
     `Batch: ${o.batch}`,
     `CDSCO alert: ${o.month}`,
     o.level === "RED"
-      ? "Don't take the next dose until you speak to your doctor or chemist. Never stop an essential medicine suddenly."
+      ? "Talk to your doctor or chemist before your next dose. Don't stop an essential medicine on your own."
       : "Please check the batch number and ask a pharmacist.",
     `Source: ${o.link}`,
   ].filter(Boolean).join("\n");
@@ -328,14 +422,25 @@ export function complaintMessage(lang: Lang, o: { name: string; batch: string; m
   ].filter(Boolean).join("\n");
 }
 
-/** All clips the app needs, with their exact spoken text. Used by scripts/make-audio.mjs. */
+/** All clips the app needs, with their exact spoken text. Used by scripts/make-audio.mjs.
+ *  Result clips: colour + one clear sentence first, details after. */
+const strip = (s: string) => s.trim().replace(/[।.:]\s*$/, "");
+const say = (parts: T[]): T => ({ hi: parts.map((p) => strip(p.hi)).join("। ") + "।", en: parts.map((p) => strip(p.en)).join(". ") + "." });
 export const CLIPS: { clip: string; text: T }[] = [
   ...Object.values(VOICE),
-  ...Object.entries(AMBER_REASON).map(([k, text]) => ({ clip: `amber_${k.replace(/-/g, "_")}`, text })),
   { clip: "grey_steps", text: { hi: GREY_STEPS.map((x) => x.title.hi).join("। ") + "।", en: GREY_STEPS.map((x) => x.title.en).join(". ") + "." } },
   { clip: "first_run", text: { hi: FIRST_RUN.points.map((x) => x.hi).join(" "), en: FIRST_RUN.points.map((x) => x.en).join(" ") } },
-  ...(["RED", "AMBER", "GREY"] as const).map((k) => ({
-    clip: RESULT[k].clip,
-    text: { hi: `${RESULT[k].title.hi}। ${RESULT[k].body.hi}`, en: `${RESULT[k].title.en}. ${RESULT[k].body.en}` },
+  { clip: "red_nsq", text: say([RESULT.RED.color, RESULT.RED.title, RESULT.RED.body, RED_TYPE.NSQ.label]) },
+  { clip: "red_spurious", text: say([RESULT.RED.color, RESULT.RED.title, RED_TYPE.SPURIOUS.extra!, RED_TYPE.SPURIOUS.label]) },
+  { clip: "amber", text: say([RESULT.AMBER.color, RESULT.AMBER.title, RESULT.AMBER.body]) },
+  ...Object.entries(AMBER_REASON).map(([k, why]) => ({
+    clip: `amber_${k.replace(/-/g, "_")}`,
+    text: say([RESULT.AMBER.color, AMBER_TITLE[amberKind(k)], why]),
   })),
+  { clip: "grey", text: say([RESULT.GREY.color, RESULT.GREY.title, RESULT.GREY.body]) },
+  {
+    clip: "grey_company",
+    text: say([RESULT.GREY.color, RESULT.GREY.title, { hi: "इस कंपनी की एक अलग दवा सूची में है। आपकी दवा पर इसका असर नहीं है", en: "This company has a different medicine on the list. Your medicine is not affected" }]),
+  },
+  { clip: "unreadable", text: say([RESULT.UNREADABLE.title, RESULT.UNREADABLE.body]) },
 ];

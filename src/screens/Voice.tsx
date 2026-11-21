@@ -5,7 +5,9 @@ import { useApp } from "../state";
 import { Button, Card, ErrorCard, Field, Page, SourceChip, Spinner, inputCls, cx } from "../components/ui";
 import { MicButton } from "../components/MicButton";
 import { BatchKeypad } from "../components/Keypad";
-import { listen, speechSupported, type Listener } from "../lib/speech";
+import { listen, speechLangSupported, type Listener } from "../lib/speech";
+import { transliterateName } from "../lib/indic";
+import { isRegional } from "../lib/i18n";
 import { candidatesFromSpeech, traceStart, traceTake, type AiStep } from "../lib/ai";
 import { transliterate } from "../lib/normalize";
 import { matchSpoken, toDevanagari } from "../lib/phonetic";
@@ -13,6 +15,7 @@ import { getDictionary } from "../lib/dictionary";
 import { VOICE } from "../content/messages";
 import { speechErrorKey, type ErrorKey } from "../lib/errors";
 import { useRunCheck } from "../useCheck";
+import { spokenBatchUnreadable } from "../lib/label";
 import type { Source } from "../lib/types";
 
 type Step = "listen" | "think" | "pick" | "batch";
@@ -22,7 +25,12 @@ function withTimeout<T>(p: Promise<T>, ms: number): Promise<T> {
 }
 
 export default function Voice() {
-  const { t, lang, go, dataset, say, noteAi, online } = useApp();
+  const { t, lang, uiLang, regionalActive, go, dataset, say, noteAi, online } = useApp();
+  // Speech locale: the picked regional language while it is active, else Hindi / English.
+  const speechLang = regionalActive ? uiLang : lang;
+  // Hide the mic when this browser cannot recognise the language; keypad and photo stay.
+  const [speechSupported, setSpeechSupported] = useState(true);
+  useEffect(() => { let live = true; void speechLangSupported(speechLang).then((ok) => { if (live) setSpeechSupported(ok); }); return () => { live = false; }; }, [speechLang]);
   const runCheck = useRunCheck();
   const [step, setStep] = useState<Step>("listen");
   const [listening, setListening] = useState(false);
@@ -36,6 +44,7 @@ export default function Voice() {
   const [batch, setBatch] = useState("");
   const [batchListening, setBatchListening] = useState(false);
   const [keypad, setKeypad] = useState(false);
+  const [batchHeard, setBatchHeard] = useState(false);
   const rec = useRef<Listener | null>(null);
 
   const startListening = async () => {
@@ -43,7 +52,7 @@ export default function Voice() {
     setErrKey(null);
     setTranscript("");
     setListening(true);
-    rec.current = await listen(lang, (txt) => setTranscript(txt), (final, err) => {
+    rec.current = await listen(speechLang, (txt) => setTranscript(txt), (final, err) => {
       setListening(false);
       if (final) void understand(final);
       else if (err) { setErrKey(speechErrorKey(err)); say(VOICE.fallback.clip); }
@@ -53,7 +62,7 @@ export default function Voice() {
 
   useEffect(() => {
     // Give the welcome clip a moment, then listen.
-    const id = setTimeout(() => { if (speechSupported) void startListening(); }, 600);
+    const id = setTimeout(() => { void speechLangSupported(speechLang).then((ok) => { if (ok) void startListening(); }); }, 600);
     return () => { clearTimeout(id); rec.current?.stop(); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -115,7 +124,7 @@ export default function Voice() {
     if (batchListening) { rec.current?.stop(); return; }
     setBatchListening(true);
     // Batch numbers are letters and digits: English recognition handles them best.
-    rec.current = await listen("en", (txt) => setBatch(txt.replace(/\s+/g, "").toUpperCase()), () => setBatchListening(false));
+    rec.current = await listen("en", (txt) => { setBatch(txt.replace(/\s+/g, "").toUpperCase()); setBatchHeard(true); }, () => setBatchListening(false));
     if (!rec.current) setBatchListening(false);
   }
 
@@ -126,7 +135,7 @@ export default function Voice() {
         {step === "listen" && (
           <motion.div key="listen" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="flex flex-col items-center">
             <p className="mt-2 text-center text-[22px] font-semibold text-ink">{VOICE.askName.text[lang]}</p>
-            <MicButton listening={listening} onClick={() => (listening ? rec.current?.stop() : void startListening())} label={listening ? t("listening") : t("tapToSpeak")} size={150} />
+            {speechSupported && <MicButton listening={listening} onClick={() => (listening ? rec.current?.stop() : void startListening())} label={listening ? t("listening") : t("tapToSpeak")} size={150} />}
             <div className="min-h-[88px] w-full" aria-live="polite">
               {listening && !transcript && <p className="text-center text-[18px] font-medium text-brand-700">{t("listening")}</p>}
               {transcript && (
@@ -173,8 +182,9 @@ export default function Voice() {
                   <button onClick={() => pick(o)} className="flex min-h-[76px] w-full items-center gap-4 rounded-3xl border-2 border-line bg-white px-5 text-left shadow-soft transition hover:border-brand-400 focus-visible:border-brand-500" data-testid="option">
                     <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-brand-50 text-brand-700"><Pill size={24} /></span>
                     <span className="flex-1">
-                      <span className="block text-[24px] font-bold leading-tight tracking-tight text-ink">{o}</span>
-                      {lang === "hi" && <span className="block text-[18px] font-medium text-brand-800" lang="hi">{toDevanagari(o)}</span>}
+                      <span className="block text-[24px] font-bold leading-tight tracking-tight text-ink" translate="no">{o}</span>
+                      {lang === "hi" && !regionalActive && <span className="block text-[18px] font-medium text-brand-800" lang="hi" translate="no">{toDevanagari(o)}</span>}
+                      {regionalActive && isRegional(uiLang) && <span className="block text-[18px] font-medium text-brand-800" lang={uiLang} translate="no" data-testid="option-translit">{transliterateName(o, uiLang)}</span>}
                     </span>
                     <Check className="text-brand-300" />
                   </button>
@@ -199,10 +209,10 @@ export default function Voice() {
               <button className="tap rounded-2xl px-3 text-[15px] font-semibold text-brand-700 hover:bg-brand-50" onClick={() => setStep("pick")}>{lang === "hi" ? "बदलें" : "Change"}</button>
             </Card>
             <p className="mt-5 text-[19px] font-medium leading-snug text-ink">{VOICE.askBatch.text[lang]}</p>
-            <form className="mt-4" onSubmit={(e) => { e.preventDefault(); runCheck({ name, batch, ...spoken() }); }}>
+            <form className="mt-4" onSubmit={(e) => { e.preventDefault(); runCheck({ name, batch, unreadable: batchHeard && spokenBatchUnreadable(batch), ...spoken() }); }}>
               <Field label={t("batchNo")} hint={t("batchHint")}>
                 <div className="flex gap-2">
-                  <input value={batch} onChange={(e) => setBatch(e.target.value.toUpperCase())} className={cx(inputCls, "num text-[26px] font-bold tracking-wider")} placeholder="B.No." autoCapitalize="characters" autoComplete="off" data-testid="batch-input" />
+                  <input value={batch} onChange={(e) => { setBatch(e.target.value.toUpperCase()); setBatchHeard(false); }} className={cx(inputCls, "num text-[26px] font-bold tracking-wider")} placeholder="B.No." autoCapitalize="characters" autoComplete="off" data-testid="batch-input" />
                   <button type="button" onClick={listenBatch} aria-label={t("tapToSpeak")} className={cx("tap grid w-16 shrink-0 place-items-center rounded-2xl text-white", batchListening ? "bg-brand-900" : "bg-brand-700")}>
                     <Mic size={26} />
                   </button>
@@ -220,7 +230,7 @@ export default function Voice() {
           </motion.div>
         )}
       </AnimatePresence>
-      <BatchKeypad open={keypad} value={batch} onClose={() => setKeypad(false)} onDone={setBatch} />
+      <BatchKeypad open={keypad} value={batch} onClose={() => setKeypad(false)} onDone={(v) => { setBatch(v); setBatchHeard(false); }} />
     </Page>
   );
 }

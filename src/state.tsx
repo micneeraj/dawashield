@@ -3,6 +3,9 @@ import type { Lang } from "./content/messages";
 import { UI, type UIKey } from "./content/ui";
 import { loadDataset, syncIfNewer, recheckCabinet, expiryReminders, flushQueue, type Dataset } from "./lib/sync";
 import { playClip } from "./lib/audio";
+import { isRegional, loadDict, type AppLang } from "./lib/i18n";
+import type { Regional } from "./lib/indic";
+import { setDisplayLocale } from "./lib/format";
 import type { DatasetMeta, MatchResult, Source } from "./lib/types";
 import type { StripReading } from "./lib/json";
 import type { AiStep } from "./lib/ai";
@@ -21,6 +24,7 @@ export type Screen =
   | { name: "report" }
   | { name: "how" }
   | { name: "why" }
+  | { name: "transparency" }
   | { name: "invite"; code: string };
 
 export interface CheckInput extends StripReading {
@@ -29,6 +33,8 @@ export interface CheckInput extends StripReading {
   demo?: boolean;
   /** Photo fields that were low-confidence and not confirmed by the user. */
   uncertain?: boolean;
+  /** Photo / voice confidence too low to match: shows "Can't read clearly", never GREY. */
+  unreadable?: boolean;
   readSource?: Source; // who read the photo / understood speech (SDK inferenceSource)
   /** What the AI understood, shown in the result's pipeline strip. */
   understood?: { via: "speech" | "photo"; heard?: string; items: { label: { hi: string; en: string }; value: string }[] };
@@ -61,8 +67,21 @@ const write = (k: string, v: string) => {
 };
 
 interface Ctx {
+  /** Content language for the app's own text: "hi" or "en". In a regional
+   *  language this is "en" (online, translated on screen) or "hi" (offline fallback). */
   lang: Lang;
   setLang(l: Lang): void;
+  /** The language the person picked: Hindi, English, or one of 5 online regional languages. */
+  uiLang: AppLang;
+  setUiLang(l: AppLang): void;
+  /** A regional language is picked and its reviewed translation is on screen. */
+  regionalActive: boolean;
+  /** A regional language is picked but we are showing Hindi (offline, or not yet available). */
+  regionalFallback: boolean;
+  /** Regional languages whose reviewed translation is published (online manifest). */
+  regionalAvailable: Partial<Record<Regional, boolean>>;
+  /** Translation dictionary for the active regional language (for the screen layer). */
+  regionalDict: Awaited<ReturnType<typeof loadDict>>;
   t(k: UIKey): string;
   voice: "female" | "male";
   setVoice(v: "female" | "male"): void;
@@ -93,7 +112,12 @@ const C = createContext<Ctx>(null as unknown as Ctx);
 export const useApp = () => useContext(C);
 
 export function AppProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangS] = useState<Lang>(() => (read("ds-lang", "hi") === "en" ? "en" : "hi"));
+  const [uiLang, setUiLangS] = useState<AppLang>(() => {
+    const v = read("ds-ui-lang", read("ds-lang", "hi"));
+    return v === "en" || v === "hi" || isRegional(v) ? (v as AppLang) : "hi";
+  });
+  const [regionalDict, setRegionalDict] = useState<Awaited<ReturnType<typeof loadDict>>>(null);
+  const [regionalAvailable, setRegionalAvailable] = useState<Partial<Record<Regional, boolean>>>({});
   const [voice, setVoiceS] = useState<"female" | "male">(() => (read("ds-voice", "female") === "male" ? "male" : "female"));
   const [muted, setMutedS] = useState(() => read("ds-muted", "0") === "1");
   const [online, setOnline] = useState(navigator.onLine);
@@ -113,13 +137,37 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [cabinetVersion, setCV] = useState(0);
   const [lastAi, setLastAi] = useState<Source | null>(null);
 
-  const setLang = (l: Lang) => { setLangS(l); write("ds-lang", l); document.documentElement.lang = l; };
+  const setUiLang = (l: AppLang) => { setUiLangS(l); write("ds-ui-lang", l); if (l === "hi" || l === "en") write("ds-lang", l); };
+  const setLang = (l: Lang) => setUiLang(l);
+  // Regional: reviewed translation, online only. Offline -> Hindi, back automatically when online.
+  const regionalActive = isRegional(uiLang) && online && !!regionalDict && regionalDict.dict.lang === uiLang;
+  const regionalFallback = isRegional(uiLang) && !regionalActive;
+  const lang: Lang = uiLang === "hi" || uiLang === "en" ? uiLang : regionalActive ? "en" : "hi";
   const setVoice = (v: "female" | "male") => { setVoiceS(v); write("ds-voice", v); };
   const setMuted = (m: boolean) => { setMutedS(m); write("ds-muted", m ? "1" : "0"); };
   const t = useCallback((k: UIKey) => UI[k][lang], [lang]);
-  const say = useCallback((clip: string) => void playClip(clip, lang, voice, muted), [lang, voice, muted]);
+  const clipLang: AppLang = regionalActive ? uiLang : lang;
+  const say = useCallback((clip: string) => void playClip(clip, clipLang, voice, muted, regionalActive ? regionalDict?.dict.clips : undefined), [clipLang, voice, muted, regionalActive, regionalDict]);
 
-  useEffect(() => { document.documentElement.lang = lang; }, [lang]);
+  useEffect(() => {
+    document.documentElement.lang = regionalActive ? uiLang : lang;
+    setDisplayLocale(regionalActive ? `${uiLang}-IN` : null);
+  }, [lang, uiLang, regionalActive]);
+
+  // Load the picked regional language's reviewed translation whenever online.
+  useEffect(() => {
+    if (!isRegional(uiLang) || !online) return;
+    let live = true;
+    void loadDict(uiLang).then((d) => { if (live) setRegionalDict(d); });
+    return () => { live = false; };
+  }, [uiLang, online]);
+  // Which regional languages are published (manifest is small, online only).
+  useEffect(() => {
+    if (!online) return;
+    fetch("/i18n/index.json", { cache: "no-cache" }).then((r) => (r.ok ? r.json() : null)).then((m: { langs?: Record<string, { available?: boolean }> } | null) => {
+      if (m?.langs) setRegionalAvailable(Object.fromEntries(Object.entries(m.langs).map(([k, v]) => [k, !!v.available])) as Partial<Record<Regional, boolean>>);
+    }).catch(() => {});
+  }, [online]);
 
   useEffect(() => {
     const on = () => { setOnline(true); void flushQueue(); };
@@ -158,7 +206,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const value = useMemo<Ctx>(() => ({
-    lang, setLang, t, voice, setVoice, muted, setMuted, say, online, dataset, dataMeta: dataset?.meta ?? metaFirst, syncing, sync, download,
+    lang, setLang, uiLang, setUiLang, regionalActive, regionalFallback, regionalAvailable, regionalDict, t, voice, setVoice, muted, setMuted, say, online, dataset, dataMeta: dataset?.meta ?? metaFirst, syncing, sync, download,
     screen: stack[stack.length - 1],
     go: (s) => {
       setStack((st) => (s.name === "home" ? [s] : [...st, s]));
@@ -170,7 +218,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     cabinetVersion, bumpCabinet: () => setCV((v) => v + 1),
     lastAi, noteAi: setLastAi,
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }), [lang, t, voice, muted, say, online, dataset, metaFirst, syncing, sync, download, stack, check, cabinetVersion, lastAi]);
+  }), [lang, uiLang, regionalActive, regionalFallback, regionalAvailable, regionalDict, t, voice, muted, say, online, dataset, metaFirst, syncing, sync, download, stack, check, cabinetVersion, lastAi]);
 
   return <C.Provider value={value}>{children}</C.Provider>;
 }

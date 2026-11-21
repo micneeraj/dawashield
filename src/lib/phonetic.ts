@@ -10,6 +10,7 @@
 //      folded spelling, over single words and joined neighbouring words (STT
 //      often splits one name into two words).
 import { levenshtein, nameTokens, transliterate } from "./normalize";
+import { indicToDevanagari, scriptOf } from "./indic";
 
 const VOWEL = /[aeiouy]/;
 
@@ -173,7 +174,9 @@ interface Win { w: string; k: string; len: number; single: boolean }
 
 /** Candidate words: single words and joined neighbours ("para cetamol" -> "paracetamol"). */
 function windows(text: string): { wins: Win[]; total: number } {
-  const latin = /[ऀ-ॿ]/.test(text) ? transliterate(text) : text;
+  // Punjabi / Gujarati / Tamil / Kannada transcripts are read as Devanagari first.
+  const deva = indicToDevanagari(text);
+  const latin = /[ऀ-ॿ]/.test(deva) ? transliterate(deva) : deva;
   const words = latin.toLowerCase().split(/[^a-z0-9]+/).filter((w) => w && !STOP.has(w) && /[a-z]/.test(w));
   const out = new Map<string, Win>();
   const add = (w: string, single: boolean) => { if (w.length >= 3 && !out.has(w)) out.set(w, { w, k: phoneticKey(w), len: w.length, single }); };
@@ -226,14 +229,23 @@ function scoreEntry(e: DictEntry, wins: Win[], total: number): number {
 }
 
 /** Top medicine names for a (possibly garbled, possibly Devanagari) transcript. */
+/** Tamil script has no separate voiced letters (one letter for k/g, t/d, p/b),
+ *  so for Tamil transcripts both sides are compared with voicing removed. */
+const devoice = (s: string) => s.replace(/g/g, "k").replace(/d/g, "t").replace(/b/g, "p").replace(/G/g, "K").replace(/D/g, "T").replace(/B/g, "P");
+const devoiceEntry = (e: DictEntry): DictEntry => ({ ...e, keys: e.keys.map(devoice), folded: devoice(e.folded), parts: e.parts.map(devoice) });
+
 export function matchSpoken(text: string, dict: DictEntry[], limit = 4, min = 0.6): SpokenMatch[] {
-  const { wins, total } = windows(text);
+  const tamil = scriptOf(text) === "ta";
+  const w0 = windows(text);
+  const wins = tamil ? w0.wins.map((w) => ({ ...w, w: devoice(w.w), k: devoice(phoneticKey(devoice(w.w))) })) : w0.wins;
+  const total = w0.total;
   if (!wins.length) return [];
   const scored: SpokenMatch[] = [];
-  for (const e of dict) {
+  for (const e0 of dict) {
+    const e = tamil ? devoiceEntry(e0) : e0;
     let s = scoreEntry(e, wins, total);
     if (e.common) s += 0.03; // tie-break towards everyday names
-    if (s >= min) scored.push({ entry: e, score: Math.min(1, s) });
+    if (s >= min) scored.push({ entry: e0, score: Math.min(1, s) });
   }
   scored.sort((a, b) => b.score - a.score || Number(!!b.entry.common) - Number(!!a.entry.common) || a.entry.name.length - b.entry.name.length);
   // One option per sound: "Pantoprazol" and "Pantoprazole" are the same choice for the user.

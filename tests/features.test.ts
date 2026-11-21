@@ -60,20 +60,23 @@ describe("offline Hindi + English templates", () => {
     const en = explain(red, { batch: "251TTF014" }, "en").join(" ");
     const hi = explain(red, { batch: "251TTF014" }, "hi").join(" ");
     expect(en).toContain("251TTF014");
-    expect(en).toContain("Never stop an essential medicine suddenly");
+    expect(en).toContain("Don't stop an essential medicine on your own");
     expect(hi).toContain("251TTF014");
     expect(hi).toMatch(/[ऀ-ॿ]/);
   });
   it("every result type has a template", () => {
-    const amberCo = matchMedicine({ batch: "QQ99999QQ", manufacturer: "Swiss Garnier Life Sciences" }, records);
+    const co = records.find((r) => r.batchNorm === "251TTF014")!;
+    const amberCo = matchMedicine({ name: co.name, batch: "QQ99999QQ", manufacturer: "Swiss Garnier Life Sciences" }, records);
     expect(templateKind(amberCo)).toBe("amber-company");
     expect(fillTemplate("amber-company", "hi", amberCo.records[0], { batch: "QQ99999QQ" }).join(" ")).toContain("सभी बैचों पर नहीं");
-    expect(fillTemplate("grey", "en", undefined, { batch: "X1" }).join(" ")).toContain("does not mean the medicine is tested safe");
+    const greyCo = matchMedicine({ name: "Zzyzx tablets", batch: "QQ99999QQ", manufacturer: "Swiss Garnier Life Sciences" }, records);
+    expect(templateKind(greyCo)).toBe("grey-company");
+    expect(fillTemplate("grey", "en", undefined, { batch: "X1" }).join(" ")).toContain("does not prove the medicine is safe");
     expect(fillTemplate("expired", "hi", undefined, { expiry: "01/2020" })[0]).toContain("01/2020");
     expect(fillTemplate("uncertain", "en", undefined, {})[0]).toContain("amber");
   });
   it("templates never recommend another medicine", () => {
-    const all = (["red", "amber-company", "amber-possible", "grey", "expired", "uncertain"] as const)
+    const all = (["red", "amber-company", "amber-possible", "grey", "grey-company", "expired", "uncertain"] as const)
       .flatMap((k) => (["hi", "en"] as const).flatMap((l) => fillTemplate(k, l, red.records[0], { batch: "B", expiry: "01/2020" })));
     for (const s of all) expect(s).not.toMatch(/instead|alternative|switch to|try (another|a different)|के बदले|दूसरी दवा ले/i);
   });
@@ -81,8 +84,9 @@ describe("offline Hindi + English templates", () => {
 
 describe("GREY never feels like safe", () => {
   it("exact required wording", () => {
-    expect(`${RESULT.GREY.title.en} ${RESULT.GREY.body.en}`).toBe("No official alert found for this batch. This does not mean the medicine is tested safe. CDSCO lists come out late.");
-    expect(RESULT.GREY.body.hi).toContain("सुरक्षित पाई गई है");
+    expect(RESULT.GREY.title.en).toBe("No official alert for this exact batch");
+    expect(RESULT.GREY.body.en).toBe("This does not prove the medicine is safe. Official alerts can be delayed.");
+    expect(RESULT.GREY.body.hi).toContain("साबित नहीं होता");
   });
   it("next steps: expiry, licensed chemist + bill, save for alerts, report", () => {
     expect(GREY_STEPS.map((s) => s.key)).toEqual(["expiry", "chemist", "save", "report"]);

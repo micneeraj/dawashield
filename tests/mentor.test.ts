@@ -18,7 +18,7 @@ describe("demo: verified, in-date RED batches", () => {
   const list = inDateVerified(records);
   it("at least 3 verified records expire after Dec 2026", () => expect(list.length).toBeGreaterThanOrEqual(3));
   it("every one of the first 3 gives RED when checked", () => {
-    for (const r of list.slice(0, 3)) expect(matchMedicine({ name: r.name, batch: r.batch }, records).level).toBe("RED");
+    for (const r of list.slice(0, 3)) expect(matchMedicine({ name: r.name, batch: r.batch, manufacturer: r.manufacturerName || r.manufacturer }, records).level).toBe("RED");
   });
   it("the one-tap chip picks a named manufacturer", () => {
     const d = demoRecord(records)!;

@@ -3,7 +3,8 @@
 type T = { hi: string; en: string };
 
 export const PILLARS: { title: T; body: T }[] = [
-  { title: { hi: "बोलकर, भारतीय भाषा में", en: "Voice-first, in Indian languages" }, body: { hi: "दवा का नाम हिन्दी में बोलिए, गड़बड़ भी सुनाई दे तो बड़े बटन से चुनिए।", en: "Say the medicine name in Hindi; even a garbled transcript is matched and shown as big buttons." } },
+  { title: { hi: "बोलकर, भारतीय भाषा में", en: "Voice-first, in Indian languages" }, body: { hi: "हिन्दी और अंग्रेज़ी बिना इंटरनेट; पंजाबी, गुजराती, मराठी, कन्नड़, तमिल इंटरनेट के साथ। गड़बड़ भी सुनाई दे तो बड़े बटन से चुनिए।", en: "Hindi and English offline; Punjabi, Gujarati, Marathi, Kannada and Tamil online. Even a garbled transcript is matched and shown as big buttons." } },
+  { title: { hi: "झूठा डर नहीं", en: "Careful about false alarms" }, body: { hi: "लाल तभी, जब बैच और कंपनी दोनों पक्के मिलें। उसी कंपनी की दूसरी दवा पर चेतावनी हो तो धूसर, साथ में 'आपकी दवा पर असर नहीं'।", en: "RED only when batch and company both match with confidence. If only a different medicine from the same company is listed, it is GREY with \"Your medicine is not affected.\"" } },
   { title: { hi: "सस्ते फ़ोन पर, बिना इंटरनेट", en: "Works offline on cheap phones" }, body: { hi: "पूरी सरकारी सूची फ़ोन में। मिलान सादा कोड है, AI की ज़रूरत नहीं।", en: "The full official list lives on the phone. Matching is plain code; no AI needed." } },
   { title: { hi: "हर जवाब पर सरकारी स्रोत", en: "Official CDSCO data, source on every answer" }, body: { hi: "चेतावनी का महीना, सरकारी लिंक और रिकॉर्ड ID हर नतीजे पर।", en: "Alert month, official link and record ID on every result." } },
   { title: { hi: "घर की दवा पेटी, बाद में अपने-आप चेतावनी", en: "Home medicine cabinet with automatic later alerts" }, body: { hi: "सहेजी दवा रोज़ नई सूची से जाँची जाती है, ऐप बंद हो तब भी सूचना।", en: "Saved medicines are re-checked daily against new lists, with a notification even when the app is closed." } },
@@ -20,6 +21,7 @@ export const COMPARISON: { row: T; cells: [Cell, Cell, Cell, Cell] }[] = [
   { row: { hi: "पैक किए खाने के लेबल स्कैन करना", en: "Scans packaged-food labels" }, cells: ["no", "yes", "yes", "nv"] },
   { row: { hi: "दवा ऑनलाइन बेचना", en: "Sells medicines online" }, cells: ["no", "no", "no", "yes"] },
   { row: { hi: "हिन्दी में बोलकर जाँच", en: "Hindi voice check" }, cells: ["yes", "nv", "nv", "nv"] },
+  { row: { hi: "पंजाबी, गुजराती, मराठी, कन्नड़, तमिल (इंटरनेट के साथ)", en: "Punjabi, Gujarati, Marathi, Kannada, Tamil (online)" }, cells: ["yes", "nv", "nv", "nv"] },
   { row: { hi: "बिना इंटरनेट पूरा मिलान", en: "Full matching offline" }, cells: ["yes", "nv", "nv", "nv"] },
   { row: { hi: "हर जवाब पर सरकारी स्रोत और रिकॉर्ड ID", en: "Official source + record ID on every answer" }, cells: ["yes", "nv", "nv", "nv"] },
   { row: { hi: "सहेजी दवा पर बाद में अपने-आप चेतावनी", en: "Automatic later alerts for saved medicines" }, cells: ["yes", "nv", "nv", "nv"] },

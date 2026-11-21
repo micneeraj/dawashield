@@ -146,6 +146,26 @@ export function needsCheck(f: LabelField): boolean {
   return !f.value || !!f.uncertain || fieldConfidence(f) < CONFIRM_BELOW;
 }
 
+/** Below this, a photo-read batch the user did not touch is too uncertain to match:
+ *  the result is "Can't read clearly" (keypad + retake), never GREY. */
+export const UNREADABLE_BELOW = 0.45;
+
+/** Is the photo reading too weak to match? Plain code. A batch the user typed or
+ *  corrected is always trusted; an untouched low-confidence or missing batch is not. */
+export function photoUnreadable(reading: LabelReading | null, form: { name: string; batch: string }, editedBatch: boolean): boolean {
+  if (editedBatch && form.batch.trim()) return false;
+  if (!form.batch.trim()) return !form.name.trim();
+  if (!reading?.batch.value) return false; // typed by the user from scratch
+  return fieldConfidence(reading.batch) < UNREADABLE_BELOW;
+}
+
+/** A batch heard by speech recognition that cannot be a real batch number
+ *  (too short, or no digit at all): treat as "Can't read clearly". */
+export function spokenBatchUnreadable(batch: string): boolean {
+  const b = batch.toUpperCase().replace(/[^A-Z0-9]/g, "");
+  return b.length < 3 || !/\d/.test(b);
+}
+
 // ---------- Image quality, double read, expiry safety ----------
 
 export type ImageQuality = "ok" | "blurry" | "too_small";

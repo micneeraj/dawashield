@@ -1,67 +1,212 @@
 {
-  "generatedAt": "2026-11-20",
+  "generatedAt": "2026-11-21",
   "datasetVersion": "033e977bb56d2587",
   "records": 4158,
+  "latestMonth": "2026-09",
+  "verified": 55,
+  "tests": {
+    "passed": 186,
+    "total": 186
+  },
   "matching": {
-    "cases": 428,
+    "cases": 728,
+    "real": 106,
+    "generated": 622,
     "verifiedRecords": 55,
-    "precision": 1,
-    "recall": 1,
+    "accuracy": 1,
+    "falseRedRate": 0,
+    "falseRed": 0,
+    "notRed": 489,
     "falseGreyRate": 0,
-    "redWhenExact": 0.974169741697417,
-    "msPerCheck": 2.81,
+    "falseGrey": 0,
+    "shouldFlag": 619,
+    "confusion": {
+      "RED": {
+        "RED": 239,
+        "AMBER": 0,
+        "GREY": 0,
+        "UNREADABLE": 0
+      },
+      "AMBER": {
+        "RED": 0,
+        "AMBER": 325,
+        "GREY": 0,
+        "UNREADABLE": 0
+      },
+      "GREY": {
+        "RED": 0,
+        "AMBER": 0,
+        "GREY": 109,
+        "UNREADABLE": 0
+      },
+      "UNREADABLE": {
+        "RED": 0,
+        "AMBER": 0,
+        "GREY": 0,
+        "UNREADABLE": 55
+      }
+    },
+    "msPerCheck": 4.73,
     "groups": [
       {
-        "group": "exact name + batch",
-        "cases": 55,
+        "group": "same company, different medicine (Dolo case)",
+        "origin": "real",
+        "cases": 54,
         "accuracy": 1
       },
       {
-        "group": "format variant (B.No., spaces, hyphens, lowercase)",
-        "cases": 55,
-        "accuracy": 0.9454545454545454
-      },
-      {
-        "group": "misspelt medicine name",
-        "cases": 55,
-        "accuracy": 0.9272727272727272
-      },
-      {
-        "group": "batch + exact company",
+        "group": "exact batch + company as listed",
+        "origin": "real",
         "cases": 53,
         "accuracy": 1
       },
       {
-        "group": "batch + company spelling variant",
+        "group": "format variant (B.No., spaces, hyphens, lowercase) + company",
+        "origin": "generated",
         "cases": 53,
         "accuracy": 1
       },
       {
-        "group": "OCR swap (0/O, 1/I, 5/S)",
+        "group": "misspelt medicine + company spelling variant",
+        "origin": "generated",
+        "cases": 53,
+        "accuracy": 1
+      },
+      {
+        "group": "exact batch, no company given",
+        "origin": "generated",
+        "cases": 53,
+        "accuracy": 1
+      },
+      {
+        "group": "same batch number, different company",
+        "origin": "generated",
+        "cases": 53,
+        "accuracy": 1
+      },
+      {
+        "group": "same company + same medicine, other batch",
+        "origin": "generated",
+        "cases": 53,
+        "accuracy": 1
+      },
+      {
+        "group": "wrong expiry extraction (expiry never changes the colour)",
+        "origin": "generated",
+        "cases": 53,
+        "accuracy": 1
+      },
+      {
+        "group": "similar batch: OCR look-alike (0/O, 1/I, 5/S)",
+        "origin": "generated",
         "cases": 47,
         "accuracy": 1
       },
       {
-        "group": "negative: unlisted batch",
+        "group": "similar batch: one character off, same medicine",
+        "origin": "generated",
+        "cases": 47,
+        "accuracy": 1
+      },
+      {
+        "group": "incomplete batch (last 2 characters missing)",
+        "origin": "generated",
+        "cases": 47,
+        "accuracy": 1
+      },
+      {
+        "group": "photo / voice too uncertain",
+        "origin": "generated",
         "cases": 55,
         "accuracy": 1
       },
       {
-        "group": "negative: unlisted batch + unrelated company",
+        "group": "negative: unlisted batch, unrelated company",
+        "origin": "generated",
         "cases": 55,
+        "accuracy": 1
+      },
+      {
+        "group": "exact batch + medicine, record names no company (spurious)",
+        "origin": "real",
+        "cases": 2,
+        "accuracy": 1
+      },
+      {
+        "group": "same batch number at two listed companies: right company",
+        "origin": "real",
+        "cases": 25,
+        "accuracy": 1
+      },
+      {
+        "group": "same batch number at two listed companies: unknown third company",
+        "origin": "real",
+        "cases": 25,
         "accuracy": 1
       }
     ]
   },
   "speech": {
+    "dictionary": 2616,
+    "perLanguage": [
+      {
+        "lang": "hi/en",
+        "label": "Hindi + English",
+        "cases": 60,
+        "top1": 0.9833333333333333,
+        "top3": 1,
+        "generated": false
+      },
+      {
+        "lang": "pa",
+        "label": "Punjabi",
+        "cases": 24,
+        "top1": 1,
+        "top3": 1,
+        "generated": true
+      },
+      {
+        "lang": "gu",
+        "label": "Gujarati",
+        "cases": 24,
+        "top1": 1,
+        "top3": 1,
+        "generated": true
+      },
+      {
+        "lang": "mr",
+        "label": "Marathi",
+        "cases": 24,
+        "top1": 1,
+        "top3": 1,
+        "generated": true
+      },
+      {
+        "lang": "kn",
+        "label": "Kannada",
+        "cases": 24,
+        "top1": 1,
+        "top3": 1,
+        "generated": true
+      },
+      {
+        "lang": "ta",
+        "label": "Tamil",
+        "cases": 24,
+        "top1": 1,
+        "top3": 1,
+        "generated": true
+      }
+    ],
     "cases": 60,
     "top1": 0.9833333333333333,
-    "top3": 1,
-    "dictionary": 2616
+    "top3": 1
   },
   "photo": {
     "images": 0,
     "fields": null,
-    "note": "No strip images in data/eval_images yet (see its README)."
+    "refused": null,
+    "caught": null,
+    "note": "No labelled strip photos in data/eval_images yet, so real-photo accuracy is not yet measured."
   }
 }

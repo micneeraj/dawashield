@@ -1,0 +1,29 @@
+{
+ "langs": {
+  "pa": {
+   "available": false,
+   "coverage": 0.798,
+   "clips": 0
+  },
+  "gu": {
+   "available": false,
+   "coverage": 0,
+   "clips": 0
+  },
+  "mr": {
+   "available": false,
+   "coverage": 0,
+   "clips": 0
+  },
+  "kn": {
+   "available": false,
+   "coverage": 0,
+   "clips": 0
+  },
+  "ta": {
+   "available": false,
+   "coverage": 0,
+   "clips": 0
+  }
+ }
+}

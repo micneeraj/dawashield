@@ -4,6 +4,7 @@ import { Camera, ChevronRight, Cpu, Database, Download, Keyboard, Mic, Package, 
 import { DemoButtons } from "../components/Demo";
 import { useApp } from "../state";
 import { Card, Disclaimer, LevelPill } from "../components/ui";
+import { InfoToolNote } from "../components/ResultHead";
 import { LogoMark } from "../components/Logo";
 import { db, type CabinetItem } from "../lib/db";
 import { expiryStatus } from "../lib/expiry";
@@ -95,7 +96,8 @@ export default function Home() {
         </button>
       </div>
 
-      <Disclaimer className="mt-5 px-1" />
+      <InfoToolNote className="mt-5" />
+      <Disclaimer className="mt-3 px-1" />
     </motion.div>
   );
 }

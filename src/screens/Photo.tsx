@@ -4,7 +4,7 @@ import { AlertTriangle, Camera, CheckCircle2, Grid3x3, ImagePlus, ImageUp, Light
 import { useApp } from "../state";
 import { Button, Card, ErrorCard, Page, SourceChip, Spinner, inputCls, cx } from "../components/ui";
 import { CloserPhotoNeeded, readStrip, traceStart, traceTake, type AiStep } from "../lib/ai";
-import { expiryAsk, expiryForCheck, fieldConfidence, mergeLabels, needsCheck, type LabelKey, type LabelReading } from "../lib/label";
+import { expiryAsk, expiryForCheck, fieldConfidence, mergeLabels, needsCheck, photoUnreadable, type LabelKey, type LabelReading } from "../lib/label";
 import { BatchKeypad } from "../components/Keypad";
 import { photoErrorKey, type ErrorKey } from "../lib/errors";
 import { useRunCheck } from "../useCheck";
@@ -184,7 +184,7 @@ export default function Photo() {
           data-testid="confirm-screen"
           onSubmit={(e) => {
             e.preventDefault();
-            runCheck({ name: form.name, manufacturer: form.manufacturer, batch: form.batch, expiry: expiryForCheck(form.expiry, { confirmed: expiryOk }), readSource: lastSource, aiSteps: steps, understood: { via: "photo", items: [
+            runCheck({ name: form.name, manufacturer: form.manufacturer, batch: form.batch, expiry: expiryForCheck(form.expiry, { confirmed: expiryOk }), unreadable: photoUnreadable(reading, form, !!edited.batch), readSource: lastSource, aiSteps: steps, understood: { via: "photo", items: [
               ...(reading?.batch.value ? [{ label: { hi: "बैच", en: "Batch" }, value: reading.batch.value }] : []),
               ...(reading?.expiry.value ? [{ label: { hi: "EXP", en: "EXP" }, value: reading.expiry.value }] : []),
               ...(!reading?.batch.value && reading?.name.value ? [{ label: { hi: "दवा", en: "Medicine" }, value: reading.name.value }] : []),

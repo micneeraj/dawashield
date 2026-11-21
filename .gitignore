@@ -11,3 +11,5 @@ test-results/
 __pycache__/
 *.tsbuildinfo
 screenshots/
+.vitest/
+i18n/.tts/

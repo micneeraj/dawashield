@@ -29,11 +29,13 @@ export default defineConfig({
         ],
       },
       workbox: {
-        // App shell, dataset and every recorded voice clip are cached for offline use.
+        // App shell, dataset and every Hindi / English voice clip are cached for offline use.
         globPatterns: ["**/*.{js,css,html,svg,png,woff2,mp3,json}"],
         // Web push from Firebase Cloud Messaging is shown by this small handler.
         importScripts: ["/push-sw.js"],
-        globIgnores: ["og.png", "**/screenshots/**"],
+        // Regional languages are online-only: their translations and voice clips are
+        // fetched when used and never added to the offline download.
+        globIgnores: ["og.png", "**/screenshots/**", "i18n/**", "audio/pa/**", "audio/gu/**", "audio/mr/**", "audio/kn/**", "audio/ta/**"],
         maximumFileSizeToCacheInBytes: 8 * 1024 * 1024,
         navigateFallback: "/index.html",
         runtimeCaching: [

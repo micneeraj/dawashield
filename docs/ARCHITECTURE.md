@@ -64,17 +64,24 @@ Every AI answer carries the SDK's real `inferenceSource`, shown as **"On this de
 
 ## 4. Offline matching engine (`src/lib/match.ts`)
 
-- The full dataset (~0.5 MB gzip) is stored in **IndexedDB**; the service worker precaches the app shell, data and voice clips (~2.7 MB transferred in total).
+- The full dataset (~0.5 MB gzip) is stored in **IndexedDB**; the service worker precaches the app shell, data and Hindi/English voice clips (regional files are excluded) (~2.7 MB transferred in total).
 - Pure TypeScript rules, a few milliseconds per check on 4,158 records; no AI, no WASM, so it runs in any low-end Android browser.
 
 | Input | Result |
 |---|---|
-| Exact batch + exact/high-confidence company (or matching medicine name when no company) | **RED** |
-| Exact batch + medium-confidence company | **AMBER** "possible match, please check with chemist" (never GREY) |
-| Exact batch + clearly different company / medicine | **AMBER** (batch numbers repeat across companies) |
-| Batch 1 character off, or OCR look-alike (0/O, 1/I/L, 5/S, 8/B, 2/Z) | **AMBER** near-batch |
-| Company has official action but this batch is not listed | **AMBER**, scope explained: only listed batches, never "all batches" |
-| Nothing | **GREY**: "No official alert found for this batch. This does not mean the medicine is tested safe. CDSCO lists come out late." + next steps |
+| Exact batch **and** company matched with high confidence (or the medicine name, when the record names no company, as with spurious drugs) | **RED** · NSQ or SPURIOUS shown |
+| Exact batch, company uncertain / different / medicine name differs | **AMBER — possible match** |
+| Batch one character off, OCR look-alike (0/O, 1/I/L, 5/S, 8/B, 2/Z) or incomplete, for a related medicine or company | **AMBER — possible match** |
+| Same company **and** same medicine, different batch | **AMBER — other batches flagged** |
+| Same company, **different** medicine | **GREY** + small note: *"This company has a different medicine on the official list (<medicine>, <month>). Your medicine is not affected."* Record behind "See details"; no family-alert or report buttons |
+| No record | **GREY**: *"No official alert for this exact batch. This does not prove the medicine is safe. Official alerts can be delayed."* |
+| Photo/voice too unclear (photo batch confidence < 0.45, or spoken batch < 3 characters / no digit) | **CAN'T READ CLEARLY**: keypad or retake; never shown as GREY |
+
+**Real example (regression test `tests/decision-table.test.ts`).** Dolo-650 by Micro Labs, batch DOBS4518, is *not* on the list. A different Micro Labs medicine, Amlodipine, batch AMAS0249, *is*. The old engine showed AMBER ("company has official action"), which frightened people about a medicine that was never flagged. It now shows GREY with the small note above.
+
+**NSQ vs spurious.** NSQ (Not of Standard Quality) means a lab found a batch failed a quality test. Spurious means the product is fake or falsely labelled. RED always names which one. Spurious adds: *"Keep the strip and the bill. Don't use it. Report it to the chemist and CDSCO."*
+
+**RED wording:** *"An official alert matches this exact batch. Talk to your doctor or chemist before your next dose. Don't stop an essential medicine on your own."* Every result has a large **"What should I do?"** card; the spoken reply starts with the colour and one sentence. Next to the headline: *"Official data checked up to <month>"* and *"Next update expected: <date>"* (end of the third month after the latest alert month, the usual CDSCO lag; tomorrow if that date has passed). The official link opens the exact monthly CDSCO PDF when its URL is known (only `https://cdsco.gov.in/` links are trusted), otherwise the CDSCO alerts page.
 
 ## 5. Company entity resolution (`src/lib/entity.ts`)
 
@@ -88,6 +95,15 @@ Every AI answer carries the SDK's real `inferenceSource`, shown as **"On this de
 - Dictionary: every record's brand/generic name + ~370 common Indian brands/generics (2,600+ entries), each with a Devanagari transliteration and phonetic keys.
 - Transcript → Latin (Devanagari transliteration) → candidate words and joined neighbours (STT splits names) → **Hindi-aware metaphone-style key** (ph=f, kh=k, bh=b, z=j, soft c/g, vowels dropped after the first) → score = edit-distance similarity on key (60%) + spelling (40%), weighted by how much of the utterance it explains. Top 2–4 shown as big buttons.
 - Fixed messages are pre-recorded Sarvam AI (Bulbul) clips in Hindi and English; medicine names are shown on screen, not spoken.
+
+## Regional languages (online only)
+
+- **Build time only.** `npm run i18n` (`scripts/i18n-build.ts`) collects every UI string and result template (`scripts/i18n-strings.ts`, ~580 strings, 139 safety strings), translates them with Sarvam AI (`sarvam-translate:v1`), back-translates to English and compares meaning in plain code (word overlap + negation check). Safety strings whose meaning drifts are retranslated with `mayura:v1`; if they still drift they are **flagged and shown in English**. Review sheets: `i18n/review/<lang>.csv`, summary `i18n/review/SUMMARY.json`.
+- The Sarvam key lives only in `.env` on the build machine. The browser never calls Sarvam or any translation service; it fetches static `public/i18n/<lang>.json`.
+- A language is offered in the picker only when `public/i18n/index.json` marks it available (≥90% of strings and ≥90% of safety strings verified). Others show "Translation in review".
+- Medicine names, batch numbers, companies and dates are never translated (`translate="no"`); names get a transliteration in the chosen script (`src/lib/indic.ts`).
+- Speech uses the Web Speech API in `pa-IN`, `gu-IN`, `mr-IN`, `kn-IN`, `ta-IN`; transcripts are mapped to Devanagari by Unicode block offset and matched by the same offline phonetic matcher.
+- Voice: Sarvam Bulbul clips at 24 kbps mono in `public/audio/<lang>/`, fetched on demand. `i18n/**` and regional audio are excluded from the precache, so **the offline download does not grow**.
 
 ## 7. Push re-check loop (`scripts/daily-push.ts`, `src/lib/pushplan.ts`)
 
@@ -108,6 +124,17 @@ sequenceDiagram
 ```
 
 Family: the owner creates `invites/{random code}`; the family member opens the link, accepts, and adds only their own push token under it. Flagged alerts go to both. Users who don't allow push get **"Add expiry to my calendar"** (.ics with an alarm 5 days before expiry).
+
+## What works where
+
+| Capability | Where |
+|---|---|
+| Batch / company matching, full official list, result text, Hindi + English voice clips | **Offline, any phone browser** (after the first visit) |
+| Hindi / English speech input | Chrome / Android; offline only if the browser's Hindi speech pack is installed |
+| Punjabi, Gujarati, Marathi, Kannada, Tamil | **Online only**; offline falls back to Hindi with a banner and switches back automatically. Mic hidden where the browser cannot recognise that language |
+| Photo reading on a phone | **Needs internet** (Gemini Flash via Firebase AI Logic) |
+| Offline photo reading, Gemini Nano | **Only supported desktop Chrome** |
+| Push alerts | Android / desktop browsers; **iPhone only when added to the home screen** |
 
 ## 8. Privacy design
 

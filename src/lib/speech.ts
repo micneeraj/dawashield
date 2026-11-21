@@ -1,5 +1,7 @@
-// Speech to text with the browser Web Speech API (hi-IN / en-IN). With the
-// language pack installed Chrome recognises on the device, so it works offline.
+// Speech to text with the browser Web Speech API. hi-IN / en-IN, plus pa-IN,
+// gu-IN, mr-IN, kn-IN, ta-IN for the online regional languages. With the Hindi
+// language pack installed Chrome recognises Hindi on the device, offline.
+import { LANG_NAMES, type AppLang } from "./i18n";
 
 type SR = {
   lang: string;
@@ -24,8 +26,19 @@ export interface Listener {
   stop(): void;
 }
 
+/** Can this browser recognise speech in this language? Hides the mic when not. */
+export async function speechLangSupported(lang: AppLang): Promise<boolean> {
+  if (!Ctor) return false;
+  if (lang === "hi" || lang === "en") return true;
+  // Newer Chrome can report per-language availability; older versions just try.
+  if (typeof Ctor.available === "function") {
+    try { return (await Ctor.available({ langs: [LANG_NAMES[lang].bcp], processLocally: false })) !== "unavailable"; } catch { return true; }
+  }
+  return true;
+}
+
 export async function listen(
-  lang: "hi" | "en",
+  lang: AppLang,
   onText: (text: string, final: boolean) => void,
   onEnd: (finalText: string, error?: string) => void,
 ): Promise<Listener | null> {
@@ -33,7 +46,7 @@ export async function listen(
     onEnd("", "unsupported");
     return null;
   }
-  const code = lang === "hi" ? "hi-IN" : "en-IN";
+  const code = LANG_NAMES[lang].bcp;
   const rec = new Ctor();
   rec.lang = code;
   rec.interimResults = true;

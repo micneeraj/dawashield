@@ -14,10 +14,11 @@ import Family from "./screens/Family";
 import Settings from "./screens/Settings";
 import { About, Privacy } from "./screens/Info";
 import Report from "./screens/Report";
-import { FirstRun, How, Invite, Why } from "./screens/Pages";
+import { FirstRun, How, Invite, Transparency, Why } from "./screens/Pages";
+import { LanguageButton, RegionalFallbackBanner, TranslationLayer } from "./components/Language";
 
 function Header() {
-  const { t, lang, setLang, muted, setMuted, go } = useApp();
+  const { t, lang, muted, setMuted, go } = useApp();
   return (
     <header className="sticky top-0 z-20 bg-paper/90 px-4 pb-2.5 pt-[max(14px,env(safe-area-inset-top))] backdrop-blur-md">
      <div className="flex items-center gap-2">
@@ -37,13 +38,7 @@ function Header() {
         >
           {muted ? <VolumeX size={22} /> : <Volume2 size={22} />}
         </button>
-        <button
-          onClick={() => setLang(lang === "hi" ? "en" : "hi")}
-          className="h-12 rounded-2xl border border-line bg-white px-3.5 text-[16px] font-bold text-brand-800 shadow-soft"
-          aria-label={lang === "hi" ? "Switch to English" : "हिन्दी में बदलें"}
-        >
-          {lang === "hi" ? "EN" : "हिं"}
-        </button>
+        <LanguageButton />
       </div>
      </div>
      <div className="mt-1.5 flex"><StatusPill /></div>
@@ -93,8 +88,8 @@ function DesktopAside() {
   const { lang, dataMeta } = useApp();
   const hi = lang === "hi";
   const points = hi
-    ? ["बोलकर, लिखकर या पत्ते की फ़ोटो से जाँच", "हिन्दी और अंग्रेज़ी, बोलकर जवाब", "सरकारी सूची फ़ोन में, बिना इंटरनेट भी", "रंग सादे कोड से तय होता है, AI से नहीं"]
-    : ["Speak, type or photograph the strip", "Hindi and English, with spoken replies", "The official list lives on the phone, works offline", "The colour is decided by plain code, never by AI"];
+    ? ["बोलकर, लिखकर या पत्ते की फ़ोटो से जाँच", "हिन्दी और अंग्रेज़ी बिना इंटरनेट, 5 और भारतीय भाषाएँ इंटरनेट के साथ", "सरकारी सूची फ़ोन में, बिना इंटरनेट भी", "रंग सादे कोड से तय होता है, AI से नहीं"]
+    : ["Speak, type or photograph the strip", "Hindi and English offline, 5 more Indian languages online", "The official list lives on the phone, works offline", "The colour is decided by plain code, never by AI"];
   return (
     <aside className="hidden w-[400px] shrink-0 lg:block" aria-label="About DawaShield">
       <div className="flex items-center gap-3">
@@ -138,6 +133,7 @@ function CurrentScreen() {
     case "report": return <Report key="report" />;
     case "how": return <How key="how" />;
     case "why": return <Why key="why" />;
+    case "transparency": return <Transparency key="transparency" />;
     case "invite": return <Invite key="invite" />;
     default: return <Home key="home" />;
   }
@@ -158,6 +154,7 @@ export default function App() {
       <div className="relative mx-auto flex min-h-dvh w-full max-w-[440px] flex-col sm:mx-0 sm:w-[440px] sm:shrink-0 bg-paper sm:h-[min(900px,calc(100dvh-64px))] sm:min-h-0 sm:overflow-hidden sm:rounded-[44px] sm:border-[10px] sm:border-[#13201e] sm:shadow-[0_40px_80px_-20px_rgba(12,40,36,0.45)]">
         <div id="scroller" className="no-scrollbar flex flex-1 flex-col sm:overflow-y-auto">
           <Header />
+          <RegionalFallbackBanner />
           <main className="flex-1">
             <AnimatePresence mode="wait">
               <CurrentScreen />
@@ -167,6 +164,7 @@ export default function App() {
         </div>
       </div>
       {firstRun && <FirstRun onDone={doneFirstRun} />}
+      <TranslationLayer />
     </div>
   );
 }

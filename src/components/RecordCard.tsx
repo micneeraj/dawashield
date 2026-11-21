@@ -1,7 +1,7 @@
 import { BadgeCheck, ExternalLink, FileText } from "lucide-react";
 import { useApp } from "../state";
 import { Card, cx } from "./ui";
-import { monthLabel } from "../lib/format";
+import { monthLabel, officialLink } from "../lib/format";
 import { NSQ_NOTE, SPURIOUS_NOTE } from "../content/messages";
 import type { AlertRecord } from "../lib/types";
 import { ListedNote } from "./ResultParts";
@@ -11,7 +11,7 @@ function Row({ label, value, big, mono }: { label: string; value?: string; big?:
   return (
     <div className="border-t border-line/70 py-3 first:border-t-0 first:pt-0">
       <dt className="text-[14px] font-semibold uppercase tracking-wide text-muted">{label}</dt>
-      <dd className={cx("mt-0.5 text-ink", big ? "text-[22px] font-bold" : "text-[17px]", mono && "num")}>{value}</dd>
+      <dd translate="no" className={cx("mt-0.5 text-ink", big ? "text-[22px] font-bold" : "text-[17px]", mono && "num")}>{value}</dd>
     </div>
   );
 }
@@ -50,7 +50,7 @@ export function RecordCard({ r }: { r: AlertRecord }) {
           <ExternalLink size={18} /> {t("openSource")}
         </a>
         {r.pdfUrl && (
-          <a href={r.pdfUrl} target="_blank" rel="noreferrer" className="tap inline-flex items-center gap-2 rounded-2xl border border-line bg-white px-4 text-[16px] font-semibold text-brand-800 hover:border-brand-300">
+          <a href={officialLink(r).url} target="_blank" rel="noreferrer" className="tap inline-flex items-center gap-2 rounded-2xl border border-line bg-white px-4 text-[16px] font-semibold text-brand-800 hover:border-brand-300">
             <FileText size={18} /> {t("openPdf")}
           </a>
         )}

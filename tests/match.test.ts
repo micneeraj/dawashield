@@ -49,26 +49,33 @@ describe("normalizeBatch", () => {
 });
 
 describe("matchMedicine", () => {
-  it("exact batch + medicine = RED", () => {
+  it("exact batch + medicine, no company given = AMBER possible match (company unconfirmed)", () => {
     const r = matchMedicine({ name: "Paracetamol", batch: "PAMLA002" }, RECORDS);
+    expect(r.level).toBe("AMBER");
+    expect(r.reason).toBe("company-unconfirmed");
+    expect(r.records[0].batch).toBe("PAMLA002");
+  });
+
+  it("exact batch + high-confidence company = RED", () => {
+    const r = matchMedicine({ name: "Paracetamol", batch: "PAMLA002", manufacturer: "Laborate Pharmaceuticals India Ltd" }, RECORDS);
     expect(r.level).toBe("RED");
     expect(r.reason).toBe("exact");
     expect(r.records[0].batch).toBe("PAMLA002");
   });
 
-  it("brand name also matches = RED", () => {
-    expect(matchMedicine({ name: "Alzomac", batch: "60098" }, RECORDS).level).toBe("RED");
+  it("brand name + company = RED", () => {
+    expect(matchMedicine({ name: "Alzomac", batch: "60098", manufacturer: "Uniza Lifecare" }, RECORDS).level).toBe("RED");
   });
 
   it("prefix and format variants still RED", () => {
     for (const b of ["B.No: PAMLA-002", "batch no pamla 002", "Lot PAMLA/002", "B NO.PAMLA.002"]) {
-      expect(matchMedicine({ name: "Paracetamol", batch: b }, RECORDS).level).toBe("RED");
+      expect(matchMedicine({ name: "Paracetamol", batch: b, manufacturer: "Laborate Pharma" }, RECORDS).level).toBe("RED");
     }
   });
 
   it("misspelt medicine name still RED", () => {
-    expect(matchMedicine({ name: "Paracetmol", batch: "PAMLA002" }, RECORDS).level).toBe("RED");
-    expect(matchMedicine({ name: "alprazolm", batch: "60098" }, RECORDS).level).toBe("RED");
+    expect(matchMedicine({ name: "Paracetmol", batch: "PAMLA002", manufacturer: "Laborate Pharmaceuticals" }, RECORDS).level).toBe("RED");
+    expect(matchMedicine({ name: "alprazolm", batch: "60098", manufacturer: "Uniza Lifecare Pvt Ltd" }, RECORDS).level).toBe("RED");
   });
 
   it("batch one character off, same medicine = AMBER", () => {
@@ -103,19 +110,19 @@ describe("matchMedicine", () => {
     expect(r.records[0].type).toBe("SPURIOUS");
   });
 
-  it("company has an alert but batch not listed = AMBER company", () => {
+  it("same company, different medicine, batch not listed = GREY with a company note", () => {
     const r = matchMedicine(
       { name: "Some other tablet", batch: "ZZ9999", manufacturer: "M/s Laborate Pharmaceuticals India Limited" },
       RECORDS,
     );
-    expect(r.level).toBe("AMBER");
-    expect(r.reason).toBe("company");
+    expect(r.level).toBe("GREY");
+    expect(r.reason).toBe("company-other-medicine");
   });
 
-  it("spelling variant of the same company resolves to the same entity", () => {
-    const r = matchMedicine({ name: "Some tablet", batch: "ZZ9999", manufacturer: "Laborate Pharma" }, RECORDS);
+  it("same company AND same medicine, other batch = AMBER other batches (spelling variant of company)", () => {
+    const r = matchMedicine({ name: "Paracetamol syrup", batch: "ZZ9999", manufacturer: "Laborate Pharma" }, RECORDS);
     expect(r.level).toBe("AMBER");
-    expect(r.reason).toBe("company");
+    expect(r.reason).toBe("other-batches");
   });
 
   it("a different kind of company with one shared word is NOT a company match", () => {

@@ -12,7 +12,7 @@ export interface PushPlan {
 }
 
 /** Reasons that mean "this exact batch is on a list" (worth a push). */
-const PUSH_REASONS = new Set(["exact", "possible-company", "batch-other-company", "near-batch"]);
+const PUSH_REASONS = new Set(["exact", "possible-company", "company-unconfirmed", "batch-other-company", "near-batch"]);
 
 export function planForMed(med: RemoteMed, records: AlertRecord[], sent: SentState, today: Date): PushPlan {
   const plan: PushPlan = {};

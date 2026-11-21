@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { useEffect, useState, type ButtonHTMLAttributes, type ReactNode } from "react";
-import { AlertOctagon, AlertTriangle, ArrowLeft, Camera, Cloud, ImageUp, Info, Keyboard, RotateCcw, ShieldCheck, Smartphone } from "lucide-react";
+import { useEffect, useState, type ButtonHTMLAttributes, type HTMLAttributes, type ReactNode } from "react";
+import { AlertOctagon, AlertTriangle, ArrowLeft, Camera, Cloud, ImageUp, Info, Keyboard, RotateCcw, ScanSearch, ShieldCheck, Smartphone } from "lucide-react";
 import { useApp } from "../state";
 import { DISCLAIMER, ERRORS, RECOVERY_LABEL } from "../content/messages";
 import { STATUS_LABEL, offlineFacts, statusKind } from "../lib/status";
@@ -40,8 +40,8 @@ export function Button({ variant = "primary", icon, full, className, children, .
   );
 }
 
-export function Card({ className, children }: { className?: string; children: ReactNode }) {
-  return <div className={cx("rounded-3xl bg-white shadow-soft border border-line/70", className)}>{children}</div>;
+export function Card({ className, children, ...rest }: { className?: string; children: ReactNode } & Omit<HTMLAttributes<HTMLDivElement>, "className" | "children">) {
+  return <div {...rest} className={cx("rounded-3xl bg-white shadow-soft border border-line/70", className)}>{children}</div>;
 }
 
 export function Page({ title, children, onBack }: { title?: string; children: ReactNode; onBack?: () => void }) {
@@ -93,6 +93,7 @@ export const LEVEL_STYLE: Record<Level, { bg: string; line: string; ink: string;
   RED: { bg: "bg-red-soft", line: "border-red-line", ink: "text-red-ink", icon: AlertOctagon, dot: "bg-red-ink" },
   AMBER: { bg: "bg-amber-soft", line: "border-amber-line", ink: "text-amber-ink", icon: AlertTriangle, dot: "bg-amber-ink" },
   GREY: { bg: "bg-grey-soft", line: "border-grey-line", ink: "text-grey-ink", icon: Info, dot: "bg-grey-ink" },
+  UNREADABLE: { bg: "bg-sky-50", line: "border-sky-200", ink: "text-sky-900", icon: ScanSearch, dot: "bg-sky-700" },
 };
 
 export function LevelPill({ level, label }: { level: Level; label: string }) {

@@ -1,19 +1,22 @@
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
 import { BellRing, ChevronDown, Flag, MessageCircle, PackagePlus, RotateCcw, Send, Sparkles, Check } from "lucide-react";
 import type { ChatSession } from "firebase/ai";
 import { useApp } from "../state";
-import { Button, Card, Disclaimer, ErrorCard, LEVEL_STYLE, Page, SourceChip, Spinner, cx, inputCls } from "../components/ui";
+import { Button, Card, Disclaimer, ErrorCard, Page, SourceChip, Spinner, cx, inputCls } from "../components/ui";
+import { InfoToolNote, OtherMedicineDetails, ResultHeadline, UnreadableActions, WhatToDo } from "../components/ResultHead";
+import { recordsAreThisMedicine } from "../lib/match";
+import { transliterateName } from "../lib/indic";
+import { isRegional } from "../lib/i18n";
 import { RecordCard } from "../components/RecordCard";
-import { HowMade, PipelineStrip, RedFacts, WhyPanel } from "../components/ResultParts";
+import { HowMade, RedFacts, WhyPanel } from "../components/ResultParts";
 import { CalendarButton, DemoBadge, GreyNextSteps, SourceBlock, WhatItMeans, WrongResultSheet } from "../components/ResultExtras";
 import { PushOffer } from "../components/PushOffer";
 import { Sheet } from "../components/Sheet";
-import { AMBER_REASON, DISPOSAL, ERRORS, EXPIRY, OFFICIAL, RESULT, VOICE, familyMessage } from "../content/messages";
+import { DISPOSAL, ERRORS, EXPIRY, OFFICIAL, VOICE, familyMessage } from "../content/messages";
 import { askChat, explainRecord, startRecordChat } from "../lib/ai";
 import { db, type FamilyMember } from "../lib/db";
 import { expiryStatus, formatExpiry } from "../lib/expiry";
-import { monthLabel } from "../lib/format";
+import { monthLabel, officialLink } from "../lib/format";
 import { notify } from "../lib/sync";
 import { syncMeds } from "../lib/cloud";
 import type { Source } from "../lib/types";
@@ -21,7 +24,7 @@ import type { Source } from "../lib/types";
 const WHO = { hi: ["माँ", "पापा", "मैं", "दादी", "दादा"], en: ["Maa", "Papa", "Me", "Dadi", "Dada"] };
 
 export default function Result() {
-  const { t, lang, check, go, dataset, online, say, bumpCabinet } = useApp();
+  const { t, lang, uiLang, regionalActive, check, go, dataset, online, say, bumpCabinet } = useApp();
   const [showAll, setShowAll] = useState(false);
   const [saveOpen, setSaveOpen] = useState(false);
   const [familyOpen, setFamilyOpen] = useState(false);
@@ -33,9 +36,11 @@ export default function Result() {
   if (!check) return <Page title="—"><p>{ERRORS.noData[lang]}</p></Page>;
   const { input, result } = check;
   const level = result.level;
-  const s = LEVEL_STYLE[level];
-  const Icon = s.icon;
-  const msg = RESULT[level];
+  // RED / AMBER records are about this medicine. A GREY company note's record is
+  // another medicine: hidden behind "See details", no family alert or report buttons.
+  const flagged = level === "RED" || level === "AMBER";
+  const thisMed = recordsAreThisMedicine(result);
+  const greyNote = level === "GREY" && result.records.length > 0;
   const exp = input.expiry ? expiryStatus(input.expiry) : null;
   const records = showAll ? result.records : result.records.slice(0, 2);
 
@@ -43,47 +48,27 @@ export default function Result() {
     <Page title={lang === "hi" ? "नतीजा" : "Result"} onBack={() => go({ name: "home" })}>
       {input.demo && <DemoBadge />}
       {/* Fixed, pre-written result. Colour is always paired with an icon and a word. */}
-      <motion.section
-        initial={{ opacity: 0, y: 14, scale: 0.98 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 0.35, ease: "easeOut" }}
-        className={cx("rounded-[28px] border-2 p-5", s.bg, s.line)}
-        data-testid="result"
-        data-level={level}
-        aria-live="assertive"
-      >
-        <div className="flex items-center gap-3">
-          <span className={cx("grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-white shadow-soft", s.ink)}>
-            <Icon size={30} strokeWidth={2.2} aria-hidden />
-          </span>
-          <span className={cx("text-[15px] font-bold uppercase tracking-[0.08em]", s.ink)}>{msg.word[lang]}</span>
-        </div>
-        <h2 className="mt-4 text-[25px] font-bold leading-tight text-ink" data-testid={level === "RED" ? "red-exact" : undefined}>
-          {msg.title[lang]}
-        </h2>
-        <p className={cx("mt-2 leading-relaxed text-ink/90", level === "RED" ? "text-[17px]" : "text-[19px]")}>{msg.body[lang]}</p>
-        {level === "AMBER" && AMBER_REASON[result.reason] && (
-          <p className="mt-3 rounded-2xl bg-white/70 px-4 py-3 text-[17px] leading-snug text-ink">{AMBER_REASON[result.reason][lang]}</p>
-        )}
-        <PipelineStrip check={check} />
-      </motion.section>
-
+      <ResultHeadline check={check} />
+      {level === "UNREADABLE" && <UnreadableActions check={check} />}
+      <WhatToDo check={check} />
       {level === "RED" && result.records[0] && <RedFacts r={result.records[0]} />}
-      <WhatItMeans check={check} />
+      {level !== "UNREADABLE" && <WhatItMeans check={check} />}
+      {greyNote && <OtherMedicineDetails check={check} />}
       {level === "GREY" && <GreyNextSteps saved={saved} onSave={() => void quickSave(check, dataset?.meta.version ?? "").then(onSaved)} onReport={() => go({ name: "report" })} />}
       {justSaved && <PushOffer className="mt-4" />}
-      <WhyPanel check={check} />
-      <HowMade check={check} />
+      {level !== "UNREADABLE" && <WhyPanel check={check} />}
+      {level !== "UNREADABLE" && <HowMade check={check} />}
 
       {/* What was checked: big text, never spoken. */}
       <Card className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3 p-5">
         <div className="col-span-2">
           <p className="text-[14px] font-semibold uppercase tracking-wide text-muted">{t("medicineName")}</p>
-          <p className="text-[24px] font-bold leading-tight">{input.name || "—"}</p>
+          <p className="text-[24px] font-bold leading-tight" translate="no">{input.name || "—"}</p>
+          {regionalActive && isRegional(uiLang) && input.name && <p className="text-[17px] font-medium text-brand-800" lang={uiLang} translate="no" data-testid="name-translit">{transliterateName(input.name, uiLang)}</p>}
         </div>
         <div>
           <p className="text-[14px] font-semibold uppercase tracking-wide text-muted">{t("batchNo")}</p>
-          <p className="num text-[24px] font-bold" data-testid="checked-batch">{input.batch || "—"}</p>
+          <p className="num text-[24px] font-bold" data-testid="checked-batch" translate="no">{input.batch || "—"}</p>
         </div>
         {input.expiry && exp && (
           <div>
@@ -104,13 +89,13 @@ export default function Result() {
 
       {/* Actions */}
       <div className="mt-4 grid grid-cols-2 gap-3">
-        {level !== "GREY" && (
+        {flagged && (
           <Button variant="primary" icon={<MessageCircle size={21} />} onClick={() => setFamilyOpen(true)} data-testid="family-alert">{t("alertFamily")}</Button>
         )}
-        {level !== "GREY" && (
+        {flagged && (
           <Button variant="secondary" icon={<Flag size={21} />} onClick={() => go({ name: "report" })}>{t("reportIt")}</Button>
         )}
-        <Button variant={saved ? "soft" : "secondary"} icon={saved ? <Check size={21} /> : <PackagePlus size={21} />} onClick={() => !saved && setSaveOpen(true)} disabled={!input.name}>
+        <Button variant={saved ? "soft" : "secondary"} icon={saved ? <Check size={21} /> : <PackagePlus size={21} />} onClick={() => !saved && setSaveOpen(true)} disabled={!input.name || level === "UNREADABLE"}>
           {saved ? t("savedToCabinet") : t("saveToCabinet")}
         </Button>
         <Button variant="ghost" icon={<RotateCcw size={21} />} onClick={() => go({ name: "home" })}>{t("checkAnother")}</Button>
@@ -121,7 +106,7 @@ export default function Result() {
       </div>
 
       {/* The official records */}
-      {result.records.length > 0 && (
+      {thisMed && result.records.length > 0 && (
         <section className="mt-6">
           <h3 className="mb-3 text-[20px] font-bold">{t("officialRecord")}</h3>
           <div className="space-y-3">
@@ -140,7 +125,8 @@ export default function Result() {
         </section>
       )}
 
-      <SourceBlock check={check} />
+      {level !== "UNREADABLE" && <SourceBlock check={check} />}
+      <InfoToolNote className="mt-4" />
       {!online && <p className="mt-3 text-center text-[15px] font-semibold text-brand-800">{t("offline")}</p>}
       <Disclaimer className="mt-3" />
 
@@ -293,7 +279,7 @@ function FamilySheet({ open, onClose, onSent }: { open: boolean; onClose: () => 
   const [members, setMembers] = useState<FamilyMember[]>([]);
   const [queued, setQueued] = useState<string | null>(null);
   useEffect(() => { if (open) db.family.toArray().then(setMembers); setQueued(null); }, [open]);
-  if (!check || check.result.level === "GREY") return null;
+  if (!check || (check.result.level !== "RED" && check.result.level !== "AMBER")) return null;
   const r = check.result.records[0];
   const text = familyMessage(lang, {
     level: check.result.level as "RED" | "AMBER",
@@ -301,7 +287,7 @@ function FamilySheet({ open, onClose, onSent }: { open: boolean; onClose: () => 
     name: check.input.name || r?.name || "",
     batch: check.input.batch || r?.batch || "",
     month: r ? monthLabel(r.month, lang) : "",
-    link: r?.pdfUrl || r?.sourceUrl || OFFICIAL.portalUrl,
+    link: r ? officialLink(r).url : OFFICIAL.portalUrl,
   });
 
   async function send(to: string, phone?: string) {

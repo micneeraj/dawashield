@@ -1,0 +1,600 @@
+english,translation,back_translation,meaning_score,negation_ok,safety,status,model
+({0} repeats merged),({0} ਦੁਹਰਾਓ ਮਿਲਾਇਆ ਗਿਆ),({0} repetitions added),0,true,false,ok,sarvam-translate:v1
+"{0} cases: {1} real (official records, the real Dolo strip), {2} generated from real records. Full method: docs/EVAL.md",,,0,false,false,missing,
+"{0} CDSCO records, {1} to {2}. Some states do not report every month.","{0} ਸੀਡੀਐਸਸੀਓ ਰਿਕਾਰਡ, {1} ਤੋਂ {2}। ਕੁਝ ਰਾਜ ਹਰ ਮਹੀਨੇ ਰਿਪੋਰਟ ਨਹੀਂ ਕਰਦੇ।","{0} CDSCO records, from {1} to {2}. Some states do not report every month.",1,true,false,ok,sarvam-translate:v1
+{0} medicine{1} flagged by a CDSCO alert,{0} ਦਵਾਈ{1} ਨੂੰ ਇੱਕ CDSCO ਅਲਰਟ ਦੁਆਰਾ ਫਲੈਗ ਕੀਤਾ ਗਿਆ ਹੈ।,{0} medicine{1} has been flagged by a CDSCO alert.,1,true,false,ok,sarvam-translate:v1
+{0} medicine{1} flagged since your last check,{0} ਦਵਾਈ{1} ਤੁਹਾਡੀ ਆਖਰੀ ਜਾਂਚ ਤੋਂ ਬਾਅਦ ਫਲੈਗ ਕੀਤੀ ਗਈ ਹੈ,{0} drug{1} has been flagged since your last check.,1,true,false,ok,sarvam-translate:v1
+{0} not provided,{0} ਮੁਹੱਈਆ ਨਹੀਂ ਕੀਤਾ ਗਿਆ,{0} was not provided.,1,true,true,ok,sarvam-translate:v1
+"{0} official records on the phone. The plain rules in the table above, in a few milliseconds, in any phone's browser.",,,0,false,false,missing,
+{0} real · {1} generated,,,0,false,false,missing,
+{0} saved medicine(s) now match an official alert. Open to see.,{0} ਨੇ ਬਚਾਈਆਂ ਦਵਾਈਆਂ ਹੁਣ ਇੱਕ ਅਧਿਕਾਰਤ ਚੇਤਾਵਨੀ ਨਾਲ ਮੇਲ ਖਾਂਦੀਆਂ ਹਨ। ਦੇਖਣ ਲਈ ਖੋਲ੍ਹੋ।,{0} saved medications now match an official warning. Open to view.,0.78,true,false,ok,sarvam-translate:v1
+{0}medicine (batch {1}) {2} CDSCO's {3} list. Open DawaShield to see. Don't take the next dose until you speak to your doctor or chemist; never stop an essential medicine suddenly.,"{0} ਦਵਾਈ (ਬੈਚ {1}) {2} ਸੀ.ਡੀ.ਐੱਸ.ਸੀ.ਓ. ਦੀ {3} ਸੂਚੀ। ਦੇਖਣ ਲਈ ਦਵਾਈਸ਼ੀਲਡ ਖੋਲ੍ਹੋ। ਜਦੋਂ ਤੱਕ ਤੁਸੀਂ ਆਪਣੇ ਡਾਕਟਰ ਜਾਂ ਕੈਮਿਸਟ ਨਾਲ ਗੱਲ ਨਹੀਂ ਕਰ ਲੈਂਦੇ, ਅਗਲੀ ਖੁਰਾਕ ਨਾ ਲਓ; ਜ਼ਰੂਰੀ ਦਵਾਈ ਨੂੰ ਕਦੇ ਵੀ ਅਚਾਨਕ ਬੰਦ ਨਾ ਕਰੋ।",{0} medicine (batch {1}) {3} on the {2} CDSCO list. Open the medicine shield to view. Do not take the next dose until you have spoken with your doctor or chemist; never stop taking an essential medicine suddenly.,0.79,true,false,ok,sarvam-translate:v1
+{medicine},{medicine},{medicine},1,true,true,ok,sarvam-translate:v1
+{month},{month},{month},1,true,true,ok,sarvam-translate:v1
+"1. You speak, type or take a photo","1. ਤੁਸੀਂ ਬੋਲਦੇ ਹੋ, ਟਾਈਪ ਕਰਦੇ ਹੋ ਜਾਂ ਫੋਟੋ ਖਿੱਚਦੇ ਹੋ।","1.  You speak, type, or take a picture.",1,true,false,ok,sarvam-translate:v1
+"2. Photo: clean up, then read","2. ਫੋਟੋ: ਸਾਫ਼ ਕਰੋ, ਫਿਰ ਪੜ੍ਹੋ","2. Photo: Clean it, then read it.",0.83,true,false,ok,sarvam-translate:v1
+3. Company and medicine resolution,,,0,false,false,missing,
+4. Offline matching engine,,,0,false,false,missing,
+"5 languages, voice top-3",,,0,false,false,missing,
+5. Where AI helps,,,0,false,false,missing,
+6. Daily re-check loop,6. ਰੋਜ਼ਾਨਾ ਦੁਬਾਰਾ ਜਾਂਚ ਕਰਨ ਵਾਲਾ ਲੂਪ,6.  A loop that re-checks daily.,1,true,false,ok,sarvam-translate:v1
+"A counterfeit can copy a real batch number, so GREY cannot rule it out.",,,0,false,false,missing,
+A family member invited you,ਪਰਿਵਾਰ ਦੇ ਕਿਸੇ ਮੈਂਬਰ ਨੇ ਤੁਹਾਨੂੰ ਸੱਦਾ ਦਿੱਤਾ ਹੈ।,A family member invited you.,1,true,false,ok,sarvam-translate:v1
+A family member's saved,ਪਰਿਵਾਰ ਦੇ ਕਿਸੇ ਮੈਂਬਰ ਦੀ ਸੇਵ ਕੀਤੀ ਹੋਈ,Saved by a family member,1,true,false,ok,sarvam-translate:v1
+A medicine is expiring soon,ਇੱਕ ਦਵਾਈ ਜਲਦੀ ਹੀ ਖਤਮ ਹੋ ਰਹੀ ਹੈ।,A drug is running out very soon.,0.67,true,false,ok,sarvam-translate:v1
+"A ready-to-send message for CDSCO, with the email and toll-free number.","ਸੀ.ਡੀ.ਐੱਸ.ਸੀ.ਓ. ਲਈ ਇੱਕ ਤਿਆਰ-ਤੋਂ-ਭੇਜਣ ਵਾਲਾ ਸੁਨੇਹਾ, ਈਮੇਲ ਅਤੇ ਟੋਲ-ਫ੍ਰੀ ਨੰਬਰ ਦੇ ਨਾਲ।","A ready-made message for CDSCOs, along with email and a toll-free number.",0.88,true,false,ok,sarvam-translate:v1
+"A report contains only the result colour, batch, company, record IDs and your short note. No personal details.","ਇੱਕ ਰਿਪੋਰਟ ਵਿੱਚ ਸਿਰਫ਼ ਨਤੀਜੇ ਦਾ ਰੰਗ, ਬੈਚ, ਕੰਪਨੀ, ਰਿਕਾਰਡ ਆਈਡੀ ਅਤੇ ਤੁਹਾਡਾ ਛੋਟਾ ਨੋਟ ਸ਼ਾਮਲ ਹੁੰਦਾ ਹੈ। ਕੋਈ ਨਿੱਜੀ ਵੇਰਵੇ ਨਹੀਂ।","A report only includes the result color, batch, company, record ID, and your short note. No personal details.",0.79,true,false,ok,sarvam-translate:v1
+"A WhatsApp message, or a push alert straight to a son's or daughter's phone.","ਇੱਕ WhatsApp ਸੁਨੇਹਾ, ਜਾਂ ਸਿੱਧਾ ਇੱਕ ਪੁੱਤਰ ਜਾਂ ਧੀ ਦੇ ਫੋਨ 'ਤੇ ਇੱਕ ਪੁਸ਼ ਅਲਰਟ।","A WhatsApp message, or a push alert directly to a son's or daughter's phone.",0.88,true,false,ok,sarvam-translate:v1
+About DawaShield,ਡਾਵਾਸ਼ੀਲਡ ਬਾਰੇ,About Dawashield,1,true,false,ok,sarvam-translate:v1
+absolute right-3 top-3,,,0,false,false,missing,
+Accept,ਮੰਨੋ,"Please note that the translation provided is accurate and natural-sounding in English, while maintaining the original tone of the Punjabi text.",0,true,false,ok,sarvam-translate:v1
+Accuracy on real strip photos.,,,0,false,false,missing,
+Accuracy on real users' voices (all voice cases are written or generated).,,,0,false,false,missing,
+"Accuracy with real Punjabi, Gujarati, Marathi, Kannada and Tamil speakers.",,,0,false,false,missing,
+Add a family member first,ਪਹਿਲਾਂ ਇੱਕ ਪਰਿਵਾਰਕ ਮੈਂਬਰ ਸ਼ਾਮਲ ਕਰੋ,Add a family member first,1,true,false,ok,sarvam-translate:v1
+Add expiry to my calendar,ਮੇਰੇ ਕੈਲੰਡਰ ਵਿੱਚ ਮਿਆਦ ਸ਼ਾਮਲ ਕਰੋ।,Add the deadline to my calendar.,0.75,true,false,ok,sarvam-translate:v1
+Add family member,ਪਰਿਵਾਰਕ ਮੈਂਬਰ ਸ਼ਾਮਲ ਕਰੋ,Add family members,1,true,false,ok,sarvam-translate:v1
+Add medicine,ਦਵਾਈ ਸ਼ਾਮਲ ਕਰੋ,Add medicine.,1,true,false,ok,sarvam-translate:v1
+Add photo of other side,ਦੂਜੇ ਪਾਸੇ ਦੀ ਫੋਟੋ ਸ਼ਾਮਲ ਕਰੋ,Add a photo of the other person.,0.75,true,false,ok,sarvam-translate:v1
+Add your first medicine,ਆਪਣੀ ਪਹਿਲੀ ਦਵਾਈ ਸ਼ਾਮਲ ਕਰੋ,Add your first medication.,1,true,false,ok,sarvam-translate:v1
+AI is not available right now. You can still type the name and batch number to check.,AI ਹੁਣ ਉਪਲਬਧ ਨਹੀਂ ਹੈ। ਤੁਸੀਂ ਅਜੇ ਵੀ ਨਾਮ ਅਤੇ ਬੈਚ ਨੰਬਰ ਟਾਈਪ ਕਰਕੇ ਦੇਖ ਸਕਦੇ ਹੋ।,AI is no longer available. You can still try typing in the name and batch number.,0.55,true,true,ok,sarvam-translate:v1
+AI never decides the colour,ਏ.ਆਈ. ਕਦੇ ਵੀ ਰੰਗ ਦਾ ਫੈਸਲਾ ਨਹੀਂ ਕਰਦੀ।,The AI never makes a decision about the color.,0.5,true,false,ok,sarvam-translate:v1
+AI only explains the record; the result above is decided by fixed rules.,ਏ.ਆਈ. ਸਿਰਫ਼ ਰਿਕਾਰਡ ਦੀ ਵਿਆਖਿਆ ਕਰਦੀ ਹੈ; ਉੱਪਰ ਦਿੱਤਾ ਨਤੀਜਾ ਨਿਸ਼ਚਿਤ ਨਿਯਮਾਂ ਦੁਆਰਾ ਤੈਅ ਕੀਤਾ ਜਾਂਦਾ ਹੈ।,AI simply interprets the record; the above result is determined by the rules.,0.56,true,false,ok,sarvam-translate:v1
+AIzaSyC6hXAUAauCyxZElbJLvFp_RKMyK0uqXUk,AIzaSyC6hXAUAauCyxZElbJLvFp_RKMyK0uqXUk,AIzaSyC6hXAUAauCyxZElbJLvFp_RKMyK0uqXUk,1,true,false,ok,sarvam-translate:v1
+Alert month,ਚੇਤਾਵਨੀ ਮਹੀਨਾ,Warning Month,1,true,false,ok,sarvam-translate:v1
+"Alert month, official link and record ID on every result.","ਹਰ ਨਤੀਜੇ 'ਤੇ ਚੇਤਾਵਨੀ ਮਹੀਨਾ, ਅਧਿਕਾਰਤ ਲਿੰਕ ਅਤੇ ਰਿਕਾਰਡ ਆਈ.ਡੀ.","Warning month at each result, official link, and record ID.",0.88,true,false,ok,sarvam-translate:v1
+Alerts are on,ਅਲਰਟ ਚਾਲੂ ਹਨ।,Alerts are on.,1,true,false,ok,sarvam-translate:v1
+Alerts on a family member's phone,ਪਰਿਵਾਰਕ ਮੈਂਬਰ ਦੇ ਫ਼ੋਨ 'ਤੇ ਅਲਰਟ,Alert on a family member's phone.,1,true,false,ok,sarvam-translate:v1
+All checked,ਸਭ ਜਾਂਚ ਕੀਤੀ ਗਈ।,All of them were investigated.,0.5,true,false,ok,sarvam-translate:v1
+Amber,(shown in English) ,Ambar,0,true,true,FLAGGED,sarvam-translate:v1
+An official alert matches this exact batch.,ਇੱਕ ਅਧਿਕਾਰਤ ਚੇਤਾਵਨੀ ਇਸ ਸਹੀ ਬੈਚ ਨਾਲ ਮੇਲ ਖਾਂਦੀ ਹੈ।,An official warning is a match with this exact pattern.,0.8,true,true,ok,sarvam-translate:v1
+Answered your question,ਤੁਹਾਡੇ ਸਵਾਲ ਦਾ ਜਵਾਬ ਦਿੱਤਾ ਗਿਆ।,Your question has been answered.,1,true,false,ok,sarvam-translate:v1
+App Check not started,ਐਪ ਚੈੱਕ ਸ਼ੁਰੂ ਨਹੀਂ ਹੋਇਆ,App Check did not start.,1,true,false,ok,sarvam-translate:v1
+Ask about this record,ਇਸ ਰਿਕਾਰਡ ਬਾਰੇ ਪੁੱਛੋ।,Ask about this record.,1,true,false,ok,sarvam-translate:v1
+"Auto-crop, glare reduction, contrast, sharpen; Gemini reads twice and scores every field. Very low confidence = ""Can't read clearly"", never a guess. On phones, photo reading needs internet; offline photo reading works only on desktop Chrome with Gemini Nano.",,,0,false,false,missing,
+Automatic later alerts for saved medicines,ਸੁਰੱਖਿਅਤ ਕੀਤੀਆਂ ਦਵਾਈਆਂ ਲਈ ਆਟੋਮੈਟਿਕ ਬਾਅਦ ਦੀਆਂ ਚੇਤਾਵਨੀਆਂ,Automatic reminders for saved medications.,0.6,true,false,ok,sarvam-translate:v1
+Available offline,ਔਫਲਾਈਨ ਉਪਲਬਧ ਹੈ,Available offline.,1,true,false,ok,sarvam-translate:v1
+B.No.,ਬੀ. ਨੰ.,B. No.,1,true,false,ok,sarvam-translate:v1
+Back,ਵਾਪਸ,Back,1,true,false,ok,sarvam-translate:v1
+Backspace,ਬੈਕਸਪੇਸ,Backspace,1,true,false,ok,sarvam-translate:v1
+Batch,ਬੈਚ,Batch,1,true,false,ok,sarvam-translate:v1
+Batch {0} was not found in our official list.,ਸਾਡੀ ਅਧਿਕਾਰਤ ਸੂਚੀ ਵਿੱਚ ਬੈਚ {0} ਨਹੀਂ ਮਿਲੀ।,Batch {0} was not found in our authorized list.,1,true,true,ok,sarvam-translate:v1
+Batch number,ਬੈਚ ਨੰਬਰ,Batch Number,1,true,false,ok,sarvam-translate:v1
+Batch number (B.No.),ਬੈਚ ਨੰਬਰ (ਬੀ.ਨੰ.),Batch number (B.No.),1,true,false,ok,sarvam-translate:v1
+Batch number: {0},ਬੈਚ ਨੰਬਰ: {0},Batch Number: {0},1,true,true,ok,sarvam-translate:v1
+Batch: {0},ਬੈਚ: {0},Batch: {0},1,true,true,ok,sarvam-translate:v1
+Before you start,ਸ਼ੁਰੂ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ,Before starting,1,true,true,ok,sarvam-translate:v1
+Big-button keypad,ਵੱਡੇ ਬਟਨਾਂ ਵਾਲਾ ਕੀਪੈਡ,A keypad with large buttons,0.67,true,false,ok,sarvam-translate:v1
+"Buy from a licensed chemist, with a bill","ਇੱਕ ਲਾਇਸੈਂਸਸ਼ੁਦਾ ਕੈਮਿਸਟ ਤੋਂ ਖਰੀਦੋ, ਬਿੱਲ ਦੇ ਨਾਲ।","Buy from a licensed chemist, with a receipt.",0.75,true,true,ok,sarvam-translate:v1
+Buy medicines only from a licensed shop and always take a proper bill.,ਦਵਾਈਆਂ ਸਿਰਫ਼ ਲਾਇਸੈਂਸਸ਼ੁਦਾ ਦੁਕਾਨ ਤੋਂ ਹੀ ਖ਼ਰੀਦੋ ਅਤੇ ਹਮੇਸ਼ਾ ਇੱਕ ਸਹੀ ਬਿੱਲ ਲਵੋ।,Always buy medications from licensed stores and get a proper receipt.,0.56,true,true,ok,sarvam-translate:v1
+Cabinet,ਕੈਬਨਿਟ,The Cabinet,1,true,false,ok,sarvam-translate:v1
+Cabinet and family,ਮੰਤਰੀ ਮੰਡਲ ਅਤੇ ਪਰਿਵਾਰ,Cabinet and Family,1,true,false,ok,sarvam-translate:v1
+Cabinet and family stay on the phone.,ਕੈਬਨਿਟ ਅਤੇ ਪਰਿਵਾਰ ਫੋਨ 'ਤੇ ਰਹਿੰਦੇ ਹਨ।,The cabinet and the family live on the phone.,0.75,true,false,ok,sarvam-translate:v1
+Calendar file downloaded,ਕੈਲੰਡਰ ਫਾਈਲ ਡਾਊਨਲੋਡ ਕੀਤੀ ਗਈ।,The calendar file has been downloaded.,1,true,false,ok,sarvam-translate:v1
+"Camera permission was blocked. Choose a photo from the gallery, or type the batch number.","ਕੈਮਰਾ ਇਜਾਜ਼ਤ ਬਲੌਕ ਕਰ ਦਿੱਤੀ ਗਈ ਸੀ। ਗੈਲਰੀ ਵਿੱਚੋਂ ਇੱਕ ਫੋਟੋ ਚੁਣੋ, ਜਾਂ ਬੈਚ ਨੰਬਰ ਟਾਈਪ ਕਰੋ।","Camera permission was blocked. Select a photo from the gallery, or type a batch number.",0.89,true,true,ok,sarvam-translate:v1
+Can't find batch,ਬੈਚ ਨਹੀਂ ਮਿਲ ਰਿਹਾ।,The batch is not available.,0.33,true,false,ok,sarvam-translate:v1
+CAN'T READ,,,0,false,false,missing,
+Can't read clearly,(shown in English) ,She is unable to read properly.,0.33,false,true,FLAGGED,sarvam-translate:v1
+Cancel,ਰੱਦ ਕਰੋ,Cancel,1,true,false,ok,sarvam-translate:v1
+Careful about false alarms,,,0,false,false,missing,
+Cases,,,0,false,false,missing,
+CDSCO alert check,ਸੀਡੀਐਸਸੀਓ ਅਲਰਟ ਚੈੱਕ,CDSCO Alert Check,1,true,false,ok,sarvam-translate:v1
+CDSCO alert month,ਸੀ.ਡੀ.ਐੱਸ.ਸੀ.ਓ. ਅਲਰਟ ਮਹੀਨਾ,CDSCO Alert Month,1,true,false,ok,sarvam-translate:v1
+CDSCO alert: {0},ਸੀ.ਡੀ.ਐੱਸ.ਸੀ.ਓ. ਅਲਰਟ: {0},CDSCO Alert: {0},1,true,true,ok,sarvam-translate:v1
+CDSCO alerts page,ਸੀ.ਡੀ.ਐੱਸ.ਸੀ.ਓ. ਪੇਜ ਨੂੰ ਚੇਤਾਵਨੀ ਦਿੰਦਾ ਹੈ,The CDSCO has issued an advisory to the page.,0.67,true,false,ok,sarvam-translate:v1
+CDSCO data: available offline,ਸੀਡੀਐਸਸੀਓ ਡਾਟਾ: ਔਫਲਾਈਨ ਉਪਲਬਧ ਹੈ,CDSCO data: Available offline,1,true,false,ok,sarvam-translate:v1
+CDSCO lists arrive late; alerts in between are not visible to us.,,,0,false,false,missing,
+CDSCO NSQ portal,ਸੀ.ਡੀ.ਐੱਸ.ਸੀ.ਓ. ਐੱਨ.ਐੱਸ.ਕਿਊ. ਪੋਰਟਲ,CDSCO NSO portal,0.67,true,false,ok,sarvam-translate:v1
+CDSCO PDF,ਸੀ.ਡੀ.ਐੱਸ.ਸੀ.ਓ. ਪੀ.ਡੀ.ਐੱਫ.,CDSCO PDF.,1,true,false,ok,sarvam-translate:v1
+CDSCO record,ਸੀ.ਡੀ.ਐੱਸ.ਸੀ.ਓ. ਰਿਕਾਰਡ,CDSCO record,1,true,false,ok,sarvam-translate:v1
+CDSCO toll-free,ਸੀ.ਡੀ.ਐੱਸ.ਸੀ.ਓ. ਟੋਲ-ਫ੍ਰੀ,CDSCO toll-free,1,true,false,ok,sarvam-translate:v1
+CDSCO's list for {0} names batch {1} as {2}.,ਸੀਡੀਐਸਸੀਓ ਦੀ {0} ਨਾਵਾਂ ਦੀ ਸੂਚੀ {1} ਨੂੰ {2} ਵਜੋਂ ਬੈਚ ਕਰਦੀ ਹੈ।,The CDC has {0} names listed in the {1} batch as {2}.,0.5,true,true,ok,sarvam-translate:v1
+Change,ਬਦਲਾਓ,Change,1,true,false,ok,sarvam-translate:v1
+Check,ਚੈੱਕ ਕਰੋ,Check.,1,true,false,ok,sarvam-translate:v1
+Check a medicine,ਇੱਕ ਦਵਾਈ ਚੈੱਕ ਕਰੋ,Check for a medicine.,1,true,false,ok,sarvam-translate:v1
+Check another,ਇੱਕ ਹੋਰ ਚੈੱਕ ਕਰੋ,Check another one.,1,true,false,ok,sarvam-translate:v1
+"Check the batch number and company name on the strip carefully, and ask your chemist. Until then treat it as neither 'safe' nor 'bad'.",(shown in English) ,"Look carefully at the lot numbers and company names on the tag and ask your chemist if there is any doubt as to whether it is ""safe"" or ""bad"".",0.38,true,true,FLAGGED,sarvam-translate:v1
+"Check the batch number on the strip carefully, and ask your chemist.","ਸਟਰਿਪ 'ਤੇ ਬੈਚ ਨੰਬਰ ਨੂੰ ਧਿਆਨ ਨਾਲ ਦੇਖੋ, ਅਤੇ ਆਪਣੇ ਕੈਮਿਸਟ ਨੂੰ ਪੁੱਛੋ।",Look carefully at the batch number on the strip and ask your pharmacist.,0.86,true,true,ok,sarvam-translate:v1
+Check the expiry date,ਮਿਆਦ ਪੁੱਗਣ ਦੀ ਮਿਤੀ ਵੇਖੋ।,Check the expiration date.,1,true,true,ok,sarvam-translate:v1
+"Check the expiry date, and buy medicines only from a licensed chemist, with a bill.","ਮਿਆਦ ਪੁੱਗਣ ਦੀ ਮਿਤੀ ਦੀ ਜਾਂਚ ਕਰੋ, ਅਤੇ ਸਿਰਫ਼ ਲਾਇਸੈਂਸਸ਼ੁਦਾ ਕੈਮਿਸਟ ਤੋਂ ਹੀ ਬਿੱਲ ਦੇ ਨਾਲ ਦਵਾਈਆਂ ਖਰੀਦੋ।",Check the expiration date and only buy medications from a licensed chemist along with the prescription.,0.89,true,true,ok,sarvam-translate:v1
+Check these against the strip,ਇਹਨਾਂ ਨੂੰ ਸਟ੍ਰਿਪ ਨਾਲ ਮਿਲਾ ਕੇ ਵੇਖੋ।,Try to visualize them as a strip.,0.25,true,false,ok,sarvam-translate:v1
+Check your family's medicines against official CDSCO alerts,ਆਪਣੇ ਪਰਿਵਾਰ ਦੀਆਂ ਦਵਾਈਆਂ ਨੂੰ ਅਧਿਕਾਰਤ CDSCO ਅਲਰਟਾਂ ਨਾਲ ਮਿਲਾਓ।,Match your family's medications with the official CDSCO alerts.,0.71,true,false,ok,sarvam-translate:v1
+Checked by plain code against {0} CDSCO records,{0} ਸੀਡੀਐਸਸੀਓ ਰਿਕਾਰਡਾਂ ਦੇ ਵਿਰੁੱਧ ਸਾਦੇ ਕੋਡ ਦੁਆਰਾ ਜਾਂਚ ਕੀਤੀ ਗਈ।,{0} was checked against the CDSCO records.,0.67,true,false,ok,sarvam-translate:v1
+Checking the official list…,ਅਧਿਕਾਰਤ ਸੂਚੀ ਦੀ ਜਾਂਚ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ...,Checking the official list...,1,true,false,ok,sarvam-translate:v1
+Choose from gallery,ਗੈਲਰੀ ਵਿੱਚੋਂ ਚੁਣੋ,Choose from the gallery.,1,true,true,ok,sarvam-translate:v1
+Choose language,,,0,false,false,missing,
+Clear,ਸਾਫ਼ ਕਰੋ,Clean it.,0,true,false,ok,sarvam-translate:v1
+Close,ਬੰਦ ਕਰੋ,Stop it.,0,true,false,ok,sarvam-translate:v1
+Cloud,ਬੱਦਲ,"The translation of the given Punjabi text ""ਬੱਦਲ"" from English to English is:
+
+""Cloud""",1,true,false,ok,sarvam-translate:v1
+Cloud AI,ਕਲਾਉਡ ਏ.ਆਈ.,Cloud AI,1,true,false,ok,sarvam-translate:v1
+Company,ਕੰਪਨੀ,The company,1,true,false,ok,sarvam-translate:v1
+Company (manufacturer),ਕੰਪਨੀ (ਨਿਰਮਾਤਾ),Company (Manufacturer),1,true,false,ok,sarvam-translate:v1
+Company named in the list: {0}.,ਸੂਚੀ ਵਿੱਚ ਨਾਮਜ਼ਦ ਕੰਪਨੀ: {0}।,Company listed in the list: {0}.,0.67,true,true,ok,sarvam-translate:v1
+Company on label,ਲੇਬਲ ਉੱਤੇ ਕੰਪਨੀ,"On the label, the company",1,true,false,ok,sarvam-translate:v1
+"Competitor cells state only what their own public listings (app stores, NITI Aayog Frontier Tech stories) say, as of Nov 2026. 'Not verified' means we did not confirm it either way. FactsScan and TruthIn are food-label apps; Tata 1mg is an online pharmacy. They do different jobs, so this shows where DawaShield is different, not who is better.","ਮੁਕਾਬਲੇ ਵਾਲੇ ਸੈੱਲ ਸਿਰਫ਼ ਉਹ ਦੱਸਦੇ ਹਨ ਜੋ ਉਨ੍ਹਾਂ ਦੀਆਂ ਆਪਣੀਆਂ ਜਨਤਕ ਸੂਚੀਆਂ (ਐਪ ਸਟੋਰ, ਨੀਤੀ ਆਯੋਗ ਫਰੰਟੀਅਰ ਟੈਕ ਕਹਾਣੀਆਂ) ਨਵੰਬਰ 2026 ਤੱਕ ਕਹਿੰਦੀਆਂ ਹਨ। 'ਪ੍ਰਮਾਣਿਤ ਨਹੀਂ' ਦਾ ਮਤਲਬ ਹੈ ਕਿ ਅਸੀਂ ਇਸਦੀ ਪੁਸ਼ਟੀ ਕਿਸੇ ਵੀ ਤਰੀਕੇ ਨਾਲ ਨਹੀਂ ਕੀਤੀ। FactsScan ਅਤੇ TruthIn ਫੂਡ-ਲੇਬਲ ਐਪਸ ਹਨ; ਟਾਟਾ 1mg ਇੱਕ ਔਨਲਾਈਨ ਫਾਰਮੇਸੀ ਹੈ। ਉਹ ਵੱਖੋ ਵੱਖਰੇ ਕੰਮ ਕਰਦੇ ਹਨ, ਇਸ ਲਈ ਇਹ ਦਰਸਾਉਂਦਾ ਹੈ ਕਿ DawaShield ਕਿੱਥੇ ਵੱਖਰਾ ਹੈ, ਇਹ ਨਹੀਂ ਕਿ ਕੌਣ ਬਿਹਤਰ ਹੈ।","The competing apps only report what their own public listings (App Store, NITI Aayog Frontier Tech Stories) say as of November 2026. ""Not verified"" means we have not confirmed it in any way. FactsScan and TruthIn are food-label apps; Tata 1mg is an online pharmacy. They do different things, so this shows where DawaShield differs, not who is better.",0.84,true,false,ok,sarvam-translate:v1
+Complaint-message helper,ਸ਼ਿਕਾਇਤ-ਸੁਨੇਹਾ ਸਹਾਇਕ,Complaint-Message Assistant,0.67,true,false,ok,sarvam-translate:v1
+Confidence,ਆਤਮ-ਵਿਸ਼ਵਾਸ,Self-confidence,1,true,false,ok,sarvam-translate:v1
+Confirm and check,ਪੁਸ਼ਟੀ ਕਰੋ ਅਤੇ ਜਾਂਚ ਕਰੋ,Confirm and check.,1,true,false,ok,sarvam-translate:v1
+Consent given,ਸਹਿਮਤੀ ਦਿੱਤੀ ਗਈ।,Consent was given.,1,true,false,ok,sarvam-translate:v1
+Copied,ਨਕਲ ਕੀਤਾ ਗਿਆ,Copyed,0,true,false,ok,sarvam-translate:v1
+Copy,ਨਕਲ ਕਰੋ,Copy,1,true,false,ok,sarvam-translate:v1
+Copy the message below and send it through an official channel. Keep the medicine and strip.,ਹੇਠਾਂ ਦਿੱਤੇ ਸੰਦੇਸ਼ ਨੂੰ ਕਾਪੀ ਕਰੋ ਅਤੇ ਇਸਨੂੰ ਇੱਕ ਅਧਿਕਾਰਤ ਚੈਨਲ ਰਾਹੀਂ ਭੇਜੋ। ਦਵਾਈ ਅਤੇ ਪੱਟੀ ਰੱਖੋ।,Copy the message below and send it through an official channel. Keep medicine and a bandage.,0.9,true,false,ok,sarvam-translate:v1
+Correctly refused to read,,,0,false,false,missing,
+Could not open the camera. Please choose a photo from the gallery.,(shown in English) ,The camera cannot be opened. Please select a photo from the gallery.,0.43,true,true,FLAGGED,sarvam-translate:v1
+Could not send. Connect to the internet and try again.,ਭੇਜਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ। ਇੰਟਰਨੈੱਟ ਨਾਲ ਜੁੜੋ ਅਤੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।,Could not be sent. Connect to the internet and try again.,0.86,true,false,ok,sarvam-translate:v1
+Couldn't create the link. Try again.,ਲਿੰਕ ਨਹੀਂ ਬਣਾਇਆ ਜਾ ਸਕਿਆ। ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।,The link could not be created. Please try again.,1,true,false,ok,sarvam-translate:v1
+Couldn't do it right now. Connect to the internet and try again.,ਮੈਂ ਹੁਣੇ ਇਹ ਨਹੀਂ ਕਰ ਸਕਦੀ। ਇੰਟਰਨੈੱਟ ਨਾਲ ਜੁੜੋ ਅਤੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।,I can't do it right now. Connect to the internet and try again.,0.86,true,false,ok,sarvam-translate:v1
+Couldn't turn on right now. Connect to the internet and try again.,ਇਸ ਵੇਲੇ ਚਾਲੂ ਨਹੀਂ ਹੋ ਸਕਦਾ। ਇੰਟਰਨੈੱਟ ਨਾਲ ਜੁੜੋ ਅਤੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।,It can't be activated right now. Connect to the internet and try again.,0.75,true,false,ok,sarvam-translate:v1
+Coverage,ਕਵਰੇਜ,Coverage,1,true,false,ok,sarvam-translate:v1
+Create invite link,ਸੱਦਾ ਲਿੰਕ ਬਣਾਓ,Create an invitation link.,1,true,false,ok,sarvam-translate:v1
+Dada,ਦਾਦਾ,Grandfather,0,true,false,ok,sarvam-translate:v1
+Dadi,ਦਾਦੀ,Grandmother,0,true,false,ok,sarvam-translate:v1
+Data available up to,ਇੱਥੋਂ ਤੱਕ ਡਾਟਾ ਉਪਲਬਧ ਹੈ,Data is available up to but including,1,true,false,ok,sarvam-translate:v1
+"DawaShield does not replace a pharmacist, doctor or official advice.","ਡਾਵਾਸ਼ੀਲਡ ਇੱਕ ਫਾਰਮਾਸਿਸਟ, ਡਾਕਟਰ ਜਾਂ ਅਧਿਕਾਰਤ ਸਲਾਹ ਦੀ ਥਾਂ ਨਹੀਂ ਲੈਂਦਾ।","The Dawashield does not replace a pharmacist, a doctor, or official advice.",1,true,true,ok,sarvam-translate:v1
+"DawaShield is an information tool based on public CDSCO alerts, not a quality certificate or medical advice. Counterfeits can copy real batch numbers, so a GREY result can't rule them out.","ਡਾਵਾਸ਼ੀਲਡ ਇੱਕ ਜਾਣਕਾਰੀ ਟੂਲ ਹੈ ਜੋ ਜਨਤਕ CDSCO ਅਲਰਟ 'ਤੇ ਅਧਾਰਤ ਹੈ, ਇਹ ਕੋਈ ਕੁਆਲਿਟੀ ਸਰਟੀਫਿਕੇਟ ਜਾਂ ਡਾਕਟਰੀ ਸਲਾਹ ਨਹੀਂ ਹੈ। ਨਕਲੀ ਬੈਚ ਨੰਬਰ ਅਸਲੀ ਬੈਚ ਨੰਬਰਾਂ ਦੀ ਨਕਲ ਕਰ ਸਕਦੇ ਹਨ, ਇਸ ਲਈ ਇੱਕ GREY ਨਤੀਜਾ ਉਹਨਾਂ ਨੂੰ ਰੱਦ ਨਹੀਂ ਕਰ ਸਕਦਾ।","DavaShield is an information tool based on public CDSCO alerts; it is not a quality certificate or medical advice. Fake batch numbers can mimic real batch numbers, so a GREY result cannot rule them out.",0.83,true,true,ok,sarvam-translate:v1
+"DawaShield matches your medicine's batch against official quality alerts from CDSCO, India's drug regulator.","ਡਾਵਾਸ਼ੀਲਡ ਤੁਹਾਡੀ ਦਵਾਈ ਦੇ ਬੈਚ ਨੂੰ ਸੀਡੀਐਸਸੀਓ, ਭਾਰਤ ਦੇ ਡਰੱਗ ਰੈਗੂਲੇਟਰ ਤੋਂ ਅਧਿਕਾਰਤ ਗੁਣਵੱਤਾ ਚੇਤਾਵਨੀਆਂ ਦੇ ਵਿਰੁੱਧ ਮਿਲਾਉਂਦਾ ਹੈ।","DavaShield matches your medicine batch against the authorized quality warnings from CDSCO, India's drug regulator.",0.92,true,true,ok,sarvam-translate:v1
+DawaShield: official alert found,ਡਾਵਾਸ਼ੀਲਡ: ਅਧਿਕਾਰਤ ਚੇਤਾਵਨੀ ਮਿਲੀ ਹੈ,DavaShield: An official warning has been received.,0.5,true,true,ok,sarvam-translate:v1
+"DawaShield: open this link and tap ""Accept"" to get a notification on your phone if any of my saved medicines gets an official alert: {0}","ਡਾਵਾਸ਼ੀਲਡ: ਇਸ ਲਿੰਕ ਨੂੰ ਖੋਲ੍ਹੋ ਅਤੇ ""Accept"" 'ਤੇ ਟੈਪ ਕਰੋ ਤਾਂ ਜੋ ਤੁਹਾਡੇ ਫ਼ੋਨ 'ਤੇ ਇੱਕ ਨੋਟੀਫਿਕੇਸ਼ਨ ਆਵੇ ਜੇਕਰ ਮੇਰੀਆਂ ਸੁਰੱਖਿਅਤ ਦਵਾਈਆਂ ਵਿੱਚੋਂ ਕਿਸੇ ਨੂੰ ਵੀ ਅਧਿਕਾਰਤ ਚੇਤਾਵਨੀ ਮਿਲਦੀ ਹੈ: {0}","DawaShield: Open this link and tap ""Accept"" so that a notification will appear on your phone if any of my safe medications receive an authorized alert: {0}",0.8,true,false,ok,sarvam-translate:v1
+DawaShield: possible match with an official alert,ਡਾਵਾਸ਼ੀਲਡ: ਇੱਕ ਅਧਿਕਾਰਤ ਚੇਤਾਵਨੀ ਨਾਲ ਸੰਭਾਵਿਤ ਮੇਲ,DaVinci: A possible match with an official warning,0.8,true,true,ok,sarvam-translate:v1
+dci@nic.in,dci@nic.in,dci@nic.in,1,true,true,ok,sarvam-translate:v1
+Demo: a real official record,ਡੈਮੋ: ਇੱਕ ਅਸਲੀ ਅਧਿਕਾਰਤ ਰਿਕਾਰਡ,Demo: A Real Official Record,1,true,false,ok,sarvam-translate:v1
+Different,ਵੱਖਰਾ,Different,1,true,false,ok,sarvam-translate:v1
+"Do not burn old medicines in the open. Where available, drop them at a 'drug take-back' site run by the State Drugs Control Department and chemists' association. A few medicines have special rules, so ask your pharmacist. (Source: CDSCO guidance, May 2025)","ਪੁਰਾਣੀਆਂ ਦਵਾਈਆਂ ਨੂੰ ਖੁੱਲ੍ਹੇ ਵਿੱਚ ਨਾ ਸਾੜੋ। ਜਿੱਥੇ ਉਪਲਬਧ ਹੋਣ, ਉਨ੍ਹਾਂ ਨੂੰ ਸਟੇਟ ਡਰੱਗਜ਼ ਕੰਟਰੋਲ ਵਿਭਾਗ ਅਤੇ ਕੈਮਿਸਟ ਐਸੋਸੀਏਸ਼ਨ ਦੁਆਰਾ ਚਲਾਏ ਜਾ ਰਹੇ 'ਡਰੱਗ ਟੇਕ-ਬੈਕ' ਸਾਈਟ 'ਤੇ ਸੁੱਟ ਦਿਓ। ਕੁਝ ਦਵਾਈਆਂ ਦੇ ਵਿਸ਼ੇਸ਼ ਨਿਯਮ ਹਨ, ਇਸ ਲਈ ਆਪਣੇ ਫਾਰਮਾਸਿਸਟ ਤੋਂ ਪੁੱਛੋ। (ਸਰੋਤ: ਸੀਡੀਐਸਸੀਓ ਗਾਈਡੈਂਸ, ਮਈ 2025)","Do not burn old medicines in the open. Throw them away at a 'drug take-back' site operated by the State Drugs Control Department and the Chemists Association, where they are available. Some medicines have specific regulations, so ask your pharmacist. (Source: CDSCO Guidance, May 2025)",0.86,true,true,ok,sarvam-translate:v1
+"Dolo-650 (Micro Labs, batch DOBS4518) is not listed. A different Micro Labs medicine, Amlodipine (batch AMAS0249), is. This used to show AMBER; now it is GREY with a small note that your medicine is not affected.",,,0,false,false,missing,
+"Don't use it. Keep the strip and bill, and show them to your chemist.","ਇਸ ਦੀ ਵਰਤੋਂ ਨਾ ਕਰੋ। ਸਟ੍ਰਿਪ ਅਤੇ ਬਿੱਲ ਰੱਖੋ, ਅਤੇ ਉਹਨਾਂ ਨੂੰ ਆਪਣੇ ਕੈਮਿਸਟ ਨੂੰ ਦਿਖਾਓ।",Do not use it. Keep the strip and bill and show them to your chemist.,0.88,true,true,ok,sarvam-translate:v1
+Done,ਹੋ ਗਿਆ।,It's done.,1,true,false,ok,sarvam-translate:v1
+"Done. If any of their saved medicines is flagged, this phone gets a notification.","ਹੋ ਗਿਆ। ਜੇਕਰ ਉਹਨਾਂ ਦੀ ਕੋਈ ਵੀ ਸੁਰੱਖਿਅਤ ਦਵਾਈ ਫਲੈਗ ਕੀਤੀ ਜਾਂਦੀ ਹੈ, ਤਾਂ ਇਸ ਫ਼ੋਨ 'ਤੇ ਇੱਕ ਨੋਟੀਫਿਕੇਸ਼ਨ ਆਉਂਦੀ ਹੈ।","Done. If any of their safe medicines are flagged, a notification comes on this phone.",0.78,true,false,ok,sarvam-translate:v1
+Download size,ਡਾਊਨਲੋਡ ਸਾਈਜ਼,Download Size,1,true,false,ok,sarvam-translate:v1
+e.g. 251TTF014,ਉਦਾਹਰਣ ਵਜੋਂ 251TTF014,"For example, 251TTF014.",0.33,true,false,ok,sarvam-translate:v1
+e.g. Dolo 650,"ਉਦਾਹਰਣ ਵਜੋਂ, ਡੋਲੋ 650","For example, the Dolo 650.",0.5,true,false,ok,sarvam-translate:v1
+e.g. What does 'dissolution' mean?,"ਉਦਾਹਰਣ ਵਜੋਂ, 'ਡਿਸੋਲਿਊਸ਼ਨ' ਦਾ ਕੀ ਮਤਲਬ ਹੈ?","For example, what does ""dissolution"" mean?",0.4,true,false,ok,sarvam-translate:v1
+Email CDSCO,ਸੀ.ਡੀ.ਐੱਸ.ਸੀ.ਓ. ਨੂੰ ਈਮੇਲ ਕਰੋ,Email the CDSCO.,1,true,false,ok,sarvam-translate:v1
+en-IN,en-IN,en-IN,1,true,false,ok,sarvam-translate:v1
+Enable,ਚਾਲੂ ਕਰੋ,Start it.,0,true,false,ok,sarvam-translate:v1
+Enter batch number,ਬੈਚ ਨੰਬਰ ਦਰਜ ਕਰੋ,Enter the batch number.,1,true,false,ok,sarvam-translate:v1
+Enter batch with big buttons,ਵੱਡੇ ਬਟਨਾਂ ਵਾਲਾ ਬੈਚ ਦਾਖਲ ਕਰੋ,Enter the batch with large buttons.,0.75,true,false,ok,sarvam-translate:v1
+Escape,ਭੱਜ ਜਾ,Run away.,0,true,false,ok,sarvam-translate:v1
+Eval run,,,0,false,false,missing,
+Every AI answer is labelled On this device or Cloud. Translations are made in advance; the browser never calls a translation service.,,,0,false,false,missing,
+"Every day your saved medicines are re-checked against the new official list. If a batch is flagged, or a medicine expires in 5 days, you get a notification on this phone.","ਹਰ ਰੋਜ਼ ਤੁਹਾਡੀਆਂ ਸੁਰੱਖਿਅਤ ਦਵਾਈਆਂ ਦੀ ਨਵੀਂ ਅਧਿਕਾਰਤ ਸੂਚੀ ਨਾਲ ਦੁਬਾਰਾ ਜਾਂਚ ਕੀਤੀ ਜਾਂਦੀ ਹੈ। ਜੇਕਰ ਕੋਈ ਬੈਚ ਫਲੈਗ ਕੀਤਾ ਜਾਂਦਾ ਹੈ, ਜਾਂ 5 ਦਿਨਾਂ ਵਿੱਚ ਕੋਈ ਦਵਾਈ ਖਤਮ ਹੋ ਜਾਂਦੀ ਹੈ, ਤਾਂ ਤੁਹਾਨੂੰ ਇਸ ਫ਼ੋਨ 'ਤੇ ਇੱਕ ਨੋਟੀਫਿਕੇਸ਼ਨ ਮਿਲਦੀ ਹੈ।","Your safe medications are re-checked every day with a new authorized list. If a batch is flagged, or a medication runs out in 5 days, you receive a notification on this phone.",0.78,true,false,ok,sarvam-translate:v1
+"Every medicine at home, checked against official alerts","ਘਰ ਵਿੱਚ ਹਰ ਦਵਾਈ, ਅਧਿਕਾਰਤ ਚੇਤਾਵਨੀਆਂ ਦੇ ਮੁਕਾਬਲੇ ਜਾਂਚ ਕੀਤੀ ਜਾਂਦੀ ਹੈ।","At home, every drug is checked against the official warnings.",1,true,false,ok,sarvam-translate:v1
+"Exact batch AND company matched with high confidence (or the medicine name, when the record names no company, as with spurious drugs).",,,0,false,false,missing,
+Exactly this message will be shared,ਇਹੀ ਸੁਨੇਹਾ ਸਾਂਝਾ ਕੀਤਾ ਜਾਵੇਗਾ।,The same message will be shared.,0.67,true,false,ok,sarvam-translate:v1
+Example: this should be easy to read in the photo,ਉਦਾਹਰਣ: ਇਹ ਫੋਟੋ ਵਿੱਚ ਪੜ੍ਹਨ ਵਿੱਚ ਆਸਾਨ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ।,Example: This should be easy to read in a photo.,1,true,false,ok,sarvam-translate:v1
+Expired,ਮਿਆਦ ਪੁੱਗ ਗਈ,The term has expired.,1,true,true,ok,sarvam-translate:v1
+Expired or expiring soon,ਮਿਆਦ ਪੁੱਗ ਗਈ ਹੈ ਜਾਂ ਜਲਦੀ ਹੀ ਖਤਮ ਹੋਣ ਵਾਲੀ ਹੈ,Expires or expires soon,1,true,false,ok,sarvam-translate:v1
+Expires soon,ਜਲਦੀ ਹੀ ਖਤਮ ਹੋ ਰਿਹਾ ਹੈ,It's ending soon.,0.5,true,true,ok,sarvam-translate:v1
+Expiry,ਮਿਆਦ ਪੁੱਗ,Expiry date,1,true,false,ok,sarvam-translate:v1
+Expiry (EXP),ਐਕਸਪਾਇਰੀ (EXP),"Here is the translation of the input text from Punjabi to English:
+
+""Expiration (EXP)""",1,true,false,ok,sarvam-translate:v1
+Expiry reminders,ਐਕਸਪਾਇਰੀ ਰੀਮਾਈਂਡਰ,Expiry Reminder,1,true,false,ok,sarvam-translate:v1
+Expiry: {0},ਮਿਆਦ ਪੁੱਗਣ ਦੀ ਮਿਤੀ: {0},Expires On: {0},1,true,true,ok,sarvam-translate:v1
+Explained the record,ਰਿਕਾਰਡ ਸਮਝਾਇਆ।,The record was explained.,1,true,false,ok,sarvam-translate:v1
+FactsScan,FactsScan,FactsScan,1,true,false,ok,sarvam-translate:v1
+failed to,ਨਾਕਾਮ ਰਹੀ,It was unsuccessful.,0,true,false,ok,sarvam-translate:v1
+Failure reason,ਅਸਫਲਤਾ ਦਾ ਕਾਰਨ,The reason for the failure,1,true,false,ok,sarvam-translate:v1
+False-GREY rate,ਗਲਤ-ਸਲੇਟੀ ਦਰ,Incorrect-gray rate,0.33,true,false,ok,sarvam-translate:v1
+False-RED rate,,,0,false,false,missing,
+Family,ਪਰਿਵਾਰ,Family,1,true,false,ok,sarvam-translate:v1
+Family alert ready to send to {0},{0} ਨੂੰ ਭੇਜਣ ਲਈ ਪਰਿਵਾਰਕ ਚੇਤਾਵਨੀ ਤਿਆਰ ਹੈ।,A family alert is ready to send to {0}.,1,true,false,ok,sarvam-translate:v1
+Family alerts,ਪਰਿਵਾਰਕ ਚੇਤਾਵਨੀਆਂ,Family warnings,1,true,false,ok,sarvam-translate:v1
+Family invite,ਪਰਿਵਾਰਕ ਸੱਦਾ,Family invitation,1,true,false,ok,sarvam-translate:v1
+Female,ਔਰਤ,Woman,0,true,false,ok,sarvam-translate:v1
+"Firebase AI Logic: Gemini Nano on the device and Gemini Flash in the cloud. Matching is always plain code, on the device.","Firebase AI Logic: ਜੰਮਿਨੀ ਨੈਨੋ ਡਿਵਾਈਸ 'ਤੇ ਅਤੇ ਜੰਮਿਨੀ ਫਲੈਸ਼ ਕਲਾਉਡ ਵਿੱਚ। ਮੈਚਿੰਗ ਹਮੇਸ਼ਾ ਸਾਦਾ ਕੋਡ ਹੁੰਦਾ ਹੈ, ਡਿਵਾਈਸ 'ਤੇ।","Firebase AI Logic: On the Gemini Nano device and in the Gemini Flash Cloud. The matching is always simple code, on the device.",0.92,true,false,ok,sarvam-translate:v1
+Firestore rules: each device can only read and write its own documents.,ਫਾਇਰਬ੍ਰੇਸਟ ਨਿਯਮ: ਹਰੇਕ ਡਿਵਾਈਸ ਸਿਰਫ਼ ਆਪਣੇ ਹੀ ਦਸਤਾਵੇਜ਼ਾਂ ਨੂੰ ਪੜ੍ਹ ਅਤੇ ਲਿਖ ਸਕਦੀ ਹੈ।,Firewall rules  Each device can only read and write its own documents.,0.9,true,false,ok,sarvam-translate:v1
+First turn on alerts in Settings,ਸਭ ਤੋਂ ਪਹਿਲਾਂ ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਅਲਰਟ ਚਾਲੂ ਕਰੋ।,"First, turn on alerts in the settings.",1,true,false,ok,sarvam-translate:v1
+"Flagged batches caught, no correction",,,0,false,false,missing,
+For explanations and questions only the official record and your question are sent. Every AI answer is labelled On this device or Cloud.,ਸਿਰਫ਼ ਅਧਿਕਾਰਤ ਰਿਕਾਰਡ ਅਤੇ ਤੁਹਾਡਾ ਸਵਾਲ ਹੀ ਸਪੱਸ਼ਟੀਕਰਨਾਂ ਅਤੇ ਸਵਾਲਾਂ ਲਈ ਭੇਜੇ ਜਾਂਦੇ ਹਨ। ਹਰ AI ਜਵਾਬ ਨੂੰ ਇਸ ਡਿਵਾਈਸ ਜਾਂ ਕਲਾਉਡ 'ਤੇ ਲੇਬਲ ਕੀਤਾ ਜਾਂਦਾ ਹੈ।,Only authorized records and your questions are sent for clarifications and questions. Every AI response is labeled on this device or in the cloud.,0.85,true,false,ok,sarvam-translate:v1
+"For this, our server keeps only: a notification code, your language, and for each medicine its batch number, company and expiry month. Never your name, phone number, illness or who the medicine is for. Turn it off any time and all of it is deleted.","ਇਸਦੇ ਲਈ, ਸਾਡਾ ਸਰਵਰ ਸਿਰਫ਼ ਇਹ ਰੱਖਦਾ ਹੈ: ਇੱਕ ਨੋਟੀਫਿਕੇਸ਼ਨ ਕੋਡ, ਤੁਹਾਡੀ ਭਾਸ਼ਾ, ਅਤੇ ਹਰੇਕ ਦਵਾਈ ਲਈ ਇਸਦਾ ਬੈਚ ਨੰਬਰ, ਕੰਪਨੀ ਅਤੇ ਖਤਮ ਹੋਣ ਦਾ ਮਹੀਨਾ। ਕਦੇ ਵੀ ਤੁਹਾਡਾ ਨਾਮ, ਫ਼ੋਨ ਨੰਬਰ, ਬਿਮਾਰੀ ਜਾਂ ਇਹ ਦਵਾਈ ਕਿਸਦੇ ਲਈ ਹੈ, ਨਹੀਂ। ਇਸਨੂੰ ਕਿਸੇ ਵੀ ਸਮੇਂ ਬੰਦ ਕਰੋ ਅਤੇ ਇਹ ਸਭ ਮਿਟਾ ਦਿੱਤਾ ਜਾਵੇਗਾ।","For this, our server only keeps: a notification code, your language, and its batch number for each medicine, along with the company and the expiration date. Never your name, phone number, the disease, or who this medicine is for. It will be closed at any time, and all of this will be deleted.",0.84,true,false,ok,sarvam-translate:v1
+For whom,ਕਿਸ ਦੇ ਲਈ?,For whom?,1,true,false,ok,sarvam-translate:v1
+For: {0},ਲਈ: {0},For: {0},1,true,true,ok,sarvam-translate:v1
+Full matching offline,ਪੂਰੀ ਮੈਚਿੰਗ ਆਫਲਾਈਨ,Complete matching offline,0.67,true,false,ok,sarvam-translate:v1
+G-QKCDPFSW2N,ਜੀ-ਕਿਊਕੇਸੀਡੀਪੀਐਫਐਸਡਬਲਯੂ2ਐਨ,G-QKDFFSFW2N,0.5,true,false,ok,sarvam-translate:v1
+Gemini Flash · {0},ਜੈਮਿਨੀ ਫਲੈਸ਼ · {0},Gemini Flash · {0},1,true,false,ok,sarvam-translate:v1
+Gemini Nano · {0},ਜੈਮਿਨੀ ਨੈਨੋ · {0},Gemini Nano · {0},1,true,false,ok,sarvam-translate:v1
+Gemini Nano is downloading. Using cloud AI for now.,ਜੈਮਿਨੀ ਨੈਨੋ ਡਾਊਨਲੋਡ ਹੋ ਰਹੀ ਹੈ। ਫਿਲਹਾਲ ਕਲਾਉਡ ਏ.ਆਈ. ਵਰਤ ਰਹੀ ਹੈ।,"Gemini Nano is being downloaded. Currently, Cloud AI is being used.",0.71,true,false,ok,sarvam-translate:v1
+Gemini Nano is ready on this device{0}. AI works even offline.,ਜੈਮਿਨੀ ਨੈਨੋ ਇਸ ਡਿਵਾਈਸ{0} 'ਤੇ ਤਿਆਰ ਹੈ। ਏ.ਆਈ. ਆਫਲਾਈਨ ਵੀ ਕੰਮ ਕਰਦੀ ਹੈ।,Gemini Nano is ready on this device{0}. AI offline also works.,0.88,true,false,ok,sarvam-translate:v1
+generated transcripts,,,0,false,false,missing,
+Get alerted if it is flagged later,ਜੇਕਰ ਬਾਅਦ ਵਿੱਚ ਇਸ ਨੂੰ ਫਲੈਗ ਕੀਤਾ ਜਾਂਦਾ ਹੈ ਤਾਂ ਸੁਚੇਤ ਹੋ ਜਾਓ।,Be aware that later this may be flagged if it is a scam.,0.5,true,true,ok,sarvam-translate:v1
+Get alerts even when the app is closed?,ਐਪ ਬੰਦ ਹੋਣ 'ਤੇ ਵੀ ਚੇਤਾਵਨੀ ਪ੍ਰਾਪਤ ਕਰੋ?,Receive a warning even when the app is closed?,0.83,true,false,ok,sarvam-translate:v1
+"GitHub Actions fetches CDSCO daily, validates it, re-checks opted-in saved medicines and sends a push if one is flagged. On iPhone, push works only when the app is added to the home screen.",,,0,false,false,missing,
+Grey,(shown in English) ,"The translation of the given Punjabi text ""ਸਲੇਟੀ"" from English to English is:
+
+""Gray""",0,true,true,FLAGGED,sarvam-translate:v1
+GREY,(shown in English) ,"The translation of the given Punjabi text ""ਸਲੇਟੀ"" from English to English is:
+
+""Gray""",0,true,true,FLAGGED,sarvam-translate:v1
+Hand-verified,ਹੱਥੀਂ ਤਸਦੀਕ ਕੀਤਾ ਗਿਆ,Hand-verified,1,true,false,ok,sarvam-translate:v1
+Hand-verified records,,,0,false,false,missing,
+Heard,ਸੁਣਿਆ,I heard that the government has banned the sale of firecrackers in the state.,1,true,false,ok,sarvam-translate:v1
+"Hello, I am DawaShield. Say the medicine name, or show a photo of the strip.","ਸਤ ਸ੍ਰੀ ਅਕਾਲ, ਮੈਂ ਦਾਵਾਸ਼ੀਲਡ ਹਾਂ। ਦਵਾਈ ਦਾ ਨਾਮ ਦੱਸੋ, ਜਾਂ ਸਟ੍ਰਿਪ ਦੀ ਇੱਕ ਫੋਟੋ ਦਿਖਾਓ।","Sat Sri Akal, I am Dawashield. Tell me the name of the medicine, or show me a photo of the strip.",0.8,true,true,ok,sarvam-translate:v1
+hi-IN,ਹੈਲੋ-IN,Hello-IN,0,true,false,ok,sarvam-translate:v1
+Hide details,ਵੇਰਵੇ ਲੁਕਾਓ,Hide Details,1,true,true,ok,sarvam-translate:v1
+"Hindi and English offline, 5 more Indian languages online",,,0,false,false,missing,
+"Hindi and English offline; Punjabi, Gujarati, Marathi, Kannada and Tamil online. Even a garbled transcript is matched and shown as big buttons.",,,0,false,false,missing,
+Hindi and English work offline. The other languages need internet.,,,0,false,false,missing,
+Hindi voice check,ਹਿੰਦੀ ਵੌਇਸ ਚੈੱਕ,Hindi Voice Check,1,true,false,ok,sarvam-translate:v1
+Hindi voice input: works offline only if the Hindi speech pack is installed in Chrome,ਹਿੰਦੀ ਵੌਇਸ ਇਨਪੁਟ: ਸਿਰਫ਼ ਤਾਂ ਹੀ ਔਫਲਾਈਨ ਕੰਮ ਕਰਦਾ ਹੈ ਜੇਕਰ ਹਿੰਦੀ ਸਪੀਚ ਪੈਕ Chrome ਵਿੱਚ ਇੰਸਟਾਲ ਹੈ।,Hindi voice input: Only works offline if Hindi speech pack is installed in Chrome.,1,true,false,ok,sarvam-translate:v1
+Hindi/English voice top-3,,,0,false,false,missing,
+"Historical alert, this batch's expiry was","ਇਤਿਹਾਸਕ ਚੇਤਾਵਨੀ, ਇਸ ਬੈਚ ਦੀ ਮਿਆਦ ਪੁੱਗ ਗਈ ਸੀ।","Historical caveat, this batch was expired.",0.75,true,false,ok,sarvam-translate:v1
+Home,ਘਰ,Home,1,true,false,ok,sarvam-translate:v1
+Home medicine cabinet with automatic later alerts,ਆਟੋਮੈਟਿਕ ਲੇਟਰ ਅਲਰਟ ਵਾਲੀ ਘਰੇਲੂ ਦਵਾਈਆਂ ਵਾਲੀ ਅਲਮਾਰੀ,A home medicine cabinet with automatic letter alert,0.83,true,false,ok,sarvam-translate:v1
+How it compares,ਇਹ ਕਿਵੇਂ ਤੁਲਨਾ ਕਰਦਾ ਹੈ,How does it compare?,1,true,false,ok,sarvam-translate:v1
+How it works,ਇਹ ਕਿਵੇਂ ਕੰਮ ਕਰਦਾ ਹੈ,This is how it works,1,true,false,ok,sarvam-translate:v1
+How the result colour is decided,,,0,false,false,missing,
+How this answer was made,ਇਹ ਜਵਾਬ ਕਿਵੇਂ ਬਣਾਇਆ ਗਿਆ ਸੀ,How was this response created?,0.33,true,false,ok,sarvam-translate:v1
+Hybrid AI,ਹਾਈਬ੍ਰਿਡ ਏ.ਆਈ.,Hybrid AI,1,true,false,ok,sarvam-translate:v1
+I could not understand. Please say it again or show a photo.,ਮੈਨੂੰ ਸਮਝ ਨਹੀਂ ਆਈ। ਕਿਰਪਾ ਕਰਕੇ ਇਸਨੂੰ ਦੁਬਾਰਾ ਕਹੋ ਜਾਂ ਇੱਕ ਫੋਟੋ ਦਿਖਾਓ।,I don't understand. Please repeat it or show me a photo.,0.5,true,true,ok,sarvam-translate:v1
+I didn't hear anything. Hold the phone closer and say the medicine name again.,ਮੈਨੂੰ ਕੁਝ ਵੀ ਸੁਣਾਈ ਨਹੀਂ ਦਿੱਤਾ। ਫ਼ੋਨ ਨੂੰ ਹੋਰ ਨੇੜੇ ਫੜੋ ਅਤੇ ਦਵਾਈ ਦਾ ਨਾਮ ਦੁਬਾਰਾ ਕਹੋ।,I couldn't hear anything. Hold the phone closer and repeat the name of the medicine again.,0.82,true,true,ok,sarvam-translate:v1
+"I understand, continue","ਮੈਂ ਸਮਝਦੀ ਹਾਂ, ਜਾਰੀ ਰੱਖੋ।","I understand, continue.",1,true,true,ok,sarvam-translate:v1
+"If the colour, smell, packing or effect seems wrong, report it to CDSCO. We help you write the message.","ਜੇਕਰ ਰੰਗ, ਗੰਧ, ਪੈਕਿੰਗ ਜਾਂ ਪ੍ਰਭਾਵ ਗਲਤ ਲੱਗਦਾ ਹੈ, ਤਾਂ ਇਸ ਨੂੰ ਸੀਡੀਐੱਸਸੀਓ ਨੂੰ ਰਿਪੋਰਟ ਕਰੋ। ਤੁਹਾਨੂੰ ਸੰਦੇਸ਼ ਲਿਖਣ ਵਿੱਚ ਸਹਾਇਤਾ ਕੀਤੀ ਜਾਂਦੀ ਹੈ।","If the colour, smell, packaging or effect of the product seem wrong, report it to the CDSCO. You are helped in writing the message.",0.64,true,true,retranslated,mayura:v1
+"If you accept, this phone gets a notification when one of their saved medicines appears in an official alert. We keep no name or number, only a notification code.","ਜੇ ਤੁਸੀਂ ਮੰਨਦੇ ਹੋ, ਤਾਂ ਇਸ ਫ਼ੋਨ 'ਤੇ ਨੋਟੀਫਿਕੇਸ਼ਨ ਆਵੇਗੀ ਜਦੋਂ ਉਨ੍ਹਾਂ ਦੀਆਂ ਸੁਰੱਖਿਅਤ ਦਵਾਈਆਂ ਵਿੱਚੋਂ ਕੋਈ ਇੱਕ ਅਧਿਕਾਰਤ ਚੇਤਾਵਨੀ ਵਿੱਚ ਦਿਖਾਈ ਦਿੰਦੀ ਹੈ। ਅਸੀਂ ਕੋਈ ਨਾਮ ਜਾਂ ਨੰਬਰ ਨਹੀਂ ਰੱਖਦੇ, ਸਿਰਫ਼ ਇੱਕ ਨੋਟੀਫਿਕੇਸ਼ਨ ਕੋਡ ਰੱਖਦੇ ਹਾਂ।","If you agree, this phone will receive a notification when one of their safe medications appears in an authorized alert. We do not keep any names or numbers, only a notification code.",0.72,true,false,ok,sarvam-translate:v1
+Is the expiry date correct? Please check the strip,ਕੀ ਮਿਆਦ ਪੁੱਗਣ ਦੀ ਮਿਤੀ ਸਹੀ ਹੈ? ਕਿਰਪਾ ਕਰਕੇ ਸਟ੍ਰਿਪ ਦੀ ਜਾਂਚ ਕਰੋ।,Is the expiration date correct? Please check the strip.,1,true,false,ok,sarvam-translate:v1
+"It does not test the medicine. 'No alert' does not mean 'safe', because official lists come out late.","ਇਹ ਦਵਾਈ ਦੀ ਜਾਂਚ ਨਹੀਂ ਕਰਦੀ। 'ਕੋਈ ਚੇਤਾਵਨੀ ਨਹੀਂ' ਦਾ ਮਤਲਬ 'ਸੁਰੱਖਿਅਤ' ਨਹੀਂ ਹੈ, ਕਿਉਂਕਿ ਅਧਿਕਾਰਤ ਸੂਚੀਆਂ ਦੇਰ ਨਾਲ ਆਉਂਦੀਆਂ ਹਨ।","It does not check drug interactions. ""No warning"" does not necessarily mean ""safe"" because official warnings come late.",0.62,true,true,ok,sarvam-translate:v1
+It never suggests any medicine. Talk to your doctor or chemist about every treatment decision.,ਇਹ ਕਦੇ ਵੀ ਕੋਈ ਦਵਾਈ ਨਹੀਂ ਦੱਸਦਾ। ਹਰ ਇਲਾਜ ਦੇ ਫੈਸਲੇ ਬਾਰੇ ਆਪਣੇ ਡਾਕਟਰ ਜਾਂ ਕੈਮਿਸਟ ਨਾਲ ਗੱਲ ਕਰੋ।,It is never going to prescribe a drug. Talk to your doctor or chemist about every treatment decision.,0.82,true,true,ok,sarvam-translate:v1
+It was tested by {0}. Problem found: {1}.,ਇਹ {0} ਦੁਆਰਾ ਪਰਖਿਆ ਗਿਆ ਸੀ। ਸਮੱਸਿਆ ਮਿਲੀ: {1}।,It was tested by {0}. The problem found was: {1}.,1,true,true,ok,sarvam-translate:v1
+Keep the strip and the bill. Don't use it. Report it to the chemist and CDSCO.,ਪੱਟੀ ਅਤੇ ਬਿੱਲ ਰੱਖੋ। ਇਸਨੂੰ ਵਰਤੋਂ ਨਾ ਕਰੋ। ਇਸਦੀ ਰਸਾਇਣ ਵਿਗਿਆਨੀ ਅਤੇ ਸੀਡੀਐਸਸੀਓ ਨੂੰ ਰਿਪੋਰਟ ਕਰੋ।,Keep the bandage and bill. Do not use it. Report this to the chemist and CDSCO.,0.75,true,true,ok,sarvam-translate:v1
+Language,ਭਾਸ਼ਾ,Language,1,true,false,ok,sarvam-translate:v1
+Last checked,ਆਖਰੀ ਵਾਰ ਜਾਂਚ ਕੀਤੀ ਗਈ,The last time it was investigated,0.5,true,false,ok,sarvam-translate:v1
+Last checked against CDSCO data up to {0}: all clear,ਆਖਰੀ ਵਾਰ {0} ਤੱਕ CDSCO ਡੇਟਾ ਦੇ ਵਿਰੁੱਧ ਜਾਂਚ ਕੀਤੀ ਗਈ: ਸਭ ਸਾਫ਼ ਹੈ,The last audit of CDSCO data was done {0} years ago: All is well.,0.5,true,false,ok,sarvam-translate:v1
+Last successful refresh,,,0,false,false,missing,
+Last synced,ਆਖਰੀ ਵਾਰ ਸਿੰਕ ਕੀਤਾ ਗਿਆ,Last synced,1,true,false,ok,sarvam-translate:v1
+Last updated,ਆਖਰੀ ਵਾਰ ਅੱਪਡੇਟ ਕੀਤਾ ਗਿਆ,Last updated,1,true,false,ok,sarvam-translate:v1
+Latest alert month,,,0,false,false,missing,
+Listed {0} times in the source PDF,ਸਰੋਤ PDF ਵਿੱਚ {0} ਵਾਰ ਸੂਚੀਬੱਧ ਕੀਤਾ ਗਿਆ ਹੈ,The source is listed in the PDF {0} times.,1,true,false,ok,sarvam-translate:v1
+Listening…,ਸੁਣ ਰਹੀ ਹੈ...,Listening...,1,true,false,ok,sarvam-translate:v1
+"Look for the date after EXP on the strip. If it has passed, don't take it; show it to your chemist.","ਸਟ੍ਰਿਪ 'ਤੇ EXP ਤੋਂ ਬਾਅਦ ਦੀ ਮਿਤੀ ਦੇਖੋ। ਜੇ ਇਹ ਲੰਘ ਗਈ ਹੈ, ਤਾਂ ਇਸਨੂੰ ਨਾ ਲਓ; ਇਸਨੂੰ ਆਪਣੇ ਕੈਮਿਸਟ ਨੂੰ ਦਿਖਾਓ।","Look at the expiration date on the strip. If it has passed, do not take it; show it to your chemist.",0.7,true,true,ok,sarvam-translate:v1
+Maa,ਮਾਂ,Mother,0,true,false,ok,sarvam-translate:v1
+Main,ਮੇਰੀ,My,0,true,false,ok,sarvam-translate:v1
+Main job: match a medicine batch to CDSCO alerts,ਮੁੱਖ ਕੰਮ: ਦਵਾਈ ਦੇ ਬੈਚ ਨੂੰ ਸੀ.ਡੀ.ਐੱਸ.ਸੀ.ਓ. ਅਲਰਟਸ ਨਾਲ ਮਿਲਾਉਣਾ।,The main task: to reconcile the batch of drugs with the CDSCO alerts.,0.71,true,false,ok,sarvam-translate:v1
+Male,ਮਰਦ,Men,0,true,false,ok,sarvam-translate:v1
+Manufacturer,ਨਿਰਮਾਤਾ,Producer,0,true,false,ok,sarvam-translate:v1
+Manufacturer (as stated),ਨਿਰਮਾਤਾ (ਜਿਵੇਂ ਦੱਸਿਆ ਗਿਆ ਹੈ),Producer (as stated),0.5,true,false,ok,sarvam-translate:v1
+Matched,ਮੇਲ ਖਾਂਦਾ,The match was a close one.,1,true,false,ok,sarvam-translate:v1
+Matched against the official list,ਅਧਿਕਾਰਤ ਸੂਚੀ ਨਾਲ ਮੇਲ ਖਾਂਦਾ ਹੈ,Matches with the official list,0.75,true,false,ok,sarvam-translate:v1
+Matches,ਮੈਚ,Match,1,true,false,ok,sarvam-translate:v1
+Matching (plain code),,,0,false,false,missing,
+Matching cases,,,0,false,false,missing,
+Matching CDSCO alert: {0},ਮਿਲਦੀ ਸੀਡੀਐਸਸੀਓ ਅਲਰਟ: {0},Found CDSCO alert: {0},0.67,true,true,ok,sarvam-translate:v1
+Me,ਮੈਂ,I,0,true,false,ok,sarvam-translate:v1
+Measured results,ਮਾਪੇ ਗਏ ਨਤੀਜੇ,The measured results,1,true,false,ok,sarvam-translate:v1
+Medicine,ਦਵਾਈ,Medicine,1,true,false,ok,sarvam-translate:v1
+Medicine cabinet,ਦਵਾਈਆਂ ਵਾਲੀ ਅਲਮਾਰੀ,Medicine Cabinet,1,true,false,ok,sarvam-translate:v1
+Medicine expiring soon: {0},ਦਵਾਈ ਜਲਦੀ ਹੀ ਖਤਮ ਹੋ ਰਹੀ ਹੈ: {0},The medicine is running out soon: {0},0.67,true,false,ok,sarvam-translate:v1
+Medicine matching always works fully offline on this phone.,ਮੈਡੀਸਨ ਮੈਚਿੰਗ ਹਮੇਸ਼ਾ ਇਸ ਫ਼ੋਨ 'ਤੇ ਪੂਰੀ ਤਰ੍ਹਾਂ ਔਫਲਾਈਨ ਕੰਮ ਕਰਦੀ ਹੈ।,Medicine matching always works perfectly offline on this phone.,0.86,true,false,ok,sarvam-translate:v1
+Medicine name,ਦਵਾਈ ਦਾ ਨਾਮ,The name of the medicine,1,true,false,ok,sarvam-translate:v1
+Medicine name: {0},ਦਵਾਈ ਦਾ ਨਾਮ: {0},Medicine name: {0},1,true,true,ok,sarvam-translate:v1
+Medicine: {0},ਦਵਾਈ: {0},Medicine: {0},1,true,true,ok,sarvam-translate:v1
+Mfg / Expiry,ਨਿਰਮਾਣ / ਮਿਆਦ ਪੁੱਗਣਾ,Manufacturing / Expiration,0.5,true,false,ok,sarvam-translate:v1
+"Microphone permission was blocked. Allow the mic in your browser, or type instead.","ਮਾਈਕ੍ਰੋਫ਼ੋਨ ਦੀ ਇਜਾਜ਼ਤ ਰੋਕ ਦਿੱਤੀ ਗਈ ਸੀ। ਆਪਣੇ ਬ੍ਰਾਊਜ਼ਰ ਵਿੱਚ ਮਾਈਕ੍ਰੋਫ਼ੋਨ ਦੀ ਇਜਾਜ਼ਤ ਦਿਓ, ਜਾਂ ਇਸ ਦੀ ਬਜਾਏ ਟਾਈਪ ਕਰੋ।","Microphone access was denied. Please allow microphone access in your browser, or type instead.",0.63,true,true,ok,sarvam-translate:v1
+Monthly CDSCO PDF for this alert,ਇਸ ਅਲਰਟ ਲਈ ਮਹੀਨਾਵਾਰ ਸੀਡੀਐਸਸੀਓ ਪੀਡੀਐਫ,The monthly CDSCO PDF for this alert.,1,true,false,ok,sarvam-translate:v1
+Monthly PDF,ਮਹੀਨਾਵਾਰ PDF,Monthly PDF,1,true,false,ok,sarvam-translate:v1
+Months covered,ਮਹੀਨੇ ਕਵਰ ਕੀਤੇ ਗਏ,Months covered,1,true,false,ok,sarvam-translate:v1
+More details (optional),ਹੋਰ ਵੇਰਵੇ (ਵਿਕਲਪਿਕ),Other Details (Optional),0.67,true,false,ok,sarvam-translate:v1
+more matching records,ਹੋਰ ਮਿਲਦੇ ਰਿਕਾਰਡ,Other matching records,0.67,true,false,ok,sarvam-translate:v1
+My medicine is not the one in this alert,ਮੇਰੀ ਦਵਾਈ ਇਸ ਚੇਤਾਵਨੀ ਵਿੱਚ ਨਹੀਂ ਹੈ।,My medication is not in this warning.,0.8,true,false,ok,sarvam-translate:v1
+My name and phone:,ਮੇਰਾ ਨਾਮ ਅਤੇ ਫ਼ੋਨ:,My name and phone number are:,1,true,true,ok,sarvam-translate:v1
+Namaste,ਨਮਸਤੇ,Greetings.,0,true,false,ok,sarvam-translate:v1
+Name,ਨਾਮ,Name,1,true,false,ok,sarvam-translate:v1
+need attention,ਧਿਆਨ ਦੇਣ ਦੀ ਲੋੜ ਹੈ।,Attention needs to be paid.,0.5,true,false,ok,sarvam-translate:v1
+Needs internet,,,0,false,false,missing,
+Never recommends medicines,ਕਦੇ ਵੀ ਦਵਾਈਆਂ ਦੀ ਸਿਫ਼ਾਰਸ਼ ਨਹੀਂ ਕਰਦੀ।,She never recommends drugs.,1,true,false,ok,sarvam-translate:v1
+New alert,ਨਵਾਂ ਅਲਰਟ,New Alert,1,true,false,ok,sarvam-translate:v1
+Next update expected,ਅਗਲਾ ਅੱਪਡੇਟ ਆਸ ਕੀਤੀ ਜਾਂਦੀ ਹੈ,The next update is expected,1,true,true,ok,sarvam-translate:v1
+"No ads, never recommends medicines","ਕੋਈ ਇਸ਼ਤਿਹਾਰ ਨਹੀਂ, ਕਦੇ ਵੀ ਦਵਾਈਆਂ ਦੀ ਸਿਫ਼ਾਰਸ਼ ਨਹੀਂ ਕਰਦੀ।","No ads, and never recommend prescriptions.",0.8,true,false,ok,sarvam-translate:v1
+"No AI calls were made, you typed everything.","ਕੋਈ ਏ.ਆਈ. ਕਾਲ ਨਹੀਂ ਕੀਤੀ ਗਈ ਸੀ, ਤੁਸੀਂ ਸਭ ਕੁਝ ਟਾਈਪ ਕੀਤਾ ਸੀ।","No AI call was made, you typed everything.",0.83,true,false,ok,sarvam-translate:v1
+No AI decides safety,ਕੋਈ ਵੀ ਏ.ਆਈ. ਸੁਰੱਖਿਆ ਦਾ ਫੈਸਲਾ ਨਹੀਂ ਕਰਦੀ।,No AI makes the decisions about the security of a ride.,0.5,true,false,ok,sarvam-translate:v1
+No expiry date,ਕੋਈ ਮਿਆਦ ਪੁੱਗਣ ਦੀ ਮਿਤੀ ਨਹੀਂ,No expiration date,1,true,true,ok,sarvam-translate:v1
+"No internet, so the photo couldn't be read. Try again, or type the batch number — the check itself works offline.","ਇੰਟਰਨੈੱਟ ਨਹੀਂ ਹੈ, ਇਸ ਲਈ ਫੋਟੋ ਨਹੀਂ ਪੜ੍ਹੀ ਜਾ ਸਕੀ। ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ, ਜਾਂ ਬੈਚ ਨੰਬਰ ਟਾਈਪ ਕਰੋ — ਚੈੱਕ ਆਪ ਹੀ ਔਫਲਾਈਨ ਕੰਮ ਕਰਦਾ ਹੈ।","There is no internet, so the photo could not be read. Try again, or type the batch number. Check automatically works offline.",0.93,true,true,ok,sarvam-translate:v1
+"No labelled real strip photos yet, so photo accuracy has not been measured.",,,0,false,false,missing,
+No match is not a safety guarantee.,ਕੋਈ ਮੈਚ ਸੁਰੱਖਿਆ ਗਰੰਟੀ ਨਹੀਂ ਹੈ।,There is no match security guarantee.,0.6,true,false,ok,sarvam-translate:v1
+"No medicines yet. After a check, tap ‘Save to cabinet’.","ਅਜੇ ਤੱਕ ਕੋਈ ਦਵਾਈ ਨਹੀਂ। ਜਾਂਚ ਤੋਂ ਬਾਅਦ, 'ਕੈਬਨਿਟ ਵਿੱਚ ਸੁਰੱਖਿਅਤ ਕਰੋ' 'ਤੇ ਟੈਪ ਕਰੋ।","No medicine yet. After the test, tap on 'Save to Cabinet'.",0.75,true,false,ok,sarvam-translate:v1
+No official alert,ਕੋਈ ਅਧਿਕਾਰਤ ਚੇਤਾਵਨੀ ਨਹੀਂ,No official warning.,1,true,true,ok,sarvam-translate:v1
+No official alert for this exact batch,ਇਸ ਖਾਸ ਬੈਚ ਲਈ ਕੋਈ ਅਧਿਕਾਰਤ ਚੇਤਾਵਨੀ ਨਹੀਂ ਹੈ।,There are no official warnings for this particular batch.,0.8,true,true,ok,sarvam-translate:v1
+No official record matched this batch. We checked this list:,ਕੋਈ ਵੀ ਅਧਿਕਾਰਤ ਰਿਕਾਰਡ ਇਸ ਬੈਚ ਨਾਲ ਮੇਲ ਨਹੀਂ ਖਾਂਦਾ। ਅਸੀਂ ਇਹ ਸੂਚੀ ਵੇਖੀ:,No official records match this batch. We saw this list:,0.86,true,false,ok,sarvam-translate:v1
+No record.,,,0,false,false,missing,
+None,ਕੋਈ ਨਹੀਂ,No one.,0,true,false,ok,sarvam-translate:v1
+"None of these, I'll type","ਇਹਨਾਂ ਵਿੱਚੋਂ ਕੋਈ ਵੀ ਨਹੀਂ, ਮੈਂ ਟਾਈਪ ਕਰਾਂਗੀ।","None of these, I will type.",0.75,true,false,ok,sarvam-translate:v1
+Not downloaded yet,ਅਜੇ ਤੱਕ ਡਾਊਨਲੋਡ ਨਹੀਂ ਕੀਤਾ ਗਿਆ।,It has not been downloaded yet.,1,true,false,ok,sarvam-translate:v1
+Not found,ਨਹੀਂ ਮਿਲਿਆ।,Not found.,1,true,false,ok,sarvam-translate:v1
+Not given,ਦਿੱਤਾ ਨਹੀਂ ਗਿਆ।,It has not been given.,1,true,false,ok,sarvam-translate:v1
+Not now,ਹੁਣ ਨਹੀਂ।,Not now.,1,true,false,ok,sarvam-translate:v1
+not of standard quality (NSQ),ਮਿਆਰੀ ਗੁਣਵੱਤਾ ਵਾਲਾ ਨਹੀਂ (ਐਨ.ਐਸ.ਕਿਊ.),Not of standard quality (NSQ),1,true,true,ok,sarvam-translate:v1
+Not of Standard Quality (NSQ),ਮਿਆਰੀ ਕੁਆਲਿਟੀ ਦਾ ਨਹੀਂ (NSQ),Not of Standard Quality (NSQ),1,true,true,ok,sarvam-translate:v1
+Not of Standard Quality (NSQ): this batch failed a test at a government lab.,ਮਿਆਰੀ ਕੁਆਲਿਟੀ ਦਾ ਨਹੀਂ (NSQ): ਇਹ ਬੈਚ ਇੱਕ ਸਰਕਾਰੀ ਲੈਬ ਵਿੱਚ ਇੱਕ ਟੈਸਟ ਵਿੱਚ ਫੇਲ ਹੋ ਗਿਆ।,Not of Standard Quality (NSQ): This batch failed a test in a government lab.,1,true,true,ok,sarvam-translate:v1
+Not verified,ਪੁਸ਼ਟੀ ਨਹੀਂ ਕੀਤੀ ਗਈ,Not confirmed.,0.5,true,false,ok,sarvam-translate:v1
+Nothing expiring soon,ਕੁਝ ਵੀ ਜਲਦੀ ਖਤਮ ਨਹੀਂ ਹੋ ਰਿਹਾ।,Nothing is going away anytime soon.,0.67,true,false,ok,sarvam-translate:v1
+Notification,ਨੋਟੀਫਿਕੇਸ਼ਨ,Notification,1,true,false,ok,sarvam-translate:v1
+Notifications,ਨੋਟੀਫਿਕੇਸ਼ਨਾਂ,Notifications,1,true,false,ok,sarvam-translate:v1
+Notifications (only if you opt in),ਨੋਟੀਫਿਕੇਸ਼ਨਾਂ (ਸਿਰਫ਼ ਤਾਂ ਹੀ ਜੇ ਤੁਸੀਂ ਆਪਟ ਇਨ ਕਰਦੇ ਹੋ),Notifications (only if you opt in),1,true,false,ok,sarvam-translate:v1
+Notifications were blocked.,ਨੋਟੀਫਿਕੇਸ਼ਨ ਬਲੌਕ ਕਰ ਦਿੱਤੇ ਗਏ ਸਨ।,Notifications were blocked.,1,true,false,ok,sarvam-translate:v1
+Notifications were blocked. You can still use 'Add expiry to my calendar'.,ਨੋਟੀਫਿਕੇਸ਼ਨ ਬਲੌਕ ਕਰ ਦਿੱਤੇ ਗਏ ਸਨ। ਤੁਸੀਂ ਅਜੇ ਵੀ 'ਮੇਰੇ ਕੈਲੰਡਰ ਵਿੱਚ ਮਿਆਦ ਸ਼ਾਮਲ ਕਰੋ' ਦੀ ਵਰਤੋਂ ਕਰ ਸਕਦੇ ਹੋ।,Notifications were blocked. You can still use 'Add a period to my calendar'.,0.88,true,false,ok,sarvam-translate:v1
+"Now the batch number. It is printed after B.No. or Batch on the strip. Say it, type it, or show a photo.","ਹੁਣ ਬੈਚ ਨੰਬਰ। ਇਹ ਸਟ੍ਰਿਪ 'ਤੇ B.No. ਜਾਂ ਬੈਚ ਤੋਂ ਬਾਅਦ ਛਪਿਆ ਹੁੰਦਾ ਹੈ। ਇਸਨੂੰ ਬੋਲੋ, ਟਾਈਪ ਕਰੋ, ਜਾਂ ਇੱਕ ਫੋਟੋ ਦਿਖਾਓ।","Now the batch number. This is printed after B.No. or Batch on the strip. Say it, type it, or show a photo.",1,true,true,ok,sarvam-translate:v1
+NSQ / Spurious,ਐਨ.ਐਸ.ਕਿਊ. / ਨਕਲੀ,NSQ / Artificial,0.5,true,false,ok,sarvam-translate:v1
+num p-2,,,0,false,false,missing,
+Off,ਬੰਦ ਕਰੋ,Stop it.,0,true,false,ok,sarvam-translate:v1
+Official alert found,ਅਧਿਕਾਰਤ ਚੇਤਾਵਨੀ ਮਿਲੀ ਹੈ।,An official warning has been received.,0.67,true,true,ok,sarvam-translate:v1
+Official CDSCO data up to,ਅਧਿਕਾਰਤ CDSCO ਡਾਟਾ ਇੱਥੋਂ ਤੱਕ,The official CDSCO data is up to here.,1,true,false,ok,sarvam-translate:v1
+"Official CDSCO data, source on every answer","ਅਧਿਕਾਰਤ CDSCO ਡਾਟਾ, ਹਰ ਜਵਾਬ 'ਤੇ ਸਰੋਤ","Official CDSCO data, source for every answer",1,true,false,ok,sarvam-translate:v1
+Official data,ਸਰਕਾਰੀ ਡਾਟਾ,Government Data,1,true,false,ok,sarvam-translate:v1
+Official data + plain code. AI only helps.,ਅਧਿਕਾਰਤ ਡੇਟਾ + ਸਾਦਾ ਕੋਡ। ਸਿਰਫ਼ AI ਹੀ ਮਦਦ ਕਰਦੀ ਹੈ।,Authorized Data + Simple Code. Only AI helps.,0.86,true,false,ok,sarvam-translate:v1
+Official data checked up to,ਅਧਿਕਾਰਤ ਡਾਟਾ ਤੱਕ ਜਾਂਚ ਕੀਤੀ ਗਈ,The investigation was based on official data.,0.5,true,true,ok,sarvam-translate:v1
+Official dataset,ਅਧਿਕਾਰਤ ਡੇਟਾਸੈੱਟ,The official dataset,1,true,false,ok,sarvam-translate:v1
+Official link,ਅਧਿਕਾਰਤ ਲਿੰਕ,Official Link,1,true,false,ok,sarvam-translate:v1
+Official record,ਅਧਿਕਾਰਤ ਰਿਕਾਰਡ,Official Record,1,true,false,ok,sarvam-translate:v1
+Official record of the other medicine (not yours),ਦੂਜੀ ਦਵਾਈ ਦਾ ਅਧਿਕਾਰਤ ਰਿਕਾਰਡ (ਤੁਹਾਡੀ ਨਹੀਂ),The official record of the second drug (not yours),0.83,true,true,ok,sarvam-translate:v1
+official records,ਸਰਕਾਰੀ ਰਿਕਾਰਡ,Government Record,1,true,false,ok,sarvam-translate:v1
+official records searched on this phone,ਇਸ ਫ਼ੋਨ 'ਤੇ ਸਰਕਾਰੀ ਰਿਕਾਰਡ ਖੋਜੇ ਗਏ।,A search of the phone found some government records.,1,true,false,ok,sarvam-translate:v1
+Official source + record ID on every answer,ਹਰ ਜਵਾਬ 'ਤੇ ਅਧਿਕਾਰਤ ਸਰੋਤ + ਰਿਕਾਰਡ ID,Official source + record ID on each reply,0.67,true,false,ok,sarvam-translate:v1
+Offline ready,ਆਫਲਾਈਨ ਤਿਆਰ,Off-line ready,0.5,true,false,ok,sarvam-translate:v1
+Offline ready · On this device,ਆਫਲਾਈਨ ਤਿਆਰ · ਇਸ ਡਿਵਾਈਸ 'ਤੇ,Off-line ready · On this device,0.67,true,false,ok,sarvam-translate:v1
+Offline this can take about half a minute,ਔਫਲਾਈਨ ਇਸ ਵਿੱਚ ਲਗਭਗ ਅੱਧਾ ਮਿੰਟ ਲੱਗ ਸਕਦਾ ਹੈ।,This can take about half a minute if it is done offline.,1,true,false,ok,sarvam-translate:v1
+"Offline, still working","ਆਫਲਾਈਨ, ਅਜੇ ਵੀ ਕੰਮ ਕਰ ਰਹੀ ਹਾਂ।","Offline, we are still working.",1,true,false,ok,sarvam-translate:v1
+On,ਤੇ,And,1,true,false,ok,sarvam-translate:v1
+"On a red or amber result, send a WhatsApp message in one tap. Numbers stay only on this phone.","ਲਾਲ ਜਾਂ ਅੰਬਰ ਨਤੀਜੇ 'ਤੇ, ਇੱਕ ਟੈਪ ਵਿੱਚ ਇੱਕ WhatsApp ਸੁਨੇਹਾ ਭੇਜੋ। ਨੰਬਰ ਸਿਰਫ ਇਸ ਫੋਨ 'ਤੇ ਹੀ ਰਹਿਣਗੇ।","Send a WhatsApp message to the number on the red or amber result, and the numbers will only remain on this phone.",0.75,true,false,ok,sarvam-translate:v1
+On strip,ਸਟ੍ਰਿਪ 'ਤੇ,On the Strip,1,true,false,ok,sarvam-translate:v1
+On this device,ਇਸ ਜੰਤਰ ਉੱਤੇ,"On this device,",1,true,false,ok,sarvam-translate:v1
+"On WhatsApp, only with your consent.","ਵਟਸਐਪ 'ਤੇ, ਸਿਰਫ਼ ਤੁਹਾਡੀ ਸਹਿਮਤੀ ਨਾਲ।","On WhatsApp, only with your consent.",1,true,false,ok,sarvam-translate:v1
+On-device AI (Gemini Nano),ਔਨ-ਡਿਵਾਈਸ ਏ.ਆਈ. (ਜੈਮਿਨੀ ਨੈਨੋ),On-device AI (Gemini Nano),1,true,false,ok,sarvam-translate:v1
+On-device AI needs desktop Chrome with Gemini Nano. Using cloud AI for now.,ਔਨ-ਡਿਵਾਈਸ AI ਨੂੰ Gemini Nano ਵਾਲੇ ਡੈਸਕਟੌਪ Chrome ਦੀ ਲੋੜ ਹੈ। ਫਿਲਹਾਲ Cloud AI ਵਰਤ ਰਹੀ ਹਾਂ।,On-device AI requires desktop Chrome with Gemini Nano. Currently using Cloud AI.,0.8,true,false,ok,sarvam-translate:v1
+"One check, step by step","ਇੱਕ ਚੈੱਕ, ਕਦਮ-ਦਰ-ਕਦਮ","A check, step by step.",0.67,true,false,ok,sarvam-translate:v1
+Online,ਔਨਲਾਈਨ,Online,1,true,false,ok,sarvam-translate:v1
+Online: Gemini Flash in the cloud (Firebase AI Logic). Gemini Nano only on supported desktop Chrome. AI only reads and explains; it never picks the colour.,,,0,false,false,missing,
+"Only if you turn on notifications, our Firebase server keeps: a notification code, your language, and for each saved medicine its batch number, company and expiry month. Never the medicine name, your name, phone, illness or who it is for. Each phone can only see its own data. Turning it off deletes it all.","ਸਿਰਫ਼ ਤਾਂ ਹੀ ਜੇ ਤੁਸੀਂ ਨੋਟੀਫਿਕੇਸ਼ਨਾਂ ਚਾਲੂ ਕਰਦੇ ਹੋ, ਸਾਡਾ Firebase ਸਰਵਰ ਰੱਖਦਾ ਹੈ: ਇੱਕ ਨੋਟੀਫਿਕੇਸ਼ਨ ਕੋਡ, ਤੁਹਾਡੀ ਭਾਸ਼ਾ, ਅਤੇ ਹਰੇਕ ਸੁਰੱਖਿਅਤ ਦਵਾਈ ਲਈ ਇਸਦਾ ਬੈਚ ਨੰਬਰ, ਕੰਪਨੀ ਅਤੇ ਖਤਮ ਹੋਣ ਦਾ ਮਹੀਨਾ। ਕਦੇ ਵੀ ਦਵਾਈ ਦਾ ਨਾਮ, ਤੁਹਾਡਾ ਨਾਮ, ਫ਼ੋਨ, ਬਿਮਾਰੀ ਜਾਂ ਇਹ ਕਿਸ ਲਈ ਹੈ, ਨਹੀਂ। ਹਰੇਕ ਫ਼ੋਨ ਸਿਰਫ਼ ਆਪਣਾ ਡਾਟਾ ਹੀ ਦੇਖ ਸਕਦਾ ਹੈ। ਇਸਨੂੰ ਬੰਦ ਕਰਨ ਨਾਲ ਇਹ ਸਭ ਡਾਟਾ ਮਿਟ ਜਾਂਦਾ ਹੈ।","Only if you turn on notifications, our Firebase server retains: a notification code, your language, and its batch number for each saved medication, along with the company and the expiration date. Never the medication's name, your name, phone number, disease, or what it's for. Each phone can only see its own data. Turning it off deletes all of this data.",0.87,true,false,ok,sarvam-translate:v1
+"Only the result colour, batch, company and record IDs are sent. No name, phone or personal details.","ਸਿਰਫ਼ ਨਤੀਜੇ ਦਾ ਰੰਗ, ਬੈਚ, ਕੰਪਨੀ ਅਤੇ ਰਿਕਾਰਡ ਆਈਡੀ ਭੇਜੇ ਜਾਂਦੇ ਹਨ। ਕੋਈ ਨਾਮ, ਫ਼ੋਨ ਜਾਂ ਨਿੱਜੀ ਵੇਰਵੇ ਨਹੀਂ।","Only the result color, batch, company, and record ID are sent. No name, phone number, or personal details are sent.",0.85,true,false,ok,sarvam-translate:v1
+Only three results,ਸਿਰਫ਼ ਤਿੰਨ ਨਤੀਜੇ,Only three results.,1,true,false,ok,sarvam-translate:v1
+"Only with push opt-in: token, language, batch, company, expiry month. Never name, phone or illness.","ਸਿਰਫ਼ ਪੁਸ਼ ਆਪਟ-ਇਨ ਨਾਲ: ਟੋਕਨ, ਭਾਸ਼ਾ, ਬੈਚ, ਕੰਪਨੀ, ਮਿਆਦ ਪੁੱਗਣ ਦਾ ਮਹੀਨਾ। ਕਦੇ ਵੀ ਨਾਮ, ਫ਼ੋਨ ਜਾਂ ਬਿਮਾਰੀ ਦਾ ਨਾਮ ਨਾ ਲਓ।","Push-up opt-in only: Token, language, batch, company, expiration month. Never mention name, phone, or illness.",1,true,false,ok,sarvam-translate:v1
+Open CDSCO alerts page,ਸੀ.ਡੀ.ਐੱਸ.ਸੀ.ਓ. ਅਲਰਟਸ ਪੇਜ ਖੋਲ੍ਹੋ,Open the CDSCO alerts page.,1,true,false,ok,sarvam-translate:v1
+Open CDSCO source,ਸੀ.ਡੀ.ਐੱਸ.ਸੀ.ਓ. ਸਰੋਤ ਖੋਲ੍ਹੋ,Open the CDSCO source.,1,true,false,ok,sarvam-translate:v1
+Open official PDF,ਅਧਿਕਾਰਤ PDF ਖੋਲ੍ਹੋ,Open the official PDF.,1,true,false,ok,sarvam-translate:v1
+"Optional. Once they open the link and accept, they get a notification too when one of your saved medicines is flagged. No names or numbers are stored.","ਵਿਕਲਪਿਕ। ਇੱਕ ਵਾਰ ਜਦੋਂ ਉਹ ਲਿੰਕ ਖੋਲ੍ਹਦੀ ਹੈ ਅਤੇ ਸਵੀਕਾਰ ਕਰਦੀ ਹੈ, ਤਾਂ ਉਸਨੂੰ ਇੱਕ ਨੋਟੀਫਿਕੇਸ਼ਨ ਵੀ ਮਿਲਦੀ ਹੈ ਜਦੋਂ ਤੁਹਾਡੀਆਂ ਸੁਰੱਖਿਅਤ ਦਵਾਈਆਂ ਵਿੱਚੋਂ ਇੱਕ ਨੂੰ ਫਲੈਗ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। ਕੋਈ ਨਾਮ ਜਾਂ ਨੰਬਰ ਸਟੋਰ ਨਹੀਂ ਕੀਤੇ ਜਾਂਦੇ।","Optional. Once she opens and accepts the link, she will also receive a notification when one of your protected medications is flagged. No names or numbers are stored.",0.72,true,false,ok,sarvam-translate:v1
+"Other batches flagged: same company AND same medicine, different batch.",,,0,false,false,missing,
+Other batches of this medicine are flagged: check your batch number with your chemist.,ਇਸ ਦਵਾਈ ਦੇ ਹੋਰ ਬੈਚਾਂ ਨੂੰ ਫਲੈਗ ਕੀਤਾ ਗਿਆ ਹੈ: ਆਪਣੇ ਕੈਮਿਸਟ ਨਾਲ ਆਪਣਾ ਬੈਚ ਨੰਬਰ ਚੈੱਕ ਕਰੋ।,Other batches of this medication have been recalled: Check with your chemist for your batch number.,0.86,true,true,ok,sarvam-translate:v1
+overflow-x-auto p-0,overflow-x-auto p-0,overflow-x-auto p-0,1,true,false,ok,sarvam-translate:v1
+p-2 text-center,ਪੀ-2 ਟੈਕਸਟ-ਸੈਂਟਰ,P-2 Text-Center,1,true,false,ok,sarvam-translate:v1
+p-6 text-center,ਪੀ-6 ਟੈਕਸਟ-ਸੈਂਟਰ,P-6 Text-Center,1,true,false,ok,sarvam-translate:v1
+Papa,ਪਾਪਾ,Papa,1,true,false,ok,sarvam-translate:v1
+Photo check,ਫੋਟੋ ਚੈੱਕ,Photo Check,1,true,false,ok,sarvam-translate:v1
+Photo or voice too unclear to match: keypad or retake. Never shown as GREY.,,,0,false,false,missing,
+Photo reading,,,0,false,false,missing,
+Photos,ਤਸਵੀਰਾਂ,Images,0,true,false,ok,sarvam-translate:v1
+"Photos are never stored. When online, only that single photo is sent to Google Gemini (Firebase AI Logic) to read the label. Offline, it is read on the phone.","ਫੋਟੋਆਂ ਕਦੇ ਸਟੋਰ ਨਹੀਂ ਹੁੰਦੀਆਂ। ਜਦੋਂ ਔਨਲਾਈਨ ਹੁੰਦੀਆਂ ਹਨ, ਤਾਂ ਸਿਰਫ਼ ਉਹ ਇੱਕੋ ਫੋਟੋ ਗੂਗਲ ਜੈਮਿਨੀ (Firebase AI Logic) ਨੂੰ ਲੇਬਲ ਪੜ੍ਹਨ ਲਈ ਭੇਜੀ ਜਾਂਦੀ ਹੈ। ਔਫਲਾਈਨ, ਇਹ ਫੋਨ 'ਤੇ ਪੜ੍ਹੀ ਜਾਂਦੀ ਹੈ।","Photos are never stored. When online, only that single photo is sent to Google Gemini (Firebase AI Logic) to read the label. Offline, it is read on the phone.",1,true,false,ok,sarvam-translate:v1
+Plain code · On this device,ਸਾਦਾ ਕੋਡ · ਇਸ ਡਿਵਾਈਸ 'ਤੇ,Simple Code · On This Device,0.67,true,false,ok,sarvam-translate:v1
+"Plain code matching, no AI involved.","ਸਾਦਾ ਕੋਡ ਮੈਚਿੰਗ, ਕੋਈ ਏ.ਆਈ. ਸ਼ਾਮਲ ਨਹੀਂ ਹੈ।","Simple code matching, with no AI is needed.",0.67,true,false,ok,sarvam-translate:v1
+Please check,ਕਿਰਪਾ ਕਰਕੇ ਜਾਂਚ ਕਰੋ,Please check.,1,true,true,ok,sarvam-translate:v1
+Please check the batch number and ask a pharmacist.,ਕਿਰਪਾ ਕਰਕੇ ਬੈਚ ਨੰਬਰ ਦੀ ਜਾਂਚ ਕਰੋ ਅਤੇ ਇੱਕ ਫਾਰਮਾਸਿਸਟ ਨੂੰ ਪੁੱਛੋ।,Please check the batch number and ask a pharmacist.,1,true,true,ok,sarvam-translate:v1
+Please check this on the strip,ਕਿਰਪਾ ਕਰਕੇ ਇਸਨੂੰ ਸਟ੍ਰਿਪ 'ਤੇ ਚੈੱਕ ਕਰੋ।,Please check it on the strip.,1,true,false,ok,sarvam-translate:v1
+Please confirm: check it against the strip and correct it,ਕਿਰਪਾ ਕਰਕੇ ਪੁਸ਼ਟੀ ਕਰੋ: ਇਸਨੂੰ ਸਟ੍ਰਿਪ ਨਾਲ ਮਿਲਾਓ ਅਤੇ ਠੀਕ ਕਰੋ।,Please confirm: Match this with the strip and fix it.,0.4,true,false,ok,sarvam-translate:v1
+Please say the name of the medicine.,ਕਿਰਪਾ ਕਰਕੇ ਦਵਾਈ ਦਾ ਨਾਮ ਦੱਸੋ।,Please tell me the name of the medicine.,0.67,true,true,ok,sarvam-translate:v1
+Possible match: exact batch but the company is uncertain; or a batch one character off / incomplete.,,,0,false,false,missing,
+Possible match: show the strip to your chemist before the next dose.,ਸੰਭਾਵਿਤ ਮੈਚ: ਅਗਲੀ ਖੁਰਾਕ ਤੋਂ ਪਹਿਲਾਂ ਆਪਣੇ ਕੈਮਿਸਟ ਨੂੰ ਸਟ੍ਰਿਪ ਦਿਖਾਓ।,Possible Match: Show your chemist the strip before the next dosage.,1,true,true,ok,sarvam-translate:v1
+Possible official alert,ਸੰਭਾਵਿਤ ਅਧਿਕਾਰਤ ਚੇਤਾਵਨੀ,Possible official warning,1,true,false,ok,sarvam-translate:v1
+"Pre-written message filled from the official record · on this device, works offline","ਇਸ ਡਿਵਾਈਸ 'ਤੇ ਅਧਿਕਾਰਤ ਰਿਕਾਰਡ ਤੋਂ ਭਰਿਆ ਪਹਿਲਾਂ ਤੋਂ ਲਿਖਿਆ ਸੁਨੇਹਾ, ਔਫਲਾਈਨ ਕੰਮ ਕਰਦਾ ਹੈ।",A pre-written message played back on an official record when this device was first used.,0.67,true,false,ok,sarvam-translate:v1
+Prefer no notifications? Every medicine also has 'Add expiry to my calendar'.,ਕੋਈ ਨੋਟੀਫਿਕੇਸ਼ਨ ਨਹੀਂ ਚਾਹੀਦੀ? ਹਰ ਦਵਾਈ ਵਿੱਚ 'ਮੇਰੇ ਕੈਲੰਡਰ ਵਿੱਚ ਮਿਆਦ ਪੁੱਗਣ ਦੀ ਮਿਤੀ ਸ਼ਾਮਲ ਕਰੋ' ਵੀ ਹੁੰਦਾ ਹੈ।,No notifications? Every medicine has a 'Add expiry date to my calendar' option.,0.8,true,false,ok,sarvam-translate:v1
+Press Enter to check,ਚੈੱਕ ਕਰਨ ਲਈ ਐਂਟਰ ਦਬਾਓ,Press Enter to check.,1,true,false,ok,sarvam-translate:v1
+Printed after B.No. or Batch,ਬੀ. ਨੰਬਰ ਜਾਂ ਬੈਚ ਤੋਂ ਬਾਅਦ ਛਾਪਿਆ ਗਿਆ।,The B. number was printed after the number or batch.,0.8,false,false,ok,sarvam-translate:v1
+Privacy,ਗੁਪਤਤਾ,Secrecy,0,true,false,ok,sarvam-translate:v1
+Privacy design,ਨਿੱਜਤਾ ਡਿਜ਼ਾਈਨ,Privacy Design,1,true,false,ok,sarvam-translate:v1
+"Punjabi, Gujarati, Marathi, Kannada, Tamil (online)",,,0,false,false,missing,
+PvPI helpline,ਪੀਵੀਪੀਆਈ ਹੈਲਪਲਾਈਨ,PVPI Helpline,1,true,false,ok,sarvam-translate:v1
+Quality alerts,ਕੁਆਲਿਟੀ ਅਲਰਟ,Quality Alert,1,true,false,ok,sarvam-translate:v1
+Re-check all,ਸਭ ਕੁਝ ਦੁਬਾਰਾ ਜਾਂਚ ਕਰੋ,Recheck everything.,0,true,false,ok,sarvam-translate:v1
+Re-checked on every new CDSCO list,ਹਰ ਨਵੀਂ CDSCO ਸੂਚੀ 'ਤੇ ਮੁੜ-ਜਾਂਚ ਕੀਤੀ ਗਈ।,Each new CD was re-examined on the CDSCO list.,0.67,true,false,ok,sarvam-translate:v1
+Re-read with glare reduced and contrast boosted,ਘੱਟ ਚਮਕ ਅਤੇ ਵਧੇਰੇ ਕੰਟ੍ਰਾਸਟ ਨਾਲ ਦੁਬਾਰਾ ਪੜ੍ਹੋ।,Read again with less brightness and more contrast.,0.33,true,false,ok,sarvam-translate:v1
+Read from photo — correct anything if needed,ਫੋਟੋ ਤੋਂ ਪੜ੍ਹੋ — ਜੇ ਲੋੜ ਹੋਵੇ ਤਾਂ ਕੁਝ ਵੀ ਠੀਕ ਕਰੋ,"Look at the picture and write down what you think it is - then if you want to, explain why.",0.2,true,false,ok,sarvam-translate:v1
+Read simple explanation,ਸੌਖੀ ਵਿਆਖਿਆ ਪੜ੍ਹੋ,Read the simple explanation.,1,true,false,ok,sarvam-translate:v1
+Read the full photo,ਪੂਰੀ ਫ਼ੋਟੋ ਪੜ੍ਹੋ,Read the full photo,1,true,false,ok,sarvam-translate:v1
+Read the zoomed B.No / EXP area,ਜ਼ੂਮ ਕੀਤਾ B.No / EXP ਖੇਤਰ ਪੜ੍ਹੋ,Read the zoomed B.No. / EXP area,1,true,false,ok,sarvam-translate:v1
+Reading the photo…,ਫੋਟੋ ਪੜ੍ਹ ਰਹੀ ਹੈ...,Reading the photo...,1,true,false,ok,sarvam-translate:v1
+Real batches from official CDSCO alerts,ਅਧਿਕਾਰਤ CDSCO ਅਲਰਟਾਂ ਤੋਂ ਅਸਲੀ ਬੈਚ,Original batch from official CDSCO alerts.,0.8,true,false,ok,sarvam-translate:v1
+Real example:,,,0,false,false,missing,
+Record ID,ਰਿਕਾਰਡ ਆਈਡੀ,Record ID,1,true,false,ok,sarvam-translate:v1
+Records,ਰਿਕਾਰਡ,Record,1,true,false,ok,sarvam-translate:v1
+Records indexed,,,0,false,false,missing,
+Red,ਲਾਲ,Red,1,true,true,ok,sarvam-translate:v1
+"RED only when batch and company both match with confidence. If only a different medicine from the same company is listed, it is GREY with ""Your medicine is not affected.""",,,0,false,false,missing,
+"Red: matches an official alert. Amber: possible match, please confirm. Grey: not found in the list — not a safety guarantee. The app never says a medicine is safe.","ਲਾਲ: ਇੱਕ ਅਧਿਕਾਰਤ ਚੇਤਾਵਨੀ ਨਾਲ ਮੇਲ ਖਾਂਦਾ ਹੈ। ਅੰਬਰ: ਸੰਭਾਵਿਤ ਮੇਲ, ਕਿਰਪਾ ਕਰਕੇ ਪੁਸ਼ਟੀ ਕਰੋ। ਸਲੇਟੀ: ਸੂਚੀ ਵਿੱਚ ਨਹੀਂ ਮਿਲਿਆ — ਸੁਰੱਖਿਆ ਦੀ ਗਰੰਟੀ ਨਹੀਂ ਹੈ। ਐਪ ਕਦੇ ਨਹੀਂ ਕਹਿੰਦੀ ਕਿ ਕੋਈ ਦਵਾਈ ਸੁਰੱਖਿਅਤ ਹੈ।","Red: Corresponds to an official warning. Amber: Possible match, please confirm. Grey: Not found in the list – safety not guaranteed. The app never says a drug is safe.",1,true,false,ok,sarvam-translate:v1
+Relation,ਸੰਬੰਧ,Relationship,1,true,false,ok,sarvam-translate:v1
+Remarks,ਟਿੱਪਣੀਆਂ,Comments,0,true,false,ok,sarvam-translate:v1
+Remove,ਹਟਾਓ,Remove,1,true,false,ok,sarvam-translate:v1
+Report a side effect (PvPI),ਕਿਸੇ ਮਾੜੇ ਅਸਰ ਦੀ ਰਿਪੋਰਟ ਕਰੋ (PvPI),Report any side effects (PvPI),1,true,false,ok,sarvam-translate:v1
+Report a wrong result,ਗਲਤ ਨਤੀਜੇ ਦੀ ਰਿਪੋਰਟ ਕਰੋ,Report an incorrect result.,0.67,true,false,ok,sarvam-translate:v1
+Report it,ਇਸਦੀ ਰਿਪੋਰਟ ਕਰੋ।,Report it.,1,true,false,ok,sarvam-translate:v1
+Report to the authorities,ਅਧਿਕਾਰੀਆਂ ਨੂੰ ਰਿਪੋਰਟ ਕਰੋ।,Report to the authorities.,1,true,false,ok,sarvam-translate:v1
+Reporting a suspected medicine,ਇੱਕ ਸ਼ੱਕੀ ਦਵਾਈ ਦੀ ਰਿਪੋਰਟ ਕਰਨਾ,Reporting a suspected drug.,1,true,false,ok,sarvam-translate:v1
+Result,ਨਤੀਜਾ,The result,1,true,false,ok,sarvam-translate:v1
+Retake,ਦੁਬਾਰਾ ਲਵੋ,Take it again.,0,true,false,ok,sarvam-translate:v1
+Retake photo,ਫੋਟੋ ਦੁਬਾਰਾ ਖਿੱਚੋ,Retake the photo.,1,true,true,ok,sarvam-translate:v1
+"Rows = expected, columns = what the app showed",,,0,false,false,missing,
+Safe disposal,ਸੁਰੱਖਿਅਤ ਨਿਪਟਾਰਾ,Safe Disposal,1,true,false,ok,sarvam-translate:v1
+"Same company, different medicine: small note, ""Your medicine is not affected.""",,,0,false,false,missing,
+Save,ਸੇਵ ਕਰੋ,Save it.,1,true,false,ok,sarvam-translate:v1
+"Save it to your cabinet with one tap. If a new official list includes this batch, we tell you automatically.","ਇੱਕ ਟੈਪ ਨਾਲ ਇਸਨੂੰ ਆਪਣੀ ਅਲਮਾਰੀ ਵਿੱਚ ਸੁਰੱਖਿਅਤ ਕਰੋ। ਜੇ ਕਿਸੇ ਨਵੀਂ ਅਧਿਕਾਰਤ ਸੂਚੀ ਵਿੱਚ ਇਹ ਬੈਚ ਸ਼ਾਮਲ ਹੈ, ਤਾਂ ਅਸੀਂ ਤੁਹਾਨੂੰ ਆਪਣੇ ਆਪ ਦੱਸ ਦਿੰਦੇ ਹਾਂ।","Save it to your wardrobe with a tap. If this batch is included in a new authorized listing, we'll notify you automatically.",0.64,true,true,ok,sarvam-translate:v1
+"Save it to your cabinet. If a new list includes this batch, we will tell you automatically.","ਇਸਨੂੰ ਆਪਣੀ ਅਲਮਾਰੀ ਵਿੱਚ ਸੁਰੱਖਿਅਤ ਕਰੋ। ਜੇ ਕਿਸੇ ਨਵੀਂ ਸੂਚੀ ਵਿੱਚ ਇਹ ਬੈਚ ਸ਼ਾਮਲ ਹੈ, ਤਾਂ ਅਸੀਂ ਤੁਹਾਨੂੰ ਆਪਣੇ ਆਪ ਦੱਸ ਦੇਵਾਂਗੇ।","Save this in your wardrobe. If this batch is included in a new list, we will automatically notify you.",0.75,true,true,ok,sarvam-translate:v1
+Save medicines once. We re-check them every time CDSCO publishes a new list.,"ਦਵਾਈਆਂ ਨੂੰ ਇੱਕ ਵਾਰ ਸੁਰੱਖਿਅਤ ਕਰੋ। ਜਦੋਂ ਵੀ ਸੀਡੀਐਸਸੀਓ ਇੱਕ ਨਵੀਂ ਸੂਚੀ ਪ੍ਰਕਾਸ਼ਿਤ ਕਰਦਾ ਹੈ, ਅਸੀਂ ਉਹਨਾਂ ਦੀ ਦੁਬਾਰਾ ਜਾਂਚ ਕਰਦੇ ਹਾਂ।",Save the medicines once. We re-check them whenever CDSCO publishes a new list.,0.83,true,false,ok,sarvam-translate:v1
+Save to cabinet,ਕੈਬਨਿਟ ਵਿੱਚ ਸੁਰੱਖਿਅਤ ਕਰੋ,Save to Cabinet,1,true,false,ok,sarvam-translate:v1
+Save with one tap,ਇੱਕ ਟੈਪ ਨਾਲ ਬਚਾਓ,Save with a tap,0.67,true,false,ok,sarvam-translate:v1
+Saved,ਸੁਰੱਖਿਅਤ ਕੀਤਾ ਗਿਆ,Saved,1,true,false,ok,sarvam-translate:v1
+saved medicines,ਬਚਾਈਆਂ ਦਵਾਈਆਂ,Saved Medicines,1,true,false,ok,sarvam-translate:v1
+"Saved medicines are re-checked daily against new lists, with a notification even when the app is closed.","ਸੁਰੱਖਿਅਤ ਕੀਤੀਆਂ ਦਵਾਈਆਂ ਦੀ ਰੋਜ਼ਾਨਾ ਨਵੀਆਂ ਸੂਚੀਆਂ ਦੇ ਵਿਰੁੱਧ ਦੁਬਾਰਾ ਜਾਂਚ ਕੀਤੀ ਜਾਂਦੀ ਹੈ, ਇੱਥੋਂ ਤੱਕ ਕਿ ਐਪ ਬੰਦ ਹੋਣ 'ਤੇ ਵੀ ਨੋਟੀਫਿਕੇਸ਼ਨ ਮਿਲਦੀ ਹੈ।","Daily new lists of prescriptions are rechecked against the saved prescriptions, even after the app is closed.",0.62,true,false,ok,sarvam-translate:v1
+Saved to cabinet,ਕੈਬਨਿਟ ਵਿੱਚ ਸੁਰੱਖਿਅਤ ਕੀਤਾ ਗਿਆ।,It was saved in the cabinet.,1,true,false,ok,sarvam-translate:v1
+Saving the official list to this phone (once),ਅਧਿਕਾਰਤ ਸੂਚੀ ਨੂੰ ਇਸ ਫ਼ੋਨ ਵਿੱਚ ਸੁਰੱਖਿਅਤ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ (ਇੱਕ ਵਾਰ),The official list is being saved on this phone (once).,0.8,true,false,ok,sarvam-translate:v1
+Scans packaged-food labels,ਪੈਕ ਕੀਤੇ ਭੋਜਨ ਦੇ ਲੇਬਲਾਂ ਨੂੰ ਸਕੈਨ ਕਰੋ,Scan the labels of packaged food items.,0.75,true,false,ok,sarvam-translate:v1
+See all numbers and limits,,,0,false,false,missing,
+See details,ਵੇਰਵੇ ਵੇਖੋ,See details,1,true,true,ok,sarvam-translate:v1
+Sells medicines online,ਔਨਲਾਈਨ ਦਵਾਈਆਂ ਵੇਚਦੀ ਹੈ,She sells medicines online.,1,true,false,ok,sarvam-translate:v1
+Send,ਭੇਜੋ,Send,1,true,false,ok,sarvam-translate:v1
+Send alert to family,ਪਰਿਵਾਰ ਨੂੰ ਅਲਰਟ ਭੇਜੋ,Send an alert to the family.,1,true,false,ok,sarvam-translate:v1
+Send to whom?,ਕਿਸਨੂੰ ਭੇਜਾਂ?,Who should I send it to?,0.5,true,false,ok,sarvam-translate:v1
+Settings,ਸੈਟਿੰਗਾਂ,Settings,1,true,false,ok,sarvam-translate:v1
+Share with anyone,ਕਿਸੇ ਨਾਲ ਵੀ ਸਾਂਝਾ ਕਰੋ,Share with anyone.,1,true,false,ok,sarvam-translate:v1
+"Short note (optional, no personal details)","ਛੋਟਾ ਨੋਟ (ਵਿਕਲਪਿਕ, ਕੋਈ ਨਿੱਜੀ ਵੇਰਵੇ ਨਹੀਂ)","Small note (optional, no personal details)",0.83,true,false,ok,sarvam-translate:v1
+Show the part of the strip with B.No. and EXP,ਬੀ. ਨੰਬਰ ਅਤੇ ਈਐਕਸਪੀ ਵਾਲੀ ਸਟ੍ਰਿਪ ਦਾ ਹਿੱਸਾ ਦਿਖਾਓ।,Show the part of the strip with the B number and the EX number.,0.67,false,false,ok,sarvam-translate:v1
+Show this strip to your chemist before your next dose.,ਆਪਣੀ ਅਗਲੀ ਖੁਰਾਕ ਤੋਂ ਪਹਿਲਾਂ ਆਪਣੀ ਕੈਮਿਸਟ ਨੂੰ ਇਹ ਪੱਟੀ ਦਿਖਾਓ।,Show the strip to your chemist before taking your next dose.,1,true,true,ok,sarvam-translate:v1
+shrink-0 text-brand-600,shrink-0 ਟੈਕਸਟ-ਬ੍ਰਾਂਡ-600,shrink-0 text-brand-600,1,true,false,ok,sarvam-translate:v1
+Some specific batches of this medicine from {0} are on CDSCO's list (for example batch {1} in {2}).,{0} ਤੋਂ ਇਸ ਦਵਾਈ ਦੇ ਕੁਝ ਖਾਸ ਬੈਚ CDSCO ਦੀ ਸੂਚੀ ਵਿੱਚ ਹਨ (ਉਦਾਹਰਨ ਲਈ {2} ਵਿੱਚ ਬੈਚ {1})।,"Some specific batches of this medicine from {0} are on the CDSCO list (for example, batch {1} in {2}).",1,true,true,ok,sarvam-translate:v1
+Something else,ਕੁਝ ਹੋਰ,Something else,1,true,false,ok,sarvam-translate:v1
+"Sorry, something went wrong. Please try again.","ਮੁਆਫ਼ ਕਰਨਾ, ਕੁਝ ਗਲਤ ਹੋ ਗਿਆ। ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।","Sorry, something went wrong. Please try again.",1,true,true,ok,sarvam-translate:v1
+Source,ਸਰੋਤ,Source,1,true,false,ok,sarvam-translate:v1
+Source: {0},ਸਰੋਤ: {0},Source: {0},1,true,true,ok,sarvam-translate:v1
+"Source: CDSCO, Government of India","ਸਰੋਤ: ਸੀ.ਡੀ.ਐੱਸ.ਸੀ.ਓ., ਭਾਰਤ ਸਰਕਾਰ","Source: CDSCO, Government of India",1,true,false,ok,sarvam-translate:v1
+Speak,ਬੋਲੋ,Bolo,0,true,false,ok,sarvam-translate:v1
+Speak again,ਦੁਬਾਰਾ ਬੋਲੋ।,Speak again.,1,true,false,ok,sarvam-translate:v1
+"Speak, type or photograph the strip","ਸਟ੍ਰਿਪ ਬਾਰੇ ਬੋਲੋ, ਟਾਈਪ ਕਰੋ ਜਾਂ ਫੋਟੋ ਖਿੱਚੋ","Speak, type, or take a picture about the strip.",1,true,false,ok,sarvam-translate:v1
+"Speech is transliterated, reduced to phonetic keys and matched by edit distance against the medicine-name dictionary. Hindi/English offline (with Chrome's language pack); Punjabi, Gujarati, Marathi, Kannada and Tamil online.",,,0,false,false,missing,
+Spoken replies,ਬੋਲੇ ਹੋਏ ਜਵਾਬ,The spoken answers,0.5,true,false,ok,sarvam-translate:v1
+Spurious,ਨਕਲੀ,"The translation of the given Punjabi text ""ਨਕਲੀ"" from Punjabi to English is:
+
+""Fake"" or ""Counterfeit""",0,true,false,ok,sarvam-translate:v1
+Spurious (suspected fake),ਨਕਲੀ (ਸ਼ੱਕੀ ਨਕਲੀ),Fake (suspected fake),0.67,true,true,ok,sarvam-translate:v1
+Spurious: testing suggests this batch may not have been made by the company on the label.,ਸਪਿਊਰਿਅਸ: ਟੈਸਟਿੰਗ ਤੋਂ ਪਤਾ ਲੱਗਦਾ ਹੈ ਕਿ ਇਹ ਬੈਚ ਸ਼ਾਇਦ ਕੰਪਨੀ ਦੁਆਰਾ ਲੇਬਲ 'ਤੇ ਨਹੀਂ ਬਣਾਇਆ ਗਿਆ ਸੀ।,Sperius:  The testing indicates that this batch was likely not made at the company's label.,0.67,true,true,retranslated,mayura:v1
+States not yet reported for the latest month,ਤਾਜ਼ਾ ਮਹੀਨੇ ਲਈ ਅਜੇ ਤੱਕ ਸੂਬਿਆਂ ਦੀ ਰਿਪੋਰਟ ਨਹੀਂ ਆਈ ਹੈ।,Reports from the provinces have not yet been received for the past month.,0.67,true,false,ok,sarvam-translate:v1
+States yet to report for the latest month,ਰਾਜਾਂ ਨੇ ਅਜੇ ਤੱਕ ਪਿਛਲੇ ਮਹੀਨੇ ਦੀ ਰਿਪੋਰਟ ਨਹੀਂ ਦਿੱਤੀ ਹੈ।,The states have not yet provided a report for the past month.,0.8,false,false,ok,sarvam-translate:v1
+Strip photo,ਸਟ੍ਰਿਪ ਫੋਟੋ,Strip photo,1,true,false,ok,sarvam-translate:v1
+"Strip Pvt/Ltd, standardise spelling, alias table, token-set ratio confidence. Medicine: generic or brand name, e.g. Dolo = Paracetamol.",,,0,false,false,missing,
+Subject: Reporting a suspected / alert-listed medicine,ਵਿਸ਼ਾ: ਇੱਕ ਸ਼ੱਕੀ / ਚੇਤਾਵਨੀ-ਸੂਚੀਬੱਧ ਦਵਾਈ ਦੀ ਰਿਪੋਰਟ ਕਰਨਾ,Topic: Reporting a suspected/warning-listed drug,0.83,true,true,ok,sarvam-translate:v1
+suspected spurious (fake),(shown in English) ,Suspicious fake (fake),0.33,true,true,FLAGGED,sarvam-translate:v1
+Suspicious? Report it to CDSCO,ਸ਼ੱਕੀ? ਇਸਦੀ ਰਿਪੋਰਟ CDSCO ਨੂੰ ਕਰੋ।,Suspicious? Report it to CDSCO.,1,true,true,ok,sarvam-translate:v1
+Sync now,ਹੁਣ ਸਿੰਕ ਕਰੋ,Sync now.,1,true,false,ok,sarvam-translate:v1
+"Take a close, sharp photo of the part with the Batch and EXP. You can add a second photo of the other side.","ਬੈਚ ਅਤੇ ਐਕਸ.ਈ.ਪੀ. ਵਾਲੇ ਹਿੱਸੇ ਦੀ ਇੱਕ ਨਜ਼ਦੀਕੀ, ਤਿੱਖੀ ਫੋਟੋ ਲਓ। ਤੁਸੀਂ ਦੂਜੇ ਪਾਸੇ ਦੀ ਇੱਕ ਦੂਜੀ ਫੋਟੋ ਵੀ ਜੋੜ ਸਕਦੇ ਹੋ।","Take a close-up, sharp photo of the batch and the area around the X.E.P. You can also add a second photo of the other side.",0.82,true,false,ok,sarvam-translate:v1
+Take closer photo,ਨੇੜੇ ਤੋਂ ਫੋਟੋ ਖਿੱਚੋ।,Take a close-up photo.,1,true,true,ok,sarvam-translate:v1
+Take photo,ਫੋਟੋ ਖਿੱਚੋ,Take a photo.,1,true,false,ok,sarvam-translate:v1
+Talk to your doctor or chemist before your next dose.,ਆਪਣੀ ਅਗਲੀ ਖੁਰਾਕ ਤੋਂ ਪਹਿਲਾਂ ਆਪਣੇ ਡਾਕਟਰ ਜਾਂ ਕੈਮਿਸਟ ਨਾਲ ਗੱਲ ਕਰੋ।,Talk to your doctor or pharmacist about next-dose timing.,0.83,true,true,ok,sarvam-translate:v1
+Talk to your doctor or chemist before your next dose. Don't stop an essential medicine on your own.,ਆਪਣੀ ਅਗਲੀ ਖੁਰਾਕ ਤੋਂ ਪਹਿਲਾਂ ਆਪਣੇ ਡਾਕਟਰ ਜਾਂ ਕੈਮਿਸਟ ਨਾਲ ਗੱਲ ਕਰੋ। ਆਪਣੀ ਮਰਜ਼ੀ ਨਾਲ ਕੋਈ ਜ਼ਰੂਰੀ ਦਵਾਈ ਬੰਦ ਨਾ ਕਰੋ।,Talk to your doctor or pharmacist about skipping a dose before taking your next one. Do not stop taking a prescription medication on your own.,0.82,true,true,ok,sarvam-translate:v1
+Talk to your doctor or chemist before your next dose. Don't stop an essential medicine on your own. Keep the strip and the bill.,ਆਪਣੀ ਅਗਲੀ ਖੁਰਾਕ ਤੋਂ ਪਹਿਲਾਂ ਆਪਣੇ ਡਾਕਟਰ ਜਾਂ ਕੈਮਿਸਟ ਨਾਲ ਗੱਲ ਕਰੋ। ਆਪਣੀ ਮਰਜ਼ੀ ਨਾਲ ਕੋਈ ਜ਼ਰੂਰੀ ਦਵਾਈ ਲੈਣੀ ਬੰਦ ਨਾ ਕਰੋ। ਸਟ੍ਰਿਪ ਅਤੇ ਬਿੱਲ ਰੱਖੋ।,Talk to your doctor or pharmacist before skipping your next dose. Do not stop taking any necessary medication on your own. Keep the strip and bill.,0.86,true,true,ok,sarvam-translate:v1
+Tap and speak,ਟੈਪ ਕਰੋ ਅਤੇ ਬੋਲੋ,Tap and speak.,1,true,false,ok,sarvam-translate:v1
+Tap what is printed after B.No. or Batch on the strip,ਸਟ੍ਰਿਪ 'ਤੇ B.No. ਜਾਂ Batch ਤੋਂ ਬਾਅਦ ਜੋ ਛਪਿਆ ਹੈ ਉਸ 'ਤੇ ਟੈਪ ਕਰੋ।,Tap the B.No. or Batch number field on the bottom of the screen.,0.5,true,false,ok,sarvam-translate:v1
+Tata 1mg,ਟਾਟਾ 1 ਮਿਲੀਗ੍ਰਾਮ,Tata 1 Milligram,0.5,true,false,ok,sarvam-translate:v1
+Tested by (lab / state),(ਲੈਬ/ਰਾਜ) ਦੁਆਰਾ ਪਰਖਿਆ ਗਿਆ,Tested by (Lab/State),1,true,false,ok,sarvam-translate:v1
+Testing lab,ਟੈਸਟਿੰਗ ਲੈਬ,Testing Lab,1,true,false,ok,sarvam-translate:v1
+Testing suggests this batch may not have been made by the company on the label.,ਟੈਸਟਿੰਗ ਤੋਂ ਪਤਾ ਲੱਗਦਾ ਹੈ ਕਿ ਇਹ ਬੈਚ ਲੇਬਲ ਉੱਤੇ ਕੰਪਨੀ ਦੁਆਰਾ ਨਹੀਂ ਬਣਾਇਆ ਗਿਆ ਹੋ ਸਕਦਾ ਹੈ।,"The batch labeling may not have been done by the company, as suggested by the taste.",0.75,true,true,ok,sarvam-translate:v1
+Tests passed,,,0,false,false,missing,
+text-muted transition,ਟੈਕਸਟ-ਮਿਊਟ ਤਬਦੀਲੀ,Text-mute change,0.33,true,false,ok,sarvam-translate:v1
+Thank you. We will look into it.,ਧੰਨਵਾਦ। ਅਸੀਂ ਇਸ ਬਾਰੇ ਧਿਆਨ ਦੇਵਾਂਗੇ।,Thank you. We will pay attention to this.,0.33,true,false,ok,sarvam-translate:v1
+"That took too long. Please try again, or type instead.","ਇਸ ਵਿੱਚ ਬਹੁਤ ਸਮਾਂ ਲੱਗ ਗਿਆ। ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ, ਜਾਂ ਇਸ ਦੀ ਬਜਾਏ ਟਾਈਪ ਕਰੋ।","This took a long time. Please try again, or type it instead.",0.86,true,true,ok,sarvam-translate:v1
+"The alert covers only the listed batches, not every batch from this company. Check the batch number on the strip and ask your chemist to be sure.","ਇਹ ਅਲਰਟ ਸਿਰਫ਼ ਸੂਚੀਬੱਧ ਬੈਚਾਂ ਨੂੰ ਹੀ ਕਵਰ ਕਰਦਾ ਹੈ, ਇਸ ਕੰਪਨੀ ਦੇ ਹਰ ਬੈਚ ਨੂੰ ਨਹੀਂ। ਸਟ੍ਰਿਪ 'ਤੇ ਬੈਚ ਨੰਬਰ ਦੀ ਜਾਂਚ ਕਰੋ ਅਤੇ ਯਕੀਨੀ ਹੋਣ ਲਈ ਆਪਣੀ ਕੈਮਿਸਟ ਨੂੰ ਪੁੱਛੋ।","This alert only covers batches of the listed items, not every batch in this company. Check the batch number on the strip and ask your chemist to be sure.",1,true,true,ok,sarvam-translate:v1
+"The Batch / EXP text is too small or blurry. I won't guess — please take a closer, sharper photo of that part in good light.","ਬੈਚ / EXP ਟੈਕਸਟ ਬਹੁਤ ਛੋਟਾ ਜਾਂ ਧੁੰਦਲਾ ਹੈ। ਮੈਂ ਅੰਦਾਜ਼ਾ ਨਹੀਂ ਲਗਾਵਾਂਗੀ — ਕਿਰਪਾ ਕਰਕੇ ਚੰਗੀ ਰੋਸ਼ਨੀ ਵਿੱਚ ਉਸ ਹਿੱਸੇ ਦੀ ਇੱਕ ਨੇੜਲੀ, ਤਿੱਖੀ ਫੋਟੋ ਲਓ।","The batch/EXP text is too short or too faint. I won't be able to estimate. Please take a close-up, sharp photo of that part in good lighting.",0.81,true,false,ok,sarvam-translate:v1
+"The Batch / EXP text is too small or blurry. I won't guess — take a closer, sharper photo of that part in good light.","ਬੈਚ / EXP ਟੈਕਸਟ ਬਹੁਤ ਛੋਟਾ ਜਾਂ ਧੁੰਦਲਾ ਹੈ। ਮੈਂ ਅੰਦਾਜ਼ਾ ਨਹੀਂ ਲਗਾਵਾਂਗੀ - ਚੰਗੀ ਰੋਸ਼ਨੀ ਵਿੱਚ ਉਸ ਹਿੱਸੇ ਦੀ ਇੱਕ ਨੇੜਲੀ, ਤਿੱਖੀ ਫੋਟੋ ਲਓ।","The batch/EXP text is too short or too blurry. I won't be able to estimate - take a close-up, sharp photo of that part in good lighting.",0.88,true,true,ok,sarvam-translate:v1
+"The batch number may differ by one character from a reading or typing slip, or the company name may be written differently.","ਬੈਚ ਨੰਬਰ ਰੀਡਿੰਗ ਜਾਂ ਟਾਈਪਿੰਗ ਸਲਿੱਪ ਤੋਂ ਇੱਕ ਅੱਖਰ ਨਾਲ ਵੱਖਰਾ ਹੋ ਸਕਦਾ ਹੈ, ਜਾਂ ਕੰਪਨੀ ਦਾ ਨਾਮ ਵੱਖਰੇ ਢੰਗ ਨਾਲ ਲਿਖਿਆ ਜਾ ਸਕਦਾ ਹੈ।","Batch numbering can be different from reading or typing slips, or the company name may be written differently.",0.75,true,true,ok,sarvam-translate:v1
+"The batch number or date read from the photo was not certain. Check the fields marked in amber against the strip, correct them, and check again.","ਫੋਟੋ ਤੋਂ ਪੜ੍ਹਿਆ ਬੈਚ ਨੰਬਰ ਜਾਂ ਮਿਤੀ ਪੱਕੀ ਨਹੀਂ ਸੀ। ਅੰਬਰ ਵਿੱਚ ਚਿੰਨ੍ਹਿਤ ਖੇਤਰਾਂ ਨੂੰ ਸਟ੍ਰਿਪ ਦੇ ਵਿਰੁੱਧ ਜਾਂਚ ਕਰੋ, ਉਹਨਾਂ ਨੂੰ ਠੀਕ ਕਰੋ, ਅਤੇ ਦੁਬਾਰਾ ਜਾਂਚ ਕਰੋ।","The batch number or date read from the photo was not accurate. Check the marked areas in the amber against the strip, correct them, and re-check.",0.88,true,true,ok,sarvam-translate:v1
+"The colour is decided by plain code, never by AI","ਰੰਗ ਸਾਦੇ ਕੋਡ ਦੁਆਰਾ ਤੈਅ ਕੀਤਾ ਜਾਂਦਾ ਹੈ, ਕਦੇ ਵੀ AI ਦੁਆਰਾ ਨਹੀਂ।","The colour is decided by simple code, never by AI.",0.83,true,false,ok,sarvam-translate:v1
+The expiry date on the strip ({0}) has passed. Don't take it; show it to your chemist.,ਸਟ੍ਰਿਪ ({0}) ਦੀ ਮਿਆਦ ਪੁੱਗਣ ਦੀ ਤਾਰੀਖ ਲੰਘ ਗਈ ਹੈ। ਇਸਨੂੰ ਨਾ ਲਓ; ਇਸਨੂੰ ਆਪਣੇ ਕੈਮਿਸਟ ਨੂੰ ਦਿਖਾਓ।,The expiration date of the strip ({0}) has passed. Do not take it; show it to your chemist.,0.88,true,true,ok,sarvam-translate:v1
+The full official list lives on the phone. Matching is plain code; no AI needed.,ਪੂਰੀ ਅਧਿਕਾਰਤ ਸੂਚੀ ਫ਼ੋਨ 'ਤੇ ਹੈ। ਮੈਚਿੰਗ ਸਾਦਾ ਕੋਡ ਹੈ; ਕਿਸੇ AI ਦੀ ਲੋੜ ਨਹੀਂ।,The entire authorized list is on the phone. The matching is a simple code; no AI is required.,0.64,true,false,ok,sarvam-translate:v1
+The medicine with batch {0} expires {1}. Ask your chemist about a fresh pack.,{0} ਬੈਚ ਵਾਲੀ ਦਵਾਈ ਦੀ ਮਿਆਦ {1} ਤੱਕ ਹੈ। ਆਪਣੇ ਕੈਮਿਸਟ ਤੋਂ ਤਾਜ਼ਾ ਪੈਕ ਬਾਰੇ ਪੁੱਛੋ।,The medicine with {0} batches has a shelf life of {1}. Ask your chemist about the latest pack.,0.75,true,false,ok,sarvam-translate:v1
+The message to your family is ready to send.,ਤੁਹਾਡੇ ਪਰਿਵਾਰ ਨੂੰ ਸੁਨੇਹਾ ਭੇਜਣ ਲਈ ਤਿਆਰ ਹੈ।,You are ready to send the message to your family.,1,true,true,ok,sarvam-translate:v1
+The microphone is not working. You can type instead.,ਮਾਈਕ੍ਰੋਫ਼ੋਨ ਕੰਮ ਨਹੀਂ ਕਰ ਰਿਹਾ। ਤੁਸੀਂ ਇਸ ਦੀ ਬਜਾਏ ਟਾਈਪ ਕਰ ਸਕਦੇ ਹੋ।,The microphone is not working. You can type instead.,1,true,true,ok,sarvam-translate:v1
+The official list has not loaded yet. Please connect to the internet once.,ਅਧਿਕਾਰਤ ਸੂਚੀ ਅਜੇ ਲੋਡ ਨਹੀਂ ਹੋਈ ਹੈ। ਕਿਰਪਾ ਕਰਕੇ ਇੱਕ ਵਾਰ ਇੰਟਰਨੈੱਟ ਨਾਲ ਜੁੜੋ।,The official list is not loaded yet. Please connect to the internet once.,1,true,true,ok,sarvam-translate:v1
+"The official list lives on the phone, works offline","ਅਧਿਕਾਰਤ ਸੂਚੀ ਫ਼ੋਨ 'ਤੇ ਰਹਿੰਦੀ ਹੈ, ਔਫਲਾਈਨ ਕੰਮ ਕਰਦੀ ਹੈ।","The official list is hosted on a phone, and works offline.",0.83,true,false,ok,sarvam-translate:v1
+"The photo could not be read clearly. Try again closer, in good light, or type the batch number.","ਫੋਟੋ ਸਾਫ਼ ਤਰੀਕੇ ਨਾਲ ਨਹੀਂ ਪੜ੍ਹੀ ਜਾ ਸਕੀ। ਨੇੜੇ ਤੋਂ, ਚੰਗੀ ਰੋਸ਼ਨੀ ਵਿੱਚ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ, ਜਾਂ ਬੈਚ ਨੰਬਰ ਟਾਈਪ ਕਰੋ।","The photo cannot be read clearly. Please try again in a closer view, with better lighting, or type the batch number.",0.77,true,true,ok,sarvam-translate:v1
+The photo was read wrongly,ਫੋਟੋ ਗਲਤ ਪੜ੍ਹੀ ਗਈ ਸੀ।,The photo was misread.,0.33,true,false,ok,sarvam-translate:v1
+The record shown is wrong,ਦਿੱਤਾ ਗਿਆ ਰਿਕਾਰਡ ਗਲਤ ਹੈ।,The given record is incorrect.,0.33,true,false,ok,sarvam-translate:v1
+This batch failed a test at a government lab.,ਇਹ ਬੈਚ ਇੱਕ ਸਰਕਾਰੀ ਲੈਬ ਵਿੱਚ ਇੱਕ ਟੈਸਟ ਵਿੱਚ ਫੇਲ ਹੋ ਗਿਆ।,The batch failed a test by the government lab.,1,true,true,ok,sarvam-translate:v1
+"This batch is on an alert, but the app missed it","ਇਹ ਬੈਚ ਅਲਰਟ 'ਤੇ ਹੈ, ਪਰ ਐਪ ਇਸਨੂੰ ਖੁੰਝ ਗਈ।","This batch is on alert, but the app missed it.",1,true,false,ok,sarvam-translate:v1
+This browser can't receive notifications. Use 'Add expiry to my calendar' instead.,ਇਹ ਬ੍ਰਾਊਜ਼ਰ ਨੋਟੀਫਿਕੇਸ਼ਨਾਂ ਪ੍ਰਾਪਤ ਨਹੀਂ ਕਰ ਸਕਦੀ। ਇਸ ਦੀ ਬਜਾਏ 'ਮੇਰੇ ਕੈਲੰਡਰ ਵਿੱਚ ਮਿਆਦ ਸ਼ਾਮਲ ਕਰੋ' ਵਰਤੋ।,This browser cannot receive notifications. Use 'Add a period to my calendar' instead.,0.8,true,false,ok,sarvam-translate:v1
+This browser can't receive notifications. WhatsApp messages still work.,ਇਹ ਬ੍ਰਾਊਜ਼ਰ ਨੋਟੀਫਿਕੇਸ਼ਨ ਪ੍ਰਾਪਤ ਨਹੀਂ ਕਰ ਸਕਦਾ। ਵਟਸਐਪ ਸੁਨੇਹੇ ਅਜੇ ਵੀ ਕੰਮ ਕਰਦੇ ਹਨ।,This browser cannot receive notifications. WhatsApp messages are still working.,0.75,true,false,ok,sarvam-translate:v1
+This company has a different medicine on the list. Your medicine is not affected,ਇਸ ਕੰਪਨੀ ਕੋਲ ਸੂਚੀ ਵਿੱਚ ਇੱਕ ਵੱਖਰੀ ਦਵਾਈ ਹੈ। ਤੁਹਾਡੀ ਦਵਾਈ ਪ੍ਰਭਾਵਿਤ ਨਹੀਂ ਹੈ।,This company has a different medicine on the list. Your medicine is not affected.,1,true,true,ok,sarvam-translate:v1
+"This company has a different medicine on the official list ({medicine}, {month}). Your medicine is not affected.","ਇਸ ਕੰਪਨੀ ਕੋਲ ਅਧਿਕਾਰਤ ਸੂਚੀ ਵਿੱਚ ਇੱਕ ਵੱਖਰੀ ਦਵਾਈ ਹੈ ({medicine}, {month})। ਤੁਹਾਡੀ ਦਵਾਈ ਪ੍ਰਭਾਵਿਤ ਨਹੀਂ ਹੈ।","This company has a different medicine on the official list ({medicine}, {month}). Your medicine is not affected.",1,true,true,ok,sarvam-translate:v1
+"This company has other batches on the official list ({medicine}, {month}). Your batch is not one of them.","ਇਸ ਕੰਪਨੀ ਦੇ ਅਧਿਕਾਰਤ ਸੂਚੀ ਵਿੱਚ ਹੋਰ ਬੈਚ ਹਨ ({ਦਵਾਈ}, {ਮਹੀਨਾ})। ਤੁਹਾਡਾ ਬੈਚ ਉਹਨਾਂ ਵਿੱਚੋਂ ਇੱਕ ਨਹੀਂ ਹੈ।","This company's official listing contains other batches ({medicine}, {month}). Your batch is not one of them.",0.9,true,true,ok,sarvam-translate:v1
+"This company's listed alert is for a different medicine ({0}), and only for that specific batch.","ਇਸ ਕੰਪਨੀ ਦੀ ਸੂਚੀਬੱਧ ਚੇਤਾਵਨੀ ਇੱਕ ਵੱਖਰੀ ਦਵਾਈ ({0}) ਲਈ ਹੈ, ਅਤੇ ਸਿਰਫ਼ ਉਸ ਖਾਸ ਬੈਚ ਲਈ ਹੈ।",This company's listed alert is for a different medication ({0}) and only for that specific batch.,1,true,true,ok,sarvam-translate:v1
+"This does not prove the medicine is safe. Official alerts can be delayed, and not every medicine is tested. Counterfeits can copy real batch numbers.","ਇਸ ਤੋਂ ਇਹ ਸਾਬਤ ਨਹੀਂ ਹੁੰਦਾ ਕਿ ਦਵਾਈ ਸੁਰੱਖਿਅਤ ਹੈ। ਅਧਿਕਾਰਤ ਚੇਤਾਵਨੀਆਂ ਵਿੱਚ ਦੇਰੀ ਹੋ ਸਕਦੀ ਹੈ, ਅਤੇ ਹਰ ਦਵਾਈ ਦੀ ਜਾਂਚ ਨਹੀਂ ਕੀਤੀ ਜਾਂਦੀ। ਨਕਲੀ ਦਵਾਈਆਂ ਅਸਲੀ ਬੈਚ ਨੰਬਰਾਂ ਦੀ ਨਕਲ ਕਰ ਸਕਦੀਆਂ ਹਨ।","This does not prove that the medicine is safe. Official warnings may be delayed, and not every medicine is tested. Counterfeit medicines may imitate the original batch numbers.",0.86,true,true,ok,sarvam-translate:v1
+This does not prove the medicine is safe. Official alerts can be delayed.,ਇਹ ਸਾਬਤ ਨਹੀਂ ਕਰਦਾ ਕਿ ਦਵਾਈ ਸੁਰੱਖਿਅਤ ਹੈ। ਅਧਿਕਾਰਤ ਚੇਤਾਵਨੀਆਂ ਵਿੱਚ ਦੇਰੀ ਹੋ ਸਕਦੀ ਹੈ।,This does not prove the drug is safe. Official warnings may be delayed.,1,true,true,ok,sarvam-translate:v1
+This does not prove your medicine is safe. Official alerts can be delayed.,ਇਹ ਸਾਬਤ ਨਹੀਂ ਕਰਦਾ ਕਿ ਤੁਹਾਡੀ ਦਵਾਈ ਸੁਰੱਖਿਅਤ ਹੈ। ਅਧਿਕਾਰਤ ਚੇਤਾਵਨੀਆਂ ਵਿੱਚ ਦੇਰੀ ਹੋ ਸਕਦੀ ਹੈ।,This does not prove that the medicine is safe for you. Official warnings may be delayed.,1,true,true,ok,sarvam-translate:v1
+This is not a confirmed match.,ਇਹ ਪੁਸ਼ਟੀ ਕੀਤੀ ਮੈਚ ਨਹੀਂ ਹੈ।,This is not a confirmed match.,1,true,true,ok,sarvam-translate:v1
+This link is invalid or was removed.,ਇਹ ਲਿੰਕ ਅਵੈਧ ਹੈ ਜਾਂ ਹਟਾ ਦਿੱਤਾ ਗਿਆ ਸੀ।,This link is invalid or was removed.,1,true,false,ok,sarvam-translate:v1
+This means this exact batch failed a government test. The alert does not apply to other medicines or other batches.,ਇਸਦਾ ਮਤਲਬ ਹੈ ਕਿ ਇਹ ਬਿਲਕੁਲ ਬੈਚ ਸਰਕਾਰੀ ਟੈਸਟ ਵਿੱਚ ਫੇਲ ਹੋ ਗਿਆ ਹੈ। ਇਹ ਚੇਤਾਵਨੀ ਹੋਰ ਦਵਾਈਆਂ ਜਾਂ ਹੋਰ ਬੈਚਾਂ 'ਤੇ ਲਾਗੂ ਨਹੀਂ ਹੁੰਦੀ।,This means that it completely failed the government test. This warning does not apply to other drugs or other batches.,0.91,true,true,ok,sarvam-translate:v1
+This medicine has expired. Please show it to your pharmacist.,ਇਹ ਦਵਾਈ ਖਤਮ ਹੋ ਗਈ ਹੈ। ਕਿਰਪਾ ਕਰਕੇ ਇਸਨੂੰ ਆਪਣੇ ਫਾਰਮਾਸਿਸਟ ਨੂੰ ਦਿਖਾਓ।,This medicine is out of stock. Please show it to your pharmacist.,0.75,true,true,ok,sarvam-translate:v1
+This medicine was not found in our official list.,ਇਹ ਦਵਾਈ ਸਾਡੀ ਅਧਿਕਾਰਤ ਸੂਚੀ ਵਿੱਚ ਨਹੀਂ ਮਿਲੀ।,This medicine was not found in our authorized list.,1,true,true,ok,sarvam-translate:v1
+This medicine will expire soon.,ਇਹ ਦਵਾਈ ਛੇਤੀ ਹੀ ਖਤਮ ਹੋ ਜਾਵੇਗੀ।,The drug will run out soon.,0.67,true,true,ok,sarvam-translate:v1
+This person has agreed to receive medicine alert messages.,ਇਸ ਵਿਅਕਤੀ ਨੇ ਦਵਾਈ ਦੇ ਅਲਰਟ ਸੁਨੇਹੇ ਪ੍ਰਾਪਤ ਕਰਨ ਲਈ ਸਹਿਮਤੀ ਦਿੱਤੀ ਹੈ।,This person has agreed to receive drug alert messages.,1,true,false,ok,sarvam-translate:v1
+Top-1,,,0,false,false,missing,
+Top-3,,,0,false,false,missing,
+Translation in review,,,0,false,false,missing,
+Transparency,,,0,false,false,missing,
+Transparency: numbers and limits,,,0,false,false,missing,
+TruthIn,ਸੱਚਾਈ ਵਿੱਚ,"In truth,",1,true,false,ok,sarvam-translate:v1
+Try a demo,ਇੱਕ ਡੈਮੋ ਅਜ਼ਮਾਓ,Try a demo.,1,true,false,ok,sarvam-translate:v1
+Try a real flagged batch,ਇੱਕ ਅਸਲੀ ਫਲੈਗਡ ਬੈਚ ਅਜ਼ਮਾਓ,Try a real flagged batch.,1,true,false,ok,sarvam-translate:v1
+Try again,ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ,Try again.,1,true,true,ok,sarvam-translate:v1
+Turn off alerts and delete data,ਅਲਰਟ ਬੰਦ ਕਰੋ ਅਤੇ ਡਾਟਾ ਡਿਲੀਟ ਕਰੋ।,Turn off the alert and delete the data.,1,true,false,ok,sarvam-translate:v1
+Type,ਟਾਈਪ ਕਰੋ,Type,1,true,true,ok,sarvam-translate:v1
+Type batch on keypad,ਕੀਪੈਡ 'ਤੇ ਬੈਚ ਟਾਈਪ ਕਰੋ,Type the batch on the keypad.,1,true,true,ok,sarvam-translate:v1
+Type instead,ਇਸ ਦੀ ਬਜਾਏ ਟਾਈਪ ਕਰੋ,"Instead, type:",1,true,true,ok,sarvam-translate:v1
+Type it,ਇਸਨੂੰ ਟਾਈਪ ਕਰੋ,Type this.,1,true,false,ok,sarvam-translate:v1
+"Type the batch number, or take a clearer photo.","ਬੈਚ ਨੰਬਰ ਟਾਈਪ ਕਰੋ, ਜਾਂ ਇੱਕ ਸਪਸ਼ਟ ਫੋਟੋ ਲਓ।",Either type in the batch number or take a clear photo of the batch.,1,true,true,ok,sarvam-translate:v1
+Type to check,ਜਾਂਚ ਕਰਨ ਲਈ ਟਾਈਪ ਕਰੋ,"To check, type in.",1,true,false,ok,sarvam-translate:v1
+Typed by you,ਤੁਹਾਡੇ ਦੁਆਰਾ ਟਾਈਪ ਕੀਤਾ ਗਿਆ,Your typing is,0,true,false,ok,sarvam-translate:v1
+Uncertain or different,ਅਨਿਸ਼ਚਿਤ ਜਾਂ ਵੱਖਰਾ,Uncertain or different,1,true,false,ok,sarvam-translate:v1
+Understanding…,ਸਮਝਣਾ...,Understanding...,1,true,false,ok,sarvam-translate:v1
+Understood as,ਇਸ ਤਰ੍ਹਾਂ ਸਮਝਿਆ ਜਾਂਦਾ ਹੈ,It is understood in this way.,1,true,false,ok,sarvam-translate:v1
+Understood by Gemini Flash · Cloud,ਜੈਮਿਨੀ ਫਲੈਸ਼ ਦੁਆਰਾ ਸਮਝਿਆ ਗਿਆ · ਕਲਾਉਡ,Understood by Gemini Flash · Cloud,1,true,false,ok,sarvam-translate:v1
+Understood by Gemini Nano · On this device,ਜੈਮਿਨੀ ਨੈਨੋ ਦੁਆਰਾ ਸਮਝਿਆ ਗਿਆ · ਇਸ ਡਿਵਾਈਸ 'ਤੇ,Understood by Gemini Nano · On this device,1,true,false,ok,sarvam-translate:v1
+Understood by name search on this device · AI was not available,ਇਸ ਡਿਵਾਈਸ 'ਤੇ ਨਾਮ ਖੋਜ ਦੁਆਰਾ ਸਮਝਿਆ ਗਿਆ · AI ਉਪਲਬਧ ਨਹੀਂ ਸੀ।,The name was understood by name search on this device. AI was not available.,1,true,false,ok,sarvam-translate:v1
+Understood the spoken medicine name,ਬੋਲੀ ਜਾਣ ਵਾਲੀ ਦਵਾਈ ਦਾ ਨਾਂ ਸਮਝ ਆਇਆ।,The name of the medicine being spoken is understood.,1,true,false,ok,sarvam-translate:v1
+Up to date,ਅੱਪ ਟੂ ਡੇਟ,Up to date,1,true,false,ok,sarvam-translate:v1
+Valid,(shown in English) ,"The translation of the given Punjabi text ""ਵੈਧ"" from English to English is:
+
+""वैध""",0,true,true,FLAGGED,sarvam-translate:v1
+Verified,ਪ੍ਰਮਾਣਿਤ,Certified,0,true,false,ok,sarvam-translate:v1
+Voice,ਆਵਾਜ਼,The sound,0,true,false,ok,sarvam-translate:v1
+Voice check,ਆਵਾਜ਼ ਦੀ ਜਾਂਚ,Voice Test,0.5,true,false,ok,sarvam-translate:v1
+Voice recognition needed the internet. You can type instead — that works offline.,,,0,false,true,missing,
+"Voice-first, in Indian languages",,,0,false,false,missing,
+Voice: medicine name,,,0,false,false,missing,
+void],,,0,false,false,missing,
+We couldn't read the strip clearly enough to check it,ਅਸੀਂ ਇਸਨੂੰ ਚੈੱਕ ਕਰਨ ਲਈ ਸਟ੍ਰਿਪ ਨੂੰ ਕਾਫ਼ੀ ਸਪਸ਼ਟ ਤੌਰ 'ਤੇ ਨਹੀਂ ਪੜ੍ਹ ਸਕੇ।,We could not read the strip clearly enough to make out anything.,0.83,true,true,ok,sarvam-translate:v1
+We sell nothing and never suggest any other medicine.,ਅਸੀਂ ਕੁੱਝ ਵੀ ਨਹੀਂ ਵੇਚਦੇ ਅਤੇ ਕਦੇ ਵੀ ਕਿਸੇ ਹੋਰ ਦਵਾਈ ਦਾ ਸੁਝਾਅ ਨਹੀਂ ਦਿੰਦੇ।,We do not sell anything and we never suggest any other drugs.,0.86,true,false,ok,sarvam-translate:v1
+"We won't guess. Type the batch number on the keypad, or take a closer photo in good light.",,,0,false,true,missing,
+We'll remind you when internet is back,,,0,false,false,missing,
+What looks wrong?,,,0,false,false,missing,
+What should I do?,,,0,false,true,missing,
+What this means,,,0,false,false,missing,
+What to do next,,,0,false,false,missing,
+What was searched,,,0,false,false,missing,
+What we cannot yet prove,,,0,false,false,missing,
+What works offline,,,0,false,false,missing,
+WhatsApp number,,,0,false,false,missing,
+Where and when bought:,,,0,false,true,missing,
+Which medicine shall we check?,,,0,false,false,missing,
+Which one is your medicine? Tap it.,,,0,false,true,missing,
+Why amber: other batches of this same medicine from this company are on the official list. Your batch is not one of them.,,,0,false,true,missing,
+"Why amber: some batches of this medicine are listed, and no batch number was entered.",,,0,false,true,missing,
+Why amber: the batch number looks incomplete and starts like a flagged batch. Enter the full number.,,,0,false,true,missing,
+"Why amber: the batch number matches exactly, but no company was given to confirm it.",,,0,false,true,missing,
+"Why amber: the batch number matches exactly, but the company match is uncertain.",,,0,false,true,missing,
+"Why amber: this batch number is listed, but under a different company. Check the company name on the strip.",,,0,false,true,missing,
+"Why amber: this batch number is listed, but under a different medicine name.",,,0,false,true,missing,
+Why amber: your batch number is one character away from a flagged batch. It may be a reading slip.,,,0,false,true,missing,
+Why DawaShield,,,0,false,false,missing,
+Why this result?,,,0,false,false,missing,
+"working days, 9–5:30",,,0,false,false,missing,
+Works offline,,,0,false,false,missing,
+Works offline on cheap phones,,,0,false,false,missing,
+Write a complaint,,,0,false,false,missing,
+Wrong-result reports,,,0,false,false,missing,
+"Yes, alert me",,,0,false,false,missing,
+"Yes, this date is on the strip",,,0,false,false,missing,
+You and your family hear about it as soon as one is flagged.,,,0,false,false,missing,
+You are offline. The check still works on this phone.,,,0,false,true,missing,
+You did not enter a batch number.,,,0,false,true,missing,
+You entered,,,0,false,false,missing,
+You said,,,0,false,false,missing,
+Your batch {0} is not on that list.,,,0,false,true,missing,
+Your batch was not found in our official list.,,,0,false,true,missing,
+"Your medicine looks similar to batch {0} ({1}) on CDSCO's {2} list, but not exactly.",,,0,false,true,missing,
+"Your medicines and family numbers stay on this phone. No account, name or phone number is asked for.",,,0,false,false,missing,
+"Your medicines stay on this phone. No account, name or phone number is asked for.",,,0,false,true,missing,
+"Your mother's medicine cabinet shouldn't need an internet connection, English literacy or a technical understanding of batch numbers to stay informed about medicine safety.",,,0,false,false,missing,
+Your saved,,,0,false,false,missing,
+Your son or daughter can get an alert if a saved medicine is flagged,,,0,false,false,missing,
+"Your voice is never recorded, stored or uploaded. The browser turns it into text; with the language pack this happens on the phone.",,,0,false,false,missing,
+"[voice:welcome] Hello, I am DawaShield. Say the medicine name, or show a photo of the strip.","ਸਤ ਸ੍ਰੀ ਅਕਾਲ, ਮੈਂ ਦਾਵਾਸ਼ੀਲਡ ਹਾਂ। ਦਵਾਈ ਦਾ ਨਾਮ ਦੱਸੋ, ਜਾਂ ਸਟ੍ਰਿਪ ਦੀ ਇੱਕ ਫੋਟੋ ਦਿਖਾਓ।","Sat Sri Akal, I am Dawashield. Tell me the name of the medicine, or show me a photo of the strip.",0.8,true,true,ok,voice/sarvam-translate:v1
+[voice:ask_name] Please say the name of the medicine.,ਕਿਰਪਾ ਕਰਕੇ ਦਵਾਈ ਦਾ ਨਾਮ ਦੱਸੋ।,Please tell me the name of the medicine.,0.67,true,true,ok,voice/sarvam-translate:v1
+"[voice:ask_batch] Now the batch number. It is printed after B.No. or Batch on the strip. Say it, type it, or show a photo.","ਹੁਣ ਬੈਚ ਨੰਬਰ। ਇਹ ਸਟ੍ਰਿਪ 'ਤੇ B.No. ਜਾਂ ਬੈਚ ਤੋਂ ਬਾਅਦ ਛਪਿਆ ਹੁੰਦਾ ਹੈ। ਇਸਨੂੰ ਬੋਲੋ, ਟਾਈਪ ਕਰੋ, ਜਾਂ ਇੱਕ ਫੋਟੋ ਦਿਖਾਓ।","Now the batch number. This is printed after B.No. or Batch on the strip. Say it, type it, or show a photo.",1,true,true,ok,voice/sarvam-translate:v1
+"[voice:error] Sorry, something went wrong. Please try again.","ਮੁਆਫ਼ ਕਰਨਾ, ਕੁਝ ਗਲਤ ਹੋ ਗਿਆ। ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।","Sorry, something went wrong. Please try again.",1,true,true,ok,voice/sarvam-translate:v1
+[voice:fallback] I could not understand. Please say it again or show a photo.,ਮੈਨੂੰ ਸਮਝ ਨਹੀਂ ਆਈ। ਕਿਰਪਾ ਕਰਕੇ ਇਸਨੂੰ ਦੁਬਾਰਾ ਕਹੋ ਜਾਂ ਇੱਕ ਫੋਟੋ ਦਿਖਾਓ।,I don't understand. Please repeat it or show me a photo.,0.5,true,true,ok,voice/sarvam-translate:v1
+[voice:expiry_soon] This medicine will expire soon.,ਇਹ ਦਵਾਈ ਛੇਤੀ ਹੀ ਖਤਮ ਹੋ ਜਾਵੇਗੀ।,The drug will run out soon.,0.67,true,true,ok,voice/sarvam-translate:v1
+[voice:expired] This medicine has expired. Please show it to your pharmacist.,ਇਹ ਦਵਾਈ ਖਤਮ ਹੋ ਗਈ ਹੈ। ਕਿਰਪਾ ਕਰਕੇ ਇਸਨੂੰ ਆਪਣੇ ਫਾਰਮਾਸਿਸਟ ਨੂੰ ਦਿਖਾਓ।,This medicine is out of stock. Please show it to your pharmacist.,0.75,true,true,ok,voice/sarvam-translate:v1
+[voice:family_sent] The message to your family is ready to send.,ਤੁਹਾਡੇ ਪਰਿਵਾਰ ਨੂੰ ਸੁਨੇਹਾ ਭੇਜਣ ਲਈ ਤਿਆਰ ਹੈ।,You are ready to send the message to your family.,1,true,true,ok,voice/sarvam-translate:v1

@@ -1,0 +1,615 @@
+{
+ "note": "GENERATED: real medicine names transliterated into each script, then garbled (lost vowel signs, split words, filler words, dropped virama). Not recordings of real users.",
+ "cases": {
+  "pa": [
+   {
+    "heard": "ਪਰਸੇਟਮੋਲ",
+    "want": "Paracetamol",
+    "generated": true
+   },
+   {
+    "heard": "ਡੋਲੋ 650",
+    "want": "Dolo 650",
+    "generated": true
+   },
+   {
+    "heard": "ਕ੍ਰੋ ਸਿਨ",
+    "want": "Crocin",
+    "generated": true
+   },
+   {
+    "heard": "ਦਵਾਈ ਪਨ੍ਟੋਪ੍ਰਜ਼ੋਲੇ ਗੋਲੀ",
+    "want": "Pantoprazole",
+    "generated": true
+   },
+   {
+    "heard": "ਟੇਲਮ",
+    "want": "Telma",
+    "generated": true
+   },
+   {
+    "heard": "ਅਜ਼ਿਥ੍ਰੋਮ੍ਯ੍ਸਿਨ",
+    "want": "Azithromycin",
+    "generated": true
+   },
+   {
+    "heard": "ਅਮ੍ਲਡਪਨ",
+    "want": "Amlodipine",
+    "generated": true
+   },
+   {
+    "heard": "ਮੇਟ੍ਫ਼ ੋਰ੍ਮਿਨ",
+    "want": "Metformin",
+    "generated": true
+   },
+   {
+    "heard": "ਮੇਰੀ ਸੇਟਿਰਿਜ਼ਿਨੇ ਦਵਾਈ",
+    "want": "Cetirizine",
+    "generated": true
+   },
+   {
+    "heard": "ਮੋਨਟੇਲੁਕਸਟ",
+    "want": "Montelukast",
+    "generated": true
+   },
+   {
+    "heard": "ਇਬੁਪ੍ਰੋਫ਼ੇਨ",
+    "want": "Ibuprofen",
+    "generated": true
+   },
+   {
+    "heard": "ਓਮਪ੍ਰਜ਼ਲ",
+    "want": "Omeprazole",
+    "generated": true
+   },
+   {
+    "heard": "ਅਟੋਰ੍ਵ ਸ੍ਟਟਿਨ",
+    "want": "Atorvastatin",
+    "generated": true
+   },
+   {
+    "heard": "ਗੋਲੀ ਗ੍ਲ੍ਯ੍ਕੋਮੇਟ ਮੇਰੀ",
+    "want": "Glycomet",
+    "generated": true
+   },
+   {
+    "heard": "ਥਯਰੋਨੋਰਮ",
+    "want": "Thyronorm",
+    "generated": true
+   },
+   {
+    "heard": "ਕੋਮ੍ਬਿਫ਼੍ਲਮ",
+    "want": "Combiflam",
+    "generated": true
+   },
+   {
+    "heard": "ਏਕਸ੍ਪ੍ਰਨ",
+    "want": "Ecosprin",
+    "generated": true
+   },
+   {
+    "heard": "ਲੋਸਰ ੍ਟਨ",
+    "want": "Losartan",
+    "generated": true
+   },
+   {
+    "heard": "ਦਵਾਈ ਅਮੋਕ੍ਸਿਸਿਲ੍ਲਿਨ ਗੋਲੀ",
+    "want": "Amoxicillin",
+    "generated": true
+   },
+   {
+    "heard": "ਲੇਵੋਸੇਟਿਰਿਜ਼ਿਨੇ",
+    "want": "Levocetirizine",
+    "generated": true
+   },
+   {
+    "heard": "ਓਨ੍ਡਨ੍ਸੇਟ੍ਰੋਨ",
+    "want": "Ondansetron",
+    "generated": true
+   },
+   {
+    "heard": "ਡੋਮ੍ਪੇਰਿਡੋਨੇ",
+    "want": "Domperidone",
+    "generated": true
+   },
+   {
+    "heard": "ਕਲ੍ ਪੋਲ",
+    "want": "Calpol",
+    "generated": true
+   },
+   {
+    "heard": "ਮੇਰੀ ਸ਼ੇਲ੍ਕਲ ਦਵਾਈ",
+    "want": "Shelcal",
+    "generated": true
+   }
+  ],
+  "gu": [
+   {
+    "heard": "પરસેટમોલ",
+    "want": "Paracetamol",
+    "generated": true
+   },
+   {
+    "heard": "ડોલો 650",
+    "want": "Dolo 650",
+    "generated": true
+   },
+   {
+    "heard": "ક્રો સિન",
+    "want": "Crocin",
+    "generated": true
+   },
+   {
+    "heard": "દવા પન્ટોપ્રજ઼ોલે ગોળી",
+    "want": "Pantoprazole",
+    "generated": true
+   },
+   {
+    "heard": "ટેલમ",
+    "want": "Telma",
+    "generated": true
+   },
+   {
+    "heard": "અજ઼િથ્રોમ્ય્સિન",
+    "want": "Azithromycin",
+    "generated": true
+   },
+   {
+    "heard": "અમ્લડપન",
+    "want": "Amlodipine",
+    "generated": true
+   },
+   {
+    "heard": "મેટ્ફ઼ ોર્મિન",
+    "want": "Metformin",
+    "generated": true
+   },
+   {
+    "heard": "મારી સેટિરિજ઼િને દવા",
+    "want": "Cetirizine",
+    "generated": true
+   },
+   {
+    "heard": "મોનટેલુકસટ",
+    "want": "Montelukast",
+    "generated": true
+   },
+   {
+    "heard": "ઇબુપ્રોફ઼ેન",
+    "want": "Ibuprofen",
+    "generated": true
+   },
+   {
+    "heard": "ઓમપ્રજ઼લ",
+    "want": "Omeprazole",
+    "generated": true
+   },
+   {
+    "heard": "અટોર્વ સ્ટટિન",
+    "want": "Atorvastatin",
+    "generated": true
+   },
+   {
+    "heard": "ગોળી ગ્લ્ય્કોમેટ મારી",
+    "want": "Glycomet",
+    "generated": true
+   },
+   {
+    "heard": "થયરોનોરમ",
+    "want": "Thyronorm",
+    "generated": true
+   },
+   {
+    "heard": "કોમ્બિફ઼્લમ",
+    "want": "Combiflam",
+    "generated": true
+   },
+   {
+    "heard": "એકસ્પ્રન",
+    "want": "Ecosprin",
+    "generated": true
+   },
+   {
+    "heard": "લોસર ્ટન",
+    "want": "Losartan",
+    "generated": true
+   },
+   {
+    "heard": "દવા અમોક્સિસિલ્લિન ગોળી",
+    "want": "Amoxicillin",
+    "generated": true
+   },
+   {
+    "heard": "લેવોસેટિરિજ઼િને",
+    "want": "Levocetirizine",
+    "generated": true
+   },
+   {
+    "heard": "ઓન્ડન્સેટ્રોન",
+    "want": "Ondansetron",
+    "generated": true
+   },
+   {
+    "heard": "ડોમ્પેરિડોને",
+    "want": "Domperidone",
+    "generated": true
+   },
+   {
+    "heard": "કલ્ પોલ",
+    "want": "Calpol",
+    "generated": true
+   },
+   {
+    "heard": "મારી શેલ્કલ દવા",
+    "want": "Shelcal",
+    "generated": true
+   }
+  ],
+  "mr": [
+   {
+    "heard": "परसेटमोल",
+    "want": "Paracetamol",
+    "generated": true
+   },
+   {
+    "heard": "डोलो 650",
+    "want": "Dolo 650",
+    "generated": true
+   },
+   {
+    "heard": "क्रो सिन",
+    "want": "Crocin",
+    "generated": true
+   },
+   {
+    "heard": "औषध पन्टोप्रज़ोले गोळी",
+    "want": "Pantoprazole",
+    "generated": true
+   },
+   {
+    "heard": "टेलम",
+    "want": "Telma",
+    "generated": true
+   },
+   {
+    "heard": "अज़िथ्रोम्य्सिन",
+    "want": "Azithromycin",
+    "generated": true
+   },
+   {
+    "heard": "अम्लडपन",
+    "want": "Amlodipine",
+    "generated": true
+   },
+   {
+    "heard": "मेट्फ़ ोर्मिन",
+    "want": "Metformin",
+    "generated": true
+   },
+   {
+    "heard": "माझी सेटिरिज़िने औषध",
+    "want": "Cetirizine",
+    "generated": true
+   },
+   {
+    "heard": "मोनटेलुकसट",
+    "want": "Montelukast",
+    "generated": true
+   },
+   {
+    "heard": "इबुप्रोफ़ेन",
+    "want": "Ibuprofen",
+    "generated": true
+   },
+   {
+    "heard": "ओमप्रज़ल",
+    "want": "Omeprazole",
+    "generated": true
+   },
+   {
+    "heard": "अटोर्व स्टटिन",
+    "want": "Atorvastatin",
+    "generated": true
+   },
+   {
+    "heard": "गोळी ग्ल्य्कोमेट माझी",
+    "want": "Glycomet",
+    "generated": true
+   },
+   {
+    "heard": "थयरोनोरम",
+    "want": "Thyronorm",
+    "generated": true
+   },
+   {
+    "heard": "कोम्बिफ़्लम",
+    "want": "Combiflam",
+    "generated": true
+   },
+   {
+    "heard": "एकस्प्रन",
+    "want": "Ecosprin",
+    "generated": true
+   },
+   {
+    "heard": "लोसर ्टन",
+    "want": "Losartan",
+    "generated": true
+   },
+   {
+    "heard": "औषध अमोक्सिसिल्लिन गोळी",
+    "want": "Amoxicillin",
+    "generated": true
+   },
+   {
+    "heard": "लेवोसेटिरिज़िने",
+    "want": "Levocetirizine",
+    "generated": true
+   },
+   {
+    "heard": "ओन्डन्सेट्रोन",
+    "want": "Ondansetron",
+    "generated": true
+   },
+   {
+    "heard": "डोम्पेरिडोने",
+    "want": "Domperidone",
+    "generated": true
+   },
+   {
+    "heard": "कल् पोल",
+    "want": "Calpol",
+    "generated": true
+   },
+   {
+    "heard": "माझी शेल्कल औषध",
+    "want": "Shelcal",
+    "generated": true
+   }
+  ],
+  "kn": [
+   {
+    "heard": "ಪರಸೇಟಮೋಲ",
+    "want": "Paracetamol",
+    "generated": true
+   },
+   {
+    "heard": "ಡೋಲೋ 650",
+    "want": "Dolo 650",
+    "generated": true
+   },
+   {
+    "heard": "ಕ್ರೋ ಸಿನ",
+    "want": "Crocin",
+    "generated": true
+   },
+   {
+    "heard": "ಔಷಧಿ ಪನ್ಟೋಪ್ರಜ಼ೋಲೇ ಮಾತ್ರೆ",
+    "want": "Pantoprazole",
+    "generated": true
+   },
+   {
+    "heard": "ಟೇಲಮ",
+    "want": "Telma",
+    "generated": true
+   },
+   {
+    "heard": "ಅಜ಼ಿಥ್ರೋಮ್ಯ್ಸಿನ",
+    "want": "Azithromycin",
+    "generated": true
+   },
+   {
+    "heard": "ಅಮ್ಲಡಪನ",
+    "want": "Amlodipine",
+    "generated": true
+   },
+   {
+    "heard": "ಮೇಟ್ಫ಼ ೋರ್ಮಿನ",
+    "want": "Metformin",
+    "generated": true
+   },
+   {
+    "heard": "ನನ್ನ ಸೇಟಿರಿಜ಼ಿನೇ ಔಷಧಿ",
+    "want": "Cetirizine",
+    "generated": true
+   },
+   {
+    "heard": "ಮೋನಟೇಲುಕಸಟ",
+    "want": "Montelukast",
+    "generated": true
+   },
+   {
+    "heard": "ಇಬುಪ್ರೋಫ಼ೇನ",
+    "want": "Ibuprofen",
+    "generated": true
+   },
+   {
+    "heard": "ಓಮಪ್ರಜ಼ಲ",
+    "want": "Omeprazole",
+    "generated": true
+   },
+   {
+    "heard": "ಅಟೋರ್ವ ಸ್ಟಟಿನ",
+    "want": "Atorvastatin",
+    "generated": true
+   },
+   {
+    "heard": "ಮಾತ್ರೆ ಗ್ಲ್ಯ್ಕೋಮೇಟ ನನ್ನ",
+    "want": "Glycomet",
+    "generated": true
+   },
+   {
+    "heard": "ಥಯರೋನೋರಮ",
+    "want": "Thyronorm",
+    "generated": true
+   },
+   {
+    "heard": "ಕೋಮ್ಬಿಫ಼್ಲಮ",
+    "want": "Combiflam",
+    "generated": true
+   },
+   {
+    "heard": "ಏಕಸ್ಪ್ರನ",
+    "want": "Ecosprin",
+    "generated": true
+   },
+   {
+    "heard": "ಲೋಸರ ್ಟನ",
+    "want": "Losartan",
+    "generated": true
+   },
+   {
+    "heard": "ಔಷಧಿ ಅಮೋಕ್ಸಿಸಿಲ್ಲಿನ ಮಾತ್ರೆ",
+    "want": "Amoxicillin",
+    "generated": true
+   },
+   {
+    "heard": "ಲೇವೋಸೇಟಿರಿಜ಼ಿನೇ",
+    "want": "Levocetirizine",
+    "generated": true
+   },
+   {
+    "heard": "ಓನ್ಡನ್ಸೇಟ್ರೋನ",
+    "want": "Ondansetron",
+    "generated": true
+   },
+   {
+    "heard": "ಡೋಮ್ಪೇರಿಡೋನೇ",
+    "want": "Domperidone",
+    "generated": true
+   },
+   {
+    "heard": "ಕಲ್ ಪೋಲ",
+    "want": "Calpol",
+    "generated": true
+   },
+   {
+    "heard": "ನನ್ನ ಶೇಲ್ಕಲ ಔಷಧಿ",
+    "want": "Shelcal",
+    "generated": true
+   }
+  ],
+  "ta": [
+   {
+    "heard": "பரஸேடமோல",
+    "want": "Paracetamol",
+    "generated": true
+   },
+   {
+    "heard": "டோலோ 650",
+    "want": "Dolo 650",
+    "generated": true
+   },
+   {
+    "heard": "க்ரோ ஸிந",
+    "want": "Crocin",
+    "generated": true
+   },
+   {
+    "heard": "மருந்து பந்டோப்ரஜோலே மாத்திரை",
+    "want": "Pantoprazole",
+    "generated": true
+   },
+   {
+    "heard": "டேலம",
+    "want": "Telma",
+    "generated": true
+   },
+   {
+    "heard": "அஜித்ரோம்ய்ஸிந",
+    "want": "Azithromycin",
+    "generated": true
+   },
+   {
+    "heard": "அம்லடபந",
+    "want": "Amlodipine",
+    "generated": true
+   },
+   {
+    "heard": "மேட்போ ர்மிந",
+    "want": "Metformin",
+    "generated": true
+   },
+   {
+    "heard": "என் ஸேடிரிஜிநே மருந்து",
+    "want": "Cetirizine",
+    "generated": true
+   },
+   {
+    "heard": "மோநடேலுகஸட",
+    "want": "Montelukast",
+    "generated": true
+   },
+   {
+    "heard": "இபுப்ரோபேந",
+    "want": "Ibuprofen",
+    "generated": true
+   },
+   {
+    "heard": "ஓமப்ரஜோலே",
+    "want": "Omeprazole",
+    "generated": true
+   },
+   {
+    "heard": "அடோர்வ ஸ்டடிந",
+    "want": "Atorvastatin",
+    "generated": true
+   },
+   {
+    "heard": "மாத்திரை க்ல்ய்கோமேட என்",
+    "want": "Glycomet",
+    "generated": true
+   },
+   {
+    "heard": "தயரோநோரம",
+    "want": "Thyronorm",
+    "generated": true
+   },
+   {
+    "heard": "கோம்பிப்லம",
+    "want": "Combiflam",
+    "generated": true
+   },
+   {
+    "heard": "ஏகஸ்ப்ரந",
+    "want": "Ecosprin",
+    "generated": true
+   },
+   {
+    "heard": "லோஸர ்டந",
+    "want": "Losartan",
+    "generated": true
+   },
+   {
+    "heard": "மருந்து அமோக்ஸிஸில்லிந மாத்திரை",
+    "want": "Amoxicillin",
+    "generated": true
+   },
+   {
+    "heard": "லேவோஸேடிரிஜிநே",
+    "want": "Levocetirizine",
+    "generated": true
+   },
+   {
+    "heard": "ஓந்டந்ஸேட்ரோந",
+    "want": "Ondansetron",
+    "generated": true
+   },
+   {
+    "heard": "டோம்பேரிடோநே",
+    "want": "Domperidone",
+    "generated": true
+   },
+   {
+    "heard": "கல் போல",
+    "want": "Calpol",
+    "generated": true
+   },
+   {
+    "heard": "என் ஷேல்கல மருந்து",
+    "want": "Shelcal",
+    "generated": true
+   }
+  ]
+ }
+}

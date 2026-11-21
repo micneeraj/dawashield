@@ -84,13 +84,13 @@ export function namesMatch(query: string | undefined, ...candidates: (string | u
 
 // Very small Devanagari -> Latin transliteration, so a Hindi transcript such as
 // "डोलो" can still be searched against English medicine names.
-const VOWELS: Record<string, string> = { "अ": "a", "आ": "aa", "इ": "i", "ई": "ee", "उ": "u", "ऊ": "oo", "ए": "e", "ऐ": "ai", "ओ": "o", "औ": "au", "ऋ": "ri" };
-const MATRAS: Record<string, string> = { "ा": "a", "ि": "i", "ी": "i", "ु": "u", "ू": "u", "े": "e", "ै": "ai", "ो": "o", "ौ": "au", "ृ": "ri", "ं": "n", "ँ": "n", "ः": "h", "ॉ": "o" };
+const VOWELS: Record<string, string> = { "ऎ": "e", "ऒ": "o", "ऍ": "e", "ऑ": "o", "अ": "a", "आ": "aa", "इ": "i", "ई": "ee", "उ": "u", "ऊ": "oo", "ए": "e", "ऐ": "ai", "ओ": "o", "औ": "au", "ऋ": "ri" };
+const MATRAS: Record<string, string> = { "ॆ": "e", "ॊ": "o", "ॅ": "e", "ा": "a", "ि": "i", "ी": "i", "ु": "u", "ू": "u", "े": "e", "ै": "ai", "ो": "o", "ौ": "au", "ृ": "ri", "ं": "n", "ँ": "n", "ः": "h", "ॉ": "o" };
 const CONS: Record<string, string> = {
   "क": "k", "ख": "kh", "ग": "g", "घ": "gh", "ङ": "n", "च": "ch", "छ": "chh", "ज": "j", "झ": "jh", "ञ": "n",
   "ट": "t", "ठ": "th", "ड": "d", "ढ": "dh", "ण": "n", "त": "t", "थ": "th", "द": "d", "ध": "dh", "न": "n",
   "प": "p", "फ": "ph", "ब": "b", "भ": "bh", "म": "m", "य": "y", "र": "r", "ल": "l", "व": "v", "श": "sh",
-  "ष": "sh", "स": "s", "ह": "h", "ज़": "z", "फ़": "f", "क़": "q", "ड़": "d", "ढ़": "dh",
+  "ष": "sh", "स": "s", "ह": "h", "स़": "sh", "ल़": "l", "ग़": "g", "ख़": "kh", "ळ": "l", "ऴ": "l", "ऱ": "r", "ऩ": "n", "ज़": "z", "फ़": "f", "क़": "q", "ड़": "d", "ढ़": "dh",
 };
 export function transliterate(text: string): string {
   const chars = [...text.normalize("NFC")];

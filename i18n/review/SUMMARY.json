@@ -1,0 +1,67 @@
+{
+  "pa": {
+    "strings": 579,
+    "translated": 462,
+    "safety": 139,
+    "safetyTranslated": 112,
+    "flagged": [
+      "Amber",
+      "Can't read clearly",
+      "Check the batch number and company name on the strip carefully, and ask your chemist. Until then treat it as neither 'safe' nor 'bad'.",
+      "Could not open the camera. Please choose a photo from the gallery.",
+      "Grey",
+      "GREY",
+      "suspected spurious (fake)",
+      "Valid"
+    ],
+    "retranslated": 2,
+    "missing": 109,
+    "clips": 0,
+    "available": false
+  },
+  "gu": {
+    "strings": 579,
+    "translated": 0,
+    "safety": 139,
+    "safetyTranslated": 0,
+    "flagged": [],
+    "retranslated": 0,
+    "missing": 579,
+    "clips": 0,
+    "available": false
+  },
+  "mr": {
+    "strings": 579,
+    "translated": 0,
+    "safety": 139,
+    "safetyTranslated": 0,
+    "flagged": [],
+    "retranslated": 0,
+    "missing": 579,
+    "clips": 0,
+    "available": false
+  },
+  "kn": {
+    "strings": 579,
+    "translated": 0,
+    "safety": 139,
+    "safetyTranslated": 0,
+    "flagged": [],
+    "retranslated": 0,
+    "missing": 579,
+    "clips": 0,
+    "available": false
+  },
+  "ta": {
+    "strings": 579,
+    "translated": 0,
+    "safety": 139,
+    "safetyTranslated": 0,
+    "flagged": [],
+    "retranslated": 0,
+    "missing": 579,
+    "clips": 0,
+    "available": false
+  },
+  "note": "CACHE_ONLY run"
+}

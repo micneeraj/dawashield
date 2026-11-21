@@ -63,10 +63,10 @@ describe("entity-aware matching rules", () => {
     expect(r.level).toBe("AMBER");
     expect(r.reason).toBe("batch-other-company");
   });
-  it("company has action but batch not matched = AMBER company scope, not RED", () => {
+  it("company has action but batch not matched (medicine not given) = GREY with a note, never RED or AMBER", () => {
     const r = matchMedicine({ batch: "QQ12345", manufacturer: "FDC Ltd" }, R);
-    expect(r.level).toBe("AMBER");
-    expect(r.reason).toBe("company");
+    expect(r.level).toBe("GREY");
+    expect(r.reason).toBe("company-batch-unlisted");
   });
   it("OCR look-alike batch (0/O, 1/I, 5/S) = AMBER near-batch", () => {
     expect(matchMedicine({ batch: "PO3S24" }, R).reason).toBe("near-batch");

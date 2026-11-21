@@ -5,7 +5,7 @@ import { Button, Card, cx, inputCls } from "./ui";
 import { Sheet } from "./Sheet";
 import { GREY_STEPS, OFFICIAL, type Lang } from "../content/messages";
 import { explain } from "../content/templates";
-import { monthLabel, dateLabel } from "../lib/format";
+import { monthLabel, dateLabel, officialLink } from "../lib/format";
 import { expiryStatus } from "../lib/expiry";
 import { downloadIcs, expiryIcs, expiryMonth } from "../lib/reminders";
 import { reportWrongResult, type WrongKind } from "../lib/cloud";
@@ -19,7 +19,8 @@ const L = {
   recordId: { hi: "रिकॉर्ड ID", en: "Record ID" },
   official: { hi: "सरकारी लिंक", en: "Official link" },
   portal: { hi: "CDSCO NSQ पोर्टल", en: "CDSCO NSQ portal" },
-  pdf: { hi: "मासिक PDF", en: "Monthly PDF" },
+  pdf: { hi: "इस चेतावनी की मासिक CDSCO PDF", en: "Monthly CDSCO PDF for this alert" },
+  alertsPage: { hi: "CDSCO चेतावनी पेज", en: "CDSCO alerts page" },
   noRecord: { hi: "इस बैच का कोई सरकारी रिकॉर्ड नहीं मिला। हमने यह सूची जाँची:", en: "No official record matched this batch. We checked this list:" },
   verified: { hi: "हाथ से मिलाया गया", en: "Verified" },
   meaning: { hi: "इसका मतलब क्या है", en: "What this means" },
@@ -90,8 +91,8 @@ export function SourceBlock({ check }: { check: CheckState }) {
             </div>
             <p className="mt-1 text-[15px] text-muted">{L.recordId[lang]}: <span className="num font-semibold text-ink" data-testid="record-id">{r.id}</span></p>
             <div className="mt-2 flex flex-wrap gap-2">
-              <a href={r.sourceUrl} target="_blank" rel="noreferrer" className="tap inline-flex items-center gap-1.5 rounded-2xl bg-white px-3.5 text-[15px] font-semibold text-brand-800 ring-1 ring-line" data-testid="official-link"><ExternalLink size={17} /> {L.official[lang]}</a>
-              {r.pdfUrl && <a href={r.pdfUrl} target="_blank" rel="noreferrer" className="tap inline-flex items-center gap-1.5 rounded-2xl bg-white px-3.5 text-[15px] font-semibold text-brand-800 ring-1 ring-line"><FileText size={17} /> {L.pdf[lang]}</a>}
+              <a href={officialLink(r).url} target="_blank" rel="noreferrer" className="tap inline-flex items-center gap-1.5 rounded-2xl bg-white px-3.5 text-[15px] font-semibold text-brand-800 ring-1 ring-line" data-testid="official-link" data-kind={officialLink(r).kind}>{officialLink(r).kind === "pdf" ? <FileText size={17} /> : <ExternalLink size={17} />} {officialLink(r).kind === "pdf" ? L.pdf[lang] : L.alertsPage[lang]}</a>
+              <a href={r.sourceUrl} target="_blank" rel="noreferrer" className="tap inline-flex items-center gap-1.5 rounded-2xl bg-white px-3.5 text-[15px] font-semibold text-brand-800 ring-1 ring-line"><ExternalLink size={17} /> {L.portal[lang]}</a>
             </div>
           </li>
         ))}
