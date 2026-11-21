@@ -63,5 +63,5 @@
     "clips": 0,
     "available": false
   },
-  "note": "CACHE_ONLY run"
+  "note": "Sarvam 402: {\"error\":{\"message\":\"No credits available.\",\"code\":\"insufficient_quota_error\",\"request_id\":\"20261121_6fd3fcce-faa4-488a-a146-adf88bf9165b\"}}"
 }
