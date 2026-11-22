@@ -1,44 +1,51 @@
 @import "tailwindcss";
-@import "@fontsource-variable/inter";
-@import "@fontsource/mukta/devanagari-400.css";
-@import "@fontsource/mukta/devanagari-500.css";
-@import "@fontsource/mukta/devanagari-600.css";
-@import "@fontsource/mukta/devanagari-700.css";
-@import "@fontsource/mukta/latin-400.css";
-@import "@fontsource/mukta/latin-600.css";
+@import "./theme.css";
+@import "@fontsource-variable/plus-jakarta-sans";
+@import "@fontsource-variable/noto-sans-devanagari";
 
+/* Tailwind tokens: every one points at a variable in theme.css. */
 @theme {
-  --font-sans: "Inter Variable", "Mukta", system-ui, sans-serif;
-  --font-hi: "Mukta", "Inter Variable", system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans Variable", "Plus Jakarta Sans", "Noto Sans Devanagari Variable", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-hi: "Noto Sans Devanagari Variable", "Noto Sans Devanagari", "Plus Jakarta Sans Variable", system-ui, sans-serif;
 
-  --color-brand-50: #eef7f5;
-  --color-brand-100: #d5ece7;
-  --color-brand-200: #a9d8cf;
-  --color-brand-300: #74bdb0;
-  --color-brand-400: #3f9c8e;
-  --color-brand-500: #1f7f72;
-  --color-brand-600: #12695e;
-  --color-brand-700: #0f5e57;
-  --color-brand-800: #0c4743;
-  --color-brand-900: #0a3532;
+  --color-brand-50: var(--violet-50);
+  --color-brand-100: var(--violet-100);
+  --color-brand-200: var(--violet-200);
+  --color-brand-300: var(--violet-300);
+  --color-brand-400: var(--violet-400);
+  --color-brand-500: var(--violet-500);
+  --color-brand-600: var(--violet-600);
+  --color-brand-700: var(--violet-700);
+  --color-brand-800: var(--brand-2);
+  --color-brand-900: var(--brand);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+  --color-white: var(--card);
 
-  --color-paper: #f7f5f0;
-  --color-ink: #1d2a28;
-  --color-muted: #5b6866;
-  --color-line: #e6e2d9;
+  --color-paper: var(--bg);
+  --color-ink: var(--text);
+  --color-muted: var(--text-muted);
+  --color-line: var(--border);
+  --color-frame: var(--frame);
 
-  --color-red-soft: #fbefec;
-  --color-red-line: #f0cfc8;
-  --color-red-ink: #9b3a2f;
-  --color-amber-soft: #fdf4e3;
-  --color-amber-line: #f1dcae;
-  --color-amber-ink: #8a5800;
-  --color-grey-soft: #f1f3f3;
-  --color-grey-line: #dde2e1;
-  --color-grey-ink: #46514f;
+  --color-red-bar: var(--result-red);
+  --color-red-soft: var(--result-red-soft);
+  --color-red-line: var(--result-red-line);
+  --color-red-ink: var(--result-red-text);
+  --color-amber-bar: var(--result-amber);
+  --color-amber-soft: var(--result-amber-soft);
+  --color-amber-line: var(--result-amber-line);
+  --color-amber-ink: var(--result-amber-text);
+  --color-grey-bar: var(--result-grey);
+  --color-grey-soft: var(--result-grey-soft);
+  --color-grey-line: var(--result-grey-line);
+  --color-grey-ink: var(--result-grey-text);
 
-  --shadow-soft: 0 1px 2px rgb(16 40 36 / 0.04), 0 4px 16px rgb(16 40 36 / 0.06);
-  --shadow-lift: 0 2px 4px rgb(16 40 36 / 0.05), 0 12px 32px rgb(16 40 36 / 0.10);
+  --shadow-soft: var(--shadow-card);
+  --shadow-lift: var(--shadow-raised);
+  --shadow-accent: var(--shadow-accent);
+  --radius-card: var(--radius-card);
 }
 
 html { -webkit-text-size-adjust: 100%; }
@@ -47,22 +54,23 @@ body {
   font-size: 18px;
   line-height: 1.5;
   color: var(--color-ink);
-  background: #e9efe9;
+  background: var(--bg);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
 }
-html[lang="hi"] body { font-family: var(--font-hi); font-size: 19px; }
+html[lang="hi"] body, html[lang="mr"] body { font-family: var(--font-hi); font-size: 19px; }
+h1, h2, h3 { font-weight: 700; letter-spacing: -0.01em; }
 
 @media (min-width: 640px) {
   body {
     background:
-      radial-gradient(1200px 600px at 10% -10%, #cfe6df 0%, transparent 60%),
-      radial-gradient(900px 500px at 110% 110%, #f3e3c8 0%, transparent 55%),
-      #e6ede8;
+      radial-gradient(1200px 600px at 10% -10%, var(--desk-glow-1) 0%, transparent 60%),
+      radial-gradient(900px 500px at 110% 110%, var(--desk-glow-2) 0%, transparent 55%),
+      var(--desk-bg);
   }
 }
 
-:focus-visible { outline: 3px solid var(--color-brand-400); outline-offset: 2px; border-radius: 12px; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 12px; }
 button { cursor: pointer; }
 input, textarea, select { font: inherit; }
 
@@ -84,3 +92,32 @@ input, textarea, select { font: inherit; }
 
 /* Letter-spacing breaks Devanagari conjuncts: never track Hindi labels. */
 html[lang="hi"] [class*="tracking-"] { letter-spacing: 0 !important; }
+
+/* Smooth taps and screen changes. */
+button, a, input, select, textarea { transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease), box-shadow var(--dur) var(--ease), transform 150ms var(--ease), opacity var(--dur) var(--ease); }
+
+/* Indigo hero with a very faint geometric pattern. */
+.hero-brand {
+  background-color: var(--brand);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44'%3E%3Cpath d='M22 2 40 12v20L22 42 4 32V12Z' fill='none' stroke='white' stroke-opacity='.07' stroke-width='1'/%3E%3C/svg%3E"),
+    linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 100%);
+  background-size: 44px 44px, auto;
+}
+
+/* Mic: gentle violet glow while listening. */
+@keyframes mic-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(139, 92, 246, .45), var(--shadow-accent); }
+  50% { box-shadow: 0 0 0 18px rgba(139, 92, 246, 0), var(--shadow-accent); }
+}
+.mic-glow { animation: mic-glow 1.6s ease-in-out infinite; }
+
+/* Skeleton loaders. */
+@keyframes shimmer { 100% { transform: translateX(100%); } }
+.skeleton { position: relative; overflow: hidden; background: var(--accent-soft); border-radius: 12px; }
+.skeleton::after { content: ""; position: absolute; inset: 0; transform: translateX(-100%); background: linear-gradient(90deg, transparent, rgba(255,255,255,.7), transparent); animation: shimmer 1.4s infinite; }
+
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}

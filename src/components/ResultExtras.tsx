@@ -204,7 +204,7 @@ export function WrongResultSheet({ open, onClose, check }: { open: boolean; onCl
           </div>
           <input className={cx(inputCls, "mt-3 text-[17px]")} value={note} maxLength={300} onChange={(e) => setNote(e.target.value)} placeholder={L.notePh[lang]} aria-label={L.notePh[lang]} />
           <p className="mt-2 text-[14px] leading-snug text-muted">{L.wrongNote[lang]}</p>
-          {state === "fail" && <p className="mt-2 text-[15px] font-semibold text-amber-ink">{L.failed[lang]}</p>}
+          {state === "fail" && <p className="mt-2 text-[15px] font-semibold text-ink">{L.failed[lang]}</p>}
           <Button full className="mt-4" icon={<Flag size={20} />} disabled={!kind || state === "busy"} onClick={send} data-testid="wrong-send">{L.send[lang]}</Button>
         </>
       )}

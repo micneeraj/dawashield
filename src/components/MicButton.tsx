@@ -7,11 +7,11 @@ export function MicButton({ listening, onClick, label, size = 168 }: { listening
     <div className="relative grid place-items-center" style={{ width: size + 60, height: size + 60 }}>
       {listening && (
         <>
-          <span className="ring-pulse absolute rounded-full bg-brand-400/40" style={{ width: size, height: size }} />
-          <span className="ring-pulse delay absolute rounded-full bg-brand-400/30" style={{ width: size, height: size }} />
+          <span className="ring-pulse absolute rounded-full bg-accent/35" style={{ width: size, height: size }} />
+          <span className="ring-pulse delay absolute rounded-full bg-accent/25" style={{ width: size, height: size }} />
         </>
       )}
-      <span className="absolute rounded-full bg-brand-100/70" style={{ width: size + 36, height: size + 36 }} aria-hidden />
+      <span className="absolute rounded-full bg-accent-soft/80" style={{ width: size + 36, height: size + 36 }} aria-hidden />
       <motion.button
         whileTap={{ scale: 0.95 }}
         onClick={onClick}
@@ -19,8 +19,8 @@ export function MicButton({ listening, onClick, label, size = 168 }: { listening
         aria-pressed={listening}
         data-testid="mic"
         className={cx(
-          "relative grid place-items-center rounded-full text-white shadow-[0_18px_40px_-12px_rgba(15,94,87,0.65)] transition-colors",
-          listening ? "bg-brand-800" : "bg-gradient-to-b from-brand-500 to-brand-700 hover:to-brand-800",
+          "relative grid place-items-center rounded-full text-white shadow-accent transition-colors",
+          listening ? "mic-glow bg-accent-strong" : "bg-gradient-to-b from-accent to-accent-strong hover:to-brand-700",
         )}
         style={{ width: size, height: size }}
       >

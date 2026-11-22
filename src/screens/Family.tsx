@@ -16,7 +16,7 @@ export default function Family() {
   return (
     <Page title={t("family")} onBack={() => go({ name: "home" })}>
       <Card className="mb-4 flex gap-3 bg-brand-50/60 p-4">
-        <MessageCircle className="mt-0.5 shrink-0 text-[#1f9d55]" />
+        <MessageCircle className="mt-0.5 shrink-0 text-brand-700" />
         <p className="text-[16px] leading-snug text-brand-900">{t("familyIntro")}</p>
       </Card>
       <div className="space-y-3">
@@ -35,9 +35,9 @@ export default function Family() {
         ))}
         {!list.length && (
           <Card className="flex flex-col items-center gap-3 overflow-hidden px-6 py-9 text-center" >
-            <span className="relative grid h-20 w-20 place-items-center rounded-[28px] bg-gradient-to-br from-brand-50 to-[#e6f4ef] text-brand-700 shadow-soft">
+            <span className="relative grid h-20 w-20 place-items-center rounded-[28px] bg-gradient-to-br from-brand-50 to-accent-soft text-brand-700 shadow-soft">
               <UserRound size={38} />
-              <span className="absolute -right-1.5 -top-1.5 grid h-8 w-8 place-items-center rounded-full bg-[#1f9d55] text-white shadow-soft"><MessageCircle size={17} /></span>
+              <span className="absolute -right-1.5 -top-1.5 grid h-8 w-8 place-items-center rounded-full bg-accent-strong text-white shadow-soft"><MessageCircle size={17} /></span>
             </span>
             <p className="max-w-[26ch] text-[20px] font-bold leading-snug text-ink" data-testid="family-empty">
               {lang === "hi" ? "किसी दवा पर चेतावनी आए, तो आपके बेटे या बेटी को तुरंत पता चल सकता है" : "Your son or daughter can get an alert if a saved medicine is flagged"}

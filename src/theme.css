@@ -1,0 +1,60 @@
+/* DawaShield theme: "Midnight Indigo & Pearl".
+   Every colour in the app comes from this file. Components use the Tailwind
+   tokens below (brand-*, accent, paper, ink, red-*, amber-*, grey-*), which
+   all resolve to these variables. Change a colour here and it changes everywhere. */
+
+:root {
+  /* Brand */
+  --brand: #1E1B4B;        /* deep indigo: header, hero, top bar */
+  --brand-2: #312E81;      /* gradient partner */
+  --accent: #8B5CF6;       /* violet: focus rings, mic glow, active marks */
+  --accent-strong: #6D28D9;/* violet fill behind white text (AA 7.1:1; #8B5CF6 is only 4.2:1) */
+  --accent-soft: #EDE9FE;  /* chips, selected states */
+
+  /* Surfaces and text */
+  --bg: #FAFAFC;           /* pearl */
+  --card: #FFFFFF;
+  --border: #E7E5F0;
+  --text: #1A1A2E;         /* 16.9:1 on pearl */
+  --text-muted: #5B5B76;   /* 6.4:1 on pearl, 6.6:1 on white */
+
+  /* Violet scale derived from the accent (tints for backgrounds, shades for text). */
+  --violet-50: #F5F3FF;
+  --violet-100: var(--accent-soft);
+  --violet-200: #DDD6FE;
+  --violet-300: #C4B5FD;
+  --violet-400: #A78BFA;
+  --violet-500: var(--accent);
+  --violet-600: var(--accent-strong);
+  --violet-700: #5B21B6;   /* 8.9:1 on white */
+
+  /* RESULT colours: results only, never decoration.
+     The bar / icon uses the exact result colour; small text uses a darker
+     shade of the same hue so every text pair passes WCAG AA. */
+  --result-red: #DC2626;
+  --result-red-text: #B91C1C;   /* 6.0:1 on red-soft */
+  --result-red-soft: #FEF2F2;
+  --result-red-line: #FECACA;
+  --result-amber: #D97706;
+  --result-amber-text: #92400E; /* 6.9:1 on amber-soft */
+  --result-amber-soft: #FFFBEB;
+  --result-amber-line: #FDE68A;
+  --result-grey: #6B7280;
+  --result-grey-text: #4B5563;  /* 7.0:1 on grey-soft */
+  --result-grey-soft: #F3F4F6;
+  --result-grey-line: #E5E7EB;
+
+  /* Depth */
+  --shadow-card: 0 1px 2px rgba(30, 27, 75, .06), 0 8px 24px rgba(30, 27, 75, .08);
+  --shadow-raised: 0 2px 4px rgba(30, 27, 75, .08), 0 16px 40px rgba(30, 27, 75, .14);
+  --shadow-accent: 0 18px 40px -12px rgba(109, 40, 217, .55);
+  --overlay: rgba(26, 26, 46, .5);
+  --frame: #15132E;              /* desktop phone frame */
+  --desk-glow-1: #E4E0FA;
+  --desk-glow-2: #EEEAF8;
+  --desk-bg: #ECEAF5;
+
+  --radius-card: 20px;
+  --ease: cubic-bezier(.2, .7, .3, 1);
+  --dur: 180ms;
+}

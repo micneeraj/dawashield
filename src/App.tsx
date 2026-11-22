@@ -15,12 +15,14 @@ import Settings from "./screens/Settings";
 import { About, Privacy } from "./screens/Info";
 import Report from "./screens/Report";
 import { FirstRun, How, Invite, Transparency, Why } from "./screens/Pages";
+import { Welcome } from "./components/Welcome";
+import { WELCOME_KEY } from "./lib/profile";
 import { LanguageButton, RegionalFallbackBanner, RegionalNoVoiceNote, TranslationLayer } from "./components/Language";
 
 function Header() {
   const { t, lang, muted, setMuted, go } = useApp();
   return (
-    <header className="sticky top-0 z-20 bg-paper/90 px-4 pb-2.5 pt-[max(14px,env(safe-area-inset-top))] backdrop-blur-md">
+    <header className="sticky top-0 z-20 border-b border-line/60 bg-paper/90 px-4 pb-2.5 pt-[max(14px,env(safe-area-inset-top))] backdrop-blur-md">
      <div className="flex items-center gap-2">
       <button onClick={() => go({ name: "home" })} className="flex min-h-14 items-center gap-2.5 rounded-2xl pr-2" aria-label={t("home")}>
         <LogoMark size={38} />
@@ -145,13 +147,19 @@ function useFirstRun(): [boolean, () => void] {
   return [show, () => { try { localStorage.setItem(FR_KEY, "1"); } catch { /* ignore */ } setShow(false); }];
 }
 
+function useWelcome(): [boolean, () => void] {
+  const [show, setShow] = useState(() => { try { return localStorage.getItem(WELCOME_KEY) !== "1"; } catch { return true; } });
+  return [show, () => { try { localStorage.setItem(WELCOME_KEY, "1"); } catch { /* ignore */ } setShow(false); }];
+}
+
 export default function App() {
   const [firstRun, doneFirstRun] = useFirstRun();
+  const [welcome, doneWelcome] = useWelcome();
   return (
     <div className="min-h-dvh sm:flex sm:items-center sm:justify-center sm:gap-16 sm:py-8">
       <DesktopAside />
       {/* On wide screens the app sits in a phone-width frame. */}
-      <div className="relative mx-auto flex min-h-dvh w-full max-w-[440px] flex-col sm:mx-0 sm:w-[440px] sm:shrink-0 bg-paper sm:h-[min(900px,calc(100dvh-64px))] sm:min-h-0 sm:overflow-hidden sm:rounded-[44px] sm:border-[10px] sm:border-[#13201e] sm:shadow-[0_40px_80px_-20px_rgba(12,40,36,0.45)]">
+      <div className="relative mx-auto flex min-h-dvh w-full max-w-[440px] flex-col sm:mx-0 sm:w-[440px] sm:shrink-0 bg-paper sm:h-[min(900px,calc(100dvh-64px))] sm:min-h-0 sm:overflow-hidden sm:rounded-[44px] sm:border-[10px] sm:border-frame sm:shadow-lift">
         <div id="scroller" className="no-scrollbar flex flex-1 flex-col sm:overflow-y-auto">
           <Header />
           <RegionalFallbackBanner />
@@ -164,7 +172,7 @@ export default function App() {
           <BottomNav />
         </div>
       </div>
-      {firstRun && <FirstRun onDone={doneFirstRun} />}
+      {welcome ? <Welcome onDone={doneWelcome} /> : firstRun && <FirstRun onDone={doneFirstRun} />}
       <TranslationLayer />
     </div>
   );

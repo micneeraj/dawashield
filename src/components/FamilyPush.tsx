@@ -42,7 +42,7 @@ export function FamilyPush() {
           </div>
         </div>
       )}
-      {err && <p className="mt-2 text-[15px] font-semibold text-amber-ink">{hi ? "लिंक नहीं बन सका। फिर कोशिश कीजिए।" : "Couldn't create the link. Try again."}</p>}
+      {err && <p className="mt-2 text-[15px] font-semibold text-ink">{hi ? "लिंक नहीं बन सका। फिर कोशिश कीजिए।" : "Couldn't create the link. Try again."}</p>}
     </Card>
   );
 }

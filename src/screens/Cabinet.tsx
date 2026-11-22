@@ -63,7 +63,7 @@ export default function Cabinet() {
     return (
       <Page title={t("cabinet")} onBack={() => go({ name: "home" })}>
         <Card className="flex flex-col items-center gap-4 overflow-hidden px-6 pb-8 pt-10 text-center">
-          <span className="relative grid h-24 w-24 place-items-center rounded-[32px] bg-gradient-to-br from-[#fbf3e4] to-[#f5e6c8] text-[#9a6a12] shadow-soft">
+          <span className="relative grid h-24 w-24 place-items-center rounded-[32px] bg-gradient-to-br from-brand-50 to-accent-soft text-brand-700 shadow-soft">
             <PackageOpen size={44} />
             <span className="absolute -right-2 -top-2 grid h-9 w-9 place-items-center rounded-full bg-brand-700 text-white shadow-soft"><RefreshCw size={18} /></span>
           </span>
@@ -146,9 +146,9 @@ export default function Cabinet() {
       </section>
 
       {/* Section 2: expiry reminders, visually separate */}
-      <section className="mb-5 rounded-[28px] bg-[#fbf6ec] p-4 ring-1 ring-[#efe2c4]" data-testid="section-expiry">
+      <section className="mb-5 rounded-[28px] bg-brand-50 p-4 ring-1 ring-brand-200" data-testid="section-expiry">
         <div className="mb-3 flex items-center gap-2.5">
-          <span className="grid h-9 w-9 place-items-center rounded-xl bg-[#9a6a12] text-white"><CalendarClock size={19} /></span>
+          <span className="grid h-9 w-9 place-items-center rounded-xl bg-brand-800 text-white"><CalendarClock size={19} /></span>
           <div>
             <h2 className="text-[19px] font-bold leading-tight text-ink">{TXT.expiry[lang]}</h2>
             <p className="text-[13.5px] text-muted">{TXT.expirySub[lang]}</p>

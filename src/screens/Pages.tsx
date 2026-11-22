@@ -8,7 +8,6 @@ import { dateLabel, monthLabel } from "../lib/format";
 import { DataFreshness } from "../components/ResultExtras";
 import { COMPARISON, COMPARISON_NOTE, COMPETITORS, PILLARS, type Cell } from "../content/positioning";
 import { FIRST_RUN, INFO_TOOL } from "../content/messages";
-import { LanguagePicker } from "../components/Language";
 import { acceptInvite } from "../lib/cloud";
 import EVAL from "../content/eval-results.json";
 
@@ -73,7 +72,7 @@ function Step({ icon, title, children, tone = "brand" }: { icon: React.ReactNode
   return (
     <li className="flex gap-3">
       <span className="flex flex-col items-center">
-        <span className={cx("grid h-10 w-10 shrink-0 place-items-center rounded-full text-white", tone === "sky" ? "bg-sky-600" : tone === "ink" ? "bg-ink" : "bg-brand-700")}>{icon}</span>
+        <span className={cx("grid h-10 w-10 shrink-0 place-items-center rounded-full text-white", tone === "sky" ? "bg-brand-800" : tone === "ink" ? "bg-ink" : "bg-brand-700")}>{icon}</span>
         <span className="my-1 w-0.5 flex-1 bg-line" />
       </span>
       <div className="pb-4">
@@ -272,7 +271,7 @@ export function Transparency() {
         {(hi
           ? ["असली पत्तों की फ़ोटो पर सटीकता।", "असली लोगों की आवाज़ पर सटीकता (सारे आवाज़ केस लिखे या बनाए गए हैं)।", "पंजाबी, गुजराती, मराठी, कन्नड़, तमिल में असली बोलने वालों पर सटीकता।", "CDSCO की सूची देर से आती है; बीच के समय की चेतावनियाँ हमें नहीं दिखतीं।", "नकली दवा असली बैच नंबर छाप सकती है, इसलिए धूसर उसे नहीं नकार सकता।"]
           : ["Accuracy on real strip photos.", "Accuracy on real users' voices (all voice cases are written or generated).", "Accuracy with real Punjabi, Gujarati, Marathi, Kannada and Tamil speakers.", "CDSCO lists arrive late; alerts in between are not visible to us.", "A counterfeit can copy a real batch number, so GREY cannot rule it out."]
-        ).map((x) => <p key={x} className="flex gap-2"><Minus size={18} className="mt-0.5 shrink-0 text-amber-ink" aria-hidden /> {x}</p>)}
+        ).map((x) => <p key={x} className="flex gap-2"><Minus size={18} className="mt-0.5 shrink-0 text-muted" aria-hidden /> {x}</p>)}
       </Card>
       <InfoToolNote className="mt-5" />
       <p className="mt-5 text-center text-[14px] text-muted">Built by Neeraj Kumar</p>
@@ -299,7 +298,7 @@ export function Invite() {
         <span className="mx-auto grid h-16 w-16 place-items-center rounded-3xl bg-brand-50 text-brand-700"><Users size={32} /></span>
         <h2 className="mt-3 text-[22px] font-bold leading-snug">{hi ? "परिवार के किसी सदस्य ने आपको जोड़ा है" : "A family member invited you"}</h2>
         <p className="mt-2 text-[16px] leading-snug text-muted">{hi ? "स्वीकार करने पर, उनकी सहेजी किसी दवा पर सरकारी चेतावनी आए तो इस फ़ोन पर सूचना आएगी। हम आपका नाम या नंबर नहीं रखते, सिर्फ़ सूचना भेजने का कोड।" : "If you accept, this phone gets a notification when one of their saved medicines appears in an official alert. We keep no name or number, only a notification code."}</p>
-        {state !== "idle" && state !== "busy" && <p className={cx("mt-4 rounded-2xl p-3 text-[16px] font-semibold", state === "ok" ? "bg-brand-50 text-brand-900" : "bg-amber-soft text-amber-ink")} data-testid="invite-state">{MSG[state]}</p>}
+        {state !== "idle" && state !== "busy" && <p className={cx("mt-4 rounded-2xl p-3 text-[16px] font-semibold", state === "ok" ? "bg-brand-50 text-brand-900" : "bg-grey-soft text-ink")} data-testid="invite-state">{MSG[state]}</p>}
         {state !== "ok" && <Button full className="mt-5" icon={<ShieldCheck size={21} />} disabled={state === "busy"} onClick={async () => { setState("busy"); setState(await acceptInvite(code, lang)); }} data-testid="invite-accept">{hi ? "स्वीकार करें" : "Accept"}</Button>}
       </Card>
     </Page>
@@ -312,7 +311,6 @@ export function FirstRun({ onDone }: { onDone: () => void }) {
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center bg-ink/50 p-0 backdrop-blur-sm sm:items-center sm:p-6" role="dialog" aria-modal="true" aria-labelledby="fr-title" data-testid="first-run">
       <motion.div initial={{ y: 40, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="max-h-[92dvh] w-full max-w-[440px] overflow-y-auto rounded-t-[32px] bg-paper p-6 sm:rounded-[32px]">
-        <LanguagePicker className="mb-5" />
         <h2 id="fr-title" className="flex items-center gap-2 text-[24px] font-bold"><HelpCircle className="text-brand-600" /> {FIRST_RUN.title[lang]}</h2>
         <ul className="mt-4 space-y-3">
           {FIRST_RUN.points.map((p) => (

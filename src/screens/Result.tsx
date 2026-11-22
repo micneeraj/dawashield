@@ -11,6 +11,8 @@ import { RecordCard } from "../components/RecordCard";
 import { HowMade, RedFacts, WhyPanel } from "../components/ResultParts";
 import { CalendarButton, DemoBadge, GreyNextSteps, SourceBlock, WhatItMeans, WrongResultSheet } from "../components/ResultExtras";
 import { PushOffer } from "../components/PushOffer";
+import { CallButtons } from "../components/Calls";
+import { showCallButtons } from "../lib/profile";
 import { Sheet } from "../components/Sheet";
 import { DISPOSAL, ERRORS, EXPIRY, OFFICIAL, VOICE, familyMessage } from "../content/messages";
 import { askChat, explainRecord, startRecordChat } from "../lib/ai";
@@ -51,6 +53,7 @@ export default function Result() {
       <ResultHeadline check={check} />
       {level === "UNREADABLE" && <UnreadableActions check={check} />}
       <WhatToDo check={check} />
+      {showCallButtons(level) && <CallButtons />}
       {level === "RED" && result.records[0] && <RedFacts r={result.records[0]} />}
       {level !== "UNREADABLE" && <WhatItMeans check={check} />}
       {greyNote && <OtherMedicineDetails check={check} />}
@@ -314,7 +317,7 @@ function FamilySheet({ open, onClose, onSent }: { open: boolean; onClose: () => 
       <p className="mb-2 text-[16px] font-semibold">{t("sendTo")}</p>
       <div className="space-y-2">
         {members.map((m) => (
-          <Button key={m.id} full variant="secondary" className="justify-start" icon={<MessageCircle size={21} className="text-[#1f9d55]" />} onClick={() => send(m.name, m.phone)}>
+          <Button key={m.id} full variant="secondary" className="justify-start" icon={<MessageCircle size={21} className="text-brand-700" />} onClick={() => send(m.name, m.phone)}>
             {m.name}{m.relation ? ` · ${m.relation}` : ""}
           </Button>
         ))}

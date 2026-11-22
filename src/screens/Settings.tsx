@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { ChevronRight, Cpu, Database, Info, Languages, Lock, RefreshCw, CheckCircle2, Sparkles, Volume2, WifiOff, HardDriveDownload, ScrollText } from "lucide-react";
 import { PushOffer } from "../components/PushOffer";
+import { ContactsCard } from "../components/Calls";
+import { NameField } from "../components/Welcome";
+import { getNickname, setNickname } from "../lib/profile";
 import { LanguagePicker } from "../components/Language";
 import { useApp } from "../state";
 import { Button, Card, Page, cx } from "../components/ui";
@@ -29,15 +32,16 @@ export default function Settings() {
   const [syncMsg, setSyncMsg] = useState("");
   useEffect(() => { nanoAvailability().then(setNano); nanoAvailability(true).then(setNanoImg); }, []);
   const m = dataset?.meta;
+  const [nick, setNick] = useState(getNickname);
 
   return (
     <Page title={t("settings")} onBack={() => go({ name: "home" })}>
       {/* Dataset box */}
       <Card className="overflow-hidden" >
-        <div className="flex items-center gap-3 bg-gradient-to-br from-brand-700 to-brand-900 px-5 py-4 text-white">
+        <div className="flex items-center gap-3 hero-brand px-5 py-4 text-white">
           <Database size={24} />
           <span className="whitespace-nowrap text-[19px] font-bold">{t("dataset")}</span>
-          <span className={cx("ml-auto inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-3 py-1 text-[13px] font-semibold", dataset ? "bg-white/15" : "bg-amber-ink")}>
+          <span className={cx("ml-auto inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-3 py-1 text-[13px] font-semibold", dataset ? "bg-white/15" : "bg-white/25")}>
             {dataset ? <><CheckCircle2 size={15} /> {t("availableOffline")}</> : t("notOffline")}
           </span>
         </div>
@@ -73,6 +77,9 @@ export default function Settings() {
       </Card>
 
       <Card className="mt-4 divide-y divide-line/70">
+        <div className="p-4" data-testid="settings-name">
+          <NameField value={nick} onChange={(v) => { setNick(v); setNickname(v); }} />
+        </div>
         <div className="flex flex-col gap-2 p-4">
           <span className="flex items-center gap-2 text-[17px] font-semibold"><Languages size={20} className="text-brand-600" /> {t("language")}</span>
           <LanguagePicker />
@@ -98,6 +105,8 @@ export default function Settings() {
           </span>
         </div>
       </Card>
+
+      <ContactsCard className="mt-4" />
 
       <PushOffer settings className="mt-4" />
       <p className="mt-2 flex items-center gap-1.5 px-1 text-[14px] text-muted"><HardDriveDownload size={15} aria-hidden /> {lang === "hi" ? "सूचना नहीं चाहिए? हर दवा पर 'कैलेंडर में जोड़ें' भी है।" : "Prefer no notifications? Every medicine also has 'Add expiry to my calendar'."}</p>

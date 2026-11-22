@@ -76,7 +76,7 @@ export function PipelineStrip({ check }: { check: CheckState }) {
     <ol className="mt-4 rounded-2xl bg-white/80 p-3 ring-1 ring-black/5" data-testid="pipeline" data-source={u ? src ?? "local" : "typed"}>
       <li className="flex gap-3">
         <span className="flex flex-col items-center">
-          <span className={cx("grid h-8 w-8 shrink-0 place-items-center rounded-full text-white", src === "cloud" && u ? "bg-sky-600" : "bg-brand-700")}><Icon1 size={16} /></span>
+          <span className={cx("grid h-8 w-8 shrink-0 place-items-center rounded-full text-white", src === "cloud" && u ? "bg-brand-800" : "bg-accent-strong")}><Icon1 size={16} /></span>
           <span className="my-1 w-0.5 flex-1 bg-line" />
         </span>
         <div className="pb-3">
@@ -123,7 +123,7 @@ export function HowMade({ check }: { check: CheckState }) {
           {steps.length === 0 && <li className="py-3 text-[15px] text-muted">{L.noAiCalls[lang]}</li>}
           {steps.map((st, i) => (
             <li key={i} className="flex items-center gap-3 py-3" data-testid="how-step" data-source={st.source}>
-              <span className={cx("grid h-8 w-8 shrink-0 place-items-center rounded-full", st.source === "cloud" ? "bg-sky-50 text-sky-700" : "bg-brand-50 text-brand-700")}>
+              <span className={cx("grid h-8 w-8 shrink-0 place-items-center rounded-full", st.source === "cloud" ? "bg-accent-soft text-brand-800" : "bg-brand-50 text-brand-700")}>
                 {st.source === "cloud" ? <Cloud size={16} /> : <Smartphone size={16} />}
               </span>
               <span className="flex-1">

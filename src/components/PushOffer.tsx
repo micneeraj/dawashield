@@ -60,8 +60,8 @@ export function PushOffer({ className, settings }: { className?: string; setting
       <p className="mt-3 flex items-start gap-2 rounded-2xl bg-paper px-3.5 py-3 text-[14.5px] leading-snug text-muted" data-testid="push-consent">
         <ShieldCheck size={18} className="mt-0.5 shrink-0 text-brand-600" aria-hidden /> {PUSH_TXT.stored[lang]}
       </p>
-      {supported === false && <p className="mt-3 text-[15px] font-semibold text-amber-ink">{PUSH_TXT.unsupported[lang]}</p>}
-      {msg && <p className="mt-3 text-[15px] font-semibold text-amber-ink" role="alert">{msg}</p>}
+      {supported === false && <p className="mt-3 text-[15px] font-semibold text-ink">{PUSH_TXT.unsupported[lang]}</p>}
+      {msg && <p className="mt-3 text-[15px] font-semibold text-ink" role="alert">{msg}</p>}
       <div className="mt-4 grid grid-cols-2 gap-3">
         {on ? (
           <Button variant="secondary" className="col-span-2" icon={<BellOff size={20} />} disabled={busy} onClick={turnOff} data-testid="push-off">{PUSH_TXT.off[lang]}</Button>

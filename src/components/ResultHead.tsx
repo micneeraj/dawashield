@@ -55,12 +55,13 @@ export function ResultHeadline({ check }: { check: CheckState }) {
       initial={{ opacity: 0, y: 14, scale: 0.98 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.35, ease: "easeOut" }}
-      className={cx("rounded-[28px] border-2 p-5", s.bg, s.line)}
+      className={cx("relative overflow-hidden rounded-[24px] border-2 p-5 pl-7 shadow-soft", s.bg, s.line)}
       data-testid="result"
       data-level={level}
       data-reason={result.reason}
       aria-live="assertive"
     >
+      <span className={cx("absolute inset-y-0 left-0 w-2.5", s.bar)} data-testid="result-bar" aria-hidden />
       <div className="flex items-center gap-3">
         <span className={cx("grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-white shadow-soft", s.ink)}>
           <Icon size={30} strokeWidth={2.2} aria-hidden />

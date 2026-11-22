@@ -117,7 +117,7 @@ export default function Photo() {
       <input ref={camRef} type="file" accept="image/*" capture="environment" className="hidden" onChange={(e) => { onFile(e.target.files?.[0]); e.target.value = ""; }} />
       <input ref={galRef} type="file" accept="image/*" className="hidden" onChange={(e) => { onFile(e.target.files?.[0]); e.target.value = ""; }} data-testid="photo-input" />
 
-      <div className="mb-3 flex items-start gap-2.5 rounded-2xl bg-amber-soft px-4 py-3 text-[16px] font-medium leading-snug text-amber-ink" data-testid="photo-tip">
+      <div className="mb-3 flex items-start gap-2.5 rounded-2xl bg-accent-soft px-4 py-3 text-[16px] font-medium leading-snug text-brand-900" data-testid="photo-tip">
         <Lightbulb size={20} className="mt-0.5 shrink-0" aria-hidden />
         <div>
           {TIP[lang]}
@@ -127,7 +127,7 @@ export default function Photo() {
       </div>
 
       <Card className="overflow-hidden">
-        <div className={cx("relative grid aspect-[4/3] place-items-center bg-gradient-to-br from-brand-50 to-[#f3efe6]", previews.length > 0 && "bg-ink")}>
+        <div className={cx("relative grid aspect-[4/3] place-items-center bg-gradient-to-br from-brand-50 to-accent-soft", previews.length > 0 && "bg-ink")}>
           {previews.length ? (
             <div className={cx("grid h-full w-full gap-1", previews.length === 2 && "grid-cols-2")}>
               {previews.map((p) => <img key={p} src={p} alt="" className="h-full w-full object-contain" />)}
@@ -139,7 +139,7 @@ export default function Photo() {
             </div>
           )}
           {busy && (
-            <motion.div className="absolute inset-x-6 h-1 rounded-full bg-brand-300 shadow-[0_0_24px_4px_rgba(63,156,142,0.7)]" initial={{ top: "10%" }} animate={{ top: ["10%", "88%", "10%"] }} transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }} />
+            <motion.div className="absolute inset-x-6 h-1 rounded-full bg-accent shadow-accent" initial={{ top: "10%" }} animate={{ top: ["10%", "88%", "10%"] }} transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }} />
           )}
         </div>
       </Card>
