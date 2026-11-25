@@ -31,6 +31,10 @@ const NOT_FOUND = { hi: "नहीं मिला", en: "Not found" };
 const CONF = { hi: "भरोसा", en: "Confidence" };
 const PLEASE_CONFIRM = { hi: "कृपया पक्का कीजिए: पत्ते से मिलाकर ठीक कीजिए", en: "Please confirm: check it against the strip and correct it" };
 const KEYPAD = { hi: "बड़े बटन से बैच डालें", en: "Enter batch with big buttons" };
+const YOU_SAID = { hi: "आपने कहा", en: "You said" };
+const HEARD_BATCH = { hi: "बोले गए बैच को पत्ते से मिलाइए", en: "Check the spoken batch against the strip" };
+const CHECK_CHARS = { hi: "इन अक्षरों को पत्ते पर देखिए (O या 0, I या 1, B या 8, S या 5)", en: "Check these characters on the strip (O or 0, I or 1, B or 8, S or 5)" };
+const CANCEL = { hi: "रद्द करें", en: "Cancel" };
 
 const LABELS: Record<LabelKey, { hi: string; en: string }> = {
   name: { hi: "दवा का नाम", en: "Medicine" },
@@ -42,6 +46,8 @@ const LABELS: Record<LabelKey, { hi: string; en: string }> = {
 export default function Photo() {
   const { t, lang, online, screen, say, go, noteAi } = useApp();
   const prefill = screen.name === "photo" ? screen.prefill : undefined;
+  // A batch heard by speech: an editable candidate on this confirm screen, never checked until Confirm.
+  const spoken = prefill?.spoken;
   const runCheck = useRunCheck();
   const camRef = useRef<HTMLInputElement>(null);
   const galRef = useRef<HTMLInputElement>(null);
@@ -62,7 +68,7 @@ export default function Photo() {
     return () => clearInterval(id);
   }, [busy]);
   const [reading, setReading] = useState<LabelReading | null>(null);
-  const [form, setForm] = useState<Record<LabelKey, string>>({ name: prefill?.name ?? "", manufacturer: "", batch: "", expiry: "" });
+  const [form, setForm] = useState<Record<LabelKey, string>>({ name: prefill?.name ?? "", manufacturer: "", batch: spoken?.candidate ?? "", expiry: "" });
   const [edited, setEdited] = useState<Partial<Record<LabelKey, boolean>>>({});
   const [keypad, setKeypad] = useState(false);
 
@@ -108,7 +114,7 @@ export default function Photo() {
     setForm({ name: prefill?.name ?? "", manufacturer: "", batch: "", expiry: "" });
   }
 
-  const showConfirm = (reading || error) && !busy;
+  const showConfirm = (reading || error || spoken) && !busy;
   const lastSource = sources[sources.length - 1];
   const expAsk = expiryAsk(form.expiry, reading, { confirmed: expiryOk, edited: !!edited.expiry });
 
@@ -117,16 +123,16 @@ export default function Photo() {
       <input ref={camRef} type="file" accept="image/*" capture="environment" className="hidden" onChange={(e) => { onFile(e.target.files?.[0]); e.target.value = ""; }} />
       <input ref={galRef} type="file" accept="image/*" className="hidden" onChange={(e) => { onFile(e.target.files?.[0]); e.target.value = ""; }} data-testid="photo-input" />
 
-      <div className="mb-3 flex items-start gap-2.5 rounded-2xl bg-accent-soft px-4 py-3 text-[16px] font-medium leading-snug text-brand-900" data-testid="photo-tip">
+      {!spoken && <div className="mb-3 flex items-start gap-2.5 rounded-2xl bg-accent-soft px-4 py-3 text-[16px] font-medium leading-snug text-brand-900" data-testid="photo-tip">
         <Lightbulb size={20} className="mt-0.5 shrink-0" aria-hidden />
         <div>
           {TIP[lang]}
           <p className="mt-1.5 text-[14px] font-normal">{TIP_EXAMPLE[lang]}:</p>
           <p className="num mt-1 inline-block rounded-lg bg-white px-2.5 py-1 text-[15px] font-bold tracking-wide text-ink" data-testid="photo-tip-example">B.No. E166L26 · EXP. JUN 2028</p>
         </div>
-      </div>
+      </div>}
 
-      <Card className="overflow-hidden">
+      {!spoken && <Card className="overflow-hidden">
         <div className={cx("relative grid aspect-[4/3] place-items-center bg-gradient-to-br from-brand-50 to-accent-soft", previews.length > 0 && "bg-ink")}>
           {previews.length ? (
             <div className={cx("grid h-full w-full gap-1", previews.length === 2 && "grid-cols-2")}>
@@ -142,9 +148,9 @@ export default function Photo() {
             <motion.div className="absolute inset-x-6 h-1 rounded-full bg-accent shadow-accent" initial={{ top: "10%" }} animate={{ top: ["10%", "88%", "10%"] }} transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }} />
           )}
         </div>
-      </Card>
+      </Card>}
 
-      {!busy && !reading && !closer && (
+      {!busy && !reading && !closer && !spoken && (
         <>
           <div className="mt-4 grid grid-cols-2 gap-3">
             <Button icon={<Camera size={22} />} onClick={() => camRef.current?.click()}>{t("takePhoto")}</Button>
@@ -184,6 +190,13 @@ export default function Photo() {
           data-testid="confirm-screen"
           onSubmit={(e) => {
             e.preventDefault();
+            if (spoken) {
+              runCheck({ name: form.name, batch: form.batch, unreadable: photoUnreadable(null, form, !!edited.batch), understood: { via: "speech", heard: spoken.transcript, items: [
+                { label: { hi: "दवा", en: "Medicine" }, value: form.name },
+                { label: { hi: "बैच", en: "Batch" }, value: form.batch },
+              ] } });
+              return;
+            }
             runCheck({ name: form.name, manufacturer: form.manufacturer, batch: form.batch, expiry: expiryForCheck(form.expiry, { confirmed: expiryOk }), unreadable: photoUnreadable(reading, form, !!edited.batch), readSource: lastSource, aiSteps: steps, understood: { via: "photo", items: [
               ...(reading?.batch.value ? [{ label: { hi: "बैच", en: "Batch" }, value: reading.batch.value }] : []),
               ...(reading?.expiry.value ? [{ label: { hi: "EXP", en: "EXP" }, value: reading.expiry.value }] : []),
@@ -196,10 +209,21 @@ export default function Photo() {
             {lastSource && <SourceChip source={lastSource} />}
           </div>
 
+          {spoken && (
+            <div className="rounded-3xl bg-white p-4 ring-1 ring-line" data-testid="spoken-transcript">
+              <p className="text-[14px] font-semibold uppercase tracking-wide text-muted">{YOU_SAID[lang]}</p>
+              <p className="mt-1 text-[20px] font-medium text-ink" translate="no">“{spoken.transcript}”</p>
+              <p className="mt-2 text-[15px] text-muted">{HEARD_BATCH[lang]}</p>
+            </div>
+          )}
+
           {(["name", "manufacturer", "batch", "expiry"] as LabelKey[]).map((k) => {
+            if (spoken && k === "manufacturer") return null;
+            if (spoken && k === "expiry") return null;
             const f = reading?.[k] ?? {};
             const ask = k === "expiry" && expAsk;
-            const warn = ask || (!edited[k] && !(k === "expiry" && expiryOk) && (needsCheck(f) || !form[k]));
+            const spokenBatchCheck = !!spoken && k === "batch" && !edited.batch;
+            const warn = ask || spokenBatchCheck || (!spoken && !edited[k] && !(k === "expiry" && expiryOk) && (needsCheck(f) || !form[k]));
             const big = k === "batch" || k === "expiry";
             return (
               <div key={k} className={cx("rounded-3xl border-2 p-4 transition", warn ? "border-amber-line bg-amber-soft" : "border-line bg-white")} data-testid={`field-${k}`} data-uncertain={warn ? "1" : "0"}>
@@ -222,10 +246,17 @@ export default function Photo() {
                     data-testid={`input-${k}`}
                   />
                 </label>
-                <p className="mt-1.5 text-[14px] leading-snug text-muted">
-                  {SOURCE[lang]}: <span className="font-medium text-ink/80">{f.source ? `“${f.source}”` : NOT_FOUND[lang]}</span>
-                </p>
-                {warn && <p className="mt-1 text-[15px] font-semibold text-amber-ink" data-testid={ask ? "expiry-check" : undefined}>{ask ? EXPIRY_CHECK[lang] : big && f.value ? PLEASE_CONFIRM[lang] : CHECK_ON_STRIP[lang]}</p>}
+                {!spoken && (
+                  <p className="mt-1.5 text-[14px] leading-snug text-muted">
+                    {SOURCE[lang]}: <span className="font-medium text-ink/80">{f.source ? `“${f.source}”` : NOT_FOUND[lang]}</span>
+                  </p>
+                )}
+                {spokenBatchCheck && spoken.ambiguous.length > 0 && (
+                  <p className="mt-1 text-[15px] font-semibold text-amber-ink" data-testid="batch-ambiguous">
+                    {CHECK_CHARS[lang]}: <span className="num">{spoken.ambiguous.map((a) => a.char).join(" ")}</span>
+                  </p>
+                )}
+                {warn && <p className="mt-1 text-[15px] font-semibold text-amber-ink" data-testid={ask ? "expiry-check" : undefined}>{ask ? EXPIRY_CHECK[lang] : spokenBatchCheck ? CHECK_ON_STRIP[lang] : big && f.value ? PLEASE_CONFIRM[lang] : CHECK_ON_STRIP[lang]}</p>}
                 {k === "batch" && (
                   <button type="button" onClick={() => setKeypad(true)} className="mt-2 inline-flex min-h-12 items-center gap-2 rounded-2xl border border-line bg-white px-4 text-[16px] font-semibold text-brand-800"><Grid3x3 size={20} /> {KEYPAD[lang]}</button>
                 )}
@@ -237,15 +268,20 @@ export default function Photo() {
           })}
 
           <Button type="submit" full icon={<CheckCircle2 size={22} />} disabled={!form.batch && !form.name} data-testid="confirm-btn">{CONFIRM_BTN[lang]}</Button>
-          <div className="grid grid-cols-2 gap-3">
-            {previews.length < 2 ? (
-              <Button type="button" variant="secondary" icon={<ImagePlus size={21} />} onClick={() => camRef.current?.click()}>{ADD_SIDE[lang]}</Button>
-            ) : <span />}
-            <Button type="button" variant="ghost" icon={<RotateCcw size={20} />} onClick={retake}>{RETAKE[lang]}</Button>
-          </div>
+          {spoken ? (
+            <Button type="button" variant="ghost" icon={<RotateCcw size={20} />} onClick={() => go({ name: "voice" })} data-testid="spoken-cancel">{CANCEL[lang]}</Button>
+          ) : (
+            <div className="grid grid-cols-2 gap-3">
+              {previews.length < 2 ? (
+                <Button type="button" variant="secondary" icon={<ImagePlus size={21} />} onClick={() => camRef.current?.click()}>{ADD_SIDE[lang]}</Button>
+              ) : <span />}
+              <Button type="button" variant="ghost" icon={<RotateCcw size={20} />} onClick={retake}>{RETAKE[lang]}</Button>
+            </div>
+          )}
         </motion.form>
       )}
       <BatchKeypad open={keypad} value={form.batch} onClose={() => setKeypad(false)} onDone={(v) => {
+        if (spoken) { setForm({ ...form, batch: v }); setEdited({ ...edited, batch: true }); return; }
         if (!reading) { go({ name: "type", prefill: { name: form.name, batch: v } }); return; }
         setForm({ ...form, batch: v }); setEdited({ ...edited, batch: true });
       }} />

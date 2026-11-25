@@ -3,19 +3,32 @@
 let displayLocale: string | null = null;
 export function setDisplayLocale(l: string | null) { displayLocale = l; }
 const loc = (lang: "hi" | "en") => displayLocale ?? (lang === "hi" ? "hi-IN" : "en-IN");
+const ENGLISH = "en-IN";
+
+/** Pure: a browser that has no month-name data for a locale prints a numeric pattern
+ *  such as "2026 M09" (seen for Punjabi). That is not a month name, so we reject it. */
+export function looksLikeWords(s: string): boolean {
+  return /\p{L}/u.test(s) && !/M\d{1,2}\b/.test(s);
+}
+
+/** Format with the requested locale; if that locale gives no month words, use English. */
+export function localeDate(d: Date, opts: Intl.DateTimeFormatOptions, locale: string): string {
+  const out = d.toLocaleDateString(locale, opts);
+  return looksLikeWords(out) ? out : d.toLocaleDateString(ENGLISH, opts);
+}
 
 export function monthLabel(key: string | null | undefined, lang: "hi" | "en"): string {
   if (!key) return "—";
   const [y, m] = key.split("-").map(Number);
   if (!y || !m) return key;
-  return new Date(y, m - 1, 1).toLocaleDateString(loc(lang), { month: "long", year: "numeric" });
+  return localeDate(new Date(y, m - 1, 1), { month: "long", year: "numeric" }, loc(lang));
 }
 
 export function dateLabel(iso: string | null | undefined, lang: "hi" | "en"): string {
   if (!iso) return "—";
   const d = new Date(iso);
   if (isNaN(+d)) return iso;
-  return d.toLocaleDateString(loc(lang), { day: "numeric", month: "short", year: "numeric" });
+  return localeDate(d, { day: "numeric", month: "short", year: "numeric" }, loc(lang));
 }
 
 /** CDSCO alerts page: used when the exact monthly PDF of an alert is not known. */

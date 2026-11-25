@@ -9,11 +9,12 @@ import { setDisplayLocale } from "./lib/format";
 import type { DatasetMeta, MatchResult, Source } from "./lib/types";
 import type { StripReading } from "./lib/json";
 import type { AiStep } from "./lib/ai";
+import type { SpokenBatch } from "./lib/spokenBatch";
 
 export type Screen =
   | { name: "home" }
   | { name: "voice" }
-  | { name: "photo"; prefill?: Partial<CheckInput> }
+  | { name: "photo"; prefill?: Partial<CheckInput> & { spoken?: SpokenBatch } }
   | { name: "type"; prefill?: Partial<CheckInput> }
   | { name: "result" }
   | { name: "cabinet" }

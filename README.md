@@ -6,6 +6,12 @@
 
 Entry for Google's **#BuildHybridAI 2026** hackathon. Live: **https://dawashield-hybrid-3023.web.app**
 
+## Demo video
+
+**Watch the demo:** https://youtu.be/wt3f4JoVaeQ — a short walkthrough of the voice, photo and typed checks against the official CDSCO list.
+
+Built by Neeraj Kumar.
+
 ---
 
 ## The problem

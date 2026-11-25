@@ -80,12 +80,19 @@ export async function candidatesFromSpeech(transcript: string): Promise<AiText<s
 
 const SPEECH_LANG: Record<string, string> = { hi: "Hindi", en: "English (Indian)", pa: "Punjabi", gu: "Gujarati", mr: "Marathi", kn: "Kannada", ta: "Tamil" };
 
+/** The script each language must be written in. Punjabi is Gurmukhi, never Devanagari. */
+const SPEECH_SCRIPT: Record<string, string> = {
+  hi: "Devanagari", en: "Latin", pa: "Gurmukhi", gu: "Gujarati", mr: "Devanagari", kn: "Kannada", ta: "Tamil",
+};
+
 /** Pure: the transcription-only prompt. The model never picks a medicine or a result. */
 export function transcribePrompt(lang: string): string {
   const name = SPEECH_LANG[lang] ?? "the spoken language";
+  const script = SPEECH_SCRIPT[lang] ?? "its native";
+  const never = lang === "pa" ? " Never write Punjabi in Devanagari." : "";
   return (
     `Transcribe this short audio clip exactly as spoken. The speaker is in India and is most likely saying a medicine name, ` +
-    `possibly with a few ${name} words around it. Write ${name} words in their native script; write medicine brand or generic ` +
+    `possibly with a few ${name} words around it. Write ${name} words in ${script} script.${never} Write medicine brand or generic ` +
     `names as they sound (Latin or native script, whichever fits). Do not translate, correct, explain or add anything. ` +
     `Reply with only the transcript text. If there is no speech, reply with nothing.`
   );

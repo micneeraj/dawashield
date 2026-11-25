@@ -16,7 +16,7 @@ import { getDictionary } from "../lib/dictionary";
 import { VOICE } from "../content/messages";
 import { speechErrorKey, type ErrorKey } from "../lib/errors";
 import { useRunCheck } from "../useCheck";
-import { spokenBatchUnreadable } from "../lib/label";
+import { extractSpokenBatch, medicinePhrase, type SpokenBatch } from "../lib/spokenBatch";
 import type { Source } from "../lib/types";
 
 type Step = "listen" | "think" | "pick" | "batch";
@@ -53,8 +53,9 @@ export default function Voice() {
   const [batch, setBatch] = useState("");
   const [batchListening, setBatchListening] = useState(false);
   const [keypad, setKeypad] = useState(false);
-  const [batchHeard, setBatchHeard] = useState(false);
   const rec = useRef<Listener | null>(null);
+  // Batch number heard in the medicine utterance ("Dolo batch 251TTF014"), used on the confirm screen.
+  const heardBatch = useRef<SpokenBatch | null>(null);
 
   const startListening = async () => {
     setNotUnderstood(false);
@@ -113,16 +114,19 @@ export default function Voice() {
 
   async function understand(text: string, transcribed = false) {
     setStep("think");
+    heardBatch.current = extractSpokenBatch(text, true);
+    // The batch words are not part of the medicine name: match only the phrase before "batch".
+    const phrase = medicinePhrase(text);
     const records = dataset?.records ?? [];
     // 1. Rule-based, offline: fuzzy + phonetic match against the medicine dictionary.
     const dict = getDictionary(records);
-    const local = matchSpoken(text, dict, 4).map((m) => m.entry.name);
+    const local = matchSpoken(phrase, dict, 4).map((m) => m.entry.name);
     // 2. Extra, only when available: AI candidates (Nano on device, else Flash in cloud).
     let aiNames: string[] = [];
     if (!transcribed) traceStart(); // keep the transcription step in the trace
     if (online) {
       try {
-        const r = await withTimeout(candidatesFromSpeech(text), local.length ? 6000 : 12000);
+        const r = await withTimeout(candidatesFromSpeech(phrase), local.length ? 6000 : 12000);
         aiNames = r.value.flatMap((n) => matchSpoken(n, dict, 1).map((m) => m.entry.name));
         setAiSource(r.source);
         noteAi(r.source);
@@ -158,8 +162,17 @@ export default function Voice() {
     aiSteps: steps,
   });
 
+  /** Go to the confirm screen with the spoken batch as an editable candidate (nothing is checked yet). */
+  function toConfirm(medicine: string, sb: SpokenBatch) {
+    go({ name: "photo", prefill: { name: medicine, spoken: sb } });
+  }
+
   function pick(n: string) {
     setName(n);
+    const sb = heardBatch.current;
+    if (sb?.status === "ok" || sb?.status === "ambiguous") { toConfirm(n, sb); return; }
+    // Batch words were heard but are incomplete: open manual entry, never guess.
+    if (sb?.status === "incomplete") { go({ name: "type", prefill: { name: n } }); return; }
     setStep("batch");
     say(VOICE.askBatch.clip);
   }
@@ -168,7 +181,14 @@ export default function Voice() {
     if (batchListening) { rec.current?.stop(); return; }
     setBatchListening(true);
     // Batch numbers are letters and digits: English recognition handles them best.
-    rec.current = await listen("en", (txt) => { setBatch(txt.replace(/\s+/g, "").toUpperCase()); setBatchHeard(true); }, () => setBatchListening(false));
+    // The whole utterance is the batch here, so no "batch" keyword is needed.
+    rec.current = await listen("en", () => {}, (finalText) => {
+      setBatchListening(false);
+      const sb = extractSpokenBatch(finalText, false);
+      if (sb.status === "ok" || sb.status === "ambiguous") toConfirm(name, sb);
+      else if (sb.status === "incomplete") go({ name: "type", prefill: { name } });
+      else if (finalText) { setBatch(finalText.replace(/\s+/g, "").toUpperCase()); }
+    });
     if (!rec.current) setBatchListening(false);
   }
 
@@ -256,10 +276,10 @@ export default function Voice() {
               <button className="tap rounded-2xl px-3 text-[15px] font-semibold text-brand-700 hover:bg-brand-50" onClick={() => setStep("pick")}>{lang === "hi" ? "बदलें" : "Change"}</button>
             </Card>
             <p className="mt-5 text-[19px] font-medium leading-snug text-ink">{VOICE.askBatch.text[lang]}</p>
-            <form className="mt-4" onSubmit={(e) => { e.preventDefault(); runCheck({ name, batch, unreadable: batchHeard && spokenBatchUnreadable(batch), ...spoken() }); }}>
+            <form className="mt-4" onSubmit={(e) => { e.preventDefault(); runCheck({ name, batch, ...spoken() }); }}>
               <Field label={t("batchNo")} hint={t("batchHint")}>
                 <div className="flex gap-2">
-                  <input value={batch} onChange={(e) => { setBatch(e.target.value.toUpperCase()); setBatchHeard(false); }} className={cx(inputCls, "num text-[26px] font-bold tracking-wider")} placeholder="B.No." autoCapitalize="characters" autoComplete="off" data-testid="batch-input" />
+                  <input value={batch} onChange={(e) => setBatch(e.target.value.toUpperCase())} className={cx(inputCls, "num text-[26px] font-bold tracking-wider")} placeholder="B.No." autoCapitalize="characters" autoComplete="off" data-testid="batch-input" />
                   <button type="button" onClick={listenBatch} aria-label={t("tapToSpeak")} className={cx("tap grid w-16 shrink-0 place-items-center rounded-2xl text-white", batchListening ? "bg-brand-900" : "bg-brand-700")}>
                     <Mic size={26} />
                   </button>
@@ -277,7 +297,7 @@ export default function Voice() {
           </motion.div>
         )}
       </AnimatePresence>
-      <BatchKeypad open={keypad} value={batch} onClose={() => setKeypad(false)} onDone={(v) => { setBatch(v); setBatchHeard(false); }} />
+      <BatchKeypad open={keypad} value={batch} onClose={() => setKeypad(false)} onDone={(v) => setBatch(v)} />
     </Page>
   );
 }
