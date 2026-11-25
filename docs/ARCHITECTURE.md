@@ -73,7 +73,7 @@ Every AI answer carries the SDK's real `inferenceSource`, shown as **"On this de
 | Exact batch, company uncertain / different / medicine name differs | **AMBER — possible match** |
 | Batch one character off, OCR look-alike (0/O, 1/I/L, 5/S, 8/B, 2/Z) or incomplete, for a related medicine or company | **AMBER — possible match** |
 | Same company **and** same medicine, different batch | **AMBER — other batches flagged** |
-| Same company, **different** medicine | **GREY** + small note: *"This company has a different medicine on the official list (<medicine>, <month>). Your medicine is not affected."* Record behind "See details"; no family-alert or report buttons |
+| Same company, **different** medicine | **GREY** + small note: *"This company has a different medicine on the official list (<medicine>, <month>). This alert is for a different medicine, not your batch."* Record behind "See details"; no family-alert or report buttons |
 | No record | **GREY**: *"No official alert for this exact batch. This does not prove the medicine is safe. Official alerts can be delayed."* |
 | Photo/voice too unclear (photo batch confidence < 0.45, or spoken batch < 3 characters / no digit) | **CAN'T READ CLEARLY**: keypad or retake; never shown as GREY |
 

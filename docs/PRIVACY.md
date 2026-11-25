@@ -54,6 +54,8 @@ Medicine names are therefore **not** kept only on the device. They leave the pho
 
 The app downloads `meta.json` and `nsq.json` from Firebase Hosting. The downloads are not personalised. Hosting logs are kept by Firebase under its own terms.
 
+Real-device check, 25 Nov 2026 (project owner's iPhone, mobile data): a strip photo and a Punjabi voice check were sent to Gemini Flash in the cloud and labelled "Gemini Flash · Cloud" in the app. Those requests carry the photo or clip and the medicine name, as described above.
+
 ## 5. Push notifications: status
 
 Real-device push delivery with the app or browser fully closed is **NOT VERIFIED**. The code path exists (service worker, FCM token, daily job), and its unit and logic checks pass. No test on an Android phone or an iPhone home-screen app has been run, so do not claim closed-app delivery until it has been tested on both.

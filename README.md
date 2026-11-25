@@ -45,7 +45,7 @@ CDSCO, India's drug regulator, and the state drug labs publish lists of medicine
 | Exact batch, company uncertain / different / medicine name differs | **AMBER — possible match** |
 | Batch one character off, OCR look-alike (0/O, 1/I/L, 5/S, 8/B, 2/Z) or incomplete, for a related medicine or company | **AMBER — possible match** |
 | Same company **and** same medicine, different batch | **AMBER — other batches flagged** |
-| Same company, **different** medicine | **GREY** + small note: *"This company has a different medicine on the official list (<medicine>, <month>). Your medicine is not affected."* Record behind "See details"; no family-alert or report buttons |
+| Same company, **different** medicine | **GREY** + small note: *"This company has a different medicine on the official list (<medicine>, <month>). This alert is for a different medicine, not your batch."* Record behind "See details"; no family-alert or report buttons |
 | No record | **GREY**: *"No official alert for this exact batch. This does not prove the medicine is safe. Official alerts can be delayed."* |
 | Photo/voice too unclear (photo batch confidence < 0.45, or spoken batch < 3 characters / no digit) | **CAN'T READ CLEARLY**: keypad or retake; never shown as GREY |
 
@@ -106,6 +106,8 @@ Every AI answer shows **"On this device"** or **"Cloud"**, taken from the SDK's 
 | Photo (`data/eval_images/labels.csv`; add with `npm run add-photo`) | No labelled photos yet: not measured |
 | Privacy: what is stored and what is sent to cloud AI | [`docs/PRIVACY.md`](docs/PRIVACY.md) |
 | Push alerts with the app fully closed | **NOT VERIFIED** on real devices (unit and logic checks only) |
+| Cloud Gemini explanation and strip-photo reading | **Verified on a real iPhone** (mobile data, 25 Nov 2026). The automated laptop retest is pending. See [`docs/HYBRID-AI.md`](docs/HYBRID-AI.md) |
+| On-device Gemini Nano photo reading | **Not verified.** One desktop Chrome attempt showed "On this device" but returned 0% confidence fields |
 | Unit tests | 250 app tests passing; 20 pipeline tests passing (`python -I -m unittest discover -s data -p "test_*.py"`) |
 
 ## What works where

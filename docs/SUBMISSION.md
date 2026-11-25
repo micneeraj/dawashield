@@ -13,7 +13,7 @@ Figures come from the published files: `public/data/meta.json`, `src/content/eva
 - **Speech:** 60 generated Hindi and English transcripts that imitate real speech-recognition output. They are not recordings of real speakers. 98.3% correct at first guess, 100% within three.
 - **Freshness:** the app shows the latest covered alert month, when the dataset last changed, and the last successful source check.
 - **Hybrid AI, implemented:** cloud reading and explanation through Firebase AI Logic with Gemini 3.5 Flash. Offline checking is deterministic code with no model. On-device Gemini Nano is used offline only where the browser reports it available, and the app says so when it is not.
-- **Hybrid AI, verified at runtime:** offline deterministic check (RED, zero network requests while offline). **Not verified:** a successful cloud explanation (the request reached the model and was rejected with a 401 while App Check was throttled), and any on-device Gemini Nano inference (the model reports `unavailable` on the test laptop, Chrome 158). Photo reading accuracy is not measured. See `docs/HYBRID-AI.md`.
+- **Hybrid AI, verified at runtime:** offline deterministic check (RED, zero network requests while offline). **Verified on a real iPhone** (mobile data, 25 Nov 2026): cloud explanation for 251TTF014 with the Cloud badge, Pantosec strip read at 95–99% confidence, and the Punjabi voice check labelled "Gemini Flash · Cloud". **Not verified:** an accurate on-device Gemini Nano photo reading (one desktop Chrome attempt showed "On this device" but returned 0% confidence fields), and the automated laptop retest of the cloud explanation (pending). Photo reading accuracy is not measured across a labelled set. See `docs/HYBRID-AI.md`.
 - **Privacy:** the full list and your cabinet are stored on the phone. Only devices that opt in to push store anything in Firestore: a push token, language, and each saved medicine's batch, company and expiry month. Names, phone numbers and contacts stay on the phone. Strip photos, voice clips, speech transcripts and record text are sent to Gemini when online, and medicine names are included in those requests. See `docs/PRIVACY.md`.
 - **Not verified:** push alerts with the app or browser fully closed, on a real Android phone or iPhone. Photo accuracy: no labelled strip photos yet, so photo reading is **not measured**.
 - **Limitations:**
@@ -32,7 +32,7 @@ The video cannot be edited from this repository. The on-screen figures below com
 | "CDSCO flags 330 drug samples as not of standard quality in September 2026" (news card) | **Verified.** The official portal's September 2026 NSQ table has 330 rows (42 CDSCO Labs, 288 State Labs), plus one spurious entry. The wording traces to an All India Radio report of 23 October 2026 (newsonair.gov.in), with the same figure in other outlets. The card credits All India Radio, which is accurate. |
 | Speech cases described as "real" Hindi transcripts | They are generated transcripts that imitate real speech-recognition output. |
 | Any statement that push works with the app closed | **NOT VERIFIED** on real devices. |
-| Any statement that cloud Gemini explanation works in this release | **NOT VERIFIED**: App Check throttled during testing. |
+| Any statement that cloud Gemini explanation works in this release | **Verified on a real iPhone** (mobile data, 25 Nov 2026). The automated laptop retest is pending. |
 
 ### YouTube description correction (dated)
 
