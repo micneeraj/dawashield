@@ -11,6 +11,7 @@ import { isSmallBox, preparePhoto } from "./image";
 import { toSource } from "./source";
 import { transliterate } from "./normalize";
 import { geminiAudioMime } from "./recorder";
+import { afterCloudFailure, nanoStatusFrom, photoRoute } from "./photoRoute";
 import type { AlertRecord, Source } from "./types";
 
 type Mode = (typeof InferenceMode)[keyof typeof InferenceMode];
@@ -197,16 +198,32 @@ async function readWith(mode: Mode, file: Blob): Promise<AiText<LabelReading>> {
 /** Cloud Gemini Flash first when online; on-device Nano when offline or if the cloud call fails.
  *  Full-resolution photo, two independent reads, zoomed crop when the text is small.
  *  Throws CloserPhotoNeeded instead of guessing when the text is blurry or too small. */
+export class OnDeviceUnavailable extends Error {
+  constructor() { super("on-device-unavailable"); }
+}
+export class OnDeviceFailed extends Error {
+  constructor() { super("on-device-failed"); }
+}
+
 export async function readStrip(file: Blob): Promise<AiText<LabelReading>> {
-  if (navigator.onLine) {
+  const nano = nanoStatusFrom(await nanoAvailability(true));
+  const route = photoRoute(navigator.onLine, nano);
+  if (route === "cloud") {
     try {
       return await readWith(InferenceMode.ONLY_IN_CLOUD, file);
     } catch (e) {
       if (e instanceof CloserPhotoNeeded) throw e;
-      /* fall back to the on-device model below */
+      if (afterCloudFailure(nano) === "rethrow") throw e;
+      /* Nano is available here: fall back to it below */
     }
   }
-  return readWith(InferenceMode.ONLY_ON_DEVICE, file);
+  if (route === "unavailable") throw new OnDeviceUnavailable();
+  try {
+    return await readWith(InferenceMode.ONLY_ON_DEVICE, file);
+  } catch (e) {
+    if (e instanceof CloserPhotoNeeded) throw e;
+    throw new OnDeviceFailed();
+  }
 }
 
 const EXPLAIN_RULES =

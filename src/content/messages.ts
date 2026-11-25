@@ -307,6 +307,10 @@ export const ERRORS = {
     hi: "अभी AI उपलब्ध नहीं है। आप नाम और बैच नंबर लिखकर जाँच कर सकते हैं।",
     en: "AI is not available right now. You can still type the name and batch number to check.",
   },
+  onDeviceUnavailable: {
+    hi: "इस फ़ोन पर ऑन-डिवाइस AI उपलब्ध नहीं है। बैच नंबर लिखिए, जाँच फिर भी बिना इंटरनेट चलती है।",
+    en: "On-device AI isn't available on this device. Type the batch instead, the check still works offline.",
+  },
   micUnavailable: {
     hi: "माइक्रोफ़ोन नहीं चल रहा। आप लिखकर भी जाँच सकते हैं।",
     en: "The microphone is not working. You can type instead.",
