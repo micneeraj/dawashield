@@ -1,0 +1,20 @@
+{
+ "dataset": {
+  "records": 4158,
+  "latestMonth": "2026-09"
+ },
+ "fullPopulation": {
+  "total": 4158,
+  "red": 4158,
+  "notRed": 0,
+  "notRedList": []
+ },
+ "negativeControl": {
+  "seed": 20261125,
+  "total": 2000,
+  "grey": 2000,
+  "notGrey": 0,
+  "notGreyList": [],
+  "generatedAttempts": 2000
+ }
+}

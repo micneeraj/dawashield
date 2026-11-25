@@ -96,12 +96,14 @@ Every AI answer shows **"On this device"** or **"Cloud"**, taken from the SDK's 
 
 | | Result |
 |---|---|
-| Matching: 728 cases (106 real, 622 generated from real records, labelled separately), incl. 25 real batch-number collisions and adversarial cases (spelling, spacing, OCR look-alikes, wrong company, same company/other medicine, unreadable) | **False-RED 0.0% (0/489) · False-GREY 0.0% (0/564)** |
-| Confusion (rows expected, columns shown) | RED 239/0/0/0 · AMBER 0/325/0/0 · GREY 0/0/109/0 · CAN'T READ 0/0/0/55 |
+| **Full population (ground truth: the CDSCO records themselves):** every one of the 4,158 official records, run with its own batch, medicine and company | **4,158 / 4,158 shown RED** |
+| **Negative control (ground truth: dataset):** 2,000 seeded batches that appear nowhere in the dataset, unlisted companies | **2,000 / 2,000 shown GREY** (seed 20261125) |
+| Stress set, **author-labelled** robustness testing: 728 cases (106 real, 622 generated from the author's 55 hand-verified records), spelling, spacing, OCR look-alikes, wrong company, same company/other medicine, unreadable | False-RED 0.0% (0/489) · False-GREY 0.0% (0/619) |
+| Stress set confusion (rows expected, columns shown) | RED 239/0/0/0 · AMBER 0/325/0/0 · GREY 0/0/109/0 · CAN'T READ 0/0/0/55 |
 | Hindi/English speech, 60 garbled transcripts | Top-1 98.3% · Top-3 100% |
 | Punjabi, Gujarati, Marathi, Kannada, Tamil: 24 **generated** garbled transcripts each | Top-1 100% · Top-3 100% (generated, not real speakers) |
 | Photo (`data/eval_images/labels.csv`; add with `npm run add-photo`) | No labelled photos yet: not measured |
-| Unit tests | 186 passing |
+| Unit tests | 242 passing |
 
 ## What works where
 
