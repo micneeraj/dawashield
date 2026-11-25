@@ -12,10 +12,14 @@ Figures come from the published files: `public/data/meta.json`, `src/content/eva
 - **Robustness:** a 728-case stress set in 16 groups. The author wrote these cases and their expected labels from 55 hand-verified records, so they measure consistent, safe behaviour under stress, not accuracy on unseen data. 0 false REDs, 0 false GREYs, every colour correct.
 - **Speech:** 60 generated Hindi and English transcripts that imitate real speech-recognition output. They are not recordings of real speakers. 98.3% correct at first guess, 100% within three.
 - **Freshness:** the app shows the latest covered alert month, when the dataset last changed, and the last successful source check.
-- **Hybrid AI:** cloud reading and explanation use Gemini 3.5 Flash through Firebase AI Logic. Offline checking is deterministic code with no model. On-device Gemini Nano is used offline only where the browser reports it available. Live cloud calls were blocked during testing by an App Check throttle, so a successful cloud explanation is **not verified** in this release.
+- **Hybrid AI, implemented:** cloud reading and explanation through Firebase AI Logic with Gemini 3.5 Flash. Offline checking is deterministic code with no model. On-device Gemini Nano is used offline only where the browser reports it available, and the app says so when it is not.
+- **Hybrid AI, verified at runtime:** offline deterministic check (RED, zero network requests while offline). **Not verified:** a successful cloud explanation (the request reached the model and was rejected with a 401 while App Check was throttled), and any on-device Gemini Nano inference (the model reports `unavailable` on the test laptop, Chrome 158). Photo reading accuracy is not measured. See `docs/HYBRID-AI.md`.
 - **Privacy:** the full list and your cabinet are stored on the phone. Only devices that opt in to push store anything in Firestore: a push token, language, and each saved medicine's batch, company and expiry month. Names, phone numbers and contacts stay on the phone. Strip photos, voice clips, speech transcripts and record text are sent to Gemini when online, and medicine names are included in those requests. See `docs/PRIVACY.md`.
 - **Not verified:** push alerts with the app or browser fully closed, on a real Android phone or iPhone. Photo accuracy: no labelled strip photos yet, so photo reading is **not measured**.
-- **Limitations:** two possible reprints are kept as separate records (see `docs/RECONCILIATION.md`). Speech and stress-set results are not measures of accuracy on real people or on unseen cases.
+- **Limitations:**
+  - Two possible reprints are kept as separate records (see `docs/RECONCILIATION.md`).
+  - **Known safety coverage limitation:** one spurious alert (Besto-Cof DRY COUGH FORMULA, SDTL Raipur, September 2025) has no batch number and its manufacturer is listed as "Under Investigation". The official source gives the app no identifier to match against. Searching its name without a batch and a company returns GREY, which is not proof that the medicine is safe. It is a coverage gap caused by missing source identifiers.
+  - Speech and stress-set results are not measures of accuracy on real people or on unseen cases.
 
 ## Demo video: outdated numbers and a dated correction
 

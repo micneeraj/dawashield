@@ -17,7 +17,12 @@ Recorded 25 November 2026. Checks were run against the live site and the preview
 |---|---|
 | Offline deterministic check, batch 251TTF014, network disabled after load | **RED, and zero requests made while offline.** The check uses no AI model. |
 | Cloud explanation, batch 251TTF014, online, "Read simple explanation" | **Not verified.** The request reached `firebasevertexai` for `gemini-3.5-flash` and returned **401**. The App Check token could not be issued: "Requests throttled due to previous 403 error. Attempts allowed again after 23h59m (appCheck/initial-throttle)". No explanation text was produced. |
-| On-device Gemini Nano, Chromium on this Windows machine | `LanguageModel.availability()` returned **`downloadable`**: the model is not yet installed, so the app would not use it here. No on-device inference was run. |
+| On-device Gemini Nano, Chromium on this Windows machine (Playwright bundled build) | `LanguageModel.availability()` returned **`downloadable`**: the model is not yet installed, so the app would not use it here. No on-device inference was run. |
+| On-device Gemini Nano, installed Chrome 158 (Playwright `channel: "chrome"`) | `availability()` returned **`unavailable`** for text and for image. No download was started and no inference was run. |
+
+Hardware on the test laptop (measured): 15.7 GB physical RAM, Intel Iris Xe and NVIDIA MX550 adapters each reporting about 2 GB of video memory, 138 GB free on drive C.
+
+Chrome's documented requirements, from developer.chrome.com (get-started page, last updated 20 May 2025, so possibly out of date): at least 22 GB free on the profile volume; GPU path strictly more than 4 GB VRAM; CPU path 16 GB RAM or more and 4 CPU cores or more. The model-management page (published 21 October 2025) says Chrome falls back to CPU inference only if the device meets separate static requirements, and does not give numbers. On this laptop the GPU path fails on VRAM, and the CPU path fails on RAM (15.7 GB against 16 GB). This is consistent with `unavailable`. Chrome's live requirements should be checked before the device is judged again.
 
 ## Not verified in this release
 
