@@ -48,7 +48,7 @@ None. Every negative came out GREY.
 | **False-RED rate** (should not be RED, shown RED) | **0.0%** (0 of 489) |
 | **False-GREY rate** (should be RED / AMBER / CAN'T READ, shown GREY) | **0.0%** (0 of 619) |
 | Exact colour correct | 100.0% |
-| Time per check (4,488 records, laptop) | 7.2 ms |
+| Time per check (4,488 records, laptop) | 5.02 ms |
 
 ### Confusion table (rows = expected, columns = what the app showed)
 

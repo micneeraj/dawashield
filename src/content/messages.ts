@@ -141,8 +141,8 @@ export const AMBER_REASON: Record<string, T> = {
 /** GREY info notes (small, below the headline). {medicine} and {month} are filled from the record. */
 export const GREY_NOTE: Record<"company-other-medicine" | "company-batch-unlisted", T> = {
   "company-other-medicine": {
-    hi: "इस कंपनी की एक अलग दवा सरकारी सूची में है ({medicine}, {month})। आपकी दवा पर इसका असर नहीं है।",
-    en: "This company has a different medicine on the official list ({medicine}, {month}). Your medicine is not affected.",
+    hi: "इस कंपनी की एक अलग दवा सरकारी सूची में है ({medicine}, {month})। यह चेतावनी एक अलग दवा की है, आपके बैच की नहीं।",
+    en: "This company has a different medicine on the official list ({medicine}, {month}). This alert is for a different medicine, not your batch.",
   },
   "company-batch-unlisted": {
     hi: "इस कंपनी के दूसरे बैच सरकारी सूची में हैं ({medicine}, {month})। आपका बैच उनमें नहीं है।",
@@ -444,7 +444,7 @@ export const CLIPS: { clip: string; text: T }[] = [
   { clip: "grey", text: say([RESULT.GREY.color, RESULT.GREY.title, RESULT.GREY.body]) },
   {
     clip: "grey_company",
-    text: say([RESULT.GREY.color, RESULT.GREY.title, { hi: "इस कंपनी की एक अलग दवा सूची में है। आपकी दवा पर इसका असर नहीं है", en: "This company has a different medicine on the list. Your medicine is not affected" }]),
+    text: say([RESULT.GREY.color, RESULT.GREY.title, { hi: "इस कंपनी की एक अलग दवा सूची में है। यह चेतावनी एक अलग दवा की है, आपके बैच की नहीं", en: "This company has a different medicine on the list. This alert is for a different medicine, not your batch" }]),
   },
   { clip: "unreadable", text: say([RESULT.UNREADABLE.title, RESULT.UNREADABLE.body]) },
 ];

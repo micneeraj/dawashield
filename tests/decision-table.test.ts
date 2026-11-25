@@ -34,10 +34,10 @@ describe("the real Dolo-650 / Micro Labs false scare", () => {
     expect(r.records[0].batchNorm).toBe("AMAS0249");
     expect(recordsAreThisMedicine(r)).toBe(false);
   });
-  it("the note names the other medicine and says yours is not affected", () => {
+  it("the note names the other medicine and says the alert is for a different medicine", () => {
     const r = matchMedicine(dolo, records);
     const note = fillNote(GREY_NOTE["company-other-medicine"].en, { medicine: r.records[0].brand || r.records[0].name, month: "March 2026" });
-    expect(note).toBe("This company has a different medicine on the official list (Amlong-2.5, March 2026). Your medicine is not affected.");
+    expect(note).toBe("This company has a different medicine on the official list (Amlong-2.5, March 2026). This alert is for a different medicine, not your batch.");
   });
   it("spoken reply says grey + not affected", () => {
     const r = matchMedicine(dolo, records);

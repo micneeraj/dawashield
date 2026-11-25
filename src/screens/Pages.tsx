@@ -100,7 +100,7 @@ function DecisionTable() {
         { level: "RED", when: "बैच पूरा मिलता है और कंपनी पक्के भरोसे से मिलती है (रिकॉर्ड में कंपनी न हो, जैसे नकली दवा, तो दवा का नाम)।" },
         { level: "AMBER", when: "संभावित मेल: बैच पूरा मिलता है पर कंपनी पक्की नहीं; या बैच एक अक्षर अलग / अधूरा।" },
         { level: "AMBER", when: "दूसरे बैच चेतावनी में: वही कंपनी और वही दवा, बैच अलग।" },
-        { level: "GREY", when: "वही कंपनी, अलग दवा: छोटी सूचना, 'आपकी दवा पर असर नहीं'।" },
+        { level: "GREY", when: "वही कंपनी, अलग दवा: छोटी सूचना, 'यह चेतावनी एक अलग दवा की है, आपके बैच की नहीं'।" },
         { level: "GREY", when: "कोई रिकॉर्ड नहीं।" },
         { level: "UNREADABLE", when: "फ़ोटो या आवाज़ इतनी साफ़ नहीं कि मिलान हो: बटन से बैच डालें या दोबारा फ़ोटो लें। कभी धूसर नहीं।" },
       ]
@@ -108,7 +108,7 @@ function DecisionTable() {
         { level: "RED", when: "Exact batch AND company matched with high confidence (or the medicine name, when the record names no company, as with spurious drugs)." },
         { level: "AMBER", when: "Possible match: exact batch but the company is uncertain; or a batch one character off / incomplete." },
         { level: "AMBER", when: "Other batches flagged: same company AND same medicine, different batch." },
-        { level: "GREY", when: "Same company, different medicine: small note, \"Your medicine is not affected.\"" },
+        { level: "GREY", when: "Same company, different medicine: small note, \"This alert is for a different medicine, not your batch.\"" },
         { level: "GREY", when: "No record." },
         { level: "UNREADABLE", when: "Photo or voice too unclear to match: keypad or retake. Never shown as GREY." },
       ];
@@ -129,8 +129,8 @@ function DecisionTable() {
       <p className="mt-3 rounded-2xl bg-paper px-3.5 py-3 text-[14.5px] leading-snug text-ink">
         <b>{hi ? "असली उदाहरण:" : "Real example:"}</b>{" "}
         {hi
-          ? "Dolo-650 (Micro Labs, बैच DOBS4518) सूची में नहीं है। Micro Labs की दूसरी दवा Amlodipine (बैच AMAS0249) सूची में है। पहले यह पीला दिखता था — अब धूसर, साथ में छोटी सूचना कि आपकी दवा पर असर नहीं।"
-          : "Dolo-650 (Micro Labs, batch DOBS4518) is not listed. A different Micro Labs medicine, Amlodipine (batch AMAS0249), is. This used to show AMBER; now it is GREY with a small note that your medicine is not affected."}
+          ? "Dolo-650 (Micro Labs, बैच DOBS4518) सूची में नहीं है। Micro Labs की दूसरी दवा Amlodipine (बैच AMAS0249) सूची में है। पहले यह पीला दिखता था — अब धूसर, साथ में छोटी सूचना कि यह चेतावनी एक अलग दवा की है, आपके बैच की नहीं।"
+          : "Dolo-650 (Micro Labs, batch DOBS4518) is not listed. A different Micro Labs medicine, Amlodipine (batch AMAS0249), is. This used to show AMBER; now it is GREY with a small note that this alert is for a different medicine, not your batch."}
       </p>
     </Card>
   );
