@@ -1,25 +1,26 @@
 {
-  "version": "033e977bb56d2587",
-  "records": 4158,
-  "duplicatesMerged": 20,
-  "nsq": 4109,
-  "spurious": 49,
+  "version": "361766925428bd24",
+  "records": 4480,
+  "duplicatesMerged": 22,
+  "nsq": 4430,
+  "spurious": 50,
   "verified": 55,
   "pdfCrossChecked": 815,
   "earliestMonth": "2024-10",
-  "latestMonth": "2026-09",
-  "lastSynced": "2026-11-20",
+  "latestMonth": "2026-10",
+  "lastSynced": "2026-11-25",
   "missingMonths": [],
   "statesPendingLatestMonth": [
     "Andaman And Nicobar",
     "Arunachal Pradesh",
-    "Bihar",
     "Chandigarh",
     "Chhattishgarh",
     "Dadra And Nagar Haveli",
     "Daman And Diu",
-    "Goa",
+    "Delhi",
+    "Haryana",
     "Jharkhand",
+    "Karnataka",
     "Ladakh",
     "Lakshadweep",
     "Manipur",
@@ -27,16 +28,15 @@
     "Mizoram",
     "Nagaland",
     "Orissa",
-    "Sikkim",
-    "Tamil Nadu",
-    "West Bengal"
+    "Sikkim"
   ],
   "failed": [],
   "sources": [
     "https://cdscoonline.gov.in/CDSCO/viewPublicNSQDrug",
     "https://cdsco.gov.in/opencms/opencms/en/Notifications/Alerts/"
   ],
-  "lastChecked": "2026-11-20",
-  "bytes": 2943686,
-  "gzipBytes": 489608
+  "lastChecked": "2026-11-25",
+  "lastCheckAttempted": "2026-11-25",
+  "bytes": 3157380,
+  "gzipBytes": 526775
 }

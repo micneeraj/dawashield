@@ -5,7 +5,7 @@
 ## What makes it different
 
 1. **Voice-first in Indian languages.** Hindi and English offline; Punjabi, Gujarati, Marathi, Kannada and Tamil online. Say the medicine name; garbled speech-to-text ("पैरासाइट परासीईटीअमोल") is matched offline to the right name and confirmed with big buttons.
-2. **Works offline on cheap Android phones.** The full official list (4,158 records, ~0.5 MB compressed) lives on the phone; matching is plain code, no AI model needed.
+2. **Works offline on cheap Android phones.** The full official list (4,480 records, ~0.5 MB compressed) lives on the phone; matching is plain code, no AI model needed.
 3. **Official CDSCO data, source on every answer.** Alert month, official link and record ID on every result; hand-verified records carry a "Verified" badge.
 4. **Home medicine cabinet with automatic later alerts.** CDSCO lists come out about a month late, so saved medicines are re-checked every day and a push notification arrives if one is flagged later, even with the app closed.
 5. **Family alerts.** WhatsApp message, or a push alert on a son's or daughter's phone after they accept an invite.

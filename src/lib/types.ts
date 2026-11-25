@@ -38,8 +38,10 @@ export interface DatasetMeta {
   earliestMonth: string | null;
   latestMonth: string | null;
   lastSynced: string;
-  /** Date the daily pipeline last checked CDSCO successfully (even with no new records). */
+  /** Date of the last successful source check: moves only when every source fetch and month succeeded. */
   lastChecked?: string;
+  /** Date of the most recent check attempt, successful or not. */
+  lastCheckAttempted?: string;
   /** Size of nsq.json, raw and gzip-compressed (what is actually downloaded). */
   bytes?: number;
   gzipBytes?: number;

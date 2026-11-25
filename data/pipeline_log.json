@@ -7,5 +7,23 @@
   "removed": 0,
   "latestMonth": "2026-09",
   "failedFetches": 0
+ },
+ {
+  "at": "2026-11-25T18:32:03+00:00",
+  "status": "published",
+  "records": 4389,
+  "added": 323,
+  "removed": 92,
+  "latestMonth": "2026-10",
+  "failedFetches": 0
+ },
+ {
+  "at": "2026-11-25T18:39:17+00:00",
+  "status": "published",
+  "records": 4480,
+  "added": 91,
+  "removed": 0,
+  "latestMonth": "2026-10",
+  "failedFetches": 0
  }
 ]

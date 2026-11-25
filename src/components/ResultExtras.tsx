@@ -13,7 +13,8 @@ import type { DatasetMeta } from "../lib/types";
 
 const L = {
   checkedUpTo: { hi: "सरकारी डेटा इस महीने तक जाँचा गया", en: "Official data checked up to" },
-  lastUpdated: { hi: "आख़िरी अपडेट", en: "Last updated" },
+  lastUpdated: { hi: "डेटा आख़िरी बार बदला", en: "Dataset last updated" },
+  lastCheck: { hi: "CDSCO की आख़िरी सफल जाँच", en: "Last successful source check" },
   source: { hi: "स्रोत", en: "Source" },
   alertMonth: { hi: "CDSCO चेतावनी का महीना", en: "CDSCO alert month" },
   recordId: { hi: "रिकॉर्ड ID", en: "Record ID" },
@@ -49,18 +50,25 @@ const KINDS: { k: WrongKind; t: Record<Lang, string> }[] = [
   { k: "other", t: { hi: "कुछ और", en: "Something else" } },
 ];
 
-/** "Official data checked up to: <month>" and "Last updated: <date>". */
+/** Three separate freshness facts: latest covered alert month, dataset last updated, last successful source check. */
 export function DataFreshness({ meta, className }: { meta?: DatasetMeta | null; className?: string }) {
   const { lang } = useApp();
+  const tile = "rounded-2xl bg-white px-3.5 py-2.5 ring-1 ring-line";
+  const label = "text-[12.5px] font-bold uppercase tracking-wide text-muted";
+  const value = "text-[17px] font-bold text-ink";
   return (
-    <div className={cx("grid grid-cols-2 gap-2", className)} data-testid="data-upto">
-      <div className="rounded-2xl bg-white px-3.5 py-2.5 ring-1 ring-line">
-        <p className="text-[12.5px] font-bold uppercase tracking-wide text-muted">{L.checkedUpTo[lang]}</p>
-        <p className="text-[17px] font-bold text-ink" data-testid="checked-up-to">{monthLabel(meta?.latestMonth, lang)}</p>
+    <div className={cx("grid grid-cols-1 gap-2 sm:grid-cols-3", className)} data-testid="data-upto">
+      <div className={tile}>
+        <p className={label}>{L.checkedUpTo[lang]}</p>
+        <p className={value} data-testid="checked-up-to">{monthLabel(meta?.latestMonth, lang)}</p>
       </div>
-      <div className="rounded-2xl bg-white px-3.5 py-2.5 ring-1 ring-line">
-        <p className="text-[12.5px] font-bold uppercase tracking-wide text-muted">{L.lastUpdated[lang]}</p>
-        <p className="text-[17px] font-bold text-ink" data-testid="last-updated">{dateLabel(meta?.lastChecked ?? meta?.lastSynced, lang)}</p>
+      <div className={tile}>
+        <p className={label}>{L.lastUpdated[lang]}</p>
+        <p className={value} data-testid="last-updated">{dateLabel(meta?.lastSynced, lang)}</p>
+      </div>
+      <div className={tile}>
+        <p className={label}>{L.lastCheck[lang]}</p>
+        <p className={value} data-testid="last-check">{meta?.lastChecked ? dateLabel(meta.lastChecked, lang) : "—"}</p>
       </div>
     </div>
   );

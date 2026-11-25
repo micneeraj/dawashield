@@ -211,7 +211,8 @@ export function Transparency() {
       <div className="grid grid-cols-2 gap-2" data-testid="transparency-stats">
         <Stat label={hi ? "सरकारी रिकॉर्ड" : "Records indexed"} value={(dataMeta?.records ?? EVAL.records).toLocaleString("en-IN")} />
         <Stat label={hi ? "सबसे नई चेतावनी" : "Latest alert month"} value={monthLabel(dataMeta?.latestMonth ?? (EVAL as { latestMonth?: string }).latestMonth, lang)} />
-        <Stat label={hi ? "आख़िरी सफल अपडेट" : "Last successful refresh"} value={dateLabel(dataMeta?.lastChecked ?? dataMeta?.lastSynced, lang)} />
+        <Stat label={hi ? "डेटा आख़िरी बार बदला" : "Dataset last updated"} value={dateLabel(dataMeta?.lastSynced, lang)} />
+        <Stat label={hi ? "CDSCO की आख़िरी सफल जाँच" : "Last successful source check"} value={dataMeta?.lastChecked ? dateLabel(dataMeta.lastChecked, lang) : "—"} />
         <Stat label={hi ? "हाथ से जाँचे रिकॉर्ड" : "Hand-verified records"} value={String(dataMeta?.verified ?? (EVAL as { verified?: number }).verified ?? "—")} />
         <Stat label={hi ? "टेस्ट पास" : "Tests passed"} value={ET ? `${ET.passed}/${ET.total}` : "—"} />
         <Stat label={hi ? "eval की तारीख़" : "Eval run"} value={dateLabel(EVAL.generatedAt, lang)} />

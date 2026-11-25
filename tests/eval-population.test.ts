@@ -7,7 +7,9 @@ const p = JSON.parse(readFileSync(resolve(__dirname, "../src/content/eval-popula
 
 describe("full-population check (CDSCO records as ground truth)", () => {
   it("every official record is found as RED", () => {
-    expect(p.fullPopulation.total).toBe(4158);
+    // Compared with the published dataset itself, so the check follows the data as it is refreshed.
+    const nsq = JSON.parse(readFileSync(resolve(__dirname, "../public/data/nsq.json"), "utf8"));
+    expect(p.fullPopulation.total).toBe(nsq.length);
     expect(p.fullPopulation.red).toBe(p.fullPopulation.total);
     expect(p.fullPopulation.notRed).toBe(0);
   });

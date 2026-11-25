@@ -1,0 +1,11 @@
+[
+  {
+    "id": "596d2870ba90",
+    "action": "reclassified",
+    "now": "SPURIOUS, record 075824179e2f (same batch 2513000079, same manufacturer)",
+    "reason": "The CDSCO portal lists this batch under Spurious Drugs for April 2026 (Under Investigation) and not under NSQ Drugs. The NSQ entry was replaced by the spurious entry.",
+    "evidence": "data/raw/portal/spurious_Apr-2026.json (CDSCO portal, spurious tab, April 2026); NSQ tab for April 2026 does not list batch 2513000079",
+    "source": "https://cdscoonline.gov.in/CDSCO/viewPublicNSQDrug",
+    "recorded": "2026-11-26"
+  }
+]

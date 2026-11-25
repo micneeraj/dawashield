@@ -4,7 +4,7 @@ import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from validate import added_records, changelog_entry, removed_ids, validate  # noqa: E402
+from validate import COVERAGE_START, added_records, changelog_entry, in_coverage, removed_ids, unexplained_removals, validate  # noqa: E402
 
 
 def rec(i, month="2026-09", **kw):
@@ -44,6 +44,34 @@ class ValidateTest(unittest.TestCase):
         text = changelog_entry("2026-11-21", add, ["id1"], "2026-10")
         self.assertIn("Added: 1", text)
         self.assertIn("batch B3", text)
+
+
+class HistoricalRetentionTest(unittest.TestCase):
+    """Importing a new monthly list must never remove valid historical records."""
+
+    def test_coverage_is_fixed_start_october_2024(self):
+        self.assertEqual(COVERAGE_START, "2024-10")
+        self.assertTrue(in_coverage("2024-10"))
+        self.assertFalse(in_coverage("2024-09"))
+
+    def test_new_month_keeps_all_history(self):
+        old_months = [rec(i, "2024-10") for i in range(20)] + [rec(100 + i, "2026-09") for i in range(20)]
+        new_month = [rec(200 + i, "2026-10") for i in range(20)]
+        new = old_months + new_month
+        self.assertEqual(validate(new, old_months), [])
+        self.assertEqual(unexplained_removals(new, old_months, set()), [])
+        self.assertEqual(removed_ids(old_months, new), [])
+
+    def test_removing_history_without_correction_is_blocked(self):
+        prev = [rec(i, "2024-10") for i in range(20)] + [rec(100 + i, "2026-09") for i in range(20)]
+        new = prev[1:]  # one historical record silently gone
+        errors = validate(new, prev)
+        self.assertTrue(any("without a documented correction" in e for e in errors))
+
+    def test_documented_correction_allows_removal(self):
+        prev = [rec(i, "2024-10") for i in range(20)] + [rec(100 + i, "2026-09") for i in range(20)]
+        new = prev[1:]
+        self.assertEqual(validate(new, prev, {prev[0]["id"]}), [])
 
 
 if __name__ == "__main__":

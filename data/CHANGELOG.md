@@ -1,0 +1,308 @@
+# Data CHANGELOG
+
+Records added to `public/data/nsq.json` by the daily pipeline (newest first).
+
+## 2026-11-25
+
+- Added: 91 records · Removed/merged: 0 · Latest alert month: 2026-10
+- 2024-10: 91 new
+  - NSQ · (COUGH-DM Cough Syrup) · batch SHL3037 · Sunfine Healthcare · id f9a24c6a9dce
+  - NSQ · Absorbent Cotton Wool IP · batch 2013 · Jind Surgicals · id a6f507da23ac
+  - NSQ · Aceclofenac & Paracetamol Tablets (Eldigesic-P) · batch AGT305144 · Alventa Pharma Limited. · id d0a40de38777
+  - NSQ · Aceclofenac, Paracetamol and Serratiopeptidase Tablets (Megaceclo SP) · batch AMT2302037 · MARINE MEDICARE PVT. LTD. · id fb0f62915e8d
+  - NSQ · Aciclovir Intravenous Infusion IP 250 mg (Acyclotech Injection) · batch D0072406B · Protech Telelinks · id 9bf1931694db
+  - NSQ · Adrenaline Injection IP 1.8mg/ml (Adrenascot) · batch GA3A020 · Scott-Edil Pharmacia Ltd. · id e75b7062c407
+  - NSQ · Amlodipine and Perindopril Tablets (Amtas PRP) · batch K2201310 · Intas Pharmaceuticals Ltd. · id 7c4a9e3f3689
+  - NSQ · Amoxycillin and Potassium Clavulanate Injection (Manclav 300 mg) · batch HIAP23001A · Health Biotech Ltd. · id 8bd1d0a56ecf
+  - NSQ · Amoxycillin and Potassium Clavulanate Tablets IP (Moxileb-CV 625 Table · batch MBT23068 · Mediwell Biotech · id 11cf8f8e73cd
+  - NSQ · Amoxycillin and Potassium Clavulanate for Injection IP 1.2 gm · batch 23AP10 · SAI Parenterals Limited · id d32926fed635
+  - NSQ · Ampicillin 1G Powder for Injection 1000 mg · batch EXPN-24004 · Unital Formulations · id 6a89eb4eaa2d
+  - NSQ · BETAHISTINE DIHYDROCHLO RIDE TABLETS IP(CGHEST-8) · batch CT2425028 4B · CMG BIOTECH PVT LTD. · id d47e8faa6e0c
+  - NSQ · Betamethasone Sodium Phosphate Injection I.P. (Betalone ) · batch IBT-11189 · E.G. Pharmaceuticals · id a5c749323abc
+  - NSQ · Biocetamol -500 · batch SPD230078 · Skymap Pharmaceuticals Pvt. Ltd · id a41f3427c2dd
+  - NSQ · Buprenorphine Injection I.P. (LUPIGESIC) · batch 1470 ASG · S.M.G. PHARMACEUTICALS (Pvt) Ltd. · id b11079de0342
+  - NSQ · Bupropion Hydrochloride Extended Release Tablets U.S.P. 150 mg (Brudel · batch T23169 · Rebase Lifescience Pvt. Ltd. · id 786e547b7ce4
+  - NSQ · C Mont LC KID 60 ml[Montelukast and Levocetirizine Dihydrochloride syr · batch AL 23206 · Cian Healthcare Ltd · id 2f0779561450
+  - NSQ · CYPROHEPTAD INE HCl & TRICHOLINE CITRATE · batch WHL-00623 · Warner Hindusthan Pvt Ltd. · id f0fd495be242
+  - NSQ · Calcium 500 mg with Vitamin D3 250 IU Tablets IP · batch LMT240377 · Life Max Cancer Laboratories · id abe2a2c64a9a
+  - NSQ · Cefem -200 Tablets, Cefixime with Lactic Acid Bacillus tablets · batch DB240126 · Daxin Pharmaceuticals Pvt Ltd. · id 34479cf3b104
+  - NSQ · Cefixime Tablets IP (TAXIM-O 200) · batch 23460072 · Under Investigation · id 5b19445426bd
+  - NSQ · Ceftriaxone and Sulbactam for Injection (Tykone- S Injection) · batch UNI-240013 · Unital Formulations · id 38734ca5c483
+  - NSQ · Chlorhexidine Gluconate Solution 4% w/v · batch 12 · OVERSEAS CHEMICALS · id 55a7b8506857
+  - NSQ · Ciprofloxacin Injection IP 100 ml · batch 09AF0061 · Paschim Banga Pharmaceuticals (A · id 7f15228d9c45
+  - NSQ · Ciprofloxacin Tablets U.S.P. 500 mg · batch T-2401066 · Rivpra Formulation Pvt. Ltd. · id 1980ff115922
+  - NSQ · Ciprofloxcin Tablets IP 250 mg · batch CT23241818 · CMG BIOTECH PVT.LTD. · id 15987a860cfd
+  - NSQ · Decitabine for Injection 50 mg / vial · batch H230266 · Dr. Reddys Laboratories · id 5e08c1ef733a
+  - NSQ · Diclofenac Sodium, Paracetamol & Chlorzoxazone Tablets · batch DCPT3310 · MODERN LABORATORIES · id 4d70e0acd121
+  - NSQ · Divalproex Sodium SR Tablets · batch TMT-0165 · Tas Med (India) Pvt.ltd. · id fc1439a3a4e1
+  - NSQ · Divalproex Sodium SR Tablets 500 mg · batch TMT-0164 · Tas Med (India) Pvt.ltd. · id c8230868b4af
+  - NSQ · Dulhan Special · batch Nil · Mohsin Idustries · id c3ca4e791638
+  - NSQ · EMITIL [Prochlorperazine Mesylate Injection IP] · batch MA 24E27 · Martin & Brown Bio Science Pvt Ltd · id a10e49f3b9c3
+  - NSQ · Elcipro 500[Ciprofloxacin Hydrochloride Tab IP 500 mg ] · batch AGT31256 · Alventa Pharma Ltd · id 66d82bfb1256
+  - NSQ · Enalapril Maleate Tablets IP 5 mg (Opioril- 5) · batch 23HT1771 · Orison Pharma International · id affe3ed14c38
+  - NSQ · Enrofloxacin Injection I.P. (Vet.) (ENROXACIN VET Injection) · batch LV326 · Lavista Ideal Pharmacy Pvt. Ltd. · id d7601be6fee8
+  - NSQ · Esomeprazole Tablets IP 40 mg (Essokynt-40) · batch TT23-505 · Tanishka Pharmaceuticals Pvt. Ltd. · id 4efe8eeb1f53
+  - NSQ · Fer-XT Tablets, Ferrous Ascorbate & Folic Acid Tablets · batch FXT.2309 · Alfansa Bio Pvt.Ltd · id 0405f37df597
+  - NSQ · Fexofenadine Hydrochloride Tablets I.P. · batch T-2403971 · Oscar Remedies Pvt. Ltd. · id 44b86df571f6
+  - NSQ · Glimepiride Tablets IP 2 mg · batch LMT240333 · Life Max Cancer Laboratories · id db0a0cc5046f
+  - NSQ · Glucosamine Sulfate Potassium Chloride MSM and Diacerein Tablets (Orce · batch KOO2207A · MACLEODS PHARMACEUTICAL LTD. · id cfd4b918093d
+  - NSQ · Hydroquinone, Tretinoin & Allantoin Cream (Lumadip) · batch LD-18 · Tosc International Pvt. Ltd. · id fa90c5b4fed4
+  - NSQ · International dona Beauty Soap Jasmine · batch DNJN1/24 · Excel+ Health care products · id e587e10556ec
+  - NSQ · Iron Sucrose Injection USP 5 ml · batch IRA12320 · Nandani Medical Laboratories Pvt. Ltd. · id 292da181ec2f
+  - NSQ · Iron Sucrose Injection USP 5 ml · batch MA24B129 · MARTIN & BROWN BIO-SCIENCES PVT. LTD. · id 714a73322e75
+  - NSQ · Itraconazole Capsules USP 100 mg · batch IZC2401 · Modern Laboratories · id 4516ba23f0ae
+  - NSQ · Liposomal Amphotericinn B Injection 50mg (Ambilip) · batch ALLC4A1 · UNITED BIOTECH (P) LIMITED · id 988ca808013f
+  - NSQ · Meropenem Injection IP (ZENEM 1 g INJECTION) · batch B240720D · OSCAR REMEDIES PVT.LTD. · id 5be34d2f5665
+  - NSQ · Metronidazole 400 mg Tablets (Metagyl - 400) · batch B22-275 · Saint Michael Biotech · id 2c1e7c5dfbfe
+  - NSQ · Montelukast Sodium and Levocetirizine Hydrochloride Tablets IP 10 mg/5 · batch MLHT-1022 · Wings Biotech LLP · id 87fe4eb93da0
+  - NSQ · Montelukast Tablets IP 10 mg · batch F4E0425 · Morepan Laboratories Ltd · id 0bec4d41d2d7
+  - NSQ · Myoplus Tablets, Paracetamol & Chlorzoxazone Tabletes · batch MT24-1 · LEOSTAR Healthcare Pvt.Ltd · id 1465d685b774
+  - NSQ · Natamycin Ophthalmic Suspension IP (Nataprime Eye Drops) · batch PE062308 · Primus Pharmaceuticals · id e3f655e774bb
+  - NSQ · Ondansetron Injection IP 2mg/ml · batch OT-5411 · Alchemist Remedies Pvt. Ltd. · id 74ac0d2e8561
+  - NSQ · Ornidazole & Ofloxacin Tablets IP · batch HOOA07 · Hindustan Antibiotics Ltd. · id 025108c08144
+  - NSQ · Paclitaxel Injection IP · batch OI220089A · Cosmas Research Lab Ltd. · id 848591cbac0b
+  - NSQ · Panlib -D [Pantoprazole and Domeperidone Tablets] · batch HTN253D · Himalaya Meditek pvt.Ltd · id 1fa498c4aaff
+  - NSQ · Pantoprazole Gastro-resistant and Domeperiodone Prolong Released Capsu · batch 23444296 · Under Investigation · id 70c4a21f466e
+  - NSQ · Pantoprazole Sodium (Enteric Coated and Domperidone (Sustained Release · batch C582 · Stalion Laboratories Pvt. Ltd · id 87e1666af827
+  - NSQ · Pantoprazole Tablets IP · batch MT-23J13 · MARTIN & BROWN BIO- SCIENCES PVT. LTD. · id 22bd0781c85d
+  - NSQ · Paracetamol Tablets IP 500 mg (Pararex-500 · batch CT-7129 · CHEMETAC PHARMACEUTICALS · id b0464a48c382
+  - NSQ · Paracetamol Tablets IP 650 mg [Nopain-650] · batch URDT2433 · Unicure India Ltd. · id e0ce9e5f4514
+  - NSQ · Propylene Glycol USP / IP · batch BT1205B251 22023 · Balaji Amines Limited. · id 679e9aade688
+  - NSQ · Rabeprazole Sodium & Domperidone SR Capsules (RABALKEM- DSR) · batch RKBC22064 S · Shiva Biogenetic Laboratories Pvt. Ltd. · id 179c38f61a63
+  - NSQ · Rabeprazole Sodium (EC) and Levosulpiride (SR) Capsules (RPL LS CAPSUL · batch CGC-24020 · Calrax Healthcare Pvt.Ltd. · id 76fff8a4e7f0
+  - NSQ · Rabeprazole Sodium (Enteric Coated) And Domperidone (Sustained Release · batch UD2C- 23469E · Ultra Drugs Pvt. Ltd. · id ebe358e768ce
+  - NSQ · Racecadotril & Oflozacin Suspension (Combact-O + Suspension) · batch L23J003A · Bajaj Formulations · id 6f5ead857f87
+  - NSQ · Rosuvastatin Tablets IP (ROZUTIN- 10) · batch VDT-23531 · Vidhyasha Pharmaceuticals · id 7b69561bea8e
+  - NSQ · Rosuvastatin Tablets IP (Rosuvas 10) · batch SIE0116A · Under Investigation · id 33099035e39b
+  - NSQ · SUCRALFATE USP · batch LSU2404015 · Legend Industries · id 5340fd1c2517
+  - NSQ · SUCRALFATE USP · batch SCF/24/0049 · Par Drugs & Chemicals Limited · id df4e5149cc7e
+  - NSQ · Single use Syringe (EDGEX) · batch 5DSB27 · NOBLE PHARMACARE LTD. · id d5bc8dd02120
+  - NSQ · Sodium Fusidate Cream 2 % · batch 344 · Bharat Parenterals Limited. · id d79da3871de0
+  - NSQ · Tablets, Cefixime Tablets IP 400 mg · batch CTTB-01 · Nestor Pharmaceticals Limited · id 6da62fc98d20
+  - NSQ · Tablets, Divalproex Sodium SR Tablets 500 mg · batch TMT-0211 · Tas Med (Indi) Pvt. Ltd. · id 79968a4839d8
+  - NSQ · Telmisartan Tab IP 40 mg · batch S0007/24- 25 · Supplied by Kerala Medical Services Corporation Lt · id 3820e0a58164
+  - NSQ · Telmisartan Tablets I.P. (Telesky-40 Tablet) · batch CMT23-1658 · Cortex Medical Inc. · id 9c75ec8116e4
+  - NSQ · Telmisartan Tablets I.P. 40 mg · batch LMT240611 · Life Max Cancer Laboratories · id 68a92f8267cd
+  - NSQ · Telmisartan Tablets IP 40 mg · batch LMT240536 · Life Max Cancer Laboratories · id 64aa0c464f78
+  - NSQ · Terbinafine Hydrochloride Tablets IP (TERBONATE- 250) · batch NT-7900 · Neptune Life Sciences Pvt. Ltd. · id 1e8ad9850d89
+  - NSQ · Theophylline & Etophylline Tablets · batch TE4029 · Kerala State Drugs & Pharmaceuticals Ltd · id 1441a5e0d0b7
+  - NSQ · Torsemide Tablets IP (Torverge-10 Tablets) · batch GT7137A · J.M. Laboratories · id 314b423d1450
+  - NSQ · Trenaxa Inj. [Tranexamic Acid injection I.P] · batch TNA2407 · Sanjivani Paranteral Ltd · id 10a6b975d1fa
+  - NSQ · Trypsin & Chymotrypsin Tablets (Lysoflam Forte) · batch LFTF24002C · Cachet Pharmaceuticals Private Limited · id 50df4dbf1476
+  - NSQ · VRIZAROX-100DT Tablets Cefpodoxime Proxetil Dispersible Tablets · batch CABQ4001 · Chiros Pharma · id d3dab3b59e24
+  - NSQ · Vitamin B Complex Tablet · batch S0010/24- 25 · Supplied by Kerala Medical Services Corporation Lt · id cc129bbbc614
+  - NSQ · Vitamin B Complex Tablet · batch S0008/24- 25 · Supplied by Kerala Medical Services Corporation Lt · id be9bae51d3e2
+  - NSQ · Vitamin B Complex Tablet · batch S0009/24- 25 · Supplied by Kerala Medical Services Corporation Lt · id d1c36aef89aa
+  - NSQ · Vitamin B Complex Tablets N.F.I · batch VBT2498 · Modern Laboratories · id 7dbe04419abc
+  - NSQ · Vitamin B m plex Tablets N.F.I · batch VBT2442 · Modern Laboratories · id f39215c05312
+  - NSQ · Zyfer-XT Tablets, Ferrous Ascorbate, Folic Acid Tablets · batch WW-2405 · Hindustan Nutraceuticals INC · id eff54db45404
+  - NSQ · cefixime Dispersible Tablets IP 100mg · batch CT240783 · Theon Pharmaceuticals LTD · id 4fafab88eaae
+
+## 2026-11-25
+
+- Added: 323 records · Removed/merged: 92 · Latest alert month: 2026-10
+- 2026-10: 322 new
+  - NSQ · ASCORBIC ACID TABLETS I.P 500 mg · batch T26H003 · Snehal Pharma & Surgicals Pvt Ltd. · id d4246f4f9466
+  - NSQ · ASPIRIN GASTRO-RESISTANT TABLETS IP 75 MG · batch 56002197 · USV Pvt. Ltd. · id aaf91a8b1914
+  - NSQ · Absorbent Cotton Wool IP · batch G-644 · Tulip Surgicals · id 87d6fa4fcfba
+  - NSQ · Absorbent Cotton Wool IP · batch 2146 · Jind Surgicals · id e87ee48e3840
+  - NSQ · Absorbent Cotton Wool IP · batch 2518 · Mateshwari Enterprises · id 6c5054097cfe
+  - NSQ · Absorbent Cotton Wool IP · batch 2519 · Mateshwari Enterprises · id 465045523863
+  - NSQ · Absorbent Cotton Wool IP 300g · batch 311 · Brisk Surgicals cotton limited · id 2ee52bce384c
+  - NSQ · Absorbent cotton wool IP 500gm (not sterilised) · batch 3284 · SJD Surgicot Pvt.Ltd. · id bd0487e20796
+  - NSQ · Acebrophylline, Guaiphenesin & Terbutaline Sulphate Syrup · batch SL253978 · Star Filteration Systems · id c5ae4079f2f8
+  - NSQ · Aceclofenac Tablets IP 100 mg · batch GAC55 · Super Formulation Pvt. Ltd. · id 978fc2d35623
+  - NSQ · Aceclofenac, Paracetamol & Chlorzoxazone Tablets · batch UT-250864 · Ultra Drugs Pvt. Ltd. · id e5effb79be04
+  - NSQ · Aceclofenac, Paracetamol & Serratiopeptidase Tablets · batch SHT-250127 · Euphoria India Pharmaceuticals · id 58be3b80cc78
+  - NSQ · Aceclofenac, Paracetamol & Serratiopeptidase Tablets · batch ST260206B · Sorbax Pharmaceuticals Pvt. Ltd. · id 53d0fb19b8b1
+  - NSQ · Acetyl Salicylic Gastro-Resistant Tablets IP 75 mg · batch IT6148 · Inducare Pharmaceuticals And Research Foundation · id 23e38599697a
+  - NSQ · Albendazole IP/USP · batch ABZ25352 · Amgis Lifescience Ltd. · id 653af11e9e2b
+  - NSQ · Albendazole Tablets IP 400 mg · batch UGT-26103 · Ultra Drugs Pvt. Ltd. · id ce4b0c67b123
+  - NSQ · Almisri Humnasheen Whitening Cream · batch MN099 · Not Mention · id ca8cca15787b
+  - NSQ · Alpha Amylase & Papain Syrup · batch D4107125 · Biological E. Limited · id 9e9e66f215cb
+  - NSQ · Aluminium Hydroxide, Magnesium Hydroxide & Oxetacaine Suspension · batch GBL25085 · Gats Biotech Pvt Ltd · id 499b8f377acd
+  - NSQ · Ambroxol Hydrochloride Syrup 100 ml · batch OL25710 · Saintlife Pharmaceuticals Ltd. · id 6cf7aaea5b54
+  - NSQ · Ambroxol Hydrochloride Syrup 100 ml · batch OL25709 · Saintlife Pharmaceuticals Ltd. · id 55803854ce38
+  - NSQ · Ambroxol Hydrochloride, Terbutaline Sulphate & Guaiphenesin syrup · batch AGT1100 · Revive Formulations India Pvt Ltd. · id f08d51415cda
+  - NSQ · Amocycillin, Cloxacillin & Lactic Acid Bacillus Capsules · batch ABC2601002B ·  · id 29ce32d9fc67
+  - NSQ · Amoxicillin , Cloxacillin and Lactic Acid Bacillus Capsules · batch BCC25032 · Medwell Biotech at · id 2534d91132b3
+  - NSQ · Amoxycillin & Cloxacillin Capsules · batch ACB5D097 · Anrose Pharma · id ca8ddfc43c0a
+  - NSQ · Amoxycillin & Potassium Clavulanate Oral Suspension I.P. · batch MKLD-25026 · Park Pharmaceticals · id 6ec2803c8906
+  - NSQ · Amoxycillin & Potassium Clavulanate Oral Suspension IP · batch JMD-48 · Sarverkhera · id 3368ce2cc884
+  - NSQ · Amoxycillin & Potassium Clavulanate Oral Suspension IP · batch DS25-1064 · Athens Life Sciences. Mauza Rampur · id b9aa46d12dde
+  - NSQ · Amoxycillin & Potassium Clavulanate Tablets IP · batch CT/25/663 · Ciphem Pharma · id 0549edf84628
+  - NSQ · Amoxycillin & Potassium Clavulanate Tablets IP · batch BMT-25093 · Mancare Laboratories Pvt. Ltd. · id a5629a6f9e1a
+  - NSQ · Amoxycillin & Potassium Clavulanate Tablets IP · batch ABT25752 · Alexa Phamaceuticals · id 5da2ae79c144
+  - NSQ · Amoxycillin & Potassium Clavulanate Tablets IP (500mg+125mg) · batch CVTC-637 · Nestor Pharmaceuticals Ltd. · id efb8785d7bee
+  - NSQ · Amoxycillin & Potassium Clavulanate Tablets IP (500mg+125mg) · batch SH251084 · Sotac Healthcare Pvt. Ltd. · id 6e528495418a
+  - NSQ · Amoxycillin Oral Suspension IP 125 mg/5 ml · batch AMS2629 · Modern Laboratories. · id d3b1bb6c93ab
+  - NSQ · Amoxycillin and Potassium Clavulanate Tablets I.P 200mg · batch 26440256 · Alkem Health Science. · id 6bc0a9d55d70
+  - NSQ · Amoxycillin and Potassium Clavulanate Tablets IP · batch CT/26/244 · Ciphem Pharma · id d21535dc83d0
+  - NSQ · Amoxycillin and Potassium Clavulanate Tablets IP (500 mg+125mg) · batch CVTC-692 · Nestor Pharmaceuticals Ltd. · id 05b0ffb758a5
+  - NSQ · Amoxycillin and Pottassium Clavulanate Injection IP 1200 mg · batch MC 26003 · Maan Pharmaceuticals Ltd. · id 58a266ce198b
+  - NSQ · Amoxycillin, Cloxacillin & Lactic Acid Bacillus Capsules · batch B50480A · RRG Biotech Pvt. Ltd. · id 78e549940543
+  - NSQ · Amoxycillin, Potassium Clavulanate & Lactic Acid Bacillus Tablets · batch TB250049A · Cosmas Research Lab Ltd. · id 7de4eed9cde3
+  - NSQ · Ampicillin & Dicloxacillin Capsules · batch C-251008 · Moon Marks Pharmaceuticals. · id bbaba8bad342
+  - NSQ · Ascorbic Acid Injection IP. · batch RHV251103 · R.H. Laboratories Opp. Gondpur Industrial Area · id 9c1284c7debe
+  - NSQ · Aspirin Gastro Resistant Tablets IP 150 mg · batch AMR26005 · Accent Pharma · id 5f4895150a4e
+  - NSQ · Aspirin Gastro-Resistant Tablets IP 150 Mg · batch 56002222 · USV Private Limited · id c09a2f1cf012
+  - NSQ · Aspirin Tablets I.P. · batch T-22477 · Jackson Laboratories Pvt. Ltd. · id c0a542c00379
+  - NSQ · Atorvastatin Tablets IP · batch UT-2026009 · Max Chem Pharmaceuticals Pvt. Ltd. · id 9b3389a6c4a1
+  - NSQ · Atorvastatin Tablets IP 10 mg · batch F6E0485 · Morepen Laboratories Ltd. · id 4cf9725e737e
+  - NSQ · Azithromycin Tablets I.P 500mg · batch 2508000965 · Alembic Pharmaceuticals Ltd. · id 481924381f39
+  - NSQ · Azithromycin& Lactic Acid BacillusTablets · batch OT-252343 · Orchid Bio-Tech Ltd. · id 515a509961f8
+  - NSQ · Aztreonam and Avibactam (1.5 g/0.5g) Powder for Concentrate for Soluti · batch NE1021AA · Hospira Australia Pty Ltd · id c928ee3ad60b
+  - NSQ · Betamethasone Sodium Phosphate Tablets IP 0.5 mg · batch SBU-107 · Marc Lifesciences Sikkim · id cc02d03ceec4
+  - NSQ · Betamethasone Valerate Ointment IP · batch RKB99 · Curetech Skincare · id d1fa19f6132f
+  - NSQ · Betamethasone Valerate, Clindamycin Phosphate, Nicotinamide & Vitamin- · batch D-1462 · Drugcell Pharmaceuticals · id 7e6bcfe4b79e
+  - NSQ · Betamethasone, Clindamycine & Nicotinamide Cream · batch 264 · BCL Pharm Rampur Majri · id ca6f3e2a9021
+  - NSQ · Bisacodyl Tablets IP 5 MG · batch 03297 · Healthy Life Pharma Pvt Ltd. · id b6b2ad640531
+  - NSQ · Black Braided Silk Non Absorbable Surgical Suture 76 cm (Black) 3/8 Ci · batch 26S1826 · Futura Surgicare Pvt Ltd. · id 84ea73858365
+  - NSQ · Bleached Bandage Cloth Sch-F(II) to be Sterilized before use · batch B 268 · Bharath Surgical Dressing Company · id 123997cf820c
+  - NSQ · Bupivacaine Hydrochloride In Dextrose Injection USP · batch BKBP02602 · Themis Medicare Limited · id b4c4844dc407
+  - NSQ · Bupivacaine Hydrochloride in Dextrose Injection USP · batch BKBP02601 · Themis Medicare Ltd. · id 059ffaa10d3a
+  - NSQ · Buprenorphine 0.4mg and Naloxone 0.1mg Sublingual Tablets IP · batch QP-252653 · Qubit Pharmaceuticals Pvt Ltd. · id e5db5bc201c3
+  - NSQ · Buprenorphine and Naloxone Sublingual Tablets I.P · batch P572506 · Tripada Healthcare Pvt Ltd. · id e62d767f4486
+  - NSQ · Buprenorphine and Naloxone Sublingual Tablets IP · batch BRN-603 · Mindwave Healthcare Pvt Ltd. · id 1cbe2a2200e5
+  - NSQ · Buprenorphine and Naloxone Sublingual Tablets IP · batch NB-251103 · Utile Therapeutics Pvt.Ltd. · id f94a265c3f64
+  - NSQ · Buprenorphine and Naloxone Sublingual Tablets IP · batch NB-260108 · Utile Therapeutics Pvt.Ltd. · id 9e0900482812
+  - NSQ · Buprenorphine and Naloxone Sublingual Tablets IP · batch ORN-601 · Mindwave Healthcare Pvt Ltd. · id 7d130a5e04ca
+  - NSQ · Buprenorphine and Naloxone Sublingual Tablets IP · batch BNL602 · Mindwave Healthcare Pvt Ltd. · id 861a0a280d9e
+  - NSQ · Buprenorphine and Naloxone sublingual Tablets IP · batch NB-260103 · Utile Therapeutics Pvt.Ltd. · id 6499e2840c80
+  - NSQ · CEFIXIME Tablets IP 200mg · batch T6280 · ZEST PHARMA · id 901866e3fda6
+  - NSQ · Calamine, Aloevera & Light Liquid Paraffin Lotion) · batch NA184 · Neptune Life Sciences Pvt. Ltd. · id 36b05d2cd670
+  - NSQ · Calamine, Light Liquid Paraffin Lotion in Aloe Vera & Vitamin E base · batch M1456 · Kavit soap Industries · id ab75c35b5130
+  - NSQ · Calcium & Vitamin D3 Tablets IP · batch T011J02 · Bioconic Remedies · id 7753b9619462
+  - NSQ · Calcium Carbonate and Vitamin D3, Methylcobalamin, L-Methyl Folate Cal · batch APT26195 · Acreion Pharmaceuticals · id 661fb6ab28ca
+  - NSQ · Calcium and Vitamin D3 Tablets IP (500 mg +250 IU) · batch CUTC-215 · Nestor Pharmaceuticals Ltd. · id 101a6504793b
+  - NSQ · Carboxymethylcellulose Sodium Eye Drops I.P.(0.5% w/v) · batch WEEX26010A · Integrated laboratories Pvt. Ltd. · id 840b2b564473
+  - NSQ · Carboxymethylcellulose Sodium Eye Drops I.P.(0.5% w/v) · batch WEEX25016A · Integrated laboratories Pvt. Ltd. · id d7a2929dbfd6
+  - NSQ · Cefepime & Sulbactam for Injection 3.0 gm · batch D0292509A · Protech Telelinks · id 0a0124890217
+  - NSQ · Cefixime & Ofloxacin Tablets · batch CT/25/671 · Ciphem Pharma · id 7700087ef6d9
+  - NSQ · Cefixime & Potassium Clavulanate Dispersible Tablets · batch SBCT-6235 · Saitech Medicare Pvt. Ltd. · id cf2bd8d752c2
+  - NSQ · Cefixime Dispersible Tablets · batch GT60095 · Omega Pharma · id 1029902f290d
+  - NSQ · Cefixime Dispersible Tablets IP · batch CT25205C · Curehealth Pharmaceuticals Pvt.Ltd. · id e8c92f39d28a
+  - NSQ · Cefixime Dispersible Tablets IP 200mg · batch CT/25/670 · Ciphem Pharma · id 4d229503a33a
+  - NSQ · Cefixime Oral Suspension IP (100 mg/5ml) Dry Syrup 30ml · batch CADC-01 · Nestor Pharmaceuticals Ltd. · id d178c0afcd5f
+  - NSQ · Cefixime Tablets 200mg · batch GT60004 · Omega Pharma · id 01e1b0fe0895
+  - NSQ · Cefixime Tablets I.P (200mg) · batch T6278 · ZEST PHARMA · id fb0ff03ac227
+  - NSQ · Cefixime Tablets I.P 200 mg · batch 25460922 · Alkem Health Science. · id 78f07af813d2
+  - NSQ · Cefixime Tablets I.P. 200 mg · batch T6279 · ZEST PHARMA · id 21644a459f06
+  - NSQ · Cefixime Tablets I.P. 200 mg. · batch ACT6037 · Bengal Chemicals & Pharmaceuticals Ltd. · id d66bf96feeb9
+  - NSQ · Cefixime Tablets IP (200 mg) · batch T6224 · Zest Pharma · id c5c1521eddef
+  - NSQ · Cefixime Teblets I.P (200mg) · batch T6281 · ZEST PHARMA · id 0ea1c89bf465
+  - NSQ · Cefixime and Azithromycin Tablets 250mg · batch GNT4571H · Geenac Pharma. · id e518b2d000d4
+  - NSQ · Cefixime, Ofloxacin & Lactic Acid Bacillus Tablets · batch PL-20224 · Velnex Medicare India Pvt. Ltd. · id 5027eb02fa11
+  - NSQ · Cefpodoxime Oral Suspension IP 50 mg/5 ml · batch CD/24/256 · Ciphem Pharma · id e8c055053feb
+  - NSQ · Cefpodoxime Proxetil & Potassium Clavulanate Oral Suspension · batch HBHD26A11 · Himsagar Laboratories Ltd. · id c38cf04791d0
+  - NSQ · Cefpodoxime Proxetil Dispersible Tablets 100mg · batch SPT-41530 · Shervotec Pharmaceuticals · id f64072226b10
+  - NSQ · Cefpodoxime Proxetil Dispersible Tablets 100mg · batch T250413V · Polestar Power Industries (Pharma Division) · id 20e7c187c143
+  - NSQ · Cefriaxone Injection IP · batch 25180633 · Alkem Health Science · id e197e91e6100
+  - NSQ · Ceftazidime 2gm/ Avibactam 0.5 gm Powder for Concentrate for Solution  · batch CCDAX0326 · BDR Pharmaceuticals International Pvt. Ltd. · id 7071e945fd56
+  - NSQ · Ceftriaxone & Tazobactam Injection · batch VD250693 · VADSP Pharmaceuticals · id 1cce443da658
+  - NSQ · Ceftriaxone Injection IP 1000 mg · batch C126100 · Indian Healthcare · id 2dbb988e78ae
+  - NSQ · Cefuroxime Axetil · batch TB-26033 · Apco Pharma Ltd. · id 52e44e2adf7f
+  - NSQ · Cetirizine Hydrochloride Tablets IP · batch GBT25180 · Gats Biotech Pvt. Ltd. · id 709b789be02d
+  - NSQ · Cetirizine Hydrochloride Tablets IP 10 mg · batch LPT-2425335 · Lannet Pharmaceuticals Pvt. Ltd. · id 1dfbfac557ed
+  - NSQ · Chlorthalidone Tablets IP 6.25mg · batch T-260092 · Sunlife Sciences · id 30fd6a04bbce
+  - NSQ · Cholecalciferol (Vitamin D3) Oral Solution USP 400 IU/ml · batch VAM-2601 · Apple Formulations Pvt. Ltd. · id 0ad1952edc62
+  - NSQ · Cholecalciferol Granules 60000 IU · batch OP26045 · Symbiosis Pharmaceuticals Pvt. Ltd. · id cf4e7a08f143
+  - NSQ · Ciprofloxacin Tablets I.P. 500mg · batch AD044803 · Admed Pharma Pvt. Ltd · id 6518481bf543
+  - NSQ · Ciprofloxacin Tablets IP 250 mg · batch CPT1305 · Unicure India Ltd. · id 0e214bfc7379
+  - NSQ · Ciprofloxacin Tablets IP 250mg · batch AD00440901 · Admed Pharma Pvt. Ltd. · id a17720a09a2a
+  - NSQ · Clopidogrel & Aspirin Tablets IP · batch PGMP0359 · Thorab pharma and research Laboratory · id c4cb36222e97
+  - NSQ · Clopidogrel & Aspirin capsules · batch BC-034 · Bonn Schtering Bio Sciences · id a03b320355d7
+  - NSQ · Clopidogrel and Aspirin Capsules · batch SIH0304A · Sun Pharma Laboratories Ltd. · id bb3199f9643d
+  - NSQ · Clozapin Tablets IP 50mg · batch CBNT-0240 · Crossasia Biotech Pvt. Ltd. · id 3039bf7b0fd9
+  - NSQ · Codeine Phosphate & Triprolidine Hydrochloride Syrup · batch Not Mention · Wings Biotech LLP · id a2c9d96bcfb7
+  - NSQ · Combi pack of Ceftroaxone Injection IP 1gm · batch IGN5012 · Kolash Pharma · id 26f197754106
+  - NSQ · Combipack of Cefpodoxime Oral Suspension IP & Sterile water for Inject · batch XCD25025 · Xperia Creation · id 30b15cd67e11
+  - NSQ · Compound Benzion Tincture IP · batch TB-2603 · Cymer pharma · id 70e4df710c08
+  - NSQ · Controlled Release Tablets of Nitroglycerin 2.6 mg · batch AT2601081A · ADDII biotech Pvt. Ltd. · id 925a44165382
+  - NSQ · Cyproheptadine HCl IP · batch BCYPH/2606004-B · R. K. Associates · id 20ff26dac9dd
+  - NSQ · Detan Advance with Alpha Arbutin, Glycolic acid & Clove Oil · batch CA-251 · IRA Cosmed Pvt. Ltd. · id c965a7245e2d
+  - NSQ · Dexamethasone Sodium Phosphate Injection IP 2ml · batch DT-54 · Aster Medinces Pvt. Ltd. · id ea22a8c16208
+  - NSQ · Dexamethasone Sodium Phosphate Injection IP 4mg/ml · batch UMI25442 · Ultramark Healthcare Pvt. Ltd. · id 61be9aa84982
+  - NSQ · Dextromethorphan Hydrobromide, Chlorpheniramine Maleate, Guaiphenesin, · batch 25L-3150 · Varav Biogenesis Pvt.Ltd. · id 865697846ed4
+  - NSQ · Dextromethorphan Hydrobromide, Phenylephrine Hydrochloride and Chlophe · batch MGR-046 · Mediguard Remedies. R.S. No:106/1 · id afbde3ff26ac
+  - NSQ · Dextrose Injection I.P. (10.% w/v). D10 · batch FDB24044 · Biosynergy Lifecare (P) Ltd. · id 3c43b70dff5a
+  - NSQ · Dhyey Prashan Gold Drops · batch S-5495 · Arogya Jyoti Pharmacy · id e5478ec4b363
+  - NSQ · Diclofenac Potassium, & Paracetamol Tablets · batch DLPT26018S · Shiva Biogenetics Pvt. Ltd. · id 285331a7866c
+  - NSQ · Diclofenac Sodium and Paracetamol Tablet · batch T-264 · Idealife Healthcare ltd. · id aa31976e3ecb
+  - NSQ · Diclofenac Sodium, Paracetamol and Chlorzoxazone Tablets · batch GT-25178B · Go-Ish Remedies Ltd. · id 2c3a34be7821
+  - NSQ · Diclofenac Tablets IP 50mg · batch 0724 · Hindustan Antibiotics Ltd. · id 8cb55943f6b4
+  - NSQ · Diclohelp SP Tablets · batch MT-25392 · Medimark Drugs & Pharmaceuticals · id 698526f9a397
+  - NSQ · Dicyclomine Hydrochloride & Paracetamol Tablets · batch 26005005 · Aban pharmaceuticals · id c749d2317062
+  - NSQ · Disinfectant Fluid Black Phenolic Type Normal Grade-1 · batch MCI08 · Mittal Chemical Industries · id 38f2f6201a2e
+  - NSQ · Domperidone Suspension IP · batch L50924 · Zenith Drugs Ltd. · id a18e1a2922a4
+  - NSQ · Dorzolamide and Timolol Eye Drops IP 5ml · batch DTEJ26003 · Vivek Pharmaceuticals Pvt.Ltd. · id 5dc4695d947e
+  - NSQ · Drotaverine Hydrochloride Suspension · batch WL/25/112 · Wellmed Pharma GMP · id b2b6b4f068b8
+  - NSQ · Enteric Coated Rabeprazole & Sustained Release Domperidone Capsules · batch SC-8598 · Sure for Cure Formulations (I) Pvt. Ltd. · id 6a0f0933d84c
+  - NSQ · Enteric Coated Rabeprazole Sodium & Sustained Release Domperidone Caps · batch ZP26C031 · Zentic Pharmaceuticals Pvt. Ltd. · id 89db6306b3f6
+  - NSQ · Erythromycin Stearate Tablets IP · batch ATG5J856 · Anrose Pharma · id c6c25f5e3f32
+  - NSQ · Erythromycin Stearate Tablets IP 250 mg · batch BT5017 · Omega Biotech Ltd. · id ed98bc202085
+  - NSQ · Erythromycin Stearate Tablets IP 500 mg · batch T-250796 · Daffohills Laboratories Pvt. Ltd. · id 3ed2ab83075f
+  - NSQ · Esomeprazole Magnesium (EC) Tablets · batch KST-072 · Kashvvi Life Sciences · id 37f546a84630
+  - NSQ · Esomeprazole Tablets IP · batch GTH1128A · Sun Pharma Laboratories Ltd. · id 954127c23220
+  - NSQ · Face Fresh Gold Beauty Cream · batch N61161 · Shaheen Cosmetics (Pvt.) Ltd · id b227afee19cc
+  - NSQ · FaceFresh Plus GOLD BEAUTY CREAM) · batch N61145 · Shaheen Cosmetics (PVT) Ltd · id 8297a505a28c
+  - NSQ · Ferrous Ascorbate and Folic Acid Tablets IP · batch GT252144 · Theon Pharmaceuticals Ltd. · id 083d7a71c221
+  - NSQ · Ferrous Sulphate, Zinc & Folic Acid Capsules · batch SPA251352 · Skymap pharmaceutical private Limited · id adc1d89a673e
+  - NSQ · Ferrous ascorbate with folic acid drops · batch LL2607065 · Life Gem Medi Healthcare (india) I.P.46 · id 690f3fb8aae3
+  - NSQ · Fexofenadine Hydrochloride Tablets I.P. · batch AMT-2742 · Avalon Medicines Pvt. Ltd. · id e17404934592
+  - NSQ · Fexofenadine Hydrochloride Tablets IP · batch GB25037 · Devbhoomi Pharmaceuticals · id 2f78496f644c
+  - NSQ · Fexofenadine Tablets IP 120 mg · batch MT-534 · M K Healthcare · id 7cbf4e1db9c5
+  - NSQ · Folic Acid Tablets IP 0.4 mg · batch FO1TE059 · Unicure India Ltd · id 6496408aefb2
+  - NSQ · Folic Acid Tablets IP 0.4 mg · batch FO1TE031 · Unicure India Ltd · id e7f8dfce7fec
+  - NSQ · Fungal Diatase & Pepsin Syrup · batch KL56-590 · Krisa Healthcare · id 2bc4ddc14545
+  - NSQ · Gabapentin with Nortriptyline Hydrochloride Tablets · batch GA-26710 · Addapt Life Care Pvt. Ltd. · id 477222853056
+  - NSQ · Gamma Benzene Hexachloride Lotion IP · batch H-786 · Cotec Healthcare Pvt.Ltd. · id fd9cf2e4cda7
+  - NSQ · Gamma Benzene Hexachloride Lotion USP · batch H-608 · Cotec Healthcare Pvt.Ltd. · id 5d4f2a6d7249
+  - NSQ · Gentamicin Injection IP 2ml · batch 25BUI25 · SVP Life Sciences C/10-1 · id 773d54f05136
+  - NSQ · Gentamicin Injection IP-40mg/ml · batch 683512 · Zazen Pharma Pvt. Ltd. · id 385577dc601a
+  - NSQ · Gentamicin Injection IP-40mg/ml-2ml · batch 683508 · Zazen Pharma Pvt. Ltd. · id e66d2c476a77
+  - NSQ · Gliclazide 60mg (MR) & Metformin Hydrochloride 500mg (SR) Tablets · batch KTC703 · Kureasia Pharma Pvt. Ltd · id 71b6b84765bf
+  - NSQ · Glimepiride & Metformin (SR) Tablets · batch T-880526 · Taksa Lifesciences Pvt. Ltd. · id e489d8c5e08c
+  - NSQ · Glimepiride & Metformin Hydrochloride SR Tablets IP · batch 26AG129B · Astam Healthcare Pvt. Ltd. · id 84f1f33774a3
+  - NSQ · Glimepiride & Metformin Hydrochloride Sustained Release Tablets IP · batch T25L731E · Balaji formulations · id 2efe95a79fc6
+  - NSQ · Glimepiride Tablets IP 1 mg · batch 0069 · Hindustan Antibiotics Ltd. · id d3b9a4457d11
+  - NSQ · Glimepiride Tablets IP 1mg · batch M25799017 · Dr. Miltons Laboratories Pvt. Ltd. · id c008958b0bf3
+  - NSQ · Glimepiride Tablets IP 1mg · batch M26799010 · Dr. Miltons Laboratories Pvt. Ltd. · id 3088bf688dc3
+  - NSQ · Glimepiride Tablets IP 1mg · batch M25799025 · Dr. Miltons Laboratories Pvt. Ltd. · id 1535e473a423
+  - NSQ · Glimepiride Tablets IP 1mg · batch M26799002 · Dr. Miltons Laboratories Pvt. Ltd. · id ab6418d5ecc5
+  - NSQ · Glimepiride Tablets IP 2 mg · batch 0089 · Hindustan Antibiotics Ltd. · id a00c0044ba2f
+  - NSQ · Glimepiride, Pioglitazone & Metformin Hydrochloride (ER) Tablets · batch AYV46088 · Psychotropics India Ltd. · id 8450f30a4cc7
+  - NSQ · Glimepride Tab I.P 1 mg · batch SYGT-162 · Mark Life Sciences · id c4c7cb09e0f6
+  - NSQ · Glimepride Tab I.P 1 mg · batch SLY-124 · Mark Life Sciences · id 2df7381987ac
+  - NSQ · Glimepride Tab I.P 2 mg · batch SYGT-126 · Mark Life Sciences · id 6eb0d0a89286
+  - NSQ · Glimepride Tab I.P 2 mg · batch SYGT-134 · Mark Life Sciences · id 00e9542f20e4
+  - NSQ · Glimepride Tab I.P 2 mg · batch SYGT-120 · Mark Life Sciences · id 8d947fd335f3
+  - NSQ · Goree Beauty Cream with Lycopene · batch GB153 · Goree Cosmetics (Pvt) Ltd · id 379011ca5bb2
+  - NSQ · Goree Beauty Cream with Lycopene · batch GB155 · Goree Cosmetics (Pvt) Ltd · id 598601f3d889
+  - NSQ · Goree Day & Night Cream · batch GDN185 · Goree CosmeticsPvt.Ltd. · id d1cf6f4df981
+  - NSQ · HEMOCARE Syrup with Folic Acid, Vitamin B12 and Minerals. · batch HCS25013 · Sai Mirra Innopharm Pvt. · id b4a29bd95794
+  - NSQ · IBUPROFEN Tablets I.P. 200 mg · batch 1486 · Alpha Pharmaceuticals · id 50261c6e2bc7
+  - NSQ · IBUPROFEN Tablets I.P. 400 mg · batch 1487 · Alpha Pharmaceuticals · id c380aedbe56e
+  - NSQ · Ibuprofen & Paracetamol Dispersible Tablets · batch MB035042 · Geno Pharmaceuticals Pvt. Ltd. · id c7c1c51a0fb9
+  - NSQ · Ibuprofen and Paracetamol Suspension · batch DPG261257 · Aristo Pharmaceuticals Pvt. Ltd. · id 2bb05d3c7c71
+  - NSQ · Ibuprofen and Paracetamol Suspension · batch 26257301 · Mercury Laboratories Ltd. · id fc8487f3a121
+  - NSQ · Ibuprofen and Paracetamol Tablets · batch CT-2413 · Suprex Laboratories · id 439477390708
+  - NSQ · Indomethacin Capsules IP 25mg · batch CHC-60175 · Cotec Healthcare Ltd. · id 9c15dac4f44e
+  - NSQ · Iron 60 mg and Folic Acid 0.5 mg · batch IMTD-55 · Nestor Pharmaceuticals Ltd. · id d115f7a3129e
+  - NSQ · Iron 60 mg and Folic Acid 0.5 mg · batch IQTC-223 · Nestor Pharmaceuticals Ltd. · id 3a67ef61be0e
+  - NSQ · Iron and Folic Acid Tablets IP (IFA) (100 mg + 0.5mg) (Enteric Coated  · batch IJTD-11 · Nestor Pharmaceuticals Limited · id 33c89e349c65
+  - NSQ · Iron and Folic Acid Tablets IP 45/0.4mg · batch S805001 · Goa Antibiotics & Pharmaceuticals Ltd · id a7122efb2de2
+  - NSQ · Iron and Folic Acid Tablets IP 45/0.4mg · batch S805002 · Goa Antibiotics & Pharmaceuticals Ltd · id ac520eae7a83
+  - NSQ · Iron and Folic Acid Tablets IP 45/0.4mg · batch S805003 · Goa Antibiotics & Pharmaceuticals Ltd · id 4625e3dd8851
+  - NSQ · Itraconazole Capsules IP 100 mg · batch CPC-2550103B · Catasta Pharmaceuticals · id a69953b19418
+  - NSQ · Itraconazole Capsules IP 200 mg · batch MC250251 · Oxford Pharma Puhana Chowk Roorkee · id fbdcb7436b3e
+  - NSQ · Johnson's baby Soap · batch B6136 · VVF (India) Ltd. · id e2a82dfb949d
+  - NSQ · Ketoconazole Medicated Soap · batch 9237 · Vimson Derma · id 5fc6da911a1c
+  - NSQ · Ketoconazole Medicated Soap) · batch 9293 · Vimson Derma · id 21f1b3d8c8b2
+  - NSQ · Ketoconazole, Zinc Pyrithione & Glycerin Soap · batch ADE251647 · Astonea Labs Pvt. Ltd. · id 931196264725
+  - NSQ · Levocetirizine Dihydrochloride & Montelukast Sodium Tablets IP · batch ALT-10421 · Access Life Science · id 9120e15dd7c5
+  - NSQ · Levocetirizine Dihydrochloride & Montelukast Tablets IP · batch BTA-175 · Sarthak Biotech Pvt. Ltd. · id 4835cff0cf8a
+  - … and 122 more
+- 2026-04: 1 new
+  - SPURIOUS · Telmisartan Tablets IP 40 mg · batch 2513000079 · Under Investigation · id 075824179e2f
+

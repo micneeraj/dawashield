@@ -13,9 +13,24 @@ from pathlib import Path
 REQUIRED = ("id", "type", "name", "batch", "batchNorm", "month", "sourceUrl")
 MAX_DROP = 0.10  # more than 10% fewer records than last time = parse looks wrong
 MAX_MISSING_FIELDS = 0.01  # more than 1% of rows missing a required field
+COVERAGE_START = "2024-10"  # fixed start of the historical record; the end moves forward with new months
 
 
-def validate(new: list[dict], prev: list[dict] | None) -> list[str]:
+def in_coverage(month: str) -> bool:
+    """True for alert months inside the fixed historical coverage (YYYY-MM strings)."""
+    return isinstance(month, str) and month >= COVERAGE_START
+
+
+def unexplained_removals(new: list[dict], prev: list[dict] | None, corrections: set[str]) -> list[dict]:
+    """Previously published records missing from the new build with no documented correction.
+
+    A record is never dropped just because it is old. Removing one needs an entry in
+    data/corrections.json that names its id and the source evidence."""
+    cur = {r["id"] for r in new}
+    return [r for r in (prev or []) if r["id"] not in cur and r["id"] not in corrections]
+
+
+def validate(new: list[dict], prev: list[dict] | None, corrections: set[str] = frozenset()) -> list[str]:
     """Return a list of problems. Empty list = safe to publish."""
     errors: list[str] = []
     if not new:
@@ -40,6 +55,9 @@ def validate(new: list[dict], prev: list[dict] | None) -> list[str]:
         new_latest = max((r.get("month", "") for r in new), default="")
         if new_latest < prev_latest:
             errors.append(f"latest alert month went backwards: {prev_latest} -> {new_latest}")
+        gone = unexplained_removals(new, prev, set(corrections))
+        if gone:
+            errors.append(f"{len(gone)} previously published records would be removed without a documented correction (e.g. {gone[0]['id']} {gone[0]['month']})")
     return errors
 
 

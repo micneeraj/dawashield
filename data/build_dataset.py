@@ -35,7 +35,7 @@ CHANGELOG = ROOT / "data" / "CHANGELOG.md"
 RUN_LOG = ROOT / "data" / "pipeline_log.json"
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from validate import added_records, changelog_entry, log_run, prepend_changelog, removed_ids, validate  # noqa: E402
+from validate import COVERAGE_START, added_records, changelog_entry, log_run, prepend_changelog, removed_ids, validate  # noqa: E402
 
 PORTAL = "https://cdscoonline.gov.in/CDSCO"
 PORTAL_PAGE = PORTAL + "/viewPublicNSQDrug"
@@ -46,7 +46,7 @@ ALERT_PAGES = [
 ]
 UA = {"User-Agent": "Mozilla/5.0 (DawaShield dataset builder; open-source)"}
 MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-WINDOW = 24  # months back from the latest published month
+CORRECTIONS_JSON = ROOT / "data" / "corrections.json"  # documented removals/reclassifications, with evidence
 
 
 OFFLINE = "--offline" in sys.argv  # rebuild from data/raw only
@@ -287,8 +287,9 @@ def build() -> int:
 
     print("Portal months...")
     all_months = sorted(set(portal_months("nsq")) | set(portal_months("spurious")), key=month_key)
-    window = all_months[-WINDOW:]
-    print("  window:", window[0], "to", window[-1])
+    # Fixed start (COVERAGE_START), expanding end: a new month never pushes old months out.
+    window = [m for m in all_months if month_key(m) >= COVERAGE_START]
+    print("  coverage:", window[0], "to", window[-1])
     records = fetch_portal(window, failed)
 
     print("PDFs...")
@@ -383,7 +384,8 @@ def build() -> int:
         r["id"] = hashlib.sha1(f"{r['type']}|{r['batchNorm']}|{r['name']}|{r['month']}|{r['lab']}".encode()).hexdigest()[:12]
 
     prev_records = json.loads((OUT / "nsq.json").read_text(encoding="utf-8")) if (OUT / "nsq.json").exists() else None
-    problems = validate(out, prev_records)
+    corrections = {c["id"] for c in json.loads(CORRECTIONS_JSON.read_text(encoding="utf-8"))} if CORRECTIONS_JSON.exists() else set()
+    problems = validate(out, prev_records, corrections)
     if problems:
         return keep_last_good("; ".join(problems), {"parsed": len(out), "previous": len(prev_records or [])})
 
@@ -415,7 +417,9 @@ def build() -> int:
         "statesPendingLatestMonth": pending_states,
         "failed": failed,
         "sources": [PORTAL_PAGE, ALERT_PAGES[0]],
-        "lastChecked": prev.get("lastChecked", today) if OFFLINE else today,
+        # Last successful source check: moves only on a clean online run (no failed fetch, no missing month).
+        "lastChecked": prev.get("lastChecked") if (OFFLINE or failed or any(m not in months_present for m in expected)) else today,
+        "lastCheckAttempted": prev.get("lastCheckAttempted", today) if OFFLINE else today,
         "bytes": len(body.encode("utf-8")),
         "gzipBytes": len(gzip.compress(body.encode("utf-8"), 9)),
     }

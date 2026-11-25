@@ -1,11 +1,11 @@
 {
  "dataset": {
-  "records": 4158,
-  "latestMonth": "2026-09"
+  "records": 4480,
+  "latestMonth": "2026-10"
  },
  "fullPopulation": {
-  "total": 4158,
-  "red": 4158,
+  "total": 4480,
+  "red": 4480,
   "notRed": 0,
   "notRedList": []
  },

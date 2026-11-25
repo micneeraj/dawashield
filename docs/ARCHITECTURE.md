@@ -17,7 +17,7 @@ flowchart LR
   end
 
   subgraph Phone["Phone (PWA, works offline)"]
-    SW[Service worker<br/>app shell + clips + data] --> IDB[(IndexedDB<br/>4,158 records)]
+    SW[Service worker<br/>app shell + clips + data] --> IDB[(IndexedDB<br/>4,480 records)]
     IN[Voice · Type · Photo] --> ROUTER{Hybrid AI router}
     ROUTER -- online --> FLASH[Gemini Flash<br/>cloud, Firebase AI Logic]
     ROUTER -- offline + Nano --> NANO[Gemini Nano<br/>on device]
@@ -65,7 +65,7 @@ Every AI answer carries the SDK's real `inferenceSource`, shown as **"On this de
 ## 4. Offline matching engine (`src/lib/match.ts`)
 
 - The full dataset (~0.5 MB gzip) is stored in **IndexedDB**; the service worker precaches the app shell, data and Hindi/English voice clips (regional files are excluded) (~2.7 MB transferred in total).
-- Pure TypeScript rules, a few milliseconds per check on 4,158 records; no AI, no WASM, so it runs in any low-end Android browser.
+- Pure TypeScript rules, a few milliseconds per check on 4,480 records; no AI, no WASM, so it runs in any low-end Android browser.
 
 | Input | Result |
 |---|---|

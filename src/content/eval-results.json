@@ -1,12 +1,12 @@
 {
   "generatedAt": "2026-11-25",
-  "datasetVersion": "033e977bb56d2587",
-  "records": 4158,
-  "latestMonth": "2026-09",
+  "datasetVersion": "361766925428bd24",
+  "records": 4480,
+  "latestMonth": "2026-10",
   "verified": 55,
   "tests": {
-    "passed": 240,
-    "total": 240
+    "passed": 242,
+    "total": 242
   },
   "matching": {
     "cases": 728,
@@ -46,7 +46,7 @@
         "UNREADABLE": 55
       }
     },
-    "msPerCheck": 7.16,
+    "msPerCheck": 4.92,
     "groups": [
       {
         "group": "same company, different medicine (Dolo case)",
@@ -147,7 +147,7 @@
     ]
   },
   "speech": {
-    "dictionary": 2616,
+    "dictionary": 2857,
     "perLanguage": [
       {
         "lang": "hi/en",
