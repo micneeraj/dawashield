@@ -6,6 +6,8 @@ export interface AlertRecord {
   brand?: string;
   batch: string;
   batchNorm: string;
+  /** No printed batch number (placeholder such as "Not Mention"): never matched as an exact batch. */
+  batchUnspecified?: boolean;
   manufacturer: string;
   manufacturerName: string;
   manufacturerEntity: string;

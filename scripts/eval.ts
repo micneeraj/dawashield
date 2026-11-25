@@ -242,19 +242,25 @@ function populationSection(): string {
   if (!existsSync(path)) return "## Full-population check and negative control\n\nNot run yet: run `npm run eval:population`.";
   const p = JSON.parse(readFileSync(path, "utf8"));
   const fp = p.fullPopulation, nc = p.negativeControl;
-  const fpList = fp.notRedList.length ? fp.notRedList.map((x: { batch: string; name: string; company: string; got: string; reason: string }) => `- batch \`${x.batch}\`, ${x.name}, ${x.company}: shown ${x.got} (${x.reason})`).join("\n") : "None. Every official record came out RED.";
+  const ub = fp.unspecifiedBatch;
+  const fpList = fp.exactNotRedList.length ? fp.exactNotRedList.map((x: { batch: string; name: string; company: string; got: string; reason: string }) => `- batch \`${x.batch}\`, ${x.name}, ${x.company}: shown ${x.got} (${x.reason})`).join("\n") : "None. Every record with a printed batch came out RED.";
+  const ubLevels = Object.entries(ub.byLevel as Record<string, number>).map(([k, v]) => `${k} ${v}`).join(" · ") || "none";
   const ncList = nc.notGreyList.length ? nc.notGreyList.map((x: { batch: string; name: string; company: string; got: string; reason: string }) => `- batch \`${x.batch}\`, ${x.name}, ${x.company}: shown ${x.got} (${x.reason})`).join("\n") : "None. Every negative came out GREY.";
   return `## Full-population check (ground truth: the CDSCO dataset itself)
 
-**Ground truth comes from the official CDSCO records in the dataset itself, not from labels the author wrote.** Each of the ${fp.total.toLocaleString("en-IN")} records is run through the matcher with its own batch, medicine and company. Expected: RED for every one. The record itself is in the dataset, so this checks that the dataset's own records are found and shown as RED. It is a consistency check, not a test on unseen data.
+**Ground truth comes from the official CDSCO records in the dataset itself, not from labels the author wrote.** Each record is run through the matcher with its own batch, medicine and company. Only records with a printed batch number can be tested for an exact batch match: those must come out RED. Records whose batch was not printed (for example "Not Mention") cannot be tested that way. They are reported separately and must never come out RED. It is a consistency check, not a test on unseen data.
 
 | Metric | Value |
 |---|---|
-| Official records checked | ${fp.total.toLocaleString("en-IN")} |
-| Shown RED | **${fp.red.toLocaleString("en-IN")}** |
-| Not RED | ${fp.notRed} |
+| Official records in the dataset | ${fp.total.toLocaleString("en-IN")} |
+| With a printed batch (exact-match testable) | ${fp.exactBatchTestable.toLocaleString("en-IN")} |
+| Shown RED (of the testable ones) | **${fp.exactRed.toLocaleString("en-IN")}** of ${fp.exactBatchTestable.toLocaleString("en-IN")} |
+| Testable, not RED | ${fp.exactNotRed} |
+| No printed batch (excluded from the exact test) | ${ub.total} |
+| No-batch records shown RED (must be 0) | **${ub.redMustBeZero}** |
+| No-batch records by level | ${ubLevels} |
 
-Records that did not come out RED:
+Testable records that did not come out RED:
 
 ${fpList}
 

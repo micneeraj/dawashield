@@ -36,6 +36,7 @@ RUN_LOG = ROOT / "data" / "pipeline_log.json"
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from validate import COVERAGE_START, added_records, changelog_entry, log_run, prepend_changelog, removed_ids, validate  # noqa: E402
+from dedupe import assign_ids, dedupe, is_placeholder  # noqa: E402
 
 PORTAL = "https://cdscoonline.gov.in/CDSCO"
 PORTAL_PAGE = PORTAL + "/viewPublicNSQDrug"
@@ -329,34 +330,29 @@ def build() -> int:
         (RAW / "pdf_urls.json").write_text(json.dumps(pdf_urls, indent=1), encoding="utf-8")
 
     # Clean + dedupe + cross-check against PDF text
-    seen: dict[tuple, dict] = {}
-    out = []
+    # Placeholder batches ("Not Mention", "NIL", ...) are kept but never get an exact batch.
     for r in records:
-        if not r["batch"] or not r["name"]:
-            continue
-        r["batchNorm"] = norm_batch(r["batch"])
+        r["legacyBatchNorm"] = norm_batch(r["batch"]) if r["batch"] else ""
+        r["batchUnspecified"] = is_placeholder(r["legacyBatchNorm"])
+        r["batchNorm"] = "" if r["batchUnspecified"] else r["legacyBatchNorm"]
         r["manufacturerEntity"] = manufacturer_entity(r["manufacturer"])
-        if not r["batchNorm"]:
-            continue
-        key = (r["type"], r["batchNorm"], squash(re.sub(r"\(N/?A\)", "", r["name"]))[:20], r["month"], r["lab"])  # address text varies per listing
-        if key in seen:
-            seen[key]["listedTimes"] = seen[key].get("listedTimes", 1) + 1
-            continue
-        seen[key] = r
+    out, nameless = dedupe(records)
+    if nameless:
+        failed.append({"month": "-", "type": "PARSE", "error": f"{len(nameless)} portal rows had no product name and were not imported"})
+    for r in out:
         r["status"] = "pending"
         for url, t in texts.get(r["month"], []):
             if r["batchNorm"] and r["batchNorm"] in t and squash(r["name"])[:12] in t:
                 r["pdfUrl"] = url
                 r["pdfMatch"] = True
                 break
-        out.append(r)
 
     # Repeated listings: keep one record, note how often and which PDF entry numbers.
     for r in out:
         n = r.pop("listedTimes", 1)
         nums: list[int] = []
         for url, emap in entries.get(r["month"], []):
-            if r.get("pdfUrl") in (None, url) and r["batchNorm"] in emap:
+            if r.get("pdfUrl") in (None, url) and r["batchNorm"] and r["batchNorm"] in emap:
                 nums = sorted(emap[r["batchNorm"]])
                 break
         if n > 1:
@@ -376,12 +372,13 @@ def build() -> int:
     # Rows that also appear in a CDSCO "Revise list" PDF for the same month are marked revised.
     revised = [t for m, lst in texts.items() for u, t in lst if "Revise" in u]
     for r in out:
-        if r["status"] != "verified" and any(r["batchNorm"] in t and squash(r["name"])[:8] in t for t in revised):
+        if r["status"] != "verified" and r["batchNorm"] and any(r["batchNorm"] in t and squash(r["name"])[:8] in t for t in revised):
             r["status"] = "revised"
 
     out.sort(key=lambda r: (r["month"], r["type"], r["name"]), reverse=True)
-    for i, r in enumerate(out):
-        r["id"] = hashlib.sha1(f"{r['type']}|{r['batchNorm']}|{r['name']}|{r['month']}|{r['lab']}".encode()).hexdigest()[:12]
+    assign_ids(out)
+    for r in out:
+        r.pop("legacyBatchNorm", None)
 
     prev_records = json.loads((OUT / "nsq.json").read_text(encoding="utf-8")) if (OUT / "nsq.json").exists() else None
     corrections = {c["id"] for c in json.loads(CORRECTIONS_JSON.read_text(encoding="utf-8"))} if CORRECTIONS_JSON.exists() else set()

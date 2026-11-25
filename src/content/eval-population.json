@@ -1,13 +1,23 @@
 {
  "dataset": {
-  "records": 4480,
+  "records": 4488,
   "latestMonth": "2026-10"
  },
  "fullPopulation": {
-  "total": 4480,
-  "red": 4480,
-  "notRed": 0,
-  "notRedList": []
+  "total": 4488,
+  "exactBatchTestable": 4477,
+  "exactRed": 4477,
+  "exactNotRed": 0,
+  "exactNotRedList": [],
+  "unspecifiedBatch": {
+   "total": 11,
+   "redMustBeZero": 0,
+   "byLevel": {
+    "AMBER": 10,
+    "GREY": 1
+   },
+   "redList": []
+  }
  },
  "negativeControl": {
   "seed": 20261125,

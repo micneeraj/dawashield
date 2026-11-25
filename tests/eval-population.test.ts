@@ -6,12 +6,18 @@ import { resolve } from "node:path";
 const p = JSON.parse(readFileSync(resolve(__dirname, "../src/content/eval-population.json"), "utf8"));
 
 describe("full-population check (CDSCO records as ground truth)", () => {
-  it("every official record is found as RED", () => {
+  it("every record with a printed batch is found as RED", () => {
     // Compared with the published dataset itself, so the check follows the data as it is refreshed.
     const nsq = JSON.parse(readFileSync(resolve(__dirname, "../public/data/nsq.json"), "utf8"));
     expect(p.fullPopulation.total).toBe(nsq.length);
-    expect(p.fullPopulation.red).toBe(p.fullPopulation.total);
-    expect(p.fullPopulation.notRed).toBe(0);
+    expect(p.fullPopulation.exactBatchTestable + p.fullPopulation.unspecifiedBatch.total).toBe(nsq.length);
+    expect(p.fullPopulation.exactRed).toBe(p.fullPopulation.exactBatchTestable);
+    expect(p.fullPopulation.exactNotRed).toBe(0);
+  });
+
+  it("records with no printed batch never produce an exact-batch RED", () => {
+    expect(p.fullPopulation.unspecifiedBatch.redMustBeZero).toBe(0);
+    expect(p.fullPopulation.unspecifiedBatch.byLevel.RED ?? 0).toBe(0);
   });
 });
 

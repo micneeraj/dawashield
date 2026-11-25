@@ -35,7 +35,10 @@ def validate(new: list[dict], prev: list[dict] | None, corrections: set[str] = f
     errors: list[str] = []
     if not new:
         return ["no records parsed (source down or page format changed)"]
-    missing = [r for r in new if any(not str(r.get(k) or "").strip() for k in REQUIRED)]
+    # Records with no printed batch number (batchUnspecified) are legitimate: batch fields may be empty.
+    def required_for(r: dict) -> tuple:
+        return tuple(k for k in REQUIRED if not (r.get("batchUnspecified") and k in ("batch", "batchNorm")))
+    missing = [r for r in new if any(not str(r.get(k) or "").strip() for k in required_for(r))]
     if len(missing) > max(1, MAX_MISSING_FIELDS * len(new)):
         errors.append(f"{len(missing)} of {len(new)} records miss a required field ({', '.join(REQUIRED)})")
     bad_type = [r for r in new if r.get("type") not in ("NSQ", "SPURIOUS")]

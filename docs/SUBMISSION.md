@@ -1,33 +1,35 @@
 # Submission text (Devpost) and video correction
 
-Every figure below is taken from the published files: `public/data/meta.json`, `src/content/eval-population.json`, `src/content/eval-results.json`. Figures as of 25 November 2026.
+Figures come from the published files: `public/data/meta.json`, `src/content/eval-population.json`, `src/content/eval-results.json`, and the reconciliation in `docs/RECONCILIATION.md`. Figures as of 25 November 2026.
 
 ## Devpost text
 
 **DawaShield** checks a medicine strip against the Indian government's own list of drug quality alerts, on the phone, in Hindi or English.
 
-- **Official data:** 4,480 CDSCO records, alert months October 2024 to October 2026 (latest: October 2026). Records are added by a daily pipeline from the official portal and monthly PDFs. Historical records are kept; the pipeline refuses to remove one without a documented correction and source evidence.
-- **Completeness:** every one of the 4,480 official records, queried with its own exact batch, medicine and company, is shown RED (4,480 of 4,480). Ground truth is the government record itself.
-- **False alarms:** for 2,000 synthetic batches absent from the dataset, with companies also absent from it, the app returned GREY (no alert invented). Seed 20261125, reproducible.
-- **Robustness:** a 728-case stress set in 16 groups. These cases and their expected labels were written by the author from 55 hand-verified records, so this measures consistent, safe behaviour under stress, not accuracy on unseen data. 0 false REDs, 0 false GREYs, every colour correct.
-- **Speech:** 60 generated Hindi and English transcripts that imitate real speech-recognition output, not recordings of real speakers. 98.3% correct at first guess, 100% within three.
-- **Freshness:** the app shows the latest covered alert month, the dataset's last update, and the last successful source check.
+- **Official data:** 4,488 CDSCO records, alert months October 2024 to October 2026 (latest: October 2026). Records come from the official portal and monthly PDFs through a daily pipeline. Historical records are kept, and the pipeline will not publish if a published record would vanish without a documented, evidenced correction.
+- **Completeness:** of the 4,488 records, 4,477 have a printed batch number. Each was queried with its own batch, medicine and company, and all 4,477 came out RED. The other 11 have no printed batch (for example "Not Mention"). They cannot be tested for an exact match, so they are reported separately. None of them came out RED: 10 AMBER and 1 GREY.
+- **False alarms:** for 2,000 synthetic batches absent from the dataset, with companies absent from it, the app returned GREY (no alert invented). Seed 20261125, reproducible.
+- **Robustness:** a 728-case stress set in 16 groups. The author wrote these cases and their expected labels from 55 hand-verified records, so they measure consistent, safe behaviour under stress, not accuracy on unseen data. 0 false REDs, 0 false GREYs, every colour correct.
+- **Speech:** 60 generated Hindi and English transcripts that imitate real speech-recognition output. They are not recordings of real speakers. 98.3% correct at first guess, 100% within three.
+- **Freshness:** the app shows the latest covered alert month, when the dataset last changed, and the last successful source check.
+- **Hybrid AI:** cloud reading and explanation use Gemini 3.5 Flash through Firebase AI Logic. Offline checking is deterministic code with no model. On-device Gemini Nano is used offline only where the browser reports it available. Live cloud calls were blocked during testing by an App Check throttle, so a successful cloud explanation is **not verified** in this release.
 - **Privacy:** the full list and your cabinet are stored on the phone. Only devices that opt in to push store anything in Firestore: a push token, language, and each saved medicine's batch, company and expiry month. Names, phone numbers and contacts stay on the phone. Strip photos, voice clips, speech transcripts and record text are sent to Gemini when online, and medicine names are included in those requests. See `docs/PRIVACY.md`.
-- **Not verified:** push alerts with the app or browser fully closed have not been tested on a real Android phone or iPhone.
-- **Limitations:** one official October 2026 listing (batch "Not Mention", two different products from different manufacturers) is merged with another and not represented in the app; see `docs/RECONCILIATION.md`. The photo evaluation has no labelled photos yet.
+- **Not verified:** push alerts with the app or browser fully closed, on a real Android phone or iPhone. Photo accuracy: no labelled strip photos yet, so photo reading is **not measured**.
+- **Limitations:** two possible reprints are kept as separate records (see `docs/RECONCILIATION.md`). Speech and stress-set results are not measures of accuracy on real people or on unseen cases.
 
 ## Demo video: outdated numbers and a dated correction
 
-The video cannot be edited from this repository. The on-screen figures below come from the demo scripts in `scripts/demo/` (not committed). Please check the video itself against this list before you post the correction.
+The video cannot be edited from this repository. The on-screen figures below come from the demo scripts in `scripts/demo/` (not committed). Check the video itself against this list before posting.
 
 | Claim in the video or earlier text | Status now |
 |---|---|
 | "428 cases" in the matching evaluation | Now 728 cases. The stress set grew from 428 to 728 after 300 cases were added. |
-| "Checked against 4,158 official CDSCO records" | Now 4,480 records (alert months Oct 2024 to Oct 2026). |
-| "CDSCO flags 330 drug samples as not of standard quality in September 2026" (a news card) | This is a news headline, not a DawaShield figure. It has not been checked against the CDSCO portal. Remove or verify it. |
+| "Checked against 4,158 official CDSCO records" | Now 4,488 records (alert months Oct 2024 to Oct 2026). |
+| "CDSCO flags 330 drug samples as not of standard quality in September 2026" (news card) | **Verified.** The official portal's September 2026 NSQ table has 330 rows (42 CDSCO Labs, 288 State Labs), plus one spurious entry. The wording traces to an All India Radio report of 23 October 2026 (newsonair.gov.in), with the same figure in other outlets. The card credits All India Radio, which is accurate. |
 | Speech cases described as "real" Hindi transcripts | They are generated transcripts that imitate real speech-recognition output. |
-| Any statement that push works with the app closed | NOT VERIFIED on real devices. |
+| Any statement that push works with the app closed | **NOT VERIFIED** on real devices. |
+| Any statement that cloud Gemini explanation works in this release | **NOT VERIFIED**: App Check throttled during testing. |
 
 ### YouTube description correction (dated)
 
-> **Correction, 25 November 2026:** Earlier figures in this video's description and on our submission page are out of date. The dataset now holds 4,480 official CDSCO records, covering alert months October 2024 to October 2026 (it was 4,158). The matching stress set has 728 cases (it was described as 428). Those 728 cases were written by the author from hand-verified records, so they measure consistent behaviour under stress, not accuracy on unseen data. The speech tests are 60 generated transcripts, not recordings of real speakers. Push alerts with the app fully closed have not been tested on real phones. Full details: https://github.com/micneeraj/dawashield/blob/master/docs/SUBMISSION.md
+> **Correction, 25 November 2026:** Some figures in this video's description and on our submission page are out of date. The dataset now holds 4,488 official CDSCO records, covering alert months October 2024 to October 2026 (it was 4,158). The matching stress set has 728 cases (it was described as 428). Those 728 cases were written by the author from hand-verified records, so they measure consistent behaviour under stress, not accuracy on unseen data. The speech tests are 60 generated transcripts, not recordings of real speakers. Push alerts with the app fully closed have not been tested on real phones. Full details: https://github.com/micneeraj/dawashield/blob/master/docs/SUBMISSION.md

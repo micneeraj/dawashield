@@ -4,6 +4,26 @@ Records added to `public/data/nsq.json` by the daily pipeline (newest first).
 
 ## 2026-11-25
 
+- Added: 8 records · Removed/merged: 0 · Latest alert month: 2026-10
+- 2026-10: 1 new
+  - NSQ · Codeine Phosphate & Triprolidine Hydrochloride Syrup 100 ml · batch Not Mention · Cost · id 7187c8d12af1
+- 2026-02: 1 new
+  - NSQ · Telmisartan & Hydrochlorothiazide Tablets · batch L-RT25187 · Rachil Pharma · id ad3b4da3d444
+- 2026-01: 1 new
+  - NSQ · Buprenorphine Injection IP 2ml · batch 1364 ASO · SNG Pharmaceuticals(P) Ltd. · id e2fc3f2825f7-2
+- 2025-12: 1 new
+  - NSQ · Sorbitol Solution 70% IP (Non-Crystallizing) · batch KA/017 · Gujarat Ambuja Exports Limited · id 8a7a505d8c94-2
+- 2025-09: 1 new
+  - NSQ · Albendazole Tablets IP Legal Sample ) · batch PGT25229 · Affy Parenterals (WHO- cGMP/ISO · id ac847a54d965
+- 2025-05: 1 new
+  - NSQ · Injection Oxytocin Vet. 50 ml Vial · batch Not applicable · Not applicable · id e7c9404f3122
+- 2024-11: 1 new
+  - NSQ · Beaute Blanc Fruit Vinegar Gel Hair Colour (Natural Balck) · batch 406 · Guangdong Rongsheng Bio- Technlogy Co Ltd · id ff5f27b4b9a4-2
+- 2024-10: 1 new
+  - NSQ · Buprenorphine Injection I.P. (LUPIGESIC) · batch 1470 ASG · S.M.G. PHARMACEUTICALS (Pvt) Ltd. · id b11079de0342-2
+
+## 2026-11-25
+
 - Added: 91 records · Removed/merged: 0 · Latest alert month: 2026-10
 - 2024-10: 91 new
   - NSQ · (COUGH-DM Cough Syrup) · batch SHL3037 · Sunfine Healthcare · id f9a24c6a9dce

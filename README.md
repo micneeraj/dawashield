@@ -87,7 +87,7 @@ Every AI answer shows **"On this device"** or **"Cloud"**, taken from the SDK's 
 ## Data source
 
 - **Official CDSCO only:** the public NSQ/spurious alert portal ([cdscoonline.gov.in/CDSCO/viewPublicNSQDrug](https://cdscoonline.gov.in/CDSCO/viewPublicNSQDrug)) and monthly alert PDFs on [cdsco.gov.in](https://cdsco.gov.in/opencms/opencms/en/Notifications/Alerts/).
-- **Coverage:** **4,480 records** (4,430 NSQ, 50 spurious), alert months **October 2024 to October 2026** (fixed start, end moves forward; historical records are never dropped without a documented correction in [`data/corrections.json`](data/corrections.json)); **55 checked by hand** ([`data/verified_records.csv`](data/verified_records.csv)). Reconciliation of the October 2026 import: [`docs/RECONCILIATION.md`](docs/RECONCILIATION.md).
+- **Coverage:** **4,488 records** (4,438 NSQ, 50 spurious), alert months **October 2024 to October 2026** (fixed start, end moves forward; historical records are never dropped without a documented correction in [`data/corrections.json`](data/corrections.json)); **55 checked by hand** ([`data/verified_records.csv`](data/verified_records.csv)). Reconciliation of the October 2026 import: [`docs/RECONCILIATION.md`](docs/RECONCILIATION.md).
 - **Daily pipeline** ([`.github/workflows/dataset.yml`](.github/workflows/dataset.yml)): fetch → parse → normalise → dedupe → **validate** ([`data/validate.py`](data/validate.py)). If the source is down or the parse looks wrong (sharp record drop, missing fields, month going backwards), the last good data is kept and the failure is logged in [`data/pipeline_log.json`](data/pipeline_log.json). Added records are listed in [`data/CHANGELOG.md`](data/CHANGELOG.md).
 
 ## Evaluation
@@ -96,7 +96,8 @@ Every AI answer shows **"On this device"** or **"Cloud"**, taken from the SDK's 
 
 | | Result |
 |---|---|
-| **Full population (ground truth: the CDSCO records themselves):** every one of the 4,480 official records, run with its own batch, medicine and company | **4,480 / 4,480 shown RED** |
+| **Full population (ground truth: the CDSCO records themselves):** the 4,477 records with a printed batch, each run with its own batch, medicine and company | **4,477 / 4,477 shown RED** |
+| Records with no printed batch ("Not Mention", "NIL", …): 11, excluded from the exact test | **0 shown RED** (10 AMBER, 1 GREY); a placeholder batch can never produce an exact-batch RED |
 | **Negative control (ground truth: dataset):** 2,000 seeded batches that appear nowhere in the dataset, unlisted companies | **2,000 / 2,000 shown GREY** (seed 20261125) |
 | Stress set, **author-labelled** robustness testing: 728 cases (106 real, 622 generated from the author's 55 hand-verified records), spelling, spacing, OCR look-alikes, wrong company, same company/other medicine, unreadable | False-RED 0.0% (0/489) · False-GREY 0.0% (0/619) |
 | Stress set confusion (rows expected, columns shown) | RED 239/0/0/0 · AMBER 0/325/0/0 · GREY 0/0/109/0 · CAN'T READ 0/0/0/55 |
@@ -105,7 +106,7 @@ Every AI answer shows **"On this device"** or **"Cloud"**, taken from the SDK's 
 | Photo (`data/eval_images/labels.csv`; add with `npm run add-photo`) | No labelled photos yet: not measured |
 | Privacy: what is stored and what is sent to cloud AI | [`docs/PRIVACY.md`](docs/PRIVACY.md) |
 | Push alerts with the app fully closed | **NOT VERIFIED** on real devices (unit and logic checks only) |
-| Unit tests | 242 app tests passing; 10 pipeline tests passing (`python -I -m unittest discover -s data -p "test_*.py"`) |
+| Unit tests | 250 app tests passing; 20 pipeline tests passing (`python -I -m unittest discover -s data -p "test_*.py"`) |
 
 ## What works where
 

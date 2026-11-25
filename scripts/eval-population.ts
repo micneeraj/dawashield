@@ -11,16 +11,31 @@ import type { AlertRecord, MatchInput } from "../src/lib/types";
 const records: AlertRecord[] = JSON.parse(readFileSync("public/data/nsq.json", "utf8"));
 const meta = JSON.parse(readFileSync("public/data/meta.json", "utf8"));
 
-// ---- 1. Full population ----
-const reds: number[] = [];
-const notRed: { i: number; batch: string; name: string; company: string; got: string; reason: string }[] = [];
+// ---- 1. Full population, split by what the record can support ----
+// A record with a printed batch number must return RED for its own batch + medicine + company.
+// A record with no printed batch (placeholder such as "Not Mention") cannot be tested for an exact
+// batch match: it must NEVER return RED, and its results are reported separately.
+const isExact = (r: AlertRecord) => !r.batchUnspecified && !!r.batchNorm;
+const exactReds: number[] = [];
+const exactNotRed: { i: number; batch: string; name: string; company: string; got: string; reason: string }[] = [];
+const unspecLevels: Record<string, number> = {};
+let unspecRed = 0;
+const unspecRedList: { i: number; batch: string; name: string }[] = [];
+let exactTotal = 0;
 records.forEach((r, i) => {
   const company = r.manufacturerName || r.manufacturer;
   const input: MatchInput = { name: r.brand || r.name, batch: r.batch, manufacturer: company };
   const res = matchMedicine(input, records);
-  if (res.level === "RED") reds.push(i);
-  else notRed.push({ i, batch: r.batch, name: input.name ?? "", company, got: res.level, reason: res.reason });
+  if (isExact(r)) {
+    exactTotal++;
+    if (res.level === "RED") exactReds.push(i);
+    else exactNotRed.push({ i, batch: r.batch, name: input.name ?? "", company, got: res.level, reason: res.reason });
+  } else {
+    unspecLevels[res.level] = (unspecLevels[res.level] || 0) + 1;
+    if (res.level === "RED") { unspecRed++; unspecRedList.push({ i, batch: r.batch, name: input.name ?? "" }); }
+  }
 });
+const unspecTotal = records.length - exactTotal;
 
 // ---- 2. Negative control (seeded, reproducible) ----
 // Small seeded PRNG (mulberry32) so the same seed gives the same 2,000 strings.
@@ -66,8 +81,15 @@ const notGrey = negatives.filter((n) => n.got !== "GREY");
 
 const out = {
   dataset: { records: records.length, latestMonth: meta.latestMonth },
-  fullPopulation: { total: records.length, red: reds.length, notRed: notRed.length, notRedList: notRed.slice(0, 200) },
+  fullPopulation: {
+    total: records.length,
+    exactBatchTestable: exactTotal,
+    exactRed: exactReds.length,
+    exactNotRed: exactNotRed.length,
+    exactNotRedList: exactNotRed.slice(0, 200),
+    unspecifiedBatch: { total: unspecTotal, redMustBeZero: unspecRed, byLevel: unspecLevels, redList: unspecRedList.slice(0, 50) },
+  },
   negativeControl: { seed: SEED, total: negatives.length, grey: negatives.length - notGrey.length, notGrey: notGrey.length, notGreyList: notGrey.slice(0, 200), generatedAttempts: produced },
 };
 writeFileSync("src/content/eval-population.json", JSON.stringify(out, null, 1));
-console.log(JSON.stringify({ fullPopulation: { total: out.fullPopulation.total, red: out.fullPopulation.red, notRed: out.fullPopulation.notRed }, negativeControl: { total: out.negativeControl.total, grey: out.negativeControl.grey, notGrey: out.negativeControl.notGrey, seed: SEED } }, null, 1));
+console.log(JSON.stringify({ fullPopulation: { total: out.fullPopulation.total, exactBatchTestable: exactTotal, exactRed: exactReds.length, exactNotRed: exactNotRed.length, unspecifiedBatch: out.fullPopulation.unspecifiedBatch.total, unspecifiedRedMustBeZero: unspecRed, unspecifiedByLevel: unspecLevels }, negativeControl: { total: out.negativeControl.total, grey: out.negativeControl.grey, notGrey: out.negativeControl.notGrey, seed: SEED } }, null, 1));

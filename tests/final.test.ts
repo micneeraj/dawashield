@@ -47,7 +47,8 @@ describe("de-duplicated dataset", () => {
     expect(matchMedicine({ name: m[0].name, batch: "MT14501" }, records).records.length).toBe(1);
   });
   it("no repeated medicine + batch + month + lab rows remain; meta counts match", () => {
-    const key = (x: AlertRecord) => [x.type, x.batchNorm, x.name.replace(/\(N\/?A\)/, "").replace(/\W/g, "").slice(0, 20).toLowerCase(), x.month, x.lab].join("|");
+    // Same identity rule as data/dedupe.py: full product name, manufacturer, manufacture/expiry dates, batch, month, lab.
+    const key = (x: AlertRecord) => [x.type, x.batchNorm, x.name.replace(/\(N\/?A\)/, "").replace(/\W/g, "").toLowerCase(), (x.manufacturerEntity || x.manufacturer || "").replace(/\W/g, "").toLowerCase(), x.mfgDate ?? "", x.expDate ?? "", x.month, x.lab].join("|");
     expect(new Set(records.map(key)).size).toBe(records.length);
     expect(meta.records).toBe(records.length);
     expect(meta.duplicatesMerged).toBe(records.reduce((n, x) => n + (x.listedTimes ?? 1) - 1, 0));
