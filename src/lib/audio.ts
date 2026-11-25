@@ -61,6 +61,8 @@ export interface RegionalVoice { texts?: Record<string, string>; mode?: "sarvam"
 export async function playClip(clip: string, lang: AppLang, voice: "female" | "male", muted: boolean, regional?: RegionalVoice): Promise<void> {
   if (muted) return;
   stopClip();
+  // grey_company audio still has the old wording; playback is off until it is re-recorded. The file is kept.
+  if (clip === "grey_company") return;
   if (lang === "hi" || lang === "en" || ((regional?.mode === "sarvam" || regional?.mode === "gemini") && regional.texts?.[clip])) {
     try {
       current = new Audio(`/audio/${clipDir(lang, voice)}/${clip}.mp3`);
