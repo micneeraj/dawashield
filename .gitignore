@@ -15,3 +15,6 @@ screenshots/
 i18n/.tts/
 eval/voice/wav/
 eval/voice/run.log
+
+# Keep the documented template of optional keys
+!.env.example

@@ -1,0 +1,14 @@
+﻿# One command: docker compose up
+# Then open http://localhost:3000. No API keys are needed for the core check.
+services:
+  app:
+    build:
+      context: .
+      args:
+        # Empty unless set in a .env file next to this file (optional).
+        VITE_RECAPTCHA_SITE_KEY: ${VITE_RECAPTCHA_SITE_KEY:-}
+        VITE_APPCHECK_DEBUG_TOKEN: ${VITE_APPCHECK_DEBUG_TOKEN:-}
+    image: dawashield:local
+    ports:
+      - "3000:3000"
+    restart: unless-stopped

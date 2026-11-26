@@ -1,5 +1,15 @@
 # DawaShield · दवा कवच
 
+## Run it in one command
+
+```bash
+docker compose up
+```
+
+Then open **http://localhost:3000**. No API keys are needed for the core flow: the main screen, typed and demo checks, the RED / AMBER / GREY results with their CDSCO source line, the cabinet, Hindi and English, and the offline rule-based check all work without keys. Cloud AI and push need a setup key, and the app shows a calm "key not set" note where that matters.
+
+Round 2 pitch deck: [docs/DawaShield_Pitch_Deck.pdf](docs/DawaShield_Pitch_Deck.pdf)
+
 **A medicine companion for every Indian home.** Speak in Hindi or English (offline), or Punjabi, Gujarati, Marathi, Kannada or Tamil (online), type, or show a photo of a medicine strip, and DawaShield checks your family's medicines against official **CDSCO** drug-quality alerts (NSQ = Not of Standard Quality, and spurious). The check **works without internet, on cheap Android phones**.
 
 > Your mother's medicine cabinet shouldn't need an internet connection, English literacy or a technical understanding of batch numbers to stay informed about medicine safety.

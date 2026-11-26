@@ -11,6 +11,19 @@ import { Facts } from "../components/ui";
 import { monthLabel } from "../lib/format";
 import { nanoAvailability } from "../lib/ai";
 import { nanoText } from "../lib/status";
+import { cloudReady } from "../lib/config";
+
+/** Calm, not an error: shown only when this build has no App Check site key. */
+function CloudKeyNote({ hi }: { hi: boolean }) {
+  if (cloudReady()) return null;
+  return (
+    <p data-testid="cloud-key-note" className="mb-4 rounded-2xl bg-brand-50 px-4 py-3 text-[15px] leading-snug text-brand-800">
+      {hi
+        ? "क्लाउड AI और पुश अलर्ट के लिए सेटअप चाहिए (कुंजी सेट नहीं है)। दवा जाँच फिर भी काम करती है।"
+        : "Cloud AI and push alerts need setup (key not set). Checking medicines still works."}
+    </p>
+  );
+}
 
 function Seg<T extends string>({ value, options, onChange }: { value: T; options: { v: T; l: string }[]; onChange: (v: T) => void }) {
   return (
@@ -36,6 +49,7 @@ export default function Settings() {
 
   return (
     <Page title={t("settings")} onBack={() => go({ name: "home" })}>
+      <CloudKeyNote hi={lang === "hi"} />
       {/* Dataset box */}
       <Card className="overflow-hidden" >
         <div className="flex items-center gap-3 hero-brand px-5 py-4 text-white">

@@ -1,0 +1,16 @@
+﻿node_modules
+.git
+.github
+.vitest
+dist
+.firebase
+.env
+.env.*
+!.env.example
+coverage
+npm-debug.log*
+Dockerfile
+docker-compose.yml
+.dockerignore
+shots
+screenshots
