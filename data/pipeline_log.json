@@ -34,5 +34,10 @@
   "removed": 0,
   "latestMonth": "2026-10",
   "failedFetches": 0
+ },
+ {
+  "at": "2026-11-26T10:01:51+00:00",
+  "status": "kept-last-good",
+  "reason": "pipeline error: RuntimeError: https://cdscoonline.gov.in/CDSCO/reportingYears?tab=nsq: <urlopen error timed out>"
  }
 ]
